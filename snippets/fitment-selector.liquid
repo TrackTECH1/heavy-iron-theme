@@ -1,0 +1,30 @@
+{%- comment -%}
+  fitment-selector.liquid — Required Make/Model capture + auto Track Size, posted as line item properties.
+  Order: Machine Make, Machine Model, Track Size. Green confirm on model select.
+  Usage: {%- render 'fitment-selector', product: product -%}  (must be INSIDE the product form)
+{%- endcomment -%}
+{%- if product != blank and product.available -%}
+  {{ 'fitment-selector.css' | asset_url | stylesheet_tag }}
+  {%- assign fits = product.metafields.custom.fits_equipment_models.value -%}
+  {%- assign tsz = product.metafields.custom.track_size -%}
+  <fitment-selector class="hi-fit" data-fit>
+    <p class="hi-fit__label">Confirm your machine <span class="hi-fit__req">required</span></p>
+    <script type="application/json" data-fit-data>[{%- if fits != blank -%}{%- for m in fits -%}{%- assign mk = m.make.value.name.value | default: '' -%}{%- assign md = m.display_name.value | default: m.system.handle -%}{%- unless forloop.first -%},{%- endunless -%}{"k":{{ mk | json }},"m":{{ md | json }}}{%- endfor -%}{%- endif -%}]</script>
+    <div class="hi-fit__row">
+      <select name="properties[Machine Make]" class="hi-fit__select" data-fit-make required aria-label="Your machine make">
+        <option value="">Select make…</option>
+      </select>
+      <span class="hi-fit__modelwrap">
+        <select name="properties[Machine Model]" class="hi-fit__select" data-fit-model-select aria-label="Your machine model">
+          <option value="">Select model…</option>
+        </select>
+        <input type="text" name="properties[Machine Model]" class="hi-fit__input" data-fit-model-input placeholder="Type your model" aria-label="Your machine model" autocomplete="off" disabled hidden>
+      </span>
+    </div>
+    {%- if tsz != blank -%}<input type="hidden" name="properties[Track Size]" value="{{ tsz | escape }}">{%- endif -%}
+    <p class="hi-fit__ok" data-fit-ok hidden><svg viewBox="0 0 24 24" fill="none" stroke="#1f7a33" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span data-fit-ok-text>Fitment Verified!</span></p>
+    <p class="hi-fit__error" data-fit-error hidden>Select or enter your machine make and model so we can confirm fit before shipping.</p>
+    <p class="hi-fit__hint">Not sure? <a href="/pages/contact" class="hi-fit__hint-link">Contact us</a> with your make, model &amp; serial and we'll find a solution for your needs.</p>
+  </fitment-selector>
+  <script src="{{ 'fitment-selector.js' | asset_url }}" defer></script>
+{%- endif -%}

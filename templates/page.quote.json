@@ -1,0 +1,65 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "quote-request",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "text": "Free freight — contiguous US"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "text": "24-month warranty on every track"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "text": "OEM-spec fitment guaranteed"
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "text": "Fleet & volume pricing available"
+          }
+        },
+        "benefit_5": {
+          "type": "benefit",
+          "settings": {
+            "text": "Ships from multiple US warehouses"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "benefit_5"
+      ],
+      "settings": {
+        "eyebrow": "FREE QUOTE",
+        "heading": "Request a Free Quote",
+        "subtext": "Rubber tracks, undercarriage parts, and attachments for every make and model. Fleet pricing available.",
+        "phone": "(850) 816-7898",
+        "hours": "Monday–Friday, 8am–5pm CT"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

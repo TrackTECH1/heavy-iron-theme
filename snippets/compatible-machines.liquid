@@ -1,0 +1,11 @@
+{%- liquid
+  assign track_size = product.metafields.custom.track_size | default: ''
+  assign current_handle = product.handle
+-%}
+{%- if track_size != blank -%}
+  {{ 'compatible-machines.css' | asset_url | stylesheet_tag }}
+  <div class="hi-compatible-machines" data-hi-compat data-track-size="{{ track_size | escape }}" data-current-handle="{{ current_handle | escape }}" data-map-url="{{ 'track-fitment-map.json' | asset_url }}" style="min-height:60px">
+    <noscript><p>Call (850) 816-7898 and we&rsquo;ll confirm fitment for size <strong>{{ track_size }}</strong>.</p></noscript>
+  </div>
+  <script src="{{ 'compatible-machines.js' | asset_url }}" defer></script>
+{%- endif -%}

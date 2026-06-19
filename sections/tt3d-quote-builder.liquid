@@ -1,0 +1,155 @@
+{% comment %}
+  Heavy Iron — 3D Quote Builder section (click-to-load facade)
+  Powered by TrackTECH 3D. Aligned to Heavy Iron brand yellow (#ffb607).
+  - Zero page-speed cost: no iframe/3D loads until the visitor clicks Launch.
+  - Cover images: desktop + optional mobile. Shown UN-CROPPED — the frame
+    auto-sizes to each image's aspect ratio. Whole image = click target.
+  - Fully self-contained: scoped CSS + ~15 lines of vanilla JS. No theme assets touched.
+  Add via Online Store > Themes > Edit code > Sections > Add a new section.
+  Then place it on the Quote page (or any page) in the Customizer.
+  Remove it in the customizer at any time — no residue.
+{% endcomment %}
+
+{%- assign cover = section.settings.cover_image -%}
+{%- assign cover_m = section.settings.cover_image_mobile -%}
+
+<section id="tt3d-{{ section.id }}" class="tt3d-section">
+  <style>
+    #tt3d-{{ section.id }} { padding: {{ section.settings.pad_top }}px 1.5rem {{ section.settings.pad_bottom }}px; }
+    #tt3d-{{ section.id }} .tt3d-wrap { max-width: 1100px; margin: 0 auto; }
+    #tt3d-{{ section.id }} .tt3d-heading { text-align: center; margin: 0 0 .5rem; }
+    #tt3d-{{ section.id }} .tt3d-sub { text-align: center; margin: 0 0 1.25rem; opacity: .8; }
+    #tt3d-{{ section.id }} .tt3d-stage {
+      position: relative; width: 100%; height: {{ section.settings.frame_height }}px;
+      border-radius: 12px; overflow: hidden;
+      background: linear-gradient(180deg, #cdd1d7 0%, #9aa0a8 100%);
+      box-shadow: 0 8px 30px rgba(0,0,0,.18);
+    }
+    {%- if cover %}
+    #tt3d-{{ section.id }} .tt3d-stage.tt3d-has-cover:not(.tt3d-live) {
+      height: auto; aspect-ratio: {{ cover.aspect_ratio }}; background: #0C0C0C;
+    }
+    {%- endif %}
+    #tt3d-{{ section.id }} .tt3d-stage.tt3d-live { height: {{ section.settings.frame_height }}px; aspect-ratio: auto; }
+    #tt3d-{{ section.id }} .tt3d-cover { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    #tt3d-{{ section.id }} .tt3d-cover-mobile { display: none; }
+    #tt3d-{{ section.id }} .tt3d-cover-btn {
+      position: absolute; inset: 0; background: transparent; border: 0; cursor: pointer;
+      border-radius: 0; box-shadow: none; padding: 0;
+    }
+    #tt3d-{{ section.id }} .tt3d-facade {
+      position: absolute; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: .9rem; text-align: center; padding: 1.5rem;
+    }
+    #tt3d-{{ section.id }} .tt3d-facade-title {
+      font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+      color: #111; font-size: clamp(1.1rem, 2.6vw, 1.7rem); margin: 0;
+    }
+    #tt3d-{{ section.id }} .tt3d-facade-points { color: #333; font-size: .95rem; margin: 0; }
+    #tt3d-{{ section.id }} .tt3d-launch {
+      cursor: pointer; border: 0; border-radius: 4px;
+      background: #ffb607; color: #111; font-weight: 700;
+      padding: .95rem 1.9rem; font-size: 1rem; letter-spacing: .04em; text-transform: uppercase;
+      box-shadow: 0 4px 14px rgba(0,0,0,.25); transition: background .15s ease;
+    }
+    #tt3d-{{ section.id }} .tt3d-launch:hover { background: #e6a800; }
+    #tt3d-{{ section.id }} .tt3d-launch.tt3d-cover-btn { background: transparent; }
+    #tt3d-{{ section.id }} .tt3d-stage iframe { width: 100%; height: 100%; border: 0; display: block; }
+    @media (max-width: 749px) {
+      #tt3d-{{ section.id }} .tt3d-stage { height: min({{ section.settings.frame_height }}px, 78vh); }
+      {%- if cover_m %}
+      #tt3d-{{ section.id }} .tt3d-stage.tt3d-has-cover:not(.tt3d-live) { height: auto; aspect-ratio: {{ cover_m.aspect_ratio }}; }
+      #tt3d-{{ section.id }} .tt3d-cover-desktop { display: none; }
+      #tt3d-{{ section.id }} .tt3d-cover-mobile { display: block; }
+      {%- elsif cover %}
+      #tt3d-{{ section.id }} .tt3d-stage.tt3d-has-cover:not(.tt3d-live) { height: auto; aspect-ratio: {{ cover.aspect_ratio }}; }
+      {%- endif %}
+    }
+  </style>
+
+  <div class="tt3d-wrap">
+    {% if section.settings.heading != blank %}
+      <h2 class="tt3d-heading">{{ section.settings.heading | escape }}</h2>
+    {% endif %}
+    {% if section.settings.subheading != blank %}
+      <p class="tt3d-sub">{{ section.settings.subheading | escape }}</p>
+    {% endif %}
+
+    <div class="tt3d-stage{% if cover %} tt3d-has-cover{% endif %}"
+         data-tt3d-url="{{ section.settings.app_url | escape }}"
+         data-tt3d-mobile-newtab="{{ section.settings.mobile_newtab }}">
+      {% if cover %}
+        <img
+          class="tt3d-cover tt3d-cover-desktop"
+          src="{{ cover | image_url: width: 2000 }}"
+          srcset="{{ cover | image_url: width: 800 }} 800w, {{ cover | image_url: width: 1400 }} 1400w, {{ cover | image_url: width: 2000 }} 2000w"
+          sizes="(max-width: 1100px) 100vw, 1100px"
+          alt="{{ section.settings.heading | default: 'Heavy Iron 3D Builder' | escape }}"
+          loading="lazy"
+        >
+        {% if cover_m %}
+          <img
+            class="tt3d-cover tt3d-cover-mobile"
+            src="{{ cover_m | image_url: width: 1200 }}"
+            srcset="{{ cover_m | image_url: width: 700 }} 700w, {{ cover_m | image_url: width: 1200 }} 1200w"
+            sizes="100vw"
+            alt="{{ section.settings.heading | default: 'Heavy Iron 3D Builder' | escape }}"
+            loading="lazy"
+          >
+        {% endif %}
+        <button type="button" class="tt3d-launch tt3d-cover-btn" aria-label="{{ section.settings.button_label | escape }}"></button>
+      {% else %}
+        <div class="tt3d-facade">
+          <p class="tt3d-facade-title">{{ section.settings.facade_title | escape }}</p>
+          <p class="tt3d-facade-points">{{ section.settings.facade_points | escape }}</p>
+          <button type="button" class="tt3d-launch">{{ section.settings.button_label | escape }}</button>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.getElementById('tt3d-{{ section.id }}');
+      if (!root) return;
+      var stage = root.querySelector('.tt3d-stage');
+      var btn = root.querySelector('.tt3d-launch');
+      if (!stage || !btn) return;
+      btn.addEventListener('click', function () {
+        var url = stage.getAttribute('data-tt3d-url');
+        var mobileNewTab = stage.getAttribute('data-tt3d-mobile-newtab') === 'true';
+        var isSmall = window.matchMedia('(max-width: 749px)').matches;
+        if (mobileNewTab && isSmall) { window.open(url, '_blank', 'noopener'); return; }
+        stage.classList.add('tt3d-live');
+        var f = document.createElement('iframe');
+        f.src = url;
+        f.title = 'Heavy Iron 3D Quote Builder';
+        f.setAttribute('allow', 'fullscreen');
+        stage.innerHTML = '';
+        stage.appendChild(f);
+      });
+    })();
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "3D Quote Builder",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Build Your Quote" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Powered by TrackTECH 3D™" },
+    { "type": "image_picker", "id": "cover_image", "label": "Cover image — desktop (whole image is the launch button)" },
+    { "type": "image_picker", "id": "cover_image_mobile", "label": "Cover image — mobile (optional, square/portrait)" },
+    { "type": "text", "id": "facade_title", "label": "Panel title (no cover image)", "default": "3D Rubber Track Configurator" },
+    { "type": "text", "id": "facade_points", "label": "Panel bullet line (no cover image)", "default": "Spin it. Swap treads. Find your fit. Free shipping on every track." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Launch 3D Builder" },
+    { "type": "text", "id": "app_url", "label": "Configurator URL", "default": "https://configurator.tracktechequip.com" },
+    { "type": "range", "id": "frame_height", "label": "Frame height after launch (px)", "min": 420, "max": 900, "step": 20, "default": 640 },
+    { "type": "checkbox", "id": "mobile_newtab", "label": "On phones, open full screen in a new tab (recommended)", "default": true },
+    { "type": "range", "id": "pad_top", "label": "Top padding", "min": 0, "max": 100, "step": 4, "default": 36 },
+    { "type": "range", "id": "pad_bottom", "label": "Bottom padding", "min": 0, "max": 100, "step": 4, "default": 36 }
+  ],
+  "presets": [{ "name": "3D Quote Builder" }]
+}
+{% endschema %}

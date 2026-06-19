@@ -1,0 +1,73 @@
+{%- comment -%}
+  Heavy Iron — branded static page (matches the Request-a-Quote OEM look).
+  Drop-in replacement for Dawn's `main-page`: renders the page title (smaller OEM title)
+  + page content in a clean, on-brand container. Reuse on About/Shipping/Warranty/FAQ/Contact/Legal.
+{%- endcomment -%}
+
+{%- style -%}
+  .hip { --hip-accent: {{ section.settings.accent | default: '#FFB607' }}; --hip-dark: #1a1a1a;
+    --hip-muted: #1a1a1a; background: #fff; color: var(--hip-dark); }
+  .hip__wrap { max-width: {{ section.settings.width | default: 820 }}px; margin: 0 auto;
+    padding: {{ section.settings.padding_top | default: 48 }}px 20px {{ section.settings.padding_bottom | default: 56 }}px; }
+  .hip__head { text-align: {{ section.settings.align | default: 'left' }}; margin: 0 0 28px; }
+  .hip__eyebrow { display: block; font-size: 0.75rem; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--hip-accent); margin: 0 0 12px; }
+  .hip__title { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 900; text-transform: uppercase;
+    line-height: 1.1; letter-spacing: -0.01em; margin: 0; }
+  .hip__content { font-size: 1rem; line-height: 1.7; }
+  .hip__content h2 { font-size: 1.25rem; font-weight: 800; text-transform: uppercase; margin: 2rem 0 0.6rem; }
+  .hip__content h3 { font-size: 1.05rem; font-weight: 800; margin: 1.4rem 0 0.4rem; }
+  
+  /* Regular content links */
+  .hip__content a { color: var(--hip-dark); text-decoration: underline; text-decoration-color: var(--hip-accent); }
+  .hip__content a:hover { color: var(--hip-accent); }
+
+  /* FIX FOR INVISIBLE BUTTON TEXT: Forces text to yellow and kills the underline swap */
+  .hip__content .button, 
+  .hip__content .btn, 
+  .hip__content a.button, 
+  .hip__content a.btn,
+  .hip__content [role="button"] { 
+    color: var(--hip-accent) !important; 
+    text-decoration: none !important;
+  }
+  .hip__content .button:hover, 
+  .hip__content .btn:hover, 
+  .hip__content a.button:hover, 
+  .hip__content a.btn:hover { 
+    filter: brightness(1.2); 
+  }
+
+  .hip__content ul, .hip__content ol { padding-left: 1.2rem; }
+  .hip__content li { margin: 0.3rem 0; }
+  .hip__content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .hip__content th, .hip__content td { border: 1px solid #e5e7eb; padding: 10px 12px; text-align: left; font-size: 0.92rem; }
+  .hip__content th { background: #f4f4f5; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.04em; }
+{%- endstyle -%}
+
+<div class="hip">
+  <div class="hip__wrap">
+    <div class="hip__head">
+      {%- if section.settings.eyebrow != blank -%}<span class="hip__eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h1 class="hip__title">{{ page.title }}</h1>
+    </div>
+    <div class="hip__content rte">{{ page.content }}</div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Branded Page",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow (small label above title)", "default": "Heavy Iron Supply Co" },
+    { "type": "select", "id": "align", "label": "Header alignment", "options": [
+      { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" } ], "default": "left" },
+    { "type": "color", "id": "accent", "label": "Accent color", "default": "#FFB607" },
+    { "type": "range", "id": "width", "label": "Content width", "min": 640, "max": 1100, "step": 20, "unit": "px", "default": 820 },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 56 }
+  ],
+  "presets": [{ "name": "Branded Page" }]
+}
+{% endschema %}

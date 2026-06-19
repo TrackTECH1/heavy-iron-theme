@@ -1,0 +1,265 @@
+{%- comment -%}
+  Heavy Iron Supply Co — Machine Fitment Landing (production)
+  Renders directly from the Model metaobject (scales to all models, no per-page setup).
+  Styles: assets/hi-machine.css  ·  Cards: snippets/hi-product-card  ·  Schema: snippets/hi-machine-jsonld
+  NOTE: expects metaobject field `primary_track_size` (added during the definition cleanup).
+{%- endcomment -%}
+
+{{ 'hi-machine.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign model = metaobject
+  assign make = model.make.value
+  assign machine = model.machine.value
+
+  assign model_name = model.display_name.value | default: model.system.handle
+  assign make_name = make.name.value | default: make.display_name.value | default: ''
+  assign make_url = make.system.url | default: '/collections/rubber-tracks'
+  assign machine_name = machine.name.value | default: machine.display_name.value | default: 'Heavy Equipment'
+  assign hero_img = model.hero_image.value
+  assign track_size = model.primary_track_size.value | default: ''
+
+  assign phone = section.settings.phone_number | default: '8508167898'
+  assign phone_display = section.settings.phone_display | default: '(850) 816-7898'
+  assign quote_url = section.settings.quote_url | default: '/pages/request-a-quote'
+-%}
+
+<div class="hi-mf">
+  <div class="hi-mf__wrap">
+
+    {%- comment -%} HEADER {%- endcomment -%}
+    <div class="hi-mf__head">
+      <nav aria-label="Breadcrumb">
+        <ol class="hi-mf__crumbs">
+          <li><a href="{{ routes.root_url }}">Home</a></li>
+          <li class="hi-mf__crumb-sep">/</li>
+          <li><a href="/collections/rubber-tracks">Tracks</a></li>
+          {%- if make_name != blank -%}
+            <li class="hi-mf__crumb-sep">/</li>
+            <li><a href="{{ make_url }}">{{ make_name }}</a></li>
+          {%- endif -%}
+          <li class="hi-mf__crumb-sep">/</li>
+          <li class="hi-mf__crumb-current">{{ model_name }}</li>
+        </ol>
+      </nav>
+
+      <p class="hi-mf__eyebrow">{{ machine_name }}</p>
+      <h1 class="hi-mf__title">{{ model_name }}</h1>
+      {%- if track_size != blank -%}<span class="hi-mf__size">Fits track size: {{ track_size }}</span>{%- endif -%}
+      <p class="hi-mf__intro">
+        Rubber tracks, steel undercarriage parts, and contractor-grade attachments for the
+        {{ model_name }}. OEM-cross-referenced, drop-in fit{% if track_size != blank %}, sized {{ track_size }}{% endif %}.
+        Not sure which part fits? Call and we’ll confirm by serial number.
+      </p>
+
+      {%- if section.settings.show_trust_bar -%}
+        <div class="hi-mf__trust">
+          <span><b>✓</b> 24-Month Warranty</span>
+          <span><b>✓</b> Free Freight</span>
+          <span><b>✓</b> Same-Day Shipping</span>
+          <span><b>✓</b> Technicians by Trade</span>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} HERO {%- endcomment -%}
+    <div class="hi-mf__hero">
+      <div class="hi-mf__hero-box">
+        {%- if hero_img -%}
+          <img class="hi-mf__hero-img" src="{{ hero_img | image_url: width: 1100 }}"
+               alt="{{ model_name | escape }} rubber tracks and parts" width="1100" height="620" loading="eager" fetchpriority="high">
+        {%- else -%}
+          <div class="hi-mf__noimg">No Image Available</div>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- comment -%} SPEC CARDS {%- endcomment -%}
+    {%- if model.horsepower.value != blank or model.operating_weight.value != blank or model.std_gpm.value != blank or model.sprocket_pn.value != blank -%}
+      <div class="hi-mf__specs">
+        <div class="hi-mf__spec">
+          <div class="hi-mf__spec-h">Machine Performance</div>
+          <ul>
+            {%- if model.operating_weight.value != blank -%}<li><span class="hi-mf__spec-k">Operating Weight</span><span class="hi-mf__spec-v">{{ model.operating_weight.value }} lbs</span></li>{%- endif -%}
+            {%- if model.horsepower.value != blank -%}<li><span class="hi-mf__spec-k">Horsepower</span><span class="hi-mf__spec-v">{{ model.horsepower.value }} HP</span></li>{%- endif -%}
+            {%- if model.roc_bucket_force.value != blank -%}<li><span class="hi-mf__spec-k">ROC / Bucket Force</span><span class="hi-mf__spec-v">{{ model.roc_bucket_force.value }} lbs</span></li>{%- endif -%}
+            {%- if track_size != blank -%}<li><span class="hi-mf__spec-k">Track Size</span><span class="hi-mf__spec-v">{{ track_size }}</span></li>{%- endif -%}
+          </ul>
+        </div>
+        <div class="hi-mf__spec">
+          <div class="hi-mf__spec-h">Hydraulics &amp; Lift</div>
+          <ul>
+            {%- if model.std_gpm.value != blank -%}<li><span class="hi-mf__spec-k">Standard Flow</span><span class="hi-mf__spec-v">{{ model.std_gpm.value }} GPM</span></li>{%- endif -%}
+            {%- if model.hf_gpm.value != blank -%}<li><span class="hi-mf__spec-k">High Flow</span><span class="hi-mf__spec-v">{{ model.hf_gpm.value }} GPM</span></li>{%- endif -%}
+            {%- if model.std_psi.value != blank -%}<li><span class="hi-mf__spec-k">Hydraulic Pressure</span><span class="hi-mf__spec-v">{{ model.std_psi.value }} PSI</span></li>{%- endif -%}
+            {%- if model.lift_type.value != blank -%}<li><span class="hi-mf__spec-k">Lift Type</span><span class="hi-mf__spec-v">{{ model.lift_type.value }}</span></li>{%- endif -%}
+          </ul>
+        </div>
+        <div class="hi-mf__spec">
+          <div class="hi-mf__spec-h">OEM Reference Parts</div>
+          <ul>
+            {%- if model.sprocket_pn.value != blank -%}<li><span class="hi-mf__spec-k">Sprocket P/N</span><span class="hi-mf__spec-v">{{ model.sprocket_pn.value }}</span></li>{%- endif -%}
+            {%- if model.front_idler_pn.value != blank -%}<li><span class="hi-mf__spec-k">Front Idler P/N</span><span class="hi-mf__spec-v">{{ model.front_idler_pn.value }}</span></li>{%- endif -%}
+            {%- if model.rear_idler_pn.value != blank -%}<li><span class="hi-mf__spec-k">Rear Idler P/N</span><span class="hi-mf__spec-v">{{ model.rear_idler_pn.value }}</span></li>{%- endif -%}
+            {%- if model.bottom_roller_pn.value != blank -%}<li><span class="hi-mf__spec-k">Bottom Roller P/N</span><span class="hi-mf__spec-v">{{ model.bottom_roller_pn.value }}</span></li>{%- endif -%}
+          </ul>
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} RUBBER TRACKS — one block per fitting size; tread variants 4-up {%- endcomment -%}
+    {%- if model.track_products.value != blank -%}
+      <section class="hi-mf__sec" id="tracks">
+        <h2 class="hi-mf__sec-h">Rubber Tracks</h2>
+        <p class="hi-mf__sec-sub">Choose your tread pattern. OEM-spec, continuous steel cord, free freight.</p>
+
+        {%- for product in model.track_products.value -%}
+          {%- assign tsize = product.metafields.custom.track_size | default: track_size -%}
+          <div class="hi-mf__sizeblock">
+            {%- if tsize != blank -%}
+              <div class="hi-mf__sizeblock-h"><b>{{ tsize }}</b><span>{{ product.variants.size }} tread option{% if product.variants.size != 1 %}s{% endif %}</span></div>
+            {%- endif -%}
+
+            <div class="hi-mf__treads">
+              {%- for variant in product.variants -%}
+                {%- assign vurl = product.url | append: '?variant=' | append: variant.id -%}
+                {%- assign vimg = variant.featured_image | default: product.featured_image -%}
+                {%- render 'hi-product-card', url: vurl, title: variant.title, type_label: 'Tread Pattern',
+                    image: vimg, price: variant.price, compare_at: variant.compare_at_price, button: 'Select Tread' -%}
+              {%- endfor -%}
+            </div>
+
+            <a class="hi-mf__shopall" href="{{ product.url }}">Shop all {{ tsize | default: 'this size' }} treads →</a>
+          </div>
+        {%- endfor -%}
+      </section>
+    {%- endif -%}
+
+    {%- comment -%} UNDERCARRIAGE {%- endcomment -%}
+    {%- if model.uc_products.value != blank or model.uc_parts.value != blank -%}
+      <section class="hi-mf__sec" id="undercarriage">
+        <h2 class="hi-mf__sec-h">Steel Undercarriage</h2>
+        <p class="hi-mf__sec-sub">OEM-cross-referenced sprockets, idlers &amp; rollers. Drop-in fit.</p>
+        <div class="hi-mf__grid">
+          {%- if model.uc_products.value != blank -%}
+            {%- for product in model.uc_products.value -%}
+              {%- assign pn = product.metafields.custom.oem_part_number -%}
+              {%- capture sub -%}{% if pn != blank %}OEM P/N: {{ pn }}{% endif %}{%- endcapture -%}
+              {%- render 'hi-product-card', url: product.url, title: product.title, type_label: 'Undercarriage',
+                  image: product.featured_image, sub: sub, price: product.price, button: 'View Part' -%}
+            {%- endfor -%}
+          {%- else -%}
+            {%- for part in model.uc_parts.value -%}
+              {%- assign pt = part.part_type.value | default: 'Undercarriage Part' -%}
+              {%- capture sub -%}{% if part.oem_part_number.value != blank %}OEM P/N: {{ part.oem_part_number.value }}{% endif %}{%- endcapture -%}
+              {%- capture qurl -%}{{ quote_url }}?machine={{ model_name | url_encode }}&part={{ pt | url_encode }}&pn={{ part.oem_part_number.value | url_encode }}{%- endcapture -%}
+              {%- render 'hi-product-card', url: qurl, title: pt, type_label: 'Undercarriage',
+                  image: part.image.value, sub: sub, button: 'Request Quote' -%}
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+      </section>
+    {%- endif -%}
+
+    {%- comment -%} ATTACHMENTS — shoppable grid + per-machine fitment intelligence (CID matrix) {%- endcomment -%}
+    {%- assign fit = model.attachment_fitment.value -%}
+    <section class="hi-mf__sec" id="attachments">
+      <h2 class="hi-mf__sec-h">Attachments</h2>
+      <p class="hi-mf__sec-sub">{% if model.mount_type.value != blank %}{{ model.mount_type.value }} mount. {% endif %}Buckets, grapples, forks, brush cutters &amp; more — matched to your machine.</p>
+
+      {%- if model.featured_attachments.value != blank -%}
+        <div class="hi-mf__treads">
+          {%- for product in model.featured_attachments.value limit: 4 -%}
+            {%- render 'hi-product-card', url: product.url, title: product.title, type_label: 'Attachment',
+                image: product.featured_image, price: product.price, button: 'View Attachment' -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {%- if fit != blank and fit.attachments != blank -%}
+        <div class="hi-mf__fitment">
+          <div class="hi-mf__fitment-h">What fits your {{ model_name }}</div>
+          {%- assign seen = '' -%}
+          {%- for att in fit.attachments -%}
+            {%- assign key = att.recommended.sku | default: att.attachment -%}
+            {%- unless seen contains key -%}
+              {%- assign seen = seen | append: key | append: '|' -%}
+              {%- case att.fitment_status -%}
+                {%- when 'likely_fit' -%}{%- assign badge = 'Bolt-on fit' -%}{%- assign bclass = 'is-fit' -%}
+                {%- when 'requires_flow_confirmation' -%}{%- assign badge = 'Confirm flow' -%}{%- assign bclass = 'is-check' -%}
+                {%- when 'requires_flow_and_harness_confirmation' -%}{%- assign badge = 'Confirm flow + harness' -%}{%- assign bclass = 'is-check' -%}
+                {%- when 'requires_width_confirmation' -%}{%- assign badge = 'Confirm width' -%}{%- assign bclass = 'is-check' -%}
+                {%- when 'requires_bit_and_drive_confirmation' -%}{%- assign badge = 'Confirm bit + drive' -%}{%- assign bclass = 'is-check' -%}
+                {%- else -%}{%- assign badge = 'Ask us' -%}{%- assign bclass = 'is-check' -%}
+              {%- endcase -%}
+              <div class="hi-mf__fit-row">
+                <span class="hi-mf__fit-name">{{ att.attachment | capitalize }}</span>
+                <span class="hi-mf__fit-badge {{ bclass }}">{{ badge }}</span>
+                {%- if att.recommended.product != blank -%}
+                  <a class="hi-mf__fit-pick" href="/search?q={{ att.recommended.sku | url_encode }}">{{ att.recommended.product }}{% if att.recommended.retail %} — ${{ att.recommended.retail | round }}{% endif %}</a>
+                {%- else -%}
+                  <a class="hi-mf__fit-pick" href="{{ quote_url }}?machine={{ model_name | url_encode }}&amp;part={{ att.attachment | url_encode }}">Request a quote &rarr;</a>
+                {%- endif -%}
+              </div>
+            {%- endunless -%}
+          {%- endfor -%}
+          <p class="hi-mf__fit-note">{{ fit.note | default: 'Powered attachments — confirm hydraulic flow before ordering.' }}</p>
+        </div>
+      {%- endif -%}
+
+      <a class="hi-mf__shopall" href="{{ section.settings.attachments_url | default: '/collections/attachments' }}">Shop all attachments &rarr;</a>
+    </section>
+
+    {%- comment -%} RELATED MACHINES {%- endcomment -%}
+    {%- if model.related_models.value != blank -%}
+      <section class="hi-mf__sec" id="related">
+        <h2 class="hi-mf__sec-h">Related Machines</h2>
+        <div class="hi-mf__related">
+          {%- for rel in model.related_models.value -%}
+            <a href="{{ rel.system.url }}">{{ rel.display_name.value | default: rel.system.handle }}</a>
+          {%- endfor -%}
+        </div>
+      </section>
+    {%- endif -%}
+
+    {%- comment -%} FAQ {%- endcomment -%}
+    {%- assign faqs = model.faqs_json.value -%}
+    {%- if faqs != blank -%}
+      <section class="hi-mf__sec" id="faqs">
+        <h2 class="hi-mf__sec-h">FAQs</h2>
+        <p class="hi-mf__sec-sub">Common questions about {{ model_name }} tracks, parts, and attachments.</p>
+        <div class="hi-mf__faq">
+          {%- for faq in faqs -%}
+            <details><summary>{{ faq.question }}</summary><div class="hi-mf__faq-a">{{ faq.answer }}</div></details>
+          {%- endfor -%}
+        </div>
+      </section>
+    {%- endif -%}
+
+    {%- comment -%} BOTTOM CTA {%- endcomment -%}
+    <div class="hi-mf__cta">
+      <h3>Ready to outfit your {{ model_name }}?</h3>
+      <p>Need a part not listed? We source OEM-cross undercarriage and attachments for every major brand. Free freight and fleet pricing.</p>
+      <a href="{{ quote_url }}?machine={{ model_name | url_encode }}" class="hi-mf__btn-primary">Request a Free Quote</a>
+      <div class="hi-mf__phone"><span>Or call us at: </span><a href="tel:{{ phone }}">{{ phone_display }}</a></div>
+    </div>
+
+  </div>
+</div>
+
+{%- render 'hi-machine-jsonld', model: model, model_name: model_name, make_name: make_name, make_url: make_url, track_size: track_size -%}
+
+{% schema %}
+{
+  "name": "Machine Fitment Page",
+  "tag": "section",
+  "settings": [
+    { "type": "checkbox", "id": "show_trust_bar", "label": "Show trust bar", "default": true },
+    { "type": "text", "id": "phone_number", "label": "Phone (digits only, for tel: link)", "default": "8508167898" },
+    { "type": "text", "id": "phone_display", "label": "Phone (display)", "default": "(850) 816-7898" },
+    { "type": "url", "id": "quote_url", "label": "Quote page URL" },
+    { "type": "url", "id": "attachments_url", "label": "Shop-all Attachments collection URL" }
+  ],
+  "presets": [{ "name": "Machine Fitment Page" }]
+}
+{% endschema %}

@@ -1,0 +1,120 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "hi-page",
+      "settings": {
+        "eyebrow": "Shipping & Delivery",
+        "align": "left",
+        "accent": "#ffb607",
+        "width": 820,
+        "padding_top": 48,
+        "padding_bottom": 56
+      }
+    },
+    "collapsible_content_bN4TzV": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_eRFzNb": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "RL Carriers",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_L8GJFG": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "FedEx LTL",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_jqfVE9": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "AAA Cooper",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_jWqFeh": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Southeastern Freight Lines",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_aFNb9w": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "XPO Logistics",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_8aLLzj": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Central Transport",
+            "icon": "check_mark",
+            "row_content": "<p><a href=\"https://www.centraltransport.com/tools/track-shipment\" title=\"https://www.centraltransport.com/tools/track-shipment\">Track Your Order</a></p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_xeGDKb": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Pitt Ohio LTL",
+            "icon": "check_mark",
+            "row_content": "<p><a href=\"https://pittohio.com/mypittohio/Shipping/LTL/TraceRequest\" title=\"https://pittohio.com/mypittohio/Shipping/LTL/TraceRequest\">Track Your Order</a></p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_eRFzNb",
+        "collapsible_row_L8GJFG",
+        "collapsible_row_jqfVE9",
+        "collapsible_row_jWqFeh",
+        "collapsible_row_aFNb9w",
+        "collapsible_row_8aLLzj",
+        "collapsible_row_xeGDKb"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "Fast, Free LTL Delivery",
+        "heading": "Shipping Carriers",
+        "heading_size": "h2",
+        "heading_alignment": "center",
+        "layout": "none",
+        "container_color_scheme": "",
+        "color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "collapsible_content_bN4TzV"
+  ]
+}

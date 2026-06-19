@@ -1,0 +1,131 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_74dBH3": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_zJhpRc": {
+          "type": "heading",
+          "settings": {
+            "heading": "Dealer direct supply",
+            "heading_size": "h2"
+          }
+        },
+        "text_ia7tR7": {
+          "type": "text",
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        },
+        "buttons_bWDhNw": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Request a Quote",
+            "button_link_1": "shopify://pages/quote",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_zJhpRc",
+        "text_ia7tR7",
+        "buttons_bWDhNw"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/about_us_1.jpg",
+        "image_overlay_opacity": 50,
+        "image_height": "small",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
+      }
+    },
+    "main": {
+      "type": "hi-page",
+      "settings": {
+        "eyebrow": "About Heavy Iron",
+        "align": "left",
+        "accent": "#ffb607",
+        "width": 820,
+        "padding_top": 48,
+        "padding_bottom": 56
+      }
+    },
+    "values": {
+      "type": "multicolumn",
+      "blocks": {
+        "v1": {
+          "type": "column",
+          "settings": {
+            "title": "DEALER DIRECT QUALITY",
+            "text": "<p>Every track we sell is built to original equipment manufacturer specifications. Continuous steel cord construction, drop-forged links, and premium virgin rubber compounds.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "v2": {
+          "type": "column",
+          "settings": {
+            "title": "FLEET-FOCUSED",
+            "text": "<p>We serve rental yards, municipal fleets, and contractor operations. Our systems are built for volume ordering, repeat purchasing, and fleet-wide standardization.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "v3": {
+          "type": "column",
+          "settings": {
+            "title": "DIRECT SUPPLY",
+            "text": "<p>No middlemen. No retail markup. We ship direct from warehouse to jobsite with free freight on every order to the contiguous United States.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "settings": {
+        "title": "Why Heavy Iron",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "Button label",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "image_banner_74dBH3",
+    "main",
+    "values"
+  ]
+}

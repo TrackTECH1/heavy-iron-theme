@@ -1,0 +1,106 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "hi-page",
+      "settings": {
+        "eyebrow": "Support"
+      }
+    },
+    "faq": {
+      "type": "collapsible-content",
+      "blocks": {
+        "q1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What machines do your tracks fit?",
+            "icon": "truck",
+            "row_content": "<p>We carry rubber tracks for compact track loaders, skid steers, mini excavators, and multi-terrain loaders from all major manufacturers including CAT, Bobcat, John Deere, Kubota, Takeuchi, Case, JCB, New Holland, Gehl, and more. Use our search or browse by brand to find your machine.</p>"
+          }
+        },
+        "q2": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Are these OEM tracks?",
+            "icon": "check_mark",
+            "row_content": "<p>Our tracks are built to OEM specifications \u2014 same dimensions, same guide type, same fitment as factory tracks. They use continuous steel cord construction, drop-forged steel links, and premium virgin rubber compounds. They are not manufactured by the machine OEM, but they meet or exceed OEM tolerances.</p>"
+          }
+        },
+        "q3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do you offer fleet or volume pricing?",
+            "icon": "price_tag",
+            "row_content": "<p>Yes. Contact us for volume pricing on multi-unit orders. We work with rental yards, municipal fleets, contractor operations, and equipment dealers across the country.</p>"
+          }
+        },
+        "q4": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What is your warranty?",
+            "icon": "clipboard",
+            "row_content": "<p>Every track carries a 24-month manufacturer warranty covering materials and workmanship. This is not a prorated warranty \u2014 full coverage for two years from date of purchase.</p>"
+          }
+        },
+        "q5": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How does shipping work?",
+            "icon": "iron",
+            "row_content": "<p>Free freight on every order to the contiguous United States. No minimums, no thresholds. Order by 12pm CT and we ship the same business day. 1\u20133 day delivery nationwide via LTL freight or UPS depending on size. We do not ship to Alaska, Hawaii, Canada, or internationally.</p>"
+          }
+        },
+        "q6": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What is your return policy?",
+            "icon": "return",
+            "row_content": "<p>We accept returns on unused tracks in original packaging within 30 days of delivery. Contact us to initiate a return. Buyer is responsible for return shipping unless the product is defective or incorrect.</p>"
+          }
+        },
+        "q7": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I know which track size I need?",
+            "icon": "ruler",
+            "row_content": "<p>Search by your machine make and model \u2014 our catalog is organized by machine, and each product listing shows the exact track size, guide type, and compatible machines. If you're unsure, call us at (850) 816-7898 and we'll look it up for you.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6",
+        "q7"
+      ],
+      "settings": {
+        "caption": "FREQUENTLY ASKED QUESTIONS",
+        "heading": "Common Questions",
+        "heading_size": "h1",
+        "heading_alignment": "left",
+        "layout": "section",
+        "color_scheme": "scheme-2",
+        "container_color_scheme": "scheme-1",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "padding_top": 28,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "faq"
+  ]
+}

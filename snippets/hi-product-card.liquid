@@ -1,0 +1,45 @@
+{%- comment -%}
+  Heavy Iron — reusable product/part card.
+  Params:
+    url          (required) link target
+    title        (required) card heading
+    type_label   small mono label (e.g. "Rubber Tracks", "Undercarriage")
+    image        image object OR image url string (optional)
+    sub          small line under title (e.g. "Size: 320x86x52" or "OEM P/N: 6816203")
+    price        money value (optional; if blank -> quote button)
+    compare_at   strike price (optional)
+    button       button label override (optional)
+{%- endcomment -%}
+{%- liquid
+  assign _btn = button
+  if _btn == blank
+    if price != blank and price > 0
+      assign _btn = 'View'
+    else
+      assign _btn = 'Request Quote'
+    endif
+  endif
+-%}
+<a class="hi-card" href="{{ url }}">
+  <div class="hi-card__imgwrap">
+    {%- if image != blank -%}
+      {%- if image.src or image.id -%}
+        <img class="hi-card__img" src="{{ image | image_url: width: 440 }}" alt="{{ title | escape }}" width="440" height="340" loading="lazy">
+      {%- else -%}
+        <img class="hi-card__img" src="{{ image }}" alt="{{ title | escape }}" width="440" height="340" loading="lazy">
+      {%- endif -%}
+    {%- else -%}
+      <span class="hi-card__type">No image</span>
+    {%- endif -%}
+  </div>
+  {%- if type_label != blank -%}<p class="hi-card__type">{{ type_label }}</p>{%- endif -%}
+  <h3 class="hi-card__title">{{ title }}</h3>
+  {%- if sub != blank -%}<p class="hi-card__sub">{{ sub }}</p>{%- endif -%}
+  {%- if price != blank and price > 0 -%}
+    <p class="hi-card__price">
+      {%- if compare_at != blank and compare_at > price -%}<span class="hi-card__compare">{{ compare_at | money }}</span>{%- endif -%}
+      {{ price | money }}
+    </p>
+  {%- endif -%}
+  <span class="hi-card__btn">{{ _btn }}</span>
+</a>

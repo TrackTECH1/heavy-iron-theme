@@ -1,0 +1,134 @@
+{%- comment -%}
+  Trust Bar — Dark strip with value props
+  Heavy Iron Supply Co
+{%- endcomment -%}
+
+<section class="trust-bar trust-bar-{{ section.id }}">
+  <div class="page-width">
+    <ul class="trust-bar__grid">
+      {%- for block in section.blocks -%}
+        <li class="trust-bar__item" {{ block.shopify_attributes }}>
+          <p class="trust-bar__title">{{ block.settings.title }}</p>
+          <p class="trust-bar__desc">{{ block.settings.desc }}</p>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .trust-bar-{{ section.id }} {
+    background: {{ section.settings.bg_color | default: '#1a1a1a' }};
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+
+  .trust-bar__grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns }}, 1fr);
+    gap: 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  .trust-bar__title {
+    font-family: var(--font-heading-family);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.85rem;
+    margin: 0 0 6px;
+    color: #FFB607;
+  }
+
+  .trust-bar__desc {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin: 0;
+    color: rgba(255,255,255,0.85);
+  }
+
+  @media (max-width: 749px) {
+    .trust-bar__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Trust Bar",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Columns",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 8,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 8,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 24
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Promise",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Guaranteed Fit"
+        },
+        {
+          "type": "text",
+          "id": "desc",
+          "label": "Description",
+          "default": "OEM-spec rubber tracks or your money back."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Bar",
+      "blocks": [
+        { "type": "item", "settings": { "title": "Guaranteed Fit", "desc": "OEM-spec rubber tracks for every machine." } },
+        { "type": "item", "settings": { "title": "Free Freight", "desc": "Every order. Contiguous US. No minimums." } },
+        { "type": "item", "settings": { "title": "Heavy-Duty Build", "desc": "Continuous steel cord construction." } },
+        { "type": "item", "settings": { "title": "24-Month Warranty", "desc": "Full coverage. Not prorated." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

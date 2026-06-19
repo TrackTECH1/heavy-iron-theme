@@ -1,0 +1,258 @@
+{%- comment -%}
+  Brand Nav Grid — Dark industrial cards with arrow links
+  Adapted from TrackTECH for Heavy Iron Supply Co (collection-based, no metaobjects)
+{%- endcomment -%}
+
+{%- liquid
+  assign section_title = section.settings.title | default: 'Shop by Equipment Brand'
+  assign section_subtitle = section.settings.subtitle | default: 'Select your equipment manufacturer to find compatible rubber tracks. We carry tracks for all major brands.'
+  assign section_label = section.settings.label | default: 'OEM-FIT REPLACEMENT TRACKS'
+-%}
+
+<section class="bng bng-{{ section.id }}">
+  <div class="bng__wrap page-width">
+
+    <div class="bng__header">
+      {%- if section_label != blank -%}
+        <span class="bng__label">{{ section_label }}</span>
+      {%- endif -%}
+
+      <h2 class="bng__title">{{ section_title }}</h2>
+
+      {%- if section_subtitle != blank -%}
+        <p class="bng__subtitle">{{ section_subtitle }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="bng__grid">
+      {%- for block in section.blocks -%}
+        <a href="{{ block.settings.link }}" class="bng__card" {{ block.shopify_attributes }}>
+          <span class="bng__name">{{ block.settings.brand_name }}</span>
+          <span class="bng__arrow">→</span>
+        </a>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.show_cta -%}
+      <div class="bng__cta-wrap">
+        <a href="{{ section.settings.cta_link }}" class="bng__cta">
+          {{ section.settings.cta_text | default: 'Not sure? Use the Track Finder →' }}
+        </a>
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+<style>
+  .bng-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    background: {{ section.settings.bg_color | default: '#0a0a0a' }};
+  }
+  @media (min-width: 750px) {
+    .bng-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .bng__wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .bng__header { text-align: center; margin-bottom: 40px; }
+  .bng__label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #FFB607;
+    margin-bottom: 16px;
+  }
+  .bng__title {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 900;
+    color: #fff;
+    margin: 0 0 12px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    font-family: var(--font-heading-family);
+  }
+  .bng__subtitle {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.6);
+    margin: 0 auto;
+    line-height: 1.5;
+    max-width: 700px;
+  }
+
+  .bng__grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  @media (min-width: 520px) { .bng__grid { grid-template-columns: repeat(2, 1fr); gap: 16px; } }
+  @media (min-width: 750px) { .bng__grid { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+
+  .bng__card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    background: #1a1a1a;
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 4px 12px rgba(0,0,0,0.4);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: transform 0.2s cubic-bezier(0.2,0.9,0.3,1), border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  }
+  .bng__card:hover {
+    background: #222;
+    border-color: rgba(255,182,7,0.4);
+    box-shadow: inset 0 1px 0 rgba(255,182,7,0.15), 0 8px 24px rgba(0,0,0,0.6);
+    transform: translateY(-3px);
+  }
+
+  .bng__name {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.02em;
+  }
+  .bng__arrow {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #FFB607;
+    transition: transform 0.2s;
+  }
+  .bng__card:hover .bng__arrow { transform: translateX(4px); }
+
+  .bng__cta-wrap { text-align: center; margin-top: 40px; }
+  .bng__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 32px;
+    background: #0a0a0a;
+    border: 1px solid #FFB607;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 800;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    width: 100%;
+    max-width: 540px;
+  }
+  .bng__cta:hover {
+    background: rgba(255,182,7,0.08);
+    transform: translateY(-2px);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Brand Nav Grid",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 25,
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Top label",
+      "default": "OEM-FIT REPLACEMENT TRACKS"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Shop by Equipment Brand"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Select your equipment manufacturer to find compatible rubber tracks. We carry tracks for all major brands."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Show bottom CTA",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA text",
+      "default": "Not sure on brand? Use the Track Finder →"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA link"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#0a0a0a"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "Brand",
+      "settings": [
+        {
+          "type": "text",
+          "id": "brand_name",
+          "label": "Brand name"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link to brand collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand Nav Grid",
+      "blocks": [
+        { "type": "brand", "settings": { "brand_name": "Bobcat" } },
+        { "type": "brand", "settings": { "brand_name": "Caterpillar" } },
+        { "type": "brand", "settings": { "brand_name": "John Deere" } },
+        { "type": "brand", "settings": { "brand_name": "Kubota" } },
+        { "type": "brand", "settings": { "brand_name": "Takeuchi" } },
+        { "type": "brand", "settings": { "brand_name": "Case" } },
+        { "type": "brand", "settings": { "brand_name": "New Holland" } },
+        { "type": "brand", "settings": { "brand_name": "Komatsu" } },
+        { "type": "brand", "settings": { "brand_name": "Hitachi" } },
+        { "type": "brand", "settings": { "brand_name": "Volvo" } },
+        { "type": "brand", "settings": { "brand_name": "Gehl" } },
+        { "type": "brand", "settings": { "brand_name": "JCB" } },
+        { "type": "brand", "settings": { "brand_name": "Vermeer" } },
+        { "type": "brand", "settings": { "brand_name": "Ditch Witch" } },
+        { "type": "brand", "settings": { "brand_name": "Wacker Neuson" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

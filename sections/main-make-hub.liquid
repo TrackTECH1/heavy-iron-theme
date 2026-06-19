@@ -1,0 +1,57 @@
+{%- liquid
+  assign make = metaobject
+  assign make_name = make.name.value | default: make.system.handle | replace: '-', ' ' | capitalize
+  assign models = make.models.value
+-%}
+<style>
+.him-hero{background:#1a1a1a;color:#fff;position:relative;overflow:hidden;border-bottom:3px solid #FFB607}
+.him-hero:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 12%,rgba(255,182,7,.14),transparent 38%);pointer-events:none}
+.him-hero-in{max-width:1180px;margin:0 auto;padding:42px 18px;position:relative;z-index:1}
+.him-crumbs{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:#b9c0cb;margin:0 0 16px}
+.him-crumbs a{color:#b9c0cb;text-decoration:none}.him-crumbs a:hover{color:#fff;text-decoration:underline}
+.him-ey{font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:#FFB607;font-size:.8rem;margin:0 0 10px}
+.him-h1{font-size:clamp(2.1rem,5vw,3.6rem);text-transform:uppercase;font-weight:900;line-height:.98;letter-spacing:-.01em;margin:0;color:#fff}
+.him-sub{color:#d6dae1;max-width:760px;margin:14px 0 0;line-height:1.55;font-size:1.02rem}
+.him-body{max-width:1180px;margin:0 auto;padding:30px 18px 54px}
+.him-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.him-card{display:flex;flex-direction:column;border:1px solid #d8dde3;border-radius:14px;padding:16px;text-decoration:none;color:#111;background:#fff;transition:border-color .15s,transform .15s,box-shadow .15s}
+.him-card:hover{border-color:#1a1a1a;transform:translateY(-2px);box-shadow:0 10px 26px rgba(15,23,42,.10)}
+.him-card:focus-visible{outline:3px solid #FFB607;outline-offset:2px}
+.him-type{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#5a6573}
+.him-model{font-size:1.05rem;font-weight:900;text-transform:uppercase;margin-top:6px;line-height:1.1}
+.him-size{font-size:.85rem;color:#3f4754;margin-top:8px}
+.him-cta{margin-top:14px;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:#1a1a1a;display:inline-flex;align-items:center;gap:7px}
+.him-cta .arw{display:inline-flex;width:20px;height:20px;align-items:center;justify-content:center;background:#FFB607;color:#1a1a1a;border-radius:999px;font-size:.8rem;transition:transform .15s}
+.him-card:hover .him-cta .arw{transform:translateX(3px)}
+.him-empty{border:1px dashed #cbd5e1;background:#f8fafc;border-radius:14px;padding:22px;color:#475569}
+@media(max-width:989px){.him-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:589px){.him-grid{grid-template-columns:1fr}}
+</style>
+<section class="him-hero">
+  <div class="him-hero-in">
+    <nav class="him-crumbs" aria-label="Breadcrumb"><a href="{{ routes.root_url }}">Home</a> / Shop by Make / {{ make_name }}</nav>
+    <p class="him-ey">Shop by Equipment Make</p>
+    <h1 class="him-h1">{{ make_name }} Parts &amp; Rubber Tracks</h1>
+    <p class="him-sub">Rubber tracks, undercarriage parts, and attachments by exact {{ make_name }} model. Select your model for fitment-matched parts — OEM-spec, free freight, 24-month warranty.</p>
+  </div>
+</section>
+<div class="him-body">
+  {%- if models != blank and models.size > 0 -%}
+    <div class="him-grid">
+      {%- for m in models -%}
+        {%- assign title = m.display_name.value | default: m.system.handle | split: ' Rubber Track' | first | strip -%}
+        <a class="him-card" href="{{ m.system.url }}" aria-label="{{ make_name }} {{ title }} parts and rubber tracks">
+          <span class="him-type">{% if m.machine.value %}{{ m.machine.value.system.handle | replace: '-',' ' | capitalize }}{% else %}Equipment{% endif %}</span>
+          <div class="him-model">{{ title }}</div>
+          {%- if m.primary_track_size.value != blank -%}<div class="him-size">Track Size: <strong>{{ m.primary_track_size.value }}</strong></div>{%- endif -%}
+          <div class="him-cta">View Direct-Fit Parts <span class="arw">&rarr;</span></div>
+        </a>
+      {%- endfor -%}
+    </div>
+  {%- else -%}
+    <div class="him-empty">No {{ make_name }} models connected yet.</div>
+  {%- endif -%}
+</div>
+{% schema %}
+{"name":"Make hub","settings":[{"type":"color","id":"accent_color","label":"Accent","default":"#FFCE00"}],"presets":[{"name":"Make hub"}]}
+{% endschema %}

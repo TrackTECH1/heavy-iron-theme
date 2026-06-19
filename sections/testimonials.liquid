@@ -1,0 +1,435 @@
+{%- comment -%}
+  Testimonials — Customer reviews with star ratings
+  Adapted for Heavy Iron Supply Co / Trade theme
+{%- endcomment -%}
+
+{%- style -%}
+  .testimonials-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .testimonials-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="tst testimonials-{{ section.id }} color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    {%- if section.settings.title != blank -%}
+      <h2 class="tst__title">{{ section.settings.title }}</h2>
+    {%- endif -%}
+    {%- if section.settings.subtitle != blank -%}
+      <p class="tst__subtitle">{{ section.settings.subtitle }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.show_summary -%}
+      <div class="tst__summary">
+        <div class="tst__stars tst__stars--large">
+          {%- for i in (1..5) -%}
+            <svg class="tst__star tst__star--filled" viewBox="0 0 20 20" fill="currentColor" width="24" height="24"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          {%- endfor -%}
+        </div>
+        <div class="tst__rating-text">
+          <strong>{{ section.settings.average_rating | default: '4.9' }}</strong> out of 5 based on <strong>{{ section.settings.review_count | default: '200+' }}</strong> reviews
+        </div>
+      </div>
+    {%- endif -%}
+
+    <div class="tst__grid">
+      {%- for block in section.blocks -%}
+        <div class="tst__card" {{ block.shopify_attributes }}>
+          <div class="tst__stars">
+            {%- assign rating = block.settings.rating | default: 5 -%}
+            {%- for i in (1..5) -%}
+              {%- if i <= rating -%}
+                <svg class="tst__star tst__star--filled" viewBox="0 0 20 20" fill="currentColor" width="16" height="16"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              {%- else -%}
+                <svg class="tst__star tst__star--empty" viewBox="0 0 20 20" fill="currentColor" width="16" height="16"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+
+          {%- if block.settings.title != blank -%}
+            <h3 class="tst__card-title">"{{ block.settings.title }}"</h3>
+          {%- endif -%}
+
+          <blockquote class="tst__quote">{{ block.settings.quote }}</blockquote>
+
+          <div class="tst__author">
+            {%- if block.settings.image != blank -%}
+              <div class="tst__avatar">
+                <img src="{{ block.settings.image | image_url: width: 100 }}" alt="{{ block.settings.name | escape }}" width="48" height="48" loading="lazy">
+              </div>
+            {%- else -%}
+              <div class="tst__avatar tst__avatar--initials">{{ block.settings.name | slice: 0 }}</div>
+            {%- endif -%}
+            <div class="tst__author-info">
+              <div class="tst__name">{{ block.settings.name }}</div>
+              {%- if block.settings.company != blank -%}
+                <div class="tst__company">{{ block.settings.company }}</div>
+              {%- endif -%}
+            </div>
+            {%- if block.settings.verified -%}
+              <div class="tst__verified" title="Verified Buyer">
+                <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              </div>
+            {%- endif -%}
+          </div>
+
+          {%- if block.settings.product != blank -%}
+            <a href="{{ block.settings.product.url }}" class="tst__product">Purchased: {{ block.settings.product.title | truncate: 30 }}</a>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.show_cta -%}
+      <div class="tst__cta">
+        <a href="{{ section.settings.cta_url }}" class="tst__cta-btn">{{ section.settings.cta_text | default: 'Read More Reviews' }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<style>
+  .tst__title {
+    text-align: center;
+    font-family: var(--font-heading-family);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin: 0 0 0.5rem;
+  }
+  .tst__subtitle {
+    text-align: center;
+    font-size: 1.4rem;
+    opacity: 0.6;
+    margin: 0 0 2rem;
+  }
+
+  .tst__summary {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .tst__stars { display: inline-flex; gap: 2px; }
+  .tst__stars--large { margin-bottom: 0.6rem; }
+  .tst__star--filled { color: #FFB607; }
+  .tst__star--empty { color: rgba(var(--color-foreground), 0.15); }
+  .tst__rating-text {
+    font-size: 1.3rem;
+    opacity: 0.7;
+  }
+
+  .tst__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  @media screen and (min-width: 750px) {
+    .tst__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media screen and (min-width: 990px) {
+    .tst__grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .tst__card {
+    background: rgb(var(--color-background));
+    border: 1px solid rgba(var(--color-foreground), 0.06);
+    border-radius: 4px;
+    padding: 2.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .tst__card:hover {
+    border-color: rgba(var(--color-foreground), 0.12);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+
+  .tst__card-title {
+    font-family: var(--font-heading-family);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  .tst__quote {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin: 0;
+    opacity: 0.8;
+    flex: 1;
+  }
+
+  .tst__author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(var(--color-foreground), 0.06);
+  }
+  .tst__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .tst__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .tst__avatar--initials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFB607;
+    color: #1a1a1a;
+    font-weight: 800;
+    font-size: 1.6rem;
+    font-family: var(--font-heading-family);
+  }
+  .tst__name {
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+  .tst__company {
+    font-size: 1.2rem;
+    opacity: 0.5;
+  }
+  .tst__verified {
+    margin-left: auto;
+    color: #22C55E;
+    flex-shrink: 0;
+  }
+
+  .tst__product {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #FFB607;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .tst__product:hover { opacity: 0.8; }
+
+  .tst__cta {
+    text-align: center;
+    margin-top: 3.2rem;
+  }
+  .tst__cta-btn {
+    display: inline-block;
+    padding: 1.2rem 3.2rem;
+    border: 2px solid rgb(var(--color-foreground));
+    border-radius: 4px;
+    color: rgb(var(--color-foreground));
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    font-family: var(--font-heading-family);
+    transition: all 0.15s;
+  }
+  .tst__cta-btn:hover {
+    background: rgb(var(--color-foreground));
+    color: rgb(var(--color-background));
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "What Our Customers Say"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Trusted by rental fleets and contractors across America"
+    },
+    {
+      "type": "header",
+      "content": "Rating Summary"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_summary",
+      "label": "Show rating summary",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "average_rating",
+      "label": "Average rating",
+      "default": "4.9"
+    },
+    {
+      "type": "text",
+      "id": "review_count",
+      "label": "Review count",
+      "default": "200+"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Show CTA button",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Read More Reviews"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "Star rating",
+          "default": 5
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Review title",
+          "default": "Exactly what we needed"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Review text",
+          "default": "Tracks arrived fast, fit was perfect. No issues. Will order again for the rest of our fleet."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Customer photo"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Customer name",
+          "default": "Mike R."
+        },
+        {
+          "type": "text",
+          "id": "company",
+          "label": "Company",
+          "default": "R&M Equipment Rental, TX"
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Verified buyer badge",
+          "default": true
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Purchased product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "title": "Keeps our fleet running",
+            "quote": "We run 30+ machines across three yards. Heavy Iron keeps us stocked without the markup. Free freight and the 2-year warranty make it a no-brainer.",
+            "name": "David H.",
+            "company": "Sunbelt Equipment Rental, GA",
+            "verified": true
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "title": "Perfect fit on our 289D",
+            "quote": "Ordered tracks for our CAT 289D on Monday, had them by Wednesday. Fit was OEM-perfect. No shimming, no adjustments. Just bolt on and go.",
+            "name": "Carlos M.",
+            "company": "CM Contractors, AZ",
+            "verified": true
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "title": "Best wholesale pricing around",
+            "quote": "We switched from our old supplier after getting a fleet quote. The pricing blew them away and the tracks are the same quality — continuous steel cord, heavy duty rubber.",
+            "name": "James T.",
+            "company": "T&J Landscaping, FL",
+            "verified": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

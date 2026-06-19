@@ -1,0 +1,76 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_KEjDiV": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_9pKCKt": {
+          "type": "heading",
+          "settings": {
+            "heading": "GET IN TOUCH",
+            "heading_size": "h1"
+          }
+        },
+        "text_DbrUYP": {
+          "type": "text",
+          "settings": {
+            "text": "Get in touch with the Heavy Iron team for general inquiries, administrative questions, and vendor relations. Please use our dedicated portal for track quotes and technical support.",
+            "text_style": "body"
+          }
+        },
+        "buttons_9Ukyrf": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Request a Quote",
+            "button_link_1": "shopify://pages/quote",
+            "button_style_secondary_1": true,
+            "button_label_2": "Send Message",
+            "button_link_2": "shopify://pages/faqs",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_9pKCKt",
+        "text_DbrUYP",
+        "buttons_9Ukyrf"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/contact-heavy-iron-supply-co.webp",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "contact_form": {
+      "type": "contact-form",
+      "settings": {
+        "heading": "Send us a message",
+        "heading_size": "h2",
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 48
+      }
+    }
+  },
+  "order": [
+    "image_banner_KEjDiV",
+    "contact_form"
+  ]
+}

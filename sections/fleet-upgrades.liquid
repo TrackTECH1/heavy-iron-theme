@@ -1,0 +1,387 @@
+{%- comment -%}
+  Fleet Upgrades — Customer install gallery
+  Each card: photo + machine name + product link
+  Heavy Iron Supply Co
+{%- endcomment -%}
+
+{%- style -%}
+  .fup-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .fup-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="fup fup-{{ section.id }} color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    <div class="fup__header">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="fup__eyebrow">{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+      {%- if section.settings.title != blank -%}
+        <h2 class="fup__title">{{ section.settings.title }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subtitle != blank -%}
+        <p class="fup__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="fup__grid fup__grid--{{ section.settings.columns }}">
+      {%- for block in section.blocks -%}
+        {%- assign linked_product = block.settings.product -%}
+        {%- assign card_url = linked_product.url | default: block.settings.custom_url -%}
+
+        <a href="{{ card_url }}" class="fup__card" {{ block.shopify_attributes }}>
+          <div class="fup__image-wrap">
+            {%- if block.settings.image != blank -%}
+              <img
+                src="{{ block.settings.image | image_url: width: 600 }}"
+                srcset="{{ block.settings.image | image_url: width: 400 }} 400w, {{ block.settings.image | image_url: width: 600 }} 600w"
+                sizes="(max-width: 749px) 50vw, {{ 100 | divided_by: section.settings.columns }}vw"
+                alt="{{ block.settings.caption | default: block.settings.machine | escape }}"
+                class="fup__image"
+                loading="lazy"
+                width="{{ block.settings.image.width }}"
+                height="{{ block.settings.image.height }}"
+              >
+            {%- else -%}
+              <div class="fup__placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              </div>
+            {%- endif -%}
+            <div class="fup__overlay"></div>
+
+            {%- if block.settings.badge != blank -%}
+              <span class="fup__badge">{{ block.settings.badge }}</span>
+            {%- endif -%}
+          </div>
+
+          <div class="fup__content">
+            <div class="fup__meta">
+              {%- if block.settings.machine != blank -%}
+                <h3 class="fup__machine">{{ block.settings.machine }}</h3>
+              {%- endif -%}
+              {%- if block.settings.track_size != blank -%}
+                <span class="fup__size">{{ block.settings.track_size }}</span>
+              {%- endif -%}
+            </div>
+            {%- if block.settings.caption != blank -%}
+              <p class="fup__caption">{{ block.settings.caption }}</p>
+            {%- endif -%}
+            <span class="fup__cta">
+              Shop This Track
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.cta_text != blank -%}
+      <div class="fup__footer">
+        <a href="{{ section.settings.cta_url }}" class="fup__footer-btn">{{ section.settings.cta_text }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+<style>
+  .fup__header { text-align: center; margin-bottom: 3.2rem; }
+  .fup__eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #FFB607;
+    margin-bottom: 0.8rem;
+  }
+  .fup__title {
+    font-family: var(--font-heading-family);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+  }
+  .fup__subtitle {
+    font-size: 1.4rem;
+    opacity: 0.6;
+    margin: 0;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .fup__grid {
+    display: grid;
+    gap: 1.6rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (min-width: 750px) {
+    .fup__grid--3 { grid-template-columns: repeat(3, 1fr); }
+    .fup__grid--4 { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .fup__card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 4px;
+    overflow: hidden;
+    background: rgb(var(--color-background));
+    border: 1px solid rgba(var(--color-foreground), 0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .fup__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  }
+
+  .fup__image-wrap {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+  .fup__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+  }
+  .fup__card:hover .fup__image { transform: scale(1.05); }
+
+  .fup__placeholder {
+    width: 100%;
+    height: 100%;
+    background: rgba(var(--color-foreground), 0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .fup__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  .fup__badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.4rem 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: #FFB607;
+    color: #1a1a1a;
+    border-radius: 2px;
+  }
+
+  .fup__content { padding: 1.4rem; }
+
+  .fup__meta {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    margin-bottom: 0.4rem;
+  }
+  .fup__machine {
+    font-family: var(--font-heading-family);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .fup__size {
+    font-size: 1.2rem;
+    opacity: 0.5;
+    font-weight: 500;
+  }
+
+  .fup__caption {
+    font-size: 1.3rem;
+    opacity: 0.65;
+    margin: 0 0 0.8rem;
+    line-height: 1.4;
+  }
+
+  .fup__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #FFB607;
+    transition: gap 0.2s;
+  }
+  .fup__card:hover .fup__cta { gap: 0.6rem; }
+
+  .fup__footer {
+    text-align: center;
+    margin-top: 3.2rem;
+  }
+  .fup__footer-btn {
+    display: inline-block;
+    padding: 1.2rem 3.2rem;
+    border: 2px solid rgb(var(--color-foreground));
+    border-radius: 4px;
+    color: rgb(var(--color-foreground));
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    font-family: var(--font-heading-family);
+    transition: all 0.15s;
+  }
+  .fup__footer-btn:hover {
+    background: rgb(var(--color-foreground));
+    color: rgb(var(--color-background));
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Fleet Upgrades",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "REAL MACHINES. REAL TRACKS."
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Recent Fleet Upgrades"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "See what our customers are running. Click any upgrade to shop the same track."
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Columns (desktop)",
+      "options": [
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Footer CTA text",
+      "default": "Shop All Tracks"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Footer CTA link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "type": "upgrade",
+      "name": "Upgrade",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo",
+          "info": "Customer install photo. 4:3 ratio works best."
+        },
+        {
+          "type": "text",
+          "id": "machine",
+          "label": "Machine",
+          "default": "CAT 289D"
+        },
+        {
+          "type": "text",
+          "id": "track_size",
+          "label": "Track size",
+          "default": "450x86x56"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption",
+          "info": "Optional. Short description of the job or customer."
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge text",
+          "info": "Optional. Shows on the image. E.g. 'C-Block' or 'Fleet Order'"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Link to product"
+        },
+        {
+          "type": "url",
+          "id": "custom_url",
+          "label": "Or custom URL",
+          "info": "Used if no product selected"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fleet Upgrades",
+      "blocks": [
+        { "type": "upgrade", "settings": { "machine": "CAT 289D", "track_size": "450x86x56", "caption": "Contractor fleet — 6 machines upgraded", "badge": "C-Block" } },
+        { "type": "upgrade", "settings": { "machine": "Bobcat T770", "track_size": "450x86x55", "caption": "Rental yard re-track — Zig-Zag pattern", "badge": "Zig-Zag" } },
+        { "type": "upgrade", "settings": { "machine": "John Deere 333G", "track_size": "450x86x58", "caption": "Municipal fleet — 4 units", "badge": "Multi-Bar" } },
+        { "type": "upgrade", "settings": { "machine": "Kubota SVL95-2", "track_size": "450x86x58", "caption": "Landscaping operation — full re-track" } },
+        { "type": "upgrade", "settings": { "machine": "Takeuchi TL12R2", "track_size": "450x86x60", "caption": "Demo contractor — heavy duty application", "badge": "C-Block" } },
+        { "type": "upgrade", "settings": { "machine": "Case TV370", "track_size": "400x86x55", "caption": "Road crew — 3 machines" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

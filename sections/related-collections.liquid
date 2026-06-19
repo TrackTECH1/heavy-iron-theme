@@ -1,0 +1,285 @@
+{%- comment -%}
+  Related Collections — Cross-link category cards
+  "You might also need" / "Shop by Brand" style
+  Heavy Iron Supply Co
+{%- endcomment -%}
+
+{%- style -%}
+  .rc-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .rc-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="rc rc-{{ section.id }} color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    {%- if section.settings.title != blank -%}
+      <h2 class="rc__title">{{ section.settings.title }}</h2>
+    {%- endif -%}
+
+    <div class="rc__grid rc__grid--{{ section.settings.columns }}">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'collection_card' -%}
+          {%- assign card_collection = block.settings.collection -%}
+          {%- assign card_image = block.settings.image | default: card_collection.image -%}
+          {%- assign card_title = block.settings.title | default: card_collection.title -%}
+          {%- assign card_url = block.settings.url | default: card_collection.url -%}
+
+          <a href="{{ card_url }}" class="rc__card" {{ block.shopify_attributes }}>
+            <div class="rc__image-wrap">
+              {%- if card_image != blank -%}
+                <img
+                  src="{{ card_image | image_url: width: 600 }}"
+                  srcset="{{ card_image | image_url: width: 300 }} 300w, {{ card_image | image_url: width: 450 }} 450w, {{ card_image | image_url: width: 600 }} 600w"
+                  sizes="(max-width: 749px) 50vw, {{ 100 | divided_by: section.settings.columns }}vw"
+                  alt="{{ card_title | escape }}"
+                  class="rc__image"
+                  loading="lazy"
+                  width="{{ card_image.width }}"
+                  height="{{ card_image.height }}"
+                >
+              {%- else -%}
+                <div class="rc__placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                </div>
+              {%- endif -%}
+              <div class="rc__overlay"></div>
+            </div>
+            <div class="rc__content">
+              <h3 class="rc__card-title">{{ card_title }}</h3>
+              {%- if block.settings.subtitle != blank -%}
+                <p class="rc__subtitle">{{ block.settings.subtitle }}</p>
+              {%- elsif card_collection.products_count > 0 -%}
+                <p class="rc__subtitle">{{ card_collection.products_count }} products</p>
+              {%- endif -%}
+              <span class="rc__cta">
+                {{ block.settings.cta_text | default: 'Shop Now' }}
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<style>
+  .rc__title {
+    font-family: var(--font-heading-family);
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin: 0 0 1.8rem;
+    text-align: center;
+  }
+
+  .rc__grid {
+    display: grid;
+    gap: 1.2rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (min-width: 750px) {
+    .rc__grid--3 { grid-template-columns: repeat(3, 1fr); }
+    .rc__grid--4 { grid-template-columns: repeat(4, 1fr); }
+    .rc__grid--5 { grid-template-columns: repeat(5, 1fr); }
+  }
+
+  .rc__card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #1a1a1a;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .rc__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+
+  .rc__image-wrap {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+  .rc__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+  }
+  .rc__card:hover .rc__image { transform: scale(1.06); }
+
+  .rc__placeholder {
+    width: 100%;
+    height: 100%;
+    background: #2a2a2a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+  }
+
+  .rc__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0) 100%);
+    pointer-events: none;
+  }
+
+  .rc__content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.2rem;
+    color: #fff;
+  }
+
+  .rc__card-title {
+    font-family: var(--font-heading-family);
+    font-size: clamp(0.875rem, 2vw, 1.1rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin: 0 0 0.2rem;
+    line-height: 1.2;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  }
+
+  .rc__subtitle {
+    font-size: 1.1rem;
+    margin: 0 0 0.6rem;
+    opacity: 0.85;
+  }
+
+  .rc__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #FFB607;
+    transition: gap 0.2s;
+  }
+  .rc__card:hover .rc__cta { gap: 0.6rem; }
+</style>
+
+{% schema %}
+{
+  "name": "Related Collections",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "You Might Also Need"
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Columns (desktop)",
+      "options": [
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" },
+        { "value": "5", "label": "5" }
+      ],
+      "default": "4"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_card",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom image",
+          "info": "Uses collection image if blank"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Custom title",
+          "info": "Uses collection title if blank"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "info": "Shows product count if blank"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Custom URL",
+          "info": "Uses collection URL if blank"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "CTA text",
+          "default": "Shop Now"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Related Collections",
+      "blocks": [
+        { "type": "collection_card", "settings": { "title": "Bobcat Tracks", "subtitle": "All Models", "cta_text": "Shop Bobcat" } },
+        { "type": "collection_card", "settings": { "title": "CAT Tracks", "subtitle": "All Models", "cta_text": "Shop CAT" } },
+        { "type": "collection_card", "settings": { "title": "John Deere Tracks", "subtitle": "All Models", "cta_text": "Shop Deere" } },
+        { "type": "collection_card", "settings": { "title": "Kubota Tracks", "subtitle": "All Models", "cta_text": "Shop Kubota" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

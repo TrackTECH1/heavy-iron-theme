@@ -1,0 +1,89 @@
+{%- comment -%}
+  Heavy Iron Supply Co — Tread Guide / Terrain Badges
+  Self-contained. 5 treads x 4 terrain tiles. Inline SVG icons (no deps). Brand charcoal/gold.
+  Grid: 4-across desktop, 2x2 mobile (consistent).
+  Place on a page via the theme editor (Add section) or a page template.
+{%- endcomment -%}
+
+<style>
+  .tg{max-width:980px;margin:0 auto;padding:2rem 1rem;}
+  .tg__h{font-size:1.7rem;font-weight:800;color:#1a1a1a;margin:0 0 .3rem;letter-spacing:.01em;}
+  .tg__sub{font-size:1.4rem;color:#5a5f66;margin:0 0 1.6rem;}
+  .tg__card{background:#fff;border:1px solid rgba(26,26,26,.12);border-left:4px solid #FFB607;border-radius:10px;padding:1rem 1.2rem;margin-bottom:1rem;}
+  .tg__name{font-size:1.6rem;font-weight:700;color:#1a1a1a;}
+  .tg__for{font-size:1.25rem;color:#5a5f66;margin-left:.6rem;}
+  .tg__row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:.8rem;}
+  .tg__tile{border-radius:8px;overflow:hidden;border:1px solid rgba(26,26,26,.12);}
+  .tg__ic{height:46px;display:flex;align-items:center;justify-content:center;}
+  .tg__ic svg{width:24px;height:24px;}
+  .tg__lbl{background:#1a1a1a;color:#fff;font-size:1.15rem;font-weight:600;text-align:center;padding:5px 2px;text-transform:capitalize;}
+  @media (max-width:600px){.tg__row{grid-template-columns:repeat(2,1fr);}}
+</style>
+
+{%- assign treads = "C-Block|Heavy construction · hard surfaces|asphalt,concrete,gravel,dirt;Zig-Zag|Mud, snow & soft terrain|mud,snow,sand,clay;Multi-Bar|Landscaping · turf-friendly|turf,dirt,gravel,snow;X-Terrain|Extreme · forestry · rocky|rock,mulch,mud,snow;Directional|Mini excavators · off-road|mud,sand,snow,dirt" | split: ";" -%}
+
+<div class="tg">
+  <h2 class="tg__h">{{ section.settings.heading | default: 'Which tread for your ground?' }}</h2>
+  <p class="tg__sub">{{ section.settings.subheading | default: 'Each tread is built for specific terrain. Match it to where you work.' }}</p>
+
+  {%- for t in treads -%}
+    {%- assign parts = t | split: "|" -%}
+    {%- assign tname = parts[0] -%}
+    {%- assign tfor = parts[1] -%}
+    {%- assign terrs = parts[2] | split: "," -%}
+    <div class="tg__card">
+      <span class="tg__name">{{ tname }}</span><span class="tg__for">{{ tfor }}</span>
+      <div class="tg__row">
+        {%- for k in terrs -%}
+          {%- case k -%}
+            {%- when 'asphalt' -%}{%- assign bg = '#2f3338' -%}{%- assign ic = 'road' -%}
+            {%- when 'concrete' -%}{%- assign bg = '#8f8f88' -%}{%- assign ic = 'grid' -%}
+            {%- when 'gravel' -%}{%- assign bg = '#84817a' -%}{%- assign ic = 'dots' -%}
+            {%- when 'dirt' -%}{%- assign bg = '#75502f' -%}{%- assign ic = 'mound' -%}
+            {%- when 'sand' -%}{%- assign bg = '#c9b27e' -%}{%- assign ic = 'dune' -%}
+            {%- when 'snow' -%}{%- assign bg = '#dbe6ee' -%}{%- assign ic = 'snow' -%}
+            {%- when 'mud' -%}{%- assign bg = '#473322' -%}{%- assign ic = 'drop' -%}
+            {%- when 'turf' -%}{%- assign bg = '#4f7a32' -%}{%- assign ic = 'grass' -%}
+            {%- when 'clay' -%}{%- assign bg = '#b5683f' -%}{%- assign ic = 'crack' -%}
+            {%- when 'rock' -%}{%- assign bg = '#7a6353' -%}{%- assign ic = 'rock' -%}
+            {%- when 'mulch' -%}{%- assign bg = '#5a3d28' -%}{%- assign ic = 'chips' -%}
+            {%- else -%}{%- assign bg = '#777' -%}{%- assign ic = 'dots' -%}
+          {%- endcase -%}
+          {%- if k == 'snow' or k == 'sand' or k == 'concrete' -%}{%- assign st = '#1a1a1a' -%}{%- else -%}{%- assign st = '#ffffff' -%}{%- endif -%}
+          <div class="tg__tile">
+            <div class="tg__ic" style="background:{{ bg }};">
+              <svg viewBox="0 0 24 24" fill="none" stroke="{{ st }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                {%- case ic -%}
+                  {%- when 'road' -%}<path d="M5 21 L8 3 M19 21 L16 3"/><path d="M12 5 v3 M12 11 v3 M12 17 v3" stroke="{{ st }}"/>
+                  {%- when 'grid' -%}<rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/>
+                  {%- when 'dots' -%}<circle cx="7" cy="8" r="1.6"/><circle cx="14" cy="6" r="1.6"/><circle cx="18" cy="11" r="1.6"/><circle cx="9" cy="14" r="1.6"/><circle cx="15" cy="16" r="1.6"/><circle cx="6" cy="18" r="1.6"/>
+                  {%- when 'mound' -%}<path d="M2 19 Q9 7 12 7 Q15 7 22 19 Z"/>
+                  {%- when 'dune' -%}<path d="M2 15 Q7 9 12 15 T22 15"/><path d="M2 20 Q7 14 12 20 T22 20"/>
+                  {%- when 'snow' -%}<path d="M12 2 V22 M2 12 H22 M5 5 L19 19 M19 5 L5 19"/>
+                  {%- when 'drop' -%}<path d="M12 3 C12 3 5 11 5 16 a7 7 0 0 0 14 0 C19 11 12 3 12 3 Z"/>
+                  {%- when 'grass' -%}<path d="M12 21 V11 M12 13 C12 8 8 6 7 5 M12 13 C12 8 16 6 17 5 M12 16 C12 12 9 10 8 9"/>
+                  {%- when 'crack' -%}<path d="M4 6 H20 V18 H4 Z"/><path d="M9 6 L11 12 L8 18 M15 6 L13 11 L16 18"/>
+                  {%- when 'rock' -%}<path d="M3 20 L9 7 L13 14 L16 9 L21 20 Z"/>
+                  {%- when 'chips' -%}<rect x="4" y="6" width="7" height="4" rx="1" transform="rotate(-12 7 8)"/><rect x="13" y="9" width="7" height="4" rx="1" transform="rotate(10 16 11)"/><rect x="6" y="14" width="7" height="4" rx="1" transform="rotate(8 9 16)"/>
+                {%- endcase -%}
+              </svg>
+            </div>
+            <div class="tg__lbl">{{ k }}</div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "Tread Guide",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Which tread for your ground?" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Each tread is built for specific terrain. Match it to where you work." }
+  ],
+  "presets": [{ "name": "Tread Guide" }]
+}
+{% endschema %}

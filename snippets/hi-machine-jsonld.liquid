@@ -1,0 +1,94 @@
+{%- comment -%}
+  Heavy Iron — Machine page structured data (JSON-LD).
+  Proper @graph: BreadcrumbList + ItemList(of products w/ Offers) + FAQPage.
+  Every dynamic value is emitted through the `json` filter so quotes/specials can't break it.
+  Params: model (metaobject), model_name, make_name, make_url, track_size
+{%- endcomment -%}
+{%- liquid
+  assign seo_name = model.seo_title.value | default: model_name
+  assign seo_desc = model.seo_description.value | default: model_name | append: ' rubber tracks, undercarriage parts & attachments.'
+  assign faqs = model.faqs_json.value
+-%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ shop.url | json }} },
+        { "@type": "ListItem", "position": 2, "name": {{ make_name | json }}, "item": {{ shop.url | append: make_url | json }} },
+        { "@type": "ListItem", "position": 3, "name": {{ model_name | json }}, "item": {{ canonical_url | json }} }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "name": {{ seo_name | append: ' — Compatible Products' | json }},
+      "description": {{ seo_desc | json }},
+      "itemListElement": [
+        {%- assign i = 0 -%}
+        {%- for product in model.track_products.value -%}
+          {%- assign i = i | plus: 1 -%}
+          {%- if i > 1 -%},{%- endif -%}
+          {
+            "@type": "ListItem",
+            "position": {{ i }},
+            "item": {
+              "@type": "Product",
+              "name": {{ product.title | json }},
+              "url": {{ product.url | prepend: shop.url | json }},
+              "category": "Rubber Tracks",
+              {%- if product.featured_image -%}"image": {{ product.featured_image | image_url: width: 800 | prepend: 'https:' | json }},{%- endif -%}
+              "brand": { "@type": "Brand", "name": "Heavy Iron Supply Co." },
+              "isAccessoryOrSparePartFor": { "@type": "Product", "name": {{ model_name | json }} },
+              "offers": {
+                "@type": "AggregateOffer",
+                "priceCurrency": {{ shop.currency | json }},
+                "lowPrice": {{ product.price_min | divided_by: 100.0 | json }},
+                "highPrice": {{ product.price_max | divided_by: 100.0 | json }},
+                "offerCount": {{ product.variants.size }},
+                "availability": {% if product.available %}"https://schema.org/InStock"{% else %}"https://schema.org/OutOfStock"{% endif %},
+                "url": {{ product.url | prepend: shop.url | json }}
+              }
+            }
+          }
+        {%- endfor -%}
+        {%- for product in model.uc_products.value -%}
+          {%- assign i = i | plus: 1 -%}
+          {%- if i > 1 -%},{%- endif -%}
+          {
+            "@type": "ListItem",
+            "position": {{ i }},
+            "item": {
+              "@type": "Product",
+              "name": {{ product.title | json }},
+              "url": {{ product.url | prepend: shop.url | json }},
+              "category": "Undercarriage",
+              "brand": { "@type": "Brand", "name": "Heavy Iron Supply Co." },
+              "isAccessoryOrSparePartFor": { "@type": "Product", "name": {{ model_name | json }} }
+              {%- if product.price > 0 -%},
+              "offers": { "@type": "Offer", "price": {{ product.price | divided_by: 100.0 | json }}, "priceCurrency": {{ shop.currency | json }}, "availability": "https://schema.org/InStock" }
+              {%- endif -%}
+            }
+          }
+        {%- endfor -%}
+      ]
+    }
+    {%- if faqs != blank -%}
+    ,{
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for faq in faqs -%}
+          {%- unless forloop.first -%},{%- endunless -%}
+          {
+            "@type": "Question",
+            "name": {{ faq.question | json }},
+            "acceptedAnswer": { "@type": "Answer", "text": {{ faq.answer | strip_html | json }} }
+          }
+        {%- endfor -%}
+      ]
+    }
+    {%- endif -%}
+  ]
+}
+</script>

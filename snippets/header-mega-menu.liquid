@@ -1,0 +1,100 @@
+{% comment %} Header mega menu — TRACKS panel lazy-builds brand model grids on hover (light DOM). {% endcomment %}
+<nav class="header__inline-menu">
+  <ul class="list-menu list-menu--inline" role="list">
+    {%- assign brand_order = "bobcat,cat,takeuchi,kubota,john-deere,case,new-holland,jcb,asv,yanmar,gehl,wacker-neuson,volvo,ditch-witch,hitachi,komatsu,develon,kobelco,mustang,hyundai,toro,terex,vermeer,sany,manitou,kioti,ihi" | split: "," -%}
+    {%- for link in section.settings.menu.links -%}
+      <li>
+        {%- if link.links != blank -%}
+          <header-menu>
+            <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
+              <summary id="HeaderMenu-{{ link.handle }}" class="header__menu-item list-menu__item link focus-inset">
+                <span {%- if link.child_active %} class="header__active-menu-item"{% endif %}>{{- link.title | escape -}}</span>
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </summary>
+              <div id="MegaMenu-Content-{{ forloop.index }}" class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup{% if link.handle == 'tracks' %} mega-menu__content--tracks{% endif %}" tabindex="-1">
+                {%- if link.handle == 'tracks' -%}
+                  <div class="hx-mega page-width" data-hx-mega>
+                    <div class="hx-mega__brands">
+                      <p class="hx-mega__eyebrow">Shop by Brand</p>
+                      <ul class="hx-mega__brand-list" role="list">
+                        {%- assign fb = true -%}
+                        {%- for h in brand_order -%}
+                          {%- assign mk = metaobjects.make[h] -%}
+                          {%- if mk != blank and mk.models.value.size > 0 -%}
+                            <li class="hx-mega__brand-item{% if fb %} hx-mega__brand-item--active{% endif %}" data-brand="{{ h }}">
+                              <a href="{{ mk.system.url }}" class="hx-mega__brand-link">
+                                {{ mk.name.value | default: h | replace: '-',' ' | capitalize }}
+                                <span class="hx-mega__brand-count">{{ mk.models.value.size }}</span>
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+                              </a>
+                            </li>
+                            {%- assign fb = false -%}
+                          {%- endif -%}
+                        {%- endfor -%}
+                      </ul>
+                      <a href="/collections/rubber-tracks" class="hx-mega__view-all">View All Tracks &rarr;</a>
+                    </div>
+                    <div class="hx-mega__models" data-hx-models></div>
+                  </div>
+                  <script type="application/json" data-hx-mega-data>{
+                  {%- assign fb = true -%}
+                  {%- for h in brand_order -%}
+                    {%- assign mk = metaobjects.make[h] -%}
+                    {%- if mk != blank and mk.models.value.size > 0 -%}
+                      {%- unless fb %},{% endunless %}{%- assign fb = false -%}
+                      {{ h | json }}:{"name":{{ mk.name.value | default: h | json }},"url":{{ mk.system.url | json }},"models":[
+                      {%- assign fm = true -%}
+                      {%- for md in mk.models.value -%}
+                        {%- assign mt = md.display_name.value | default: md.system.handle | split: ' Rubber Track' | first | strip -%}
+                        {%- unless fm %},{% endunless %}{%- assign fm = false -%}{"n":{{ mt | json }},"u":{{ md.system.url | json }}}
+                      {%- endfor -%}]}
+                    {%- endif -%}
+                  {%- endfor -%}
+                  }</script>
+                {%- else -%}
+                  <ul class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}" role="list">
+                    {%- for childlink in link.links -%}
+                      <li>
+                        <a id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}" href="{{ childlink.url }}" class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"{% if childlink.current %} aria-current="page"{% endif %}>{{ childlink.title | escape }}</a>
+                        {%- if childlink.links != blank -%}
+                          <ul class="list-unstyled" role="list">
+                            {%- for grandchildlink in childlink.links -%}
+                              <li><a href="{{ grandchildlink.url }}" class="mega-menu__link link{% if grandchildlink.current %} mega-menu__link--active{% endif %}"{% if grandchildlink.current %} aria-current="page"{% endif %}>{{ grandchildlink.title | escape }}</a></li>
+                            {%- endfor -%}
+                          </ul>
+                        {%- endif -%}
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+              </div>
+            </details>
+          </header-menu>
+        {%- else -%}
+          <a id="HeaderMenu-{{ link.handle }}" href="{{ link.url }}" class="header__menu-item list-menu__item link link--text focus-inset{% if link.handle == 'fleet-quote' %} hx-nav__cta{% endif %}"{% if link.current %} aria-current="page"{% endif %}>
+            <span {%- if link.current %} class="header__active-menu-item"{% endif %}>{{- link.title | escape -}}</span>
+          </a>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var root=document.querySelector('[data-hx-mega]'); if(!root) return;
+  var dataEl=document.querySelector('[data-hx-mega-data]'); var box=root.querySelector('[data-hx-models]');
+  var data={}; try{data=JSON.parse(dataEl.textContent);}catch(e){}
+  var items=root.querySelectorAll('.hx-mega__brand-item');
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c];});}
+  function build(h){
+    var b=data[h]; if(!b){box.innerHTML='';return;}
+    var li=b.models.map(function(m){return '<li><a class="hx-mega__model-link" href="'+esc(m.u)+'">'+esc(m.n)+'</a></li>';}).join('');
+    box.innerHTML='<div class="hx-mega__model-panel hx-mega__model-panel--active"><p class="hx-mega__model-heading">'+esc(b.name)+'</p><ul class="hx-mega__model-grid" role="list">'+li+'</ul><a class="hx-mega__brand-all" href="'+esc(b.url)+'">All '+esc(b.name)+' Tracks &rarr;</a></div>';
+  }
+  items.forEach(function(item){
+    function act(){items.forEach(function(x){x.classList.remove('hx-mega__brand-item--active');});item.classList.add('hx-mega__brand-item--active');build(item.dataset.brand);}
+    item.addEventListener('mouseenter',act); item.addEventListener('focusin',act);
+  });
+  if(items[0]) build(items[0].dataset.brand);
+});
+</script>

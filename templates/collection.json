@@ -1,0 +1,206 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-2"
+      }
+    },
+    "trust_bar_yjr6wg": {
+      "type": "trust-bar",
+      "blocks": {
+        "item_MdH87A": {
+          "type": "item",
+          "settings": {
+            "title": "Guaranteed Fit",
+            "desc": "OEM-spec rubber tracks for every machine."
+          }
+        },
+        "item_dLchBy": {
+          "type": "item",
+          "settings": {
+            "title": "Free Freight",
+            "desc": "Every order. Contiguous US. No minimums."
+          }
+        },
+        "item_EBJcdJ": {
+          "type": "item",
+          "settings": {
+            "title": "Heavy-Duty Build",
+            "desc": "Continuous steel cord construction."
+          }
+        },
+        "item_3tKpna": {
+          "type": "item",
+          "settings": {
+            "title": "24-Month Warranty",
+            "desc": "Full coverage. Not prorated."
+          }
+        }
+      },
+      "block_order": [
+        "item_MdH87A",
+        "item_dLchBy",
+        "item_EBJcdJ",
+        "item_3tKpna"
+      ],
+      "name": "Trust Bar",
+      "settings": {
+        "columns": 4,
+        "bg_color": "#1a1a1a",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 24,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "bulk",
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": false,
+        "padding_top": 24,
+        "padding_bottom": 36
+      }
+    },
+    "collection_faq": {
+      "type": "collapsible-content",
+      "blocks": {
+        "f1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I know this track fits my machine?",
+            "icon": "check_mark",
+            "row_content": "<p>Match your machine's make, model, and current track size (printed on the side of your existing track). Unsure? Call (850) 816-7898 with your make, model, and serial number and we'll confirm fitment before you order.</p>",
+            "page": ""
+          }
+        },
+        "f2": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Which tread pattern should I choose?",
+            "icon": "check_mark",
+            "row_content": "<p>Zig-Zag is the best all-around for mixed ground and turf, C-Block suits hard or abrasive surfaces and roads, and Multi-Bar gives maximum traction in mud and soft ground. Most sizes offer all three.</p>",
+            "page": ""
+          }
+        },
+        "f3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Are these OEM or aftermarket tracks?",
+            "icon": "check_mark",
+            "row_content": "<p>OEM-spec replacement tracks — continuous steel cord and abrasion-resistant compound built to the original equipment specification for full fit and life, at dealer-direct pricing.</p>",
+            "page": ""
+          }
+        },
+        "f4": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How fast do orders ship, and what does freight cost?",
+            "icon": "check_mark",
+            "row_content": "<p>Free freight on every order. Same-day shipping on orders placed before 12pm CT, with most deliveries in 1-3 business days across the contiguous US. Tracking is emailed at pickup.</p>",
+            "page": ""
+          }
+        },
+        "f5": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What's the warranty?",
+            "icon": "check_mark",
+            "row_content": "<p>All Heavy Iron Supply and TrackTECH rubber tracks carry a 24-month manufacturer warranty against defects in materials and workmanship — not prorated.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "Rubber Track FAQs",
+        "heading_size": "h2",
+        "heading_alignment": "center",
+        "layout": "section",
+        "container_color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": false,
+        "image": "shopify://shop_images/IMG_8678.png",
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "related_collections": {
+      "type": "collection-list",
+      "blocks": {
+        "c1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "rubber-tracks"
+          }
+        },
+        "c2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "undercarriage-parts"
+          }
+        },
+        "c3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "attachments"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "settings": {
+        "title": "Keep Browsing",
+        "heading_size": "h2",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "color_scheme": "scheme-1",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "trust_bar_yjr6wg",
+    "product-grid",
+    "collection_faq",
+    "related_collections"
+  ]
+}

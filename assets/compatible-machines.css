@@ -1,0 +1,116 @@
+/* Heavy Iron Supply Co — Compatible Machines (spec-sheet style, plain text model links) */
+.hi-compatible-machines {
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: rgb(var(--color-foreground));
+}
+.hi-compat__loading,
+.hi-compat__empty {
+  margin: 0;
+  padding: 1.2rem 0;
+  color: rgba(var(--color-foreground), 0.6);
+  font-size: 1.3rem;
+}
+.hi-compat__empty a {
+  color: rgb(var(--color-foreground));
+  text-decoration: underline;
+}
+
+/* Summary line above the rows */
+.hi-compat__head {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 1.6rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid rgba(var(--color-foreground), 0.08);
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.hi-compat__count {
+  font-weight: 800;
+  color: rgb(var(--color-foreground));
+}
+.hi-compat__brands {
+  font-weight: 700;
+  color: rgba(var(--color-foreground), 0.55);
+}
+
+/* Spec-table rhythm: alternating row backgrounds, uppercase make label, models inline */
+.hi-compat__brand {
+  display: grid;
+  grid-template-columns: 14rem 1fr;
+  gap: 1.6rem;
+  align-items: baseline;
+  padding: 1rem 1.2rem;
+  border-radius: 4px;
+}
+.hi-compat__brand:nth-of-type(odd) {
+  background: rgba(var(--color-foreground), 0.02);
+}
+.hi-compat__brand:nth-of-type(even) {
+  background: rgba(var(--color-foreground), 0.05);
+}
+
+.hi-compat__brand-name {
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 1.15rem;
+  letter-spacing: 0.06em;
+  color: rgba(var(--color-foreground), 0.55);
+}
+
+/* Plain inline model list — just text, comma-separated */
+.hi-compat__models {
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: rgb(var(--color-foreground));
+}
+
+.hi-compat__model {
+  color: rgb(var(--color-foreground));
+  text-decoration: none;
+  transition: color 0.12s ease;
+}
+.hi-compat__model:hover,
+.hi-compat__model:focus {
+  color: #FFB607;
+  text-decoration: none;
+}
+
+.hi-compat__sep {
+  color: rgba(var(--color-foreground), 0.4);
+  user-select: none;
+}
+
+.hi-compat__note {
+  margin: 1.6rem 0 0;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(var(--color-foreground), 0.08);
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(var(--color-foreground), 0.55);
+}
+
+@media (max-width: 749px) {
+  .hi-compat__brand {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+    padding: 1rem 1.2rem;
+  }
+}
+
+/* "+N more" overflow link to the make hub */
+.hi-compat__more {
+  color: rgba(var(--color-foreground), 0.55);
+  text-decoration: none;
+  font-weight: 600;
+  font-style: italic;
+  transition: color 0.12s ease;
+}
+.hi-compat__more:hover,
+.hi-compat__more:focus {
+  color: #FFB607;
+}

@@ -1,0 +1,359 @@
+{%- comment -%}
+  FAQ Section — Accordion Q&A with FAQPage schema
+  Adapted for Heavy Iron Supply Co / Trade theme
+{%- endcomment -%}
+
+{%- style -%}
+  .faq-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .faq-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="faq-section faq-{{ section.id }} color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width faq-section__container">
+    <div class="faq-section__header">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="faq-section__eyebrow">{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+      {%- if section.settings.title != blank -%}
+        <h2 class="faq-section__title">{{ section.settings.title }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subtitle != blank -%}
+        <p class="faq-section__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="faq-section__content">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'question' and block.settings.question != blank -%}
+          <details class="faq-item" {{ block.shopify_attributes }}>
+            <summary class="faq-item__question">
+              <span class="faq-item__question-text">{{ block.settings.question }}</span>
+              <span class="faq-item__icon" aria-hidden="true">
+                <svg class="faq-item__icon-plus" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4V16M4 10H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                <svg class="faq-item__icon-minus" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+            </summary>
+            <div class="faq-item__answer">
+              <div class="faq-item__answer-content">{{ block.settings.answer }}</div>
+            </div>
+          </details>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.cta_text != blank and section.settings.cta_url != blank -%}
+      <div class="faq-section__cta">
+        <p class="faq-section__cta-text">{{ section.settings.cta_prefix }}</p>
+        <a href="{{ section.settings.cta_url }}" class="faq-section__cta-button">{{ section.settings.cta_text }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{%- if section.settings.enable_schema -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'question' and block.settings.question != blank -%}
+        {
+          "@type": "Question",
+          "name": {{ block.settings.question | json }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": {{ block.settings.answer | strip_html | json }}
+          }
+        }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endif -%}
+    {%- endfor -%}
+  ]
+}
+</script>
+{%- endif -%}
+
+<style>
+  .faq-section__container { max-width: 800px; margin: 0 auto; }
+
+  .faq-section__header { text-align: center; margin-bottom: 3rem; }
+  .faq-section__eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #FFB607;
+    margin-bottom: 0.6rem;
+  }
+  .faq-section__title {
+    font-family: var(--font-heading-family);
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+  }
+  .faq-section__subtitle {
+    font-size: 1.4rem;
+    opacity: 0.6;
+    margin: 0;
+  }
+
+  .faq-section__content { display: flex; flex-direction: column; }
+
+  .faq-item { border-bottom: 1px solid rgba(var(--color-foreground), 0.08); }
+  .faq-item:first-child { border-top: 1px solid rgba(var(--color-foreground), 0.08); }
+
+  .faq-item__question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.6rem 0;
+    cursor: pointer;
+    list-style: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.4;
+    transition: color 0.2s;
+  }
+  .faq-item__question::-webkit-details-marker { display: none; }
+  .faq-item__question:hover { color: #FFB607; }
+  .faq-item__question-text { flex: 1; }
+
+  .faq-item__icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFB607;
+    color: #1a1a1a;
+    border-radius: 50%;
+    transition: transform 0.3s;
+  }
+  .faq-item__icon-minus { display: none; }
+  .faq-item[open] .faq-item__icon-plus { display: none; }
+  .faq-item[open] .faq-item__icon-minus { display: block; }
+  .faq-item[open] .faq-item__icon { transform: rotate(180deg); }
+
+  .faq-item__answer { overflow: hidden; }
+  .faq-item__answer-content {
+    padding: 0 0 1.8rem;
+    font-size: 1.4rem;
+    line-height: 1.7;
+    opacity: 0.75;
+  }
+  .faq-item__answer-content p { margin: 0 0 1rem; }
+  .faq-item__answer-content p:last-child { margin-bottom: 0; }
+  .faq-item__answer-content ul,
+  .faq-item__answer-content ol { margin: 0 0 1rem; padding-left: 1.8rem; }
+  .faq-item__answer-content li { margin-bottom: 0.5rem; }
+  .faq-item__answer-content strong { opacity: 1; color: rgb(var(--color-foreground)); }
+
+  .faq-section__cta {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2.4rem;
+    border-top: 1px solid rgba(var(--color-foreground), 0.08);
+  }
+  .faq-section__cta-text {
+    font-size: 1.4rem;
+    opacity: 0.6;
+    margin: 0 0 1.2rem;
+  }
+  .faq-section__cta-button {
+    display: inline-block;
+    padding: 1.2rem 3.2rem;
+    background: #FFB607;
+    color: #1a1a1a;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border-radius: 4px;
+    font-family: var(--font-heading-family);
+    transition: all 0.15s;
+  }
+  .faq-section__cta-button:hover {
+    background: #e5a406;
+    transform: translateY(-2px);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "FAQ Section",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "GOT QUESTIONS?"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Everything you need to know about our rubber tracks"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "cta_prefix",
+      "label": "CTA prefix",
+      "default": "Still have questions?"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA button text",
+      "default": "Contact Us"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA button URL"
+    },
+    {
+      "type": "header",
+      "content": "SEO"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_schema",
+      "label": "Enable FAQPage schema",
+      "info": "Enables rich results in Google",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Section",
+      "blocks": [
+        {
+          "type": "question",
+          "settings": {
+            "question": "What machines do your tracks fit?",
+            "answer": "<p>We carry rubber tracks for compact track loaders, skid steers, mini excavators, and multi-terrain loaders from all major manufacturers — Bobcat, CAT, John Deere, Kubota, Takeuchi, Case, JCB, New Holland, Gehl, Komatsu, Volvo, Hitachi, Vermeer, Ditch Witch, and Wacker Neuson.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Are these OEM tracks?",
+            "answer": "<p>Our tracks are built to OEM specifications — same dimensions, guide type, and fitment as factory tracks. They use continuous steel cord construction, drop-forged steel links, and premium virgin rubber compounds. They meet or exceed OEM tolerances but are not manufactured by the machine OEM.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Do you offer fleet or volume pricing?",
+            "answer": "<p>Yes. We offer tiered pricing for contractors, fleet accounts, and dealer/rental operations. Create a free account for volume pricing, or apply for a Fleet Account to access Net-30 terms and dedicated support. <strong>Call (850) 816-7898</strong> for a custom fleet quote.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "What is your warranty?",
+            "answer": "<p>Every track carries a <strong>24-month manufacturer warranty</strong> covering materials and workmanship. This is not prorated — full coverage for two years from date of purchase.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "How does shipping work?",
+            "answer": "<p><strong>Free freight on every order</strong> to the contiguous United States. No minimums, no thresholds. Order by 12pm CT and we ship the same business day. 1–3 day delivery nationwide via LTL freight or UPS depending on size. We do not ship to Alaska, Hawaii, Canada, or internationally.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "What tread patterns do you offer?",
+            "answer": "<p>Most skid steer and CTL tracks are available in three tread patterns:</p><ul><li><strong>C-Block</strong> — Heavy construction, demolition, hard surfaces</li><li><strong>Zig-Zag</strong> — Mud, snow, soft terrain</li><li><strong>Multi-Bar</strong> — General purpose, balanced traction</li></ul><p>Mini excavator tracks come in a directional tread pattern. Select your tread when choosing a variant on the product page.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "How do I know which track size I need?",
+            "answer": "<p>Search by your machine make and model — our catalog is organized by machine. Each product listing shows the exact track size, guide type, and compatible machines. You can also check the sidewall of your current track for the size stamp (e.g., 450x86x58). If you're unsure, call us at <strong>(850) 816-7898</strong>.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>We accept returns on unused tracks in original packaging within 30 days of delivery. Contact us to initiate a return. Buyer is responsible for return shipping unless the product is defective or incorrect.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

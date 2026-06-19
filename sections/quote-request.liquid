@@ -1,0 +1,276 @@
+{%- comment -%}
+  Request a Free Quote — Standalone page section
+  URL: /pages/request-a-quote
+  Accepts URL params: ?machine=Bobcat+T770&category=undercarriage&size=450x86x55
+  Category determines fields: Tracks = no serial, UC/Attachments = serial required
+  Heavy Iron Supply Co
+{%- endcomment -%}
+
+{%- liquid
+  assign param_machine = request.params.machine | url_decode | default: ''
+  assign param_category = request.params.category | url_decode | default: ''
+  assign param_size = request.params.size | url_decode | default: ''
+  assign param_part = request.params.part | url_decode | default: ''
+-%}
+
+{%- style -%}
+  .raq { --raq-accent: #FFB607; --raq-accent-hover: #e6a400; --raq-dark: #1a1a1a; --raq-radius: 8px; }
+  .raq__wrapper { max-width: 1100px; margin: 0 auto; padding: 48px 24px 64px; }
+  .raq__inner { display: grid; grid-template-columns: 1fr; gap: 3.2rem; }
+  @media (min-width: 750px) { .raq__inner { grid-template-columns: 1fr 1.2fr; gap: 4.8rem; align-items: start; } }
+
+  /* Left column */
+  .raq__eyebrow { display: block; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: var(--raq-accent); margin-bottom: 1.2rem; }
+  .raq__heading { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 900; text-transform: uppercase; line-height: 1.1; margin: 0 0 1.2rem; font-family: var(--font-heading-family); }
+  .raq__subtext { font-size: 1rem; line-height: 1.6; opacity: 0.7; margin: 0 0 2.4rem; }
+  .raq__benefits { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem; }
+  .raq__benefit { display: flex; align-items: center; gap: 1rem; font-size: 0.9rem; font-weight: 500; }
+  .raq__check { flex-shrink: 0; width: 2rem; height: 2rem; background: var(--raq-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: var(--raq-dark); font-weight: 800; }
+  .raq__phone { margin-top: 2.4rem; padding-top: 2rem; border-top: 1px solid rgba(0,0,0,0.08); }
+  .raq__phone-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; opacity: 0.5; margin-bottom: 0.4rem; }
+  .raq__phone-number { font-size: 1.3rem; font-weight: 800; font-family: var(--font-heading-family); color: var(--raq-dark); text-decoration: none; }
+  .raq__phone-number:hover { color: var(--raq-accent); }
+  .raq__phone-hours { font-size: 0.78rem; opacity: 0.5; margin-top: 0.4rem; }
+
+  /* Form */
+  .raq__form-wrap { background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: var(--raq-radius); padding: 2.8rem; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .raq__form-title { font-size: 1.1rem; font-weight: 700; text-transform: uppercase; margin: 0 0 2rem; font-family: var(--font-heading-family); }
+  .raq__row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .raq__row--full { grid-template-columns: 1fr; }
+  @media (max-width: 749px) { .raq__row { grid-template-columns: 1fr; } }
+  .raq__field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .raq__field label { font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.6; }
+  .raq__field input, .raq__field select, .raq__field textarea {
+    width: 100%; padding: 0.9rem 1rem; border: 1px solid rgba(0,0,0,0.15); border-radius: 4px;
+    background: #fff; color: var(--raq-dark); font-size: 0.9rem; font-family: inherit;
+  }
+  .raq__field input:focus, .raq__field select:focus, .raq__field textarea:focus { outline: none; border-color: var(--raq-accent); }
+  .raq__field textarea { min-height: 10rem; resize: vertical; }
+  .raq__serial-note { font-size: 0.72rem; color: rgba(0,0,0,0.45); margin-top: 2px; line-height: 1.4; }
+
+  /* Serial number field — hidden by default, shown by JS */
+  .raq__serial-group { display: none; margin-bottom: 1.2rem; }
+  .raq__serial-group.is-visible { display: block; }
+
+  .raq__submit {
+    width: 100%; padding: 1.2rem; border: none; border-radius: 4px; background: var(--raq-accent);
+    color: var(--raq-dark); font-size: 1rem; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 0.04em; cursor: pointer; font-family: var(--font-heading-family);
+    transition: background 0.2s, transform 0.1s; margin-top: 0.8rem;
+  }
+  .raq__submit:hover { background: var(--raq-accent-hover); transform: translateY(-1px); }
+  .raq__submit:active { transform: translateY(0); }
+  .raq__disclaimer { font-size: 0.72rem; opacity: 0.4; margin-top: 1rem; text-align: center; }
+  .raq__success { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: var(--raq-radius); padding: 20px; margin-bottom: 20px; color: #166534; font-weight: 600; font-size: 0.95rem; }
+{%- endstyle -%}
+
+<div class="raq">
+  <div class="raq__wrapper page-width">
+    <div class="raq__inner">
+
+      {%- comment -%} LEFT — Copy + Benefits {%- endcomment -%}
+      <div>
+        <span class="raq__eyebrow">{{ section.settings.eyebrow }}</span>
+        <h1 class="raq__heading">{{ section.settings.heading }}</h1>
+        <p class="raq__subtext">{{ section.settings.subtext }}</p>
+
+        <ul class="raq__benefits">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'benefit' -%}
+              <li class="raq__benefit" {{ block.shopify_attributes }}>
+                <span class="raq__check">✓</span>
+                <span>{{ block.settings.text }}</span>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+
+        <div class="raq__phone">
+          <div class="raq__phone-label">Prefer to call?</div>
+          <a href="tel:{{ section.settings.phone | remove: '(' | remove: ')' | remove: ' ' | remove: '-' }}" class="raq__phone-number">{{ section.settings.phone }}</a>
+          <div class="raq__phone-hours">{{ section.settings.hours }}</div>
+        </div>
+      </div>
+
+      {%- comment -%} RIGHT — Form {%- endcomment -%}
+      <div class="raq__form-wrap">
+        <div class="raq__form-title">Request a Free Quote</div>
+        {%- form 'contact', id: 'QuoteRequestForm' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="raq__success">Quote request received. We'll get back to you within one business day.</div>
+          {%- endif -%}
+
+          <input type="hidden" name="contact[tags]" value="quote-request">
+
+          {%- comment -%} Name + Company {%- endcomment -%}
+          <div class="raq__row">
+            <div class="raq__field">
+              <label for="raq-name">Name *</label>
+              <input type="text" id="raq-name" name="contact[name]" required autocomplete="name">
+            </div>
+            <div class="raq__field">
+              <label for="raq-company">Company</label>
+              <input type="text" id="raq-company" name="contact[company]" autocomplete="organization">
+            </div>
+          </div>
+
+          {%- comment -%} Email + Phone {%- endcomment -%}
+          <div class="raq__row">
+            <div class="raq__field">
+              <label for="raq-email">Email *</label>
+              <input type="email" id="raq-email" name="contact[email]" required autocomplete="email">
+            </div>
+            <div class="raq__field">
+              <label for="raq-phone">Phone</label>
+              <input type="tel" id="raq-phone" name="contact[phone]" autocomplete="tel">
+            </div>
+          </div>
+
+          {%- comment -%} Machine Make/Model + Category {%- endcomment -%}
+          <div class="raq__row">
+            <div class="raq__field">
+              <label for="raq-machine">Machine Make & Model *</label>
+              <input type="text" id="raq-machine" name="contact[machine]" required placeholder="e.g. Bobcat T770" value="{{ param_machine }}">
+            </div>
+            <div class="raq__field">
+              <label for="raq-category">What do you need? *</label>
+              <select id="raq-category" name="contact[category]" required>
+                <option value="">Select...</option>
+                <option value="Rubber Tracks" {% if param_category == 'tracks' %}selected{% endif %}>Rubber Tracks</option>
+                <option value="Undercarriage Parts" {% if param_category == 'undercarriage' %}selected{% endif %}>Undercarriage Parts</option>
+                <option value="Attachments" {% if param_category == 'attachments' %}selected{% endif %}>Attachments</option>
+                <option value="Tracks + Undercarriage" {% if param_category == 'tracks-uc' %}selected{% endif %}>Tracks + Undercarriage</option>
+                <option value="Full Package (Tracks + UC + Attachments)">Full Package</option>
+              </select>
+            </div>
+          </div>
+
+          {%- comment -%} Serial Number — shown for UC and Attachments {%- endcomment -%}
+          <div class="raq__serial-group" id="raq-serial-group">
+            <div class="raq__row raq__row--full">
+              <div class="raq__field">
+                <label for="raq-serial">Machine Serial Number *</label>
+                <input type="text" id="raq-serial" name="contact[serial_number]" placeholder="e.g. AN4-01234">
+                <span class="raq__serial-note">Required for undercarriage & attachments to verify exact fitment. Serial number is on the machine data plate.</span>
+              </div>
+            </div>
+          </div>
+
+          {%- comment -%} Track size — shown for Tracks {%- endcomment -%}
+          <div class="raq__serial-group" id="raq-size-group">
+            <div class="raq__row raq__row--full">
+              <div class="raq__field">
+                <label for="raq-size">Track Size (if known)</label>
+                <input type="text" id="raq-size" name="contact[track_size]" placeholder="e.g. 450x86x58" value="{{ param_size }}">
+              </div>
+            </div>
+          </div>
+
+          {%- comment -%} Part details — pre-filled from URL param {%- endcomment -%}
+          {%- if param_part != blank -%}
+            <input type="hidden" name="contact[requested_part]" value="{{ param_part }}">
+          {%- endif -%}
+
+          {%- comment -%} Notes {%- endcomment -%}
+          <div class="raq__row raq__row--full">
+            <div class="raq__field">
+              <label for="raq-notes">Details / Quantities</label>
+              <textarea id="raq-notes" name="contact[body]" placeholder="Tell us what you need — quantities, current condition, timeline, etc."></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="raq__submit">Submit Quote Request</button>
+          <div class="raq__disclaimer">We respond within one business day. No spam, ever.</div>
+        {%- endform -%}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const cat = document.getElementById('raq-category');
+    const serialGroup = document.getElementById('raq-serial-group');
+    const serialInput = document.getElementById('raq-serial');
+    const sizeGroup = document.getElementById('raq-size-group');
+
+    function toggleFields() {
+      const v = cat.value;
+      const needsSerial = v === 'Undercarriage Parts' || v === 'Attachments' || v === 'Tracks + Undercarriage' || v === 'Full Package (Tracks + UC + Attachments)';
+      const needsSize = v === 'Rubber Tracks' || v === 'Tracks + Undercarriage' || v === 'Full Package (Tracks + UC + Attachments)';
+
+      serialGroup.classList.toggle('is-visible', needsSerial);
+      serialInput.required = needsSerial;
+      sizeGroup.classList.toggle('is-visible', needsSize);
+    }
+
+    cat.addEventListener('change', toggleFields);
+    toggleFields(); // run on load for pre-filled params
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Quote Request Form",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Top label",
+      "default": "FREE QUOTE"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Request a Free Quote"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Rubber tracks, undercarriage parts, and attachments for every make and model. Fleet pricing available."
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone number",
+      "default": "(850) 816-7898"
+    },
+    {
+      "type": "text",
+      "id": "hours",
+      "label": "Business hours",
+      "default": "Monday–Friday, 8am–5pm CT"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Benefit text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quote Request Form",
+      "blocks": [
+        { "type": "benefit", "settings": { "text": "Free freight — contiguous US" } },
+        { "type": "benefit", "settings": { "text": "24-month warranty on every track" } },
+        { "type": "benefit", "settings": { "text": "OEM-spec fitment guaranteed" } },
+        { "type": "benefit", "settings": { "text": "Fleet & volume pricing available" } },
+        { "type": "benefit", "settings": { "text": "Ships from multiple US warehouses" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

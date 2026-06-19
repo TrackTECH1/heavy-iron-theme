@@ -1,0 +1,328 @@
+{%- comment -%}
+  Join the Crew — Partnership / Account Tiers Page
+  Heavy Iron Supply Co
+{%- endcomment -%}
+
+{%- liquid
+  assign hi_phone = section.settings.phone | default: '(850) 816-7898'
+  assign hi_phone_raw = hi_phone | remove: '(' | remove: ')' | remove: ' ' | remove: '-'
+-%}
+
+<div class="jtc">
+  {%- comment -%} HERO {%- endcomment -%}
+  <section class="jtc-hero">
+    <div class="jtc-hero__bg">
+      {%- if section.settings.hero_bg_image -%}
+        <img src="{{ section.settings.hero_bg_image | image_url: width: 1920 }}" alt="" loading="eager">
+      {%- endif -%}
+      <div class="jtc-hero__overlay"></div>
+    </div>
+    <div class="page-width">
+      <div class="jtc-hero__content">
+        <span class="jtc-hero__label">{{ section.settings.label | default: 'HEAVY IRON SUPPLY CO' }}</span>
+        <h1 class="jtc-hero__headline">{{ section.settings.headline | default: 'Join the Crew' }}</h1>
+        <p class="jtc-hero__tagline">{{ section.settings.tagline | default: 'Built for the businesses that keep America moving.' }}</p>
+        <div class="jtc-hero__text">
+          <p>Whether you run a rental yard, manage a contractor fleet, or service equipment in the field — we built Heavy Iron for operators like you.</p>
+          <p>Volume pricing. Free freight. 24-month warranty. Net-30 terms for qualified accounts. <strong>One supplier for every machine in your fleet.</strong></p>
+        </div>
+        <a href="#tiers" class="jtc-hero__btn">
+          See Account Options
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} HOW IT WORKS {%- endcomment -%}
+  <section class="jtc-how">
+    <div class="page-width">
+      <h2 class="jtc-how__headline">How It Works</h2>
+      <div class="jtc-how__grid">
+        <div class="jtc-how__step">
+          <div class="jtc-how__number">1</div>
+          <div class="jtc-how__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FFB607" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 class="jtc-how__title">Apply</h3>
+          <p class="jtc-how__desc">Tell us about your operation. Takes 2 minutes.</p>
+        </div>
+        <div class="jtc-how__arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFB607" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        <div class="jtc-how__step">
+          <div class="jtc-how__number">2</div>
+          <div class="jtc-how__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FFB607" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+          </div>
+          <h3 class="jtc-how__title">Get Approved</h3>
+          <p class="jtc-how__desc">We review and activate your account within 24 hours.</p>
+        </div>
+        <div class="jtc-how__arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFB607" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        <div class="jtc-how__step">
+          <div class="jtc-how__number">3</div>
+          <div class="jtc-how__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FFB607" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          </div>
+          <h3 class="jtc-how__title">Order at Your Tier</h3>
+          <p class="jtc-how__desc">Unlock volume pricing, terms, and dedicated support.</p>
+        </div>
+        <div class="jtc-how__arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFB607" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        <div class="jtc-how__step">
+          <div class="jtc-how__number">4</div>
+          <div class="jtc-how__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FFB607" stroke-width="2"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <h3 class="jtc-how__title">We Ship. You Work.</h3>
+          <p class="jtc-how__desc">Free freight, fast delivery. Keep your machines running.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} PRICING TIERS {%- endcomment -%}
+  <section class="jtc-pricing" id="tiers">
+    <div class="page-width">
+      <h2 class="jtc-pricing__headline">Choose Your Account Level</h2>
+      <div class="jtc-pricing__grid">
+
+        <div class="jtc-tier jtc-tier--featured">
+          <div class="jtc-tier__badge">Most Popular</div>
+          <div class="jtc-tier__header">
+            <span class="jtc-tier__label">Contractor</span>
+            <div class="jtc-tier__price"><span class="jtc-tier__amount">$0</span><span class="jtc-tier__period">/ no fee</span></div>
+          </div>
+          <h3 class="jtc-tier__headline">Volume Pricing.<br>Zero Commitment.</h3>
+          <div class="jtc-tier__who">
+            <span class="jtc-tier__who-label">Best for</span>
+            <ul class="jtc-tier__who-list">
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Contractors running 1–10 machines</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Landscapers & Site Work Crews</li>
+            </ul>
+          </div>
+          <div class="jtc-tier__promise">
+            <p>Create a free account to access <strong>volume pricing</strong> on all rubber tracks. Free freight on every order. 24-month warranty standard.</p>
+          </div>
+          <div class="jtc-tier__value">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            <span>No monthly fee. No minimums. Just better pricing.</span>
+          </div>
+          <a href="{{ section.settings.tier_1_link | default: '#' }}" class="jtc-tier__btn jtc-tier__btn--primary">Create Free Account</a>
+        </div>
+
+        <div class="jtc-tier">
+          <div class="jtc-tier__header">
+            <span class="jtc-tier__label">Fleet Account</span>
+            <div class="jtc-tier__price"><span class="jtc-tier__amount">Custom</span><span class="jtc-tier__period">/ pricing</span></div>
+          </div>
+          <h3 class="jtc-tier__headline">Net-30 Terms.<br>Dedicated Rep.</h3>
+          <div class="jtc-tier__who">
+            <span class="jtc-tier__who-label">Best for</span>
+            <ul class="jtc-tier__who-list">
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg>Fleets with 10–50+ machines</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg>Municipalities & Government</li>
+            </ul>
+          </div>
+          <div class="jtc-tier__promise">
+            <p><strong>Net-30 payment terms</strong> for approved accounts. Dedicated account rep. Custom fleet pricing based on volume. PO-based ordering.</p>
+          </div>
+          <ul class="jtc-tier__features">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Net-30 Payment Terms</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Dedicated Account Rep</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Fleet-Wide Pricing</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>PO & Invoice Ordering</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Priority Fulfillment</li>
+          </ul>
+          <a href="{{ section.settings.tier_2_link | default: '#' }}" class="jtc-tier__btn">Apply for Fleet Account</a>
+        </div>
+
+        <div class="jtc-tier">
+          <div class="jtc-tier__header">
+            <span class="jtc-tier__label">Dealer / Rental Yard</span>
+            <div class="jtc-tier__price"><span class="jtc-tier__amount">Wholesale</span><span class="jtc-tier__period">/ pricing</span></div>
+          </div>
+          <h3 class="jtc-tier__headline">Your Virtual<br>Track Warehouse.</h3>
+          <div class="jtc-tier__who">
+            <span class="jtc-tier__who-label">Best for</span>
+            <ul class="jtc-tier__who-list">
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M2 7h20"/></svg>Equipment Rental Companies</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/><path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"/></svg>Equipment Dealers & Resellers</li>
+            </ul>
+          </div>
+          <div class="jtc-tier__promise">
+            <p><strong>Wholesale pricing</strong> + drop ship direct to your customers. We carry the inventory — you carry the relationship. Net-30 or Net-60 terms available.</p>
+          </div>
+          <ul class="jtc-tier__features">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Wholesale Pricing (Tier 1)</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Drop Ship to Your Customers</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Net-30 or Net-60 Terms</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Dedicated Account Manager</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>White-Label Packaging Available</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>No Inventory Risk</li>
+          </ul>
+          <a href="{{ section.settings.tier_3_link | default: '#' }}" class="jtc-tier__btn">Apply for Dealer Status</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} CTA {%- endcomment -%}
+  <section class="jtc-cta">
+    <div class="page-width">
+      <div class="jtc-cta__content">
+        <h2 class="jtc-cta__headline">Ready to Join the Crew?</h2>
+        <p class="jtc-cta__text">One call covers every machine in your fleet. Let's talk.</p>
+        <div class="jtc-cta__actions">
+          <a href="{{ section.settings.tier_1_link | default: '#' }}" class="jtc-cta__btn jtc-cta__btn--primary">Get Started Free</a>
+          <a href="tel:{{ hi_phone_raw }}" class="jtc-cta__btn jtc-cta__btn--secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg>
+            Call {{ hi_phone }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  .jtc { --jtc-gold: #FFB607; --jtc-dark: #1a1a1a; --jtc-grey: #f2f2f0; }
+
+  .jtc-hero { position: relative; padding: 80px 0; min-height: 520px; display: flex; align-items: center; }
+  @media (min-width: 750px) { .jtc-hero { padding: 100px 0; } }
+  .jtc-hero__bg { position: absolute; inset: 0; z-index: -1; }
+  .jtc-hero__bg img { width: 100%; height: 100%; object-fit: cover; }
+  .jtc-hero__overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(26,26,26,0.95) 0%, rgba(45,45,45,0.88) 100%); }
+  .jtc-hero__content { max-width: 680px; }
+  .jtc-hero__label { display: block; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: var(--jtc-gold); margin-bottom: 12px; }
+  .jtc-hero__headline { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: -0.01em; margin: 0 0 8px; font-family: var(--font-heading-family); }
+  .jtc-hero__tagline { font-size: 1.2rem; font-weight: 600; font-style: italic; color: var(--jtc-gold); margin: 0 0 28px; }
+  .jtc-hero__text { font-size: 1rem; color: rgba(255,255,255,0.85); line-height: 1.7; }
+  .jtc-hero__text p { margin: 0 0 14px; }
+  .jtc-hero__text strong { color: #fff; }
+  .jtc-hero__btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; padding: 14px 28px; font-size: 1rem; font-weight: 700; background: var(--jtc-gold); color: var(--jtc-dark); text-decoration: none; border-radius: 4px; transition: all 0.15s; font-family: var(--font-heading-family); text-transform: uppercase; letter-spacing: 0.02em; }
+  .jtc-hero__btn:hover { background: #e5a406; transform: translateY(-2px); }
+
+  .jtc-how { background: #fff; padding: 64px 0; }
+  @media (min-width: 750px) { .jtc-how { padding: 80px 0; } }
+  .jtc-how__headline { font-size: 1.75rem; font-weight: 700; color: var(--jtc-dark); text-align: center; margin: 0 0 48px; text-transform: uppercase; font-family: var(--font-heading-family); }
+  .jtc-how__grid { display: flex; flex-direction: column; gap: 24px; align-items: center; }
+  @media (min-width: 990px) { .jtc-how__grid { flex-direction: row; justify-content: center; gap: 16px; } }
+  .jtc-how__step { text-align: center; max-width: 200px; position: relative; }
+  .jtc-how__number { position: absolute; top: -8px; right: -8px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: #fff; background: var(--jtc-dark); border-radius: 50%; }
+  .jtc-how__icon { display: flex; align-items: center; justify-content: center; width: 72px; height: 72px; margin: 0 auto 16px; background: var(--jtc-grey); border-radius: 50%; }
+  .jtc-how__title { font-size: 1rem; font-weight: 700; color: var(--jtc-dark); margin: 0 0 6px; text-transform: uppercase; font-family: var(--font-heading-family); }
+  .jtc-how__desc { font-size: 0.875rem; color: #666; margin: 0; line-height: 1.4; }
+  .jtc-how__arrow { display: none; }
+  @media (min-width: 990px) { .jtc-how__arrow { display: block; flex-shrink: 0; } }
+
+  .jtc-pricing { background: var(--jtc-grey); padding: 64px 0; }
+  @media (min-width: 750px) { .jtc-pricing { padding: 80px 0; } }
+  .jtc-pricing__headline { font-size: 1.75rem; font-weight: 700; color: var(--jtc-dark); text-align: center; margin: 0 0 48px; text-transform: uppercase; font-family: var(--font-heading-family); }
+  .jtc-pricing__grid { display: grid; gap: 24px; }
+  @media (min-width: 990px) { .jtc-pricing__grid { grid-template-columns: repeat(3, 1fr); align-items: stretch; } }
+
+  .jtc-tier { position: relative; background: #fff; border-radius: 4px; padding: 32px 28px; border: 2px solid #e0e0e0; display: flex; flex-direction: column; }
+  .jtc-tier--featured { border-color: var(--jtc-gold); box-shadow: 0 8px 32px rgba(255,182,7,0.15); }
+  .jtc-tier__badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--jtc-dark); background: var(--jtc-gold); border-radius: 100px; }
+  .jtc-tier__header { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #e0e0e0; }
+  .jtc-tier__label { display: block; font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #666; margin-bottom: 8px; }
+  .jtc-tier__price { display: flex; align-items: baseline; gap: 4px; }
+  .jtc-tier__amount { font-size: 2.5rem; font-weight: 800; color: var(--jtc-dark); font-family: var(--font-heading-family); }
+  .jtc-tier__period { font-size: 1rem; color: #666; }
+  .jtc-tier__headline { font-size: 1.125rem; font-weight: 700; color: var(--jtc-dark); line-height: 1.3; margin: 0 0 20px; font-family: var(--font-heading-family); text-transform: uppercase; }
+  .jtc-tier__who { margin-bottom: 20px; }
+  .jtc-tier__who-label { display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #999; margin-bottom: 10px; }
+  .jtc-tier__who-list { list-style: none; margin: 0; padding: 0; }
+  .jtc-tier__who-list li { display: flex; align-items: center; gap: 10px; padding: 8px 0; font-size: 0.9375rem; color: var(--jtc-dark); }
+  .jtc-tier__who-list svg { color: var(--jtc-gold); flex-shrink: 0; }
+  .jtc-tier__promise { flex: 1; margin-bottom: 20px; padding: 16px; background: var(--jtc-grey); border-radius: 4px; }
+  .jtc-tier__promise p { margin: 0; font-size: 0.9375rem; color: #4a4a4a; line-height: 1.5; }
+  .jtc-tier__value { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 24px; padding: 12px 16px; background: rgba(34,197,94,0.08); border-radius: 4px; }
+  .jtc-tier__value svg { flex-shrink: 0; margin-top: 2px; }
+  .jtc-tier__value span { font-size: 0.875rem; font-weight: 600; color: #166534; line-height: 1.4; }
+  .jtc-tier__features { list-style: none; margin: 0 0 24px; padding: 0; flex: 1; }
+  .jtc-tier__features li { display: flex; align-items: center; gap: 10px; padding: 8px 0; font-size: 0.9375rem; color: var(--jtc-dark); border-bottom: 1px solid #f0f0f0; }
+  .jtc-tier__features li:last-child { border-bottom: none; }
+  .jtc-tier__btn { display: block; width: 100%; padding: 14px 24px; font-size: 1rem; font-weight: 700; text-align: center; text-decoration: none; border-radius: 4px; transition: all 0.15s; background: var(--jtc-dark); color: #fff; margin-top: auto; text-transform: uppercase; font-family: var(--font-heading-family); letter-spacing: 0.02em; }
+  .jtc-tier__btn:hover { opacity: 0.9; transform: translateY(-2px); }
+  .jtc-tier__btn--primary { background: var(--jtc-gold); color: var(--jtc-dark); }
+  .jtc-tier__btn--primary:hover { background: #e5a406; }
+
+  .jtc-cta { background: var(--jtc-dark); padding: 64px 0; }
+  .jtc-cta__content { text-align: center; }
+  .jtc-cta__headline { font-size: 1.75rem; font-weight: 700; color: #fff; margin: 0 0 12px; text-transform: uppercase; font-family: var(--font-heading-family); }
+  .jtc-cta__text { font-size: 1rem; color: rgba(255,255,255,0.75); margin: 0 0 24px; }
+  .jtc-cta__actions { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+  .jtc-cta__btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; font-size: 1rem; font-weight: 700; text-decoration: none; border-radius: 4px; transition: all 0.15s; text-transform: uppercase; font-family: var(--font-heading-family); }
+  .jtc-cta__btn--primary { background: var(--jtc-gold); color: var(--jtc-dark); }
+  .jtc-cta__btn--primary:hover { background: #e5a406; }
+  .jtc-cta__btn--secondary { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+  .jtc-cta__btn--secondary:hover { background: rgba(255,255,255,0.15); }
+</style>
+
+{% schema %}
+{
+  "name": "Join the Crew",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Top label",
+      "default": "HEAVY IRON SUPPLY CO"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Join the Crew"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Built for the businesses that keep America moving."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_bg_image",
+      "label": "Background image",
+      "info": "1920x1080px recommended"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone number",
+      "default": "(850) 816-7898"
+    },
+    {
+      "type": "header",
+      "content": "Tier Links"
+    },
+    {
+      "type": "url",
+      "id": "tier_1_link",
+      "label": "Contractor tier link"
+    },
+    {
+      "type": "url",
+      "id": "tier_2_link",
+      "label": "Fleet account link"
+    },
+    {
+      "type": "url",
+      "id": "tier_3_link",
+      "label": "Dealer tier link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Join the Crew"
+    }
+  ]
+}
+{% endschema %}

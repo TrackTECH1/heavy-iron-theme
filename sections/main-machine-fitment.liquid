@@ -1,0 +1,970 @@
+{%- comment -%}
+  Heavy Iron Supply Co — Machine Fitment Landing Page
+  OEM-centered technical layout.
+  Data source: Shopify Page metafield custom.model referencing a Model metaobject.
+{%- endcomment -%}
+
+{%- liquid
+  assign model = page.metafields.custom.model.value
+  assign accent = section.settings.accent_color | default: '#FFCE00'
+  assign cta_bg = section.settings.cta_background | default: '#181818'
+
+  assign display_name = page.title
+  assign machine_make = ''
+  assign machine_type = 'Heavy Equipment'
+
+  if model != blank
+    assign display_name = model.display_name.value | default: page.title
+
+    if model.make.value != blank
+      assign make_ref = model.make.value
+      assign machine_make = make_ref.display_name.value | default: make_ref.name.value | default: make_ref.title | default: make_ref.system.handle
+    endif
+
+    if machine_make == blank
+      assign machine_make = model.make.value | default: ''
+    endif
+
+    if model.machine.value != blank
+      assign machine_ref = model.machine.value
+      assign machine_type = machine_ref.display_name.value | default: machine_ref.name.value | default: machine_ref.title | default: machine_ref.system.handle | default: 'Heavy Equipment'
+    endif
+  endif
+
+  assign machine_parts_label = display_name | append: ' Parts'
+  assign quote_url = model.field_button_url_1.value | default: '/pages/quote'
+  assign quote_label = model.field_button_label_1.value | default: 'Request a Quote'
+  assign secondary_url = model.field_button_url_2.value | default: '/pages/reviews'
+  assign secondary_label = model.field_button_label_2.value | default: 'Explore Upgrades'
+-%}
+
+{%- style -%}
+  .hi-oem-page {
+    --hi-oem-bg: #f7f7f7;
+    --hi-oem-border: #f1f1f1;
+    --hi-oem-border-strong: #d8d8d8;
+    --hi-oem-text: #111827;
+    --hi-oem-muted: #64748b;
+    --hi-oem-dark: #181818;
+    --hi-oem-accent: {{ accent }};
+    --hi-oem-cta-bg: {{ cta_bg }};
+    --hi-oem-radius: 4px;
+    background: #ffffff;
+    color: var(--hi-oem-text);
+  }
+
+  .hi-oem-container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .hi-oem-empty {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 28px 20px;
+    border: 1px dashed var(--hi-oem-border-strong);
+    background: #fafafa;
+    color: var(--hi-oem-muted);
+    text-align: center;
+    border-radius: var(--hi-oem-radius);
+  }
+
+  .hi-oem-header {
+    text-align: center;
+    padding: 40px 0 20px;
+  }
+
+  .hi-oem-breadcrumb {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    line-height: 1.4;
+  }
+
+  .hi-oem-breadcrumb a {
+    color: var(--hi-oem-muted);
+    text-decoration: none;
+  }
+
+  .hi-oem-breadcrumb a:hover {
+    color: var(--hi-oem-text);
+  }
+
+  .hi-oem-breadcrumb-sep {
+    color: #c9ced6;
+  }
+
+  .hi-oem-breadcrumb-current {
+    color: var(--hi-oem-text);
+    font-weight: 700;
+  }
+
+  .hi-oem-eyebrow,
+  .hi-oem-field-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--hi-oem-accent);
+    margin: 0 0 8px;
+  }
+
+  .hi-oem-title {
+    font-size: 2rem;
+    line-height: 1.02;
+    font-weight: 850;
+    text-transform: uppercase;
+    letter-spacing: -0.025em;
+    margin: 0;
+  }
+
+  .hi-oem-subtitle {
+    max-width: 760px;
+    margin: 14px auto 0;
+    color: var(--hi-oem-muted);
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .hi-oem-hero-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 18px 0 42px;
+  }
+
+  .hi-oem-hero-box {
+    background: #ffffff;
+    border: 1px solid var(--hi-oem-border);
+    border-radius: var(--hi-oem-radius);
+    padding: 20px;
+    max-width: 820px;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  }
+
+  .hi-oem-hero-img {
+    display: block;
+    width: 100%;
+    max-height: 410px;
+    object-fit: contain;
+    margin: 0 auto;
+  }
+
+  .hi-oem-no-image {
+    width: 100%;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8fafc;
+    color: #cbd5e1;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.8rem;
+  }
+
+  .hi-oem-spec-strip {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--hi-oem-border);
+    border: 1px solid var(--hi-oem-border);
+    margin: 0 0 44px;
+  }
+
+  .hi-oem-spec {
+    background: #ffffff;
+    padding: 16px 12px;
+    text-align: center;
+  }
+
+  .hi-oem-spec-label {
+    display: block;
+    font-size: 0.66rem;
+    color: var(--hi-oem-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 5px;
+    font-weight: 800;
+  }
+
+  .hi-oem-spec-value {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--hi-oem-text);
+    font-weight: 900;
+  }
+
+  .hi-oem-section {
+    padding: 56px 0;
+    border-top: 1px solid var(--hi-oem-border);
+    text-align: center;
+  }
+
+  .hi-oem-section-title {
+    font-size: clamp(1.25rem, 2vw, 1.55rem);
+    line-height: 1.15;
+    font-weight: 850;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    margin: 0 0 8px;
+  }
+
+  .hi-oem-section-sub {
+    font-size: 0.9rem;
+    color: var(--hi-oem-muted);
+    margin: 0 auto 34px;
+    max-width: 660px;
+    line-height: 1.5;
+  }
+
+  .hi-oem-product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    justify-content: center;
+  }
+
+  .hi-oem-product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+    background: #ffffff;
+    border: 1px solid var(--hi-oem-border);
+    border-radius: var(--hi-oem-radius);
+    padding: 22px 18px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+
+  .hi-oem-product-card:hover {
+    border-color: var(--hi-oem-muted);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transform: translateY(-2px);
+  }
+
+  .hi-oem-product-img-wrap {
+    width: 100%;
+    height: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    background: #fff;
+  }
+
+  .hi-oem-product-img {
+    width: 100%;
+    max-width: 205px;
+    max-height: 170px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .hi-oem-product-placeholder {
+    width: 100%;
+    height: 150px;
+    background: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #cbd5e1;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .hi-oem-product-type {
+    font-size: 0.68rem;
+    color: var(--hi-oem-muted);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 8px;
+  }
+
+  .hi-oem-product-title {
+    font-size: 0.88rem;
+    font-weight: 850;
+    text-transform: uppercase;
+    margin: 0 0 8px;
+    line-height: 1.3;
+  }
+
+  .hi-oem-product-price {
+    font-size: 1rem;
+    font-weight: 850;
+    margin: auto 0 18px;
+  }
+
+  .hi-oem-product-compare {
+    color: var(--hi-oem-muted);
+    text-decoration: line-through;
+    font-weight: 600;
+    margin-right: 6px;
+  }
+
+  .hi-oem-ghost-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 38px;
+    padding: 9px 10px;
+    border: 2px solid var(--hi-oem-dark);
+    color: var(--hi-oem-dark);
+    background: transparent;
+    font-size: 0.72rem;
+    font-weight: 850;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-radius: var(--hi-oem-radius);
+    transition: background 0.18s ease, color 0.18s ease;
+    margin-top: auto;
+  }
+
+  .hi-oem-product-card:hover .hi-oem-ghost-btn {
+    background: var(--hi-oem-dark);
+    color: #ffffff;
+  }
+
+  .hi-oem-field-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .hi-oem-field-card {
+    position: relative;
+    min-height: 220px;
+    border-radius: var(--hi-oem-radius);
+    overflow: hidden;
+    margin: 0;
+    background: #181818;
+    border: 1px solid var(--hi-oem-border);
+  }
+
+  .hi-oem-field-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0.9;
+  }
+
+  .hi-oem-field-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.72));
+  }
+
+  .hi-oem-field-caption {
+    position: absolute;
+    z-index: 2;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    margin: 0;
+    color: #ffffff;
+    font-size: 0.85rem;
+    line-height: 1.25;
+    font-weight: 850;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.55);
+  }
+
+  .hi-oem-field-btn-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .hi-oem-primary-btn,
+  .hi-oem-secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 11px 24px;
+    border-radius: var(--hi-oem-radius);
+    text-decoration: none;
+    font-size: 0.76rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
+  }
+
+  .hi-oem-primary-btn {
+    background: var(--hi-oem-accent);
+    color: var(--hi-oem-dark);
+    border: 2px solid var(--hi-oem-accent);
+  }
+
+  .hi-oem-secondary-btn {
+    border: 2px solid var(--hi-oem-dark);
+    color: var(--hi-oem-dark);
+    background: transparent;
+  }
+
+  .hi-oem-primary-btn:hover,
+  .hi-oem-secondary-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .hi-oem-secondary-btn:hover {
+    background: var(--hi-oem-dark);
+    color: #ffffff;
+  }
+
+  .hi-oem-faq {
+    max-width: 920px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .hi-oem-faq details {
+    border: 1px solid var(--hi-oem-border);
+    border-radius: var(--hi-oem-radius);
+    background: #ffffff;
+    margin: 0 0 10px;
+  }
+
+  .hi-oem-faq summary {
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 0.95rem;
+    font-weight: 850;
+    list-style: none;
+  }
+
+  .hi-oem-faq summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .hi-oem-faq summary::after {
+    content: "+";
+    float: right;
+    font-weight: 900;
+  }
+
+  .hi-oem-faq details[open] summary::after {
+    content: "–";
+  }
+
+  .hi-oem-faq-answer {
+    padding: 0 16px 16px;
+    color: var(--hi-oem-muted);
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .hi-oem-bottom-cta {
+    background: var(--hi-oem-cta-bg);
+    color: #ffffff;
+    padding: 58px 22px;
+    text-align: center;
+    border-radius: var(--hi-oem-radius);
+    margin: 60px 0;
+  }
+
+  .hi-oem-bottom-cta h3 {
+    font-size: clamp(1.45rem, 2.6vw, 1.9rem);
+    line-height: 1.1;
+    font-weight: 850;
+    text-transform: uppercase;
+    margin: 0 0 12px;
+    color: #ffffff;
+  }
+
+  .hi-oem-bottom-cta p {
+    font-size: 0.98rem;
+    color: #cbd5e1;
+    margin: 0 auto 28px;
+    max-width: 560px;
+    line-height: 1.5;
+  }
+
+  .hi-oem-phone-row {
+    margin-top: 18px;
+    color: #cbd5e1;
+    font-size: 0.9rem;
+  }
+
+  .hi-oem-phone-row a {
+    color: var(--hi-oem-accent);
+    font-weight: 850;
+    text-decoration: none;
+    font-size: 1.05rem;
+  }
+
+  @media screen and (max-width: 989px) {
+    .hi-oem-product-grid,
+    .hi-oem-field-grid,
+    .hi-oem-spec-strip {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .hi-oem-section {
+      padding: 44px 0;
+    }
+
+    .hi-oem-product-card {
+      padding: 16px 12px;
+    }
+
+    .hi-oem-product-img-wrap {
+      height: 140px;
+      margin-bottom: 14px;
+    }
+
+    .hi-oem-field-card {
+      min-height: 180px;
+    }
+  }
+
+  @media screen and (max-width: 520px) {
+    .hi-oem-container {
+      padding: 0 12px;
+    }
+
+    .hi-oem-header {
+      padding-top: 30px;
+    }
+
+    .hi-oem-title {
+      font-size: clamp(1.75rem, 8vw, 2.25rem);
+    }
+
+    .hi-oem-subtitle {
+      font-size: 0.9rem;
+    }
+
+    .hi-oem-hero-box {
+      padding: 12px;
+    }
+
+    .hi-oem-product-title {
+      font-size: 0.78rem;
+    }
+
+    .hi-oem-product-type {
+      font-size: 0.62rem;
+    }
+
+    .hi-oem-product-price {
+      font-size: 0.9rem;
+    }
+
+    .hi-oem-ghost-btn {
+      min-height: 34px;
+      font-size: 0.66rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="hi-oem-page">
+  <div class="hi-oem-container">
+    {%- if model == blank -%}
+      <div class="hi-oem-empty">
+        <strong>Machine model reference missing.</strong><br>
+        Add a Page metafield <code>custom.model</code> and reference the correct Model metaobject.
+      </div>
+    {%- else -%}
+
+      <header class="hi-oem-header">
+        <nav aria-label="Breadcrumb">
+          <ol class="hi-oem-breadcrumb">
+            <li><a href="{{ routes.root_url }}">Home</a></li>
+            <li class="hi-oem-breadcrumb-sep">/</li>
+            {%- if machine_make != blank -%}
+              <li><a href="/pages/{{ machine_make | handleize }}-parts">{{ machine_make }} Parts</a></li>
+              <li class="hi-oem-breadcrumb-sep">/</li>
+            {%- endif -%}
+            <li class="hi-oem-breadcrumb-current">{{ machine_parts_label }}</li>
+          </ol>
+        </nav>
+
+        <p class="hi-oem-eyebrow">{{ machine_type }}</p>
+        <h1 class="hi-oem-title">Built Tough for Your {{ display_name }}</h1>
+        <p class="hi-oem-subtitle">
+          Shop rubber tracks, steel undercarriage parts, and contractor-grade attachment upgrades for your {{ display_name }}.
+        </p>
+      </header>
+
+      <div class="hi-oem-hero-wrapper">
+        <div class="hi-oem-hero-box">
+          {%- if model.hero_image.value != blank -%}
+            <img
+              class="hi-oem-hero-img"
+              src="{{ model.hero_image.value | image_url: width: 1100 }}"
+              alt="{{ display_name | escape }} parts and attachments"
+              width="900"
+              height="520"
+              loading="eager"
+              fetchpriority="high"
+            >
+          {%- else -%}
+            <div class="hi-oem-no-image">No Image Available</div>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="hi-oem-spec-strip">
+        {%- if model.horsepower.value != blank -%}
+          <div class="hi-oem-spec">
+            <span class="hi-oem-spec-label">Horsepower</span>
+            <span class="hi-oem-spec-value">{{ model.horsepower.value }} HP</span>
+          </div>
+        {%- endif -%}
+
+        {%- if model.operating_weight.value != blank -%}
+          <div class="hi-oem-spec">
+            <span class="hi-oem-spec-label">Operating Weight</span>
+            <span class="hi-oem-spec-value">{{ model.operating_weight.value }} lb</span>
+          </div>
+        {%- endif -%}
+
+        {%- if model.std_gpm.value != blank -%}
+          <div class="hi-oem-spec">
+            <span class="hi-oem-spec-label">Standard Flow</span>
+            <span class="hi-oem-spec-value">{{ model.std_gpm.value }} GPM</span>
+          </div>
+        {%- endif -%}
+
+        {%- if model.hf_gpm.value != blank -%}
+          <div class="hi-oem-spec">
+            <span class="hi-oem-spec-label">High Flow</span>
+            <span class="hi-oem-spec-value">{{ model.hf_gpm.value }} GPM</span>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <section class="hi-oem-section" id="tracks">
+        <h2 class="hi-oem-section-title">Rubber Track Options</h2>
+        <p class="hi-oem-section-sub">Choose the replacement rubber track option for your {{ display_name }}.</p>
+
+        <div class="hi-oem-product-grid">
+          {%- if model.track_variants.value != blank -%}
+            {%- for variant in model.track_variants.value -%}
+              {%- assign variant_product = variant.product -%}
+              {%- assign variant_image = variant.featured_image | default: variant_product.featured_image -%}
+              {%- assign variant_url = variant_product.url | append: '?variant=' | append: variant.id -%}
+
+              <a class="hi-oem-product-card" href="{{ variant_url }}">
+                <div class="hi-oem-product-img-wrap">
+                  {%- if variant_image -%}
+                    <img
+                      class="hi-oem-product-img"
+                      src="{{ variant_image | image_url: width: 520 }}"
+                      alt="{{ variant_image.alt | default: variant.title | escape }}"
+                      loading="lazy"
+                      width="520"
+                      height="390"
+                    >
+                  {%- else -%}
+                    <div class="hi-oem-product-placeholder">No Image</div>
+                  {%- endif -%}
+                </div>
+
+                <p class="hi-oem-product-type">Rubber Tracks</p>
+                <h3 class="hi-oem-product-title">{{ variant.title }}</h3>
+
+                {%- if variant.price > 0 -%}
+                  <p class="hi-oem-product-price">
+                    {%- if variant.compare_at_price > variant.price -%}
+                      <span class="hi-oem-product-compare">{{ variant.compare_at_price | money }}</span>
+                    {%- endif -%}
+                    {{ variant.price | money }}
+                  </p>
+                {%- endif -%}
+
+                <span class="hi-oem-ghost-btn">View Tracks</span>
+              </a>
+            {%- endfor -%}
+
+          {%- elsif model.track_product.value != blank -%}
+            {%- assign track_product = model.track_product.value -%}
+
+            <a class="hi-oem-product-card" href="{{ track_product.url }}">
+              <div class="hi-oem-product-img-wrap">
+                {%- if track_product.featured_image -%}
+                  <img
+                    class="hi-oem-product-img"
+                    src="{{ track_product.featured_image | image_url: width: 520 }}"
+                    alt="{{ track_product.featured_image.alt | default: track_product.title | escape }}"
+                    loading="lazy"
+                    width="520"
+                    height="390"
+                  >
+                {%- else -%}
+                  <div class="hi-oem-product-placeholder">No Image</div>
+                {%- endif -%}
+              </div>
+
+              <p class="hi-oem-product-type">Rubber Tracks</p>
+              <h3 class="hi-oem-product-title">{{ track_product.title }}</h3>
+
+              {%- if track_product.price > 0 -%}
+                <p class="hi-oem-product-price">
+                  {%- if track_product.compare_at_price > track_product.price -%}
+                    <span class="hi-oem-product-compare">{{ track_product.compare_at_price | money }}</span>
+                  {%- endif -%}
+                  {{ track_product.price | money }}
+                </p>
+              {%- endif -%}
+
+              <span class="hi-oem-ghost-btn">View Tracks</span>
+            </a>
+          {%- endif -%}
+        </div>
+      </section>
+
+      {%- if model.uc_products.value != blank -%}
+        <section class="hi-oem-section" id="undercarriage">
+          <h2 class="hi-oem-section-title">Steel Undercarriage Parts</h2>
+          <p class="hi-oem-section-sub">Shop sprockets, idlers, and rollers selected for your {{ display_name }}.</p>
+
+          <div class="hi-oem-product-grid">
+            {%- for card_product in model.uc_products.value -%}
+              <a class="hi-oem-product-card" href="{{ card_product.url }}">
+                <div class="hi-oem-product-img-wrap">
+                  {%- if card_product.featured_image -%}
+                    <img
+                      class="hi-oem-product-img"
+                      src="{{ card_product.featured_image | image_url: width: 520 }}"
+                      alt="{{ card_product.featured_image.alt | default: card_product.title | escape }}"
+                      loading="lazy"
+                      width="520"
+                      height="390"
+                    >
+                  {%- else -%}
+                    <div class="hi-oem-product-placeholder">No Image</div>
+                  {%- endif -%}
+                </div>
+
+                <p class="hi-oem-product-type">Undercarriage</p>
+                <h3 class="hi-oem-product-title">{{ card_product.title }}</h3>
+
+                {%- if card_product.price > 0 -%}
+                  <p class="hi-oem-product-price">
+                    {%- if card_product.compare_at_price > card_product.price -%}
+                      <span class="hi-oem-product-compare">{{ card_product.compare_at_price | money }}</span>
+                    {%- endif -%}
+                    {{ card_product.price | money }}
+                  </p>
+                {%- endif -%}
+
+                <span class="hi-oem-ghost-btn">View Part</span>
+              </a>
+            {%- endfor -%}
+          </div>
+        </section>
+      {%- endif -%}
+
+      {%- if model.featured_attachments.value != blank -%}
+        <section class="hi-oem-section" id="attachments">
+          <h2 class="hi-oem-section-title">Attachment Upgrades</h2>
+          <p class="hi-oem-section-sub">Buckets, grapples, forks, and brush cutters selected for {{ display_name }} owners.</p>
+
+          <div class="hi-oem-product-grid">
+            {%- for card_product in model.featured_attachments.value -%}
+              <a class="hi-oem-product-card" href="{{ card_product.url }}">
+                <div class="hi-oem-product-img-wrap">
+                  {%- if card_product.featured_image -%}
+                    <img
+                      class="hi-oem-product-img"
+                      src="{{ card_product.featured_image | image_url: width: 520 }}"
+                      alt="{{ card_product.featured_image.alt | default: card_product.title | escape }}"
+                      loading="lazy"
+                      width="520"
+                      height="390"
+                    >
+                  {%- else -%}
+                    <div class="hi-oem-product-placeholder">No Image</div>
+                  {%- endif -%}
+                </div>
+
+                <p class="hi-oem-product-type">Attachment</p>
+                <h3 class="hi-oem-product-title">{{ card_product.title }}</h3>
+
+                {%- if card_product.price > 0 -%}
+                  <p class="hi-oem-product-price">
+                    {%- if card_product.compare_at_price > card_product.price -%}
+                      <span class="hi-oem-product-compare">{{ card_product.compare_at_price | money }}</span>
+                    {%- endif -%}
+                    {{ card_product.price | money }}
+                  </p>
+                {%- endif -%}
+
+                <span class="hi-oem-ghost-btn">View Upgrade</span>
+              </a>
+            {%- endfor -%}
+          </div>
+        </section>
+      {%- endif -%}
+
+      <section class="hi-oem-section" id="proven-in-the-field">
+        <p class="hi-oem-field-eyebrow">{{ model.field_eyebrow.value | default: 'Proven in the Field' }}</p>
+        <h2 class="hi-oem-section-title">
+          {{ model.field_heading.value | default: 'Proudly Supporting Contractors & Fleets Nationwide' }}
+        </h2>
+
+        <p class="hi-oem-section-sub">
+          {{ model.field_subheading.value | default: 'Your direct source for heavy-duty tracks, undercarriage parts, and attachments.' }}
+        </p>
+
+        {%- if model.field_images.value != blank -%}
+          <div class="hi-oem-field-grid">
+            {%- for field_image in model.field_images.value -%}
+              <figure class="hi-oem-field-card">
+                <img
+                  src="{{ field_image | image_url: width: 700 }}"
+                  alt="{{ display_name | escape }} equipment in the field"
+                  loading="lazy"
+                  width="520"
+                  height="390"
+                >
+                <figcaption class="hi-oem-field-caption">{{ display_name }} in the field</figcaption>
+              </figure>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        <div class="hi-oem-field-btn-row">
+          {%- if quote_label != blank and quote_url != blank -%}
+            <a class="hi-oem-primary-btn" href="{{ quote_url }}">{{ quote_label }}</a>
+          {%- endif -%}
+
+          {%- if secondary_label != blank and secondary_url != blank -%}
+            <a class="hi-oem-secondary-btn" href="{{ secondary_url }}">{{ secondary_label }}</a>
+          {%- endif -%}
+        </div>
+      </section>
+
+      {%- assign faqs = model.faqs_json.value -%}
+      {%- if faqs != blank -%}
+        <section class="hi-oem-section" id="faqs">
+          <h2 class="hi-oem-section-title">FAQs</h2>
+          <p class="hi-oem-section-sub">Common questions about {{ display_name }} tracks, undercarriage parts, and attachments.</p>
+
+          <div class="hi-oem-faq">
+            {%- for faq in faqs -%}
+              <details>
+                <summary>{{ faq.question }}</summary>
+                <div class="hi-oem-faq-answer">{{ faq.answer }}</div>
+              </details>
+            {%- endfor -%}
+          </div>
+        </section>
+      {%- endif -%}
+
+      <div class="hi-oem-bottom-cta">
+        <h3>Ready to outfit your {{ display_name }}?</h3>
+        <p>Shop machine-based tracks, undercarriage parts, and attachment upgrades built around the equipment you run every day.</p>
+
+        <a href="{{ quote_url }}" class="hi-oem-primary-btn">{{ quote_label }}</a>
+
+        <div class="hi-oem-phone-row">
+          <span>Or call us at: </span>
+          <a href="tel:8508167898">(850) 816-7898</a>
+        </div>
+      </div>
+
+    {%- endif -%}
+  </div>
+</div>
+
+{%- if model != blank -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": {{ model.seo_title.value | default: page.title | json }},
+      "description": {{ model.seo_description.value | default: page.content | strip_html | truncate: 160 | json }},
+      "url": {{ canonical_url | json }},
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": {{ shop.url | json }}
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": {{ machine_make | append: ' Parts' | json }},
+            "item": {{ shop.url | append: '/pages/' | append: machine_make | handleize | append: '-parts' | json }}
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": {{ machine_parts_label | json }},
+            "item": {{ canonical_url | json }}
+          }
+        ]
+      }
+    }
+  </script>
+
+  {%- assign schema_faqs = model.faqs_json.value -%}
+  {%- if schema_faqs != blank -%}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {%- for faq in schema_faqs -%}
+            {
+              "@type": "Question",
+              "name": {{ faq.question | json }},
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": {{ faq.answer | strip_html | json }}
+              }
+            }{%- unless forloop.last -%},{%- endunless -%}
+          {%- endfor -%}
+        ]
+      }
+    </script>
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Machine fitment page",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#FFCE00"
+    },
+    {
+      "type": "color",
+      "id": "cta_background",
+      "label": "Bottom CTA background",
+      "default": "#181818"
+    }
+  ]
+}
+{% endschema %}

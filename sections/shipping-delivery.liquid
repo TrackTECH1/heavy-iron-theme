@@ -1,0 +1,311 @@
+{%- comment -%}
+  Shipping & Delivery — Full page section
+  Heavy Iron Supply Co
+  NOTE: No location/address shown (per brand rules)
+{%- endcomment -%}
+
+<div class="ship-page">
+
+  <section class="ship__hero">
+    {%- if section.settings.hero_image != blank -%}
+      {{ section.settings.hero_image | image_url: width: 2000 | image_tag: class: 'ship__hero-bg', loading: 'eager' }}
+      <div class="ship__hero-overlay"></div>
+    {%- endif -%}
+    <div class="ship__hero-content">
+      <div class="ship__badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Free Freight — Every Order
+      </div>
+      <h1 class="ship__headline">{{ section.settings.headline | default: 'Fast, Reliable' }} <span>Delivery</span></h1>
+      <p class="ship__sub">{{ section.settings.subheadline | default: 'Downtime costs money. We ship same-day so your machines stay running.' }}</p>
+    </div>
+  </section>
+
+  <section class="ship__stats">
+    <div class="page-width">
+      <div class="ship__stats-grid">
+        <div class="ship__stat">
+          <span class="ship__stat-num">12PM</span>
+          <span class="ship__stat-label">Cutoff (CT)</span>
+          <span class="ship__stat-sub">Same-Day Shipping</span>
+        </div>
+        <div class="ship__stat">
+          <span class="ship__stat-num">1-3</span>
+          <span class="ship__stat-label">Days</span>
+          <span class="ship__stat-sub">Average Delivery</span>
+        </div>
+        <div class="ship__stat">
+          <span class="ship__stat-num">$0</span>
+          <span class="ship__stat-label">Freight</span>
+          <span class="ship__stat-sub">On Every Order</span>
+        </div>
+        <div class="ship__stat">
+          <span class="ship__stat-num">48</span>
+          <span class="ship__stat-label">States</span>
+          <span class="ship__stat-sub">Contiguous US</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ship__process">
+    <div class="page-width">
+      <div class="ship__section-head">
+        <h2 class="ship__section-title">From Our Dock to Your Dirt</h2>
+        <p class="ship__section-sub">Streamlined process. Tracks on the road in hours, not days.</p>
+      </div>
+      <div class="ship__timeline">
+        <div class="ship__step">
+          <div class="ship__icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          </div>
+          <div>
+            <h3>1. You Order</h3>
+            <p>Online or by phone before 12PM CT.</p>
+          </div>
+        </div>
+        <div class="ship__step">
+          <div class="ship__icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+          </div>
+          <div>
+            <h3>2. We Pack</h3>
+            <p>Palletized and wrapped same day.</p>
+          </div>
+        </div>
+        <div class="ship__step">
+          <div class="ship__icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <div>
+            <h3>3. Ships Same Day</h3>
+            <p>Tracking number emailed to you.</p>
+          </div>
+        </div>
+        <div class="ship__step">
+          <div class="ship__icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <h3>4. Delivered</h3>
+            <p>Freight carrier delivers to your shop or jobsite.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ship__zones">
+    <div class="page-width">
+      <div class="ship__section-head">
+        <h2 class="ship__section-title">Estimated Transit Times</h2>
+      </div>
+      <div class="ship__zones-grid">
+        <div class="ship__zone-card ship__zone-card--highlight">
+          <div class="ship__time">1 Day</div>
+          <span class="ship__time-label">Business Day</span>
+          <h3>Southeast Region</h3>
+          <p>FL, GA, AL, SC, TN, MS, NC, LA</p>
+        </div>
+        <div class="ship__zone-card">
+          <div class="ship__time">2 Days</div>
+          <span class="ship__time-label">Business Days</span>
+          <h3>Central & East Coast</h3>
+          <p>TX, AR, MO, IL, IN, OH, KY, VA, PA, NY, NJ</p>
+        </div>
+        <div class="ship__zone-card">
+          <div class="ship__time">3+ Days</div>
+          <span class="ship__time-label">Business Days</span>
+          <h3>West & Northwest</h3>
+          <p>CA, WA, OR, NV, AZ, CO, UT, ID, MT</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ship__faq-wrap">
+    <div class="page-width">
+      <div class="ship__section-head">
+        <h2 class="ship__section-title">Shipping FAQ</h2>
+      </div>
+      <div class="ship__faq-container">
+        {%- for block in section.blocks -%}
+          <details class="ship__faq-item" {{ block.shopify_attributes }}>
+            <summary class="ship__faq-btn">
+              <span>{{ block.settings.question }}</span>
+              <span class="ship__faq-icon">+</span>
+            </summary>
+            <div class="ship__faq-content">{{ block.settings.answer }}</div>
+          </details>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<style>
+  .ship-page { --ship-gold: #FFB607; --ship-dark: #1a1a1a; --ship-gray: #f2f2f0; }
+
+  /* HERO */
+  .ship__hero { background: linear-gradient(135deg, var(--ship-dark) 0%, #2d2d2d 100%); color: #fff; padding: 100px 20px; text-align: center; position: relative; overflow: hidden; }
+  .ship__hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5; }
+  .ship__hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
+  .ship__hero-content { max-width: 800px; margin: 0 auto; position: relative; z-index: 2; }
+  .ship__badge { display: inline-flex; align-items: center; gap: 8px; background: var(--ship-gold); color: #000; padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 24px; }
+  .ship__headline { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; text-transform: uppercase; line-height: 1; margin: 0 0 24px; font-family: var(--font-heading-family); }
+  .ship__headline span { color: var(--ship-gold); }
+  .ship__sub { font-size: 1.125rem; color: rgba(255,255,255,0.9); max-width: 600px; margin: 0 auto; line-height: 1.6; }
+
+  /* STATS */
+  .ship__stats { margin-top: -50px; padding-bottom: 60px; position: relative; z-index: 3; }
+  .ship__stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; background: #fff; border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); padding: 40px 20px; border: 1px solid #e2e8f0; }
+  .ship__stat { text-align: center; padding: 10px; border-right: 1px solid #e2e8f0; }
+  .ship__stat:last-child { border-right: none; }
+  .ship__stat-num { font-size: 2.5rem; font-weight: 800; color: var(--ship-gold); line-height: 1; margin-bottom: 8px; display: block; font-family: var(--font-heading-family); }
+  .ship__stat-label { font-size: 0.875rem; font-weight: 700; text-transform: uppercase; color: var(--ship-dark); letter-spacing: 0.05em; }
+  .ship__stat-sub { font-size: 0.8125rem; color: #666; margin-top: 4px; display: block; }
+  @media (max-width: 749px) {
+    .ship__stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .ship__stat { border-bottom: 1px solid #e2e8f0; padding-bottom: 20px; }
+    .ship__stat:nth-child(2) { border-right: none; }
+    .ship__stat:nth-last-child(-n+2) { border-bottom: none; }
+  }
+
+  /* TIMELINE */
+  .ship__process { padding: 80px 20px; background: var(--ship-gray); }
+  .ship__section-head { text-align: center; max-width: 700px; margin: 0 auto 48px; }
+  .ship__section-title { font-size: 2rem; font-weight: 800; text-transform: uppercase; color: var(--ship-dark); margin: 0 0 8px; font-family: var(--font-heading-family); }
+  .ship__section-sub { color: #666; font-size: 1rem; margin: 0; }
+  .ship__timeline { display: flex; justify-content: space-between; max-width: 1000px; margin: 0 auto; position: relative; }
+  .ship__timeline::before { content: ''; position: absolute; top: 32px; left: 10%; right: 10%; height: 2px; background: #d1d5db; }
+  .ship__step { flex: 1; text-align: center; position: relative; z-index: 1; padding: 0 10px; }
+  .ship__icon-box { width: 64px; height: 64px; background: #fff; border: 2px solid var(--ship-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+  .ship__icon-box svg { width: 28px; height: 28px; color: var(--ship-dark); }
+  .ship__step h3 { font-size: 1rem; font-weight: 700; margin: 0 0 6px; color: var(--ship-dark); text-transform: uppercase; font-family: var(--font-heading-family); }
+  .ship__step p { font-size: 0.875rem; color: #666; line-height: 1.5; margin: 0; }
+  @media (max-width: 749px) {
+    .ship__timeline { flex-direction: column; gap: 24px; }
+    .ship__timeline::before { width: 2px; height: 100%; left: 32px; top: 0; right: auto; }
+    .ship__step { display: flex; text-align: left; align-items: flex-start; gap: 20px; }
+    .ship__icon-box { margin: 0; flex-shrink: 0; }
+  }
+
+  /* ZONES */
+  .ship__zones { padding: 80px 20px; background: #fff; }
+  .ship__zones-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; }
+  .ship__zone-card { border: 1px solid #e2e8f0; border-radius: 4px; padding: 30px; text-align: center; transition: transform 0.2s; }
+  .ship__zone-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+  .ship__zone-card--highlight { background: var(--ship-dark); color: #fff; border-color: var(--ship-dark); }
+  .ship__time { font-size: 3rem; font-weight: 800; line-height: 1; margin-bottom: 4px; color: var(--ship-dark); font-family: var(--font-heading-family); }
+  .ship__zone-card--highlight .ship__time { color: var(--ship-gold); }
+  .ship__time-label { display: block; font-size: 0.875rem; font-weight: 600; text-transform: uppercase; color: #888; margin-bottom: 20px; }
+  .ship__zone-card h3 { font-size: 1.125rem; font-weight: 700; margin: 0 0 12px; text-transform: uppercase; font-family: var(--font-heading-family); }
+  .ship__zone-card p { font-size: 0.9rem; color: #666; line-height: 1.5; margin: 0; }
+  .ship__zone-card--highlight p { color: rgba(255,255,255,0.7); }
+  @media (max-width: 749px) { .ship__zones-grid { grid-template-columns: 1fr; } }
+
+  /* FAQ */
+  .ship__faq-wrap { padding: 80px 20px; background: var(--ship-gray); }
+  .ship__faq-container { max-width: 800px; margin: 0 auto; }
+  .ship__faq-item { background: #fff; border: 1px solid #e2e8f0; margin-bottom: 10px; border-radius: 4px; overflow: hidden; }
+  .ship__faq-btn { width: 100%; text-align: left; padding: 20px; background: none; border: none; font-size: 1rem; font-weight: 700; color: var(--ship-dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; }
+  .ship__faq-btn::-webkit-details-marker { display: none; }
+  .ship__faq-btn:hover { color: var(--ship-gold); }
+  .ship__faq-icon { font-size: 1.25rem; color: var(--ship-gold); font-weight: 400; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; background: var(--ship-gold); color: var(--ship-dark); border-radius: 50%; font-size: 1rem; font-weight: 700; }
+  .ship__faq-item[open] .ship__faq-icon { content: '−'; }
+  .ship__faq-item[open] .ship__faq-icon::after { content: ''; }
+  .ship__faq-content { padding: 0 20px 20px; color: #555; line-height: 1.7; font-size: 0.95rem; }
+</style>
+
+{% schema %}
+{
+  "name": "Shipping & Delivery",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero background image",
+      "info": "Warehouse or truck photo. 1920x1080px."
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Fast, Reliable"
+    },
+    {
+      "type": "textarea",
+      "id": "subheadline",
+      "label": "Subheadline",
+      "default": "Downtime costs money. We ship same-day so your machines stay running."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "Shipping FAQ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shipping & Delivery",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How much is shipping?",
+            "answer": "Shipping is 100% FREE on all rubber tracks to the contiguous United States. No hidden fees, no liftgate charges. The price you see is the price you pay."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What carrier do you use?",
+            "answer": "For rubber track orders (heavy freight), we use trusted LTL carriers like R+L Carriers, SAIA, and Estes. Smaller parts may ship via UPS or FedEx Ground."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Do I need a forklift to unload?",
+            "answer": "Recommended but not required. If you don't have equipment on site, let us know and we'll request liftgate service (included free) for your delivery."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Do you ship to Alaska or Hawaii?",
+            "answer": "No. We ship to the contiguous United States only — 48 states. No Alaska, Hawaii, Canada, or international shipping."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Can I get expedited shipping?",
+            "answer": "Yes. Contact us for expedited freight options. Additional charges apply. Standard orders placed before 12PM CT ship same day at no extra cost."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

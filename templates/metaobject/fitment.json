@@ -1,0 +1,76 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-fitment",
+      "disabled": true,
+      "settings": {}
+    },
+    "undercarriage_parts_BXxynt": {
+      "type": "undercarriage-parts",
+      "blocks": {
+        "part_dxcLUW": {
+          "type": "part",
+          "name": "Sprocket",
+          "settings": {
+            "image": "shopify://shop_images/sprocket.webp",
+            "name": "Sprockets",
+            "fits": "CTL / Mini Excavator",
+            "desc": "Drop-forged drive sprockets for precise chain engagement."
+          }
+        },
+        "part_Fhibi8": {
+          "type": "part",
+          "name": "Idler",
+          "settings": {
+            "image": "shopify://shop_images/font-idler.webp",
+            "name": "Idlers",
+            "fits": "CTL / Mini Excavator",
+            "desc": "OEM-spec front idlers with sealed bearings."
+          }
+        },
+        "part_WP3FHL": {
+          "type": "part",
+          "name": "Roller",
+          "settings": {
+            "image": "shopify://shop_images/roller.webp",
+            "name": "Rollers",
+            "fits": "CTL / Mini Excavator",
+            "desc": "Heavy-duty sealed bottom and top rollers."
+          }
+        }
+      },
+      "block_order": [
+        "part_dxcLUW",
+        "part_Fhibi8",
+        "part_WP3FHL"
+      ],
+      "name": "Undercarriage Parts",
+      "settings": {
+        "eyebrow": "STEEL UNDERCARRIAGE",
+        "title": "Undercarriage Parts",
+        "subtitle": "OEM-spec steel undercarriage components for compact track loaders and mini excavators. Request a quote for pricing and availability.",
+        "columns": "3",
+        "show_form": true,
+        "quote_url": "",
+        "phone_text": "Need it fast? Call us direct:",
+        "phone": "(850) 816-7898",
+        "color_scheme": "",
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "undercarriage_parts_BXxynt"
+  ]
+}
