@@ -1,113 +1,24 @@
 {%- comment -%}
   Guaranteed Fit Widget
   Make/Model dropdowns → animated "Guaranteed Fit" or "Not Compatible" banner.
-  Data source: product.metafields.custom.fitments (list.metaobject_reference → fitment MO)
-  Falls back to compatible_with text if fitments metafield not populated yet.
+  Data source: fitment-data.liquid → custom.fitments (+ compatible_with fallback).
 {%- endcomment -%}
 
 {%- assign fitment_refs = product.metafields.custom.fitments.value -%}
-{%- assign product_type = product.type | downcase -%}
+{%- assign compatible_raw = product.metafields.custom.compatible_with.value -%}
 {%- assign has_fitments = false -%}
 {%- if fitment_refs != blank and fitment_refs.size > 0 -%}
   {%- assign has_fitments = true -%}
 {%- endif -%}
-
-{%- comment -%} Fallback: parse compatible_with text if no fitment refs yet {%- endcomment -%}
-{%- assign compatible_raw = product.metafields.custom.compatible_with.value -%}
 {%- assign has_compat_text = false -%}
 {%- if compatible_raw != blank -%}
   {%- assign has_compat_text = true -%}
 {%- endif -%}
 
 {%- if has_fitments == false and has_compat_text == false -%}
-  {%- comment -%} No fitment data — don't render {%- endcomment -%}
 {%- else -%}
 
-{%- comment -%}
-  Build JS data object from fitment MO refs (preferred) or compatible_with text (fallback)
-  Output: { "Bobcat": [{"model":"T770","handle":"bobcat-t770"}, ...], ... }
-{%- endcomment -%}
-
-{%- if has_fitments -%}
-  {%- comment -%} === METAOBJECT PATH === {%- endcomment -%}
-  {%- assign make_list = '' -%}
-  {%- for fitment in fitment_refs -%}
-    {%- assign make_mo = fitment.make.value -%}
-    {%- assign make_name = make_mo.name.value | default: make_mo.name -%}
-    {%- unless make_list contains make_name -%}
-      {%- if make_list != '' -%}{%- assign make_list = make_list | append: '||' -%}{%- endif -%}
-      {%- assign make_list = make_list | append: make_name -%}
-    {%- endunless -%}
-  {%- endfor -%}
-  {%- assign makes = make_list | split: '||' -%}
-
-  {%- assign js_data = '{' -%}
-  {%- for make in makes -%}
-    {%- unless forloop.first -%}{%- assign js_data = js_data | append: ',' -%}{%- endunless -%}
-    {%- assign js_data = js_data | append: '"' | append: make | append: '":[' -%}
-    {%- assign first_model = true -%}
-    {%- for fitment in fitment_refs -%}
-      {%- assign fmake = fitment.make.value.name.value | default: fitment.make.value.name -%}
-      {%- if fmake == make -%}
-        {%- assign model_mo = fitment.model.value -%}
-        {%- assign model_display = model_mo.display_name.value | default: model_mo.display_name -%}
-        {%- assign model_handle = fitment.handle -%}
-        {%- comment -%} Strip make prefix from display name for dropdown label {%- endcomment -%}
-        {%- assign model_label = model_display | remove_first: make | remove_first: ' ' -%}
-        {%- unless first_model -%}{%- assign js_data = js_data | append: ',' -%}{%- endunless -%}
-        {%- assign js_data = js_data | append: '{"m":' | append: '"' | append: model_label | append: '",' -%}
-        {%- assign js_data = js_data | append: '"h":' | append: '"' | append: model_handle | append: '"}' -%}
-        {%- assign first_model = false -%}
-      {%- endif -%}
-    {%- endfor -%}
-    {%- assign js_data = js_data | append: ']' -%}
-  {%- endfor -%}
-  {%- assign js_data = js_data | append: '}' -%}
-
-{%- else -%}
-  {%- comment -%} === TEXT FALLBACK PATH === {%- endcomment -%}
-  {%- assign machines = compatible_raw | newline_to_br | split: '<br />' -%}
-  {%- assign make_list = '' -%}
-  {%- assign MULTI = 'John Deere||New Holland||Ditch Witch||Wacker Neuson' -%}
-  {%- for machine in machines -%}
-    {%- assign trimmed = machine | strip | strip_html -%}
-    {%- if trimmed == blank -%}{%- continue -%}{%- endif -%}
-    {%- assign words = trimmed | split: ' ' -%}
-    {%- if words.size < 2 -%}{%- continue -%}{%- endif -%}
-    {%- assign first = words[0] -%}
-    {%- assign second = words[1] -%}
-    {%- if MULTI contains first -%}
-      {%- assign make = first | append: ' ' | append: second -%}
-    {%- else -%}
-      {%- assign make = first -%}
-    {%- endif -%}
-    {%- unless make_list contains make -%}
-      {%- if make_list != '' -%}{%- assign make_list = make_list | append: '||' -%}{%- endif -%}
-      {%- assign make_list = make_list | append: make -%}
-    {%- endunless -%}
-  {%- endfor -%}
-  {%- assign makes = make_list | split: '||' -%}
-  {%- assign js_data = '{' -%}
-  {%- for make in makes -%}
-    {%- assign prefix = make | append: ' ' -%}
-    {%- assign model_arr = '' -%}
-    {%- for machine in machines -%}
-      {%- assign trimmed = machine | strip | strip_html -%}
-      {%- if trimmed contains prefix -%}
-        {%- assign model_name = trimmed | remove_first: prefix | strip -%}
-        {%- if model_name != blank -%}
-          {%- if model_arr != '' -%}{%- assign model_arr = model_arr | append: ',' -%}{%- endif -%}
-          {%- assign model_arr = model_arr | append: '{"m":"' | append: model_name | append: '","h":""}' -%}
-        {%- endif -%}
-      {%- endif -%}
-    {%- endfor -%}
-    {%- unless forloop.first -%}{%- assign js_data = js_data | append: ',' -%}{%- endunless -%}
-    {%- assign js_data = js_data | append: '"' | append: make | append: '":[' | append: model_arr | append: ']' -%}
-  {%- endfor -%}
-  {%- assign js_data = js_data | append: '}' -%}
-{%- endif -%}
-
-<div class="gfit" id="guaranteed-fit-{{ section.id }}" data-fitment='{{ js_data }}'>
+<div class="gfit" id="guaranteed-fit-{{ section.id }}" data-fitment='{%- render 'fitment-data', product: product, output: 'grouped' -%}'>
 
   <div class="gfit__selectors">
     <div class="gfit__row">
@@ -119,9 +30,6 @@
         <div class="gfit__select-wrap">
           <select id="gfit-make-{{ section.id }}" class="gfit__select gfit__select--make" aria-label="Select machine make">
             <option value="">— Select Make —</option>
-            {%- for make in makes -%}
-              <option value="{{ make }}">{{ make }}</option>
-            {%- endfor -%}
           </select>
           <svg class="gfit__select-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
         </div>
@@ -226,19 +134,29 @@
   const ncMachine    = widget.querySelector('.gfit__nc-machine');
   const modelLink    = widget.querySelector('.gfit__model-link');
 
+  Object.keys(fitmentData).sort(function(a, b) { return a.localeCompare(b); }).forEach(function(make) {
+    const opt = document.createElement('option');
+    opt.value = make;
+    opt.textContent = make;
+    makeSelect.appendChild(opt);
+  });
+
   function hideResults() {
     confirmed.hidden = true;
     incompatible.hidden = true;
   }
 
+  function modelPageUrl(make, modelObj) {
+    if (modelObj.u) return modelObj.u;
+    if (modelObj.h) return '/pages/model/' + modelObj.h;
+    return '/pages/model/' + (make + '-' + modelObj.m).toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-');
+  }
+
   function showConfirmed(make, modelObj) {
-    const label  = make + ' ' + modelObj.m;
-    // Use MO handle if available, otherwise build from name
-    const handle = modelObj.h
-      ? modelObj.h
-      : (make + '-' + modelObj.m).toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'-').replace(/-+/g,'-');
+    const label = make + ' ' + modelObj.m;
     machineName.textContent = label;
-    modelLink.href = '/pages/model/' + handle;
+    modelLink.href = modelPageUrl(make, modelObj);
+    modelLink.removeAttribute('target');
     confirmed.hidden = false;
     incompatible.hidden = true;
     confirmed.style.animation = 'none';
@@ -265,7 +183,7 @@
       const opt = document.createElement('option');
       opt.value = modelObj.m;
       opt.textContent = make + ' ' + modelObj.m;
-      // Store handle as data attr
+      opt.dataset.url = modelObj.u || '';
       opt.dataset.handle = modelObj.h || '';
       modelSelect.appendChild(opt);
     });

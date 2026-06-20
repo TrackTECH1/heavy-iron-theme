@@ -661,11 +661,28 @@
         <p class="hi-oem-section-sub">Choose the replacement rubber track option for your {{ display_name }}.</p>
 
         <div class="hi-oem-product-grid">
+          {%- liquid
+            assign track_machine_label = display_name | split: ' Rubber Track' | first | split: ' Tracks' | first | strip
+            if track_machine_label == blank
+              assign track_machine_label = machine_make
+            endif
+            assign track_card_title = track_machine_label | append: ' Tracks'
+          -%}
           {%- if model.track_variants.value != blank -%}
             {%- for variant in model.track_variants.value -%}
               {%- assign variant_product = variant.product -%}
               {%- assign variant_image = variant.featured_image | default: variant_product.featured_image -%}
               {%- assign variant_url = variant_product.url | append: '?variant=' | append: variant.id -%}
+              {%- liquid
+                assign tread = variant_product.metafields.custom.tread.value | default: variant_product.metafields.custom.tread
+                assign track_type_label = tread
+                if track_type_label == blank and variant.title != blank and variant.title != 'Default Title'
+                  assign track_type_label = variant.title
+                endif
+                if track_type_label == blank
+                  assign track_type_label = 'Rubber Tracks'
+                endif
+              -%}
 
               <a class="hi-oem-product-card" href="{{ variant_url }}">
                 <div class="hi-oem-product-img-wrap">
@@ -673,7 +690,7 @@
                     <img
                       class="hi-oem-product-img"
                       src="{{ variant_image | image_url: width: 520 }}"
-                      alt="{{ variant_image.alt | default: variant.title | escape }}"
+                      alt="{{ track_card_title | escape }}"
                       loading="lazy"
                       width="520"
                       height="390"
@@ -683,8 +700,8 @@
                   {%- endif -%}
                 </div>
 
-                <p class="hi-oem-product-type">Rubber Tracks</p>
-                <h3 class="hi-oem-product-title">{{ variant.title }}</h3>
+                <p class="hi-oem-product-type">{{ track_type_label }}</p>
+                <h3 class="hi-oem-product-title">{{ track_card_title }}</h3>
 
                 {%- if variant.price > 0 -%}
                   <p class="hi-oem-product-price">

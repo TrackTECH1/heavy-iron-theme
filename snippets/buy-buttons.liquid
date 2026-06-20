@@ -58,11 +58,8 @@
           class="product-variant-id"
         >
 
-        {%- comment -%} HEAVY IRON checkout line-item properties (injected) {%- endcomment -%}
-        {%- if product.metafields.custom.track_size != blank -%}<input type="hidden" name="properties[Track Size]" value="{{ product.metafields.custom.track_size }}">{%- endif -%}
+        {%- comment -%} HEAVY IRON checkout line-item properties (Track Size set in fitment-selector for tracks) {%- endcomment -%}
         {%- if product.metafields.custom.tread != blank -%}<input type="hidden" name="properties[Tread Pattern]" value="{{ product.metafields.custom.tread }}">{%- endif -%}
-        {%- if machine_make != blank -%}<input type="hidden" name="properties[Machine Make]" value="{{ machine_make }}">{%- endif -%}
-        {%- if machine_model != blank -%}<input type="hidden" name="properties[Machine Model]" value="{{ machine_model }}">{%- endif -%}
 
         {%- if gift_card_recipient_feature_active -%}
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}

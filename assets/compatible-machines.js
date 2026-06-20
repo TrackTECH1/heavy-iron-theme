@@ -18,7 +18,10 @@
   function makeSlug(name) { var s = slug(name); return ALIAS[s] || s; }
   function modelName(mo) { return (typeof mo === 'string') ? mo : (mo.name || mo.display_name || mo.handle || ''); }
   function modelUrl(mo, makeName) {
-    if (mo && typeof mo === 'object' && mo.url && mo.url.indexOf('/pages/') === 0) return mo.url;
+    if (mo && typeof mo === 'object') {
+      if (mo.url && mo.url.indexOf('/') === 0) return mo.url;
+      if (mo.u && mo.u.indexOf('/') === 0) return mo.u;
+    }
     return '/pages/model/' + makeSlug(makeName) + '-' + slug(modelName(mo));
   }
 

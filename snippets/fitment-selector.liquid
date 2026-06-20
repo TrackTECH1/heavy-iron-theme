@@ -1,15 +1,27 @@
 {%- comment -%}
-  fitment-selector.liquid — Required Make/Model capture + auto Track Size, posted as line item properties.
-  Order: Machine Make, Machine Model, Track Size. Green confirm on model select.
+  fitment-selector.liquid — Required Make/Model capture + Track Size, posted as line item properties.
+  Data: custom.fitments (per product), else track-fitment-map.json filtered by this product's track_size.
   Usage: {%- render 'fitment-selector', product: product -%}  (must be INSIDE the product form)
 {%- endcomment -%}
-{%- if product != blank and product.available -%}
+{%- liquid
+  assign hi_track_size = product.metafields.custom.track_size.value | default: product.metafields.custom.track_size
+  assign hi_part_type = product.metafields.custom.part_type.value | downcase
+  assign hi_product_type = product.type | downcase
+  assign hi_is_track_product = false
+  if hi_track_size != blank
+    assign hi_is_track_product = true
+  elsif hi_product_type contains 'track' or hi_product_type contains 'rubber'
+    assign hi_is_track_product = true
+  elsif hi_part_type contains 'track' or hi_part_type contains 'rubber'
+    assign hi_is_track_product = true
+  endif
+-%}
+{%- if product != blank and product.available and hi_is_track_product -%}
   {{ 'fitment-selector.css' | asset_url | stylesheet_tag }}
-  {%- assign fits = product.metafields.custom.fits_equipment_models.value -%}
   {%- assign tsz = product.metafields.custom.track_size -%}
-  <fitment-selector class="hi-fit" data-fit>
+  <fitment-selector class="hi-fit" data-fit data-track-size="{{ hi_track_size | escape }}" data-map-url="{{ 'track-fitment-map.json' | asset_url }}">
     <p class="hi-fit__label">Confirm your machine <span class="hi-fit__req">required</span></p>
-    <script type="application/json" data-fit-data>[{%- if fits != blank -%}{%- for m in fits -%}{%- assign mk = m.make.value.name.value | default: '' -%}{%- assign md = m.display_name.value | default: m.system.handle -%}{%- unless forloop.first -%},{%- endunless -%}{"k":{{ mk | json }},"m":{{ md | json }}}{%- endfor -%}{%- endif -%}]</script>
+    <script type="application/json" data-fit-data>{%- render 'fitment-data', product: product, output: 'rows' -%}</script>
     <div class="hi-fit__row">
       <select name="properties[Machine Make]" class="hi-fit__select" data-fit-make required aria-label="Your machine make">
         <option value="">Select make…</option>
@@ -24,7 +36,7 @@
     {%- if tsz != blank -%}<input type="hidden" name="properties[Track Size]" value="{{ tsz | escape }}">{%- endif -%}
     <p class="hi-fit__ok" data-fit-ok hidden><svg viewBox="0 0 24 24" fill="none" stroke="#1f7a33" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span data-fit-ok-text>Fitment Verified!</span></p>
     <p class="hi-fit__error" data-fit-error hidden>Select or enter your machine make and model so we can confirm fit before shipping.</p>
-    <p class="hi-fit__hint">Not sure? <a href="/pages/contact" class="hi-fit__hint-link">Contact us</a> with your make, model &amp; serial and we'll find a solution for your needs.</p>
+    <p class="hi-fit__hint">Not sure? <button type="button" class="hi-fit__hint-link hi-fit__agent-link" data-hi-fit-agent>Find My Fit</button> or <a href="/pages/contact" class="hi-fit__hint-link">contact us</a> with your make, model &amp; serial.</p>
   </fitment-selector>
   <script src="{{ 'fitment-selector.js' | asset_url }}" defer></script>
 {%- endif -%}

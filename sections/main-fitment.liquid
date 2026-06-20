@@ -115,13 +115,30 @@
         <p class="hi-mf__sec-sub">Choose your tread pattern. OEM-spec, continuous steel cord, free freight.</p>
 
         <div class="hi-mf__cards">
+          {%- liquid
+            assign track_machine_label = model_name | split: ' Rubber Track' | first | split: ' Tracks' | first | strip
+            if track_machine_label == blank
+              assign track_machine_label = make_name
+            endif
+            assign track_card_title = track_machine_label | append: ' Tracks'
+          -%}
           {%- for product in model.track_products.value -%}
             {%- assign tsize = product.metafields.custom.track_size | default: track_size -%}
+            {%- assign tread = product.metafields.custom.tread.value | default: product.metafields.custom.tread -%}
             {%- for variant in product.variants -%}
               {%- assign vurl = product.url | append: '?variant=' | append: variant.id -%}
               {%- assign vimg = variant.featured_image | default: product.featured_image -%}
+              {%- liquid
+                assign track_type_label = tread
+                if track_type_label == blank and variant.title != blank and variant.title != 'Default Title'
+                  assign track_type_label = variant.title
+                endif
+                if track_type_label == blank
+                  assign track_type_label = 'Rubber Track'
+                endif
+              -%}
               {%- capture sub -%}{% if tsize != blank %}Size: {{ tsize }}{% endif %}{%- endcapture -%}
-              {%- render 'hi-product-card', url: vurl, title: variant.title, type_label: 'Rubber Track',
+              {%- render 'hi-product-card', url: vurl, title: track_card_title, type_label: track_type_label,
                   image: vimg, sub: sub, price: variant.price, compare_at: variant.compare_at_price, button: 'View Track' -%}
             {%- endfor -%}
           {%- endfor -%}

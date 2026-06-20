@@ -1,0 +1,145 @@
+{%- comment -%}
+  fitment-data.liquid — Single Shopify fitment source for PDP widgets.
+  Reads product.metafields.custom.fitments (fitment MO refs), falls back to compatible_with text.
+  Params:
+    - product (required)
+    - output: 'rows' (default) | 'grouped' — JSON shape for consumers
+{%- endcomment -%}
+{%- liquid
+  assign fitment_refs = product.metafields.custom.fitments.value
+  assign compatible_raw = product.metafields.custom.compatible_with.value
+  assign has_fitments = false
+  if fitment_refs != blank and fitment_refs.size > 0
+    assign has_fitments = true
+  endif
+  assign fit_output = output | default: 'rows'
+-%}
+{%- if fit_output == 'grouped' -%}
+  {%- if has_fitments -%}
+    {%- assign make_list = '' -%}
+    {%- for fitment in fitment_refs -%}
+      {%- assign make_mo = fitment.make.value -%}
+      {%- assign make_name = make_mo.name.value | default: make_mo.display_name.value | default: make_mo.name | default: '' -%}
+      {%- if make_name != blank -%}
+        {%- unless make_list contains make_name -%}
+          {%- if make_list != '' -%}{%- assign make_list = make_list | append: '||' -%}{%- endif -%}
+          {%- assign make_list = make_list | append: make_name -%}
+        {%- endunless -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- assign makes = make_list | split: '||' -%}
+    {
+    {%- for make in makes -%}
+      {%- unless forloop.first -%},{%- endunless -%}
+      {{ make | json }}:[
+      {%- assign first_model = true -%}
+      {%- for fitment in fitment_refs -%}
+        {%- assign fmake_mo = fitment.make.value -%}
+        {%- assign fmake = fmake_mo.name.value | default: fmake_mo.display_name.value | default: fmake_mo.name | default: '' -%}
+        {%- if fmake == make -%}
+          {%- assign model_mo = fitment.model.value -%}
+          {%- assign model_display = model_mo.display_name.value | default: model_mo.display_name | default: model_mo.system.handle -%}
+          {%- assign model_label = model_display | remove_first: make | remove_first: ' ' | strip -%}
+          {%- if model_label == blank -%}{%- assign model_label = model_display -%}{%- endif -%}
+          {%- assign model_url = model_mo.system.url | default: '' -%}
+          {%- assign model_handle = fitment.handle | default: model_mo.system.handle | default: '' -%}
+          {%- unless first_model -%},{%- endunless -%}
+          {"m":{{ model_label | json }},"h":{{ model_handle | json }},"u":{{ model_url | json }}}
+          {%- assign first_model = false -%}
+        {%- endif -%}
+      {%- endfor -%}
+      ]
+    {%- endfor -%}
+    }
+  {%- elsif compatible_raw != blank -%}
+    {%- assign machines = compatible_raw | newline_to_br | split: '<br />' -%}
+    {%- assign make_list = '' -%}
+    {%- assign MULTI = 'John Deere||New Holland||Ditch Witch||Wacker Neuson' -%}
+    {%- for machine in machines -%}
+      {%- assign trimmed = machine | strip | strip_html -%}
+      {%- if trimmed == blank -%}{%- continue -%}{%- endif -%}
+      {%- assign words = trimmed | split: ' ' -%}
+      {%- if words.size < 2 -%}{%- continue -%}{%- endif -%}
+      {%- assign first = words[0] -%}
+      {%- assign second = words[1] -%}
+      {%- if MULTI contains first -%}
+        {%- assign parsed_make = first | append: ' ' | append: second -%}
+      {%- else -%}
+        {%- assign parsed_make = first -%}
+      {%- endif -%}
+      {%- unless make_list contains parsed_make -%}
+        {%- if make_list != '' -%}{%- assign make_list = make_list | append: '||' -%}{%- endif -%}
+        {%- assign make_list = make_list | append: parsed_make -%}
+      {%- endunless -%}
+    {%- endfor -%}
+    {%- assign makes = make_list | split: '||' -%}
+    {
+    {%- for make in makes -%}
+      {%- assign prefix = make | append: ' ' -%}
+      {%- unless forloop.first -%},{%- endunless -%}
+      {{ make | json }}:[
+      {%- assign first_model = true -%}
+      {%- for machine in machines -%}
+        {%- assign trimmed = machine | strip | strip_html -%}
+        {%- if trimmed contains prefix -%}
+          {%- assign model_name = trimmed | remove_first: prefix | strip -%}
+          {%- if model_name != blank -%}
+            {%- unless first_model -%},{%- endunless -%}
+            {"m":{{ model_name | json }},"h":"","u":""}
+            {%- assign first_model = false -%}
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+      ]
+    {%- endfor -%}
+    }
+  {%- else -%}
+    {}
+  {%- endif -%}
+{%- else -%}
+  [
+  {%- if has_fitments -%}
+    {%- assign first_row = true -%}
+    {%- for fitment in fitment_refs -%}
+      {%- assign make_mo = fitment.make.value -%}
+      {%- assign mk_raw = make_mo.name.value | default: make_mo.display_name.value | default: make_mo.name | default: '' -%}
+      {%- assign mk = mk_raw -%}
+      {%- if mk == 'CAT' or mk == 'cat' -%}{%- assign mk = 'Cat' -%}{%- endif -%}
+      {%- assign model_mo = fitment.model.value -%}
+      {%- assign md_full = model_mo.display_name.value | default: model_mo.display_name | default: model_mo.system.handle -%}
+      {%- assign md = md_full | remove_first: mk | remove_first: ' ' | strip -%}
+      {%- if md == blank -%}{%- assign md = md_full -%}{%- endif -%}
+      {%- assign mu = model_mo.system.url | default: '' -%}
+      {%- if mk != blank and md != blank -%}
+        {%- unless first_row -%},{%- endunless -%}
+        {"k":{{ mk | json }},"m":{{ md | json }},"u":{{ mu | json }}}
+        {%- assign first_row = false -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- elsif compatible_raw != blank -%}
+    {%- assign machines = compatible_raw | newline_to_br | split: '<br />' -%}
+    {%- assign MULTI = 'John Deere||New Holland||Ditch Witch||Wacker Neuson' -%}
+    {%- assign first_row = true -%}
+    {%- for machine in machines -%}
+      {%- assign trimmed = machine | strip | strip_html -%}
+      {%- if trimmed == blank -%}{%- continue -%}{%- endif -%}
+      {%- assign words = trimmed | split: ' ' -%}
+      {%- if words.size < 2 -%}{%- continue -%}{%- endif -%}
+      {%- assign first = words[0] -%}
+      {%- assign second = words[1] -%}
+      {%- if MULTI contains first -%}
+        {%- assign mk = first | append: ' ' | append: second -%}
+        {%- assign md = trimmed | remove_first: mk | remove_first: ' ' | strip -%}
+      {%- else -%}
+        {%- assign mk = first -%}
+        {%- assign md = trimmed | remove_first: first | remove_first: ' ' | strip -%}
+      {%- endif -%}
+      {%- if mk != blank and md != blank -%}
+        {%- unless first_row -%},{%- endunless -%}
+        {"k":{{ mk | json }},"m":{{ md | json }},"u":""}
+        {%- assign first_row = false -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+  ]
+{%- endif -%}

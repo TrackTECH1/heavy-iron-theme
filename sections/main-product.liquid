@@ -264,7 +264,7 @@
                       {%- elsif tab_heading == 'Design Features' -%}
                         {% render 'track-design-features' %}
                       {%- elsif tab_heading == 'Compatible Machines' -%}
-                        {% render 'compatible-machines' %}
+                        {% render 'compatible-machines', product: product %}
                       {%- endif -%}
                       {{ block.settings.content }}
                       {{ block.settings.page.content }}
