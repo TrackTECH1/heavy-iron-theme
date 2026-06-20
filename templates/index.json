@@ -809,7 +809,7 @@
             "menu": "",
             "max_links": 8,
             "link_1_text": "Track Finder",
-            "link_1_url": "/pages/track-finder",
+            "link_1_url": "shopify://pages/track-finder",
             "link_2_text": "Warranty Info",
             "link_2_url": "shopify://pages/warranty",
             "link_3_text": "Shipping & Delivery",
