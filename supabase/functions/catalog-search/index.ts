@@ -76,7 +76,69 @@ function resolveShopifyHandle(
   if (!tread || !digits) return null;
   const shopifyHandle = variantByKey.get(`${digits}::${tread}`);
   if (!shopifyHandle) return null;
-  return trackByHandle.has(shopifyHandle) ? shopifyHandle : shopifyHandle;
+  return shopifyHandle;
+}
+
+async function shopifyGql(
+  shop: string,
+  token: string,
+  apiVersion: string,
+  query: string,
+  variables: Record<string, unknown> = {},
+) {
+  const r = await fetch(`https://${shop}/admin/api/${apiVersion}/graphql.json`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Shopify-Access-Token": token,
+    },
+    body: JSON.stringify({ query, variables }),
+  });
+  const data = await r.json();
+  if (!r.ok) throw new Error(`Shopify HTTP ${r.status}`);
+  return data;
+}
+
+async function shopifyHandleFromProductGid(
+  gid: string,
+  shop: string,
+  token: string,
+  apiVersion: string,
+): Promise<string | null> {
+  const data = await shopifyGql(
+    shop,
+    token,
+    apiVersion,
+    "query ProductHandle($id: ID!) { product(id: $id) { handle } }",
+    { id: gid },
+  );
+  return data?.data?.product?.handle ?? null;
+}
+
+async function shopifySearchHandle(
+  digits: string,
+  treadPattern: string,
+  shop: string,
+  token: string,
+  apiVersion: string,
+): Promise<string | null> {
+  if (!digits) return null;
+  const tread = TREAD_TO_SHOPIFY[treadPattern] || "";
+  const data = await shopifyGql(
+    shop,
+    token,
+    apiVersion,
+    "query Search($q: String!) { products(first: 6, query: $q) { nodes { handle title } } }",
+    { q: `title:*${digits}*` },
+  );
+  const nodes: { handle: string; title: string }[] = data?.data?.products?.nodes || [];
+  for (const n of nodes) {
+    const blob = `${n.handle} ${n.title}`.toLowerCase();
+    if (!blob.replace(/[^0-9]/g, "").includes(digits)) continue;
+    if (tread && !blob.includes(tread.replace("-", " ")) && !blob.includes(tread)) continue;
+    return n.handle;
+  }
+  return nodes[0]?.handle ?? null;
 }
 
 Deno.serve(async (req) => {
@@ -126,11 +188,35 @@ Deno.serve(async (req) => {
       if (row.product_id) gidToHandle.set(row.product_id, row.handle);
     }
 
-    const results = hits.map((hit) => {
+    const results = await Promise.all(hits.map(async (hit) => {
       const product = productById.get(hit.id);
-      const shopifyHandle = resolveShopifyHandle(product, variantByKey, trackByHandle, gidToHandle);
+      let shopifyHandle = resolveShopifyHandle(product, variantByKey, trackByHandle, gidToHandle);
       const trackSize = hit.track_size || product?.track_size || "";
       const tread = hit.tread_pattern || product?.tread_pattern || "";
+      const shop = Deno.env.get("SHOPIFY_STORE_DOMAIN");
+      const token = Deno.env.get("SHOPIFY_ADMIN_TOKEN");
+      const apiVersion = Deno.env.get("SHOPIFY_API_VERSION") || "2025-10";
+
+      if (!shopifyHandle && shop && token) {
+        if (product?.shopify_product_id) {
+          shopifyHandle = await shopifyHandleFromProductGid(
+            product.shopify_product_id,
+            shop,
+            token,
+            apiVersion,
+          );
+        }
+        if (!shopifyHandle) {
+          shopifyHandle = await shopifySearchHandle(
+            sizeDigitsFromTrackSize(trackSize),
+            tread,
+            shop,
+            token,
+            apiVersion,
+          );
+        }
+      }
+
       const label = [trackSize, tread].filter(Boolean).join(" · ");
       return {
         id: hit.id,
@@ -142,7 +228,7 @@ Deno.serve(async (req) => {
         shopify_handle: shopifyHandle,
         url: shopifyHandle ? `/products/${shopifyHandle}` : null,
       };
-    });
+    }));
 
     return json({ query: q, results });
   } catch (e) {

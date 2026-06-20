@@ -67,18 +67,22 @@
     );
   }
 
+  function searchFallbackUrl(r) {
+    var q = [r.track_size, r.tread_pattern].filter(Boolean).join(' ');
+    if (!q) q = r.label || '';
+    return '/search?q=' + encodeURIComponent(q.trim());
+  }
+
   function renderSemanticBlock(results) {
     if (!results || !results.length) return '';
 
     var items = results.slice(0, 6).map(function (r) {
-      var href = r.url || (r.shopify_handle ? '/products/' + r.shopify_handle : '');
+      var href = r.url || (r.shopify_handle ? '/products/' + r.shopify_handle : searchFallbackUrl(r));
       var price = formatPrice(r.price);
       var score = r.similarity != null ? Math.round(r.similarity * 100) + '% match' : '';
       var meta = [price, score].filter(Boolean).join(' · ');
       var inner = esc(r.label || r.track_size || 'Track');
-      if (href) {
-        inner = '<a class="hi-smart-search__product-link" href="' + esc(href) + '">' + inner + '</a>';
-      }
+      inner = '<a class="hi-smart-search__product-link" href="' + esc(href) + '">' + inner + '</a>';
       return (
         '<li class="hi-smart-search__product">' +
           inner +
@@ -89,7 +93,7 @@
 
     return (
       '<div class="hi-smart-search__block hi-smart-search__block--semantic">' +
-        '<p class="hi-smart-search__eyebrow">AI product matches</p>' +
+        '<p class="hi-smart-search__eyebrow">Smart catalog matches</p>' +
         '<ul class="hi-smart-search__products">' + items + '</ul>' +
       '</div>'
     );

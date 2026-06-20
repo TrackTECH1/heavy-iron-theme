@@ -398,66 +398,6 @@
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
   
-<!-- HEAVY IRON FITMENT AGENT (injected) -->
-<div id="hi-agent-btn">🔧 Find My Fit</div>
-<div id="hi-agent-panel" style="display:none">
-  <div id="hi-agent-head">Equipment Fitment Assistant <span id="hi-agent-x">×</span></div>
-  <div id="hi-agent-body">
-    <p style="margin:0 0 8px;font-size:13px;color:#555">Enter your machine — I'll show the tracks, undercarriage, and attachments that fit.</p>
-    <div style="display:flex;gap:6px">
-      <input id="hi-agent-input" placeholder="e.g. Bobcat T650" />
-      <button id="hi-agent-go">Go</button>
-    </div>
-    <div id="hi-agent-out"></div>
-  </div>
-</div>
-<style>
-  #hi-agent-btn{position:fixed;bottom:20px;right:20px;background:#f5a623;color:#111;font-weight:700;padding:12px 18px;border-radius:30px;cursor:pointer;z-index:99998;box-shadow:0 4px 14px rgba(0,0,0,.25);font-family:system-ui,sans-serif}
-  #hi-agent-panel{position:fixed;bottom:20px;right:20px;width:360px;max-width:92vw;max-height:80vh;background:#fff;border-radius:12px;z-index:99999;box-shadow:0 10px 40px rgba(0,0,0,.3);overflow:hidden;display:flex;flex-direction:column;font-family:system-ui,sans-serif}
-  #hi-agent-head{background:#111;color:#fff;padding:12px 14px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
-  #hi-agent-x{cursor:pointer;font-size:20px;line-height:1}
-  #hi-agent-body{padding:14px;overflow-y:auto}
-  #hi-agent-input{flex:1;padding:9px;border:1px solid #ccc;border-radius:6px;font-size:14px}
-  #hi-agent-go{background:#111;color:#fff;border:0;border-radius:6px;padding:9px 14px;font-weight:700;cursor:pointer}
-  #hi-agent-out{margin-top:12px;font-size:13px;color:#222}
-  #hi-agent-out .hi-machine{font-weight:800;font-size:15px;margin-bottom:4px}
-  #hi-agent-out .hi-sub{margin-top:8px;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#f5a623}
-  #hi-agent-out .row{padding:4px 0;border-bottom:1px solid #f0f0f0}
-  #hi-agent-out .hi-note{margin:8px 0;color:#555}
-  #hi-agent-out .hi-cta{display:block;text-align:center;background:#f5a623;color:#111;font-weight:700;padding:11px;border-radius:8px;text-decoration:none;margin-top:10px}
-</style>
-<script>
-(function(){
-  var EP="https://tcykyktvdlsbscrsbjyt.supabase.co/functions/v1/store-agent";
-  var sid="hi-"+Math.random().toString(36).slice(2);
-  var btn=document.getElementById("hi-agent-btn"),panel=document.getElementById("hi-agent-panel"),
-      out=document.getElementById("hi-agent-out"),inp=document.getElementById("hi-agent-input");
-  btn.onclick=function(){btn.style.display="none";panel.style.display="flex";inp.focus();};
-  document.getElementById("hi-agent-x").onclick=function(){panel.style.display="none";btn.style.display="block";};
-  function esc(s){return (s||"").replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
-  function ask(){
-    var q=inp.value.trim(); if(!q){return;}
-    out.innerHTML="<p>Looking up <b>"+esc(q)+"</b>…</p>";
-    fetch(EP,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({make:q,model:"",question:q,session:sid})})
-    .then(function(r){return r.json();}).then(function(d){
-      if(!d||!d.found){out.innerHTML="<p>We don't have <b>"+esc(q)+"</b> in the catalog yet.</p><a class='hi-cta' href='/pages/quote'>Request a quote →</a>";return;}
-      var h="<div class='hi-machine'>"+esc(d.machine)+"</div>";
-      if(d.track_sizes&&d.track_sizes.length){h+="<div class='hi-sub'>Tracks that fit</div>";
-        d.track_sizes.forEach(function(s){h+="<div class='row'><b>"+esc(s.size)+"</b> — "+(s.treads||[]).map(esc).join(", ")+"</div>";});}
-      if(d.undercarriage&&d.undercarriage.length){h+="<div class='hi-sub'>Undercarriage that fits</div>";d.undercarriage.forEach(function(u){h+="<div class='row'>"+esc(u.part_type)+" <span style='color:#999'>x"+u.count+"</span></div>";});}
-      var na=(d.attachment_categories||[]).length;
-      h+="<div class='hi-note'>"+(na?na+" attachment categories also fit this machine.":"")+"</div>";
-      if(d.page_url){h+="<a class='hi-cta' href='"+esc(d.page_url.replace(/^https?:\\/\\/heavyironsupply\\.com\\/model\\//,'/pages/model/'))+"'>See everything that fits your "+esc(d.machine)+" →</a>";}
-      out.innerHTML=h;
-    }).catch(function(){out.innerHTML="<p>Something went wrong — please try again.</p>";});
-  }
-  document.getElementById("hi-agent-go").onclick=ask;
-  inp.addEventListener("keydown",function(e){if(e.key==="Enter")ask();});
-  document.querySelectorAll("[data-hi-fit-agent]").forEach(function(el){
-    el.addEventListener("click",function(e){e.preventDefault();btn.style.display="none";panel.style.display="flex";inp.focus();});
-  });
-})();
-</script>
-<!-- /HEAVY IRON FITMENT AGENT -->
+    {%- render 'hi-find-my-fit' -%}
   </body>
 </html>
