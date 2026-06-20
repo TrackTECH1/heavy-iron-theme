@@ -1,0 +1,31 @@
+{
+  "metaobject_definition": {
+    "name": "Fitment",
+    "type": "fitment",
+    "description": "Equipment make + model fitment for a product",
+    "shopify_gid": "gid://shopify/MetaobjectDefinition/16813654303",
+    "fieldDefinitions": [
+      {
+        "name": "Make",
+        "key": "make",
+        "type": "metaobject_reference",
+        "validations": [{ "name": "metaobject_definition_type", "value": "make" }]
+      },
+      {
+        "name": "Model",
+        "key": "model",
+        "type": "metaobject_reference",
+        "validations": [{ "name": "metaobject_definition_type", "value": "model" }]
+      }
+    ]
+  },
+  "product_metafield_definition": {
+    "namespace": "custom",
+    "key": "fitments",
+    "name": "Fitments",
+    "type": "list.metaobject_reference",
+    "shopify_gid": "gid://shopify/MetafieldDefinition/190873436447",
+    "validations": [{ "name": "metaobject_definition_type", "value": "fitment" }]
+  },
+  "bootstrap": "POST https://tcykyktvdlsbscrsbjyt.supabase.co/functions/v1/setup-shopify-fitment-def"
+}

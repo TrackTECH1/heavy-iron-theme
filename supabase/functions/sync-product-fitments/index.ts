@@ -4,7 +4,7 @@ import { createClient } from "jsr:@supabase/supabase-js@2";
 /**
  * sync-product-fitments — Publish Supabase fitment rows → Shopify product custom.fitments
  *
- * POST { dry_run?: boolean (default true), limit?: number (max 50), handle?: string }
+ * POST { dry_run?: boolean (default true), limit?: number (max 50), offset?: number, handle?: string }
  * Headers: x-sync-key (optional, matches SYNC_API_KEY secret)
  *
  * Requires Supabase secrets: SHOPIFY_STORE_DOMAIN, SHOPIFY_ADMIN_TOKEN
@@ -196,6 +196,7 @@ Deno.serve(async (req) => {
     const body = await req.json().catch(() => ({}));
     const dryRun = body.dry_run !== false;
     const limit = Math.min(Number(body.limit || 10), 50);
+    const offset = Math.max(Number(body.offset || 0), 0);
     const handleFilter = body.handle ? String(body.handle) : null;
 
     const shop = Deno.env.get("SHOPIFY_STORE_DOMAIN");
@@ -263,7 +264,8 @@ Deno.serve(async (req) => {
       byProduct.get(row.shopify_product_id)!.push(row);
     }
 
-    const productIds = [...byProduct.keys()].slice(0, limit);
+    const allProductIds = [...byProduct.keys()];
+    const productIds = allProductIds.slice(offset, offset + limit);
     const results: Record<string, unknown>[] = [];
 
     for (const productGid of productIds) {
@@ -322,6 +324,9 @@ Deno.serve(async (req) => {
     return json({
       dry_run: dryRun,
       products_in_catalog: byProduct.size,
+      offset,
+      limit,
+      remaining: Math.max(allProductIds.length - offset - results.length, 0),
       processed: results.length,
       results,
     });
