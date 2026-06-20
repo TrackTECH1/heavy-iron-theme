@@ -1,7 +1,8 @@
 {% comment %} Header mega menu — TRACKS panel lazy-builds brand model grids on hover (light DOM). {% endcomment %}
 <nav class="header__inline-menu">
   <ul class="list-menu list-menu--inline" role="list">
-    {%- assign brand_order = "bobcat,cat,takeuchi,kubota,john-deere,case,new-holland,jcb,asv,yanmar,gehl,wacker-neuson,volvo,ditch-witch,hitachi,komatsu,develon,kobelco,mustang,hyundai,toro,terex,vermeer,sany,manitou,kioti,ihi" | split: "," -%}
+    {%- capture hx_brand_order_raw -%}{%- render 'tracks-brand-order' -%}{%- endcapture -%}
+    {%- assign brand_order = hx_brand_order_raw | strip | split: ',' -%}
     {%- for link in section.settings.menu.links -%}
       <li>
         {%- if link.links != blank -%}

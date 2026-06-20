@@ -75,7 +75,7 @@
           "settings": {
             "heading": "Warranty & Shipping",
             "icon": "check_mark",
-            "content": "<p><strong>24-Month Warranty</strong> — Full manufacturer coverage on materials and workmanship.</p><p><strong>Same-Day Shipping</strong> — Order by 12pm CT and ships same business day. Free freight to the contiguous US. 1–3 day delivery nationwide.</p><p><strong>Returns</strong> — 30-day return policy on unused tracks in original packaging.</p>",
+            "content": "<p><strong>12-Month Limited Warranty</strong> — CID manufacturer coverage on defects in materials and workmanship for 12 months from purchase. Wear items such as blades, hoses, teeth, cutting edges, and ground-engaging parts are not covered.</p><p><strong>Same-Day Shipping</strong> — Order by 12pm CT and ships same business day. Free freight to the contiguous US. 1–3 day delivery nationwide.</p><p><strong>Returns</strong> — Contact us for return eligibility on unused attachments in original packaging.</p>",
             "page": ""
           }
         },
@@ -165,8 +165,8 @@
         "feature_yKE4nJ": {
           "type": "feature",
           "settings": {
-            "title": "24-Month Warranty",
-            "desc": "Full manufacturer warranty on materials and workmanship. Not prorated."
+            "title": "12-Month Limited Warranty",
+            "desc": "CID manufacturer coverage on defects in materials and workmanship. Wear items not covered."
           }
         }
       },

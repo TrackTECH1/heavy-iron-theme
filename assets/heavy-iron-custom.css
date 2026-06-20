@@ -58,6 +58,37 @@ h1, h2, h3, h4, h5, h6,
   font-size: 1.4rem;
 }
 
+.track-specs__label--feature {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 1.25rem;
+  color: rgb(var(--color-foreground));
+  vertical-align: top;
+}
+
+.track-design-features .track-specs__value {
+  font-weight: 500;
+  line-height: 1.5;
+  vertical-align: top;
+}
+
+@media screen and (max-width: 749px) {
+  .track-design-features .track-specs__label--feature,
+  .track-design-features .track-specs__value {
+    display: block;
+    width: 100%;
+  }
+
+  .track-design-features .track-specs__label--feature {
+    padding-bottom: 0.4rem;
+  }
+
+  .track-design-features .track-specs__value {
+    padding-top: 0;
+    padding-bottom: 1.2rem;
+  }
+}
+
 /* ═══════════════════════════════════════════
    COMPATIBLE MACHINES — Grouped Brand Dropdowns
    ═══════════════════════════════════════════ */
@@ -462,6 +493,40 @@ h1, h2, h3, h4, h5, h6,
 
 .hx-nav__cta:hover {
   opacity: 0.8;
+}
+
+/* Tracks drawer — brand/model drill-down (mobile) */
+.hx-drawer__brand-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.hx-drawer__brand-summary > span:first-child {
+  flex: 1;
+  min-width: 0;
+}
+
+.hx-drawer__brand-count {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: rgba(var(--color-foreground), 0.35);
+  margin-right: 2.4rem;
+}
+
+.hx-drawer__brand-all,
+.hx-drawer__view-all {
+  color: #FFB607 !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 1.5rem !important;
+}
+
+.hx-drawer__view-all {
+  border-top: 1px solid rgba(var(--color-foreground), 0.08);
+  margin-top: 0.4rem;
+  padding-top: 1.4rem !important;
 }
 
 /* Heavy Iron — compact OEM product title (was oversized .h1) */

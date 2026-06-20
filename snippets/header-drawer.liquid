@@ -1,9 +1,9 @@
 {% comment %}
   Renders a header drawer menu for mobile and desktop.
-
-  Usage:
-  {% render 'header-drawer' %}
+  Tracks submenu uses make/model metaobjects (same data as desktop mega menu).
 {% endcomment %}
+{%- capture hx_brand_order_raw -%}{%- render 'tracks-brand-order' -%}{%- endcapture -%}
+{%- assign hx_brand_order = hx_brand_order_raw | strip | split: ',' -%}
 
 <header-drawer data-breakpoint="{% if section.settings.menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}">
   <details id="Details-menu-drawer-container" class="menu-drawer-container">
@@ -23,7 +23,7 @@
             <ul class="menu-drawer__menu has-submenu list-menu" role="list">
               {%- for link in section.settings.menu.links -%}
                 <li>
-                  {%- if link.links != blank -%}
+                  {%- if link.links != blank or link.handle == 'tracks' -%}
                     <details id="Details-menu-drawer-menu-item-{{ forloop.index }}">
                       <summary
                         id="HeaderDrawer-{{ link.handle }}"
@@ -50,6 +50,75 @@
                             {{ link.title | escape }}
                           </button>
                           <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                            {%- if link.handle == 'tracks' -%}
+                              {%- for h in hx_brand_order -%}
+                                {%- assign mk = metaobjects.make[h] -%}
+                                {%- if mk != blank and mk.models.value.size > 0 -%}
+                                  {%- assign brand_name = mk.name.value | default: h | replace: '-', ' ' | capitalize -%}
+                                  <li>
+                                    <details id="Details-menu-drawer-{{ link.handle }}-{{ h }}">
+                                      <summary
+                                        id="HeaderDrawer-{{ link.handle }}-{{ h }}"
+                                        class="menu-drawer__menu-item link link--text list-menu__item focus-inset hx-drawer__brand-summary"
+                                      >
+                                        <span>{{ brand_name }}</span>
+                                        <span class="hx-drawer__brand-count">{{ mk.models.value.size }}</span>
+                                        <span class="svg-wrapper">
+                                          {{- 'icon-arrow.svg' | inline_asset_content -}}
+                                        </span>
+                                        <span class="svg-wrapper">
+                                          {{- 'icon-caret.svg' | inline_asset_content -}}
+                                        </span>
+                                      </summary>
+                                      <div
+                                        id="childlink-{{ link.handle }}-{{ h }}"
+                                        class="menu-drawer__submenu has-submenu gradient motion-reduce"
+                                      >
+                                        <button
+                                          class="menu-drawer__close-button link link--text focus-inset"
+                                          aria-expanded="true"
+                                        >
+                                          <span class="svg-wrapper">
+                                            {{- 'icon-arrow.svg' | inline_asset_content -}}
+                                          </span>
+                                          {{ brand_name }}
+                                        </button>
+                                        <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                                          {%- for md in mk.models.value -%}
+                                            {%- assign model_title = md.display_name.value | default: md.system.handle | split: ' Rubber Track' | first | strip -%}
+                                            <li>
+                                              <a
+                                                id="HeaderDrawer-{{ link.handle }}-{{ h }}-{{ md.system.handle }}"
+                                                href="{{ md.system.url }}"
+                                                class="menu-drawer__menu-item link link--text list-menu__item focus-inset"
+                                              >
+                                                {{ model_title | escape }}
+                                              </a>
+                                            </li>
+                                          {%- endfor -%}
+                                          <li>
+                                            <a
+                                              href="{{ mk.system.url }}"
+                                              class="menu-drawer__menu-item link link--text list-menu__item focus-inset hx-drawer__brand-all"
+                                            >
+                                              All {{ brand_name }} Tracks &rarr;
+                                            </a>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </details>
+                                  </li>
+                                {%- endif -%}
+                              {%- endfor -%}
+                              <li>
+                                <a
+                                  href="/collections/rubber-tracks"
+                                  class="menu-drawer__menu-item link link--text list-menu__item focus-inset hx-drawer__view-all"
+                                >
+                                  View All Tracks &rarr;
+                                </a>
+                              </li>
+                            {%- else -%}
                             {%- for childlink in link.links -%}
                               <li>
                                 {%- if childlink.links == blank -%}
@@ -115,6 +184,7 @@
                                 {%- endif -%}
                               </li>
                             {%- endfor -%}
+                            {%- endif -%}
                           </ul>
                         </div>
                       </div>

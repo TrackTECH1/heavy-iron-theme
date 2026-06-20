@@ -61,6 +61,15 @@
             "page": ""
           }
         },
+        "design_features_tab": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Design Features",
+            "icon": "star",
+            "content": "",
+            "page": ""
+          }
+        },
         "compatibility_tab": {
           "type": "collapsible_tab",
           "settings": {
@@ -99,6 +108,7 @@
         "quantity",
         "buy_buttons",
         "specs_tab",
+        "design_features_tab",
         "compatibility_tab",
         "warranty_tab",
         "description",

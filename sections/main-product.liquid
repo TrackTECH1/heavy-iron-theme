@@ -85,6 +85,28 @@
         >
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
+          {%- liquid
+            assign hi_track_size = product.metafields.custom.track_size.value
+            assign hi_part_type = product.metafields.custom.part_type.value | downcase
+            assign hi_product_type = product.type | downcase
+
+            assign hi_is_track_product = false
+            if hi_track_size != blank
+              assign hi_is_track_product = true
+            elsif hi_product_type contains 'track' or hi_product_type contains 'rubber'
+              assign hi_is_track_product = true
+            elsif hi_part_type contains 'track' or hi_part_type contains 'rubber'
+              assign hi_is_track_product = true
+            endif
+
+            assign hi_is_undercarriage_product = false
+            if hi_part_type contains 'undercarriage' or hi_part_type contains 'sprocket' or hi_part_type contains 'roller' or hi_part_type contains 'idler'
+              assign hi_is_undercarriage_product = true
+            elsif hi_product_type contains 'undercarriage' or hi_product_type contains 'sprocket' or hi_product_type contains 'roller' or hi_product_type contains 'idler'
+              assign hi_is_undercarriage_product = true
+            endif
+          -%}
+
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when '@app' -%}
@@ -210,21 +232,38 @@
               {%- when 'custom_liquid' -%}
                 {{ block.settings.custom_liquid }}
               {%- when 'collapsible_tab' -%}
+                {%- assign tab_heading = block.settings.heading | default: block.settings.page.title -%}
+                {%- liquid
+                  assign show_tab = true
+                  assign tab_heading_lower = tab_heading | downcase
+                  if tab_heading == 'Track Specifications' or tab_heading == 'Compatible Machines' or tab_heading == 'Design Features'
+                    unless hi_is_track_product
+                      assign show_tab = false
+                    endunless
+                  elsif tab_heading_lower contains 'warranty' and tab_heading_lower contains 'shipping'
+                    unless hi_is_track_product
+                      assign show_tab = false
+                    endunless
+                  endif
+                -%}
+                {%- if show_tab -%}
                 <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
                   <details id="Details-{{ block.id }}-{{ section.id }}">
                     <summary>
                       <div class="summary__title">
                         {% render 'icon-accordion', icon: block.settings.icon %}
                         <h2 class="h4 accordion__title inline-richtext">
-                          {{ block.settings.heading | default: block.settings.page.title | escape }}
+                          {{ tab_heading | escape }}
                         </h2>
                       </div>
                       {{- 'icon-caret.svg' | inline_asset_content -}}
                     </summary>
                     <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
-                      {%- if block.settings.heading == 'Track Specifications' -%}
+                      {%- if tab_heading == 'Track Specifications' -%}
                         {% render 'track-specifications' %}
-                      {%- elsif block.settings.heading == 'Compatible Machines' -%}
+                      {%- elsif tab_heading == 'Design Features' -%}
+                        {% render 'track-design-features' %}
+                      {%- elsif tab_heading == 'Compatible Machines' -%}
                         {% render 'compatible-machines' %}
                       {%- endif -%}
                       {{ block.settings.content }}
@@ -232,6 +271,7 @@
                     </div>
                   </details>
                 </div>
+                {%- endif -%}
               {%- when 'quantity_selector' -%}
                 <div
                   id="Quantity-Form-{{ section.id }}"

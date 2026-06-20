@@ -27,50 +27,51 @@
 <div class="hi-mf">
   <div class="hi-mf__wrap">
 
-    {%- comment -%} HEADER {%- endcomment -%}
-    <div class="hi-mf__head">
-      <nav aria-label="Breadcrumb">
-        <ol class="hi-mf__crumbs">
-          <li><a href="{{ routes.root_url }}">Home</a></li>
+    {%- comment -%} HEADER + HERO {%- endcomment -%}
+    <nav class="hi-mf__crumbs-wrap" aria-label="Breadcrumb">
+      <ol class="hi-mf__crumbs">
+        <li><a href="{{ routes.root_url }}">Home</a></li>
+        <li class="hi-mf__crumb-sep">/</li>
+        <li><a href="/collections/rubber-tracks">Tracks</a></li>
+        {%- if make_name != blank -%}
           <li class="hi-mf__crumb-sep">/</li>
-          <li><a href="/collections/rubber-tracks">Tracks</a></li>
-          {%- if make_name != blank -%}
-            <li class="hi-mf__crumb-sep">/</li>
-            <li><a href="{{ make_url }}">{{ make_name }}</a></li>
-          {%- endif -%}
-          <li class="hi-mf__crumb-sep">/</li>
-          <li class="hi-mf__crumb-current">{{ model_name }}</li>
-        </ol>
-      </nav>
-
-      <p class="hi-mf__eyebrow">{{ machine_name }}</p>
-      <h1 class="hi-mf__title">{{ model_name }}</h1>
-      {%- if track_size != blank -%}<span class="hi-mf__size">Fits track size: {{ track_size }}</span>{%- endif -%}
-      <p class="hi-mf__intro">
-        Rubber tracks, steel undercarriage parts, and contractor-grade attachments for the
-        {{ model_name }}. OEM-cross-referenced, drop-in fit{% if track_size != blank %}, sized {{ track_size }}{% endif %}.
-        Not sure which part fits? Call and we’ll confirm by serial number.
-      </p>
-
-      {%- if section.settings.show_trust_bar -%}
-        <div class="hi-mf__trust">
-          <span><b>✓</b> 24-Month Warranty</span>
-          <span><b>✓</b> Free Freight</span>
-          <span><b>✓</b> Same-Day Shipping</span>
-          <span><b>✓</b> Technicians by Trade</span>
-        </div>
-      {%- endif -%}
-    </div>
-
-    {%- comment -%} HERO {%- endcomment -%}
-    <div class="hi-mf__hero">
-      <div class="hi-mf__hero-box">
-        {%- if hero_img -%}
-          <img class="hi-mf__hero-img" src="{{ hero_img | image_url: width: 1100 }}"
-               alt="{{ model_name | escape }} rubber tracks and parts" width="1100" height="620" loading="eager" fetchpriority="high">
-        {%- else -%}
-          <div class="hi-mf__noimg">No Image Available</div>
+          <li><a href="{{ make_url }}">{{ make_name }}</a></li>
         {%- endif -%}
+        <li class="hi-mf__crumb-sep">/</li>
+        <li class="hi-mf__crumb-current">{{ model_name }}</li>
+      </ol>
+    </nav>
+
+    <div class="hi-mf__hero-band">
+      <div class="hi-mf__head">
+        <p class="hi-mf__eyebrow">{{ machine_name }}</p>
+        <h1 class="hi-mf__title">{{ model_name }}</h1>
+        {%- if track_size != blank -%}<span class="hi-mf__size">Fits track size: {{ track_size }}</span>{%- endif -%}
+        <p class="hi-mf__intro">
+          Rubber tracks, steel undercarriage parts, and contractor-grade attachments for the
+          {{ model_name }}. OEM-cross-referenced, drop-in fit{% if track_size != blank %}, sized {{ track_size }}{% endif %}.
+          Not sure which part fits? Call and we’ll confirm by serial number.
+        </p>
+
+        {%- if section.settings.show_trust_bar -%}
+          <div class="hi-mf__trust">
+            <span><b>✓</b> 24-Month Warranty</span>
+            <span><b>✓</b> Free Freight</span>
+            <span><b>✓</b> Same-Day Shipping</span>
+            <span><b>✓</b> Technicians by Trade</span>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="hi-mf__hero">
+        <div class="hi-mf__hero-box">
+          {%- if hero_img -%}
+            <img class="hi-mf__hero-img" src="{{ hero_img | image_url: width: 880 }}"
+                 alt="{{ model_name | escape }} rubber tracks and parts" width="880" height="495" loading="eager" fetchpriority="high">
+          {%- else -%}
+            <div class="hi-mf__noimg">No Image Available</div>
+          {%- endif -%}
+        </div>
       </div>
     </div>
 
@@ -107,31 +108,26 @@
       </div>
     {%- endif -%}
 
-    {%- comment -%} RUBBER TRACKS — one block per fitting size; tread variants 4-up {%- endcomment -%}
+    {%- comment -%} RUBBER TRACKS {%- endcomment -%}
     {%- if model.track_products.value != blank -%}
       <section class="hi-mf__sec" id="tracks">
         <h2 class="hi-mf__sec-h">Rubber Tracks</h2>
         <p class="hi-mf__sec-sub">Choose your tread pattern. OEM-spec, continuous steel cord, free freight.</p>
 
-        {%- for product in model.track_products.value -%}
-          {%- assign tsize = product.metafields.custom.track_size | default: track_size -%}
-          <div class="hi-mf__sizeblock">
-            {%- if tsize != blank -%}
-              <div class="hi-mf__sizeblock-h"><b>{{ tsize }}</b><span>{{ product.variants.size }} tread option{% if product.variants.size != 1 %}s{% endif %}</span></div>
-            {%- endif -%}
+        <div class="hi-mf__cards">
+          {%- for product in model.track_products.value -%}
+            {%- assign tsize = product.metafields.custom.track_size | default: track_size -%}
+            {%- for variant in product.variants -%}
+              {%- assign vurl = product.url | append: '?variant=' | append: variant.id -%}
+              {%- assign vimg = variant.featured_image | default: product.featured_image -%}
+              {%- capture sub -%}{% if tsize != blank %}Size: {{ tsize }}{% endif %}{%- endcapture -%}
+              {%- render 'hi-product-card', url: vurl, title: variant.title, type_label: 'Rubber Track',
+                  image: vimg, sub: sub, price: variant.price, compare_at: variant.compare_at_price, button: 'View Track' -%}
+            {%- endfor -%}
+          {%- endfor -%}
+        </div>
 
-            <div class="hi-mf__treads">
-              {%- for variant in product.variants -%}
-                {%- assign vurl = product.url | append: '?variant=' | append: variant.id -%}
-                {%- assign vimg = variant.featured_image | default: product.featured_image -%}
-                {%- render 'hi-product-card', url: vurl, title: variant.title, type_label: 'Tread Pattern',
-                    image: vimg, price: variant.price, compare_at: variant.compare_at_price, button: 'Select Tread' -%}
-              {%- endfor -%}
-            </div>
-
-            <a class="hi-mf__shopall" href="{{ product.url }}">Shop all {{ tsize | default: 'this size' }} treads →</a>
-          </div>
-        {%- endfor -%}
+        <a class="hi-mf__shopall" href="/collections/rubber-tracks">Shop all rubber tracks &rarr;</a>
       </section>
     {%- endif -%}
 
@@ -140,7 +136,7 @@
       <section class="hi-mf__sec" id="undercarriage">
         <h2 class="hi-mf__sec-h">Steel Undercarriage</h2>
         <p class="hi-mf__sec-sub">OEM-cross-referenced sprockets, idlers &amp; rollers. Drop-in fit.</p>
-        <div class="hi-mf__grid">
+        <div class="hi-mf__cards">
           {%- if model.uc_products.value != blank -%}
             {%- for product in model.uc_products.value -%}
               {%- assign pn = product.metafields.custom.oem_part_number -%}
@@ -168,7 +164,7 @@
       <p class="hi-mf__sec-sub">{% if model.mount_type.value != blank %}{{ model.mount_type.value }} mount. {% endif %}Buckets, grapples, forks, brush cutters &amp; more — matched to your machine.</p>
 
       {%- if model.featured_attachments.value != blank -%}
-        <div class="hi-mf__treads">
+        <div class="hi-mf__cards">
           {%- for product in model.featured_attachments.value limit: 4 -%}
             {%- render 'hi-product-card', url: product.url, title: product.title, type_label: 'Attachment',
                 image: product.featured_image, price: product.price, button: 'View Attachment' -%}

@@ -1,8 +1,77 @@
 {%- comment -%}
   Tech Specs — "Why Us" split section
   Dark bg, feature list with icons, cutaway image
-  Heavy Iron Supply Co
+  Heavy Iron Supply Co — copy adapts on product pages (tracks vs attachments vs undercarriage)
 {%- endcomment -%}
+
+{%- liquid
+  assign tspec_eyebrow = section.settings.eyebrow
+  assign tspec_headline = section.settings.headline
+  assign tspec_subtext = section.settings.subtext
+  assign tspec_cta_text = section.settings.cta_text
+  assign tspec_cta_url = section.settings.cta_url
+  assign tspec_image = section.settings.image
+  assign tspec_use_blocks = true
+  assign tspec_placeholder = 'Track cutaway image'
+  assign hi_is_attachment = false
+  assign hi_is_undercarriage = false
+  assign hi_is_track = true
+
+  if product
+    assign hi_track_size = product.metafields.custom.track_size.value
+    assign hi_part_type = product.metafields.custom.part_type.value | downcase
+    assign hi_product_type = product.type | downcase
+
+    assign hi_is_track = false
+    if hi_track_size != blank
+      assign hi_is_track = true
+    elsif hi_product_type contains 'track' or hi_product_type contains 'rubber'
+      assign hi_is_track = true
+    elsif hi_part_type contains 'track' or hi_part_type contains 'rubber'
+      assign hi_is_track = true
+    endif
+
+    assign hi_is_attachment = false
+    if hi_part_type contains 'attachment' or hi_product_type contains 'attachment'
+      assign hi_is_attachment = true
+    endif
+
+    assign hi_is_undercarriage = false
+    if hi_part_type contains 'undercarriage' or hi_part_type contains 'sprocket' or hi_part_type contains 'roller' or hi_part_type contains 'idler'
+      assign hi_is_undercarriage = true
+    elsif hi_product_type contains 'undercarriage' or hi_product_type contains 'sprocket' or hi_product_type contains 'roller' or hi_product_type contains 'idler'
+      assign hi_is_undercarriage = true
+    endif
+
+    if hi_is_track == false and hi_is_undercarriage == false
+      assign hi_is_attachment = true
+    endif
+
+    if hi_is_attachment
+      assign tspec_use_blocks = false
+      assign tspec_eyebrow = 'ENGINEERED FOR THE JOBSITE'
+      assign tspec_headline = 'Built Tough'
+      assign tspec_subtext = "Contractor-grade attachments built for daily abuse — matched to your machine's mount, flow, and hydraulic requirements."
+      assign tspec_cta_text = 'Shop All Attachments'
+      assign tspec_cta_url = '/collections/attachments'
+      assign tspec_placeholder = 'Attachment image'
+      if product.featured_image
+        assign tspec_image = product.featured_image
+      endif
+    elsif hi_is_undercarriage
+      assign tspec_use_blocks = false
+      assign tspec_eyebrow = 'STEEL UNDERCARRIAGE'
+      assign tspec_headline = 'Built Tough'
+      assign tspec_subtext = 'OEM-cross-referenced sprockets, idlers, and rollers — drop-in fit for compact track loaders and mini excavators.'
+      assign tspec_cta_text = 'Shop Undercarriage Parts'
+      assign tspec_cta_url = '/collections/undercarriage-parts'
+      assign tspec_placeholder = 'Undercarriage part image'
+      if product.featured_image
+        assign tspec_image = product.featured_image
+      endif
+    endif
+  endif
+-%}
 
 {%- style -%}
   .tspec-{{ section.id }} {
@@ -22,15 +91,99 @@
   <div class="page-width">
     <div class="tspec__grid">
       <div class="tspec__content">
-        {%- if section.settings.eyebrow != blank -%}
-          <span class="tspec__eyebrow">{{ section.settings.eyebrow }}</span>
+        {%- if tspec_eyebrow != blank -%}
+          <span class="tspec__eyebrow">{{ tspec_eyebrow }}</span>
         {%- endif -%}
-        <h2 class="tspec__headline">{{ section.settings.headline }}</h2>
-        {%- if section.settings.subtext != blank -%}
-          <p class="tspec__subtext">{{ section.settings.subtext }}</p>
+        <h2 class="tspec__headline">{{ tspec_headline }}</h2>
+        {%- if tspec_subtext != blank -%}
+          <p class="tspec__subtext">{{ tspec_subtext }}</p>
         {%- endif -%}
 
         <div class="tspec__features">
+          {%- if hi_is_attachment -%}
+            <div class="tspec__feature">
+              <div class="tspec__feature-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFB607" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+              </div>
+              <div class="tspec__feature-text">
+                <h3 class="tspec__feature-title">Guaranteed Machine Fit</h3>
+                <p class="tspec__feature-desc">Universal, skid-steer, and mini excavator mounts — we confirm fitment by make, model, and serial before you order.</p>
+              </div>
+            </div>
+            <div class="tspec__feature">
+              <div class="tspec__feature-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFB607" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+              </div>
+              <div class="tspec__feature-text">
+                <h3 class="tspec__feature-title">Heavy-Duty Construction</h3>
+                <p class="tspec__feature-desc">AR400 steel, reinforced bushings, and sealed bearings built for land clearing, forestry, and daily site work.</p>
+              </div>
+            </div>
+            <div class="tspec__feature">
+              <div class="tspec__feature-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFB607" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+              </div>
+              <div class="tspec__feature-text">
+                <h3 class="tspec__feature-title">Free Freight Nationwide</h3>
+                <p class="tspec__feature-desc">Every attachment ships free to the contiguous US. No liftgate fees, no hidden freight charges.</p>
+              </div>
+            </div>
+            <div class="tspec__feature">
+              <div class="tspec__feature-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFB607" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+              </div>
+              <div class="tspec__feature-text">
+                <h3 class="tspec__feature-title">Same-Day Shipping</h3>
+                <p class="tspec__feature-desc">Order by 12pm CT and your attachment ships same business day from our US warehouses.</p>
+              </div>
+            </div>
+            <div class="tspec__feature">
+              <div class="tspec__feature-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFB607" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+              </div>
+              <div class="tspec__feature-text">
+                <h3 class="tspec__feature-title">12-Month Limited Warranty</h3>
+                <p class="tspec__feature-desc">CID manufacturer coverage on defects in materials and workmanship for 12 months from purchase. Wear items such as blades, hoses, and ground-engaging parts are not covered.</p>
+              </div>
+            </div>
+          {%- elsif hi_is_undercarriage -%}
+            <div class="tspec__feature">
+              <div class="tspec__feature-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFB607" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+              </div>
+              <div class="tspec__feature-text">
+                <h3 class="tspec__feature-title">OEM-Cross-Referenced</h3>
+                <p class="tspec__feature-desc">Sprockets, idlers, and rollers matched to factory part numbers for drop-in replacement.</p>
+              </div>
+            </div>
+            <div class="tspec__feature">
+              <div class="tspec__feature-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFB607" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+              </div>
+              <div class="tspec__feature-text">
+                <h3 class="tspec__feature-title">Drop-Forged Steel</h3>
+                <p class="tspec__feature-desc">Heat-treated sprockets and sealed rollers built for abrasive underfoot conditions.</p>
+              </div>
+            </div>
+            <div class="tspec__feature">
+              <div class="tspec__feature-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFB607" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+              </div>
+              <div class="tspec__feature-text">
+                <h3 class="tspec__feature-title">Free Freight Nationwide</h3>
+                <p class="tspec__feature-desc">Steel undercarriage parts ship free to the contiguous US on every order.</p>
+              </div>
+            </div>
+            <div class="tspec__feature">
+              <div class="tspec__feature-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFB607" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+              </div>
+              <div class="tspec__feature-text">
+                <h3 class="tspec__feature-title">24-Month Warranty</h3>
+                <p class="tspec__feature-desc">Full manufacturer warranty on materials and workmanship. Not prorated.</p>
+              </div>
+            </div>
+          {%- else -%}
           {%- for block in section.blocks -%}
             <div class="tspec__feature" {{ block.shopify_attributes }}>
               <div class="tspec__feature-icon">
@@ -42,23 +195,24 @@
               </div>
             </div>
           {%- endfor -%}
+          {%- endif -%}
         </div>
 
-        {%- if section.settings.cta_text != blank -%}
-          <a href="{{ section.settings.cta_url }}" class="tspec__cta">
-            {{ section.settings.cta_text }}
+        {%- if tspec_cta_text != blank -%}
+          <a href="{{ tspec_cta_url | default: '/collections/rubber-tracks' }}" class="tspec__cta">
+            {{ tspec_cta_text }}
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         {%- endif -%}
       </div>
 
       <div class="tspec__image">
-        {%- if section.settings.image -%}
-          {{ section.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', class: 'tspec__img', alt: section.settings.headline }}
+        {%- if tspec_image -%}
+          {{ tspec_image | image_url: width: 800 | image_tag: loading: 'lazy', class: 'tspec__img', alt: tspec_headline }}
         {%- else -%}
           <div class="tspec__placeholder">
             <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            <span>Track Cutaway Image</span>
+            <span>{{ tspec_placeholder }}</span>
           </div>
         {%- endif -%}
       </div>

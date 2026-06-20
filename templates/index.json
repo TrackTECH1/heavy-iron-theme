@@ -332,8 +332,8 @@
         "description": "",
         "show_description": true,
         "description_style": "body",
-        "columns_desktop": 6,
-        "enable_desktop_slider": true,
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
         "full_width": true,
         "show_view_all": true,
         "view_all_style": "solid",
@@ -411,8 +411,8 @@
         "column_alignment": "center",
         "background_style": "none",
         "color_scheme": "scheme-2",
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 68,
         "padding_bottom": 68
       }

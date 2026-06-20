@@ -1,64 +1,65 @@
 {%- comment -%}
-  Track Specifications Table — pulls from product metafields
-  Covers: size, guide, core, tread, weight, warranty, OEM PN, machine
+  Track Specifications Table — size, rating, width, pitch, links, weight.
+  Warranty & shipping live in the separate accordion below.
 {%- endcomment -%}
 
-{%- assign track_size   = product.metafields.custom.track_size.value -%}
-{%- assign guide_type   = product.metafields.custom.guide_type.value -%}
-{%- assign core_type    = product.metafields.custom.core_type.value -%}
-{%- assign width_mm     = product.metafields.custom.width_mm.value -%}
-{%- assign pitch_mm     = product.metafields.custom.pitch_mm.value -%}
-{%- assign links        = product.metafields.custom.links.value -%}
-{%- assign oem_pn       = product.metafields.custom.oem_part_number.value -%}
-{%- assign part_type    = product.metafields.custom.part_type.value -%}
-{%- assign mount_type   = product.metafields.custom.mount_type.value -%}
+{%- assign track_size = product.metafields.custom.track_size.value -%}
+{%- assign width_mm = product.metafields.custom.width_mm.value -%}
+{%- assign pitch_mm = product.metafields.custom.pitch_mm.value -%}
+{%- assign links = product.metafields.custom.links.value -%}
+{%- assign track_rating = product.metafields.custom.track_rating.value
+  | default: product.metafields.custom.rating.value
+  | default: product.metafields.custom.duty_rating.value -%}
+{%- assign track_weight = product.metafields.custom.track_weight.value
+  | default: product.metafields.custom.weight_lbs.value
+  | default: product.metafields.custom.weight.value -%}
 
-{%- comment -%} Determine selected tread from variant option {%- endcomment -%}
-{%- assign selected_tread = '' -%}
-{%- for option in product.options -%}
-  {%- assign opt_lower = option | downcase -%}
-  {%- if opt_lower contains 'tread' or opt_lower contains 'pattern' -%}
-    {%- assign tread_index = forloop.index0 -%}
-    {%- assign selected_tread = product.selected_variant.options[tread_index] -%}
+{%- if track_size != blank -%}
+  {%- assign size_parts = track_size | split: 'x' -%}
+  {%- if width_mm == blank and size_parts.size >= 1 -%}
+    {%- assign width_mm = size_parts[0] | strip -%}
   {%- endif -%}
-{%- endfor -%}
+  {%- if pitch_mm == blank and size_parts.size >= 2 -%}
+    {%- assign pitch_mm = size_parts[1] | strip -%}
+  {%- endif -%}
+  {%- if links == blank and size_parts.size >= 3 -%}
+    {%- assign links = size_parts[2] | strip -%}
+  {%- endif -%}
+{%- endif -%}
 
-{%- comment -%} Guide type expanded label {%- endcomment -%}
-{%- assign guide_label = guide_type -%}
-{%- case guide_type -%}
-  {%- when 'B' -%}{%- assign guide_label = 'Block (B) — Standard CTL' -%}
-  {%- when 'N' -%}{%- assign guide_label = 'Offset (N) — Mini Excavator' -%}
-  {%- when 'K' -%}{%- assign guide_label = 'Offset (K) — Mini Excavator' -%}
-  {%- when 'W' -%}{%- assign guide_label = 'Wide (W) — Mini Excavator' -%}
-  {%- when 'T' -%}{%- assign guide_label = 'Takeuchi (T) — CTL' -%}
-  {%- when 'Y' -%}{%- assign guide_label = 'Yanmar (Y) — Mini Excavator' -%}
-  {%- when 'AV' -%}{%- assign guide_label = 'ASV (AV) — Multi-Terrain Loader' -%}
-  {%- when 'AV2' -%}{%- assign guide_label = 'ASV (AV2) — Multi-Terrain Loader' -%}
-  {%- when 'AV3' -%}{%- assign guide_label = 'ASV (AV3) — Multi-Terrain Loader' -%}
-{%- endcase -%}
+{%- if track_rating == blank -%}
+  {%- assign track_rating = 'Heavy Duty' -%}
+{%- endif -%}
 
-{%- if track_size != blank or oem_pn != blank -%}
+{%- if track_weight == blank -%}
+  {%- assign spec_variant = product.selected_or_first_available_variant -%}
+  {%- if spec_variant.weight > 0 -%}
+    {%- assign track_weight = spec_variant.weight | divided_by: 453.592 | round -%}
+  {%- endif -%}
+{%- endif -%}
+
+{%- if track_size != blank -%}
 <div class="track-specs">
   <table class="track-specs__table">
     <tbody>
-
-      {%- comment -%} === DIMENSIONS === {%- endcomment -%}
-      {%- if track_size != blank -%}
-        <tr>
-          <td class="track-specs__label">Track Size</td>
-          <td class="track-specs__value track-specs__value--highlight">{{ track_size }}</td>
-        </tr>
-      {%- endif -%}
+      <tr>
+        <td class="track-specs__label">Track Size</td>
+        <td class="track-specs__value track-specs__value--highlight">{{ track_size }}</td>
+      </tr>
+      <tr>
+        <td class="track-specs__label">Rating</td>
+        <td class="track-specs__value">{{ track_rating }}</td>
+      </tr>
       {%- if width_mm != blank -%}
         <tr>
           <td class="track-specs__label">Width</td>
-          <td class="track-specs__value">{{ width_mm }}mm</td>
+          <td class="track-specs__value">{{ width_mm }} (mm)</td>
         </tr>
       {%- endif -%}
       {%- if pitch_mm != blank -%}
         <tr>
           <td class="track-specs__label">Pitch</td>
-          <td class="track-specs__value">{{ pitch_mm }}mm</td>
+          <td class="track-specs__value">{{ pitch_mm }}</td>
         </tr>
       {%- endif -%}
       {%- if links != blank -%}
@@ -67,80 +68,16 @@
           <td class="track-specs__value">{{ links }}</td>
         </tr>
       {%- endif -%}
-
-      {%- comment -%} === GUIDE & CORE === {%- endcomment -%}
-      {%- if guide_type != blank -%}
+      {%- if track_weight != blank -%}
+        {%- assign track_weight_display = track_weight | strip -%}
+        {%- unless track_weight_display contains 'lb' -%}
+          {%- assign track_weight_display = track_weight_display | append: 'lbs' -%}
+        {%- endunless -%}
         <tr>
-          <td class="track-specs__label">Guide Type</td>
-          <td class="track-specs__value">{{ guide_label }}</td>
+          <td class="track-specs__label">Weight</td>
+          <td class="track-specs__value">{{ track_weight_display }}</td>
         </tr>
       {%- endif -%}
-      {%- if core_type != blank -%}
-        <tr>
-          <td class="track-specs__label">Core Type</td>
-          <td class="track-specs__value">
-            {%- if core_type == 'NMC' -%}
-              Non-Metal Core (NMC) — ASV/Multi-Terrain
-            {%- else -%}
-              Metal Core — Drop-Forged Steel Links
-            {%- endif -%}
-          </td>
-        </tr>
-      {%- endif -%}
-
-      {%- comment -%} === SELECTED TREAD === {%- endcomment -%}
-      {%- if selected_tread != blank and selected_tread != 'Default Title' -%}
-        <tr>
-          <td class="track-specs__label">Tread Pattern</td>
-          <td class="track-specs__value">
-            {{ selected_tread }}
-            {%- case selected_tread -%}
-              {%- when 'C-Block' -%}<span class="track-specs__tread-note"> — Heavy construction, max traction</span>
-              {%- when 'Zig-Zag' -%}<span class="track-specs__tread-note"> — Mud, snow & self-cleaning</span>
-              {%- when 'Multi-Bar' -%}<span class="track-specs__tread-note"> — Versatile, turf-friendly</span>
-              {%- when 'X-Terrain' -%}<span class="track-specs__tread-note"> — Extended wear, max tread life</span>
-              {%- when 'Directional' -%}<span class="track-specs__tread-note"> — Mini excavator standard</span>
-            {%- endcase -%}
-          </td>
-        </tr>
-      {%- endif -%}
-
-      {%- comment -%} === CONSTRUCTION === {%- endcomment -%}
-      <tr>
-        <td class="track-specs__label">Cord Construction</td>
-        <td class="track-specs__value">Continuous Steel Cord — No joints</td>
-      </tr>
-      <tr>
-        <td class="track-specs__label">Rubber Compound</td>
-        <td class="track-specs__value">Premium Virgin Rubber — Anti-chunk</td>
-      </tr>
-
-      {%- comment -%} === OEM PART NUMBER === {%- endcomment -%}
-      {%- if oem_pn != blank -%}
-        <tr>
-          <td class="track-specs__label">OEM Part No.</td>
-          <td class="track-specs__value track-specs__value--mono">{{ oem_pn }}</td>
-        </tr>
-      {%- endif -%}
-
-      {%- comment -%} === MACHINE TYPE === {%- endcomment -%}
-      {%- if mount_type != blank -%}
-        <tr>
-          <td class="track-specs__label">Mount Type</td>
-          <td class="track-specs__value">{{ mount_type }}</td>
-        </tr>
-      {%- endif -%}
-
-      {%- comment -%} === WARRANTY & SHIPPING === {%- endcomment -%}
-      <tr>
-        <td class="track-specs__label">Warranty</td>
-        <td class="track-specs__value">24 Months — Full coverage</td>
-      </tr>
-      <tr>
-        <td class="track-specs__label">Shipping</td>
-        <td class="track-specs__value">Free freight — Contiguous US</td>
-      </tr>
-
     </tbody>
   </table>
 </div>

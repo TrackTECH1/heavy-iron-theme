@@ -20,11 +20,30 @@
   }
 {%- endstyle -%}
 
+{%- liquid
+  assign show_quick_order = true
+  if product
+    assign hi_track_size = product.metafields.custom.track_size.value
+    assign hi_part_type = product.metafields.custom.part_type.value | downcase
+    assign hi_product_type = product.type | downcase
+    assign show_quick_order = false
+    if hi_track_size != blank
+      assign show_quick_order = true
+    elsif hi_product_type contains 'track' or hi_product_type contains 'rubber'
+      assign show_quick_order = true
+    elsif hi_part_type contains 'track' or hi_part_type contains 'rubber'
+      assign show_quick_order = true
+    endif
+  endif
+-%}
+
+{%- if show_quick_order -%}
 {% render 'quick-order-list',
   product: product,
   show_image: section.settings.show_image,
   show_sku: section.settings.show_sku
 %}
+{%- endif -%}
 
 {% schema %}
 {
