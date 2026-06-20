@@ -1,0 +1,12 @@
+{%- comment -%}
+  Smart search assets — machine lookup on header + /search via Supabase store-agent.
+{%- endcomment -%}
+{{ 'hi-smart-search.css' | asset_url | stylesheet_tag }}
+<script>
+  window.HISmartSearch = window.HISmartSearch || {
+    endpoint: 'https://tcykyktvdlsbscrsbjyt.supabase.co/functions/v1/store-agent',
+    minChars: 3,
+    debounceMs: 380
+  };
+</script>
+<script src="{{ 'hi-smart-search.js' | asset_url }}" defer></script>

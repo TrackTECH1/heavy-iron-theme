@@ -369,6 +369,7 @@
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+    {%- render 'hi-smart-search-assets' -%}
 
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
@@ -423,7 +424,7 @@
       if(d.undercarriage&&d.undercarriage.length){h+="<div class='hi-sub'>Undercarriage that fits</div>";d.undercarriage.forEach(function(u){h+="<div class='row'>"+esc(u.part_type)+" <span style='color:#999'>x"+u.count+"</span></div>";});}
       var na=(d.attachment_categories||[]).length;
       h+="<div class='hi-note'>"+(na?na+" attachment categories also fit this machine.":"")+"</div>";
-      if(d.page_url){h+="<a class='hi-cta' href='"+d.page_url+"'>See everything that fits your "+esc(d.machine)+" →</a>";}
+      if(d.page_url){h+="<a class='hi-cta' href='"+esc(d.page_url.replace(/^https?:\\/\\/heavyironsupply\\.com\\/model\\//,'/pages/model/'))+"'>See everything that fits your "+esc(d.machine)+" →</a>";}
       out.innerHTML=h;
     }).catch(function(){out.innerHTML="<p>Something went wrong — please try again.</p>";});
   }

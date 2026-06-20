@@ -1,0 +1,90 @@
+/* Heavy Iron — smart search (machine match + product search) */
+.hi-smart-search {
+  margin-top: 0.8rem;
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  background: #fafafa;
+  overflow: hidden;
+}
+
+.hi-smart-search[hidden] { display: none !important; }
+
+.hi-smart-search--page {
+  margin: 0 auto 2rem;
+  max-width: 74.1rem;
+}
+
+.hi-smart-search__inner {
+  padding: 1rem 1.1rem 1.1rem;
+}
+
+.hi-smart-search__eyebrow {
+  margin: 0 0 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f5a623;
+}
+
+.hi-smart-search__machine {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #111;
+  line-height: 1.25;
+}
+
+.hi-smart-search__meta {
+  margin: 0 0 0.75rem;
+  font-size: 0.82rem;
+  color: #555;
+  line-height: 1.45;
+}
+
+.hi-smart-search__sizes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0 0 0.85rem;
+}
+
+.hi-smart-search__size {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid #ddd;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.hi-smart-search__cta {
+  display: inline-block;
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  background: #f5a623;
+  color: #111;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.hi-smart-search__cta:hover { filter: brightness(0.96); color: #111; }
+
+.hi-smart-search__hint {
+  margin: 0.65rem 0 0;
+  font-size: 0.72rem;
+  color: #777;
+}
+
+.hi-smart-search--loading .hi-smart-search__inner {
+  opacity: 0.65;
+}
+
+.predictive-search--header .hi-smart-search,
+.search-modal__form .hi-smart-search {
+  margin-top: 0.6rem;
+  border-radius: 8px;
+}
