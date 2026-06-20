@@ -1,0 +1,781 @@
+{%- comment -%}
+  Heavy Iron — LTL Freight Tracing Hub
+  Direct carrier portal links + PRO clipboard helper + receiving protocol.
+{%- endcomment -%}
+
+{%- assign hi_ft_id = section.id | replace: '-', '_' -%}
+{%- assign hi_ft_hero_style = section.settings.hero_style | default: 'color_pop' -%}
+{%- assign hi_ft_hero_dark = false -%}
+{%- if hi_ft_hero_style == 'color_pop' or hi_ft_hero_style == 'grayscale' -%}
+  {%- assign hi_ft_hero_dark = true -%}
+{%- endif -%}
+{%- assign hi_ft_hero_overlay = section.settings.hero_overlay_opacity | default: 88 | times: 0.01 -%}
+
+<div class="hi-ft" id="hi-ft-{{ section.id }}">
+  <section
+    class="hi-ft__hero hi-ft__hero--{{ hi_ft_hero_style }}{% if section.settings.hero_image != blank %} hi-ft__hero--has-image{% endif %}{% if hi_ft_hero_dark %} hi-ft__hero--dark{% endif %}"
+    style="--hi-ft-hero-overlay: {{ hi_ft_hero_overlay }};"
+  >
+    {%- if section.settings.hero_image != blank -%}
+      {{ section.settings.hero_image | image_url: width: 2400 | image_tag: class: 'hi-ft__hero-bg', loading: 'eager', alt: '' }}
+      <div class="hi-ft__hero-overlay" aria-hidden="true"></div>
+    {%- endif -%}
+    <div class="hi-ft__hero-in page-width">
+      <div class="hi-ft__hero-bar"></div>
+      <p class="hi-ft__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      <h1 class="hi-ft__title">{{ section.settings.headline | escape }}</h1>
+      <p class="hi-ft__lead">{{ section.settings.subheadline }}</p>
+    </div>
+  </section>
+
+  <section class="hi-ft__hub">
+    <div class="hi-ft__hub-in page-width">
+      <div class="hi-ft__hub-head">
+        <h2 class="hi-ft__h2">{{ section.settings.hub_heading | escape }}</h2>
+        <p class="hi-ft__hub-sub">{{ section.settings.hub_subheading }}</p>
+      </div>
+
+      <div class="hi-ft__pro-box">
+        <label class="hi-ft__step" for="hiProInput-{{ section.id }}">{{ section.settings.step1_label | escape }}</label>
+        <div class="hi-ft__pro-row">
+          <input
+            type="text"
+            id="hiProInput-{{ section.id }}"
+            class="hi-ft__pro-input"
+            placeholder="{{ section.settings.pro_placeholder | escape }}"
+            autocomplete="off"
+          >
+          <button type="button" class="hi-ft__copy-btn" data-hi-ft-copy="{{ section.id }}">
+            {{ section.settings.copy_button | escape }}
+          </button>
+        </div>
+        <span class="hi-ft__copy-confirm" id="hiCopyConfirm-{{ section.id }}" aria-live="polite">
+          {{ section.settings.copy_confirm | escape }}
+        </span>
+      </div>
+
+      <p class="hi-ft__step hi-ft__step--muted">{{ section.settings.step2_label | escape }}</p>
+      <div class="hi-ft__carrier-grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'carrier' -%}
+            <a
+              href="{{ block.settings.trace_url }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hi-ft__carrier-card"
+              data-hi-ft-carrier
+              {{ block.shopify_attributes }}
+            >
+              <span class="hi-ft__carrier-name">{{ block.settings.name | escape }}</span>
+              <span class="hi-ft__carrier-arrow" aria-hidden="true">↗</span>
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  <section class="hi-ft__protocol">
+    <div class="hi-ft__protocol-in page-width">
+      <div class="hi-ft__protocol-head">
+        <h2 class="hi-ft__h2">{{ section.settings.protocol_heading | escape }}</h2>
+        <p class="hi-ft__protocol-lead">{{ section.settings.protocol_subheading }}</p>
+      </div>
+      <ol class="hi-ft__steps">
+        {%- assign recv_num = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'receiving_step' -%}
+            {%- assign recv_num = recv_num | plus: 1 -%}
+            <li class="hi-ft__step-item" {{ block.shopify_attributes }}>
+              <span class="hi-ft__step-num">{{ recv_num }}</span>
+              <div>
+                <h3 class="hi-ft__step-title">{{ block.settings.title | escape }}</h3>
+                <p class="hi-ft__step-desc">{{ block.settings.description }}</p>
+              </div>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ol>
+      {%- if section.settings.damage_phone != blank -%}
+        <p class="hi-ft__damage-note">
+          {{ section.settings.damage_note }}
+          <a href="tel:{{ section.settings.damage_phone | replace: '-', '' | replace: '(', '' | replace: ')', '' | replace: ' ', '' }}">{{ section.settings.damage_phone }}</a>
+        </p>
+      {%- endif -%}
+    </div>
+  </section>
+
+  <section class="hi-ft__rules">
+    <div class="hi-ft__rules-in page-width">
+      <h2 class="hi-ft__h2">{{ section.settings.rules_heading | escape }}</h2>
+      <div class="hi-ft__rules-list">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'freight_rule' -%}
+            <details class="hi-ft__rule" {{ block.shopify_attributes }}>
+              <summary class="hi-ft__rule-summary">
+                <span class="hi-ft__rule-label">{{ block.settings.rule_label | escape }}</span>
+                <span class="hi-ft__rule-q">{{ block.settings.question | escape }}</span>
+                <span class="hi-ft__rule-icon" aria-hidden="true">+</span>
+              </summary>
+              <div class="hi-ft__rule-body">
+                <p><strong>The Reality:</strong> {{ block.settings.answer }}</p>
+              </div>
+            </details>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  .hi-ft {
+    --hi-ft-bg: #ffffff;
+    --hi-ft-bg-alt: #f2f2f0;
+    --hi-ft-panel: #ffffff;
+    --hi-ft-line: #e2e8f0;
+    --hi-ft-muted: #5a6573;
+    --hi-ft-text: #1a1a1a;
+    --hi-ft-accent: {{ section.settings.accent | default: '#FFB607' }};
+    background: var(--hi-ft-bg);
+    color: var(--hi-ft-text);
+  }
+
+  .hi-ft__hero {
+    background: var(--hi-ft-bg);
+    color: var(--hi-ft-text);
+    padding: 56px 20px 48px;
+    border-bottom: 1px solid var(--hi-ft-line);
+  }
+
+  .hi-ft__hero--dark:not(.hi-ft__hero--has-image) {
+    background: #111418;
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .hi-ft__hero--has-image {
+    position: relative;
+    overflow: hidden;
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+    padding: 64px 20px;
+  }
+
+  .hi-ft__hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: {{ section.settings.hero_image_position | default: 'center center' }};
+  }
+
+  /* Light — white wash over photo */
+  .hi-ft__hero--light .hi-ft__hero-overlay {
+    background: #fff;
+    opacity: var(--hi-ft-hero-overlay, 0.88);
+  }
+
+  /* Color pop — for B&W photos with a color truck already edited in */
+  .hi-ft__hero--color_pop .hi-ft__hero-bg {
+    filter: contrast(1.06) saturate(1.08);
+  }
+
+  .hi-ft__hero--color_pop .hi-ft__hero-overlay {
+    background: linear-gradient(
+      102deg,
+      rgba(17, 20, 24, 0.82) 0%,
+      rgba(17, 20, 24, 0.52) 42%,
+      rgba(17, 20, 24, 0.18) 72%,
+      rgba(17, 20, 24, 0.08) 100%
+    );
+    opacity: var(--hi-ft-hero-overlay, 1);
+  }
+
+  /* Full B&W — desaturates the entire photo */
+  .hi-ft__hero--grayscale .hi-ft__hero-bg {
+    filter: grayscale(1) contrast(1.12);
+  }
+
+  .hi-ft__hero--grayscale .hi-ft__hero-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(17, 20, 24, 0.25) 0%,
+      rgba(17, 20, 24, 0.62) 100%
+    );
+    opacity: var(--hi-ft-hero-overlay, 1);
+  }
+
+  .hi-ft__hero-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .hi-ft__hero-in {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .hi-ft__hero--dark .hi-ft__title {
+    color: #fff;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+  }
+
+  .hi-ft__hero--dark .hi-ft__lead {
+    color: rgba(255, 255, 255, 0.86);
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.28);
+  }
+
+  .hi-ft__hero-bar {
+    width: 5px;
+    height: 48px;
+    background: var(--hi-ft-accent);
+    margin-bottom: 20px;
+  }
+
+  .hi-ft__eyebrow {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--hi-ft-accent);
+    margin: 0 0 12px;
+  }
+
+  .hi-ft__title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.08;
+    margin: 0 0 16px;
+    color: var(--hi-ft-text);
+    max-width: 820px;
+  }
+
+  .hi-ft__lead {
+    color: var(--hi-ft-muted);
+    font-size: 1.05rem;
+    line-height: 1.65;
+    margin: 0;
+    max-width: 760px;
+  }
+
+  .hi-ft__hub {
+    background: var(--hi-ft-bg-alt);
+    color: var(--hi-ft-text);
+    padding: 48px 20px 56px;
+  }
+
+  .hi-ft__hub-in { max-width: 880px; margin: 0 auto; }
+
+  .hi-ft__h2 {
+    font-size: clamp(1.35rem, 2.5vw, 1.65rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    margin: 0 0 8px;
+    letter-spacing: 0.02em;
+    color: var(--hi-ft-text);
+  }
+
+  .hi-ft__hub-sub,
+  .hi-ft__protocol-lead {
+    color: var(--hi-ft-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0 0 24px;
+  }
+
+  .hi-ft__pro-box {
+    background: var(--hi-ft-panel);
+    border: 1px solid var(--hi-ft-line);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 28px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  }
+
+  .hi-ft__step {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--hi-ft-text);
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+
+  .hi-ft__step--muted { color: var(--hi-ft-muted); margin-bottom: 12px; }
+
+  .hi-ft__pro-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .hi-ft__pro-input {
+    flex: 1 1 280px;
+    background: #fff;
+    border: 1px solid var(--hi-ft-line);
+    border-radius: 8px;
+    padding: 14px;
+    color: var(--hi-ft-text);
+    font-size: 1rem;
+    font-weight: 600;
+    outline: none;
+  }
+
+  .hi-ft__pro-input:focus {
+    border-color: var(--hi-ft-accent);
+    box-shadow: 0 0 0 3px rgba(255, 182, 7, 0.15);
+  }
+
+  .hi-ft__copy-btn {
+    background: var(--hi-ft-text);
+    border: 1px solid var(--hi-ft-text);
+    color: #fff;
+    padding: 14px 24px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-family: inherit;
+    transition: background 0.15s, border-color 0.15s;
+  }
+
+  .hi-ft__copy-btn:hover {
+    background: #333;
+    border-color: #333;
+  }
+
+  .hi-ft__copy-confirm {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 0.75rem;
+    color: #166534;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .hi-ft__copy-confirm.is-visible { opacity: 1; }
+
+  .hi-ft__carrier-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+  }
+
+  .hi-ft__carrier-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--hi-ft-panel);
+    border: 1px solid var(--hi-ft-line);
+    border-radius: 8px;
+    padding: 16px 20px;
+    color: var(--hi-ft-text);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+  }
+
+  .hi-ft__carrier-card:hover {
+    border-color: var(--hi-ft-accent);
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    transform: translateY(-1px);
+  }
+
+  .hi-ft__carrier-arrow {
+    color: var(--hi-ft-accent);
+    font-weight: 900;
+    font-size: 1.125rem;
+  }
+
+  .hi-ft__protocol {
+    background: var(--hi-ft-bg);
+    color: var(--hi-ft-text);
+    padding: 56px 20px;
+    border-top: 3px solid var(--hi-ft-accent);
+  }
+
+  .hi-ft__protocol-in { max-width: 880px; margin: 0 auto; }
+
+  .hi-ft__steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 16px;
+  }
+
+  .hi-ft__step-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: var(--hi-ft-bg-alt);
+    border: 1px solid var(--hi-ft-line);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+
+  .hi-ft__step-num {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--hi-ft-accent);
+    color: var(--hi-ft-text);
+    font-weight: 900;
+    border-radius: 999px;
+    font-size: 0.95rem;
+  }
+
+  .hi-ft__step-title {
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin: 0 0 6px;
+    color: var(--hi-ft-text);
+  }
+
+  .hi-ft__step-desc {
+    margin: 0;
+    color: var(--hi-ft-muted);
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .hi-ft__damage-note {
+    margin: 24px 0 0;
+    padding: 16px 18px;
+    background: rgba(255, 182, 7, 0.1);
+    border-left: 4px solid var(--hi-ft-accent);
+    color: var(--hi-ft-muted);
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .hi-ft__damage-note a {
+    color: var(--hi-ft-text);
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .hi-ft__damage-note a:hover { color: var(--hi-ft-accent); }
+
+  .hi-ft__rules {
+    background: var(--hi-ft-bg-alt);
+    padding: 56px 20px 72px;
+    border-top: 1px solid var(--hi-ft-line);
+  }
+
+  .hi-ft__rules-in { max-width: 880px; margin: 0 auto; }
+
+  .hi-ft__rules .hi-ft__h2 { margin-bottom: 20px; }
+
+  .hi-ft__rules-list { display: grid; gap: 10px; }
+
+  .hi-ft__rule {
+    background: #fff;
+    border: 1px solid var(--hi-ft-line);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .hi-ft__rule-summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 18px 20px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 12px 16px;
+    align-items: start;
+  }
+
+  .hi-ft__rule-summary::-webkit-details-marker { display: none; }
+
+  .hi-ft__rule-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--hi-ft-text);
+    background: var(--hi-ft-accent);
+    padding: 4px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .hi-ft__rule-q {
+    font-weight: 700;
+    color: var(--hi-ft-text);
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  .hi-ft__rule-icon {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--hi-ft-accent);
+    color: var(--hi-ft-text);
+    border-radius: 999px;
+    font-weight: 900;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .hi-ft__rule[open] .hi-ft__rule-icon { transform: rotate(45deg); }
+
+  .hi-ft__rule-body {
+    padding: 0 20px 18px 20px;
+    color: var(--hi-ft-muted);
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  @media (max-width: 749px) {
+    .hi-ft__rule-summary { grid-template-columns: 1fr auto; }
+    .hi-ft__rule-label { grid-column: 1 / -1; justify-self: start; }
+  }
+</style>
+
+<script>
+(function () {
+  var root = document.getElementById('hi-ft-{{ section.id }}');
+  if (!root) return;
+
+  var input = document.getElementById('hiProInput-{{ section.id }}');
+  var confirm = document.getElementById('hiCopyConfirm-{{ section.id }}');
+  var copyBtn = root.querySelector('[data-hi-ft-copy="{{ section.id }}"]');
+  var timer;
+
+  function copyPro() {
+    if (!input || !input.value.trim()) return false;
+    var value = input.value.trim();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(value);
+    } else {
+      input.select();
+      input.setSelectionRange(0, 99999);
+      document.execCommand('copy');
+    }
+    if (confirm) {
+      confirm.classList.add('is-visible');
+      clearTimeout(timer);
+      timer = setTimeout(function () { confirm.classList.remove('is-visible'); }, 3000);
+    }
+    return true;
+  }
+
+  if (copyBtn) copyBtn.addEventListener('click', copyPro);
+  root.querySelectorAll('[data-hi-ft-carrier]').forEach(function (card) {
+    card.addEventListener('click', function () { copyPro(); });
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Freight Tracing Hub",
+  "tag": "section",
+  "class": "section-freight-tracing",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Heavy Iron Supply Co." },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "Nationwide LTL Freight & Shipment Tracing" },
+    {
+      "type": "textarea",
+      "id": "subheadline",
+      "label": "Hero subcopy",
+      "default": "Heavy iron requires heavy infrastructure. We bypass standard parcel networks to move your undercarriage freight exclusively via America's premier Tier-One LTL motor freight carriers. Enter your terminal PRO Number below for direct, un-buffered dispatch tracking."
+    },
+    {
+      "type": "header",
+      "content": "Hero background"
+    },
+    {
+      "type": "select",
+      "id": "hero_style",
+      "label": "Hero style",
+      "default": "color_pop",
+      "options": [
+        { "value": "color_pop", "label": "B&W + color truck (recommended)" },
+        { "value": "grayscale", "label": "Full black & white" },
+        { "value": "light", "label": "Light white overlay" }
+      ],
+      "info": "Color pop: upload a photo with a desaturated scene and a color LTL truck (edit in Canva/Photoshop). Full B&W: theme desaturates any photo."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Background image",
+      "info": "Wide shot recommended — LTL truck, freight terminal, or pallet staging. 2400px+ width."
+    },
+    {
+      "type": "range",
+      "id": "hero_overlay_opacity",
+      "label": "Overlay strength",
+      "min": 50,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 92,
+      "info": "Color pop / B&W: text readability over the photo. Light style: white wash amount."
+    },
+    {
+      "type": "select",
+      "id": "hero_image_position",
+      "label": "Image focal point",
+      "default": "center center",
+      "options": [
+        { "value": "center center", "label": "Center" },
+        { "value": "center top", "label": "Top" },
+        { "value": "center bottom", "label": "Bottom" },
+        { "value": "right center", "label": "Right" },
+        { "value": "left center", "label": "Left" }
+      ]
+    },
+    { "type": "color", "id": "accent", "label": "Accent color", "default": "#ffb20a" },
+    { "type": "text", "id": "hub_heading", "label": "Hub heading", "default": "Heavy Freight Tracing Hub" },
+    {
+      "type": "textarea",
+      "id": "hub_subheading",
+      "label": "Hub subcopy",
+      "default": "Direct terminal access to our tier-one LTL logistics network. Enter your PRO Number below to auto-copy it, then select your assigned carrier."
+    },
+    { "type": "text", "id": "step1_label", "label": "Step 1 label", "default": "Step 1: Load Your PRO / Tracking Number" },
+    { "type": "text", "id": "pro_placeholder", "label": "PRO input placeholder", "default": "e.g. 1029384756 (Paste PRO # here)" },
+    { "type": "text", "id": "copy_button", "label": "Copy button", "default": "Copy to Clipboard" },
+    { "type": "text", "id": "copy_confirm", "label": "Copy confirmation", "default": "PRO Number copied! Ready to paste into carrier portal." },
+    { "type": "text", "id": "step2_label", "label": "Step 2 label", "default": "Step 2: Access Direct Carrier Portal" },
+    { "type": "text", "id": "protocol_heading", "label": "Receiving protocol heading", "default": "Critical: How to Receive Your Heavy Freight" },
+    {
+      "type": "textarea",
+      "id": "protocol_subheading",
+      "label": "Receiving protocol subcopy",
+      "default": "Do not let the delivery driver rush you. You have total legal right to inspect your freight before signing the Bill of Lading (BOL)."
+    },
+    {
+      "type": "textarea",
+      "id": "damage_note",
+      "label": "Damage photo note",
+      "default": "Take 3 photos — wide shot of truck/pallet, close-up of damage, and signed delivery receipt — then text them to"
+    },
+    { "type": "text", "id": "damage_phone", "label": "Damage photo phone", "default": "(850) 816-7898" },
+    { "type": "text", "id": "rules_heading", "label": "Rules heading", "default": "Understanding Industrial LTL Transit" }
+  ],
+  "blocks": [
+    {
+      "type": "carrier",
+      "name": "Carrier portal",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Carrier name", "default": "Carrier" },
+        { "type": "url", "id": "trace_url", "label": "Direct trace URL" }
+      ]
+    },
+    {
+      "type": "receiving_step",
+      "name": "Receiving step",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Step title", "default": "Step title" },
+        { "type": "textarea", "id": "description", "label": "Step description", "default": "Step description." }
+      ]
+    },
+    {
+      "type": "freight_rule",
+      "name": "Freight rule",
+      "settings": [
+        { "type": "text", "id": "rule_label", "label": "Rule label", "default": "Rule 1" },
+        { "type": "text", "id": "question", "label": "Customer question", "default": "Question?" },
+        { "type": "textarea", "id": "answer", "label": "The reality (answer)", "default": "Answer." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Freight Tracing Hub",
+      "blocks": [
+        { "type": "carrier", "settings": { "name": "R&L Carriers", "trace_url": "https://www.rlcarriers.com/freight/shipping/shipment-tracing" } },
+        { "type": "carrier", "settings": { "name": "FedEx Freight", "trace_url": "https://www.fedex.com/en-us/tracking.html" } },
+        { "type": "carrier", "settings": { "name": "Southeastern (SEFL)", "trace_url": "https://sefl.com/Tracing/index.jsp" } },
+        { "type": "carrier", "settings": { "name": "XPO Logistics", "trace_url": "https://www.xpo.com/track/" } },
+        { "type": "carrier", "settings": { "name": "PITT OHIO", "trace_url": "https://pittohio.com/mypittohio/Shipping/LTL/TraceRequest" } },
+        { "type": "carrier", "settings": { "name": "Central Transport", "trace_url": "https://www.centraltransport.com/tools/track-shipment" } },
+        { "type": "carrier", "settings": { "name": "AAA Cooper", "trace_url": "https://www.aaacooper.com/pwb/Transit/ProTrackResults.aspx" } },
+        { "type": "carrier", "settings": { "name": "Saia LTL Freight", "trace_url": "https://www.saia.com/track" } },
+        { "type": "carrier", "settings": { "name": "DHL Freight", "trace_url": "https://www.dhl.com/us-en/home/tracking.html" } },
+        { "type": "carrier", "settings": { "name": "UPS Freight", "trace_url": "https://www.ups.com/track?loc=en_US&requester=ST/" } },
+        {
+          "type": "receiving_step",
+          "settings": {
+            "title": "Count the Pieces",
+            "description": "Confirm the physical pallet count matches the quantity written on the driver's delivery receipt."
+          }
+        },
+        {
+          "type": "receiving_step",
+          "settings": {
+            "title": "Inspect the Shrinkwrap",
+            "description": "Look for torn black plastic, crushed cardboard, or boot prints. Carriers will sometimes double-stack un-stackable freight and crush the bottom pallet."
+          }
+        },
+        {
+          "type": "receiving_step",
+          "settings": {
+            "title": "Note Damage ON THE PAPER",
+            "description": "If you see a single scuff or tear, write \"FREIGHT DAMAGED / SUBJECT TO INSPECTION\" clearly on the driver's paper before you sign your name."
+          }
+        },
+        {
+          "type": "receiving_step",
+          "settings": {
+            "title": "Take 3 Photos",
+            "description": "Take a wide shot of the truck/pallet, a close-up of the damage, and a clear photo of the signed delivery receipt. Text them instantly to (850) 816-7898."
+          }
+        },
+        {
+          "type": "freight_rule",
+          "settings": {
+            "rule_label": "Rule 1",
+            "question": "I got my tracking number, but Saia's website says \"No Shipment Found.\"",
+            "answer": "We issue your PRO number the moment the pallet is strapped on our staging floor. However, tracking does not go live until the carrier's line-haul tractor picks up the pallet and physically scans it across the local outbound terminal dock (usually between 5:00 PM and 8:00 PM local time)."
+          }
+        },
+        {
+          "type": "freight_rule",
+          "settings": {
+            "rule_label": "Rule 2",
+            "question": "Why do commercial drops take 2 days and residential drops take 4 days?",
+            "answer": "Motor freight carriers will not drive a 53-foot semi-truck into a residential neighborhood without calling the consignee (buyer) 24 hours in advance to schedule a delivery window."
+          }
+        },
+        {
+          "type": "freight_rule",
+          "settings": {
+            "rule_label": "Rule 3",
+            "question": "What is the liftgate requirement?",
+            "answer": "LTL freight arrives on a 4-foot dock-height trailer. If your jobsite does not have a loading dock, a forklift, or a loader with forks to pull the 1,500-lb pallet off the tail, your delivery must be flagged for Liftgate Service."
+          }
+        },
+        {
+          "type": "freight_rule",
+          "settings": {
+            "rule_label": "Rule 4",
+            "question": "Can I pick up my freight at the terminal?",
+            "answer": "If your pallet is sitting at the carrier's destination terminal in your city, but the final delivery truck isn't scheduled to drop it at your jobsite until tomorrow afternoon, you can go get it. Call our logistics desk — we will issue a formal Terminal Intercept authorizing you to drive your trailer directly to the carrier's freight yard and pick it up off their dock."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
