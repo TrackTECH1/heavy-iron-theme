@@ -1,0 +1,11 @@
+Handle,Command,Metafield: custom.fits_equipment_models [list.metaobject_reference]
+180x72x44-rubber-track-directional,MERGE,"model.ditch-witch-sk-750, model.ditch-witch-sk1050, model.ditch-witch-sk750, model.ditch-witch-sk752, model.ditch-witch-sk755, model.ditch-witch-sk800, model.ditch-witch-sk850, model.ditch-witch-sk900"
+300x52-5x74-rubber-track-mx,MERGE,"model.bobcat-225, model.bobcat-325, model.bobcat-328"
+320x86x46-rubber-track-c-block,MERGE,"model.gehl-ctl55, model.mustang-mtl312, model.takeuchi-tl120, model.takeuchi-tl220"
+320x86x48-rubber-track-multi-bar,MERGE,"model.jcb-150t, model.takeuchi-tl26"
+230x96x36-rubber-track-mx,MERGE,"model.gehl-153, model.gehl-ge222, model.kobelco-sk015r, model.kobelco-sk15r, model.kobelco-sk15sr, model.mustang-me1503, model.mustang-me1902, model.mustang-me2202, model.wacker-neuson-2202rd, model.wacker-neuson-2202rdforce"
+300x52-5x84-rubber-track-mx,MERGE,"model.jcb-802-7, model.wacker-neuson-ez36, model.komatsu-pc30mr, model.bobcat-e35, model.komatsu-pc35mr"
+350x75-5x74-rubber-track-mx,MERGE,"model.gehl-z45, model.yanmar-vio45-5"
+400x72-5x70-rubber-track-mx,MERGE,"model.ihi-is-40g, model.ihi-is-40gx, model.ihi-is-40gx-2, model.ihi-is-40gx-3, model.ihi-is-40j, model.ihi-is-40jx"
+300x52-5k-nx78-rubber-track-directional,MERGE,"model.case-cx26c, model.case-cx22b, model.case-cx20b, model.case-cx26, model.bobcat-e25, model.case-cx25"
+400x86x52-rubber-track-z-max,MERGE,"model.bobcat-864, model.bobcat-t200, model.bobcat-t630, model.bobcat-t650, model.cat-255, model.john-deere-323d, model.john-deere-323e, model.john-deere-325g, model.john-deere-ct322, model.kubota-svl65-2, model.kubota-svl75-2, model.kubota-svl75-3, model.kubota-svl90, model.new-holland-c180, model.takeuchi-tl10v2, model.takeuchi-tl8, model.takeuchi-tl8r2, model.wacker-neuson-st28, model.wacker-neuson-st31"
