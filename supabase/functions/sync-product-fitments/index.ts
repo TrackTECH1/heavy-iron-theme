@@ -33,6 +33,51 @@ type FitRow = {
   make_raw: string;
 };
 
+type TrackMapRow = { handle: string; product_id: string };
+type VariantMapRow = { handle: string; size_digits: string; tread: string };
+
+const TREAD_TO_SHOPIFY: Record<string, string> = {
+  Directional: "directional",
+  "Multi-Bar": "multi-bar",
+  MX: "mx",
+  "C-Block": "c-block",
+  "Zig-Zag": "zig-zag",
+  "Z-Max": "z-max",
+  ZB: "z-max",
+  "Staggered Block": "staggered-block",
+  "X-Terrain": "x-terrain",
+  "All-Terrain": "all-terrain",
+  Block: "offset-block",
+  "L-Tread": "directional",
+};
+
+function sizeDigitsFromTrackSize(trackSize: string): string {
+  return (trackSize || "").replace(/[^0-9]/g, "");
+}
+
+function resolveProductGid(
+  product: {
+    shopify_product_id?: string;
+    handle?: string;
+    track_size?: string;
+    tread_pattern?: string;
+  } | null,
+  variantByKey: Map<string, string>,
+  trackByHandle: Map<string, string>,
+): { gid: string | null; handle: string } {
+  if (!product) return { gid: null, handle: "" };
+  if (product.shopify_product_id) {
+    return { gid: product.shopify_product_id, handle: product.handle || "" };
+  }
+  const tread = TREAD_TO_SHOPIFY[product.tread_pattern || ""];
+  const digits = sizeDigitsFromTrackSize(product.track_size || "");
+  if (!tread || !digits) return { gid: null, handle: product.handle || "" };
+  const shopifyHandle = variantByKey.get(`${digits}::${tread}`);
+  if (!shopifyHandle) return { gid: null, handle: product.handle || "" };
+  const gid = trackByHandle.get(shopifyHandle) ?? null;
+  return { gid, handle: shopifyHandle };
+}
+
 function json(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), {
     status,
@@ -169,25 +214,43 @@ Deno.serve(async (req) => {
     if (makeErr) return json({ error: makeErr.message }, 500);
     const makes = (makeRows || []) as MakeRow[];
 
+    const [{ data: trackRows }, { data: variantRows }] = await Promise.all([
+      sb.from("shopify_track_map").select("handle,product_id"),
+      sb.from("shopify_variant_map").select("handle,size_digits,tread"),
+    ]);
+    const trackByHandle = new Map(
+      ((trackRows || []) as TrackMapRow[]).map((r) => [r.handle, r.product_id]),
+    );
+    const variantByKey = new Map(
+      ((variantRows || []) as VariantMapRow[]).map((r) => [`${r.size_digits}::${r.tread}`, r.handle]),
+    );
+
     const { data, error } = await sb
       .from("fitment")
-      .select("product:product_id(shopify_product_id, handle), model:model_id(model_key, shopify_metaobject_gid, make)")
+      .select("product:product_id(shopify_product_id, handle, track_size, tread_pattern), model:model_id(model_key, shopify_metaobject_gid, make)")
       .eq("fit_type", "track");
     if (error) return json({ error: error.message }, 500);
 
     const rows: FitRow[] = [];
     const seen = new Set<string>();
     for (const r of data || []) {
-      const product = r.product as { shopify_product_id?: string; handle?: string } | null;
+      const product = r.product as {
+        shopify_product_id?: string;
+        handle?: string;
+        track_size?: string;
+        tread_pattern?: string;
+      } | null;
       const model = r.model as { model_key?: string; shopify_metaobject_gid?: string; make?: string } | null;
-      if (!product?.shopify_product_id || !model?.shopify_metaobject_gid || !model.model_key) continue;
-      if (handleFilter && product.handle !== handleFilter) continue;
-      const dedupe = `${product.shopify_product_id}::${model.model_key}`;
+      if (!model?.shopify_metaobject_gid || !model.model_key) continue;
+      const resolved = resolveProductGid(product, variantByKey, trackByHandle);
+      if (!resolved.gid) continue;
+      if (handleFilter && resolved.handle !== handleFilter && product?.handle !== handleFilter) continue;
+      const dedupe = `${resolved.gid}::${model.model_key}`;
       if (seen.has(dedupe)) continue;
       seen.add(dedupe);
       rows.push({
-        shopify_product_id: product.shopify_product_id,
-        product_handle: product.handle || "",
+        shopify_product_id: resolved.gid,
+        product_handle: resolved.handle || product?.handle || "",
         model_key: model.model_key,
         model_gid: model.shopify_metaobject_gid,
         make_raw: model.make || "",
