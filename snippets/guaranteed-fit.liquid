@@ -1,21 +1,26 @@
 {%- comment -%}
   Guaranteed Fit Widget
   Make/Model dropdowns → animated "Guaranteed Fit" or "Not Compatible" banner.
-  Data source: fitment-data.liquid → custom.fitments (+ compatible_with fallback).
+  Data source: fitment-data.liquid → custom.fitments, fits_equipment_models (+ compatible_with fallback).
 {%- endcomment -%}
 
 {%- assign fitment_refs = product.metafields.custom.fitments.value -%}
+{%- assign model_refs = product.metafields.custom.fits_equipment_models.value -%}
 {%- assign compatible_raw = product.metafields.custom.compatible_with.value -%}
 {%- assign has_fitments = false -%}
 {%- if fitment_refs != blank and fitment_refs.size > 0 -%}
   {%- assign has_fitments = true -%}
+{%- endif -%}
+{%- assign has_model_refs = false -%}
+{%- if model_refs != blank and model_refs.size > 0 -%}
+  {%- assign has_model_refs = true -%}
 {%- endif -%}
 {%- assign has_compat_text = false -%}
 {%- if compatible_raw != blank -%}
   {%- assign has_compat_text = true -%}
 {%- endif -%}
 
-{%- if has_fitments == false and has_compat_text == false -%}
+{%- if has_fitments == false and has_model_refs == false and has_compat_text == false -%}
 {%- else -%}
 
 <div class="gfit" id="guaranteed-fit-{{ section.id }}" data-fitment='{%- render 'fitment-data', product: product, output: 'grouped' -%}'>
