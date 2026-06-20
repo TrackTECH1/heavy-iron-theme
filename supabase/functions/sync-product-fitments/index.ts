@@ -13,6 +13,7 @@ import { createClient } from "jsr:@supabase/supabase-js@2";
  * Deploy: supabase functions deploy sync-product-fitments --no-verify-jwt
  * Run dry:  curl -X POST .../sync-product-fitments -d '{"dry_run":true,"limit":5}'
  * Run live: curl -X POST .../sync-product-fitments -H 'x-sync-key: ...' -d '{"dry_run":false,"limit":25}'
+ * Cron: pg_cron job tt-sync-product-fitments @ 07:20 UTC (see supabase/migrations/*schedule_sync_product_fitments_cron*)
  */
 
 const cors = {
