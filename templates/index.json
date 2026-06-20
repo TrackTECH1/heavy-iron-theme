@@ -528,7 +528,7 @@
           "type": "brand",
           "settings": {
             "brand_name": "CAT",
-            "link": "shopify://collections/cat-rubber-tracks"
+            "link": "shopify://metaobjects/make/cat"
           }
         },
         "brand_HkKAQ7": {
@@ -542,84 +542,84 @@
           "type": "brand",
           "settings": {
             "brand_name": "Ditch Witch",
-            "link": "shopify://collections/ditch-witch-rubber-tracks"
+            "link": "shopify://metaobjects/make/ditch-witch"
           }
         },
         "brand_iNyh6w": {
           "type": "brand",
           "settings": {
             "brand_name": "Gehl",
-            "link": "shopify://collections/gehl-rubber-tracks"
+            "link": "shopify://metaobjects/make/gehl"
           }
         },
         "brand_MkPReX": {
           "type": "brand",
           "settings": {
             "brand_name": "Hitachi",
-            "link": "shopify://collections/hitachi-rubber-tracks"
+            "link": "shopify://metaobjects/make/hitachi"
           }
         },
         "brand_QFCF4U": {
           "type": "brand",
           "settings": {
             "brand_name": "JCB",
-            "link": "shopify://collections/jcb-rubber-tracks"
+            "link": "shopify://metaobjects/make/jcb"
           }
         },
         "brand_xdgBDL": {
           "type": "brand",
           "settings": {
             "brand_name": "John Deere",
-            "link": "shopify://collections/john-deere-rubber-tracks"
+            "link": "shopify://metaobjects/make/john-deere"
           }
         },
         "brand_LLmxVX": {
           "type": "brand",
           "settings": {
             "brand_name": "Komatsu",
-            "link": "shopify://collections/komatsu-rubber-tracks"
+            "link": "shopify://metaobjects/make/komatsu"
           }
         },
         "brand_RMP9Fy": {
           "type": "brand",
           "settings": {
             "brand_name": "Kubota",
-            "link": "shopify://collections/kubota-rubber-tracks"
+            "link": "shopify://metaobjects/make/kubota"
           }
         },
         "brand_yHT6az": {
           "type": "brand",
           "settings": {
             "brand_name": "New Holland",
-            "link": "shopify://collections/new-holland-rubber-tracks"
+            "link": "shopify://metaobjects/make/new-holland"
           }
         },
         "brand_4kRLJa": {
           "type": "brand",
           "settings": {
             "brand_name": "Takeuchi",
-            "link": "shopify://collections/takeuchi-rubber-tracks"
+            "link": "shopify://metaobjects/make/takeuchi"
           }
         },
         "brand_MKE8D3": {
           "type": "brand",
           "settings": {
             "brand_name": "Vermeer",
-            "link": "shopify://collections/vermeer-rubber-tracks"
+            "link": "shopify://metaobjects/make/vermeer"
           }
         },
         "brand_KdA994": {
           "type": "brand",
           "settings": {
             "brand_name": "Volvo",
-            "link": "shopify://collections/volvo-rubber-tracks"
+            "link": "shopify://metaobjects/make/volvo"
           }
         },
         "brand_hrJERr": {
           "type": "brand",
           "settings": {
             "brand_name": "Wacker",
-            "link": "shopify://collections/wacker-neuson-rubber-tracks"
+            "link": "shopify://metaobjects/make/wacker-neuson"
           }
         }
       },
