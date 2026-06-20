@@ -1,17 +1,38 @@
 #!/usr/bin/env bash
 # Consolidate fitment to custom.fitments (Supabase sync path only).
-# Prerequisites: shopify store auth, SUPABASE_SERVICE_ROLE_KEY, deployed edge functions.
+# Prerequisites: shopify store auth, npx supabase login (for auto service-role key), deployed edge functions.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 STORE="${SHOPIFY_STORE:-tracktech-530.myshopify.com}"
-FN_BASE="${SUPABASE_URL:-https://tcykyktvdlsbscrsbjyt.supabase.co}/functions/v1"
+PROJECT_REF="${SUPABASE_PROJECT_REF:-tcykyktvdlsbscrsbjyt}"
+export SUPABASE_URL="${SUPABASE_URL:-https://${PROJECT_REF}.supabase.co}"
+FN_BASE="${SUPABASE_URL}/functions/v1"
+
+load_service_role_key() {
+  [[ -n "${SUPABASE_SERVICE_ROLE_KEY:-}" ]] && return 0
+  local keys_json
+  if ! keys_json=$(npx supabase projects api-keys --project-ref "$PROJECT_REF" 2>/dev/null); then
+    return 1
+  fi
+  SUPABASE_SERVICE_ROLE_KEY=$(echo "$keys_json" | python3 -c "
+import sys, json
+data = json.load(sys.stdin)
+for k in data.get('keys', []):
+    if k.get('name') == 'service_role' or k.get('id') == 'service_role':
+        print(k['api_key'])
+        break
+" 2>/dev/null || true)
+  [[ -n "${SUPABASE_SERVICE_ROLE_KEY:-}" ]] || return 1
+  export SUPABASE_SERVICE_ROLE_KEY
+  echo "Loaded SUPABASE_SERVICE_ROLE_KEY via npx supabase projects api-keys"
+}
 
 echo "== 1. Backfill Shopify product GIDs in Supabase =="
-if [[ -z "${SUPABASE_SERVICE_ROLE_KEY:-}" ]]; then
-  echo "Set SUPABASE_SERVICE_ROLE_KEY to run backfill."
-else
+if load_service_role_key; then
   python3 "$ROOT/scripts/backfill-shopify-product-ids.py" --apply
+else
+  echo "Set SUPABASE_SERVICE_ROLE_KEY to run backfill (or run: npx supabase login)."
 fi
 
 echo "== 2. Live sync all eligible products (custom.fitments) =="
