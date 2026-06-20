@@ -12,6 +12,9 @@
     "banner": {
       "type": "main-collection-banner",
       "settings": {
+        "show_eyebrow": true,
+        "eyebrow": "Heavy Iron Supply Co.",
+        "eyebrow_color": "#ffb607",
         "show_collection_description": true,
         "show_collection_image": false,
         "color_scheme": "scheme-2"

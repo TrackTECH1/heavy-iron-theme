@@ -19,9 +19,13 @@
                       <p class="hx-mega__eyebrow">Shop by Brand</p>
                       <ul class="hx-mega__brand-list" role="list">
                         {%- assign fb = true -%}
+                        {%- assign hx_seen_make_ids = '|' -%}
                         {%- for h in brand_order -%}
                           {%- assign mk = metaobjects.make[h] -%}
                           {%- if mk != blank and mk.models.value.size > 0 -%}
+                            {%- assign hx_make_token = '|' | append: mk.system.id | append: '|' -%}
+                            {%- unless hx_seen_make_ids contains hx_make_token -%}
+                              {%- assign hx_seen_make_ids = hx_seen_make_ids | append: mk.system.id | append: '|' -%}
                             <li class="hx-mega__brand-item{% if fb %} hx-mega__brand-item--active{% endif %}" data-brand="{{ h }}">
                               <a href="{{ mk.system.url }}" class="hx-mega__brand-link">
                                 {{ mk.name.value | default: h | replace: '-',' ' | capitalize }}
@@ -30,6 +34,7 @@
                               </a>
                             </li>
                             {%- assign fb = false -%}
+                            {%- endunless -%}
                           {%- endif -%}
                         {%- endfor -%}
                       </ul>
@@ -39,9 +44,13 @@
                   </div>
                   <script type="application/json" data-hx-mega-data>{
                   {%- assign fb = true -%}
+                  {%- assign hx_seen_make_ids = '|' -%}
                   {%- for h in brand_order -%}
                     {%- assign mk = metaobjects.make[h] -%}
                     {%- if mk != blank and mk.models.value.size > 0 -%}
+                      {%- assign hx_make_token = '|' | append: mk.system.id | append: '|' -%}
+                      {%- unless hx_seen_make_ids contains hx_make_token -%}
+                        {%- assign hx_seen_make_ids = hx_seen_make_ids | append: mk.system.id | append: '|' -%}
                       {%- unless fb %},{% endunless %}{%- assign fb = false -%}
                       {{ h | json }}:{"name":{{ mk.name.value | default: h | json }},"url":{{ mk.system.url | json }},"models":[
                       {%- assign fm = true -%}
@@ -49,6 +58,7 @@
                         {%- assign mt = md.display_name.value | default: md.system.handle | split: ' Rubber Track' | first | strip -%}
                         {%- unless fm %},{% endunless %}{%- assign fm = false -%}{"n":{{ mt | json }},"u":{{ md.system.url | json }}}
                       {%- endfor -%}]}
+                      {%- endunless -%}
                     {%- endif -%}
                   {%- endfor -%}
                   }</script>
