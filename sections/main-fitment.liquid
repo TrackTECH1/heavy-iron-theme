@@ -22,6 +22,18 @@
   assign phone = section.settings.phone_number | default: '8508167898'
   assign phone_display = section.settings.phone_display | default: '(850) 816-7898'
   assign quote_url = section.settings.quote_url | default: '/pages/quote'
+
+  assign track_product_count = model.track_products.value.size | default: 0
+  assign seo_h1_suffix = ' Rubber Tracks, Parts & Attachments'
+  assign page_seo_title = model.seo_title.value | default: model_name | append: seo_h1_suffix | append: ' | ' | append: shop.name
+  assign page_seo_desc = model.seo_description.value
+  if page_seo_desc == blank
+    assign page_seo_desc = 'Shop OEM-spec rubber tracks'
+    if track_size != blank
+      assign page_seo_desc = page_seo_desc | append: ' (size ' | append: track_size | append: ')'
+    endif
+    assign page_seo_desc = page_seo_desc | append: ', undercarriage parts, and attachments for the ' | append: model_name | append: '. Free freight, 24-month warranty, same-day shipping.'
+  endif
 -%}
 
 <div class="hi-mf">
@@ -48,9 +60,13 @@
         <h1 class="hi-mf__title">{{ model_name }}</h1>
         {%- if track_size != blank -%}<span class="hi-mf__size">Fits track size: {{ track_size }}</span>{%- endif -%}
         <p class="hi-mf__intro">
-          Rubber tracks, steel undercarriage parts, and contractor-grade attachments for the
-          {{ model_name }}. OEM-cross-referenced, drop-in fit{% if track_size != blank %}, sized {{ track_size }}{% endif %}.
-          Not sure which part fits? Call and we’ll confirm by serial number.
+          Shop {{ track_product_count }}+ in-stock rubber track{% if track_product_count != 1 %}s{% endif %},
+          steel undercarriage, and attachments built for the {{ make_name }} {{ model_name }}.
+          {%- if track_size != blank -%}
+            Primary track size: <strong>{{ track_size }}</strong>.
+          {%- endif -%}
+          OEM-cross-referenced, continuous steel cord construction, free LTL freight to 48 states.
+          Not sure which tread or part? Call {{ phone_display }} — we confirm fitment by make, model, and serial.
         </p>
 
         {%- if section.settings.show_trust_bar -%}
@@ -247,6 +263,8 @@
           {%- endfor -%}
         </div>
       </section>
+    {%- else -%}
+      {%- render 'hi-model-faq-fallback', model_name: model_name, make_name: make_name, track_size: track_size, track_count: track_product_count -%}
     {%- endif -%}
 
     {%- comment -%} BOTTOM CTA {%- endcomment -%}

@@ -8,6 +8,11 @@
   assign seo_name = model.seo_title.value | default: model_name
   assign seo_desc = model.seo_description.value | default: model_name | append: ' rubber tracks, undercarriage parts & attachments.'
   assign faqs = model.faqs_json.value
+  assign track_count = model.track_products.value.size | default: 0
+  assign faq_fallback = false
+  if faqs == blank
+    assign faq_fallback = true
+  endif
 -%}
 <script type="application/ld+json">
 {
@@ -74,18 +79,41 @@
         {%- endfor -%}
       ]
     }
-    {%- if faqs != blank -%}
+    {%- if faqs != blank or faq_fallback -%}
     ,{
       "@type": "FAQPage",
       "mainEntity": [
-        {%- for faq in faqs -%}
-          {%- unless forloop.first -%},{%- endunless -%}
+        {%- if faqs != blank -%}
+          {%- for faq in faqs -%}
+            {%- unless forloop.first -%},{%- endunless -%}
+            {
+              "@type": "Question",
+              "name": {{ faq.question | json }},
+              "acceptedAnswer": { "@type": "Answer", "text": {{ faq.answer | strip_html | json }} }
+            }
+          {%- endfor -%}
+        {%- else -%}
           {
             "@type": "Question",
-            "name": {{ faq.question | json }},
-            "acceptedAnswer": { "@type": "Answer", "text": {{ faq.answer | strip_html | json }} }
+            "name": {{ 'What size rubber tracks fit the ' | append: make_name | append: ' ' | append: model_name | append: '?' | json }},
+            "acceptedAnswer": { "@type": "Answer", "text": {% if track_size != blank %}{{ 'The ' | append: make_name | append: ' ' | append: model_name | append: ' commonly uses track size ' | append: track_size | append: '.' | json }}{% else %}{{ 'Track size varies by configuration. Measure your existing track or call us with your serial number.' | json }}{% endif %} }
+          },
+          {
+            "@type": "Question",
+            "name": {{ 'Are Heavy Iron tracks guaranteed to fit my ' | append: model_name | append: '?' | json }},
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every rubber track order requires you to confirm make and model at checkout. Wrong-fit claims are covered under our fitment guarantee." }
+          },
+          {
+            "@type": "Question",
+            "name": {{ 'How fast do ' | append: model_name | append: ' tracks ship?' | json }},
+            "acceptedAnswer": { "@type": "Answer", "text": "Orders placed before 12PM CT ship the same business day. Rubber tracks ship free via LTL freight to the contiguous United States." }
+          },
+          {
+            "@type": "Question",
+            "name": {{ 'What tread patterns are available for the ' | append: model_name | append: '?' | json }},
+            "acceptedAnswer": { "@type": "Answer", "text": {% if track_count > 0 %}{{ 'We stock ' | append: track_count | append: '+ tread options including C-Block, multi-bar, and directional patterns.' | json }}{% else %}"Common treads include C-Block, multi-bar, and directional patterns."{% endif %} }
           }
-        {%- endfor -%}
+        {%- endif -%}
       ]
     }
     {%- endif -%}

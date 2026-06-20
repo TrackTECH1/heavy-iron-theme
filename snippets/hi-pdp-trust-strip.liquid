@@ -1,0 +1,30 @@
+{%- comment -%}
+  PDP trust + shipping clarity for track and undercarriage products.
+  Usage: {% render 'hi-pdp-trust-strip', product: product, is_track: true %}
+{%- endcomment -%}
+{%- liquid
+  assign hi_ts = product.metafields.custom.track_size.value | default: product.metafields.custom.track_size
+  assign show_track = is_track | default: false
+  if hi_ts != blank
+    assign show_track = true
+  endif
+-%}
+{%- if show_track or is_undercarriage -%}
+  {{ 'hi-pdp-trust.css' | asset_url | stylesheet_tag }}
+  <div class="hi-pdp-trust" role="list" aria-label="Purchase guarantees">
+    <span class="hi-pdp-trust__item" role="listitem"><b aria-hidden="true">✓</b> Guaranteed fit</span>
+    <span class="hi-pdp-trust__item" role="listitem"><b aria-hidden="true">✓</b> Free freight</span>
+    <span class="hi-pdp-trust__item" role="listitem"><b aria-hidden="true">✓</b> Same-day ship</span>
+    <span class="hi-pdp-trust__item" role="listitem"><b aria-hidden="true">✓</b> 24-mo warranty</span>
+  </div>
+  <p class="hi-pdp-trust__ship">
+    {%- if show_track -%}
+      <strong>Free LTL freight</strong> on rubber tracks — contiguous US, 48 states.
+      Orders placed before <strong>12PM CT</strong> ship same business day.{%- if hi_ts != blank -%}
+      <span class="hi-pdp-trust__size"> Size <strong>{{ hi_ts }}</strong> — confirm your make &amp; model at checkout.</span>{%- endif -%}
+    {%- else -%}
+      <strong>Free shipping</strong> on qualifying undercarriage orders. Call <a href="tel:8508167898">(850) 816-7898</a> to confirm fitment by serial number.
+    {%- endif -%}
+    <a href="/pages/shipping" class="hi-pdp-trust__link">Shipping details →</a>
+  </p>
+{%- endif -%}

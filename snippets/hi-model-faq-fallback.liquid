@@ -1,0 +1,56 @@
+{%- comment -%}
+  Auto-generated FAQs when model.faqs_json is empty.
+  Params: model_name, make_name, track_size, track_count (optional)
+{%- endcomment -%}
+<section class="hi-mf__sec" id="faqs">
+  <h2 class="hi-mf__sec-h">{{ make_name }} {{ model_name }} Rubber Track FAQs</h2>
+  <p class="hi-mf__sec-sub">Fitment, sizing, and shipping for {{ model_name }} tracks and undercarriage.</p>
+  <div class="hi-mf__faq">
+    <details open>
+      <summary>What size rubber tracks fit the {{ make_name }} {{ model_name }}?</summary>
+      <div class="hi-mf__faq-a">
+        {%- if track_size != blank -%}
+          The {{ make_name }} {{ model_name }} commonly uses track size <strong>{{ track_size }}</strong>.
+          Verify against your machine's existing track sidewall marking or OEM manual before ordering.
+        {%- else -%}
+          Track size varies by {{ model_name }} configuration. Measure your existing track (width × pitch × links)
+          or call us with your serial number — we'll confirm the correct size before shipping.
+        {%- endif -%}
+      </div>
+    </details>
+    <details>
+      <summary>Are Heavy Iron tracks guaranteed to fit my {{ model_name }}?</summary>
+      <div class="hi-mf__faq-a">
+        Yes. Every rubber track order requires you to confirm make and model at checkout.
+        We cross-reference OEM specs and only ship when fitment is verified.
+        Wrong-fit claims are covered under our fitment guarantee.
+      </div>
+    </details>
+    <details>
+      <summary>How fast do {{ model_name }} tracks ship?</summary>
+      <div class="hi-mf__faq-a">
+        Orders placed before <strong>12PM CT</strong> ship the same business day.
+        Rubber tracks ship free via LTL freight to the contiguous United States (48 states).
+      </div>
+    </details>
+    <details>
+      <summary>What tread patterns are available for the {{ model_name }}?</summary>
+      <div class="hi-mf__faq-a">
+        {%- if track_count != blank and track_count > 0 -%}
+          We stock {{ track_count }}+ tread option{% if track_count != 1 %}s{% endif %} for the {{ model_name }} —
+          including C-Block, multi-bar, zig-zag, and directional patterns. See the Rubber Tracks section above for live pricing.
+        {%- else -%}
+          Common treads include C-Block (general purpose), multi-bar (mixed terrain), and directional (soft ground).
+          Browse the Rubber Tracks section above for options in stock today.
+        {%- endif -%}
+      </div>
+    </details>
+    <details>
+      <summary>Do you sell undercarriage parts for the {{ make_name }} {{ model_name }}?</summary>
+      <div class="hi-mf__faq-a">
+        Yes — sprockets, idlers, rollers, and related steel undercarriage components are listed on this page when in stock.
+        Need an OEM part number matched? Call <a href="tel:8508167898">(850) 816-7898</a> with your serial number.
+      </div>
+    </details>
+  </div>
+</section>

@@ -16,15 +16,38 @@
     {%- endunless -%}
 
     <title>
-      {{ page_title }}
-      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- if template.name == 'metaobject' and metaobject.type == 'model' -%}
+        {%- liquid
+          assign hi_mo_name = metaobject.display_name.value | default: metaobject.system.handle
+          assign hi_mo_title = metaobject.seo_title.value | default: hi_mo_name | append: ' Rubber Tracks, Parts & Attachments'
+        -%}
+        {{ hi_mo_title | escape }}
+        {%- unless hi_mo_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- else -%}
+        {{ page_title }}
+        {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+        {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+        {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- endif -%}
     </title>
 
-    {% if page_description %}
+    {%- if template.name == 'metaobject' and metaobject.type == 'model' -%}
+      {%- liquid
+        assign hi_mo_name = metaobject.display_name.value | default: metaobject.system.handle
+        assign hi_mo_ts = metaobject.primary_track_size.value
+        assign hi_mo_desc = metaobject.seo_description.value
+        if hi_mo_desc == blank
+          assign hi_mo_desc = 'Shop OEM-spec rubber tracks'
+          if hi_mo_ts != blank
+            assign hi_mo_desc = hi_mo_desc | append: ' (size ' | append: hi_mo_ts | append: ')'
+          endif
+          assign hi_mo_desc = hi_mo_desc | append: ', undercarriage parts, and attachments for the ' | append: hi_mo_name | append: '. Free freight, 24-month warranty, same-day shipping.'
+        endif
+      -%}
+      <meta name="description" content="{{ hi_mo_desc | escape }}">
+    {%- elsif page_description -%}
       <meta name="description" content="{{ page_description | escape }}">
-    {% endif %}
+    {%- endif -%}
 
     {% render 'meta-tags' %}
 

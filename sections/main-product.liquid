@@ -136,6 +136,19 @@
                     price_class: 'price--large'
                   -%}
                 </div>
+                {%- liquid
+                  assign hi_is_track = false
+                  if product.metafields.custom.track_size != blank
+                    assign hi_is_track = true
+                  endif
+                  assign hi_is_uc = false
+                  if product.type == 'Undercarriage' or product.tags contains 'undercarriage' or product.tags contains 'Undercarriage'
+                    assign hi_is_uc = true
+                  endif
+                -%}
+                {%- if hi_is_track or hi_is_uc -%}
+                  {%- render 'hi-pdp-trust-strip', product: product, is_track: hi_is_track, is_undercarriage: hi_is_uc -%}
+                {%- endif -%}
                 {%- if product.quantity_price_breaks_configured? -%}
                   <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
                     <span>{{ 'products.product.volume_pricing.note' | t }}</span>
