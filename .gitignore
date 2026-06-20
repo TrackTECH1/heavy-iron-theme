@@ -1,0 +1,4 @@
+.env.fitment.local
+.backfill-test.log
+scripts/__pycache__/
+supabase/.temp/

@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+# Heavy Iron fitment pipeline — one entry point.
+#
+#   ./scripts/fitment setup   # once: Shopify token → Supabase + .env.fitment.local
+#   ./scripts/fitment doctor  # check credentials before sync
+#   ./scripts/fitment sync    # backfill GIDs → sync custom.fitments → clear legacy
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+ENV_FILE="$ROOT/.env.fitment.local"
+STORE="${SHOPIFY_STORE:-tracktech-530.myshopify.com}"
+PROJECT_REF="${SUPABASE_PROJECT_REF:-tcykyktvdlsbscrsbjyt}"
+
+if [[ -f "$ENV_FILE" ]]; then
+  set -a
+  # shellcheck source=/dev/null
+  source "$ENV_FILE"
+  set +a
+fi
+
+cmd="${1:-sync}"
+
+doctor() {
+  local ok=0
+  echo "=== Fitment doctor ==="
+  if [[ -f "$ENV_FILE" ]]; then
+    echo "  OK  .env.fitment.local exists"
+  else
+    echo "  FAIL  missing .env.fitment.local — run: ./scripts/fitment setup"
+    ok=1
+  fi
+  if [[ -n "${SHOPIFY_ADMIN_TOKEN:-}" ]]; then
+    echo "  OK  SHOPIFY_ADMIN_TOKEN set (direct Admin API — no Shopify CLI needed for backfill)"
+  else
+    echo "  WARN  SHOPIFY_ADMIN_TOKEN unset — backfill falls back to shopify store execute"
+    if ! command -v shopify >/dev/null 2>&1; then
+      echo "  FAIL  shopify CLI not found — run: ./scripts/fitment setup"
+      ok=1
+    fi
+  fi
+  if [[ -n "${SUPABASE_SERVICE_ROLE_KEY:-}" ]]; then
+    echo "  OK  SUPABASE_SERVICE_ROLE_KEY set"
+  elif npx supabase projects api-keys --project-ref "$PROJECT_REF" >/dev/null 2>&1; then
+    echo "  OK  Supabase CLI can fetch service role key (npx supabase login)"
+  else
+    echo "  FAIL  no Supabase key — run: npx supabase login  OR re-run: ./scripts/fitment setup"
+    ok=1
+  fi
+  echo ""
+  if [[ "$ok" -eq 0 ]]; then
+    echo "Ready. Run: ./scripts/fitment sync"
+  else
+    echo "Fix the items above, then run: ./scripts/fitment sync"
+    exit 1
+  fi
+}
+
+case "$cmd" in
+  setup)
+    exec "$ROOT/scripts/setup-supabase-shopify-secrets.sh"
+    ;;
+  doctor)
+    doctor
+    ;;
+  sync)
+    exec "$ROOT/scripts/consolidate-fitment.sh"
+    ;;
+  *)
+    echo "Usage: ./scripts/fitment {setup|doctor|sync}"
+    exit 1
+    ;;
+esac

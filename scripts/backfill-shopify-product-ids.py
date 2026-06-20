@@ -5,13 +5,14 @@ Supabase handles often differ from Shopify (e.g. 230x72bx45-c-block-rubber-track
 230x72x45-rubber-track-c-block). Resolution order: exact handle → SKU → normalized handle.
 
 Prerequisites:
-  shopify store auth --store tracktech-530.myshopify.com
-  export SUPABASE_URL=https://<project>.supabase.co
-  export SUPABASE_SERVICE_ROLE_KEY=<service_role key>
+  ./scripts/fitment setup   (writes .env.fitment.local with SHOPIFY_ADMIN_TOKEN)
+  Or: shopify store auth + export SUPABASE_SERVICE_ROLE_KEY
 
 Usage:
+  ./scripts/fitment sync
   python3 scripts/backfill-shopify-product-ids.py --dry-run
   python3 scripts/backfill-shopify-product-ids.py --apply
+  python3 scripts/backfill-shopify-product-ids.py --dry-run --limit 20 --workers 8
 """
 from __future__ import annotations
 
@@ -145,7 +146,7 @@ class ShopifyProductCache:
         return []
 
 
-def shopify_gql(query: str, variables: dict | None = None) -> dict:
+def shopify_gql_cli(query: str, variables: dict | None = None) -> dict:
     cmd = [
         "shopify", "store", "execute",
         "--store", STORE,
@@ -159,17 +160,41 @@ def shopify_gql(query: str, variables: dict | None = None) -> dict:
         "SHOPIFY_CLI_AGENT_INFO": "n:cursor|v:1|p:cursor",
         "SHOPIFY_CLI_AGENT_IDS": "s:backfill|r:script|i:1",
     }
-    r = subprocess.run(cmd, capture_output=True, text=True, env=env)
+    r = subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=120)
     if r.returncode != 0:
         raise RuntimeError(r.stderr or r.stdout)
     return json.loads(r.stdout)
 
 
+def shopify_gql(query: str, variables: dict | None = None) -> dict:
+    """Prefer SHOPIFY_ADMIN_TOKEN (direct HTTP); fall back to Shopify CLI."""
+    token = os.environ.get("SHOPIFY_ADMIN_TOKEN")
+    shop = os.environ.get("SHOPIFY_STORE_DOMAIN", STORE)
+    version = os.environ.get("SHOPIFY_API_VERSION", "2025-10")
+    if token:
+        body: dict = {"query": query}
+        if variables:
+            body["variables"] = variables
+        req = urllib.request.Request(
+            f"https://{shop}/admin/api/{version}/graphql.json",
+            data=json.dumps(body).encode(),
+            method="POST",
+            headers={
+                "Content-Type": "application/json",
+                "X-Shopify-Access-Token": token,
+            },
+        )
+        with urllib.request.urlopen(req, timeout=120) as resp:
+            payload = json.loads(resp.read())
+        if payload.get("errors"):
+            raise RuntimeError(json.dumps(payload["errors"]))
+        return payload.get("data") or payload
+    return shopify_gql_cli(query, variables)
+
+
 def shopify_product_by_handle(handle: str, cache: ShopifyProductCache | None = None) -> str | None:
-    if cache:
-        gid = cache.product_by_handle(handle)
-        if gid:
-            return gid
+    if cache is not None:
+        return cache.product_by_handle(handle)
     data = shopify_gql(
         "query ProductByHandle($handle: String!) { productByHandle(handle: $handle) { id handle } }",
         {"handle": handle},
@@ -179,10 +204,8 @@ def shopify_product_by_handle(handle: str, cache: ShopifyProductCache | None = N
 
 
 def shopify_product_by_sku(sku: str, cache: ShopifyProductCache | None = None) -> str | None:
-    if cache:
-        gid = cache.product_by_sku(sku)
-        if gid:
-            return gid
+    if cache is not None:
+        return cache.product_by_sku(sku)
     data = shopify_gql(
         "query ProductBySku($q: String!) { productVariants(first: 1, query: $q) { nodes { product { id handle } } } }",
         {"q": f"sku:{sku}"},
@@ -285,10 +308,8 @@ def normalize_handle_candidates(handle: str) -> list[str]:
 
 
 def shopify_products_search(query: str, cache: ShopifyProductCache | None = None) -> list[dict]:
-    if cache:
-        hits = cache.search(query)
-        if hits:
-            return hits
+    if cache is not None:
+        return cache.search(query)
     data = shopify_gql(
         "query ProductSearch($q: String!) { products(first: 8, query: $q) { nodes { id handle title } } }",
         {"q": query},
