@@ -60,13 +60,23 @@ def shopify_gql(query: str, variables: dict | None = None, allow_mutations: bool
     return json.loads(r.stdout)
 
 
+def gql_data(payload: dict, *keys: str):
+    """Shopify CLI --json returns fields at the top level, not under data."""
+    cur = payload
+    for key in keys:
+        if cur is None:
+            return None
+        cur = cur.get(key)
+    return cur
+
+
 def ensure_page(dry_run: bool) -> None:
-    q = 'query { pageByHandle(handle:"track-finder") { id handle templateSuffix } }'
+    q = 'query { pages(first:1, query:"handle:track-finder") { nodes { id handle templateSuffix } } }'
     if dry_run:
         print("[dry-run] would ensure page track-finder")
         return
     data = shopify_gql(q)
-    if data.get("data", {}).get("pageByHandle"):
+    if gql_data(data, "pages", "nodes"):
         print("Track Finder page already exists")
         return
     mutation = """
@@ -86,25 +96,78 @@ def ensure_page(dry_run: bool) -> None:
         }
     }
     res = shopify_gql(mutation, variables, allow_mutations=True)
-    errs = res["data"]["pageCreate"]["userErrors"]
+    errs = gql_data(res, "pageCreate", "userErrors") or []
     if errs:
         raise RuntimeError(f"pageCreate: {errs}")
     print("Created Track Finder page")
 
 
-def ensure_collection(dry_run: bool, handle: str, title: str, tag: str) -> None:
-    q = f'query {{ collectionByHandle(handle:"{handle}") {{ id handle }} }}'
+MTL_HANDLES = [
+    "450x100x48-rubber-track-c-block",
+    "450x100x48-rubber-track-zig-zag",
+    "450x100x48-rubber-track-multi-bar",
+    "450x100x50-rubber-track-c-block",
+    "450x100x50-rubber-track-zig-zag",
+    "450x100x50-rubber-track-multi-bar",
+    "320x86x46-rubber-track-c-block",
+    "381x101-6x42-rubber-track-multi-bar",
+    "381x101-6x51-rubber-track-multi-bar",
+    "heavy-duty-13-rubber-track-320x86tx52",
+    "320x86x52-rubber-tracks",
+    "320x86x52-rubber-track-c-block",
+]
+
+
+def tag_mtl_products(dry_run: bool) -> None:
+    for handle in MTL_HANDLES:
+        pq = f'query {{ productByHandle(handle:"{handle}") {{ id tags }} }}'
+        pdata = shopify_gql(pq)
+        product = gql_data(pdata, "productByHandle")
+        if not product:
+            print(f"WARN: MTL product not found: {handle}")
+            continue
+        tags = list(product.get("tags") or [])
+        changed = False
+        for tag in ("Multi-Terrain Loader", "Rubber Tracks"):
+            if tag not in tags:
+                tags.append(tag)
+                changed = True
+        if not changed:
+            print(f"MTL tags ok: {handle}")
+            continue
+        if dry_run:
+            print(f"[dry-run] tag MTL: {handle}")
+            continue
+        mutation = """
+        mutation($input: ProductInput!) {
+          productUpdate(input: $input) {
+            product { id handle }
+            userErrors { message }
+          }
+        }
+        """
+        res = shopify_gql(mutation, {"input": {"id": product["id"], "tags": tags}}, allow_mutations=True)
+        errs = gql_data(res, "productUpdate", "userErrors") or []
+        if errs:
+            print(f"WARN tag {handle}: {errs}")
+        else:
+            print(f"Tagged MTL: {handle}")
+
+
+def ensure_collection(dry_run: bool, handle: str, title: str, tag: str, product_type: str = "Rubber Tracks") -> None:
+    q = f'query {{ collectionByHandle(handle:"{handle}") {{ id handle productsCount {{ count }} }} }}'
     if dry_run:
         print(f"[dry-run] would ensure collection {handle} (tag={tag})")
         return
     data = shopify_gql(q)
-    if data.get("data", {}).get("collectionByHandle"):
-        print(f"Collection {handle} already exists")
+    existing = gql_data(data, "collectionByHandle")
+    if existing:
+        print(f"Collection {handle} already exists ({existing.get('productsCount', {}).get('count', '?')} products)")
         return
     mutation = """
     mutation($input: CollectionInput!) {
       collectionCreate(input: $input) {
-        collection { id handle }
+        collection { id handle productsCount { count } }
         userErrors { field message }
       }
     }
@@ -116,14 +179,18 @@ def ensure_collection(dry_run: bool, handle: str, title: str, tag: str) -> None:
             "ruleSet": {
                 "appliedDisjunctively": False,
                 "rules": [
+                    {"column": "TYPE", "relation": "EQUALS", "condition": product_type},
                     {"column": "TAG", "relation": "EQUALS", "condition": tag},
                 ],
             },
         }
     }
     res = shopify_gql(mutation, variables, allow_mutations=True)
-    errs = res["data"]["collectionCreate"]["userErrors"]
+    errs = gql_data(res, "collectionCreate", "userErrors") or []
     if errs:
+        if any("already been taken" in (e.get("message") or "") for e in errs):
+            print(f"Collection {handle} already exists (handle taken)")
+            return
         raise RuntimeError(f"collectionCreate {handle}: {errs}")
     print(f"Created collection {handle}")
 
@@ -152,7 +219,7 @@ def apply_product_fitment(dry_run: bool, handle: str, refs_csv: str) -> None:
 
     pq = f'query {{ productByHandle(handle:"{handle}") {{ id }} }}'
     pdata = shopify_gql(pq)
-    product = pdata.get("data", {}).get("productByHandle")
+    product = gql_data(pdata, "productByHandle")
     if not product:
         print(f"WARN: product not found: {handle}")
         return
@@ -161,7 +228,7 @@ def apply_product_fitment(dry_run: bool, handle: str, refs_csv: str) -> None:
     for mh in model_handles:
         mq = f'query {{ metaobjectByHandle(handle: {{type: "model", handle: "{mh}"}}) {{ id }} }}'
         mdata = shopify_gql(mq)
-        mo = mdata.get("data", {}).get("metaobjectByHandle")
+        mo = gql_data(mdata, "metaobjectByHandle")
         if mo:
             gids.append(mo["id"])
         else:
@@ -188,7 +255,7 @@ def apply_product_fitment(dry_run: bool, handle: str, refs_csv: str) -> None:
         }]
     }
     res = shopify_gql(mutation, variables, allow_mutations=True)
-    errs = res["data"]["metafieldsSet"]["userErrors"]
+    errs = gql_data(res, "metafieldsSet", "userErrors") or []
     if errs:
         raise RuntimeError(f"metafieldsSet {handle}: {errs}")
     print(f"Updated fitment: {handle} ({len(gids)} models)")
@@ -205,7 +272,7 @@ def apply_model_seo(dry_run: bool) -> None:
                 continue
             mq = f'query {{ metaobjectByHandle(handle: {{type: "model", handle: "{handle}"}}) {{ id }} }}'
             mdata = shopify_gql(mq)
-            mo = mdata.get("data", {}).get("metaobjectByHandle")
+            mo = gql_data(mdata, "metaobjectByHandle")
             if not mo:
                 print(f"WARN: model not found: {handle}")
                 continue
@@ -225,7 +292,7 @@ def apply_model_seo(dry_run: bool) -> None:
                 ],
             }
             res = shopify_gql(mutation, variables, allow_mutations=True)
-            errs = res["data"]["metaobjectUpdate"]["userErrors"]
+            errs = gql_data(res, "metaobjectUpdate", "userErrors") or []
             if errs:
                 print(f"WARN SEO {handle}: {errs}")
             else:
@@ -240,8 +307,9 @@ def main() -> int:
     dry_run = not args.apply
 
     ensure_page(dry_run)
-    ensure_collection(dry_run, "skid-steers", "Skid Steer Tracks", "skid-steer")
-    ensure_collection(dry_run, "multi-terrain-loaders", "Multi-Terrain Loader Tracks", "multi-terrain-loader")
+    ensure_collection(dry_run, "skid-steers", "Skid Steer Tracks", "Skid Steer")
+    tag_mtl_products(dry_run)
+    ensure_collection(dry_run, "multi-terrain-loaders", "Multi-Terrain Loader Tracks", "Multi-Terrain Loader")
 
     for handle, refs in load_fitment_rows():
         apply_product_fitment(dry_run, handle, refs)
