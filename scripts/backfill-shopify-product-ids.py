@@ -105,16 +105,64 @@ def normalize_supabase_handle(handle: str) -> str | None:
             tread = TREAD_SUFFIXES[key]
             base = base[: -len(suffix)]
             break
-    if not tread:
-        return None
 
-    # 300x52.5wx88 → 300x52-5wx88 ; collapse spaces in legacy handles
     base = re.sub(r"\s+", "", base)
-    base = re.sub(r"(\d)x(\d+\.\d+)", r"\1x\2".replace(".", "-").replace("x", "x", 1), base)
     base = re.sub(r"(\d+\.\d+)", lambda m: m.group(1).replace(".", "-"), base)
-    base = base.replace("bx", "x").replace("tx", "x")
+    base = base.replace("bx", "x").replace("tx", "x").replace("wx", "x").replace("kx", "x")
 
-    return f"{base}-rubber-track-{tread}"
+    if tread:
+        return f"{base}-rubber-track-{tread}"
+    return None
+
+
+def normalize_handle_candidates(handle: str) -> list[str]:
+    """Generate Shopify handle candidates from a Supabase catalog handle."""
+    h = handle.strip().lower()
+    out: list[str] = []
+
+    def add(c: str | None) -> None:
+        if c and c not in out:
+            out.append(c)
+
+    add(h.replace("-rubber-tracks", "-rubber-track-directional"))
+    add(normalize_supabase_handle(h))
+
+    if h.endswith("-rubber-tracks"):
+        base = h[: -len("-rubber-tracks")]
+        base = re.sub(r"\s+", "", base)
+        base = re.sub(r"(\d+\.\d+)", lambda m: m.group(1).replace(".", "-"), base)
+        base = base.replace("bx", "x").replace("tx", "x").replace("wx", "x").replace("kx", "x")
+        for slug in sorted(set(TREAD_SUFFIXES.values())):
+            add(f"{base}-rubber-track-{slug}")
+
+    return out
+
+
+def shopify_products_search(query: str) -> list[dict]:
+    data = shopify_gql(
+        "query ProductSearch($q: String!) { products(first: 8, query: $q) { nodes { id handle title } } }",
+        {"q": query},
+    )
+    return (data.get("products") or {}).get("nodes") or []
+
+
+def digits_from_handle(handle: str) -> str:
+    return re.sub(r"[^0-9]", "", handle or "")
+
+
+def pick_product_by_size_tread(products: list[dict], digits: str, tread_slug: str | None) -> str | None:
+    if not products or not digits:
+        return None
+    tread_bits = [tread_slug] if tread_slug else []
+    tread_bits.extend(["directional", "multi-bar", "c-block", "mx"])
+    for p in products:
+        blob = f"{p.get('handle', '')} {p.get('title', '')}".lower()
+        if digits not in re.sub(r"[^0-9]", "", blob):
+            continue
+        if tread_slug and not any(t in blob for t in tread_bits if t):
+            continue
+        return p.get("id")
+    return products[0].get("id") if products else None
 
 
 def resolve_shopify_gid(handle: str, sku: str | None) -> tuple[str | None, str]:
@@ -127,11 +175,24 @@ def resolve_shopify_gid(handle: str, sku: str | None) -> tuple[str | None, str]:
         if gid:
             return gid, "sku"
 
-    normalized = normalize_supabase_handle(handle)
-    if normalized and normalized != handle:
-        gid = shopify_product_by_handle(normalized)
+    for candidate in normalize_handle_candidates(handle):
+        if candidate == handle:
+            continue
+        gid = shopify_product_by_handle(candidate)
         if gid:
             return gid, "normalized"
+
+    digits = digits_from_handle(handle)
+    tread = None
+    for key, slug in TREAD_SUFFIXES.items():
+        if f"-{key}" in handle.lower():
+            tread = slug
+            break
+    if digits:
+        nodes = shopify_products_search(f"title:*{digits}*")
+        gid = pick_product_by_size_tread(nodes, digits, tread)
+        if gid:
+            return gid, "search"
 
     return None, "none"
 
@@ -192,7 +253,7 @@ def main() -> int:
     matched = 0
     missing = 0
     errors: list[str] = []
-    by_method: dict[str, int] = {"handle": 0, "sku": 0, "normalized": 0}
+    by_method: dict[str, int] = {"handle": 0, "sku": 0, "normalized": 0, "search": 0}
 
     for row in rows:
         handle = (row.get("handle") or "").strip()
@@ -227,7 +288,8 @@ def main() -> int:
         f"  missing:    {missing}\n"
         f"  errors:     {len(errors)}\n"
         f"  by method:  handle={by_method.get('handle', 0)}, "
-        f"sku={by_method.get('sku', 0)}, normalized={by_method.get('normalized', 0)}"
+        f"sku={by_method.get('sku', 0)}, normalized={by_method.get('normalized', 0)}, "
+        f"search={by_method.get('search', 0)}"
     )
     for err in errors[:10]:
         print(f"  - {err}", file=sys.stderr)
