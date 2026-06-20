@@ -634,10 +634,11 @@ def normalize_master_storage_url(url: str) -> str:
         return url
     filename = url.rstrip("/").split("/")[-1]
     prefix = url.split("/catalog-images/")[0]
-    stem = filename.rsplit(".", 1)[0]
-    size_key = stem.split("-", 1)[0]
-    # 494/596 at bucket root; 102/596 under sizes/ (decimal ag sizes, compact keys like 1807244).
-    use_sizes_subdir = "." in size_key or not re.search(r"\d+x\d+", stem, re.I)
+    size_key = filename.rsplit(".", 1)[0].split("-", 1)[0]
+    # 493/596 at bucket root; 102/596 under sizes/ (ag decimals like 160x87.63x28, compact keys like 1807244).
+    use_sizes_subdir = "x" not in size_key.lower() or bool(
+        re.match(r"^\d+x\d+\.\d+x\d+", size_key, re.I)
+    )
     if use_sizes_subdir:
         return f"{prefix}/catalog-images/sizes/{filename}"
     return f"{prefix}/catalog-images/{filename}"
