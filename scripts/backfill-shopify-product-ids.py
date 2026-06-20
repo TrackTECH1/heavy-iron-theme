@@ -146,7 +146,7 @@ class ShopifyProductCache:
         return []
 
 
-def shopify_gql_cli(query: str, variables: dict | None = None) -> dict:
+def shopify_gql_cli(query: str, variables: dict | None = None, retries: int = 3) -> dict:
     cmd = [
         "shopify", "store", "execute",
         "--store", STORE,
@@ -160,10 +160,15 @@ def shopify_gql_cli(query: str, variables: dict | None = None) -> dict:
         "SHOPIFY_CLI_AGENT_INFO": "n:cursor|v:1|p:cursor",
         "SHOPIFY_CLI_AGENT_IDS": "s:backfill|r:script|i:1",
     }
-    r = subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=120)
-    if r.returncode != 0:
-        raise RuntimeError(r.stderr or r.stdout)
-    return json.loads(r.stdout)
+    last_err = ""
+    for attempt in range(retries):
+        r = subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=120)
+        if r.returncode == 0:
+            return json.loads(r.stdout)
+        last_err = r.stderr or r.stdout
+        if attempt + 1 < retries:
+            time.sleep(1.5 * (attempt + 1))
+    raise RuntimeError(last_err)
 
 
 def shopify_gql(query: str, variables: dict | None = None) -> dict:
@@ -510,7 +515,25 @@ def supabase_update_product(url: str, key: str, product_id: str, shopify_gid: st
         resp.read()
 
 
+def load_dotenv_fitment() -> None:
+    """Load .env.fitment.local if present (SHOPIFY_ADMIN_TOKEN, Supabase keys)."""
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    path = os.path.join(root, ".env.fitment.local")
+    if not os.path.isfile(path):
+        return
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, _, val = line.partition("=")
+            key = key.strip()
+            if key and key not in os.environ:
+                os.environ[key] = val.strip().strip('"').strip("'")
+
+
 def main() -> int:
+    load_dotenv_fitment()
     parser = argparse.ArgumentParser(description="Backfill product.shopify_product_id from Shopify handles")
     parser.add_argument("--dry-run", action="store_true", help="Resolve handles only; do not write to Supabase")
     parser.add_argument("--apply", action="store_true", help="Write matched GIDs to Supabase")
