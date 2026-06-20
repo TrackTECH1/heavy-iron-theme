@@ -79,6 +79,43 @@
   color: #777;
 }
 
+.hi-smart-search__block + .hi-smart-search__block {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e8e8e8;
+}
+
+.hi-smart-search__products {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hi-smart-search__product {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.75rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid #eee;
+  font-size: 0.84rem;
+}
+
+.hi-smart-search__product:last-child { border-bottom: 0; }
+
+.hi-smart-search__product-link {
+  font-weight: 700;
+  color: #111;
+  text-decoration: none;
+}
+
+.hi-smart-search__product-link:hover { color: #f5a623; }
+
+.hi-smart-search__product-meta {
+  font-size: 0.72rem;
+  color: #666;
+}
+
 .hi-smart-search--loading .hi-smart-search__inner {
   opacity: 0.65;
 }

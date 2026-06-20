@@ -1,12 +1,14 @@
-/* Heavy Iron — site-wide smart search: Supabase machine lookup + Shopify product search */
+/* Heavy Iron — smart search: machine lookup + semantic product search + Shopify search */
 (function () {
   'use strict';
 
   var CFG = window.HISmartSearch || {};
-  var EP = CFG.endpoint || '';
+  var AGENT_EP = CFG.endpoint || '';
+  var SEARCH_EP = CFG.searchEndpoint || '';
   var MIN = CFG.minChars || 3;
   var DEBOUNCE = CFG.debounceMs || 380;
-  var cache = {};
+  var machineCache = {};
+  var semanticCache = {};
   var timers = new WeakMap();
   var aborts = new WeakMap();
   var session = CFG.session || ('hi-search-' + Math.random().toString(36).slice(2));
@@ -28,26 +30,15 @@
     return form.querySelector('[data-hi-smart-search-panel]');
   }
 
-  function renderPanel(panel, state, data) {
-    if (!panel) return;
-    if (state === 'hide') {
-      panel.hidden = true;
-      panel.classList.remove('hi-smart-search--loading');
-      panel.innerHTML = '';
-      return;
-    }
-    if (state === 'loading') {
-      panel.hidden = false;
-      panel.classList.add('hi-smart-search--loading');
-      panel.innerHTML = '<div class="hi-smart-search__inner"><p class="hi-smart-search__meta">Looking up your machine…</p></div>';
-      return;
-    }
-    if (!data || !data.found) {
-      panel.hidden = true;
-      panel.classList.remove('hi-smart-search--loading');
-      panel.innerHTML = '';
-      return;
-    }
+  function formatPrice(price) {
+    if (price == null || price === '') return '';
+    var n = Number(price);
+    if (isNaN(n)) return '';
+    return '$' + n.toFixed(2);
+  }
+
+  function renderMachineBlock(data) {
+    if (!data || !data.found) return '';
 
     var sizes = (data.track_sizes || []).slice(0, 4);
     var sizeHtml = sizes.map(function (s) {
@@ -63,29 +54,97 @@
       ? (data.attachment_categories.length + ' attachment categories also fit.')
       : '';
     var extra = [uc, attach].filter(Boolean).join(' ');
-
     var url = normalizeModelUrl(data.page_url);
-    panel.hidden = false;
-    panel.classList.remove('hi-smart-search--loading');
-    panel.innerHTML =
-      '<div class="hi-smart-search__inner">' +
+
+    return (
+      '<div class="hi-smart-search__block">' +
         '<p class="hi-smart-search__eyebrow">Machine match</p>' +
         '<p class="hi-smart-search__machine">' + esc(data.machine) + '</p>' +
         (extra ? '<p class="hi-smart-search__meta">' + esc(extra) + '</p>' : '') +
         (sizeHtml ? '<div class="hi-smart-search__sizes">' + sizeHtml + '</div>' : '') +
         (url ? '<a class="hi-smart-search__cta" href="' + esc(url) + '">See everything that fits →</a>' : '') +
-        '<p class="hi-smart-search__hint">Product matches appear below.</p>' +
-      '</div>';
+      '</div>'
+    );
   }
 
-  function fetchMachine(q, panel) {
-    if (!EP || q.length < MIN) {
+  function renderSemanticBlock(results) {
+    if (!results || !results.length) return '';
+
+    var items = results.slice(0, 6).map(function (r) {
+      var href = r.url || (r.shopify_handle ? '/products/' + r.shopify_handle : '');
+      var price = formatPrice(r.price);
+      var score = r.similarity != null ? Math.round(r.similarity * 100) + '% match' : '';
+      var meta = [price, score].filter(Boolean).join(' · ');
+      var inner = esc(r.label || r.track_size || 'Track');
+      if (href) {
+        inner = '<a class="hi-smart-search__product-link" href="' + esc(href) + '">' + inner + '</a>';
+      }
+      return (
+        '<li class="hi-smart-search__product">' +
+          inner +
+          (meta ? '<span class="hi-smart-search__product-meta">' + esc(meta) + '</span>' : '') +
+        '</li>'
+      );
+    }).join('');
+
+    return (
+      '<div class="hi-smart-search__block hi-smart-search__block--semantic">' +
+        '<p class="hi-smart-search__eyebrow">AI product matches</p>' +
+        '<ul class="hi-smart-search__products">' + items + '</ul>' +
+      '</div>'
+    );
+  }
+
+  function renderPanel(panel, state, machineData, semanticResults) {
+    if (!panel) return;
+    if (state === 'hide') {
+      panel.hidden = true;
+      panel.classList.remove('hi-smart-search--loading');
+      panel.innerHTML = '';
+      return;
+    }
+    if (state === 'loading') {
+      panel.hidden = false;
+      panel.classList.add('hi-smart-search--loading');
+      panel.innerHTML = '<div class="hi-smart-search__inner"><p class="hi-smart-search__meta">Searching catalog…</p></div>';
+      return;
+    }
+
+    var machineHtml = renderMachineBlock(machineData);
+    var semanticHtml = renderSemanticBlock(semanticResults);
+    if (!machineHtml && !semanticHtml) {
       renderPanel(panel, 'hide');
       return;
     }
 
-    if (cache[q]) {
-      renderPanel(panel, 'done', cache[q]);
+    panel.hidden = false;
+    panel.classList.remove('hi-smart-search--loading');
+    panel.innerHTML =
+      '<div class="hi-smart-search__inner">' +
+        machineHtml +
+        semanticHtml +
+        '<p class="hi-smart-search__hint">Standard Shopify results appear below.</p>' +
+      '</div>';
+  }
+
+  function fetchJson(url, body, signal) {
+    return fetch(url, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(body),
+      signal: signal,
+    }).then(function (r) { return r.json(); });
+  }
+
+  function lookup(q, panel) {
+    if ((!AGENT_EP && !SEARCH_EP) || q.length < MIN) {
+      renderPanel(panel, 'hide');
+      return;
+    }
+
+    var cacheKey = q.toLowerCase();
+    if (machineCache[cacheKey] !== undefined && semanticCache[cacheKey] !== undefined) {
+      renderPanel(panel, 'done', machineCache[cacheKey], semanticCache[cacheKey]);
       return;
     }
 
@@ -96,21 +155,27 @@
 
     renderPanel(panel, 'loading');
 
-    fetch(EP, {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ make: q, model: '', question: q, session: session }),
-      signal: ac.signal,
-    })
-      .then(function (r) { return r.json(); })
-      .then(function (d) {
-        cache[q] = d;
-        renderPanel(panel, 'done', d);
-      })
-      .catch(function (e) {
-        if (e && e.name === 'AbortError') return;
-        renderPanel(panel, 'hide');
-      });
+    var machineP = AGENT_EP
+      ? fetchJson(AGENT_EP, { make: q, model: '', question: q, session: session }, ac.signal)
+          .catch(function () { return null; })
+      : Promise.resolve(null);
+
+    var semanticP = SEARCH_EP
+      ? fetchJson(SEARCH_EP, { q: q, limit: 8 }, ac.signal)
+          .then(function (d) { return (d && d.results) || []; })
+          .catch(function () { return []; })
+      : Promise.resolve([]);
+
+    Promise.all([machineP, semanticP]).then(function (pair) {
+      var machineData = pair[0];
+      var semanticResults = pair[1];
+      machineCache[cacheKey] = machineData;
+      semanticCache[cacheKey] = semanticResults;
+      renderPanel(panel, 'done', machineData, semanticResults);
+    }).catch(function (e) {
+      if (e && e.name === 'AbortError') return;
+      renderPanel(panel, 'hide');
+    });
   }
 
   function schedule(input) {
@@ -122,7 +187,7 @@
       renderPanel(panel, 'hide');
       return;
     }
-    timers.set(input, setTimeout(function () { fetchMachine(q, panel); }, DEBOUNCE));
+    timers.set(input, setTimeout(function () { lookup(q, panel); }, DEBOUNCE));
   }
 
   function bindInput(input) {
@@ -143,11 +208,11 @@
     var params = new URLSearchParams(window.location.search);
     var q = (params.get('q') || '').trim();
     if (!q || q.length < MIN) return;
-    fetchMachine(q, page);
+    lookup(q, page);
   }
 
   function boot() {
-    if (!EP) return;
+    if (!AGENT_EP && !SEARCH_EP) return;
     document.querySelectorAll('input[type="search"].search__input').forEach(bindInput);
     initSearchPage();
   }

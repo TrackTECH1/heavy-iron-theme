@@ -5,7 +5,6 @@
 {%- liquid
   assign variant = product.selected_or_first_available_variant
   assign fitment_refs = product.metafields.custom.fitments.value
-  assign model_refs = product.metafields.custom.fits_equipment_models.value
   assign hi_ts = product.metafields.custom.track_size.value | default: product.metafields.custom.track_size
   assign hi_category = product.type | default: 'Heavy Equipment Parts'
   if hi_ts != blank
@@ -15,7 +14,7 @@
 <script type="application/ld+json">
   {{ product | structured_data }}
 </script>
-{%- if fitment_refs != blank or model_refs != blank -%}
+{%- if fitment_refs != blank -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -27,30 +26,17 @@
   "brand": { "@type": "Brand", "name": "Heavy Iron Supply Co." },
   "isAccessoryOrSparePartFor": [
     {%- assign hi_fi = 0 -%}
-    {%- if fitment_refs != blank -%}
-      {%- for fitment in fitment_refs limit: 15 -%}
-        {%- assign model_mo = fitment.model.value -%}
-        {%- assign make_mo = fitment.make.value -%}
-        {%- assign mk = make_mo.name.value | default: make_mo.display_name.value | default: '' -%}
-        {%- assign md = model_mo.display_name.value | default: model_mo.system.handle | default: '' -%}
-        {%- if mk != blank and md != blank -%}
-          {%- if hi_fi > 0 -%},{%- endif -%}
-          { "@type": "Product", "name": {{ mk | append: ' ' | append: md | json }} }
-          {%- assign hi_fi = hi_fi | plus: 1 -%}
-        {%- endif -%}
-      {%- endfor -%}
-    {%- elsif model_refs != blank -%}
-      {%- for model_mo in model_refs limit: 15 -%}
-        {%- assign make_mo = model_mo.make.value -%}
-        {%- assign mk = make_mo.name.value | default: make_mo.display_name.value | default: '' -%}
-        {%- assign md = model_mo.display_name.value | default: model_mo.system.handle | default: '' -%}
-        {%- if mk != blank and md != blank -%}
-          {%- if hi_fi > 0 -%},{%- endif -%}
-          { "@type": "Product", "name": {{ mk | append: ' ' | append: md | json }} }
-          {%- assign hi_fi = hi_fi | plus: 1 -%}
-        {%- endif -%}
-      {%- endfor -%}
-    {%- endif -%}
+    {%- for fitment in fitment_refs limit: 15 -%}
+      {%- assign model_mo = fitment.model.value -%}
+      {%- assign make_mo = fitment.make.value -%}
+      {%- assign mk = make_mo.name.value | default: make_mo.display_name.value | default: '' -%}
+      {%- assign md = model_mo.display_name.value | default: model_mo.system.handle | default: '' -%}
+      {%- if mk != blank and md != blank -%}
+        {%- if hi_fi > 0 -%},{%- endif -%}
+        { "@type": "Product", "name": {{ mk | append: ' ' | append: md | json }} }
+        {%- assign hi_fi = hi_fi | plus: 1 -%}
+      {%- endif -%}
+    {%- endfor -%}
   ]
 }
 </script>

@@ -311,8 +311,8 @@ def main() -> int:
     tag_mtl_products(dry_run)
     ensure_collection(dry_run, "multi-terrain-loaders", "Multi-Terrain Loader Tracks", "Multi-Terrain Loader")
 
-    for handle, refs in load_fitment_rows():
-        apply_product_fitment(dry_run, handle, refs)
+    # Fitment: use Supabase sync → custom.fitments (scripts/consolidate-fitment.sh).
+    # Legacy Matrixify fits_equipment_models import removed — single source of truth.
 
     apply_model_seo(dry_run)
     return 0

@@ -1,10 +1,11 @@
 {%- comment -%}
-  Smart search assets — machine lookup on header + /search via Supabase store-agent.
+  Smart search — machine lookup (store-agent) + semantic product search (catalog-search).
 {%- endcomment -%}
 {{ 'hi-smart-search.css' | asset_url | stylesheet_tag }}
 <script>
   window.HISmartSearch = window.HISmartSearch || {
     endpoint: 'https://tcykyktvdlsbscrsbjyt.supabase.co/functions/v1/store-agent',
+    searchEndpoint: 'https://tcykyktvdlsbscrsbjyt.supabase.co/functions/v1/catalog-search',
     minChars: 3,
     debounceMs: 380
   };
