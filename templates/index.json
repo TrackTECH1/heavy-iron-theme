@@ -440,7 +440,7 @@
             "track_size": "350x54-5x86",
             "caption": "Rental yard re-track — Directional",
             "badge": "",
-            "product": "kubota-kx040-4-rubber-track",
+            "product": "350x54-5x86-rubber-track-directional",
             "custom_url": ""
           }
         },
@@ -451,7 +451,7 @@
             "machine": "John Deere 333G",
             "track_size": "450x86x58",
             "caption": "Municipal fleet — 4 units",
-            "badge": "X-Terrain",
+            "badge": "X-terrain",
             "product": "450x86x58-rubber-track-x-terrain",
             "custom_url": ""
           }
@@ -464,7 +464,7 @@
             "track_size": "450x86x58",
             "caption": "Land Management — max traction",
             "badge": "",
-            "product": "bobcat-450x86x58-x-terrain-rubber-tracks-450x86x58",
+            "product": "450x86x58-rubber-track-x-terrain",
             "custom_url": ""
           }
         },
@@ -476,7 +476,7 @@
             "track_size": "300x52.5x86",
             "caption": "Utility contractor — heavy duty application",
             "badge": "",
-            "product": "john-deere-35g",
+            "product": "300x52-5x86-rubber-track-mx",
             "custom_url": ""
           }
         },
@@ -487,8 +487,8 @@
             "machine": "Bobcat T650",
             "track_size": "400x86x52",
             "caption": "Dirt work — grading contractor",
-            "badge": "",
-            "product": "bobcat-400x86x52-zig-zag-rubber-tracks-320x86x52",
+            "badge": "16\" Zig-Zag",
+            "product": "400x86x49-rubber-track-zig-zag",
             "custom_url": ""
           }
         }
@@ -508,7 +508,7 @@
         "subtitle": "See what our customers are running. Click any upgrade to shop the same track.",
         "columns": "3",
         "cta_text": "Shop All Tracks",
-        "cta_url": "",
+        "cta_url": "shopify://collections",
         "color_scheme": "",
         "padding_top": 52,
         "padding_bottom": 52
@@ -677,7 +677,7 @@
             "name": "Carlos M.",
             "company": "CM Contractors, AZ",
             "verified": true,
-            "product": ""
+            "product": "450x86x56-rubber-track-zig-zag"
           }
         },
         "testimonial_3tcHKt": {
