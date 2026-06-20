@@ -1,0 +1,52 @@
+{%- comment -%}
+  JSON-LD for make (brand) hub metaobject pages.
+  Params: make (metaobject), make_name
+{%- endcomment -%}
+{%- liquid
+  assign models = make.models.value
+  assign make_url = make.system.url | default: canonical_url
+-%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ shop.url | json }} },
+        { "@type": "ListItem", "position": 2, "name": "Shop by Make", "item": {{ shop.url | append: '/collections/rubber-tracks' | json }} },
+        { "@type": "ListItem", "position": 3, "name": {{ make_name | json }}, "item": {{ canonical_url | json }} }
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "name": {{ make_name | append: ' Rubber Tracks, Parts & Attachments' | json }},
+      "description": {{ 'Shop OEM-spec rubber tracks, undercarriage parts, and attachments for ' | append: make_name | append: ' equipment by model.' | json }},
+      "url": {{ canonical_url | json }},
+      "isPartOf": { "@type": "WebSite", "name": {{ shop.name | json }}, "url": {{ shop.url | json }} }
+    }
+    {%- if models != blank and models.size > 0 -%}
+    ,{
+      "@type": "ItemList",
+      "name": {{ make_name | append: ' Equipment Models' | json }},
+      "numberOfItems": {{ models.size }},
+      "itemListElement": [
+        {%- for m in models limit: 100 -%}
+          {%- assign title = m.display_name.value | default: m.system.handle | split: ' Rubber Track' | first | strip -%}
+          {%- unless forloop.first -%},{%- endunless -%}
+          {
+            "@type": "ListItem",
+            "position": {{ forloop.index }},
+            "item": {
+              "@type": "WebPage",
+              "name": {{ title | json }},
+              "url": {{ m.system.url | prepend: shop.url | json }}
+            }
+          }
+        {%- endfor -%}
+      ]
+    }
+    {%- endif -%}
+  ]
+}
+</script>

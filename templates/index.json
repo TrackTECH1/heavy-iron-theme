@@ -30,7 +30,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "FIND YOUR EXACT PARTS",
-            "button_link_1": "shopify://collections/all",
+            "button_link_1": "/search",
             "button_style_secondary_1": false,
             "button_label_2": "",
             "button_link_2": "",
@@ -233,15 +233,15 @@
         "text_Fa3zjC": {
           "type": "text",
           "settings": {
-            "text": "<p>Equip your machinery with the strength it deserves. Heavy Iron Supply Co. is your trusted, direct source for heavy-duty rubber tracks, undercarriage parts, teeh and  attachments for all major equipment brands. Whether you are in construction, agriculture, or landscaping, our products are rigorously tested to ensure maximum durability, superior traction, and extended wear life. Cut out the middleman, reduce your operating costs, and get the heavy-duty solutions you need to get the job done right.</p>",
+            "text": "<p>Equip your machinery with the strength it deserves. Heavy Iron Supply Co. is your trusted, direct source for heavy-duty rubber tracks, undercarriage parts, teeth and attachments for all major equipment brands. Whether you are in construction, agriculture, or landscaping, our products are rigorously tested to ensure maximum durability, superior traction, and extended wear life. Cut out the middleman, reduce your operating costs, and get the heavy-duty solutions you need to get the job done right.</p>",
             "text_style": "body"
           }
         },
         "button_XeB8bV": {
           "type": "button",
           "settings": {
-            "button_label": "Gear Up",
-            "button_link": "shopify://collections",
+            "button_label": "Shop Rubber Tracks",
+            "button_link": "shopify://collections/rubber-tracks",
             "button_style_secondary": false
           }
         }
@@ -725,11 +725,11 @@
             "menu": "",
             "max_links": 8,
             "link_1_text": "Skid Steers",
-            "link_1_url": "/collections/rubber-tracks/skid-steers",
+            "link_1_url": "shopify://collections/skid-steers",
             "link_2_text": "Mini Excavators",
             "link_2_url": "shopify://collections/mini-excavators",
             "link_3_text": "Multi-Terrain Loaders",
-            "link_3_url": "/collections/rubber-tracks/multi-terrain-loaders",
+            "link_3_url": "shopify://collections/multi-terrain-loaders",
             "link_4_text": "Compact Track Loaders",
             "link_4_url": "shopify://collections/compact-track-loaders",
             "link_5_text": "",
@@ -809,7 +809,7 @@
             "menu": "",
             "max_links": 8,
             "link_1_text": "Track Finder",
-            "link_1_url": "/search",
+            "link_1_url": "/pages/track-finder",
             "link_2_text": "Warranty Info",
             "link_2_url": "shopify://pages/warranty",
             "link_3_text": "Shipping & Delivery",

@@ -1,0 +1,27 @@
+{%- comment -%}
+  JSON-LD for collection pages (rubber tracks, UC, attachments).
+  Params: collection
+{%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ shop.url | json }} },
+        { "@type": "ListItem", "position": 2, "name": {{ collection.title | json }}, "item": {{ canonical_url | json }} }
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "name": {{ collection.title | json }},
+      {%- if collection.description != blank -%}
+      "description": {{ collection.description | strip_html | truncate: 320 | json }},
+      {%- endif -%}
+      "url": {{ canonical_url | json }},
+      "isPartOf": { "@type": "WebSite", "name": {{ shop.name | json }}, "url": {{ shop.url | json }} }
+    }
+  ]
+}
+</script>

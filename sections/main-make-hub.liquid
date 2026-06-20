@@ -52,6 +52,7 @@
     <div class="him-empty">No {{ make_name }} models connected yet.</div>
   {%- endif -%}
 </div>
+{%- render 'hi-make-jsonld', make: make, make_name: make_name -%}
 {% schema %}
 {"name":"Make hub","settings":[{"type":"color","id":"accent_color","label":"Accent","default":"#FFCE00"}],"presets":[{"name":"Make hub"}]}
 {% endschema %}

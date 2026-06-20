@@ -453,6 +453,9 @@
   }
   document.getElementById("hi-agent-go").onclick=ask;
   inp.addEventListener("keydown",function(e){if(e.key==="Enter")ask();});
+  document.querySelectorAll("[data-hi-fit-agent]").forEach(function(el){
+    el.addEventListener("click",function(e){e.preventDefault();btn.style.display="none";panel.style.display="flex";inp.focus();});
+  });
 })();
 </script>
 <!-- /HEAVY IRON FITMENT AGENT -->

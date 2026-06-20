@@ -1,0 +1,79 @@
+{%- comment -%}
+  Track Finder — machine lookup landing (search + Find My Fit + quick links).
+{%- endcomment -%}
+{{ 'component-search.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .tf{max-width:920px;margin:0 auto;padding:2.5rem 1.25rem 3.5rem}
+  .tf__ey{font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:#ffb607;margin:0 0 .5rem}
+  .tf__h{font-size:clamp(1.75rem,4vw,2.5rem);font-weight:900;text-transform:uppercase;margin:0 0 .65rem;line-height:1.05}
+  .tf__sub{color:#555;margin:0 0 1.75rem;line-height:1.55;font-size:1rem;max-width:640px}
+  .tf__search{margin-bottom:1rem}
+  .tf__search .field{display:flex;gap:.5rem}
+  .tf__search input[type=search]{flex:1;padding:.85rem 1rem;border:1px solid #ccc;border-radius:4px;font-size:1rem}
+  .tf__search button{padding:.85rem 1.25rem;background:#1a1a1a;color:#fff;border:none;border-radius:4px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;cursor:pointer}
+  .tf__agent{display:inline-flex;align-items:center;gap:.35rem;margin:0 0 2rem;padding:0;background:none;border:none;font-weight:700;color:#1a1a1a;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+  .tf__cols{display:grid;grid-template-columns:1fr;gap:2rem}
+  @media(min-width:750px){.tf__cols{grid-template-columns:1fr 1fr}}
+  .tf__col-h{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#888;margin:0 0 .75rem}
+  .tf__links{display:flex;flex-wrap:wrap;gap:.45rem .65rem;list-style:none;margin:0;padding:0}
+  .tf__links a{display:inline-block;padding:.35rem .65rem;border:1px solid #ddd;border-radius:999px;font-size:.82rem;font-weight:700;color:#222;text-decoration:none}
+  .tf__links a:hover{border-color:#1a1a1a;background:#f5f5f5}
+</style>
+
+<div class="tf page-width">
+  <p class="tf__ey">Track Finder</p>
+  <h1 class="tf__h">{{ section.settings.heading | default: 'Find Tracks for Your Machine' }}</h1>
+  <p class="tf__sub">{{ section.settings.subheading | default: 'Search by make and model (e.g. Bobcat T650, CAT 259D3). We cross-reference OEM specs and show guaranteed-fit tracks, undercarriage, and attachments.' }}</p>
+
+  <form class="tf__search" action="{{ routes.search_url }}" method="get" role="search">
+    <div class="field">
+      <input type="search" name="q" placeholder="Search products or your machine (e.g. Bobcat T650)" aria-label="Search by machine or product" autocomplete="off">
+      <button type="submit">Search</button>
+    </div>
+  </form>
+
+  <button type="button" class="tf__agent" data-hi-fit-agent>Not sure? Use Find My Fit →</button>
+
+  <div class="tf__cols">
+    <div>
+      <h2 class="tf__col-h">Shop by Brand</h2>
+      <ul class="tf__links" role="list">
+        {%- capture hx_brands -%}{%- render 'tracks-brand-order' -%}{%- endcapture -%}
+        {%- assign brand_order = hx_brands | strip | split: ',' -%}
+        {%- for h in brand_order limit: 12 -%}
+          {%- assign mk = metaobjects.make[h] -%}
+          {%- if mk != blank -%}
+            <li><a href="{{ mk.system.url }}">{{ mk.name.value | default: h | replace: '-', ' ' | capitalize }}</a></li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+    <div>
+      <h2 class="tf__col-h">Popular Models</h2>
+      <ul class="tf__links" role="list">
+        {%- assign popular = 'bobcat-t770,cat-289d,john-deere-333g,kubota-svl95-2,takeuchi-tl12r2,case-tv370,bobcat-t650,cat-259d3' | split: ',' -%}
+        {%- for handle in popular -%}
+          {%- assign md = metaobjects.model[handle] -%}
+          {%- if md != blank -%}
+            {%- assign label = md.display_name.value | default: handle | replace: '-', ' ' -%}
+            <li><a href="{{ md.system.url }}">{{ label }}</a></li>
+          {%- else -%}
+            <li><a href="/pages/model/{{ handle }}">{{ handle | replace: '-', ' ' | capitalize }}</a></li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Track Finder",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Find Tracks for Your Machine" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading" }
+  ],
+  "presets": [{ "name": "Track Finder" }]
+}
+{% endschema %}

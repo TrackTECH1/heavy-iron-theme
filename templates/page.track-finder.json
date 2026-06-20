@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "track-finder",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}
