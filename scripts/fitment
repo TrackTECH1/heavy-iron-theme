@@ -109,21 +109,30 @@ case "$cmd" in
   sync)
     exec "$ROOT/scripts/consolidate-fitment.sh"
     ;;
+  sync-heroes)
+    exec python3 "$ROOT/scripts/sync-model-hero-images.py" "$@"
+    ;;
+  sync-variants)
+    exec python3 "$ROOT/scripts/sync-store-variants.py" "$@"
+    ;;
   -h|--help|help)
     cat <<EOF
-Usage: ./scripts/fitment {setup|bootstrap|doctor|sync}
+Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants}
 
   setup [--from-env]   Shopify OAuth → Supabase secrets + .env.fitment.local
   bootstrap            Service role via Supabase CLI → .env.fitment.local (no OAuth)
   doctor               Validate credentials (parses service_role key, not just CLI exit code)
   sync                 Backfill GIDs → sync custom.fitments → clear legacy
+  sync-heroes          Duplicate Shopify model hero images → Supabase machine-images/
+  sync-variants        Pull Shopify variant SKUs → store_variant_map (Quote → Buy bridge)
+                       (--apply --shop tracktech-530.myshopify.com for dev)
 
 Non-interactive setup:
   SHOPIFY_CLIENT_SECRET='shpss_...' ./scripts/fitment setup --from-env
 EOF
     ;;
   *)
-    echo "Usage: ./scripts/fitment {setup|bootstrap|doctor|sync}"
+    echo "Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants}"
     exit 1
     ;;
 esac
