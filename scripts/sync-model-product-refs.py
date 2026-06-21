@@ -153,7 +153,25 @@ def product_bucket(fit_type: str, product_code: str) -> str:
     return "uc_products"
 
 
-def load_shopify_handle_map() -> dict[str, str]:
+MANIFEST_PATH = ROOT / "data" / "shopify-canonical-handles.json"
+
+
+def load_canonical_handle_map() -> dict[str, str]:
+    """itemid -> Shopify handle from reconcile manifest (optional)."""
+    if not MANIFEST_PATH.is_file():
+        return {}
+    try:
+        data = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+        return {
+            iid.upper(): (info.get("handle") or "").strip()
+            for iid, info in (data.get("itemids") or {}).items()
+            if info.get("handle")
+        }
+    except (json.JSONDecodeError, OSError):
+        return {}
+
+
+def load_shopify_handle_map(canonical_by_itemid: dict[str, str] | None = None) -> dict[str, str]:
     """Current-store handle → product GID (avoids stale Supabase GIDs)."""
     by_handle: dict[str, str] = {}
     cursor: str | None = None
@@ -172,15 +190,23 @@ def load_shopify_handle_map() -> dict[str, str]:
     return by_handle
 
 
-def resolve_store_gid(product: dict, handle_map: dict[str, str]) -> str | None:
-    """Only use handles present in the current Shopify store."""
-    handle = (product.get("handle") or "").strip()
+def resolve_store_gid(
+    product: dict,
+    handle_map: dict[str, str],
+    canonical_by_itemid: dict[str, str],
+) -> str | None:
+    """Resolve via canonical handle (manifest) or Supabase handle → live store GID."""
+    code = (product.get("product_code") or "").upper()
+    handle = canonical_by_itemid.get(code) or (product.get("handle") or "").strip()
     if not handle:
         return None
     return handle_map.get(handle)
 
 
-def load_fitment_groups(handle_map: dict[str, str]) -> tuple[dict[str, dict], dict[str, int]]:
+def load_fitment_groups(
+    handle_map: dict[str, str],
+    canonical_by_itemid: dict[str, str],
+) -> tuple[dict[str, dict], dict[str, int]]:
     """Group distinct product GIDs by model_key → {track_products, uc_products}."""
     rows = supabase_get_all(FITMENT_SELECT)
     by_model: dict[str, dict] = defaultdict(
@@ -207,7 +233,7 @@ def load_fitment_groups(handle_map: dict[str, str]) -> tuple[dict[str, dict], di
             stats["skipped_no_model"] += 1
             continue
 
-        gid = resolve_store_gid(product, handle_map)
+        gid = resolve_store_gid(product, handle_map, canonical_by_itemid)
         if not gid:
             if product.get("handle"):
                 stats["skipped_not_in_store"] += 1
@@ -288,11 +314,14 @@ def main() -> int:
         return 1
 
     print("Loading Shopify product index …", file=sys.stderr)
+    canonical = load_canonical_handle_map()
+    if canonical:
+        print(f"  canonical manifest: {len(canonical)} itemids", file=sys.stderr)
     handle_map = load_shopify_handle_map()
     print(f"  {len(handle_map)} products in {STORE}", file=sys.stderr)
 
     print("Loading fitment graph from Supabase …", file=sys.stderr)
-    by_model, load_stats = load_fitment_groups(handle_map)
+    by_model, load_stats = load_fitment_groups(handle_map, canonical)
     print(
         f"  {load_stats['rows']} fitment rows → {len(by_model)} models "
         f"(skipped {load_stats['skipped_no_product_gid']} without handle/GID, "

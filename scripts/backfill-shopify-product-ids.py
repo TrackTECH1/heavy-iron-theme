@@ -189,8 +189,13 @@ def shopify_gql(query: str, variables: dict | None = None) -> dict:
                 "X-Shopify-Access-Token": token,
             },
         )
-        with urllib.request.urlopen(req, timeout=120) as resp:
-            payload = json.loads(resp.read())
+        try:
+            with urllib.request.urlopen(req, timeout=120) as resp:
+                payload = json.loads(resp.read())
+        except urllib.error.HTTPError as e:
+            if e.code in (401, 403):
+                return shopify_gql_cli(query, variables)
+            raise
         if payload.get("errors"):
             raise RuntimeError(json.dumps(payload["errors"]))
         return payload.get("data") or payload

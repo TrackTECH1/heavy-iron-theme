@@ -118,9 +118,15 @@ case "$cmd" in
   sync-models)
     exec python3 "$ROOT/scripts/sync-model-product-refs.py" "$@"
     ;;
+  clean)
+    exec python3 "$ROOT/scripts/reconcile-catalog-clean.py" clean "$@"
+    ;;
+  validate)
+    exec python3 "$ROOT/scripts/validate-catalog-ssot.py" "$@"
+    ;;
   -h|--help|help)
     cat <<EOF
-Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants|sync-models}
+Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants|sync-models|clean|validate}
 
   setup [--from-env]   Shopify OAuth → Supabase secrets + .env.fitment.local
   bootstrap            Service role via Supabase CLI → .env.fitment.local (no OAuth)
@@ -131,13 +137,16 @@ Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants|
                        (--apply --shop tracktech-530.myshopify.com for dev)
   sync-models          Supabase fitment → Model metaobject track_products / uc_products
                        (--apply --handle case-tv450b for one model)
+  clean                Reconcile SSOT: audit | align-handles | purge-legacy-fitments
+                       (./scripts/fitment clean --apply)
+  validate             Cross-reference catalog by track size (--track-size 450x86x58)
 
 Non-interactive setup:
   SHOPIFY_CLIENT_SECRET='shpss_...' ./scripts/fitment setup --from-env
 EOF
     ;;
   *)
-    echo "Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants|sync-models}"
+    echo "Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants|sync-models|clean}"
     exit 1
     ;;
 esac
