@@ -124,9 +124,12 @@ case "$cmd" in
   validate)
     exec python3 "$ROOT/scripts/validate-catalog-ssot.py" "$@"
     ;;
+  launch-gate)
+    exec python3 "$ROOT/scripts/launch-gate.py" "$@"
+    ;;
   -h|--help|help)
     cat <<EOF
-Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants|sync-models|clean|validate}
+Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants|sync-models|clean|validate|launch-gate}
 
   setup [--from-env]   Shopify OAuth → Supabase secrets + .env.fitment.local
   bootstrap            Service role via Supabase CLI → .env.fitment.local (no OAuth)
@@ -140,13 +143,14 @@ Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants|
   clean                Reconcile SSOT: audit | align-handles | purge-legacy-fitments
                        (./scripts/fitment clean --apply)
   validate             Cross-reference catalog by track size (--track-size 450x86x58)
+  launch-gate          Pass/fail gates for curated launch sizes (--tier dev|launch|prod)
 
 Non-interactive setup:
   SHOPIFY_CLIENT_SECRET='shpss_...' ./scripts/fitment setup --from-env
 EOF
     ;;
   *)
-    echo "Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants|sync-models|clean}"
+    echo "Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants|sync-models|clean|validate|launch-gate}"
     exit 1
     ;;
 esac
