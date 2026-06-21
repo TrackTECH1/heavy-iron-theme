@@ -717,6 +717,66 @@ def master_urls_for_size_tread(
     return []
 
 
+# Filename tread slug(s) per HI display name (for URL validation).
+TREAD_URL_SLUGS: dict[str, tuple[str, ...]] = {
+    "All-Terrain": ("all-terrain",),
+    "Staggered Block": ("staggered-block", "block"),
+    "X-Terrain": ("x-terrain",),
+    "Zig-Zag": ("zig-zag",),
+    "Z-Max": ("z-max",),
+    "C-Block": ("c-block",),
+    "Multi-Bar": ("multi-bar",),
+    "Directional": ("directional",),
+    "MX": ("mx",),
+    "ND": ("nd",),
+}
+
+
+def tread_url_slugs(tread_pattern: str | None) -> tuple[str, ...]:
+    tread = display_tread_pattern(tread_pattern) or tread_pattern or ""
+    return TREAD_URL_SLUGS.get(tread, (tread.lower().replace(" ", "-"),))
+
+
+def parse_image_filename_tread_slug(url: str) -> str | None:
+    """320x86x50-x-terrain-01.webp → x-terrain; 380x86x52-staggered-block-01.webp → staggered-block."""
+    stem = url.rstrip("/").split("/")[-1].rsplit(".", 1)[0]
+    m = re.match(r"^(.+)-(\d{2})$", stem, re.I)
+    if not m:
+        return None
+    body = m.group(1).lower()
+    known = sorted({s for slugs in TREAD_URL_SLUGS.values() for s in slugs}, key=len, reverse=True)
+    for slug in known:
+        if body == slug or body.endswith(f"-{slug}"):
+            return slug
+    # Unknown tread: everything after the size key (first segment).
+    parts = body.split("-", 1)
+    return parts[1] if len(parts) == 2 else None
+
+
+def image_urls_match_tread(urls: list[str], tread_pattern: str | None) -> bool:
+    expected = set(tread_url_slugs(tread_pattern))
+    if not urls or not expected:
+        return False
+    return any(parse_image_filename_tread_slug(u) in expected for u in urls)
+
+
+def filter_image_rows_for_tread(rows: list[dict], tread_pattern: str | None) -> list[dict]:
+    """Keep catalog_images rows that match the product tread (never cross-tread)."""
+    if not rows:
+        return []
+    norm = display_tread_pattern(tread_pattern) or tread_pattern or ""
+    matched = [
+        r for r in rows
+        if (display_tread_pattern(r.get("tread_pattern")) or r.get("tread_pattern") or "") == norm
+    ]
+    if matched:
+        return matched
+    return [
+        r for r in rows
+        if image_urls_match_tread(urls_from_catalog_image_rows([r]), tread_pattern)
+    ]
+
+
 def size_tread_override_key(track_size: str | None, tread_pattern: str | None) -> str:
     tread = display_tread_pattern(tread_pattern) or tread_pattern or ""
     size = normalize_track_size_for_images(track_size) or (track_size or "")
@@ -754,36 +814,32 @@ def resolve_track_gallery_urls(
     url_overrides: tuple[dict[str, list[str]], dict[str, list[str]]] | None = None,
     max_images: int = 10,
 ) -> list[str]:
-    """Heavy Iron track images — master sheet, Supabase bucket, optional track-image-urls.json."""
+    """Heavy Iron track images — size+tread galleries only; never cross-tread."""
     urls: list[str] = []
     iid = itemid.strip().upper()
     by_itemid, by_size_tread = url_overrides if url_overrides is not None else load_track_image_overrides()
     master = load_hi_master_track_images()
 
-    for u in by_itemid.get(iid, []):
-        if u not in urls:
-            urls.append(u)
-
-    if itemid_image_map:
-        for u in urls_from_catalog_image_rows(itemid_image_map.get(iid, [])):
-            if u not in urls:
+    def add(url_list: list[str]) -> None:
+        for u in url_list:
+            if u and u not in urls:
                 urls.append(u)
 
-    st_key = size_tread_override_key(track_size, tread_pattern)
-    for u in by_size_tread.get(st_key, []):
-        if u not in urls:
-            urls.append(u)
+    # Explicit manual overrides (track-image-urls.json).
+    add(by_itemid.get(iid, []))
 
-    for u in master_urls_for_size_tread(master, track_size, tread_pattern):
-        if u not in urls:
-            urls.append(u)
+    add(master_urls_for_size_tread(master, track_size, tread_pattern))
 
     if image_map:
-        for u in urls_from_catalog_image_rows(
-            lookup_catalog_images(image_map, track_size, tread_pattern)
-        ):
-            if u not in urls:
-                urls.append(u)
+        add(urls_from_catalog_image_rows(lookup_catalog_images(image_map, track_size, tread_pattern)))
+
+    st_key = size_tread_override_key(track_size, tread_pattern)
+    add(by_size_tread.get(st_key, []))
+
+    # Itemid-linked catalog_images only when tread matches (legacy rows are often wrong).
+    if itemid_image_map:
+        matched = filter_image_rows_for_tread(itemid_image_map.get(iid, []), tread_pattern)
+        add(urls_from_catalog_image_rows(matched))
 
     return urls[:max_images]
 
