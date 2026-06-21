@@ -61,5 +61,8 @@ echo "Synced $total_synced product batches total."
 echo "== 3. Clear legacy fits_equipment_models where custom.fitments is set =="
 python3 "$ROOT/scripts/clear-fits-equipment-models.py" --apply
 
+echo "== 4. Sync Model metaobject product lists (track_products / uc_products) =="
+python3 "$ROOT/scripts/sync-model-product-refs.py" --apply
+
 echo "Done. Verify:"
 echo "  curl -sS -X POST $FN_BASE/sync-product-fitments -H 'Content-Type: application/json' -d '{\"dry_run\":true,\"limit\":5}' | python3 -m json.tool"

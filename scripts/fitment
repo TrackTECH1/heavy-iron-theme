@@ -115,9 +115,12 @@ case "$cmd" in
   sync-variants)
     exec python3 "$ROOT/scripts/sync-store-variants.py" "$@"
     ;;
+  sync-models)
+    exec python3 "$ROOT/scripts/sync-model-product-refs.py" "$@"
+    ;;
   -h|--help|help)
     cat <<EOF
-Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants}
+Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants|sync-models}
 
   setup [--from-env]   Shopify OAuth → Supabase secrets + .env.fitment.local
   bootstrap            Service role via Supabase CLI → .env.fitment.local (no OAuth)
@@ -126,13 +129,15 @@ Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants}
   sync-heroes          Duplicate Shopify model hero images → Supabase machine-images/
   sync-variants        Pull Shopify variant SKUs → store_variant_map (Quote → Buy bridge)
                        (--apply --shop tracktech-530.myshopify.com for dev)
+  sync-models          Supabase fitment → Model metaobject track_products / uc_products
+                       (--apply --handle case-tv450b for one model)
 
 Non-interactive setup:
   SHOPIFY_CLIENT_SECRET='shpss_...' ./scripts/fitment setup --from-env
 EOF
     ;;
   *)
-    echo "Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants}"
+    echo "Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants|sync-models}"
     exit 1
     ;;
 esac
