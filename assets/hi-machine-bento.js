@@ -33,12 +33,13 @@
     var image = itemImage(item);
     var price = money(item.price || item.base_price || item.variant_price);
     var sub = item.sub || item.track_size || item.oem_part_number || item.sku || '';
+    var handle = item.handle || item.product_handle || '';
     return [
-      '<a class="hi-card" href="' + esc(itemUrl(item)) + '">',
+      '<a class="hi-card" href="' + esc(itemUrl(item)) + '"' + (handle ? ' data-hi-product-handle="' + esc(handle) + '"' : '') + '>',
       '<div class="hi-card__imgwrap">',
       image
         ? '<img class="hi-card__img" src="' + esc(image) + '" alt="' + esc(itemTitle(item)) + '" width="440" height="340" loading="lazy">'
-        : '<span class="hi-card__type">No image</span>',
+        : '<span class="hi-card__type" data-hi-missing-image>No image</span>',
       '</div>',
       '<p class="hi-card__type">' + esc(item.type_label || item.tread_pattern || typeLabel) + '</p>',
       '<h3 class="hi-card__title">' + esc(itemTitle(item)) + '</h3>',
@@ -47,6 +48,34 @@
       '<span class="hi-card__btn">' + esc(item.button || 'View') + '</span>',
       '</a>'
     ].join('');
+  }
+
+  function hydrateMissingImages(root) {
+    var cards = Array.prototype.slice.call(root.querySelectorAll('[data-hi-product-handle] [data-hi-missing-image]'))
+      .map(function (marker) { return marker.closest('[data-hi-product-handle]'); })
+      .filter(Boolean);
+    var seen = {};
+    cards.forEach(function (card) {
+      var handle = card.getAttribute('data-hi-product-handle');
+      if (!handle || seen[handle]) return;
+      seen[handle] = true;
+      fetch('/products/' + encodeURIComponent(handle) + '.js', { headers: { Accept: 'application/json' } })
+        .then(function (response) {
+          if (!response.ok) throw new Error('Product JSON returned ' + response.status);
+          return response.json();
+        })
+        .then(function (product) {
+          var image = product.featured_image || (product.images && product.images[0]) || '';
+          if (!image) return;
+          root.querySelectorAll('[data-hi-product-handle]').forEach(function (target) {
+            if (target.getAttribute('data-hi-product-handle') !== handle) return;
+            var wrap = target.querySelector('.hi-card__imgwrap');
+            if (!wrap || wrap.querySelector('img')) return;
+            wrap.innerHTML = '<img class="hi-card__img" src="' + esc(image) + '" alt="' + esc(product.title || 'Product image') + '" width="440" height="340" loading="lazy">';
+          });
+        })
+        .catch(function () {});
+    });
   }
 
   function normalizePayload(data) {
@@ -105,6 +134,7 @@
       return;
     }
     row.innerHTML = items.map(function (item) { return renderCard(item, label); }).join('');
+    hydrateMissingImages(root);
   }
 
   function endpointUrl(endpoint, slug) {
