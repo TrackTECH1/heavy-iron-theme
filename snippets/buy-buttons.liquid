@@ -69,8 +69,6 @@
           {%- render 'fitment-selector', product: product -%}
         {%- endunless -%}
 
-        {%- render 'hi-purchase-gates', product: product, section_id: section_id -%}
-
         <div class="product-form__buttons">
           {%- liquid
             assign check_against_inventory = true
@@ -108,12 +106,6 @@
             {{ form | payment_button }}
           {%- endif -%}
         </div>
-        {%- if product.metafields.custom.track_size.value != blank -%}
-          <div class="track-purchase-note" role="note">
-            <strong>Sold individually.</strong>
-            Most machines require quantity 2 for left and right track replacement. Still not 100% sure? Look at the inside rubber wall of your old track. If you see {{ product.metafields.custom.track_size.value }} stamped into the rubber, this is your track.
-          </div>
-        {%- endif -%}
       {%- endform -%}
     </product-form>
   {%- else -%}
