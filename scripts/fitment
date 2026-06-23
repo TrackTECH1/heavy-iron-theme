@@ -118,6 +118,15 @@ case "$cmd" in
   sync-models)
     exec python3 "$ROOT/scripts/sync-model-product-refs.py" "$@"
     ;;
+  export-models)
+    exec python3 "$ROOT/scripts/export-model-publish-bundle.py" "$@"
+    ;;
+  export-matrixify)
+    exec python3 "$ROOT/scripts/export-model-matrixify.py" "$@"
+    ;;
+  apply-models)
+    exec python3 "$ROOT/scripts/apply-model-publish-bundle.py" "$@"
+    ;;
   clean)
     exec python3 "$ROOT/scripts/reconcile-catalog-clean.py" clean "$@"
     ;;
@@ -127,9 +136,19 @@ case "$cmd" in
   launch-gate)
     exec python3 "$ROOT/scripts/launch-gate.py" "$@"
     ;;
+  backfill-csv)
+    exec python3 "$ROOT/scripts/generate-matrixify-from-products-csv.py" "$@"
+    ;;
+  backfill-apply)
+    exec python3 "$ROOT/scripts/apply-metafield-backfill.py" --apply "$@"
+    ;;
+  backfill-metafields)
+    python3 "$ROOT/scripts/generate-matrixify-from-products-csv.py" "$@" || exit 1
+    exec python3 "$ROOT/scripts/apply-metafield-backfill.py" --apply "$@"
+    ;;
   -h|--help|help)
     cat <<EOF
-Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants|sync-models|clean|validate|launch-gate}
+Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants|sync-models|export-models|export-matrixify|apply-models|clean|validate|launch-gate|backfill-csv|backfill-apply|backfill-metafields}
 
   setup [--from-env]   Shopify OAuth → Supabase secrets + .env.fitment.local
   bootstrap            Service role via Supabase CLI → .env.fitment.local (no OAuth)
@@ -139,18 +158,24 @@ Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants|
   sync-variants        Pull Shopify variant SKUs → store_variant_map (Quote → Buy bridge)
                        (--apply --shop tracktech-530.myshopify.com for dev)
   sync-models          Supabase fitment → Model metaobject track_products / uc_products
+  export-models        Dev fleet_* views → Matrixify CSV + API manifest (v2 spine)
+  export-matrixify     Dev fleet_* views → Matrixify XLSX publish contract (3 workbooks)
+  apply-models         Apply shopify-api-manifest.json → Model metaobjects (API)
                        (--apply --handle case-tv450b for one model)
   clean                Reconcile SSOT: audit | align-handles | purge-legacy-fitments
                        (./scripts/fitment clean --apply)
   validate             Cross-reference catalog by track size (--track-size 450x86x58)
   launch-gate          Pass/fail gates for curated launch sizes (--tier dev|launch|prod)
+  backfill-csv         Products.csv → data/heavy-iron-metafield-backfill.csv (Matrixify MERGE)
+  backfill-apply       Apply backfill CSV via Admin API (--apply; pass --limit N to test)
+  backfill-metafields  backfill-csv then backfill-apply (no Matrixify when MCP 403)
 
 Non-interactive setup:
   SHOPIFY_CLIENT_SECRET='shpss_...' ./scripts/fitment setup --from-env
 EOF
     ;;
   *)
-    echo "Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants|sync-models|clean|validate|launch-gate}"
+    echo "Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants|sync-models|export-models|export-matrixify|apply-models|clean|validate|launch-gate|backfill-csv|backfill-apply|backfill-metafields}"
     exit 1
     ;;
 esac

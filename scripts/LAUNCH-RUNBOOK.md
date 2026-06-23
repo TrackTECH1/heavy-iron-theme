@@ -69,6 +69,19 @@ Use **`data/heavy-iron-matrixify-import.csv`** — not `heavy-iron-matrixify-imp
 ```
 
 4. Re-export **Products.csv** from Matrixify → save to `~/Desktop/SUPABASE/Products.csv`
+
+**Alternative when Matrixify MCP returns 403** — backfill product metafields via Admin API instead of Matrixify metafield import (requires `SHOPIFY_ADMIN_TOKEN` or Shopify CLI from `./scripts/fitment setup`):
+
+```bash
+./scripts/fitment backfill-metafields
+# or step-by-step:
+./scripts/fitment backfill-csv --live-only
+./scripts/fitment backfill-apply --limit 10   # smoke test
+./scripts/fitment backfill-apply
+```
+
+Dry-run apply only: `python3 scripts/apply-metafield-backfill.py --dry-run`
+
 5. Align handles + manifest:
 
 ```bash

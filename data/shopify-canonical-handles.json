@@ -1,0 +1,2311 @@
+{
+  "store": "tracktech-530.myshopify.com",
+  "source_csv": "/Users/brittonchadbourne/Desktop/SUPABASE/Products.csv",
+  "itemids": {
+    "2507245DIR": {
+      "handle": "250x72x45-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "3208654CB": {
+      "handle": "320x86x54-rubber-track-c-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "400725W74DIR": {
+      "handle": "kubota-u55-4-rubber-tracks-400x72-5x74",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "4008654CB": {
+      "handle": "400x86x54-rubber-track-c-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "457101656ASV": {
+      "handle": "457x101-6x56-rubber-tracks",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "ARSGR63": {
+      "handle": "cid-std-grapple-rake",
+      "part_type": "Grapple",
+      "shopify_product_id": "gid://shopify/Product/10531053207839"
+    },
+    "BSR48": {
+      "handle": "cid-box-scrape-ripper",
+      "part_type": "Grading Tool",
+      "shopify_product_id": "gid://shopify/Product/10531054223647"
+    },
+    "CR03712-00100": {
+      "handle": "heavy-duty-carrier-roller-cr03712-00100",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CR03912-00100": {
+      "handle": "heavy-duty-carrier-roller-cr03912-00100",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CR05612-04080": {
+      "handle": "heavy-duty-carrier-roller-cr05612-04080",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CR1180-9221": {
+      "handle": "heavy-duty-carrier-roller-cr1180-9221",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CR1181-00430": {
+      "handle": "heavy-duty-carrier-roller-cr1181-00430",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CR146-6064": {
+      "handle": "heavy-duty-carrier-roller-cr146-6064",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CR193-7070": {
+      "handle": "heavy-duty-carrier-roller-cr193-7070",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CR20T-30-00050": {
+      "handle": "heavy-duty-carrier-roller-cr20t-30-00050",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CR20T-30-00060": {
+      "handle": "heavy-duty-carrier-roller-cr20t-30-00060",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CR265-7675": {
+      "handle": "heavy-duty-carrier-roller-cr265-7675",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CR266-8794": {
+      "handle": "heavy-duty-carrier-roller-cr266-8794",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CR277-8576": {
+      "handle": "heavy-duty-carrier-roller-cr277-8576",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CR4392416": {
+      "handle": "heavy-duty-carrier-roller-cr4392416",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CR4718355": {
+      "handle": "heavy-duty-carrier-roller-cr4718355",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CR7012275": {
+      "handle": "heavy-duty-carrier-roller-cr7012275",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CR7020867": {
+      "handle": "heavy-duty-carrier-roller-cr7020867",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CR7257873": {
+      "handle": "heavy-duty-carrier-roller-cr7257873",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CR9237948": {
+      "handle": "heavy-duty-carrier-roller-cr9237948",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CR9239529": {
+      "handle": "heavy-duty-carrier-roller-cr9239529",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CRKM2794": {
+      "handle": "heavy-duty-carrier-roller-crkm2794",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CRLK327": {
+      "handle": "heavy-duty-carrier-roller-crlk327",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CRPS64D01001F1": {
+      "handle": "heavy-duty-carrier-roller-crps64d01001f1",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CRPV64D00001F1": {
+      "handle": "heavy-duty-carrier-roller-crpv64d00001f1",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CRPW64D01017F2": {
+      "handle": "heavy-duty-carrier-roller-crpw64d01017f2",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CRRC411-21903": {
+      "handle": "heavy-duty-carrier-roller-crrc411-21903",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CRRD411-22900": {
+      "handle": "heavy-duty-carrier-roller-crrd411-22900",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CRRD809-21900": {
+      "handle": "heavy-duty-carrier-roller-crrd809-21900",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CRT006M027": {
+      "handle": "heavy-duty-carrier-roller-crt006m027",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CRYT64D01001F1": {
+      "handle": "heavy-duty-carrier-roller-cryt64d01001f1",
+      "part_type": "Carrier Roller",
+      "shopify_product_id": null
+    },
+    "CTGB48": {
+      "handle": "cid-compact-tractor-grapple-bucket",
+      "part_type": "Agriculture",
+      "shopify_product_id": "gid://shopify/Product/10531053240607"
+    },
+    "CTMF48": {
+      "handle": "cid-compact-tractor-manure-fork",
+      "part_type": "Agriculture",
+      "shopify_product_id": "gid://shopify/Product/10531052650783"
+    },
+    "CTMFG54": {
+      "handle": "cid-compact-tractor-manure-fork-grapple",
+      "part_type": "Agriculture",
+      "shopify_product_id": "gid://shopify/Product/10531054780703"
+    },
+    "CTSPLOW48": {
+      "handle": "cid-compact-tractor-snow-plow-hyd",
+      "part_type": "Snow Equipment",
+      "shopify_product_id": "gid://shopify/Product/10531052683551"
+    },
+    "CTSPLOWM48": {
+      "handle": "cid-compact-tractor-snow-plow-man",
+      "part_type": "Snow Equipment",
+      "shopify_product_id": "gid://shopify/Product/10531052749087"
+    },
+    "DGB36": {
+      "handle": "cid-grapple-bucket-dingo",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531052912927"
+    },
+    "DROKG36": {
+      "handle": "cid-rock-grapple-bucket-dingo",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531053076767"
+    },
+    "EXB10K12": {
+      "handle": "cid-excavator-bucket-10k",
+      "part_type": "Excavator Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531055370527"
+    },
+    "EXB12K14": {
+      "handle": "cid-excavator-bucket-12k",
+      "part_type": "Excavator Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531055272223"
+    },
+    "EXB16K18": {
+      "handle": "cid-excavator-bucket-16k",
+      "part_type": "Excavator Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531055239455"
+    },
+    "FI03714-00000": {
+      "handle": "heavy-duty-front-idler-fi03714-00000",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI04214-01200": {
+      "handle": "heavy-duty-front-idler-fi04214-01200",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI04614-90010": {
+      "handle": "heavy-duty-front-idler-fi04614-90010",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI05614-00600": {
+      "handle": "heavy-duty-front-idler-fi05614-00600",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI05614-03100": {
+      "handle": "heavy-duty-front-idler-fi05614-03100",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI06814-00019": {
+      "handle": "heavy-duty-front-idler-fi06814-00019",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI08801-40000": {
+      "handle": "heavy-duty-front-idler-fi08801-40000",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI08811-40300": {
+      "handle": "heavy-duty-front-idler-fi08811-40300",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI1048166": {
+      "handle": "heavy-duty-front-idler-fi1048166",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI172-2100": {
+      "handle": "heavy-duty-front-idler-fi172-2100",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI1R8938": {
+      "handle": "heavy-duty-front-idler-fi1r8938",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI226-4049": {
+      "handle": "heavy-duty-front-idler-fi226-4049",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI240-6304": {
+      "handle": "heavy-duty-front-idler-fi240-6304",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI241-5973": {
+      "handle": "heavy-duty-front-idler-fi241-5973",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI267-4813": {
+      "handle": "heavy-duty-front-idler-fi267-4813",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI267-4829": {
+      "handle": "heavy-duty-front-idler-fi267-4829",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI2674829": {
+      "handle": "heavy-duty-front-idler-fi2674829",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI271005": {
+      "handle": "heavy-duty-front-idler-fi271005",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI304-1878": {
+      "handle": "heavy-duty-front-idler-fi304-1878",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI348-9647": {
+      "handle": "heavy-duty-front-idler-fi348-9647",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI420-9803": {
+      "handle": "heavy-duty-front-idler-fi420-9803",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI6698048": {
+      "handle": "heavy-duty-front-idler-fi6698048",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI6732902": {
+      "handle": "heavy-duty-front-idler-fi6732902",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI6815125": {
+      "handle": "heavy-duty-front-idler-fi6815125",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI7109408": {
+      "handle": "heavy-duty-idler-fi7109408",
+      "part_type": "Idler",
+      "shopify_product_id": null
+    },
+    "FI7199074": {
+      "handle": "heavy-duty-front-idler-fi7199074",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI7202053": {
+      "handle": "heavy-duty-front-idler-fi7202053",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI7229101": {
+      "handle": "heavy-duty-front-idler-fi7229101",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI7240006": {
+      "handle": "heavy-duty-front-idler-fi7240006",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI7276595": {
+      "handle": "heavy-duty-front-idler-fi7276595",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI7355129": {
+      "handle": "heavy-duty-front-idler-fi7355129",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI87535298": {
+      "handle": "heavy-duty-front-idler-fi87535298",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI9132562": {
+      "handle": "heavy-duty-front-idler-fi9132562",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI9237507": {
+      "handle": "heavy-duty-front-idler-fi9237507",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI9269094": {
+      "handle": "heavy-duty-front-idler-fi9269094",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI9312918": {
+      "handle": "heavy-duty-front-idler-fi9312918",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FI9318048": {
+      "handle": "heavy-duty-front-idler-fi9318048",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FICA1379": {
+      "handle": "heavy-duty-front-idler-fica1379",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FIID2076": {
+      "handle": "heavy-duty-idler-fiid2076",
+      "part_type": "Idler",
+      "shopify_product_id": null
+    },
+    "FIPX52D00028F1": {
+      "handle": "heavy-duty-front-idler-fipx52d00028f1",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FIRA231-21300": {
+      "handle": "heavy-duty-front-idler-fira231-21300",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FIRC348-21302": {
+      "handle": "heavy-duty-front-idler-firc348-21302",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FIRC461-21300": {
+      "handle": "heavy-duty-front-idler-firc461-21300",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FIRD118-21300": {
+      "handle": "heavy-duty-front-idler-fird118-21300",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FIRD411-22303": {
+      "handle": "heavy-duty-front-idler-fird411-22303",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FIV0211-22102": {
+      "handle": "heavy-duty-front-idler-fiv0211-22102",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "FIV0611-22100": {
+      "handle": "heavy-duty-front-idler-fiv0611-22100",
+      "part_type": "Front Idler",
+      "shopify_product_id": null
+    },
+    "HBGB72": {
+      "handle": "cid-hay-bale-grapple-bucket",
+      "part_type": "Agriculture",
+      "shopify_product_id": "gid://shopify/Product/10531054027039"
+    },
+    "HCSB60": {
+      "handle": "cid-hc-snow-litter-bucket",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531055337759"
+    },
+    "HD4N1-60": {
+      "handle": "cid-hd-4n1-bucket",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531053535519"
+    },
+    "HDB60": {
+      "handle": "cid-high-dump-bucket",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531054551327"
+    },
+    "HDBCNS60-2": {
+      "handle": "cid-hd-brush-cutter-ns",
+      "part_type": "Brush Cutter",
+      "shopify_product_id": "gid://shopify/Product/10531055108383"
+    },
+    "HDDD72": {
+      "handle": "cid-hd-demolition-gb",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531053404447"
+    },
+    "HDGB60": {
+      "handle": "cid-hd-grapple-bucket",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531054485791"
+    },
+    "HDGR63": {
+      "handle": "cid-hd-grapple-rake",
+      "part_type": "Grapple",
+      "shopify_product_id": "gid://shopify/Product/10531053961503"
+    },
+    "HDRB60": {
+      "handle": "cid-hd-rock-bucket",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531053732127"
+    },
+    "HDRG60": {
+      "handle": "cid-hd-root-grapple",
+      "part_type": "Grapple",
+      "shopify_product_id": "gid://shopify/Product/10531054387487"
+    },
+    "HDROKG63": {
+      "handle": "cid-hd-rock-grapple",
+      "part_type": "Grapple",
+      "shopify_product_id": "gid://shopify/Product/10531055075615"
+    },
+    "HDSPLOW72": {
+      "handle": "cid-hd-snow-plow-hyd",
+      "part_type": "Snow Equipment",
+      "shopify_product_id": "gid://shopify/Product/10531054944543"
+    },
+    "HDSPLOWM72": {
+      "handle": "cid-hd-snow-plow-man",
+      "part_type": "Snow Equipment",
+      "shopify_product_id": "gid://shopify/Product/10531054879007"
+    },
+    "ITAKB72": {
+      "handle": "cid-industrial-tl-bucket",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531052945695"
+    },
+    "KX040EXB12": {
+      "handle": "cid-excavator-bucket-kx040",
+      "part_type": "Excavator Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531052781855"
+    },
+    "KX057EXB12": {
+      "handle": "cid-excavator-bucket-kx057",
+      "part_type": "Excavator Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531053109535"
+    },
+    "KX080EXB18": {
+      "handle": "cid-excavator-bucket-kx080",
+      "part_type": "Excavator Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531052618015"
+    },
+    "KX161EXB12": {
+      "handle": "cid-excavator-bucket-kx161",
+      "part_type": "Excavator Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531052716319"
+    },
+    "LBB48": {
+      "handle": "cid-lb-bucket",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531055206687"
+    },
+    "LL48": {
+      "handle": "cid-land-leveler",
+      "part_type": "Grader",
+      "shopify_product_id": "gid://shopify/Product/10531054813471"
+    },
+    "LPB48": {
+      "handle": "cid-lp-bucket",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531055141151"
+    },
+    "MINI-MPPR44": {
+      "handle": "cid-mini-mp-power-rake",
+      "part_type": "Grading Tool",
+      "shopify_product_id": "gid://shopify/Product/10531052552479"
+    },
+    "MINI-XPWR36-D": {
+      "handle": "cid-xtreme-mini-power-rake-hyd",
+      "part_type": "Grading Tool",
+      "shopify_product_id": "gid://shopify/Product/10531052585247"
+    },
+    "MINI-XPWRM36-D": {
+      "handle": "cid-xtreme-mini-power-rake-man",
+      "part_type": "Grading Tool",
+      "shopify_product_id": "gid://shopify/Product/10531053699359"
+    },
+    "MINI4N1-36": {
+      "handle": "cid-mini-4n1-bucket",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531052978463"
+    },
+    "MPAB72": {
+      "handle": "cid-mp-angle-blade",
+      "part_type": "Blade",
+      "shopify_product_id": "gid://shopify/Product/10531054682399"
+    },
+    "MPPR72": {
+      "handle": "cid-mp-power-rake",
+      "part_type": "Grading Tool",
+      "shopify_product_id": "gid://shopify/Product/10531053863199"
+    },
+    "MTGB36": {
+      "handle": "cid-grapple-bucket-mt50",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531054354719"
+    },
+    "MTROKG36": {
+      "handle": "cid-rock-grapple-bucket-mt50",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531052814623"
+    },
+    "MXDGB72": {
+      "handle": "cid-monster-grapple-bucket",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531054846239"
+    },
+    "MXDRG72": {
+      "handle": "cid-monster-root-grapple",
+      "part_type": "Grapple",
+      "shopify_product_id": "gid://shopify/Product/10531053830431"
+    },
+    "PUBROOM48": {
+      "handle": "cid-pickup-broom",
+      "part_type": "Broom",
+      "shopify_product_id": "gid://shopify/Product/10531053895967"
+    },
+    "RR06813-00024": {
+      "handle": "heavy-duty-rear-idler-rr06813-00024",
+      "part_type": "Rear Idler",
+      "shopify_product_id": null
+    },
+    "RR06914-00032": {
+      "handle": "heavy-duty-rear-idler-rr06914-00032",
+      "part_type": "Rear Idler",
+      "shopify_product_id": null
+    },
+    "RR08801-33100": {
+      "handle": "heavy-duty-rear-idler-rr08801-33100",
+      "part_type": "Rear Idler",
+      "shopify_product_id": null
+    },
+    "RR08801-35600": {
+      "handle": "heavy-duty-rear-idler-rr08801-35600",
+      "part_type": "Rear Idler",
+      "shopify_product_id": null
+    },
+    "RR08811-31300": {
+      "handle": "heavy-duty-rear-idler-rr08811-31300",
+      "part_type": "Rear Idler",
+      "shopify_product_id": null
+    },
+    "RR275574": {
+      "handle": "heavy-duty-rear-idler-rr275574",
+      "part_type": "Rear Idler",
+      "shopify_product_id": null
+    },
+    "RR304-1894": {
+      "handle": "heavy-duty-rear-idler-rr304-1894",
+      "part_type": "Rear Idler",
+      "shopify_product_id": null
+    },
+    "RR6697933": {
+      "handle": "heavy-duty-rear-idler-rr6697933",
+      "part_type": "Rear Idler",
+      "shopify_product_id": null
+    },
+    "RR6698049": {
+      "handle": "heavy-duty-rear-idler-rr6698049",
+      "part_type": "Rear Idler",
+      "shopify_product_id": null
+    },
+    "RR6732903": {
+      "handle": "heavy-duty-rear-idler-rr6732903",
+      "part_type": "Rear Idler",
+      "shopify_product_id": null
+    },
+    "RR7233630": {
+      "handle": "heavy-duty-rear-idler-rr7233630",
+      "part_type": "Rear Idler",
+      "shopify_product_id": null
+    },
+    "RR7276596": {
+      "handle": "heavy-duty-rear-idler-rr7276596",
+      "part_type": "Rear Idler",
+      "shopify_product_id": null
+    },
+    "RR87535299": {
+      "handle": "heavy-duty-rear-idler-rr87535299",
+      "part_type": "Rear Idler",
+      "shopify_product_id": null
+    },
+    "RRAT493209": {
+      "handle": "heavy-duty-rear-idler-rrat493209",
+      "part_type": "Rear Idler",
+      "shopify_product_id": null
+    },
+    "RRV0211-24100": {
+      "handle": "heavy-duty-rear-idler-rrv0211-24100",
+      "part_type": "Rear Idler",
+      "shopify_product_id": null
+    },
+    "RRV0511-24103": {
+      "handle": "heavy-duty-rear-idler-rrv0511-24103",
+      "part_type": "Rear Idler",
+      "shopify_product_id": null
+    },
+    "RRV0531-24103": {
+      "handle": "heavy-duty-rear-idler-rrv0531-24103",
+      "part_type": "Rear Idler",
+      "shopify_product_id": null
+    },
+    "SBLOW60": {
+      "handle": "cid-snow-blower",
+      "part_type": "Snow Equipment",
+      "shopify_product_id": "gid://shopify/Product/10531054649631"
+    },
+    "SD30052588V1IWA": {
+      "handle": "300x52-5x88-rubber-track-mx",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "SD4N1-54": {
+      "handle": "cid-sd-4n1-bucket",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531054977311"
+    },
+    "SDBC60": {
+      "handle": "cid-std-brush-cutter",
+      "part_type": "Brush Cutter",
+      "shopify_product_id": "gid://shopify/Product/10531054518559"
+    },
+    "SDOFBC60": {
+      "handle": "cid-std-of-brush-cutter",
+      "part_type": "Brush Cutter",
+      "shopify_product_id": "gid://shopify/Product/10531054289183"
+    },
+    "SDROKGVT60": {
+      "handle": "cid-std-rock-grapple",
+      "part_type": "Grapple",
+      "shopify_product_id": "gid://shopify/Product/10531054715167"
+    },
+    "SDVTRB60": {
+      "handle": "cid-sd-rock-bucket",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531054616863"
+    },
+    "SGB63": {
+      "handle": "cid-std-grapple-bucket",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531053764895"
+    },
+    "SNLB48": {
+      "handle": "cid-snow-litter-bucket",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531054256415"
+    },
+    "SP02616-03100": {
+      "handle": "heavy-duty-sprocket-sp02616-03100",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP03516-08210": {
+      "handle": "heavy-duty-sprocket-sp03516-08210",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP04216-00100": {
+      "handle": "heavy-duty-sprocket-sp04216-00100",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP04316-10100": {
+      "handle": "heavy-duty-sprocket-sp04316-10100",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP04710-00600": {
+      "handle": "heavy-duty-sprocket-sp04710-00600",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP05616-15100": {
+      "handle": "heavy-duty-sprocket-sp05616-15100",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP06816-00009": {
+      "handle": "heavy-duty-sprocket-sp06816-00009",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP06916-00011": {
+      "handle": "heavy-duty-sprocket-sp06916-00011",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP08801-65010": {
+      "handle": "heavy-duty-sprocket-sp08801-65010",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP08801-66210": {
+      "handle": "heavy-duty-sprocket-sp08801-66210",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP08811-60110": {
+      "handle": "heavy-duty-sprocket-sp08811-60110",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP08821-60010": {
+      "handle": "heavy-duty-sprocket-sp08821-60010",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP099-0219": {
+      "handle": "heavy-duty-sprocket-sp099-0219",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP1032265": {
+      "handle": "heavy-duty-sprocket-sp1032265",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP1033840": {
+      "handle": "heavy-duty-sprocket-sp1033840",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP130-9326": {
+      "handle": "heavy-duty-sprocket-sp130-9326",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP158-4795": {
+      "handle": "heavy-duty-sprocket-sp158-4795",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP1R5440": {
+      "handle": "heavy-duty-sprocket-sp1r5440",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP2039666": {
+      "handle": "heavy-duty-sprocket-sp2039666",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP2043505": {
+      "handle": "heavy-duty-sprocket-sp2043505",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP2050708": {
+      "handle": "heavy-duty-sprocket-sp2050708",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP2054155": {
+      "handle": "heavy-duty-sprocket-sp2054155",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP2054262": {
+      "handle": "heavy-duty-sprocket-sp2054262",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP2054978": {
+      "handle": "heavy-duty-sprocket-sp2054978",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP2056268": {
+      "handle": "heavy-duty-sprocket-sp2056268",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP20T-27-71111": {
+      "handle": "heavy-duty-sprocket-sp20t-27-71111",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP21W-27-31112": {
+      "handle": "heavy-duty-sprocket-sp21w-27-31112",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP2404N267": {
+      "handle": "heavy-duty-sprocket-sp2404n267",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP264-5371": {
+      "handle": "heavy-duty-sprocket-sp264-5371",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP304-1870": {
+      "handle": "heavy-duty-sprocket-sp304-1870",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP304-1916": {
+      "handle": "heavy-duty-sprocket-sp304-1916",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP6587308": {
+      "handle": "heavy-duty-sprocket-sp6587308",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP6715821": {
+      "handle": "heavy-duty-sprocket-sp6715821",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP6726052": {
+      "handle": "heavy-duty-sprocket-sp6726052",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP6733211": {
+      "handle": "heavy-duty-sprocket-sp6733211",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP6736308": {
+      "handle": "heavy-duty-sprocket-sp6736308",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP6812134": {
+      "handle": "heavy-duty-sprocket-sp6812134",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP6813372": {
+      "handle": "heavy-duty-sprocket-sp6813372",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP6816203": {
+      "handle": "heavy-duty-sprocket-sp6816203",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP6816209": {
+      "handle": "heavy-duty-sprocket-sp6816209",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP68621-14430": {
+      "handle": "heavy-duty-sprocket-sp68621-14430",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP7107228": {
+      "handle": "heavy-duty-sprocket-sp7107228",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP7165109": {
+      "handle": "heavy-duty-sprocket-sp7165109",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP7165111": {
+      "handle": "heavy-duty-sprocket-sp7165111",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP7166679": {
+      "handle": "heavy-duty-sprocket-sp7166679",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP7196807": {
+      "handle": "heavy-duty-sprocket-sp7196807",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP7199006": {
+      "handle": "heavy-duty-sprocket-sp7199006",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP7199007": {
+      "handle": "heavy-duty-sprocket-sp7199007",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP7204050": {
+      "handle": "heavy-duty-sprocket-sp7204050",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP7227421": {
+      "handle": "heavy-duty-sprocket-sp7227421",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP7270159": {
+      "handle": "heavy-duty-sprocket-sp7270159",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SP87460888": {
+      "handle": "heavy-duty-sprocket-sp87460888",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SPADAPTERT190": {
+      "handle": "heavy-duty-sprocket-spadaptert190",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SPID2641": {
+      "handle": "heavy-duty-sprocket-spid2641",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SPID2711": {
+      "handle": "heavy-duty-sprocket-spid2711",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SPPV51D01001P1": {
+      "handle": "heavy-duty-sprocket-sppv51d01001p1",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SPPW53D01001P1": {
+      "handle": "heavy-duty-sprocket-sppw53d01001p1",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SPRA139-14430": {
+      "handle": "heavy-duty-sprocket-spra139-14430",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SPRB238-14430": {
+      "handle": "heavy-duty-sprocket-sprb238-14430",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SPRB511-14432": {
+      "handle": "heavy-duty-sprocket-sprb511-14432",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SPRC417-14430": {
+      "handle": "heavy-duty-sprocket-sprc417-14430",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SPRD118-14433": {
+      "handle": "heavy-duty-sprocket-sprd118-14433",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SPRD411-14432": {
+      "handle": "heavy-duty-sprocket-sprd411-14432",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SPRD809-14433": {
+      "handle": "heavy-duty-sprocket-sprd809-14433",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SPT244043": {
+      "handle": "heavy-duty-sprocket-spt244043",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SPT254141": {
+      "handle": "heavy-duty-sprocket-spt254141",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SPT349306": {
+      "handle": "heavy-duty-sprocket-spt349306",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SPUSH60": {
+      "handle": "cid-xtreme-snow-pusher",
+      "part_type": "Snow Equipment",
+      "shopify_product_id": "gid://shopify/Product/10531054911775"
+    },
+    "SPV0511-21110": {
+      "handle": "heavy-duty-sprocket-spv0511-21110",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SPV0611-21112": {
+      "handle": "heavy-duty-sprocket-spv0611-21112",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "SRG60": {
+      "handle": "cid-std-root-grapple",
+      "part_type": "Grapple",
+      "shopify_product_id": "gid://shopify/Product/10531053371679"
+    },
+    "ST154-58-90-450-40L": {
+      "handle": "450x81x78-rubber-track-mx",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "SV4N1-72": {
+      "handle": "cid-sv-4n1-bucket",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531053306143"
+    },
+    "SVRG72": {
+      "handle": "cid-severe-root-grapple",
+      "part_type": "Grapple",
+      "shopify_product_id": "gid://shopify/Product/10531053568287"
+    },
+    "SVRR72": {
+      "handle": "cid-severe-root-rake",
+      "part_type": "Forestry Tool",
+      "shopify_product_id": "gid://shopify/Product/10531053142303"
+    },
+    "TAKB66": {
+      "handle": "cid-xtreme-tl-bucket",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531054747935"
+    },
+    "TB39": {
+      "handle": "heavy-duty-sprocket-tb39",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "TB43": {
+      "handle": "heavy-duty-sprocket-tb43",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "TB56": {
+      "handle": "heavy-duty-sprocket-tb56",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "TLB60": {
+      "handle": "cid-turkey-litter-bucket",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531053011231"
+    },
+    "TNT160876328XD": {
+      "handle": "160x87-63x28-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT1807233HD": {
+      "handle": "180x72x33-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT1807236HD": {
+      "handle": "180x72x36-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT1807237HDC": {
+      "handle": "180x72x37-rubber-track-c-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT1807239HDC": {
+      "handle": "180x72x39-rubber-tracks",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT1807240HD": {
+      "handle": "180x72x40-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT1807241HD": {
+      "handle": "180x72x41-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT2304860HD": {
+      "handle": "230x48x60-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT2304862HD": {
+      "handle": "230x48x62-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT2304864HD": {
+      "handle": "230x48x64-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT2304866HD": {
+      "handle": "230x48x66-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT2304868HD": {
+      "handle": "230x48x68-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT2304870HD": {
+      "handle": "230x48x70-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT2304872HD": {
+      "handle": "230x48x72-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT2307239HDC": {
+      "handle": "230x72x39-rubber-track-c-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT2307242HD": {
+      "handle": "230x72x42-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT2307243HD": {
+      "handle": "230x72x43-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT240876328XD": {
+      "handle": "240x87-63x28-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT240876337XD": {
+      "handle": "240x87-63x37-rubber-track-multi-bar",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT2504867HD": {
+      "handle": "250x48x67-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT2507239HD": {
+      "handle": "250x72x39-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT2507252HDC": {
+      "handle": "250x72x52-rubber-track-c-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT300525K86HD": {
+      "handle": "300x52-5x86-rubber-track-mx",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT300525K88HD": {
+      "handle": "300x52-5kx88-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT300525N74HD": {
+      "handle": "300x52-5nx74-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT300525N76HD": {
+      "handle": "300x52-5nx76-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT300525N78HD": {
+      "handle": "300x52-5nx78-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT300525N80HD": {
+      "handle": "300x52-5nx80-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT300525N84HD": {
+      "handle": "300x52-5nx84-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT300525N92HD": {
+      "handle": "300x52-5nx92-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT300525W78HD": {
+      "handle": "300x52-5x78-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT300525W82HD": {
+      "handle": "300x52-5nx82-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT300525W86HD": {
+      "handle": "300x52-5wx84-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT300525W90HD": {
+      "handle": "300x52-5x90-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT30055582HD": {
+      "handle": "300x55-5yx82-rubber-track-offset-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT3008648HDC": {
+      "handle": "300x86x48-rubber-track-c-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT3208650HDC": {
+      "handle": "320x86x50-rubber-track-c-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT3208652HDC": {
+      "handle": "320x86x52-rubber-tracks",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT32086T46SDC": {
+      "handle": "320x86x46-rubber-track-c-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT35052586HD": {
+      "handle": "350x52-5wx86-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT35052590HD": {
+      "handle": "350x52-5bx90-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT35054586HD": {
+      "handle": "350x54-5x86-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT381100542HDMB": {
+      "handle": "381x100-5x42-rubber-track-multi-bar",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT400725K72HD": {
+      "handle": "400x72-5kx72-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT400725K74HD": {
+      "handle": "400x72-5kx74-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT400725N70HD": {
+      "handle": "400x72-5nx70-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT400725W72HD": {
+      "handle": "400x72-5x72-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT400725W74HD": {
+      "handle": "400x72-5x74-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT400725W76HD": {
+      "handle": "400x72-5wx76-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT4007472HD": {
+      "handle": "400x74x72-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT40075574HD": {
+      "handle": "400x75-5yx74-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT4008649HDZB": {
+      "handle": "400x86x49-rubber-track-zig-zag",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT4008650HDC": {
+      "handle": "400x86x50-rubber-track-c-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT4008652HDC": {
+      "handle": "400x86x52-rubber-track-c-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT4008653HDC": {
+      "handle": "400x86x53-rubber-track-c-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT4008654HDMB": {
+      "handle": "400x86x54-rubber-track-multi-bar",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT4008654HDZ": {
+      "handle": "400x86x54-rubber-track-zig-zag",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT4008655HDC": {
+      "handle": "400x86x55-rubber-track-c-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT4008655HDMB": {
+      "handle": "400x86x55-rubber-track-multi-bar",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT4008655HDZ": {
+      "handle": "400x86x55-rubber-track-zig-zag",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT45010048HDC": {
+      "handle": "450x100x48-rubber-track-c-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT45010050HDC": {
+      "handle": "450x100x50-rubber-track-c-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT4507182HD": {
+      "handle": "450x71x82-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT4507184HD": {
+      "handle": "450x71x84-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT4507186HD": {
+      "handle": "450x71x86-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT4507680HD": {
+      "handle": "450x76x80-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT45081576HD": {
+      "handle": "450x81x76-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT450835K74HD": {
+      "handle": "450x83-5kx74-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT450835Y74HD": {
+      "handle": "450x83-5yx74-rubber-track-offset-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT4508652HDZB": {
+      "handle": "450x86x52-rubber-track-z-max",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT4508653HDZB": {
+      "handle": "450x86x53-rubber-track-zig-zag",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT4508655HDC": {
+      "handle": "450x86x55-rubber-track-c-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT4508656HDMB": {
+      "handle": "450x86x56-rubber-track-multi-bar",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT4508658HDZB": {
+      "handle": "450x86x58-rubber-track-zig-zag",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT4508660HDC": {
+      "handle": "450x86x60-rubber-track-c-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TNT4508663HDZB": {
+      "handle": "450x86x63-rubber-track-z-max",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TR03313-06100": {
+      "handle": "heavy-duty-track-roller-tr03313-06100",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR03913-02100": {
+      "handle": "heavy-duty-track-roller-tr03913-02100",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR04313-00500": {
+      "handle": "heavy-duty-track-roller-tr04313-00500",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR04313-11100": {
+      "handle": "heavy-duty-track-roller-tr04313-11100",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR05613-07100": {
+      "handle": "heavy-duty-track-roller-tr05613-07100",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR06813-00027": {
+      "handle": "heavy-duty-track-roller-tr06813-00027",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR06913-00016": {
+      "handle": "heavy-duty-track-roller-tr06913-00016",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR08801-30000": {
+      "handle": "heavy-duty-track-roller-tr08801-30000",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR08811-30500": {
+      "handle": "heavy-duty-track-roller-tr08811-30500",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR127-3806": {
+      "handle": "heavy-duty-track-roller-tr127-3806",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR127-3807": {
+      "handle": "heavy-duty-track-roller-tr127-3807",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR139-6261": {
+      "handle": "heavy-duty-track-roller-tr139-6261",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR1626-60": {
+      "handle": "cid-tree-reaper-1626",
+      "part_type": "Brush Cutter",
+      "shopify_product_id": "gid://shopify/Product/10531054158111"
+    },
+    "TR1727-60": {
+      "handle": "cid-tree-reaper-1727",
+      "part_type": "Brush Cutter",
+      "shopify_product_id": "gid://shopify/Product/10531054125343"
+    },
+    "TR185-7280": {
+      "handle": "heavy-duty-track-roller-tr185-7280",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR201-30-00062": {
+      "handle": "heavy-duty-track-roller-tr201-30-00062",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR201-30-00291": {
+      "handle": "heavy-duty-track-roller-tr201-30-00291",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR20M-30-31301": {
+      "handle": "heavy-duty-track-roller-tr20m-30-31301",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR20T-30-00070": {
+      "handle": "heavy-duty-track-roller-tr20t-30-00070",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR20T-30-00071": {
+      "handle": "heavy-duty-track-roller-tr20t-30-00071",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR21W-30-00021": {
+      "handle": "heavy-duty-track-roller-tr21w-30-00021",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR265-7674": {
+      "handle": "heavy-duty-track-roller-tr265-7674",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR266-8793": {
+      "handle": "heavy-duty-track-roller-tr266-8793",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR304-1890": {
+      "handle": "heavy-duty-track-roller-tr304-1890",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR340-8957": {
+      "handle": "heavy-duty-track-roller-tr340-8957",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR37B-22-11860": {
+      "handle": "heavy-duty-track-roller-tr37b-22-11860",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR420-9801": {
+      "handle": "heavy-duty-track-roller-tr420-9801",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR4340393": {
+      "handle": "heavy-duty-track-roller-tr4340393",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR4340535": {
+      "handle": "heavy-duty-track-roller-tr4340535",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR4357785": {
+      "handle": "heavy-duty-track-roller-tr4357785",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR4671711": {
+      "handle": "heavy-duty-track-roller-tr4671711",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR6689371": {
+      "handle": "heavy-duty-track-roller-tr6689371",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR6693239": {
+      "handle": "heavy-duty-track-roller-tr6693239",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR6698047": {
+      "handle": "heavy-duty-track-roller-tr6698047",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR6732901B": {
+      "handle": "heavy-duty-track-roller-tr6732901b",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR6814886AM": {
+      "handle": "heavy-duty-track-roller-tr6814886am",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR6814890": {
+      "handle": "heavy-duty-track-roller-tr6814890",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR7004933": {
+      "handle": "heavy-duty-track-roller-tr7004933",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR7013575": {
+      "handle": "heavy-duty-track-roller-tr7013575",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR7013577": {
+      "handle": "heavy-duty-track-roller-tr7013577",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR7013577S": {
+      "handle": "heavy-duty-track-roller-tr7013577s",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR7019167": {
+      "handle": "heavy-duty-track-roller-tr7019167",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR7109409": {
+      "handle": "heavy-duty-track-roller-tr7109409",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR7136983": {
+      "handle": "heavy-duty-track-roller-tr7136983",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR7165324": {
+      "handle": "heavy-duty-track-roller-tr7165324",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR7201400": {
+      "handle": "heavy-duty-track-roller-tr7201400",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR7233399": {
+      "handle": "heavy-duty-track-roller-tr7233399",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR7257870": {
+      "handle": "heavy-duty-track-roller-tr7257870",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR7323310": {
+      "handle": "heavy-duty-track-roller-tr7323310",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR772450-37300": {
+      "handle": "heavy-duty-track-roller-tr772450-37300",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR87535297": {
+      "handle": "heavy-duty-track-roller-tr87535297",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR9239528": {
+      "handle": "heavy-duty-track-roller-tr9239528",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TR9239528S": {
+      "handle": "heavy-duty-track-roller-tr9239528s",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TRAC63": {
+      "handle": "cid-hd-tractor-bucket",
+      "part_type": "Agriculture",
+      "shopify_product_id": "gid://shopify/Product/10531053928735"
+    },
+    "TRD-40": {
+      "handle": "cid-mini-tree-reaper-1015",
+      "part_type": "Brush Cutter",
+      "shopify_product_id": "gid://shopify/Product/10531052847391"
+    },
+    "TRID2802": {
+      "handle": "heavy-duty-track-roller-trid2802",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TRKM1273": {
+      "handle": "heavy-duty-track-roller-trkm1273",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TRKM1690": {
+      "handle": "heavy-duty-track-roller-trkm1690",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TRKM1690-A": {
+      "handle": "heavy-duty-track-roller-trkm1690-a",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TRLK328": {
+      "handle": "heavy-duty-track-roller-trlk328",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TRMU5178": {
+      "handle": "heavy-duty-track-roller-trmu5178",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TRPY64D00002F3": {
+      "handle": "heavy-duty-track-roller-trpy64d00002f3",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TRRA231-21700": {
+      "handle": "heavy-duty-track-roller-trra231-21700",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TRRB511-21702": {
+      "handle": "heavy-duty-track-roller-trrb511-21702",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TRRC788-21700": {
+      "handle": "heavy-duty-track-roller-trrc788-21700",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TRRD118-21700": {
+      "handle": "heavy-duty-track-roller-trrd118-21700",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TRRD201-21700": {
+      "handle": "heavy-duty-track-roller-trrd201-21700",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TRRD411-21700": {
+      "handle": "heavy-duty-track-roller-trrd411-21700",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TRRD411-21703": {
+      "handle": "heavy-duty-track-roller-trrd411-21703",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TRRD441-21702": {
+      "handle": "heavy-duty-track-roller-trrd441-21702",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TRRD809-21703": {
+      "handle": "heavy-duty-track-roller-trrd809-21703",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TRRG158-21700": {
+      "handle": "heavy-duty-track-roller-trrg158-21700",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TRV0511-25104": {
+      "handle": "heavy-duty-track-roller-trv0511-25104",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TRV0531-25102": {
+      "handle": "heavy-duty-track-roller-trv0531-25102",
+      "part_type": "Track Roller",
+      "shopify_product_id": null
+    },
+    "TT-180-72-39": {
+      "handle": "180x72x39-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-180-72-42-DIR": {
+      "handle": "180x72x42-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-180-72-44": {
+      "handle": "180x72x44-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-180-72-45": {
+      "handle": "180x72x45-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-230-72-44": {
+      "handle": "230x72x44-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-230-72-45": {
+      "handle": "230x72x45-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-230-72-45-CB": {
+      "handle": "230x72x45-rubber-track-c-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-300-52-5-78N": {
+      "handle": "300x52-5k-nx78-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-300-52-5-80N": {
+      "handle": "300x52-5x80-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-300-52-5-84N": {
+      "handle": "300x52-5x84-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-300-52-5-88-DIR": {
+      "handle": "300x52-5x88-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-300-52-5-88N": {
+      "handle": "300x52-5kmx88-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-300-52.5W-86-MB": {
+      "handle": "300x52-5kmx86-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-300-55-5-82Y": {
+      "handle": "300x55-5x82-rubber-track-offset-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-320-86-48-MB": {
+      "handle": "320x86x48-rubber-track-multi-bar",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-320-86-49-CB": {
+      "handle": "320x86x49-rubber-track-c-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-320-86-49-MB": {
+      "handle": "320x86x49-rubber-track-multi-bar",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-320-86-49-ZZ": {
+      "handle": "320x86x49-rubber-track-zig-zag",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-320-86-50": {
+      "handle": "320x86x50-rubber-track-multi-bar",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-320-86-50-ZZ": {
+      "handle": "320x86x50-rubber-track-zig-zag",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-320-86-52-CB": {
+      "handle": "320x86x52-rubber-track-c-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-320-86-52-ZZ": {
+      "handle": "320x86x52-rubber-track-zig-zag",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-320-86-53-CB": {
+      "handle": "320x86x53-rubber-track-c-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-320-86-53-MB": {
+      "handle": "320x86x53-rubber-track-multi-bar",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-320-86-53-ZZ": {
+      "handle": "320x86x53-rubber-track-zig-zag",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-320-86-54": {
+      "handle": "320x86x54-rubber-track-multi-bar",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-381-101-6-42": {
+      "handle": "381x101-6x42-rubber-track-multi-bar",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-400-72-5-72W": {
+      "handle": "400x72-5nx72-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-400-72-5-76W": {
+      "handle": "400x72-5x76-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-400-72.5W-74-MB": {
+      "handle": "400x72-5wx74-rubber-track-directional",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-400-86-49-CB": {
+      "handle": "400x86x49-rubber-track-c-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-400-86-49-MB": {
+      "handle": "400x86x49-rubber-track-multi-bar",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-400-86-50-MB": {
+      "handle": "400x86x50-rubber-track-multi-bar",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-400-86-50-ZZ": {
+      "handle": "400x86x50-rubber-track-zig-zag",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-400-86-52-ZZ": {
+      "handle": "400x86x52-rubber-track-zig-zag",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-400-86-53-MB": {
+      "handle": "400x86x53-rubber-track-multi-bar",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-400-86-53-ZZ": {
+      "handle": "400x86x53-rubber-track-zig-zag",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-400-86-56-MB": {
+      "handle": "400x86x56-rubber-track-multi-bar",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-450-86-52-CB": {
+      "handle": "450x86x52-rubber-track-c-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-450-86-52-MB": {
+      "handle": "450x86x52-rubber-track-multi-bar",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-450-86-53-CB": {
+      "handle": "450x86x53-rubber-track-c-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-450-86-53-MB": {
+      "handle": "450x86x53-rubber-track-multi-bar",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-450-86-55-ZZ": {
+      "handle": "450x86x55-rubber-track-zig-zag",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-450-86-56-CB": {
+      "handle": "450x86x56-rubber-track-c-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-450-86-56-ZZ": {
+      "handle": "450x86x56-rubber-track-zig-zag",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-450-86-58": {
+      "handle": "450x86x58-rubber-track-multi-bar",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-450-86-60-XT": {
+      "handle": "450x86x60-rubber-track-x-terrain",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-450-86-60-ZZ": {
+      "handle": "450x86x60-rubber-track-zig-zag",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-450-86-63-MB": {
+      "handle": "450x86x63-rubber-track-multi-bar",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-457-101-6-51-MB": {
+      "handle": "457x101-6x51-rubber-track-multi-bar",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-457-101-6-56-MB": {
+      "handle": "457x101-6x56-rubber-track-multi-bar",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-JOHNDEERE-325G-32086B52-HDMB": {
+      "handle": "320x86x52-rubber-track-multi-bar",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-JOHNDEERE-325G-40086B52-HDMB": {
+      "handle": "400x86x52-rubber-track-multi-bar",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-KUB-U55-4-400-72-5-74": {
+      "handle": "kubota-u55-4-rubber-tracks-400x72-5x74-1",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "TT-WACKER-ST50-450-86-58-CL": {
+      "handle": "450x86x58-rubber-track-c-block",
+      "part_type": "Rubber Track",
+      "shopify_product_id": null
+    },
+    "ULRG60": {
+      "handle": "cid-ultra-root-grapple",
+      "part_type": "Grapple",
+      "shopify_product_id": "gid://shopify/Product/10531054092575"
+    },
+    "V6587308V": {
+      "handle": "heavy-duty-sprocket-v6587308v",
+      "part_type": "Sprocket",
+      "shopify_product_id": null
+    },
+    "X4N1-72": {
+      "handle": "cid-x-4n1-bucket",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531054321951"
+    },
+    "XBC1626-60": {
+      "handle": "cid-xtreme-bc-1626",
+      "part_type": "Brush Cutter",
+      "shopify_product_id": "gid://shopify/Product/10531053043999"
+    },
+    "XBC1730-60": {
+      "handle": "cid-xtreme-bc-1727",
+      "part_type": "Brush Cutter",
+      "shopify_product_id": "gid://shopify/Product/10531053601055"
+    },
+    "XBCLF60": {
+      "handle": "cid-xtreme-bc-lf",
+      "part_type": "Brush Cutter",
+      "shopify_product_id": "gid://shopify/Product/10531053633823"
+    },
+    "XBCMF60": {
+      "handle": "cid-xtreme-bc-mf",
+      "part_type": "Brush Cutter",
+      "shopify_product_id": "gid://shopify/Product/10531055010079"
+    },
+    "XC3048-60": {
+      "handle": "cid-xtreme-bc-3048",
+      "part_type": "Brush Cutter",
+      "shopify_product_id": "gid://shopify/Product/10531053175071"
+    },
+    "XDDGB72": {
+      "handle": "cid-demolition-grapple-bkt",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531053338911"
+    },
+    "XDRB60": {
+      "handle": "cid-xd-rock-bucket",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531055304991"
+    },
+    "XGB66": {
+      "handle": "cid-xtreme-grapple-bucket",
+      "part_type": "Bucket",
+      "shopify_product_id": "gid://shopify/Product/10531053797663"
+    },
+    "XGR63T": {
+      "handle": "cid-xtreme-grapple-rake",
+      "part_type": "Grapple",
+      "shopify_product_id": "gid://shopify/Product/10531054059807"
+    },
+    "XHAB48": {
+      "handle": "cid-xtreme-hyd-angle-blade",
+      "part_type": "Blade",
+      "shopify_product_id": "gid://shopify/Product/10531055042847"
+    },
+    "XMAB48": {
+      "handle": "cid-xtreme-man-angle-blade",
+      "part_type": "Blade",
+      "shopify_product_id": "gid://shopify/Product/10531054190879"
+    },
+    "XPWR72": {
+      "handle": "cid-xtreme-power-rake-hyd",
+      "part_type": "Grading Tool",
+      "shopify_product_id": "gid://shopify/Product/10531054420255"
+    },
+    "XPWRM72": {
+      "handle": "cid-xtreme-power-rake-man",
+      "part_type": "Grading Tool",
+      "shopify_product_id": "gid://shopify/Product/10531054584095"
+    },
+    "XR44": {
+      "handle": "cid-xtreme-ripper",
+      "part_type": "Grading Tool",
+      "shopify_product_id": "gid://shopify/Product/10531055173919"
+    },
+    "XRG63": {
+      "handle": "cid-xtreme-root-grapple",
+      "part_type": "Grapple",
+      "shopify_product_id": "gid://shopify/Product/10531053273375"
+    },
+    "XROKG60": {
+      "handle": "cid-xtreme-rock-grapple",
+      "part_type": "Grapple",
+      "shopify_product_id": "gid://shopify/Product/10531053502751"
+    },
+    "XRR66": {
+      "handle": "cid-xtreme-root-rake",
+      "part_type": "Forestry Tool",
+      "shopify_product_id": "gid://shopify/Product/10531053469983"
+    },
+    "XRWFR44": {
+      "handle": "cid-xtreme-ripper-wfr",
+      "part_type": "Grading Tool",
+      "shopify_product_id": "gid://shopify/Product/10531054453023"
+    },
+    "XSPLOW72": {
+      "handle": "cid-xtreme-snow-plow-hyd",
+      "part_type": "Snow Equipment",
+      "shopify_product_id": "gid://shopify/Product/10531053994271"
+    },
+    "XSPLOWM72": {
+      "handle": "cid-xtreme-snow-plow-man",
+      "part_type": "Snow Equipment",
+      "shopify_product_id": "gid://shopify/Product/10531053437215"
+    },
+    "XTHF72": {
+      "handle": "cid-xtreme-rotary-tiller",
+      "part_type": "Agriculture",
+      "shopify_product_id": "gid://shopify/Product/10531053666591"
+    },
+    "XTRAC72": {
+      "handle": "cid-xtreme-tractor-bucket",
+      "part_type": "Agriculture",
+      "shopify_product_id": "gid://shopify/Product/10531052880159"
+    }
+  }
+}
