@@ -367,9 +367,17 @@ def iter_tracktech_export_rows(export_path: Path):
 
 
 def normalize_track_size_for_images(track_size: str | None) -> str:
-    """Normalize export track sizes to catalog_images keys (Bx→x, strip N/W/K pitch suffixes)."""
+    """Normalize track size to canonical width x pitch(+suffix) x links."""
     if not track_size:
         return ""
+    try:
+        from lib.track_size_parser import parse_track_size
+
+        parsed = parse_track_size(track_size)
+        if parsed.status == "ok" and parsed.canonical_size:
+            return parsed.canonical_size
+    except ImportError:
+        pass
     s = re.sub(r"\s+", "", track_size.strip())
     s = re.sub(r"(?<=\d)[Bb]x(?=\d)", "x", s)
     parts = re.split(r"[xX]", s)
