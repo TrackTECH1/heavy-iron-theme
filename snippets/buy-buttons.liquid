@@ -22,6 +22,12 @@
       if block.settings.show_dynamic_checkout and gift_card_recipient_feature_active == false
         assign show_dynamic_checkout = true
       endif
+
+      assign is_freight_product = false
+      assign product_type_downcase = product.type | downcase
+      if product.metafields.custom.track_size != blank or product_type_downcase contains 'track' or product_type_downcase contains 'attachment' or product_type_downcase contains 'undercarriage'
+        assign is_freight_product = true
+      endif
     -%}
 
     {%- render 'guaranteed-fit', product: product, section: section -%}
@@ -68,6 +74,27 @@
         {%- unless product.gift_card? -%}
           {%- render 'fitment-selector', product: product -%}
         {%- endunless -%}
+
+        {%- if is_freight_product -%}
+          <fieldset class="hi-freight-choice" aria-label="Freight delivery location">
+            <legend class="hi-freight-choice__legend">Freight Delivery</legend>
+            <label class="hi-freight-choice__option">
+              <input type="radio" name="properties[Freight Delivery]" value="Commercial Yard with Forklift" checked>
+              <span>
+                <strong>Commercial Yard with Forklift</strong>
+                <small>Fast free LTL freight to a business address or freight terminal.</small>
+              </span>
+            </label>
+            <label class="hi-freight-choice__option">
+              <input type="radio" name="properties[Freight Delivery]" value="Residential / Lift-Gate Required">
+              <span>
+                <strong>Residential / Lift-Gate Required (+$125)</strong>
+                <small>Choose this if no dock, forklift, or commercial unloading point is available.</small>
+              </span>
+            </label>
+            <input type="hidden" name="properties[Freight Promise]" value="Free fast LTL freight, lower 48. Orders before 2:00 PM EST ship same business day when in stock.">
+          </fieldset>
+        {%- endif -%}
 
         <div class="product-form__buttons">
           {%- liquid
