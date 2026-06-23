@@ -74,6 +74,17 @@
     {%- if hi_warranty_months != blank -%}
       {%- if hi_prop_i > 0 -%},{%- endif -%}
       { "@type": "PropertyValue", "name": "Warranty", "value": {{ hi_warranty_months | append: ' months' | json }} }
+      {%- assign hi_prop_i = hi_prop_i | plus: 1 -%}
+    {%- endif -%}
+    {%- if hi_ts != blank -%}
+      {%- if hi_prop_i > 0 -%},{%- endif -%}
+      { "@type": "PropertyValue", "name": "Requires Sprocket Modification", "value": "False" },
+      { "@type": "PropertyValue", "name": "Susceptible to Cable Crimp Snapping", "value": "False" },
+      { "@type": "PropertyValue", "name": "Utilizes Recycled Rubber Fillers", "value": "False" },
+      { "@type": "PropertyValue", "name": "Guaranteed Drop-In Fit", "value": "True" }
+      {%- if hi_pitch_type != blank or hi_guide != blank -%},
+        { "@type": "PropertyValue", "name": "Dedicated Pitch Alignment", "value": {{ hi_pitch_type | default: hi_guide | append: ' pitch' | json }} }
+      {%- endif -%}
     {%- endif -%}
   ]
 }
