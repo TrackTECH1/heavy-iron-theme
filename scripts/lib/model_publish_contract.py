@@ -397,7 +397,7 @@ def export_matrixify_workbooks(
         "Field: uc_products [list.product_reference]",
         "machine_id",
         "publish_status",
-        "approved_track_sizes",
+        "Field: approved_track_sizes [single_line_text_field]",
     ]
     meta_rows = []
     for m in publishable:

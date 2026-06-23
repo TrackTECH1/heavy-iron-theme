@@ -50,6 +50,18 @@ export async function searchMachines(
 export async function getMachine(machineId: string): Promise<FleetMachine | null> {
   const supabase = createFleetClient();
   const { data, error } = await supabase
+    .from("fleet_machine_catalog")
+    .select("*")
+    .eq("machine_id", machineId)
+    .maybeSingle();
+  if (error) throw new Error(error.message);
+  return data as FleetMachine | null;
+}
+
+/** Admin-only: includes quarantine/reference/review machines. */
+export async function getMachineGodlist(machineId: string): Promise<FleetMachine | null> {
+  const supabase = createFleetClient();
+  const { data, error } = await supabase
     .from("fleet_machine_godlist")
     .select("*")
     .eq("machine_id", machineId)

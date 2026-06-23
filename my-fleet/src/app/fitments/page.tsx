@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { DataTable, MachineLink, PageHeader, SearchBar, SkuLink } from "@/components/ui";
-import { getFitments, getMachine } from "@/lib/queries";
+import { getFitments, getMachineGodlist } from "@/lib/queries";
 
 export default async function FitmentsPage({
   searchParams,
@@ -20,7 +20,7 @@ export default async function FitmentsPage({
   let brand = sp.brand;
   let model = sp.model;
   if (sp.machine) {
-    const m = await getMachine(sp.machine);
+    const m = await getMachineGodlist(sp.machine);
     if (m) {
       brand = m.brand;
       model = m.model;

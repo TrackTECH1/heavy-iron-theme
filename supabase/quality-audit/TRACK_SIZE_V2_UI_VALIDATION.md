@@ -1,6 +1,6 @@
 # Track Size V2 — My Fleet UI Validation
 
-**Generated:** 2026-06-23 21:25 UTC  
+**Generated:** 2026-06-23 21:55 UTC  
 **Dev project:** `zhdqdxtwipcowbtdyviq`  
 **Spine view:** `core.v_track_size_spine_v2` → `public.fleet_track_size_spine`
 

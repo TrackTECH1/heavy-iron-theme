@@ -124,6 +124,15 @@ case "$cmd" in
   export-matrixify)
     exec python3 "$ROOT/scripts/export-model-matrixify.py" "$@"
     ;;
+  export-store-v1)
+    exec python3 "$ROOT/scripts/export-store-v1-bundle.py" "$@"
+    ;;
+  validate-store-v1)
+    exec python3 "$ROOT/scripts/validate-store-v1.py" "$@"
+    ;;
+  validate-theme)
+    exec python3 "$ROOT/scripts/validate-theme-store-v1.py" "$@"
+    ;;
   apply-models)
     exec python3 "$ROOT/scripts/apply-model-publish-bundle.py" "$@"
     ;;

@@ -1,0 +1,69 @@
+{%- comment -%}
+  Renders track_products grouped by track size (publish contract order: wide → narrow, TNT first per group).
+  Params: track_products, track_size (fallback), track_card_title, quote_url (unused)
+{%- endcomment -%}
+{%- liquid
+  assign prev_size = ''
+  assign group_open = false
+-%}
+{%- for product in track_products -%}
+  {%- assign tsize = product.metafields.custom.track_size | default: track_size -%}
+  {%- if tsize != prev_size -%}
+    {%- if group_open -%}
+      </div>
+    </div>
+    {%- endif -%}
+    <div class="hi-mf__track-group">
+      <h3 class="hi-mf__track-group-h">{{ tsize | default: 'Rubber Tracks' }}</h3>
+      <div class="hi-mf__cards">
+    {%- assign prev_size = tsize -%}
+    {%- assign group_open = true -%}
+  {%- endif -%}
+  {%- assign tread = product.metafields.custom.tread.value | default: product.metafields.custom.tread -%}
+  {%- assign variants = product.variants | sort: 'sku' -%}
+  {%- comment -%} TNT variants first within product {%- endcomment -%}
+  {%- for variant in variants -%}
+    {%- assign sku_up = variant.sku | upcase -%}
+    {%- unless sku_up contains 'TNT' -%}
+      {%- continue -%}
+    {%- endunless -%}
+    {%- assign vurl = product.url | append: '?variant=' | append: variant.id -%}
+    {%- assign vimg = variant.featured_image | default: product.featured_image -%}
+    {%- liquid
+      assign track_type_label = tread
+      if track_type_label == blank and variant.title != blank and variant.title != 'Default Title'
+        assign track_type_label = variant.title
+      endif
+      if track_type_label == blank
+        assign track_type_label = 'Rubber Track'
+      endif
+    -%}
+    {%- capture sub -%}{% if tsize != blank %}Size: {{ tsize }}{% endif %}{%- endcapture -%}
+    {%- render 'hi-product-card', url: vurl, title: track_card_title, type_label: track_type_label,
+        image: vimg, sub: sub, price: variant.price, compare_at: variant.compare_at_price, button: 'View Track' -%}
+  {%- endfor -%}
+  {%- for variant in variants -%}
+    {%- assign sku_up = variant.sku | upcase -%}
+    {%- if sku_up contains 'TNT' -%}
+      {%- continue -%}
+    {%- endif -%}
+    {%- assign vurl = product.url | append: '?variant=' | append: variant.id -%}
+    {%- assign vimg = variant.featured_image | default: product.featured_image -%}
+    {%- liquid
+      assign track_type_label = tread
+      if track_type_label == blank and variant.title != blank and variant.title != 'Default Title'
+        assign track_type_label = variant.title
+      endif
+      if track_type_label == blank
+        assign track_type_label = 'Rubber Track'
+      endif
+    -%}
+    {%- capture sub -%}{% if tsize != blank %}Size: {{ tsize }}{% endif %}{%- endcapture -%}
+    {%- render 'hi-product-card', url: vurl, title: track_card_title, type_label: track_type_label,
+        image: vimg, sub: sub, price: variant.price, compare_at: variant.compare_at_price, button: 'View Track' -%}
+  {%- endfor -%}
+{%- endfor -%}
+{%- if group_open -%}
+  </div>
+</div>
+{%- endif -%}

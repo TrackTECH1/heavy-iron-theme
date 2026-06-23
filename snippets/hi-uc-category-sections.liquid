@@ -1,0 +1,129 @@
+{%- comment -%}
+  Split uc_products into sprockets, idlers, rollers (matches My Fleet category tabs).
+  Params: uc_products, quote_url (optional, for quote fallback)
+{%- endcomment -%}
+{%- liquid
+  assign has_sprockets = false
+  assign has_front_idlers = false
+  assign has_rear_idlers = false
+  assign has_rollers = false
+  assign has_other = false
+-%}
+{%- for product in uc_products -%}
+  {%- assign title_l = product.title | downcase -%}
+  {%- assign type_l = product.type | downcase -%}
+  {%- if title_l contains 'sprocket' or type_l contains 'sprocket' -%}
+    {%- assign has_sprockets = true -%}
+  {%- elsif title_l contains 'front idler' or type_l contains 'front idler' -%}
+    {%- assign has_front_idlers = true -%}
+  {%- elsif title_l contains 'rear idler' or type_l contains 'rear idler' -%}
+    {%- assign has_rear_idlers = true -%}
+  {%- elsif title_l contains 'idler' or type_l contains 'idler' -%}
+    {%- assign has_front_idlers = true -%}
+  {%- elsif title_l contains 'roller' or type_l contains 'roller' -%}
+    {%- assign has_rollers = true -%}
+  {%- else -%}
+    {%- assign has_other = true -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- if has_sprockets -%}
+  <div class="hi-mf__uc-cat" id="sprockets">
+    <h3 class="hi-mf__uc-cat-h">Sprockets</h3>
+    <div class="hi-mf__cards">
+      {%- for product in uc_products -%}
+        {%- assign title_l = product.title | downcase -%}
+        {%- assign type_l = product.type | downcase -%}
+        {%- if title_l contains 'sprocket' or type_l contains 'sprocket' -%}
+          {%- assign pn = product.metafields.custom.oem_part_number -%}
+          {%- capture sub -%}{% if pn != blank %}OEM P/N: {{ pn }}{% endif %}{%- endcapture -%}
+          {%- render 'hi-product-card', url: product.url, title: product.title, type_label: 'Sprocket',
+              image: product.featured_image, sub: sub, price: product.price, button: 'View Part' -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{%- if has_front_idlers -%}
+  <div class="hi-mf__uc-cat" id="front-idlers">
+    <h3 class="hi-mf__uc-cat-h">Front Idlers</h3>
+    <div class="hi-mf__cards">
+      {%- for product in uc_products -%}
+        {%- assign title_l = product.title | downcase -%}
+        {%- assign type_l = product.type | downcase -%}
+        {%- if title_l contains 'front idler' or type_l contains 'front idler' -%}
+          {%- assign pn = product.metafields.custom.oem_part_number -%}
+          {%- capture sub -%}{% if pn != blank %}OEM P/N: {{ pn }}{% endif %}{%- endcapture -%}
+          {%- render 'hi-product-card', url: product.url, title: product.title, type_label: 'Front Idler',
+              image: product.featured_image, sub: sub, price: product.price, button: 'View Part' -%}
+        {%- elsif title_l contains 'idler' or type_l contains 'idler' -%}
+          {%- unless title_l contains 'rear' or type_l contains 'rear' -%}
+            {%- assign pn = product.metafields.custom.oem_part_number -%}
+            {%- capture sub -%}{% if pn != blank %}OEM P/N: {{ pn }}{% endif %}{%- endcapture -%}
+            {%- render 'hi-product-card', url: product.url, title: product.title, type_label: 'Idler',
+                image: product.featured_image, sub: sub, price: product.price, button: 'View Part' -%}
+          {%- endunless -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{%- if has_rear_idlers -%}
+  <div class="hi-mf__uc-cat" id="rear-idlers">
+    <h3 class="hi-mf__uc-cat-h">Rear Idlers</h3>
+    <div class="hi-mf__cards">
+      {%- for product in uc_products -%}
+        {%- assign title_l = product.title | downcase -%}
+        {%- assign type_l = product.type | downcase -%}
+        {%- if title_l contains 'rear idler' or type_l contains 'rear idler' -%}
+          {%- assign pn = product.metafields.custom.oem_part_number -%}
+          {%- capture sub -%}{% if pn != blank %}OEM P/N: {{ pn }}{% endif %}{%- endcapture -%}
+          {%- render 'hi-product-card', url: product.url, title: product.title, type_label: 'Rear Idler',
+              image: product.featured_image, sub: sub, price: product.price, button: 'View Part' -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{%- if has_rollers -%}
+  <div class="hi-mf__uc-cat" id="rollers">
+    <h3 class="hi-mf__uc-cat-h">Rollers</h3>
+    <div class="hi-mf__cards">
+      {%- for product in uc_products -%}
+        {%- assign title_l = product.title | downcase -%}
+        {%- assign type_l = product.type | downcase -%}
+        {%- if title_l contains 'roller' or type_l contains 'roller' -%}
+          {%- assign pn = product.metafields.custom.oem_part_number -%}
+          {%- capture sub -%}{% if pn != blank %}OEM P/N: {{ pn }}{% endif %}{%- endcapture -%}
+          {%- render 'hi-product-card', url: product.url, title: product.title, type_label: 'Roller',
+              image: product.featured_image, sub: sub, price: product.price, button: 'View Part' -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{%- if has_other -%}
+  <div class="hi-mf__uc-cat" id="undercarriage-other">
+    <h3 class="hi-mf__uc-cat-h">Undercarriage</h3>
+    <div class="hi-mf__cards">
+      {%- for product in uc_products -%}
+        {%- assign title_l = product.title | downcase -%}
+        {%- assign type_l = product.type | downcase -%}
+        {%- assign categorized = false -%}
+        {%- if title_l contains 'sprocket' or type_l contains 'sprocket' -%}{%- assign categorized = true -%}{%- endif -%}
+        {%- if title_l contains 'idler' or type_l contains 'idler' -%}{%- assign categorized = true -%}{%- endif -%}
+        {%- if title_l contains 'roller' or type_l contains 'roller' -%}{%- assign categorized = true -%}{%- endif -%}
+        {%- unless categorized -%}
+          {%- assign pn = product.metafields.custom.oem_part_number -%}
+          {%- capture sub -%}{% if pn != blank %}OEM P/N: {{ pn }}{% endif %}{%- endcapture -%}
+          {%- render 'hi-product-card', url: product.url, title: product.title, type_label: 'Undercarriage',
+              image: product.featured_image, sub: sub, price: product.price, button: 'View Part' -%}
+        {%- endunless -%}
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
