@@ -1,0 +1,27 @@
+.hi-context-banner {
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid #2f7d32;
+  border-radius: 6px;
+  background: #eef7ea;
+  color: #163818;
+  font-size: 1.4rem;
+  line-height: 1.35;
+}
+
+.hi-context-banner strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #0f2f11;
+  letter-spacing: 0;
+}
+
+.hi-context-banner--winter {
+  border-color: #2c6a8e;
+  background: #eef7fb;
+  color: #173544;
+}
+
+.hi-context-banner--winter strong {
+  color: #123040;
+}

@@ -1,0 +1,88 @@
+.hi-purchase-gates {
+  display: grid;
+  gap: 1.2rem;
+  margin: 1.4rem 0 1.6rem;
+}
+
+.hi-purchase-gates__set {
+  margin: 0;
+  padding: 1.2rem;
+  border: 1px solid rgba(26, 26, 26, 0.16);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.hi-purchase-gates__legend {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  padding: 0 0.2rem;
+  color: #1a1a1a;
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.hi-purchase-gates__legend span {
+  padding: 0.16rem 0.48rem;
+  border-radius: 4px;
+  background: #ffb607;
+  color: #1a1a1a;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.hi-purchase-gates__option {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.9rem;
+  align-items: center;
+  min-height: 5.8rem;
+  margin-top: 0.8rem;
+  padding: 0.95rem 1rem;
+  border: 1px solid #c9cdd2;
+  border-radius: 8px;
+  background: #fafafa;
+  cursor: pointer;
+}
+
+.hi-purchase-gates__option:has(input:checked) {
+  border-color: #1a1a1a;
+  box-shadow: inset 0 0 0 1px #1a1a1a;
+  background: #fff9e8;
+}
+
+.hi-purchase-gates__option input {
+  width: 1.8rem;
+  height: 1.8rem;
+  margin: 0;
+  accent-color: #1a1a1a;
+}
+
+.hi-purchase-gates__option strong,
+.hi-purchase-gates__option small {
+  display: block;
+}
+
+.hi-purchase-gates__option strong {
+  color: #1a1a1a;
+  font-size: 1.35rem;
+  line-height: 1.25;
+}
+
+.hi-purchase-gates__option small {
+  margin-top: 0.25rem;
+  color: #5a5f66;
+  font-size: 1.15rem;
+  line-height: 1.3;
+}
+
+.hi-purchase-gates__option--pair strong {
+  color: #0f6f2f;
+}
+
+@media screen and (max-width: 520px) {
+  .hi-purchase-gates__set { padding: 1rem; }
+  .hi-purchase-gates__option { min-height: 6.2rem; }
+}

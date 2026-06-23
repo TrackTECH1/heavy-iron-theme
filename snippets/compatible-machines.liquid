@@ -1,23 +1,37 @@
 {%- comment -%}
   Compatible Machines tab — lists machines that fit this track product.
-  Primary: product.metafields.custom.fitments (same source as checkout).
-  Fallback: track-fitment-map.json keyed by track_size (legacy).
+  Primary: product.metafields.custom.fitments (Supabase-derived fitment MOs).
+  Fallback: legacy fits_equipment_models, then track-fitment-map.json keyed by track_size.
 {%- endcomment -%}
 {%- liquid
   assign track_size = product.metafields.custom.track_size.value | default: product.metafields.custom.track_size | default: ''
   assign fitment_refs = product.metafields.custom.fitments.value
+  assign legacy_model_refs = product.metafields.custom.fits_equipment_models.value
   assign has_fitments = false
   if fitment_refs != blank and fitment_refs.size > 0
     assign has_fitments = true
   endif
+  assign has_legacy_models = false
+  if legacy_model_refs != blank and legacy_model_refs.size > 0
+    assign has_legacy_models = true
+  endif
 -%}
 {%- if track_size != blank -%}
   {{ 'compatible-machines.css' | asset_url | stylesheet_tag }}
-  {%- if has_fitments -%}
+  {%- if has_fitments or has_legacy_models -%}
     {%- comment -%} Build make → models from fitment MO refs {%- endcomment -%}
     {%- assign make_list = '' -%}
-    {%- for fitment in fitment_refs -%}
-      {%- assign make_mo = fitment.make.value -%}
+    {%- if has_fitments -%}
+      {%- assign source_refs = fitment_refs -%}
+    {%- else -%}
+      {%- assign source_refs = legacy_model_refs -%}
+    {%- endif -%}
+    {%- for source_ref in source_refs -%}
+      {%- if has_fitments -%}
+        {%- assign make_mo = source_ref.make.value -%}
+      {%- else -%}
+        {%- assign make_mo = source_ref.make.value -%}
+      {%- endif -%}
       {%- assign make_name = make_mo.name.value | default: make_mo.display_name.value | default: make_mo.name | default: '' -%}
       {%- if make_name != blank -%}
         {%- unless make_list contains make_name -%}
@@ -27,7 +41,7 @@
       {%- endif -%}
     {%- endfor -%}
     {%- assign makes = make_list | split: '||' | sort -%}
-    {%- assign model_total = fitment_refs.size -%}
+    {%- assign model_total = source_refs.size -%}
     <div class="hi-compatible-machines hi-compat--static">
       <div class="hi-compat__head">
         <span class="hi-compat__count">{{ model_total }} Compatible Model{% if model_total != 1 %}s{% endif %}</span>
@@ -40,22 +54,29 @@
           <span class="hi-compat__models">
             {%- assign shown = 0 -%}
             {%- assign brand_total = 0 -%}
-            {%- for fitment in fitment_refs -%}
-              {%- assign fmake = fitment.make.value.name.value | default: fitment.make.value.display_name.value | default: fitment.make.value.name | default: '' -%}
+            {%- for source_ref in source_refs -%}
+              {%- assign fmake = source_ref.make.value.name.value | default: source_ref.make.value.display_name.value | default: source_ref.make.value.name | default: '' -%}
               {%- if fmake == make -%}
                 {%- assign brand_total = brand_total | plus: 1 -%}
               {%- endif -%}
             {%- endfor -%}
-            {%- for fitment in fitment_refs -%}
-              {%- assign fmake_mo = fitment.make.value -%}
+            {%- for source_ref in source_refs -%}
+              {%- assign fmake_mo = source_ref.make.value -%}
               {%- assign fmake = fmake_mo.name.value | default: fmake_mo.display_name.value | default: fmake_mo.name | default: '' -%}
               {%- if fmake != make -%}{%- continue -%}{%- endif -%}
               {%- if shown >= 6 -%}{%- continue -%}{%- endif -%}
-              {%- assign model_mo = fitment.model.value -%}
+              {%- if has_fitments -%}
+                {%- assign model_mo = source_ref.model.value -%}
+              {%- else -%}
+                {%- assign model_mo = source_ref -%}
+              {%- endif -%}
               {%- assign model_display = model_mo.display_name.value | default: model_mo.display_name | default: model_mo.system.handle -%}
               {%- assign model_label = model_display | remove_first: make | remove_first: ' ' | strip -%}
               {%- if model_label == blank -%}{%- assign model_label = model_display -%}{%- endif -%}
               {%- assign model_url = model_mo.system.url | default: '' -%}
+              {%- if model_url == blank and model_mo.system.handle != blank -%}
+                {%- assign model_url = '/pages/model/' | append: model_mo.system.handle -%}
+              {%- endif -%}
               {%- if make_mo_url == blank -%}{%- assign make_mo_url = fmake_mo.system.url | default: '' -%}{%- endif -%}
               {%- if shown > 0 -%}<span class="hi-compat__sep">,</span>{%- endif -%}
               {%- if model_url != blank -%}

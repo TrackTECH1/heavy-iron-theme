@@ -1,0 +1,9 @@
+name = "heavy-iron-edge-morph"
+main = "workers/edge-morph.js"
+compatibility_date = "2026-06-22"
+
+# Replace the route with the final Cloudflare zone route.
+# Keep this Worker on product pages only.
+routes = [
+  { pattern = "heavyironsupply.com/products/*", zone_name = "heavyironsupply.com" }
+]

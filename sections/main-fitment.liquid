@@ -2,20 +2,30 @@
   Heavy Iron Supply Co — Machine Fitment Landing (production)
   Renders directly from the Model metaobject (scales to all models, no per-page setup).
   Styles: assets/hi-machine.css  ·  Cards: snippets/hi-product-card  ·  Schema: snippets/hi-machine-jsonld
-  NOTE: expects metaobject field `primary_track_size` (added during the definition cleanup).
+  Reads metaobject fields `primary_track_size` + `track_variants`.
 {%- endcomment -%}
 
 {{ 'hi-machine.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'hi-model-carousels.js' | asset_url }}" defer></script>
+<script src="{{ 'hi-machine-bento.js' | asset_url }}" defer></script>
 
 {%- liquid
   assign model = metaobject
   assign make = model.make.value
   assign machine = model.machine.value
 
-  assign model_name = model.display_name.value | default: model.system.handle
-  assign make_name = make.name.value | default: make.display_name.value | default: ''
-  assign make_url = make.system.url | default: '/collections/rubber-tracks'
-  assign machine_name = machine.name.value | default: machine.display_name.value | default: 'Heavy Equipment'
+  assign make_name = make.name.value | default: make.display_name.value | default: model.make.value | default: ''
+  assign track_collection_url = routes.collections_url | append: '/rubber-tracks'
+  assign attachments_collection_url = routes.collections_url | append: '/attachments'
+  assign make_url = make.system.url | default: track_collection_url
+  assign machine_name = machine.name.value | default: machine.display_name.value | default: model.machine.value | default: 'Heavy Equipment'
+  assign model_name = model.display_name.value
+  if model_name == blank
+    assign model_name = make_name | append: ' ' | append: machine_name | strip
+  endif
+  if model_name == blank
+    assign model_name = model.system.handle
+  endif
   assign hero_img = model.hero_image.value
   assign track_size = model.primary_track_size.value | default: ''
 
@@ -23,9 +33,6 @@
   assign phone_display = section.settings.phone_display | default: '(850) 816-7898'
   assign quote_url = section.settings.quote_url | default: '/pages/quote'
 
-  assign track_product_count = model.track_products.value.size | default: 0
-  assign seo_h1_suffix = ' Rubber Tracks, Parts & Attachments'
-  assign page_seo_title = model.seo_title.value | default: model_name | append: seo_h1_suffix | append: ' | ' | append: shop.name
   assign page_seo_desc = model.seo_description.value
   if page_seo_desc == blank
     assign page_seo_desc = 'Shop OEM-spec rubber tracks'
@@ -44,7 +51,7 @@
       <ol class="hi-mf__crumbs">
         <li><a href="{{ routes.root_url }}">Home</a></li>
         <li class="hi-mf__crumb-sep">/</li>
-        <li><a href="/collections/rubber-tracks">Tracks</a></li>
+        <li><a href="{{ track_collection_url }}">Tracks</a></li>
         {%- if make_name != blank -%}
           <li class="hi-mf__crumb-sep">/</li>
           <li><a href="{{ make_url }}">{{ make_name }}</a></li>
@@ -60,8 +67,7 @@
         <h1 class="hi-mf__title">{{ model_name }}</h1>
         {%- if track_size != blank -%}<span class="hi-mf__size">Fits track size: {{ track_size }}</span>{%- endif -%}
         <p class="hi-mf__intro">
-          Shop {{ track_product_count }}+ in-stock rubber track{% if track_product_count != 1 %}s{% endif %},
-          steel undercarriage, and attachments built for the {{ make_name }} {{ model_name }}.
+          Shop verified rubber tracks, steel undercarriage, and attachments built for the {{ make_name }} {{ model_name }}.
           {%- if track_size != blank -%}
             Primary track size: <strong>{{ track_size }}</strong>.
           {%- endif -%}
@@ -72,10 +78,9 @@
         {%- if section.settings.show_trust_bar -%}
           <div class="hi-mf__trust">
             <span><b>✓</b> 24-Month Warranty</span>
-            <span><b>✓</b> Free Freight</span>
-            <span><b>✓</b> Same-Day Shipping</span>
-            <span><b>✓</b> Technicians by Trade</span>
-          </div>
+            <span><b>✓</b> Free Shipping</span>
+            <span><b>✓</b> Precision Fitment</span>
+                    </div>
         {%- endif -%}
       </div>
 
@@ -124,120 +129,60 @@
       </div>
     {%- endif -%}
 
-    {%- comment -%} RUBBER TRACKS {%- endcomment -%}
-    {%- if model.track_products.value != blank -%}
+    {%- comment -%} SUPABASE BENTO BOX INJECTION TERMINAL {%- endcomment -%}
+    <div
+      id="tracktech-bento-grid"
+      data-hi-machine-bento
+      data-machine-slug="{{ model.system.handle | escape }}"
+      data-machine-name="{{ model_name | escape }}"
+      data-quote-url="{{ quote_url | escape }}"
+      data-bento-endpoint="{{ section.settings.bento_endpoint | default: 'https://tcykyktvdlsbscrsbjyt.supabase.co/functions/v1/machine-bento' | escape }}"
+    >
       <section class="hi-mf__sec" id="tracks">
-        <h2 class="hi-mf__sec-h">Rubber Tracks</h2>
-        <p class="hi-mf__sec-sub">Choose your tread pattern. OEM-spec, continuous steel cord, free freight.</p>
-
-        <div class="hi-mf__cards">
-          {%- liquid
-            assign track_machine_label = model_name | split: ' Rubber Track' | first | split: ' Tracks' | first | strip
-            if track_machine_label == blank
-              assign track_machine_label = make_name
-            endif
-            assign track_card_title = track_machine_label | append: ' Tracks'
-          -%}
-          {%- for product in model.track_products.value -%}
-            {%- assign tsize = product.metafields.custom.track_size | default: track_size -%}
-            {%- assign tread = product.metafields.custom.tread.value | default: product.metafields.custom.tread -%}
-            {%- for variant in product.variants -%}
-              {%- assign vurl = product.url | append: '?variant=' | append: variant.id -%}
-              {%- assign vimg = variant.featured_image | default: product.featured_image -%}
-              {%- liquid
-                assign track_type_label = tread
-                if track_type_label == blank and variant.title != blank and variant.title != 'Default Title'
-                  assign track_type_label = variant.title
-                endif
-                if track_type_label == blank
-                  assign track_type_label = 'Rubber Track'
-                endif
-              -%}
-              {%- capture sub -%}{% if tsize != blank %}Size: {{ tsize }}{% endif %}{%- endcapture -%}
-              {%- render 'hi-product-card', url: vurl, title: track_card_title, type_label: track_type_label,
-                  image: vimg, sub: sub, price: variant.price, compare_at: variant.compare_at_price, button: 'View Track' -%}
-            {%- endfor -%}
-          {%- endfor -%}
+        <h2 class="hi-mf__sec-h">Verified Rubber Tracks</h2>
+        <p class="hi-mf__sec-sub">Live inventory and fitment from the TrackTECH 3D Fitment Engine.</p>
+        <div class="hi-mf__carousel-shell" data-hi-model-carousel>
+          <div class="hi-mf__carousel-controls" aria-hidden="false">
+            <button class="hi-mf__carousel-btn" type="button" data-hi-carousel-prev aria-label="Previous tracks">&#8249;</button>
+            <button class="hi-mf__carousel-btn" type="button" data-hi-carousel-next aria-label="Next tracks">&#8250;</button>
+          </div>
+          <div class="hi-mf__cards hi-mf__carousel" data-hi-carousel-track data-hi-bento-target="tracks">
+            <div class="hi-mf__loader">Loading live track inventory...</div>
+          </div>
         </div>
-
-        <a class="hi-mf__shopall" href="/collections/rubber-tracks">Shop all rubber tracks &rarr;</a>
+        <a class="hi-mf__shopall" href="{{ track_collection_url }}">Shop all rubber tracks &rarr;</a>
       </section>
-    {%- endif -%}
 
-    {%- comment -%} UNDERCARRIAGE {%- endcomment -%}
-    {%- if model.uc_products.value != blank or model.uc_parts.value != blank -%}
       <section class="hi-mf__sec" id="undercarriage">
-        <h2 class="hi-mf__sec-h">Steel Undercarriage</h2>
-        <p class="hi-mf__sec-sub">OEM-cross-referenced sprockets, idlers &amp; rollers. Drop-in fit.</p>
-        <div class="hi-mf__cards">
-          {%- if model.uc_products.value != blank -%}
-            {%- for product in model.uc_products.value -%}
-              {%- assign pn = product.metafields.custom.oem_part_number -%}
-              {%- capture sub -%}{% if pn != blank %}OEM P/N: {{ pn }}{% endif %}{%- endcapture -%}
-              {%- render 'hi-product-card', url: product.url, title: product.title, type_label: 'Undercarriage',
-                  image: product.featured_image, sub: sub, price: product.price, button: 'View Part' -%}
-            {%- endfor -%}
-          {%- else -%}
-            {%- for part in model.uc_parts.value -%}
-              {%- assign pt = part.part_type.value | default: 'Undercarriage Part' -%}
-              {%- capture sub -%}{% if part.oem_part_number.value != blank %}OEM P/N: {{ part.oem_part_number.value }}{% endif %}{%- endcapture -%}
-              {%- capture qurl -%}{{ quote_url }}?machine={{ model_name | url_encode }}&part={{ pt | url_encode }}&pn={{ part.oem_part_number.value | url_encode }}{%- endcapture -%}
-              {%- render 'hi-product-card', url: qurl, title: pt, type_label: 'Undercarriage',
-                  image: part.image.value, sub: sub, button: 'Request Quote' -%}
-            {%- endfor -%}
-          {%- endif -%}
+        <h2 class="hi-mf__sec-h">OEM Spec Undercarriage</h2>
+        <p class="hi-mf__sec-sub">Sprockets, idlers, rollers, and machine-specific wear parts from verified fitment data.</p>
+        <div class="hi-mf__carousel-shell" data-hi-model-carousel>
+          <div class="hi-mf__carousel-controls" aria-hidden="false">
+            <button class="hi-mf__carousel-btn" type="button" data-hi-carousel-prev aria-label="Previous undercarriage parts">&#8249;</button>
+            <button class="hi-mf__carousel-btn" type="button" data-hi-carousel-next aria-label="Next undercarriage parts">&#8250;</button>
+          </div>
+          <div class="hi-mf__cards hi-mf__carousel" data-hi-carousel-track data-hi-bento-target="undercarriage">
+            <div class="hi-mf__loader">Loading undercarriage parts...</div>
+          </div>
         </div>
       </section>
-    {%- endif -%}
 
-    {%- comment -%} ATTACHMENTS — shoppable grid + per-machine fitment intelligence (CID matrix) {%- endcomment -%}
-    {%- assign fit = model.attachment_fitment.value -%}
-    <section class="hi-mf__sec" id="attachments">
-      <h2 class="hi-mf__sec-h">Attachments</h2>
-      <p class="hi-mf__sec-sub">{% if model.mount_type.value != blank %}{{ model.mount_type.value }} mount. {% endif %}Buckets, grapples, forks, brush cutters &amp; more — matched to your machine.</p>
-
-      {%- if model.featured_attachments.value != blank -%}
-        <div class="hi-mf__cards">
-          {%- for product in model.featured_attachments.value limit: 4 -%}
-            {%- render 'hi-product-card', url: product.url, title: product.title, type_label: 'Attachment',
-                image: product.featured_image, price: product.price, button: 'View Attachment' -%}
-          {%- endfor -%}
+      <section class="hi-mf__sec" id="attachments">
+        <h2 class="hi-mf__sec-h">Attachments</h2>
+        <p class="hi-mf__sec-sub">{% if model.mount_type.value != blank %}{{ model.mount_type.value }} mount. {% endif %}Buckets, grapples, forks, brush cutters, and matched machine attachments.</p>
+        <div class="hi-mf__carousel-shell" data-hi-model-carousel>
+          <div class="hi-mf__carousel-controls" aria-hidden="false">
+            <button class="hi-mf__carousel-btn" type="button" data-hi-carousel-prev aria-label="Previous attachments">&#8249;</button>
+            <button class="hi-mf__carousel-btn" type="button" data-hi-carousel-next aria-label="Next attachments">&#8250;</button>
+          </div>
+          <div class="hi-mf__cards hi-mf__carousel" data-hi-carousel-track data-hi-bento-target="attachments">
+            <div class="hi-mf__loader">Loading verified attachments...</div>
+          </div>
         </div>
-      {%- endif -%}
-
-      {%- if fit != blank and fit.attachments != blank -%}
-        <div class="hi-mf__fitment">
-          <div class="hi-mf__fitment-h">What fits your {{ model_name }}</div>
-          {%- assign seen = '' -%}
-          {%- for att in fit.attachments -%}
-            {%- assign key = att.recommended.sku | default: att.attachment -%}
-            {%- unless seen contains key -%}
-              {%- assign seen = seen | append: key | append: '|' -%}
-              {%- case att.fitment_status -%}
-                {%- when 'likely_fit' -%}{%- assign badge = 'Bolt-on fit' -%}{%- assign bclass = 'is-fit' -%}
-                {%- when 'requires_flow_confirmation' -%}{%- assign badge = 'Confirm flow' -%}{%- assign bclass = 'is-check' -%}
-                {%- when 'requires_flow_and_harness_confirmation' -%}{%- assign badge = 'Confirm flow + harness' -%}{%- assign bclass = 'is-check' -%}
-                {%- when 'requires_width_confirmation' -%}{%- assign badge = 'Confirm width' -%}{%- assign bclass = 'is-check' -%}
-                {%- when 'requires_bit_and_drive_confirmation' -%}{%- assign badge = 'Confirm bit + drive' -%}{%- assign bclass = 'is-check' -%}
-                {%- else -%}{%- assign badge = 'Ask us' -%}{%- assign bclass = 'is-check' -%}
-              {%- endcase -%}
-              <div class="hi-mf__fit-row">
-                <span class="hi-mf__fit-name">{{ att.attachment | capitalize }}</span>
-                <span class="hi-mf__fit-badge {{ bclass }}">{{ badge }}</span>
-                {%- if att.recommended.product != blank -%}
-                  <a class="hi-mf__fit-pick" href="/search?q={{ att.recommended.sku | url_encode }}">{{ att.recommended.product }}{% if att.recommended.retail %} — ${{ att.recommended.retail | round }}{% endif %}</a>
-                {%- else -%}
-                  <a class="hi-mf__fit-pick" href="{{ quote_url }}?machine={{ model_name | url_encode }}&amp;part={{ att.attachment | url_encode }}">Request a quote &rarr;</a>
-                {%- endif -%}
-              </div>
-            {%- endunless -%}
-          {%- endfor -%}
-          <p class="hi-mf__fit-note">{{ fit.note | default: 'Powered attachments — confirm hydraulic flow before ordering.' }}</p>
-        </div>
-      {%- endif -%}
-
-      <a class="hi-mf__shopall" href="{{ section.settings.attachments_url | default: '/collections/attachments' }}">Shop all attachments &rarr;</a>
-    </section>
+        <a class="hi-mf__shopall" href="{{ section.settings.attachments_url | default: attachments_collection_url }}">Shop all attachments &rarr;</a>
+      </section>
+    </div>
+    {%- comment -%} END SUPABASE TERMINAL {%- endcomment -%}
 
     {%- comment -%} RELATED MACHINES {%- endcomment -%}
     {%- if model.related_models.value != blank -%}
@@ -264,7 +209,7 @@
         </div>
       </section>
     {%- else -%}
-      {%- render 'hi-model-faq-fallback', model_name: model_name, make_name: make_name, track_size: track_size, track_count: track_product_count -%}
+      {%- render 'hi-model-faq-fallback', model_name: model_name, make_name: make_name, track_size: track_size -%}
     {%- endif -%}
 
     {%- comment -%} BOTTOM CTA {%- endcomment -%}
@@ -288,6 +233,7 @@
     { "type": "checkbox", "id": "show_trust_bar", "label": "Show trust bar", "default": true },
     { "type": "text", "id": "phone_number", "label": "Phone (digits only, for tel: link)", "default": "8508167898" },
     { "type": "text", "id": "phone_display", "label": "Phone (display)", "default": "(850) 816-7898" },
+    { "type": "text", "id": "bento_endpoint", "label": "Supabase Bento endpoint", "default": "https://tcykyktvdlsbscrsbjyt.supabase.co/functions/v1/machine-bento" },
     { "type": "url", "id": "quote_url", "label": "Quote page URL" },
     { "type": "url", "id": "attachments_url", "label": "Shop-all Attachments collection URL" }
   ],

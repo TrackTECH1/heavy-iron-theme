@@ -1,0 +1,67 @@
+{%- comment -%}
+  Heavy Iron product purchase gates.
+  Renders inside the product form for track products.
+  Params: product, section_id
+{%- endcomment -%}
+{%- liquid
+  assign hi_track_size = product.metafields.custom.track_size.value | default: product.metafields.custom.track_size
+  assign hi_part_type = product.metafields.custom.part_type.value | downcase
+  assign hi_product_type = product.type | downcase
+  assign hi_is_track_product = false
+  if hi_track_size != blank
+    assign hi_is_track_product = true
+  elsif hi_product_type contains 'track' or hi_product_type contains 'rubber'
+    assign hi_is_track_product = true
+  elsif hi_part_type contains 'track' or hi_part_type contains 'rubber'
+    assign hi_is_track_product = true
+  endif
+  assign current_variant = product.selected_or_first_available_variant
+  assign single_price = current_variant.price
+  assign pair_price = single_price | times: 2 | minus: 10000
+-%}
+{%- if product != blank and product.available and hi_is_track_product and current_variant != blank -%}
+  {{ 'hi-purchase-gates.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'hi-purchase-gates.js' | asset_url }}" defer></script>
+
+  <div class="hi-purchase-gates" data-hi-purchase-gates data-section-id="{{ section_id }}">
+    <fieldset class="hi-purchase-gates__set" data-hi-quantity-gate>
+      <legend class="hi-purchase-gates__legend">Choose replacement quantity</legend>
+      <label class="hi-purchase-gates__option">
+        <input type="radio" name="properties[Replacement Quantity]" value="Single Replacement Track" data-hi-quantity-option data-quantity="1" checked>
+        <span>
+          <strong>Single Replacement Track</strong>
+          <small>{{ single_price | money }}</small>
+        </span>
+      </label>
+      <label class="hi-purchase-gates__option hi-purchase-gates__option--pair">
+        <input type="radio" name="properties[Replacement Quantity]" value="Left & Right Pair - Save $100" data-hi-quantity-option data-quantity="2">
+        <span>
+          <strong>Left &amp; Right Pair</strong>
+          <small>{{ pair_price | money }} - Save $100</small>
+        </span>
+      </label>
+    </fieldset>
+
+    <fieldset class="hi-purchase-gates__set" data-hi-freight-gate>
+      <legend class="hi-purchase-gates__legend">Delivery access <span>required</span></legend>
+      <label class="hi-purchase-gates__option">
+        <input type="radio" name="properties[Delivery Access]" value="Commercial Yard with Loading Dock / Forklift" required checked>
+        <span>
+          <strong>Commercial Yard with Loading Dock / Forklift</strong>
+          <small>Free Standard Freight</small>
+        </span>
+      </label>
+      <label class="hi-purchase-gates__option">
+        <input type="radio" name="properties[Delivery Access]" value="Residential Address OR Requires Lift-Gate Delivery (+$125)" required>
+        <span>
+          <strong>Residential Address OR Requires Lift-Gate Delivery</strong>
+          <small>+ $125 accessorial fee, confirmed before shipment</small>
+        </span>
+      </label>
+      <input type="hidden" name="properties[Freight Region]" value="Lower 48 Only">
+      <input type="hidden" name="properties[Freight Service Level]" value="Free Fast LTL Freight - 1-3 Business Days">
+      <input type="hidden" name="properties[Same-Day Cutoff]" value="2:00 PM EST">
+      <input type="hidden" name="properties[_freight_payload]" value='{"service":"ltl","free_lower_48":true,"transit_days_min":1,"transit_days_max":3,"liftgate_fee":125}'>
+    </fieldset>
+  </div>
+{%- endif -%}

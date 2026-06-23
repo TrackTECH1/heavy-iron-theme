@@ -1,0 +1,71 @@
+{%- comment -%}
+  Heavy Iron — AI Fitment Assistant widget.
+  Legacy assistant. Renders only when the theme setting `hi_fitment_agent_endpoint` is configured.
+{%- endcomment -%}
+{%- assign hi_fitment_agent_endpoint = settings.hi_fitment_agent_endpoint | strip -%}
+{%- if hi_fitment_agent_endpoint != blank -%}
+
+<style>
+  .hifa-btn{position:fixed;right:18px;bottom:18px;z-index:9998;display:inline-flex;align-items:center;gap:8px;
+    background:#FFB607;color:#1A1A1A;border:none;border-radius:999px;padding:13px 18px;font-family:'Tomorrow',sans-serif;
+    font-weight:800;text-transform:uppercase;letter-spacing:.03em;font-size:13px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.22);}
+  .hifa-btn:hover{filter:brightness(1.05);}
+  .hifa-panel{position:fixed;right:18px;bottom:78px;z-index:9999;width:min(380px,calc(100vw - 28px));height:min(560px,70vh);
+    background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 24px 60px rgba(0,0,0,.28);display:none;flex-direction:column;overflow:hidden;}
+  .hifa-panel.open{display:flex;}
+  .hifa-head{background:#1A1A1A;color:#fff;padding:13px 16px;display:flex;align-items:center;gap:9px;}
+  .hifa-head b{font-family:'Tomorrow',sans-serif;font-weight:800;text-transform:uppercase;font-size:14px;letter-spacing:.02em;}
+  .hifa-head .y{color:#FFB607;}
+  .hifa-head .x{margin-left:auto;background:none;border:none;color:#fff;font-size:18px;cursor:pointer;line-height:1;}
+  .hifa-body{flex:1;overflow-y:auto;padding:14px;background:#F2F2F0;display:flex;flex-direction:column;gap:10px;}
+  .hifa-msg{max-width:86%;padding:10px 13px;border-radius:12px;font-size:14px;line-height:1.45;white-space:pre-wrap;}
+  .hifa-msg.bot{background:#fff;border:1px solid #e5e7eb;align-self:flex-start;border-bottom-left-radius:3px;}
+  .hifa-msg.me{background:#1A1A1A;color:#fff;align-self:flex-end;border-bottom-right-radius:3px;}
+  .hifa-res{align-self:flex-start;display:flex;flex-direction:column;gap:6px;max-width:90%;}
+  .hifa-res a{display:flex;justify-content:space-between;gap:10px;background:#fff;border:1px solid #e5e7eb;border-radius:8px;
+    padding:9px 12px;text-decoration:none;color:#1A1A1A;font-size:13px;font-weight:600;}
+  .hifa-res a:hover{border-color:#FFB607;}
+  .hifa-res a .p{font-family:'Tomorrow',sans-serif;font-weight:800;white-space:nowrap;}
+  .hifa-foot{display:flex;gap:8px;padding:12px;border-top:1px solid #e5e7eb;background:#fff;}
+  .hifa-foot input{flex:1;border:1px solid #e5e7eb;border-radius:8px;padding:11px 12px;font-size:15px;outline:none;}
+  .hifa-foot input:focus{border-color:#1A1A1A;}
+  .hifa-foot button{background:#1A1A1A;color:#fff;border:none;border-radius:8px;padding:0 16px;font-family:'Tomorrow',sans-serif;
+    font-weight:800;text-transform:uppercase;font-size:13px;cursor:pointer;}
+  .hifa-dots{font-size:13px;color:#64748b;align-self:flex-start;padding:4px 6px;}
+</style>
+
+<button class="hifa-btn" id="hifaBtn" aria-label="Ask the fitment assistant">⚙ Find My Fit</button>
+
+<div class="hifa-panel" id="hifaPanel" role="dialog" aria-label="Fitment Assistant">
+  <div class="hifa-head"><span class="y">⚙</span><b>Fitment Assistant</b><button class="x" id="hifaClose" aria-label="Close">×</button></div>
+  <div class="hifa-body" id="hifaBody">
+    <div class="hifa-msg bot">Tell me your machine or track size — like “tracks for a Bobcat T730” or “450x86x55” — and I’ll find the right fit.</div>
+  </div>
+  <form class="hifa-foot" id="hifaForm">
+    <input id="hifaInput" placeholder="Your machine, size, or part #…" autocomplete="off" />
+    <button type="submit">Send</button>
+  </form>
+</div>
+
+<script>
+(function(){
+  var FN = {{ hi_fitment_agent_endpoint | json }};
+  if (!FN) return;
+  var btn=document.getElementById('hifaBtn'), panel=document.getElementById('hifaPanel'),
+      body=document.getElementById('hifaBody'), form=document.getElementById('hifaForm'), input=document.getElementById('hifaInput');
+  if (!btn || !panel || !body || !form || !input) return;
+  btn.addEventListener('click',function(){panel.classList.toggle('open');if(panel.classList.contains('open'))input.focus();});
+  document.getElementById('hifaClose').addEventListener('click',function(){panel.classList.remove('open');});
+  function add(cls,text){var d=document.createElement('div');d.className='hifa-msg '+cls;d.textContent=text;body.appendChild(d);body.scrollTop=body.scrollHeight;return d;}
+  function results(items){if(!items||!items.length)return;var w=document.createElement('div');w.className='hifa-res';
+    items.forEach(function(r){var a=document.createElement('a');a.href=r.href;a.innerHTML='<span>'+r.title+'</span>'+(r.price!=null?'<span class="p">$'+Number(r.price).toLocaleString()+'</span>':'');w.appendChild(a);});
+    body.appendChild(w);body.scrollTop=body.scrollHeight;}
+  form.addEventListener('submit',function(e){e.preventDefault();var q=input.value.trim();if(!q)return;add('me',q);input.value='';
+    var dots=document.createElement('div');dots.className='hifa-dots';dots.textContent='Checking fitment…';body.appendChild(dots);body.scrollTop=body.scrollHeight;
+    fetch(FN,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:q})})
+      .then(function(r){return r.json();}).then(function(d){dots.remove();add('bot',d.reply||'Call (850) 816-7898 and we’ll confirm fitment.');results(d.results);})
+      .catch(function(){dots.remove();add('bot','Connection hiccup — call (850) 816-7898 and we’ll sort your fitment fast.');});
+  });
+})();
+</script>
+{%- endif -%}

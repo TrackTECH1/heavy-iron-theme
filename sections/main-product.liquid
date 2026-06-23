@@ -99,12 +99,6 @@
               assign hi_is_track_product = true
             endif
 
-            assign hi_is_undercarriage_product = false
-            if hi_part_type contains 'undercarriage' or hi_part_type contains 'sprocket' or hi_part_type contains 'roller' or hi_part_type contains 'idler'
-              assign hi_is_undercarriage_product = true
-            elsif hi_product_type contains 'undercarriage' or hi_product_type contains 'sprocket' or hi_product_type contains 'roller' or hi_product_type contains 'idler'
-              assign hi_is_undercarriage_product = true
-            endif
           -%}
 
           {%- for block in section.blocks -%}
@@ -148,6 +142,9 @@
                 -%}
                 {%- if hi_is_track or hi_is_uc -%}
                   {%- render 'hi-pdp-trust-strip', product: product, is_track: hi_is_track, is_undercarriage: hi_is_uc -%}
+                {%- endif -%}
+                {%- if hi_is_track -%}
+                  {%- render 'hi-context-banner', product: product -%}
                 {%- endif -%}
                 {%- if product.quantity_price_breaks_configured? -%}
                   <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
@@ -781,14 +778,6 @@
       </script>
       <script src="{{ 'product-model.js' | asset_url }}" defer></script>
     {%- endif -%}
-
-    {%- liquid
-      if product.selected_or_first_available_variant.featured_media
-        assign seo_media = product.selected_or_first_available_variant.featured_media
-      else
-        assign seo_media = product.featured_media
-      endif
-    -%}
 
     {%- render 'hi-product-jsonld', product: product -%}
   </div>

@@ -1,0 +1,31 @@
+{%- comment -%}
+  Emits verified public entity URIs for known heavy equipment manufacturers.
+  Params: make
+{%- endcomment -%}
+{%- liquid
+  assign make_key = make | downcase | strip
+  assign uri = ''
+  case make_key
+    when 'bobcat'
+      assign uri = 'https://www.wikidata.org/wiki/Q4934182'
+    when 'caterpillar', 'cat'
+      assign uri = 'https://www.wikidata.org/wiki/Q459965'
+    when 'case'
+      assign uri = 'https://www.wikidata.org/wiki/Q2932780'
+    when 'deere', 'john deere'
+      assign uri = 'https://www.wikidata.org/wiki/Q496051'
+    when 'kubota'
+      assign uri = 'https://www.wikidata.org/wiki/Q1053887'
+    when 'takeuchi'
+      assign uri = 'https://www.wikidata.org/wiki/Q7677010'
+    when 'komatsu'
+      assign uri = 'https://www.wikidata.org/wiki/Q634815'
+    when 'volvo'
+      assign uri = 'https://www.wikidata.org/wiki/Q215293'
+    when 'new holland'
+      assign uri = 'https://www.wikidata.org/wiki/Q1436534'
+    when 'yanmar'
+      assign uri = 'https://www.wikidata.org/wiki/Q1134193'
+  endcase
+-%}
+{%- if uri != blank -%}{{ uri | json }}{%- else -%}null{%- endif -%}

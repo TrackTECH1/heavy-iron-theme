@@ -1,0 +1,42 @@
+{%- comment -%}
+  Heavy Iron tax exemption certificate upload.
+  Stores the uploaded certificate reference as cart attributes for order review.
+  Params: form_id
+{%- endcomment -%}
+{%- liquid
+  assign upload_endpoint = settings.hi_tax_certificate_upload_endpoint | strip
+  if upload_endpoint == blank
+    assign upload_endpoint = 'https://tcykyktvdlsbscrsbjyt.supabase.co/functions/v1/tax-certificate-upload'
+  endif
+-%}
+{%- if upload_endpoint != blank -%}
+  {{ 'hi-tax-exemption-upload.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'hi-tax-exemption-upload.js' | asset_url }}" defer></script>
+
+  <div class="hi-tax-upload" data-hi-tax-upload data-upload-endpoint="{{ upload_endpoint | escape }}" data-form-id="{{ form_id | escape }}">
+    <div class="hi-tax-upload__header">
+      <strong>Tax-exempt buyer?</strong>
+      <span>Attach your resale or agricultural exemption certificate for admin review.</span>
+    </div>
+    <div class="hi-tax-upload__grid">
+      <label class="hi-tax-upload__field">
+        <span>Company</span>
+        <input type="text" data-hi-tax-company autocomplete="organization" placeholder="Business name">
+      </label>
+      <label class="hi-tax-upload__field">
+        <span>Email</span>
+        <input type="email" data-hi-tax-email autocomplete="email" placeholder="buyer@example.com">
+      </label>
+    </div>
+    <label class="hi-tax-upload__drop">
+      <input type="file" data-hi-tax-file accept=".pdf,.png,.jpg,.jpeg,.heic,.heif,application/pdf,image/png,image/jpeg,image/heic,image/heif">
+      <span>Upload ST-105, resale, or agricultural certificate</span>
+      <small>PDF, JPG, PNG, or HEIC. 10 MB max.</small>
+    </label>
+    <p class="hi-tax-upload__status" data-hi-tax-status role="status" aria-live="polite"></p>
+    <input type="hidden" name="attributes[Tax Exemption Status]" value="{{ cart.attributes['Tax Exemption Status'] | default: '' | escape }}" form="{{ form_id | escape }}" data-hi-tax-status-input>
+    <input type="hidden" name="attributes[Tax Exemption Certificate]" value="{{ cart.attributes['Tax Exemption Certificate'] | default: '' | escape }}" form="{{ form_id | escape }}" data-hi-tax-reference-input>
+    <input type="hidden" name="attributes[Tax Exemption Filename]" value="{{ cart.attributes['Tax Exemption Filename'] | default: '' | escape }}" form="{{ form_id | escape }}" data-hi-tax-filename-input>
+    <input type="hidden" name="attributes[Tax Exemption Flag ID]" value="{{ cart.attributes['Tax Exemption Flag ID'] | default: '' | escape }}" form="{{ form_id | escape }}" data-hi-tax-flag-input>
+  </div>
+{%- endif -%}

@@ -11,12 +11,12 @@
     button       button label override (optional)
 {%- endcomment -%}
 {%- liquid
-  assign _btn = button
-  if _btn == blank
+  assign button_label = button
+  if button_label == blank
     if price != blank and price > 0
-      assign _btn = 'View'
+      assign button_label = 'View'
     else
-      assign _btn = 'Request Quote'
+      assign button_label = 'Request Quote'
     endif
   endif
 -%}
@@ -41,5 +41,5 @@
       {{ price | money }}
     </p>
   {%- endif -%}
-  <span class="hi-card__btn">{{ _btn }}</span>
+  <span class="hi-card__btn">{{ button_label }}</span>
 </a>

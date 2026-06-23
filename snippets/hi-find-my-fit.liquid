@@ -1,53 +1,56 @@
 {%- comment -%}
   Find My Fit — lazy-loaded floating fitment assistant (store-agent).
 {%- endcomment -%}
-<button type="button" id="hi-agent-btn" aria-label="Find my fit">🔧 Find My Fit</button>
-<div id="hi-agent-panel" aria-hidden="true">
-  <div id="hi-agent-head">
-    Equipment Fitment Assistant
-    <button type="button" id="hi-agent-x" aria-label="Close">×</button>
-  </div>
-  <div id="hi-agent-body">
-    <p style="margin:0 0 8px;font-size:13px;color:#555">Enter your machine — I'll show tracks, undercarriage, and attachments that fit.</p>
-    <div class="hi-agent-row">
-      <input id="hi-agent-input" type="search" placeholder="e.g. Bobcat T650" autocomplete="off" />
-      <button type="button" id="hi-agent-go">Go</button>
+{%- assign hi_store_agent_endpoint = settings.hi_store_agent_endpoint | strip -%}
+{%- if hi_store_agent_endpoint != blank -%}
+  <button type="button" id="hi-agent-btn" aria-label="Find my fit">Find My Fit</button>
+  <div id="hi-agent-panel" aria-hidden="true">
+    <div id="hi-agent-head">
+      Equipment Fitment Assistant
+      <button type="button" id="hi-agent-x" aria-label="Close">Close</button>
     </div>
-    <div id="hi-agent-out"></div>
+    <div id="hi-agent-body">
+      <p style="margin:0 0 8px;font-size:13px;color:#555">Enter your machine and Heavy Iron will show tracks, undercarriage, and attachments that fit.</p>
+      <div class="hi-agent-row">
+        <input id="hi-agent-input" type="search" placeholder="e.g. Bobcat T650" autocomplete="off" />
+        <button type="button" id="hi-agent-go">Go</button>
+      </div>
+      <div id="hi-agent-out"></div>
+    </div>
   </div>
-</div>
-<script>
-  window.HIFindMyFit = window.HIFindMyFit || {
-    endpoint: 'https://tcykyktvdlsbscrsbjyt.supabase.co/functions/v1/store-agent'
-  };
-  (function () {
-    var loaded = false;
-    function loadAssets(cb) {
-      if (loaded) { cb(); return; }
-      var css = document.createElement('link');
-      css.rel = 'stylesheet';
-      css.href = {{ 'hi-find-my-fit.css' | asset_url | json }};
-      document.head.appendChild(css);
-      var js = document.createElement('script');
-      js.src = {{ 'hi-find-my-fit.js' | asset_url | json }};
-      js.onload = function () { loaded = true; cb(); };
-      document.body.appendChild(js);
-    }
-    var btn = document.getElementById('hi-agent-btn');
-    if (!btn) return;
-    btn.addEventListener('click', function firstOpen() {
-      loadAssets(function () {
-        btn.removeEventListener('click', firstOpen);
-        if (window.HIFindMyFit && window.HIFindMyFit.open) window.HIFindMyFit.open();
-      });
-    }, { once: true });
-    document.querySelectorAll('[data-hi-fit-agent]').forEach(function (el) {
-      el.addEventListener('click', function (e) {
-        e.preventDefault();
+  <script>
+    window.HIFindMyFit = window.HIFindMyFit || {
+      endpoint: {{ hi_store_agent_endpoint | json }}
+    };
+    (function () {
+      var loaded = false;
+      function loadAssets(cb) {
+        if (loaded) { cb(); return; }
+        var css = document.createElement('link');
+        css.rel = 'stylesheet';
+        css.href = {{ 'hi-find-my-fit.css' | asset_url | json }};
+        document.head.appendChild(css);
+        var js = document.createElement('script');
+        js.src = {{ 'hi-find-my-fit.js' | asset_url | json }};
+        js.onload = function () { loaded = true; cb(); };
+        document.body.appendChild(js);
+      }
+      var btn = document.getElementById('hi-agent-btn');
+      if (!btn) return;
+      btn.addEventListener('click', function firstOpen() {
         loadAssets(function () {
+          btn.removeEventListener('click', firstOpen);
           if (window.HIFindMyFit && window.HIFindMyFit.open) window.HIFindMyFit.open();
         });
+      }, { once: true });
+      document.querySelectorAll('[data-hi-fit-agent]').forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+          loadAssets(function () {
+            if (window.HIFindMyFit && window.HIFindMyFit.open) window.HIFindMyFit.open();
+          });
+        });
       });
-    });
-  })();
-</script>
+    })();
+  </script>
+{%- endif -%}

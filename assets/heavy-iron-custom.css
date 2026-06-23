@@ -257,10 +257,31 @@ h1, h2, h3, h4, h5, h6,
   opacity: 0.75;
 }
 
+.track-specs__muted {
+  color: rgba(var(--color-foreground), 0.58);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
 .track-specs__tread-note {
   font-size: 1.15rem;
   color: rgba(var(--color-foreground), 0.5);
   font-weight: 400;
+}
+
+.track-purchase-note {
+  margin-top: 1rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(var(--color-foreground), 0.14);
+  border-radius: 4px;
+  background: rgba(var(--color-foreground), 0.035);
+  color: rgba(var(--color-foreground), 0.78);
+  font-size: 1.25rem;
+  line-height: 1.45;
+}
+
+.track-purchase-note strong {
+  color: rgb(var(--color-foreground));
 }
 
 /* Product page — uppercase titles */

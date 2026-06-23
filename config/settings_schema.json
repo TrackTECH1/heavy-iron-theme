@@ -1400,6 +1400,46 @@
     ]
   },
   {
+    "name": "Heavy Iron integrations",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Optional public endpoints for Heavy Iron fitment search widgets. Leave blank to disable live agent/search calls."
+      },
+      {
+        "type": "text",
+        "id": "hi_api_proxy_base",
+        "label": "Iron API app proxy base",
+        "info": "Optional. Use /apps/iron-api after the Shopify app proxy is configured. Falls back to direct endpoints when blank."
+      },
+      {
+        "type": "text",
+        "id": "hi_store_agent_endpoint",
+        "label": "Store agent endpoint"
+      },
+      {
+        "type": "text",
+        "id": "hi_catalog_search_endpoint",
+        "label": "Catalog search endpoint"
+      },
+      {
+        "type": "text",
+        "id": "hi_fitment_agent_endpoint",
+        "label": "Legacy fitment agent endpoint"
+      },
+      {
+        "type": "text",
+        "id": "hi_fitment_search_endpoint",
+        "label": "Grouped fitment search endpoint"
+      },
+      {
+        "type": "text",
+        "id": "hi_tax_certificate_upload_endpoint",
+        "label": "Tax certificate upload endpoint"
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.cart.name",
     "settings": [
       {

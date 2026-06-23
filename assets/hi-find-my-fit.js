@@ -18,7 +18,10 @@
   }
 
   function normalizeModelUrl(url) {
-    return String(url || '').replace(/^https?:\/\/heavyironsupply\.com\/model\//i, '/pages/model/');
+    return String(url || '')
+      .replace(/^https?:\/\/heavyironsupply\.com\/model\//i, '/pages/model/')
+      .replace(/^https?:\/\/heavyironsupply\.com\/pages\/machines\//i, '/pages/model/')
+      .replace(/^\/pages\/machines\//i, '/pages/model/');
   }
 
   function openPanel() {

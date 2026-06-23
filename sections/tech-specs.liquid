@@ -11,7 +11,6 @@
   assign tspec_cta_text = section.settings.cta_text
   assign tspec_cta_url = section.settings.cta_url
   assign tspec_image = section.settings.image
-  assign tspec_use_blocks = true
   assign tspec_placeholder = 'Track cutaway image'
   assign hi_is_attachment = false
   assign hi_is_undercarriage = false
@@ -48,23 +47,21 @@
     endif
 
     if hi_is_attachment
-      assign tspec_use_blocks = false
       assign tspec_eyebrow = 'ENGINEERED FOR THE JOBSITE'
       assign tspec_headline = 'Built Tough'
       assign tspec_subtext = "Contractor-grade attachments built for daily abuse — matched to your machine's mount, flow, and hydraulic requirements."
       assign tspec_cta_text = 'Shop All Attachments'
-      assign tspec_cta_url = '/collections/attachments'
+      assign tspec_cta_url = routes.collections_url | append: '/attachments'
       assign tspec_placeholder = 'Attachment image'
       if product.featured_image
         assign tspec_image = product.featured_image
       endif
     elsif hi_is_undercarriage
-      assign tspec_use_blocks = false
       assign tspec_eyebrow = 'STEEL UNDERCARRIAGE'
       assign tspec_headline = 'Built Tough'
       assign tspec_subtext = 'OEM-cross-referenced sprockets, idlers, and rollers — drop-in fit for compact track loaders and mini excavators.'
       assign tspec_cta_text = 'Shop Undercarriage Parts'
-      assign tspec_cta_url = '/collections/undercarriage-parts'
+      assign tspec_cta_url = routes.collections_url | append: '/undercarriage-parts'
       assign tspec_placeholder = 'Undercarriage part image'
       if product.featured_image
         assign tspec_image = product.featured_image
@@ -199,7 +196,7 @@
         </div>
 
         {%- if tspec_cta_text != blank -%}
-          <a href="{{ tspec_cta_url | default: '/collections/rubber-tracks' }}" class="tspec__cta">
+          <a href="{{ tspec_cta_url | default: routes.collections_url | append: '/rubber-tracks' }}" class="tspec__cta">
             {{ tspec_cta_text }}
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
