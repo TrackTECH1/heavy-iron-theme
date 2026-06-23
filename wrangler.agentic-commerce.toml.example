@@ -7,6 +7,7 @@ routes = [
   { pattern = "heavyironsupply.com/llms.txt", zone_name = "heavyironsupply.com" },
   { pattern = "heavyironsupply.com/llm.txt", zone_name = "heavyironsupply.com" },
   { pattern = "heavyironsupply.com/catalog.md", zone_name = "heavyironsupply.com" },
+  { pattern = "heavyironsupply.com/fitment-matrix.json", zone_name = "heavyironsupply.com" },
   { pattern = "heavyironsupply.com/openapi.json", zone_name = "heavyironsupply.com" },
   { pattern = "heavyironsupply.com/api/agentic/*", zone_name = "heavyironsupply.com" }
 ]

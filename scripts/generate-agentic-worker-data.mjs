@@ -181,4 +181,5 @@ export const LLMS_TXT = ${JSON.stringify(llms)};
 
 fs.mkdirSync(path.dirname(outPath), { recursive: true });
 fs.writeFileSync(outPath, out);
-console.log(JSON.stringify({ outPath, items: items.length, bytes: out.length }, null, 2));
+const fitmentNodeCount = items.reduce((count, item) => count + (item.track ? item.models.length : 0), 0);
+console.log(JSON.stringify({ outPath, items: items.length, fitment_nodes: fitmentNodeCount, bytes: out.length }, null, 2));

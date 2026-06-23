@@ -71,6 +71,47 @@ function findCandidates({ machine_model, sku, track_size }) {
     .slice(0, 10);
 }
 
+function fitmentMatrix() {
+  const nodes = [];
+  for (const item of CATALOG_ITEMS) {
+    if (!item.track || !item.models.length) continue;
+    for (const model of item.models) {
+      const machine = `${model.make} ${model.model}`.trim();
+      if (!machine) continue;
+      nodes.push({
+        machine_entity: machine,
+        machine_key: model.key || null,
+        machine_type: model.type || null,
+        oem_part_replaced: [],
+        heavy_iron_sku: item.sku || item.mpn,
+        product_title: item.title,
+        product_url: `${STORE_ORIGIN}${item.url_path}`,
+        checkout_url: item.variant_id ? `${STORE_ORIGIN}/cart/${item.variant_id}:1` : null,
+        track_size: item.track.size,
+        width_mm: item.track.width_mm,
+        pitch_mm: item.track.pitch_mm,
+        pitch_type: item.track.pitch_type || null,
+        links: item.track.links,
+        tread_pattern: item.track.tread_pattern || null,
+        stock: item.stock,
+        in_stock: item.in_stock,
+        confidence_score: item.track.guaranteed_drop_in_fit ? 0.97 : 0.85,
+        fitment_notes: "Catalog-backed fitment. Verify stamped track size and serial/PIN when a machine has known serial-range undercarriage changes.",
+        serial_rule: null,
+        supersession_chain: [],
+      });
+    }
+  }
+  return {
+    generated_at: GENERATED_AT,
+    brand: BRAND,
+    source_of_truth: "Supabase product/model/fitment tables enriched with live Shopify product handles",
+    warning: "Serial/PIN cutoffs and OEM supersession chains are only populated when verified source data exists. Empty arrays/nulls are intentional, not unknown guesses.",
+    node_count: nodes.length,
+    nodes,
+  };
+}
+
 async function readParams(request) {
   const url = new URL(request.url);
   if (request.method === "POST") {
@@ -91,6 +132,13 @@ function openapiSpec(url) {
     },
     servers: [{ url: origin }],
     paths: {
+      "/fitment-matrix.json": {
+        get: {
+          operationId: "get_fitment_matrix",
+          summary: "Return the machine-to-product fitment matrix for AI agents.",
+          responses: { "200": { description: "Catalog-backed fitment matrix" } },
+        },
+      },
       "/api/agentic/check-fitment-and-stock": {
         post: {
           operationId: "check_fitment_and_stock",
@@ -112,6 +160,29 @@ function openapiSpec(url) {
             },
           },
           responses: { "200": { description: "Fitment and stock result" } },
+        },
+      },
+      "/api/agentic/decode-serial-pin": {
+        post: {
+          operationId: "decode_serial_pin",
+          summary: "Decode a machine serial/PIN when verified serial-range data exists.",
+          requestBody: {
+            required: true,
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  required: ["serial_pin"],
+                  properties: {
+                    serial_pin: { type: "string", examples: ["A3B511001"] },
+                    make: { type: "string", examples: ["Bobcat"] },
+                    model: { type: "string", examples: ["T770"] },
+                  },
+                },
+              },
+            },
+          },
+          responses: { "200": { description: "Serial/PIN decode result" } },
         },
       },
       "/api/agentic/calculate-ltl-freight": {
@@ -199,6 +270,30 @@ async function checkFitmentAndStock(request) {
   });
 }
 
+async function decodeSerialPin(request) {
+  const params = await readParams(request);
+  const serialPin = String(params.serial_pin || "").trim().toUpperCase();
+  const machine = `${params.make || ""} ${params.model || ""}`.trim();
+  const candidates = machine ? findCandidates({ machine_model: machine }) : [];
+  return json({
+    decoded: false,
+    serial_pin: serialPin,
+    machine_query: machine || null,
+    reason: "No verified serial/PIN cutoff table is currently published in the public agentic catalog.",
+    action_required: "Route to manual fitment confirmation or connect a licensed equipment data provider before making serial-specific claims.",
+    likely_machine_matches: candidates
+      .filter(({ item }) => item.track)
+      .slice(0, 5)
+      .map(({ item }) => ({
+        sku: item.sku,
+        title: item.title,
+        track: item.track,
+        url: `${STORE_ORIGIN}${item.url_path}`,
+      })),
+    safety_note: "Do not infer early/late undercarriage geometry from a serial/PIN without verified serial-range data.",
+  });
+}
+
 async function calculateLtlFreight(request) {
   const params = await readParams(request);
   const item = findCandidates({ sku: params.sku })[0]?.item || null;
@@ -241,8 +336,10 @@ export default {
     if (url.pathname === "/llms.txt" || url.pathname === "/llm.txt" || url.pathname === "/catalog.md") {
       return text(LLMS_TXT, "text/markdown; charset=utf-8");
     }
+    if (url.pathname === "/fitment-matrix.json") return json(fitmentMatrix(), { headers: { "cache-control": "public, max-age=900" } });
     if (url.pathname === "/openapi.json") return json(openapiSpec(url), { headers: { "cache-control": "public, max-age=900" } });
     if (url.pathname === "/api/agentic/check-fitment-and-stock") return checkFitmentAndStock(request);
+    if (url.pathname === "/api/agentic/decode-serial-pin") return decodeSerialPin(request);
     if (url.pathname === "/api/agentic/calculate-ltl-freight") return calculateLtlFreight(request);
     if (url.pathname === "/api/agentic/generate-checkout-link") return generateCheckoutLink(request);
     return new Response("Not found", { status: 404 });
