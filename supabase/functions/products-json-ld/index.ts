@@ -180,7 +180,7 @@ Deno.serve(async (req) => {
         "@type": "Product",
         name: `${machine.make} ${machine.model}`,
         manufacturer: { "@type": "Organization", name: machine.make },
-        url: `${SITE_ORIGIN}/pages/machines/${machine.model_key}`,
+        url: `${SITE_ORIGIN}/pages/model/${machine.model_key}`,
       })),
       additionalProperty: [
         property("Track Size", product.track_size),

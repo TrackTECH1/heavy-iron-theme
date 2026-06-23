@@ -461,7 +461,7 @@ machine_json as (
       'model', model,
       'model_key', model_key,
       'machine_type', machine_type_code,
-      'href', '/pages/machines/' || coalesce(model_key, lower(regexp_replace(concat_ws('-', make, model), '[^a-zA-Z0-9]+', '-', 'g')))
+      'href', '/pages/model/' || coalesce(model_key, lower(regexp_replace(concat_ws('-', make, model), '[^a-zA-Z0-9]+', '-', 'g')))
     )
     order by make, model
   ), '[]'::jsonb) as machines
