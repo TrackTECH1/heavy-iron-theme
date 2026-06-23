@@ -165,6 +165,12 @@
               if vimg == blank and variant_product != blank
                 assign vimg = variant_product.featured_image
               endif
+              if vimg == blank and variant_product.featured_media != blank
+                assign vimg = variant_product.featured_media.preview_image
+              endif
+              if vimg == blank and variant_product.media.first != blank
+                assign vimg = variant_product.media.first.preview_image
+              endif
               assign tsize = variant_product.metafields.custom.track_size | default: track_size
               assign track_card_title = track_machine_label | append: ' Tracks'
             -%}
