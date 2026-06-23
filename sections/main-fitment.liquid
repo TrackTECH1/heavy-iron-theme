@@ -6,6 +6,7 @@
 {%- endcomment -%}
 
 {{ 'hi-machine.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'hi-model-carousels.js' | asset_url }}" defer></script>
 
 {%- liquid
   assign model = metaobject
@@ -129,7 +130,12 @@
         <h2 class="hi-mf__sec-h">Rubber Tracks</h2>
         <p class="hi-mf__sec-sub">Choose your tread pattern. OEM-spec, continuous steel cord, free freight.</p>
 
-        <div class="hi-mf__cards">
+        <div class="hi-mf__carousel-shell" data-hi-model-carousel>
+          <div class="hi-mf__carousel-controls" aria-hidden="false">
+            <button class="hi-mf__carousel-btn" type="button" data-hi-carousel-prev aria-label="Previous tracks">&#8249;</button>
+            <button class="hi-mf__carousel-btn" type="button" data-hi-carousel-next aria-label="Next tracks">&#8250;</button>
+          </div>
+        <div class="hi-mf__cards hi-mf__carousel" data-hi-carousel-track>
           {%- liquid
             assign track_machine_label = model_name | split: ' Rubber Track' | first | split: ' Tracks' | first | strip
             if track_machine_label == blank
@@ -157,6 +163,7 @@
                 image: vimg, sub: sub, price: variant.price, compare_at: variant.compare_at_price, button: 'View Track' -%}
           {%- endfor -%}
         </div>
+        </div>
 
         <a class="hi-mf__shopall" href="{{ track_collection_url }}">Shop all rubber tracks &rarr;</a>
       </section>
@@ -167,7 +174,12 @@
       <section class="hi-mf__sec" id="undercarriage">
         <h2 class="hi-mf__sec-h">Steel Undercarriage</h2>
         <p class="hi-mf__sec-sub">OEM-cross-referenced sprockets, idlers &amp; rollers. Drop-in fit.</p>
-        <div class="hi-mf__cards">
+        <div class="hi-mf__carousel-shell" data-hi-model-carousel>
+          <div class="hi-mf__carousel-controls" aria-hidden="false">
+            <button class="hi-mf__carousel-btn" type="button" data-hi-carousel-prev aria-label="Previous undercarriage parts">&#8249;</button>
+            <button class="hi-mf__carousel-btn" type="button" data-hi-carousel-next aria-label="Next undercarriage parts">&#8250;</button>
+          </div>
+        <div class="hi-mf__cards hi-mf__carousel" data-hi-carousel-track>
           {%- if model.uc_products.value != blank -%}
             {%- for product in model.uc_products.value -%}
               {%- assign pn = product.metafields.custom.oem_part_number -%}
@@ -185,6 +197,7 @@
             {%- endfor -%}
           {%- endif -%}
         </div>
+        </div>
       </section>
     {%- endif -%}
 
@@ -195,11 +208,17 @@
       <p class="hi-mf__sec-sub">{% if model.mount_type.value != blank %}{{ model.mount_type.value }} mount. {% endif %}Buckets, grapples, forks, brush cutters &amp; more — matched to your machine.</p>
 
       {%- if model.featured_attachments.value != blank -%}
-        <div class="hi-mf__cards">
+        <div class="hi-mf__carousel-shell" data-hi-model-carousel>
+          <div class="hi-mf__carousel-controls" aria-hidden="false">
+            <button class="hi-mf__carousel-btn" type="button" data-hi-carousel-prev aria-label="Previous attachments">&#8249;</button>
+            <button class="hi-mf__carousel-btn" type="button" data-hi-carousel-next aria-label="Next attachments">&#8250;</button>
+          </div>
+        <div class="hi-mf__cards hi-mf__carousel" data-hi-carousel-track>
           {%- for product in model.featured_attachments.value limit: 8 -%}
             {%- render 'hi-product-card', url: product.url, title: product.title, type_label: 'Attachment',
                 image: product.featured_image, price: product.price, button: 'View Attachment' -%}
           {%- endfor -%}
+        </div>
         </div>
       {%- endif -%}
 

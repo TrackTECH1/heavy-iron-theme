@@ -234,6 +234,62 @@
     justify-content: center;
   }
 
+  .hi-oem-carousel-shell {
+    position: relative;
+  }
+
+  .hi-oem-product-grid.hi-oem-carousel {
+    display: flex;
+    gap: 18px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding: 2px 2px 14px;
+  }
+
+  .hi-oem-product-grid.hi-oem-carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hi-oem-carousel .hi-oem-product-card {
+    flex: 0 0 min(280px, 78vw);
+    scroll-snap-align: start;
+  }
+
+  .hi-oem-carousel-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin: -12px 0 14px;
+  }
+
+  .hi-oem-carousel-btn {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--hi-oem-border-strong);
+    border-radius: var(--hi-oem-radius);
+    background: #ffffff;
+    color: var(--hi-oem-dark);
+    font-size: 1.35rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .hi-oem-carousel-btn:hover {
+    border-color: var(--hi-oem-dark);
+  }
+
+  .hi-oem-carousel-btn[disabled] {
+    opacity: 0.35;
+    cursor: default;
+  }
+
   .hi-oem-product-card {
     display: flex;
     flex-direction: column;
@@ -580,6 +636,7 @@
 {%- endstyle -%}
 
 <div class="hi-oem-page">
+  <script src="{{ 'hi-model-carousels.js' | asset_url }}" defer></script>
   <div class="hi-oem-container">
     {%- if model == blank -%}
       <div class="hi-oem-empty">
@@ -660,7 +717,12 @@
         <h2 class="hi-oem-section-title">Rubber Track Options</h2>
         <p class="hi-oem-section-sub">Choose the replacement rubber track option for your {{ display_name }}.</p>
 
-        <div class="hi-oem-product-grid">
+        <div class="hi-oem-carousel-shell" data-hi-model-carousel>
+          <div class="hi-oem-carousel-controls" aria-hidden="false">
+            <button class="hi-oem-carousel-btn" type="button" data-hi-carousel-prev aria-label="Previous tracks">&#8249;</button>
+            <button class="hi-oem-carousel-btn" type="button" data-hi-carousel-next aria-label="Next tracks">&#8250;</button>
+          </div>
+        <div class="hi-oem-product-grid hi-oem-carousel" data-hi-carousel-track>
           {%- liquid
             assign track_machine_label = display_name | split: ' Rubber Track' | first | split: ' Tracks' | first | strip
             if track_machine_label == blank
@@ -751,6 +813,7 @@
             </a>
           {%- endif -%}
         </div>
+        </div>
       </section>
 
       {%- if model.uc_products.value != blank -%}
@@ -758,7 +821,12 @@
           <h2 class="hi-oem-section-title">Steel Undercarriage Parts</h2>
           <p class="hi-oem-section-sub">Shop sprockets, idlers, and rollers selected for your {{ display_name }}.</p>
 
-          <div class="hi-oem-product-grid">
+          <div class="hi-oem-carousel-shell" data-hi-model-carousel>
+            <div class="hi-oem-carousel-controls" aria-hidden="false">
+              <button class="hi-oem-carousel-btn" type="button" data-hi-carousel-prev aria-label="Previous undercarriage parts">&#8249;</button>
+              <button class="hi-oem-carousel-btn" type="button" data-hi-carousel-next aria-label="Next undercarriage parts">&#8250;</button>
+            </div>
+          <div class="hi-oem-product-grid hi-oem-carousel" data-hi-carousel-track>
             {%- for card_product in model.uc_products.value -%}
               <a class="hi-oem-product-card" href="{{ card_product.url }}">
                 <div class="hi-oem-product-img-wrap">
@@ -792,6 +860,7 @@
               </a>
             {%- endfor -%}
           </div>
+          </div>
         </section>
       {%- endif -%}
 
@@ -800,7 +869,12 @@
           <h2 class="hi-oem-section-title">Attachment Upgrades</h2>
           <p class="hi-oem-section-sub">Buckets, grapples, forks, and brush cutters selected for {{ display_name }} owners.</p>
 
-          <div class="hi-oem-product-grid">
+          <div class="hi-oem-carousel-shell" data-hi-model-carousel>
+            <div class="hi-oem-carousel-controls" aria-hidden="false">
+              <button class="hi-oem-carousel-btn" type="button" data-hi-carousel-prev aria-label="Previous attachments">&#8249;</button>
+              <button class="hi-oem-carousel-btn" type="button" data-hi-carousel-next aria-label="Next attachments">&#8250;</button>
+            </div>
+          <div class="hi-oem-product-grid hi-oem-carousel" data-hi-carousel-track>
             {%- for card_product in model.featured_attachments.value -%}
               <a class="hi-oem-product-card" href="{{ card_product.url }}">
                 <div class="hi-oem-product-img-wrap">
@@ -833,6 +907,7 @@
                 <span class="hi-oem-ghost-btn">View Upgrade</span>
               </a>
             {%- endfor -%}
+          </div>
           </div>
         </section>
       {%- endif -%}
