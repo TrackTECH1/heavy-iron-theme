@@ -37,6 +37,8 @@ type SearchHit = {
   id: string;
   track_size?: string | null;
   tread_pattern?: string | null;
+  image_url?: string | null;
+  image_alt?: string | null;
   price?: number | null;
   similarity?: number;
 };
@@ -47,6 +49,9 @@ type ProductRow = {
   shopify_product_id?: string | null;
   track_size?: string | null;
   tread_pattern?: string | null;
+  image_url?: string | null;
+  image_alt?: string | null;
+  media_role?: string | null;
 };
 
 function json(body: unknown, status = 200) {
@@ -141,6 +146,23 @@ async function shopifySearchHandle(
   return nodes[0]?.handle ?? null;
 }
 
+async function selectProductsWithImageFallback(supabase: ReturnType<typeof createClient>, ids: string[]) {
+  const withImages = await supabase
+    .from("product")
+    .select("id, handle, shopify_product_id, track_size, tread_pattern, image_url, image_alt, media_role")
+    .in("id", ids);
+
+  if (!withImages.error) return withImages.data || [];
+
+  const fallback = await supabase
+    .from("product")
+    .select("id, handle, shopify_product_id, track_size, tread_pattern")
+    .in("id", ids);
+
+  if (fallback.error) throw fallback.error;
+  return fallback.data || [];
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: cors });
   try {
@@ -170,8 +192,8 @@ Deno.serve(async (req) => {
     if (!hits.length) return json({ query: q, results: [] });
 
     const ids = hits.map((h) => h.id).filter(Boolean);
-    const [{ data: products }, { data: variantRows }, { data: trackRows }] = await Promise.all([
-      supabase.from("product").select("id, handle, shopify_product_id, track_size, tread_pattern").in("id", ids),
+    const [products, { data: variantRows }, { data: trackRows }] = await Promise.all([
+      selectProductsWithImageFallback(supabase, ids),
       supabase.from("shopify_variant_map").select("handle, size_digits, tread"),
       supabase.from("shopify_track_map").select("handle, product_id"),
     ]);
@@ -193,6 +215,9 @@ Deno.serve(async (req) => {
       let shopifyHandle = resolveShopifyHandle(product, variantByKey, trackByHandle, gidToHandle);
       const trackSize = hit.track_size || product?.track_size || "";
       const tread = hit.tread_pattern || product?.tread_pattern || "";
+      const label = [trackSize, tread].filter(Boolean).join(" · ");
+      const imageUrl = hit.image_url || product?.image_url || null;
+      const imageAlt = hit.image_alt || product?.image_alt || label || null;
       const shop = Deno.env.get("SHOPIFY_STORE_DOMAIN");
       const token = Deno.env.get("SHOPIFY_ADMIN_TOKEN");
       const apiVersion = Deno.env.get("SHOPIFY_API_VERSION") || "2025-10";
@@ -217,12 +242,14 @@ Deno.serve(async (req) => {
         }
       }
 
-      const label = [trackSize, tread].filter(Boolean).join(" · ");
       return {
         id: hit.id,
         label,
         track_size: trackSize,
         tread_pattern: tread,
+        image_url: imageUrl,
+        image_alt: imageAlt,
+        media_role: product?.media_role || null,
         price: hit.price ?? null,
         similarity: hit.similarity ?? null,
         shopify_handle: shopifyHandle,

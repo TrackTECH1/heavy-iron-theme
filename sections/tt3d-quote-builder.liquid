@@ -85,6 +85,8 @@
           srcset="{{ cover | image_url: width: 800 }} 800w, {{ cover | image_url: width: 1400 }} 1400w, {{ cover | image_url: width: 2000 }} 2000w"
           sizes="(max-width: 1100px) 100vw, 1100px"
           alt="{{ section.settings.heading | default: 'Heavy Iron 3D Builder' | escape }}"
+          width="2000"
+          height="1125"
           loading="lazy"
         >
         {% if cover_m %}
@@ -94,6 +96,8 @@
             srcset="{{ cover_m | image_url: width: 700 }} 700w, {{ cover_m | image_url: width: 1200 }} 1200w"
             sizes="100vw"
             alt="{{ section.settings.heading | default: 'Heavy Iron 3D Builder' | escape }}"
+            width="1200"
+            height="1600"
             loading="lazy"
           >
         {% endif %}

@@ -71,18 +71,61 @@
 .hi-mf__sec-h { font-size:clamp(1.25rem,2vw,1.55rem); font-weight:800; text-transform:uppercase; margin:0 0 8px; }
 .hi-mf__sec-sub { font-size:.9rem; color:var(--hi-muted); margin:0 auto 36px; max-width:620px; line-height:1.5; }
 
-/* Product cards — 4-up desktop, 2x2 mobile (tracks, undercarriage, attachments) */
+/* Product carousels — native scroll snap, no JS library. */
 .hi-mf__cards,
-.hi-mf__treads { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px; }
-@media (max-width:749px){
-  .hi-mf__cards,
-  .hi-mf__treads { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.hi-mf__treads,
+.hi-mf__row {
+  display:flex;
+  flex-wrap:nowrap;
+  gap:16px;
+  justify-content:flex-start;
+  overflow-x:auto;
+  overscroll-behavior-x:contain;
+  scroll-snap-type:x mandatory;
+  scroll-padding-inline:2px;
+  padding:2px 2px 16px;
+  scrollbar-width:none;
 }
 
-.hi-mf__row { display:flex; flex-wrap:nowrap; gap:20px; justify-content:flex-start; overflow-x:auto;
-  padding-bottom:14px; scrollbar-width:none; }
+.hi-mf__cards::-webkit-scrollbar,
+.hi-mf__treads::-webkit-scrollbar,
 .hi-mf__row::-webkit-scrollbar { display:none; }
-.hi-mf__row .hi-card { flex:0 0 auto; width:270px; }
+
+.hi-mf__cards .hi-card,
+.hi-mf__treads .hi-card,
+.hi-mf__row .hi-card {
+  flex:0 0 270px;
+  width:270px;
+  scroll-snap-align:start;
+}
+
+@media (min-width:990px){
+  .hi-mf__cards .hi-card,
+  .hi-mf__treads .hi-card,
+  .hi-mf__row .hi-card {
+    flex-basis:252px;
+    width:252px;
+  }
+}
+
+@media (max-width:520px){
+  .hi-mf__cards,
+  .hi-mf__treads,
+  .hi-mf__row {
+    gap:12px;
+    margin-left:-20px;
+    margin-right:-20px;
+    padding-left:20px;
+    padding-right:20px;
+  }
+
+  .hi-mf__cards .hi-card,
+  .hi-mf__treads .hi-card,
+  .hi-mf__row .hi-card {
+    flex-basis:78vw;
+    width:78vw;
+  }
+}
 
 .hi-mf__shopall { display:inline-block; margin:20px auto 0; padding:11px 22px; border:2px solid var(--hi-dark);
   color:var(--hi-dark); background:transparent; font-size:.74rem; font-weight:800; text-transform:uppercase;
@@ -90,7 +133,7 @@
 .hi-mf__shopall:hover { background:var(--hi-dark); color:#fff; }
 
 /* Card */
-.hi-mf__cards .hi-card { height:100%; }
+.hi-mf__cards .hi-card { min-height:100%; }
 .hi-card { display:flex; flex-direction:column; align-items:center; background:#fff; border:1px solid var(--hi-border);
   border-radius:var(--hi-r); padding:22px 18px; text-decoration:none; color:inherit;
   transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; }

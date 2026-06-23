@@ -193,6 +193,56 @@ product-info {
   margin-bottom: 1rem;
 }
 
+.hi-freight-choice {
+  max-width: 44rem;
+  margin: 0 0 1.4rem;
+  padding: 1.2rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.14);
+  border-radius: 0.4rem;
+}
+
+.hi-freight-choice__legend {
+  padding: 0 0.4rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hi-freight-choice__option {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.9rem;
+  align-items: flex-start;
+  padding: 0.8rem 0;
+  cursor: pointer;
+}
+
+.hi-freight-choice__option + .hi-freight-choice__option {
+  border-top: 0.1rem solid rgba(var(--color-foreground), 0.08);
+}
+
+.hi-freight-choice__option input {
+  margin-top: 0.2rem;
+}
+
+.hi-freight-choice__option strong,
+.hi-freight-choice__option small {
+  display: block;
+}
+
+.hi-freight-choice__option strong {
+  font-size: 1.35rem;
+  line-height: 1.25;
+}
+
+.hi-freight-choice__option small {
+  margin-top: 0.2rem;
+  color: rgba(var(--color-foreground), 0.68);
+  font-size: 1.2rem;
+  line-height: 1.35;
+}
+
 .product-form__submit[aria-disabled='true'] + .shopify-payment-button .shopify-payment-button__button[disabled],
 .product-form__submit[disabled] + .shopify-payment-button .shopify-payment-button__button[disabled] {
   cursor: not-allowed;
