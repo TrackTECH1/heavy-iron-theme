@@ -37,5 +37,6 @@
     <input type="hidden" name="attributes[Tax Exemption Status]" value="{{ cart.attributes['Tax Exemption Status'] | default: '' | escape }}" form="{{ form_id | escape }}" data-hi-tax-status-input>
     <input type="hidden" name="attributes[Tax Exemption Certificate]" value="{{ cart.attributes['Tax Exemption Certificate'] | default: '' | escape }}" form="{{ form_id | escape }}" data-hi-tax-reference-input>
     <input type="hidden" name="attributes[Tax Exemption Filename]" value="{{ cart.attributes['Tax Exemption Filename'] | default: '' | escape }}" form="{{ form_id | escape }}" data-hi-tax-filename-input>
+    <input type="hidden" name="attributes[Tax Exemption Flag ID]" value="{{ cart.attributes['Tax Exemption Flag ID'] | default: '' | escape }}" form="{{ form_id | escape }}" data-hi-tax-flag-input>
   </div>
 {%- endif -%}

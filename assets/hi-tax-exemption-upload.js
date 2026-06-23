@@ -24,6 +24,7 @@
     body.append('file', file);
     body.append('company', root.querySelector('[data-hi-tax-company]')?.value || '');
     body.append('email', root.querySelector('[data-hi-tax-email]')?.value || '');
+    body.append('cart_token', window.HICartToken || '');
 
     setStatus(root, 'Uploading certificate...', 'loading');
 
@@ -35,11 +36,13 @@
       setHidden(root, '[data-hi-tax-status-input]', 'Pending admin review');
       setHidden(root, '[data-hi-tax-reference-input]', payload.reference || payload.path || '');
       setHidden(root, '[data-hi-tax-filename-input]', payload.filename || file.name);
+      setHidden(root, '[data-hi-tax-flag-input]', payload.flag_id || '');
       setStatus(root, 'Certificate attached. Tax exemption will be reviewed before fulfillment.', 'success');
     } catch (error) {
       setHidden(root, '[data-hi-tax-status-input]', '');
       setHidden(root, '[data-hi-tax-reference-input]', '');
       setHidden(root, '[data-hi-tax-filename-input]', '');
+      setHidden(root, '[data-hi-tax-flag-input]', '');
       setStatus(root, `Upload failed: ${error.message || error}`, 'error');
     }
   }

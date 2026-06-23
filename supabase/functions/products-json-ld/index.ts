@@ -41,6 +41,10 @@ function availability(value: unknown) {
   return "https://schema.org/InStock";
 }
 
+function isShopifyCdn(value: unknown) {
+  return String(value || "").startsWith("https://cdn.shopify.com/");
+}
+
 async function firstProduct(url: URL) {
   const handle = url.searchParams.get("handle");
   const sku = url.searchParams.get("sku");
@@ -82,6 +86,20 @@ async function productFitments(productId: string) {
   return machines || [];
 }
 
+async function productImages(product: Record<string, unknown>) {
+  const { data } = await supabase
+    .from("product_media_reference")
+    .select("shopify_cdn_url")
+    .eq("product_id", product.id)
+    .not("shopify_cdn_url", "is", null)
+    .order("sort_order", { ascending: true })
+    .limit(8);
+
+  const mediaUrls = (data || []).map((row) => row.shopify_cdn_url).filter(isShopifyCdn);
+  const fallback = isShopifyCdn(product.image_url) ? [String(product.image_url)] : [];
+  return [...new Set([...mediaUrls, ...fallback])];
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: CORS });
   if (req.method !== "GET") return response({ error: "method_not_allowed" }, 405, "application/json; charset=utf-8");
@@ -92,6 +110,7 @@ Deno.serve(async (req) => {
     if (!product) return response({ error: "product_not_found" }, 404, "application/json; charset=utf-8");
 
     const fitments = await productFitments(product.id);
+    const images = await productImages(product);
     const productUrl = product.handle ? `${SITE_ORIGIN}/products/${product.handle}` : SITE_ORIGIN;
     const compatibleModels = fitments.map((machine) => `${machine.make} ${machine.model}`);
 
@@ -101,7 +120,7 @@ Deno.serve(async (req) => {
       "@id": `${productUrl}#product`,
       name: text(product.title),
       url: productUrl,
-      image: product.image_url ? [product.image_url] : undefined,
+      image: images.length ? images : undefined,
       description: text(product.seo?.description || product.image_alt || product.title),
       brand: { "@type": "Brand", name: "Heavy Iron Supply Co." },
       sku: product.sku || product.product_code,
@@ -116,19 +135,49 @@ Deno.serve(async (req) => {
         priceValidUntil: "2027-12-31",
         itemCondition: "https://schema.org/NewCondition",
         availability: availability(product.availability),
-        shippingDetails: {
-          "@type": "OfferShippingDetails",
-          shippingRate: { "@type": "MonetaryAmount", value: "0.00", currency: "USD" },
-          shippingDestination: { "@type": "DefinedRegion", addressCountry: "US" },
-          deliveryTime: {
-            "@type": "ShippingDeliveryTime",
-            handlingTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 1, unitCode: "d" },
-            transitTime: { "@type": "QuantitativeValue", minValue: 1, maxValue: 3, unitCode: "d" },
+        shippingDetails: [
+          {
+            "@type": "OfferShippingDetails",
+            shippingLabel: "Commercial Yard / Dock Delivery",
+            shippingRate: { "@type": "MonetaryAmount", value: "0.00", currency: "USD" },
+            shippingDestination: { "@type": "DefinedRegion", addressCountry: "US" },
+            deliveryTime: {
+              "@type": "ShippingDeliveryTime",
+              cutoffTime: "14:00:00-05:00",
+              handlingTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 0, unitCode: "d" },
+              transitTime: { "@type": "QuantitativeValue", minValue: 1, maxValue: 3, unitCode: "d" },
+            },
           },
+          {
+            "@type": "OfferShippingDetails",
+            shippingLabel: "Residential OR Lift-Gate Required",
+            shippingRate: { "@type": "MonetaryAmount", value: "125.00", currency: "USD" },
+            shippingDestination: { "@type": "DefinedRegion", addressCountry: "US" },
+            deliveryTime: {
+              "@type": "ShippingDeliveryTime",
+              cutoffTime: "14:00:00-05:00",
+              handlingTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 0, unitCode: "d" },
+              transitTime: { "@type": "QuantitativeValue", minValue: 1, maxValue: 3, unitCode: "d" },
+            },
+          },
+        ],
+        hasMerchantReturnPolicy: {
+          "@type": "MerchantReturnPolicy",
+          returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+          merchantReturnDays: 30,
+          returnMethod: "https://schema.org/ReturnByMail",
+          returnFees: "https://schema.org/FreeReturn",
+          returnPolicyCountry: "US",
+          description: "100% free return freight and zero restocking fee if Heavy Iron Supply Co. verifies the wrong fitment.",
+        },
+        warranty: {
+          "@type": "WarrantyPromise",
+          durationOfWarranty: { "@type": "QuantitativeValue", value: 24, unitCode: "MON" },
+          description: "24-Month structural warranty against cable delamination and manufacturing defects.",
         },
       },
       isAccessoryOrSparePartFor: fitments.map((machine) => ({
-        "@type": "ProductModel",
+        "@type": "Product",
         name: `${machine.make} ${machine.model}`,
         manufacturer: { "@type": "Organization", name: machine.make },
         url: `${SITE_ORIGIN}/pages/machines/${machine.model_key}`,

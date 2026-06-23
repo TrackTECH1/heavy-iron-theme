@@ -37,10 +37,16 @@ Deno.serve(async (req) => {
   if (req.method !== "POST") return json({ ok: false, error: "method_not_allowed" }, 405);
 
   try {
+    const contentType = req.headers.get("content-type") || "";
+    if (!contentType.toLowerCase().includes("multipart/form-data")) {
+      return json({ ok: false, error: "multipart_form_data_required" }, 400);
+    }
+
     const form = await req.formData();
     const file = form.get("file");
     const email = String(form.get("email") || "").trim().slice(0, 160);
     const company = String(form.get("company") || "").trim().slice(0, 160);
+    const cartToken = String(form.get("cart_token") || "").trim().slice(0, 160);
 
     if (!(file instanceof File)) return json({ ok: false, error: "missing_file" }, 400);
     if (file.size > MAX_BYTES) return json({ ok: false, error: "file_too_large" }, 413);
@@ -67,12 +73,40 @@ Deno.serve(async (req) => {
 
     if (error) throw new Error(error.message);
 
+    const expiresIn = 60 * 60;
+    const { data: signed, error: signedError } = await supabase.storage.from(BUCKET).createSignedUrl(path, expiresIn);
+    if (signedError) throw new Error(signedError.message);
+
+    const { data: flag, error: flagError } = await supabase
+      .from("order_flags")
+      .insert({
+        flag_type: "tax_exemption_certificate",
+        status: "pending_admin_review",
+        shopify_cart_token: cartToken || null,
+        buyer_email: email || null,
+        company: company || null,
+        storage_bucket: BUCKET,
+        storage_path: path,
+        signed_url: signed?.signedUrl || null,
+        signed_url_expires_at: new Date(Date.now() + expiresIn * 1000).toISOString(),
+        metadata: {
+          original_filename: file.name,
+          content_type: file.type,
+          size: file.size,
+        },
+      })
+      .select("id")
+      .single();
+
+    if (flagError) throw new Error(flagError.message);
+
     return json({
       ok: true,
       status: "pending_admin_review",
       bucket: BUCKET,
       path,
       filename: file.name,
+      flag_id: flag?.id || null,
       reference: `${BUCKET}/${path}`,
     });
   } catch (error) {
