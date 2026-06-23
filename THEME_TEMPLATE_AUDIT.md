@@ -1,5 +1,5 @@
 # Theme Template Audit
-Generated: 2026-06-23T21:59:44.716473+00:00
+Generated: 2026-06-23T22:28:56.975844+00:00
 
 ## Core templates
 

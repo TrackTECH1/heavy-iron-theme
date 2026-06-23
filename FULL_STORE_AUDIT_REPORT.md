@@ -1,6 +1,6 @@
 # Full Store Audit Report — Heavy Iron Supply Co.
 
-**Generated:** 2026-06-23 22:13 UTC  
+**Generated:** 2026-06-23 22:28 UTC  
 **Environment:** Dev Supabase + `tracktech-530.myshopify.com`  
 **Overall:** **PASS**
 

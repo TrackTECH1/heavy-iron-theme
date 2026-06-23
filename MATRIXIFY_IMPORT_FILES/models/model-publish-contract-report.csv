@@ -13,45 +13,45 @@ airman-ax36u,mdl_airman_ax36u,Airman,AX36U,ready,no,300x52.5x86,2,0,1,
 airman-ax36ucgl,mdl_airman_ax36ucgl,Airman,AX36UCGL,ready,no,300x52.5x86,2,0,1,
 airman-axc12,mdl_airman_axc12,Airman,AXC12,ready,no,230x96x31,1,0,1,
 airman-axc15,mdl_airman_axc15,Airman,AXC15,ready,no,230x96x31,1,0,1,
-asv-posi-trachd4520,mdl_asv_posi_trac_hd4520,ASV,POSI-TRAC HD4520,blocked,no,,0,0,0,missing_primary_track_size_v2;no_products
-asv-posi-trac2800,mdl_asv_posi_trac2800,ASV,POSI-TRAC2800,ready,no,457x101.6x56,1,0,0,
-asv-posi-trac2810,mdl_asv_posi_trac2810,ASV,POSI-TRAC2810,ready,no,457x101.6x56,1,0,0,
-asv-posi-trac4800,mdl_asv_posi_trac4800,ASV,POSI-TRAC4800,ready,no,457x101.6x56,1,1,0,
-asv-posi-trac4810,mdl_asv_posi_trac4810,ASV,POSI-TRAC4810,ready,no,457x101.6x56,1,1,0,
-asv-posi-trachd4500,mdl_asv_posi_trachd4500,ASV,POSI-TRACHD4500,ready,no,457x101.6x56,1,1,0,
-asv-pt-50,mdl_asv_pt_50,ASV,PT-50,ready,no,381x100.5x42,1,2,0,
-asv-pt-60,mdl_asv_pt_60,ASV,PT-60,ready,no,381x100.5x42,1,2,0,
-asv-pt-80,mdl_asv_pt_80,ASV,PT-80,ready,no,457x101.6x51,2,3,0,
-asv-pt-100,mdl_asv_pt100,ASV,PT100,ready,no,457x101.6x51,2,0,0,
-asv-rc-50,mdl_asv_rc_50,ASV,RC-50,ready,no,381x100.5x42,1,2,0,
-asv-rc-60,mdl_asv_rc_60,ASV,RC-60,ready,no,381x100.5x42,1,2,0,
-asv-rc100,mdl_asv_rc100,ASV,RC100,ready,no,457x101.6x51,2,0,0,
-asv-rc85,mdl_asv_rc85,ASV,RC85,ready,no,457x101.6x51,2,0,0,
-asv-rcv,mdl_asv_rcv,ASV,RCV,ready,no,457x101.6x51,2,0,0,
-asv-rcv-85,mdl_asv_rcv85,ASV,RCV85,ready,no,457x101.6x51,2,0,0,
-asv-rt-120f,mdl_asv_rt_120f,ASV,RT-120F,ready,no,457x101.6x51,2,0,0,
-asv-rt-135f,mdl_asv_rt_135f,ASV,RT-135F,ready,no,457x101.6x51,2,0,0,
-asv-rt25,mdl_asv_rt_25,ASV,RT-25,blocked,yes,,0,0,0,missing_primary_track_size_v2;no_products
-asv-rt30,mdl_asv_rt_30,ASV,RT-30,blocked,yes,,0,0,0,missing_primary_track_size_v2;no_products
-asv-rt40,mdl_asv_rt_40,ASV,RT-40,blocked,yes,,0,0,0,missing_primary_track_size_v2;no_products
-asv-rt-50,mdl_asv_rt_50,ASV,RT-50,partial,yes,,1,0,0,missing_primary_track_size_v2
-asv-rt-60,mdl_asv_rt_60,ASV,RT-60,ready,no,381x100.5x42,1,0,0,
-asv-rt-65,mdl_asv_rt_65,ASV,RT-65,partial,yes,,1,0,0,missing_primary_track_size_v2
-asv-rt-75,mdl_asv_rt_75,ASV,RT-75,partial,yes,,1,0,0,missing_primary_track_size_v2
-asv-rt-75hd,mdl_asv_rt_75_hd,ASV,RT-75 HD,ready,no,457x101.6x51,2,0,0,
-asv-sc-50,mdl_asv_sc_50,ASV,SC-50,ready,no,381x100.5x42,1,2,0,
-asv-sr-80,mdl_asv_sr80,ASV,SR80,ready,no,457x101.6x51,2,0,0,
-asv-vt-70,mdl_asv_vt_70,ASV,VT-70,partial,no,,1,0,0,missing_primary_track_size_v2
+asv-posi-trachd4520,mdl_asv_posi_trac_hd4520,ASV,POSI-TRAC HD4520,blocked,no,,0,0,3,missing_primary_track_size_v2;no_products
+asv-posi-trac2800,mdl_asv_posi_trac2800,ASV,POSI-TRAC2800,ready,no,457x101.6x56,1,0,1,
+asv-posi-trac2810,mdl_asv_posi_trac2810,ASV,POSI-TRAC2810,ready,no,457x101.6x56,1,0,1,
+asv-posi-trac4800,mdl_asv_posi_trac4800,ASV,POSI-TRAC4800,ready,no,457x101.6x56,1,1,1,
+asv-posi-trac4810,mdl_asv_posi_trac4810,ASV,POSI-TRAC4810,ready,no,457x101.6x56,1,1,1,
+asv-posi-trachd4500,mdl_asv_posi_trachd4500,ASV,POSI-TRACHD4500,ready,no,457x101.6x56,1,1,1,
+asv-pt-50,mdl_asv_pt_50,ASV,PT-50,ready,no,381x100.5x42,1,2,1,
+asv-pt-60,mdl_asv_pt_60,ASV,PT-60,ready,no,381x100.5x42,1,2,1,
+asv-pt-80,mdl_asv_pt_80,ASV,PT-80,ready,no,457x101.6x51,2,3,1,
+asv-pt-100,mdl_asv_pt100,ASV,PT100,ready,no,457x101.6x51,2,0,1,
+asv-rc-50,mdl_asv_rc_50,ASV,RC-50,ready,no,381x100.5x42,1,2,1,
+asv-rc-60,mdl_asv_rc_60,ASV,RC-60,ready,no,381x100.5x42,1,2,1,
+asv-rc100,mdl_asv_rc100,ASV,RC100,ready,no,457x101.6x51,2,0,1,
+asv-rc85,mdl_asv_rc85,ASV,RC85,ready,no,457x101.6x51,2,0,1,
+asv-rcv,mdl_asv_rcv,ASV,RCV,ready,no,457x101.6x51,2,0,1,
+asv-rcv-85,mdl_asv_rcv85,ASV,RCV85,ready,no,457x101.6x51,2,0,1,
+asv-rt-120f,mdl_asv_rt_120f,ASV,RT-120F,ready,no,457x101.6x51,2,0,1,
+asv-rt-135f,mdl_asv_rt_135f,ASV,RT-135F,ready,no,457x101.6x51,2,0,1,
+asv-rt25,mdl_asv_rt_25,ASV,RT-25,blocked,yes,,0,0,3,missing_primary_track_size_v2;no_products
+asv-rt30,mdl_asv_rt_30,ASV,RT-30,blocked,yes,,0,0,3,missing_primary_track_size_v2;no_products
+asv-rt40,mdl_asv_rt_40,ASV,RT-40,blocked,yes,,0,0,3,missing_primary_track_size_v2;no_products
+asv-rt-50,mdl_asv_rt_50,ASV,RT-50,partial,yes,,1,0,1,missing_primary_track_size_v2
+asv-rt-60,mdl_asv_rt_60,ASV,RT-60,ready,no,381x100.5x42,1,0,1,
+asv-rt-65,mdl_asv_rt_65,ASV,RT-65,partial,yes,,1,0,1,missing_primary_track_size_v2
+asv-rt-75,mdl_asv_rt_75,ASV,RT-75,partial,yes,,1,0,1,missing_primary_track_size_v2
+asv-rt-75hd,mdl_asv_rt_75_hd,ASV,RT-75 HD,ready,no,457x101.6x51,2,0,1,
+asv-sc-50,mdl_asv_sc_50,ASV,SC-50,ready,no,381x100.5x42,1,2,1,
+asv-sr-80,mdl_asv_sr80,ASV,SR80,ready,no,457x101.6x51,2,0,1,
+asv-vt-70,mdl_asv_vt_70,ASV,VT-70,partial,no,,1,0,1,missing_primary_track_size_v2
 bobcat-220,mdl_bobcat_220,Bobcat,220,blocked,no,230x72Kx45,0,0,1,no_products
 bobcat-225,mdl_bobcat_225,Bobcat,225,ready,no,300x52.5Nx74,1,0,1,
 bobcat-231,mdl_bobcat_231,Bobcat,231,ready,no,300x52.5Nx80,3,0,1,
 bobcat-320,mdl_bobcat_320,Bobcat,320,ready,no,230x72Kx45,0,1,1,
-bobcat-320d,mdl_bobcat_320d,Bobcat,320D,blocked,no,,0,0,0,missing_primary_track_size_v2;no_products
-bobcat-320e,mdl_bobcat_320e,Bobcat,320E,blocked,no,,0,0,0,missing_primary_track_size_v2;no_products
-bobcat-321,mdl_bobcat_321,Bobcat,321,partial,no,,0,2,0,missing_primary_track_size_v2
-bobcat-322,mdl_bobcat_322,Bobcat,322,blocked,no,,0,0,0,missing_primary_track_size_v2;no_products
-bobcat-323,mdl_bobcat_323,Bobcat,323,partial,no,,0,2,0,missing_primary_track_size_v2
-bobcat-324,mdl_bobcat_324,Bobcat,324,blocked,no,,0,0,0,missing_primary_track_size_v2;no_products
+bobcat-320d,mdl_bobcat_320d,Bobcat,320D,blocked,no,,0,0,17,missing_primary_track_size_v2;no_products
+bobcat-320e,mdl_bobcat_320e,Bobcat,320E,blocked,no,,0,0,17,missing_primary_track_size_v2;no_products
+bobcat-321,mdl_bobcat_321,Bobcat,321,partial,no,,0,2,17,missing_primary_track_size_v2
+bobcat-322,mdl_bobcat_322,Bobcat,322,blocked,no,,0,0,17,missing_primary_track_size_v2;no_products
+bobcat-323,mdl_bobcat_323,Bobcat,323,partial,no,,0,2,17,missing_primary_track_size_v2
+bobcat-324,mdl_bobcat_324,Bobcat,324,blocked,no,,0,0,17,missing_primary_track_size_v2;no_products
 bobcat-325,mdl_bobcat_325,Bobcat,325,ready,yes,300x52.5Nx74,4,6,1,
 bobcat-328,mdl_bobcat_328,Bobcat,328,ready,yes,300x52.5Nx74,1,0,1,
 bobcat-329,mdl_bobcat_329,Bobcat,329,ready,no,300x52.5Nx80,5,5,1,
@@ -63,7 +63,7 @@ bobcat-341,mdl_bobcat_341,Bobcat,341,ready,no,400x72.5Kx74,7,7,3,
 bobcat-418,mdl_bobcat_418,Bobcat,418,ready,no,180x72x39,3,0,1,
 bobcat-425,mdl_bobcat_425,Bobcat,425,ready,yes,300x52.5Nx80,3,4,1,
 bobcat-428,mdl_bobcat_428,Bobcat,428,ready,yes,300x52.5Nx80,2,3,1,
-bobcat-430,mdl_bobcat_430,Bobcat,430,blocked,no,,0,0,0,missing_primary_track_size_v2;no_products
+bobcat-430,mdl_bobcat_430,Bobcat,430,blocked,no,,0,0,17,missing_primary_track_size_v2;no_products
 bobcat-435,mdl_bobcat_435,Bobcat,435,ready,no,400x72.5Kx74,4,5,3,
 bobcat-442,mdl_bobcat_442,Bobcat,442,ready,no,400x72.5Kx74,1,2,3,
 bobcat-864,mdl_bobcat_864,Bobcat,864,ready,yes,320x86x52,24,6,2,
@@ -82,7 +82,7 @@ bobcat-e35,mdl_bobcat_e35,Bobcat,E35,ready,yes,300x52.5Nx84,6,6,2,
 bobcat-e35i,mdl_bobcat_e35i,Bobcat,E35I,ready,no,300x52.5Nx84,2,5,2,
 bobcat-e35z,mdl_bobcat_e35z,Bobcat,E35Z,ready,no,300x52.5Nx84,2,4,2,
 bobcat-e37,mdl_bobcat_e37,Bobcat,E37,blocked,yes,300x52.5Nx84,0,0,2,no_products
-bobcat-e42,mdl_bobcat_e42,Bobcat,E42,partial,yes,,2,5,0,missing_primary_track_size_v2
+bobcat-e42,mdl_bobcat_e42,Bobcat,E42,partial,yes,,2,5,1,missing_primary_track_size_v2
 bobcat-e45,mdl_bobcat_e45,Bobcat,E45,ready,yes,400x72.5Kx74,4,6,3,
 bobcat-e50,mdl_bobcat_e50,Bobcat,E50,ready,yes,400x72.5Kx74,4,6,3,
 bobcat-e55,mdl_bobcat_e55,Bobcat,E55,ready,yes,400x72.5Kx74,4,6,3,
@@ -201,45 +201,45 @@ case-tv450b,mdl_case_tv450b,Case,TV450B,ready,yes,450x86Bx55,16,5,1,
 case-tv620b,mdl_case_tv620b,Case,TV620B,ready,yes,450x86Bx63,5,2,1,
 caterpillar-239d,mdl_cat_239d,CAT,239D,ready,no,320x86Bx49,17,3,2,
 caterpillar-239d3,mdl_cat_239d3,CAT,239D3,ready,no,320x86Bx49,17,3,1,
-caterpillar-247,mdl_cat_247,CAT,247,partial,no,,1,2,0,missing_primary_track_size_v2
-caterpillar-247b,mdl_cat_247b,CAT,247B,ready,no,381x100.5x42,2,2,0,
-caterpillar-247b2,mdl_cat_247b2,CAT,247B2,ready,no,381x100.5x42,1,1,0,
-caterpillar-247b3,mdl_cat_247b3,CAT,247B3,ready,no,381x100.5x42,1,1,0,
+caterpillar-247,mdl_cat_247,CAT,247,partial,no,,1,2,1,missing_primary_track_size_v2
+caterpillar-247b,mdl_cat_247b,CAT,247B,ready,no,381x100.5x42,2,2,1,
+caterpillar-247b2,mdl_cat_247b2,CAT,247B2,ready,no,381x100.5x42,1,1,1,
+caterpillar-247b3,mdl_cat_247b3,CAT,247B3,ready,no,381x100.5x42,1,1,1,
 caterpillar-2493,mdl_cat_2493,CAT,2493,blocked,no,400x86Bx49,0,0,1,no_products
 caterpillar-249d,mdl_cat_249d,CAT,249D,ready,no,320x86Bx49,17,3,2,
 caterpillar-249d3,mdl_cat_249d3,CAT,249D3,ready,no,320x86Bx49,34,3,2,
 caterpillar-255,mdl_cat_255,CAT,255,ready,no,320x86x52,58,3,3,
-caterpillar-257,mdl_cat_257,CAT,257,partial,no,,1,2,0,missing_primary_track_size_v2
-caterpillar-257b,mdl_cat_257b,CAT,257B,ready,no,381x100.5x42,1,2,0,
-caterpillar-257b2,mdl_cat_257b2,CAT,257B2,ready,no,381x100.5x42,1,1,0,
-caterpillar-257b3,mdl_cat_257b3,CAT,257B3,ready,no,381x100.5x42,1,1,0,
-caterpillar-257d,mdl_cat_257d,CAT,257D,partial,no,,1,1,0,missing_primary_track_size_v2
+caterpillar-257,mdl_cat_257,CAT,257,partial,no,,1,2,1,missing_primary_track_size_v2
+caterpillar-257b,mdl_cat_257b,CAT,257B,ready,no,381x100.5x42,1,2,1,
+caterpillar-257b2,mdl_cat_257b2,CAT,257B2,ready,no,381x100.5x42,1,1,1,
+caterpillar-257b3,mdl_cat_257b3,CAT,257B3,ready,no,381x100.5x42,1,1,1,
+caterpillar-257d,mdl_cat_257d,CAT,257D,partial,no,,1,1,1,missing_primary_track_size_v2
 caterpillar-259b,mdl_cat_259b,CAT,259B,blocked,no,320x86Bx53,0,0,2,no_products
 caterpillar-259b3,mdl_cat_259b3,CAT,259B3,ready,no,320x86Bx53,17,5,2,
 caterpillar-259d,mdl_cat_259d,CAT,259D,ready,no,320x86Bx53,17,5,2,
 caterpillar-259d3,mdl_cat_259d3,CAT,259D3,ready,no,320x86Bx53,17,5,2,
 caterpillar-265,mdl_cat_265,CAT,265,blocked,no,450x86Bx55,0,0,1,no_products
-caterpillar-267b,mdl_cat_267b,CAT,267B,partial,no,,1,2,0,missing_primary_track_size_v2
-caterpillar-277,mdl_cat_277,CAT,277,ready,no,320x86x52,5,2,0,
-caterpillar-277b,mdl_cat_277b,CAT,277B,ready,no,457x101.6x56,2,2,0,
-caterpillar-277c,mdl_cat_277c,CAT,277C,ready,no,457x101.6x51,2,4,0,
+caterpillar-267b,mdl_cat_267b,CAT,267B,partial,no,,1,2,1,missing_primary_track_size_v2
+caterpillar-277,mdl_cat_277,CAT,277,ready,no,320x86x52,5,2,1,
+caterpillar-277b,mdl_cat_277b,CAT,277B,ready,no,457x101.6x56,2,2,1,
+caterpillar-277c,mdl_cat_277c,CAT,277C,ready,no,457x101.6x51,2,4,1,
 caterpillar-279c,mdl_cat_279c,CAT,279C,ready,no,450x86Bx60,15,4,1,
 caterpillar-279c2,mdl_cat_279c2,CAT,279C2,ready,no,450x86Bx56,13,4,1,
 caterpillar-279d,mdl_cat_279d,CAT,279D,ready,no,450x86Bx56,13,5,1,
 caterpillar-279d3,mdl_cat_279d3,CAT,279D3,blocked,no,450x86Bx56,0,0,1,no_products
-caterpillar-287,mdl_cat_287,CAT,287,partial,no,,4,2,0,missing_primary_track_size_v2
-caterpillar-287b,mdl_cat_287b,CAT,287B,partial,no,,1,2,0,missing_primary_track_size_v2
+caterpillar-287,mdl_cat_287,CAT,287,partial,no,,4,2,2,missing_primary_track_size_v2
+caterpillar-287b,mdl_cat_287b,CAT,287B,partial,no,,1,2,1,missing_primary_track_size_v2
 caterpillar-287c,mdl_cat_287c,CAT,287C,ready,no,457x101.6x51,2,4,1,
-caterpillar-287c2,mdl_cat_287c2,CAT,287C2,partial,no,,2,3,0,missing_primary_track_size_v2
-caterpillar-287d,mdl_cat_287d,CAT,287D,partial,no,,2,3,0,missing_primary_track_size_v2
+caterpillar-287c2,mdl_cat_287c2,CAT,287C2,partial,no,,2,3,1,missing_primary_track_size_v2
+caterpillar-287d,mdl_cat_287d,CAT,287D,partial,no,,2,3,1,missing_primary_track_size_v2
 caterpillar-289c,mdl_cat_289c,CAT,289C,ready,no,450x86Bx60,28,5,1,
 caterpillar-289c2,mdl_cat_289c2,CAT,289C2,ready,no,450x86Bx56,13,4,1,
 caterpillar-289d,mdl_cat_289d,CAT,289D,ready,no,450x86Bx56,17,5,1,
 caterpillar-289d2,mdl_cat_289d2,CAT,289D2,blocked,no,450x86Bx56,0,0,1,no_products
 caterpillar-289d3,mdl_cat_289d3,CAT,289D3,ready,no,450x86Bx56,26,5,1,
-caterpillar-297c,mdl_cat_297c,CAT,297C,partial,no,,4,4,0,missing_primary_track_size_v2
-caterpillar-297d2,mdl_cat_297d2,CAT,297D2,partial,no,,2,2,0,missing_primary_track_size_v2
-caterpillar-297d2-xhp,mdl_cat_297d2_xhp,CAT,297D2-XHP,partial,no,,2,2,0,missing_primary_track_size_v2
+caterpillar-297c,mdl_cat_297c,CAT,297C,partial,no,,4,4,1,missing_primary_track_size_v2
+caterpillar-297d2,mdl_cat_297d2,CAT,297D2,partial,no,,2,2,1,missing_primary_track_size_v2
+caterpillar-297d2-xhp,mdl_cat_297d2_xhp,CAT,297D2-XHP,partial,no,,2,2,1,missing_primary_track_size_v2
 caterpillar-299c,mdl_cat_299c,CAT,299C,ready,no,450x86Bx60,14,5,1,
 caterpillar-299d,mdl_cat_299d,CAT,299D,ready,no,450x86Bx60,15,5,1,
 caterpillar-299d-xhp,mdl_cat_299d_xhp,CAT,299D XHP,ready,no,450x86Bx60,15,5,1,
@@ -318,21 +318,21 @@ daewoo-solar-55-v,mdl_daewoo_solar55v,Daewoo,SOLAR55V,ready,no,400x72.5Kx74,4,0,
 ditch-witch-ht-25-trencher,mdl_ditch_witch_ht_25,Ditch Witch,HT 25,ready,no,230x72x39,1,0,1,
 ditch-witch-ht-25k-saw-machine,mdl_ditch_witch_ht_25k,Ditch Witch,HT 25K,ready,no,230x72x39,1,0,1,
 ditch-witch-jt-1200-drilling-machine,mdl_ditch_witch_jt_1200,Ditch Witch,JT 1200,ready,no,230x72x39,1,0,1,
-ditch-witch-jt-1220-mach-1-drilling-machine,mdl_ditch_witch_jt_1220,Ditch Witch,JT 1220,blocked,no,,0,0,0,missing_primary_track_size_v2;no_products
-ditch-witch-jt-1720-drilling-machine,mdl_ditch_witch_jt_1720,Ditch Witch,JT 1720,blocked,no,,0,0,0,missing_primary_track_size_v2;no_products
-ditch-witch-jt-20-drilling-machine,mdl_ditch_witch_jt_20,Ditch Witch,JT 20,blocked,no,,0,0,0,missing_primary_track_size_v2;no_products
-ditch-witch-jt-2020-mach-1,mdl_ditch_witch_jt_2020,Ditch Witch,JT 2020,blocked,no,,0,0,0,missing_primary_track_size_v2;no_products
+ditch-witch-jt-1220-mach-1-drilling-machine,mdl_ditch_witch_jt_1220,Ditch Witch,JT 1220,blocked,no,,0,0,17,missing_primary_track_size_v2;no_products
+ditch-witch-jt-1720-drilling-machine,mdl_ditch_witch_jt_1720,Ditch Witch,JT 1720,blocked,no,,0,0,17,missing_primary_track_size_v2;no_products
+ditch-witch-jt-20-drilling-machine,mdl_ditch_witch_jt_20,Ditch Witch,JT 20,blocked,no,,0,0,17,missing_primary_track_size_v2;no_products
+ditch-witch-jt-2020-mach-1,mdl_ditch_witch_jt_2020,Ditch Witch,JT 2020,blocked,no,,0,0,17,missing_primary_track_size_v2;no_products
 ditch-witch-jt-2320-drilling-machine,mdl_ditch_witch_jt_2320,Ditch Witch,JT 2320,ready,no,300x52.5Nx78,1,0,2,
 ditch-witch-jt-2321-drilling-machine,mdl_ditch_witch_jt_2321,Ditch Witch,JT 2321,blocked,no,300x52.5Nx78,0,0,2,no_products
 ditch-witch-jt-2511-drilling-machine,mdl_ditch_witch_jt_2511,Ditch Witch,JT 2511,ready,no,230x72x39,1,0,1,
-ditch-witch-jt-30-drilling-machine,mdl_ditch_witch_jt_30,Ditch Witch,JT 30,blocked,no,,0,0,0,missing_primary_track_size_v2;no_products
+ditch-witch-jt-30-drilling-machine,mdl_ditch_witch_jt_30,Ditch Witch,JT 30,blocked,no,,0,0,15,missing_primary_track_size_v2;no_products
 ditch-witch-jt-40-drilling-machine,mdl_ditch_witch_jt_40,Ditch Witch,JT 40,ready,no,400x72.5Kx74,4,0,3,
 ditch-witch-jt-5,mdl_ditch_witch_jt_5,Ditch Witch,JT 5,ready,no,180x72x39,3,0,1,
 ditch-witch-jt-520,mdl_ditch_witch_jt_520,Ditch Witch,JT 520,ready,no,180x72x39,3,0,1,
-ditch-witch-jt-2520-drilling-machine,mdl_ditch_witch_jt2520,Ditch Witch,JT2520,partial,no,,2,0,0,missing_primary_track_size_v2
-ditch-witch-jt-2720-mach-1-drilling-machine,mdl_ditch_witch_jt2720,Ditch Witch,JT2720,partial,no,,2,0,0,missing_primary_track_size_v2
-ditch-witch-jt-860-drilling-machine,mdl_ditch_witch_jt860,Ditch Witch,JT860,partial,no,,2,0,0,missing_primary_track_size_v2
-ditch-witch-jt-922,mdl_ditch_witch_jt922,Ditch Witch,JT922,blocked,no,,0,0,0,missing_primary_track_size_v2;no_products
+ditch-witch-jt-2520-drilling-machine,mdl_ditch_witch_jt2520,Ditch Witch,JT2520,partial,no,,2,0,2,missing_primary_track_size_v2
+ditch-witch-jt-2720-mach-1-drilling-machine,mdl_ditch_witch_jt2720,Ditch Witch,JT2720,partial,no,,2,0,2,missing_primary_track_size_v2
+ditch-witch-jt-860-drilling-machine,mdl_ditch_witch_jt860,Ditch Witch,JT860,partial,no,,2,0,2,missing_primary_track_size_v2
+ditch-witch-jt-922,mdl_ditch_witch_jt922,Ditch Witch,JT922,blocked,no,,0,0,15,missing_primary_track_size_v2;no_products
 ditch-witch-mx27,mdl_ditch_witch_mx_27,Ditch Witch,MX 27,blocked,no,300x52.5Nx78,0,0,2,no_products
 ditch-witch-mx272,mdl_ditch_witch_mx_272,Ditch Witch,MX 272,blocked,no,300x52.5Nx78,0,0,2,no_products
 ditch-witch-mx35,mdl_ditch_witch_mx_35,Ditch Witch,MX 35,blocked,no,300x52.5Nx84,0,0,2,no_products
@@ -571,7 +571,7 @@ jcb-65r,mdl_jcb_65r,JCB,65R,ready,no,400x72.5Kx74,4,0,3,
 jcb-67c,mdl_jcb_67c,JCB,67C,ready,no,400x72.5Kx74,4,0,3,
 jcb-801,mdl_jcb_801,JCB,801,ready,no,180x72x37,3,0,2,
 jcb-8017,mdl_jcb_8017,JCB,8017,ready,no,230x48x70,2,0,1,
-jcb-8018,mdl_jcb_8018,JCB,8018,ready,yes,230x48x62,1,0,0,
+jcb-8018,mdl_jcb_8018,JCB,8018,ready,yes,230x48x62,1,0,1,
 jcb-801r,mdl_jcb_801r,JCB,801R,ready,no,230x96x31,2,0,1,
 jcb-802-plus,mdl_jcb_802_plus,JCB,802 PLUS,blocked,no,300x52.5Nx74,0,0,1,no_products
 jcb-802-super,mdl_jcb_802_super,JCB,802 SUPER,blocked,no,300x52.5Nx74,0,0,1,no_products
@@ -817,7 +817,7 @@ kubota-kx91-2,mdl_kubota_kx91_2,Kubota,KX91-2,ready,no,300x52.5Nx80,3,3,1,
 kubota-kx-91-2s,mdl_kubota_kx91_2s,Kubota,KX91-2S,ready,no,300x52.5Nx80,3,1,1,
 kubota-kx91-3,mdl_kubota_kx91_3,Kubota,KX91-3,ready,yes,300x52.5Nx80,2,6,1,
 kubota-rx141,mdl_kubota_rx141,Kubota,RX141,ready,no,230x48x70,2,0,1,
-kubota-scl1000,mdl_kubota_scl1000,Kubota,SCL1000,ready,yes,230x72x43,1,0,0,
+kubota-scl1000,mdl_kubota_scl1000,Kubota,SCL1000,ready,yes,230x72x43,1,0,1,
 kubota-svl65,mdl_kubota_svl65,Kubota,SVL65,ready,no,400x86x52,3,0,1,
 kubota-svl65-2,mdl_kubota_svl65_2,Kubota,SVL65-2,ready,yes,320x86x52,24,4,2,
 kubota-svl75,mdl_kubota_svl75,Kubota,SVL75,ready,no,400x86x52,24,4,1,
@@ -1016,20 +1016,20 @@ takeuchi-tl8,mdl_takeuchi_tl8,Takeuchi,TL8,ready,no,320x86x52,8,4,2,
 takeuchi-tl8r2,mdl_takeuchi_tl8r2,Takeuchi,TL8R2,ready,yes,320x86x52,32,4,2,
 terex-am37r,mdl_terex_am37r,Terex,AM37R,ready,no,300x52.5x86,3,1,1,
 terex-hr18,mdl_terex_hr18,Terex,HR18,blocked,no,400x72.5Kx72,0,0,3,no_products
-terex-pt-100,mdl_terex_pt_100,Terex,PT-100,ready,no,457x101.6x51,2,1,0,
-terex-pt-110f,mdl_terex_pt_110f,Terex,PT-110F,partial,no,,2,0,0,missing_primary_track_size_v2
-terex-pt30,mdl_terex_pt_30,Terex,PT-30,blocked,yes,,0,0,0,missing_primary_track_size_v2;no_products
-terex-pt-50,mdl_terex_pt_50,Terex,PT-50,partial,no,,1,2,0,missing_primary_track_size_v2
-terex-pt-60,mdl_terex_pt_60,Terex,PT-60,partial,no,,1,2,0,missing_primary_track_size_v2
-terex-pt100f,mdl_terex_pt100f,Terex,PT100F,blocked,no,,0,0,0,missing_primary_track_size_v2;no_products
-terex-pt100g,mdl_terex_pt100g,Terex,PT100G,blocked,no,,0,0,0,missing_primary_track_size_v2;no_products
+terex-pt-100,mdl_terex_pt_100,Terex,PT-100,ready,no,457x101.6x51,2,1,1,
+terex-pt-110f,mdl_terex_pt_110f,Terex,PT-110F,partial,no,,2,0,1,missing_primary_track_size_v2
+terex-pt30,mdl_terex_pt_30,Terex,PT-30,blocked,yes,,0,0,2,missing_primary_track_size_v2;no_products
+terex-pt-50,mdl_terex_pt_50,Terex,PT-50,partial,no,,1,2,1,missing_primary_track_size_v2
+terex-pt-60,mdl_terex_pt_60,Terex,PT-60,partial,no,,1,2,1,missing_primary_track_size_v2
+terex-pt100f,mdl_terex_pt100f,Terex,PT100F,blocked,no,,0,0,2,missing_primary_track_size_v2;no_products
+terex-pt100g,mdl_terex_pt100g,Terex,PT100G,blocked,no,,0,0,2,missing_primary_track_size_v2;no_products
 terex-pt110,mdl_terex_pt110,Terex,PT110,ready,no,457x101.6x51,2,0,1,
-terex-pt-110-forestry,mdl_terex_pt110forestry,Terex,PT110FORESTRY,blocked,no,,0,0,0,missing_primary_track_size_v2;no_products
-terex-pt-75,mdl_terex_pt75,Terex,PT75,blocked,no,,0,0,0,missing_primary_track_size_v2;no_products
-terex-r190t,mdl_terex_r190t,Terex,R190T,partial,yes,,1,0,0,missing_primary_track_size_v2
+terex-pt-110-forestry,mdl_terex_pt110forestry,Terex,PT110FORESTRY,blocked,no,,0,0,2,missing_primary_track_size_v2;no_products
+terex-pt-75,mdl_terex_pt75,Terex,PT75,blocked,no,,0,0,2,missing_primary_track_size_v2;no_products
+terex-r190t,mdl_terex_r190t,Terex,R190T,partial,yes,,1,0,1,missing_primary_track_size_v2
 terex-r265t,mdl_terex_r265t,Terex,R265T,ready,yes,457x101.6x51,2,0,1,
-terex-r350t,mdl_terex_r350t,Terex,R350T,partial,no,,2,0,0,missing_primary_track_size_v2
-terex-sr-80,mdl_terex_sr_80,Terex,SR-80,partial,no,,2,3,0,missing_primary_track_size_v2
+terex-r350t,mdl_terex_r350t,Terex,R350T,partial,no,,2,0,1,missing_primary_track_size_v2
+terex-sr-80,mdl_terex_sr_80,Terex,SR-80,partial,no,,2,3,1,missing_primary_track_size_v2
 terex-st50,mdl_terex_st50,Terex,ST50,blocked,no,450x86Bx56,0,0,1,no_products
 terex-tc37,mdl_terex_tc_37,Terex,TC-37,ready,no,300x52.5x86,1,0,1,
 terex-tc20,mdl_terex_tc20,Terex,TC20,blocked,no,300x52.5Nx76,0,0,2,no_products
@@ -1039,7 +1039,7 @@ vermeer-20x22,mdl_vermeer_20x22,Vermeer,20X22,ready,no,230x72x39,1,0,1,
 vermeer-ctx100,mdl_vermeer_ctx100,Vermeer,CTX100,ready,yes,230x72Kx45,3,0,1,
 vermeer-ctx160,mdl_vermeer_ctx160,Vermeer,CTX160,ready,yes,230x72Kx45,3,0,1,
 vermeer-d20x22,mdl_vermeer_d20x22,Vermeer,D20X22,blocked,no,300x52.5Nx84,0,0,2,no_products
-vermeer-rtx450,mdl_vermeer_rtx450,Vermeer,RTX450,ready,no,381x100.5x42,1,0,0,
+vermeer-rtx450,mdl_vermeer_rtx450,Vermeer,RTX450,ready,no,381x100.5x42,1,0,1,
 vermeer-s400tx,mdl_vermeer_s400tx,Vermeer,S400TX,ready,no,180x72x39,4,0,1,
 vermeer-s600tx,mdl_vermeer_s600tx,Vermeer,S600TX,ready,yes,180x72x39,4,0,1,
 vermeer-s725tx,mdl_vermeer_s725tx,Vermeer,S725TX,ready,yes,180x72Kx45,3,0,1,
@@ -1047,9 +1047,9 @@ vermeer-s800tx,mdl_vermeer_s800tx,Vermeer,S800TX,ready,yes,230x72Kx45,3,0,1,
 vermeer-s925tx,mdl_vermeer_s925tx,Vermeer,S925TX,ready,yes,230x72Kx45,3,0,1,
 volvo-ec-20b-xtv,mdl_volvo_ec_20b_xtv,Volvo,EC 20B XTV,ready,no,230x48x72,1,0,1,
 volvo-ec-20c,mdl_volvo_ec_20c,Volvo,EC-20C,ready,no,230x48x72,1,0,1,
-volvo-ec15,mdl_volvo_ec15,Volvo,EC15,blocked,no,,0,0,0,missing_primary_track_size_v2;no_products
-volvo-ec15b,mdl_volvo_ec15b,Volvo,EC15B,blocked,no,,0,0,0,missing_primary_track_size_v2;no_products
-volvo-ec15xr,mdl_volvo_ec15xr,Volvo,EC15XR,blocked,no,,0,0,0,missing_primary_track_size_v2;no_products
+volvo-ec15,mdl_volvo_ec15,Volvo,EC15,blocked,no,,0,0,16,missing_primary_track_size_v2;no_products
+volvo-ec15b,mdl_volvo_ec15b,Volvo,EC15B,blocked,no,,0,0,16,missing_primary_track_size_v2;no_products
+volvo-ec15xr,mdl_volvo_ec15xr,Volvo,EC15XR,blocked,no,,0,0,16,missing_primary_track_size_v2;no_products
 volvo-ec20,mdl_volvo_ec20,Volvo,EC20,ready,no,230x48x72,1,0,1,
 volvo-ec20b,mdl_volvo_ec20b,Volvo,EC20B,ready,no,300x52.5Nx76,1,0,2,
 volvo-ec-20d,mdl_volvo_ec20d,Volvo,EC20D,blocked,no,230x48x72,0,0,1,no_products
@@ -1130,10 +1130,10 @@ yanmar-vio-55-cr-offset-type,mdl_yanmar_vio_55_cr,Yanmar,VIO 55 CR,ready,no,400x
 yanmar-vio-57u-offset-type,mdl_yanmar_vio_57u,Yanmar,VIO 57U,blocked,no,400x75.5x74,0,0,1,no_products
 yanmar-vio-45v-offset-type,mdl_yanmar_vio_45_v,Yanmar,VIO-45-V,ready,no,400x75.5x74,1,0,1,
 yanmar-vio-50v-offset-type,mdl_yanmar_vio_50_v,Yanmar,VIO-50-V,ready,no,400x75.5x74,1,0,1,
-yanmar-vio-27-2-offset-type,mdl_yanmar_vio27_2,Yanmar,VIO27-2,partial,no,,0,2,0,missing_primary_track_size_v2
-yanmar-vio-27-3-offset-type,mdl_yanmar_vio27_3,Yanmar,VIO27-3,partial,no,,0,2,0,missing_primary_track_size_v2
-yanmar-vio-27-5-offset-type,mdl_yanmar_vio27_5,Yanmar,VIO27-5,partial,no,,0,1,0,missing_primary_track_size_v2
-yanmar-vio-35-6a,mdl_yanmar_vio35_6a,Yanmar,VIO35 6A,ready,no,300x52.5Kx88,2,2,0,
+yanmar-vio-27-2-offset-type,mdl_yanmar_vio27_2,Yanmar,VIO27-2,partial,no,,0,2,6,missing_primary_track_size_v2
+yanmar-vio-27-3-offset-type,mdl_yanmar_vio27_3,Yanmar,VIO27-3,partial,no,,0,2,6,missing_primary_track_size_v2
+yanmar-vio-27-5-offset-type,mdl_yanmar_vio27_5,Yanmar,VIO27-5,partial,no,,0,1,6,missing_primary_track_size_v2
+yanmar-vio-35-6a,mdl_yanmar_vio35_6a,Yanmar,VIO35 6A,ready,no,300x52.5Kx88,2,2,1,
 yanmar-vio-40-1-offset-type,mdl_yanmar_vio40_1,Yanmar,VIO40-1,ready,no,400x75.5x74,1,0,1,
 yanmar-vio-40-2-offset-type,mdl_yanmar_vio40_2,Yanmar,VIO40-2,ready,no,400x75.5x74,1,0,1,
 yanmar-vio-40v-offset-type,mdl_yanmar_vio40v,Yanmar,VIO40V,ready,no,400x75.5x74,1,0,1,

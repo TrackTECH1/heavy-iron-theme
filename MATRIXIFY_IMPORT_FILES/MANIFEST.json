@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-06-23T21:54:56.357781+00:00",
+  "generated_at": "2026-06-23T22:08:18.050608+00:00",
   "store_v1": true,
   "target_store": "tracktech-530.myshopify.com",
   "production_blocked": true,
   "files": [
     {
       "path": "MATRIXIFY_IMPORT_FILES/models/model_metaobjects_matrixify.xlsx",
-      "bytes": 70285
+      "bytes": 70338
     },
     {
       "path": "MATRIXIFY_IMPORT_FILES/models/model_track_variants_matrixify.xlsx",
-      "bytes": 237871
+      "bytes": 237906
     },
     {
       "path": "MATRIXIFY_IMPORT_FILES/media/model_media_matrixify.xlsx",
-      "bytes": 957603
+      "bytes": 977646
     },
     {
       "path": "MATRIXIFY_IMPORT_FILES/models/model-publish-contract-report.csv",
-      "bytes": 89679
+      "bytes": 89695
     },
     {
       "path": "MATRIXIFY_IMPORT_FILES/models/matrixify-model-publish.csv",
@@ -26,7 +26,7 @@
     },
     {
       "path": "MATRIXIFY_IMPORT_FILES/models/shopify-api-manifest.json",
-      "bytes": 300292
+      "bytes": 529834
     },
     {
       "path": "MATRIXIFY_IMPORT_FILES/products/products_matrixify.csv",
@@ -34,7 +34,7 @@
     },
     {
       "path": "MATRIXIFY_IMPORT_FILES/products/products_matrixify.xlsx",
-      "bytes": 194967
+      "bytes": 194966
     },
     {
       "path": "MATRIXIFY_IMPORT_FILES/metafields/product_metafields_backfill.csv",
