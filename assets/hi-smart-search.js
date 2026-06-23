@@ -262,7 +262,7 @@
   }
 
   function boot() {
-    if (!AGENT_EP && !SEARCH_EP) return;
+    if (!AGENT_EP && !SEARCH_EP && !FITMENT_EP) return;
     document.querySelectorAll('input[type="search"].search__input').forEach(bindInput);
     initSearchPage();
   }

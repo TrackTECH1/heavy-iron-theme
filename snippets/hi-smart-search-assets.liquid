@@ -2,9 +2,17 @@
   Smart search — machine lookup (store-agent) + semantic product search (catalog-search).
 {%- endcomment -%}
 {%- liquid
+  assign hi_api_proxy_base = settings.hi_api_proxy_base | strip
   assign hi_store_agent_endpoint = settings.hi_store_agent_endpoint | strip
   assign hi_catalog_search_endpoint = settings.hi_catalog_search_endpoint | strip
   assign hi_fitment_search_endpoint = settings.hi_fitment_search_endpoint | strip
+
+  if hi_api_proxy_base != blank
+    assign hi_proxy_base = hi_api_proxy_base | remove_last: '/'
+    assign hi_store_agent_endpoint = hi_proxy_base | append: '/store-agent'
+    assign hi_catalog_search_endpoint = hi_proxy_base | append: '/catalog-search'
+    assign hi_fitment_search_endpoint = hi_proxy_base | append: '/fitment-search'
+  endif
 -%}
 {%- if hi_store_agent_endpoint != blank or hi_catalog_search_endpoint != blank or hi_fitment_search_endpoint != blank -%}
   {{ 'hi-smart-search.css' | asset_url | stylesheet_tag }}

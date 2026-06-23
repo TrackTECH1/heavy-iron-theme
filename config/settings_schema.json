@@ -1408,6 +1408,12 @@
       },
       {
         "type": "text",
+        "id": "hi_api_proxy_base",
+        "label": "Iron API app proxy base",
+        "info": "Optional. Use /apps/iron-api after the Shopify app proxy is configured. Falls back to direct endpoints when blank."
+      },
+      {
+        "type": "text",
         "id": "hi_store_agent_endpoint",
         "label": "Store agent endpoint"
       },
