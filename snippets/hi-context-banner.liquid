@@ -1,0 +1,22 @@
+{% doc %}
+Renders a product-page placeholder used by JavaScript to show machine or regional buying context.
+@param {product} product - The current product.
+@example
+{% render 'hi-context-banner', product: product %}
+{% enddoc %}
+
+{%- liquid
+  assign hi_track_size = product.metafields.custom.track_size.value | default: product.metafields.custom.track_size
+  assign hi_tread = product.metafields.custom.tread_pattern.value | default: product.metafields.custom.specs.value.tread_pattern
+-%}
+{%- if hi_track_size != blank -%}
+  {{ 'hi-context-banner.css' | asset_url | stylesheet_tag }}
+  <div
+    class="hi-context-banner"
+    data-hi-context-banner
+    data-track-size="{{ hi_track_size | escape }}"
+    data-tread-pattern="{{ hi_tread | escape }}"
+    hidden
+  ></div>
+  <script src="{{ 'hi-context-banner.js' | asset_url }}" defer></script>
+{%- endif -%}

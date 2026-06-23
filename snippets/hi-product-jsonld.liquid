@@ -17,6 +17,25 @@
   assign hi_links = product.metafields.custom.links.value | default: specs.links | default: fallback_specs.links
   assign hi_guide = product.metafields.custom.guide.value | default: specs.guide_type | default: fallback_specs.guide_type
   assign hi_tread = product.metafields.custom.tread_pattern.value | default: specs.tread_pattern | default: fallback_specs.tread_pattern
+  assign hi_tread_down = hi_tread | downcase
+  assign hi_vocation = ''
+  assign hi_benefit = ''
+  if hi_tread_down contains 'c-block' or hi_tread_down contains 'c block' or hi_tread_down contains 'c pattern'
+    assign hi_vocation = 'Demolition, paving, concrete removal, jagged rock, asphalt, and sharp gravel'
+    assign hi_benefit = 'C-Block tread stabilizes hard-surface work, reduces vibration on pavement, and helps resist chunking from concrete and sharp aggregate.'
+  elsif hi_tread_down contains 'z-max' or hi_tread_down contains 'z max' or hi_tread_down contains 'zig'
+    assign hi_vocation = 'Deep mud, swamp, loose clay, forestry, excavation, and high-precipitation jobsites'
+    assign hi_benefit = 'Z-Max tread clears mud aggressively and maintains forward bite in wet soil, swamp, and loose clay conditions.'
+  elsif hi_tread_down contains 'multi-bar' or hi_tread_down contains 'multi bar' or hi_tread_down contains 'snow'
+    assign hi_vocation = 'Snow removal, ice, slush, winter agriculture, and sub-zero operations'
+    assign hi_benefit = 'Multi-Bar tread adds linear biting edges for snow, ice, and slush traction where standard block patterns can skate.'
+  elsif hi_tread_down contains 'block' or hi_tread_down contains 'stagger'
+    assign hi_vocation = 'Landscaping, turf, finished lawns, golf course maintenance, dry soil, and moderate ground conditions'
+    assign hi_benefit = 'Staggered block tread spreads ground pressure to reduce turf disturbance while keeping enough bite for mixed landscaping work.'
+  elsif hi_tread_down contains 'all-terrain' or hi_tread_down contains 'all terrain'
+    assign hi_vocation = 'Excavation, site prep, dirt, clay, mixed subdivisions, and general construction'
+    assign hi_benefit = 'All-Terrain tread balances ride quality, self-cleaning, and traction across everyday dirt, clay, gravel, and mixed construction surfaces.'
+  endif
   assign hi_warranty_months = product.metafields.custom.warranty_months.value | default: specs.warranty_months | default: 24
   assign hi_description = fallback.text | default: product.description | strip_html | truncate: 250
   assign hi_price_valid_until = 'now' | date: '%s' | plus: 31536000 | date: '%Y-%m-%d'
@@ -116,6 +135,16 @@
     {%- if hi_tread != blank -%}
       {%- if hi_prop_i > 0 -%},{%- endif -%}
       { "@type": "PropertyValue", "name": "Tread Pattern", "value": {{ hi_tread | json }} }
+      {%- assign hi_prop_i = hi_prop_i | plus: 1 -%}
+    {%- endif -%}
+    {%- if hi_vocation != blank -%}
+      {%- if hi_prop_i > 0 -%},{%- endif -%}
+      { "@type": "PropertyValue", "name": "Primary Vocation Match", "value": {{ hi_vocation | json }} }
+      {%- assign hi_prop_i = hi_prop_i | plus: 1 -%}
+    {%- endif -%}
+    {%- if hi_benefit != blank -%}
+      {%- if hi_prop_i > 0 -%},{%- endif -%}
+      { "@type": "PropertyValue", "name": "Engineering Benefit", "value": {{ hi_benefit | json }} }
       {%- assign hi_prop_i = hi_prop_i | plus: 1 -%}
     {%- endif -%}
     {%- if hi_warranty_months != blank -%}

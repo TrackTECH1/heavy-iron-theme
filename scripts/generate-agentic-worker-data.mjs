@@ -23,6 +23,61 @@ function variantNumericId(gid) {
   return match ? match[1] : "";
 }
 
+function applicationForTread(treadPattern) {
+  const tread = clean(treadPattern).toLowerCase();
+  if (/\bc[- ]?block\b|\bc pattern\b/.test(tread)) {
+    return {
+      family: "C-Block",
+      terrain: ["Concrete", "Jagged Rock", "Asphalt", "Sharp Gravel"],
+      industry: ["Demolition", "Paving", "Concrete Removal"],
+      climate: ["All-Weather"],
+      vocation_hubs: ["demolition-tracks"],
+      benefit: "Stabilizes hard-surface work, reduces vibration on pavement, and helps resist chunking from concrete and sharp aggregate.",
+    };
+  }
+  if (/\bz[- ]?max\b|\bzig\b|\bmud\b/.test(tread)) {
+    return {
+      family: "Z-Max",
+      terrain: ["Deep Mud", "Swamp", "Loose Clay", "Wet Slop"],
+      industry: ["Forestry", "Excavation", "Site Prep"],
+      climate: ["High-Precipitation"],
+      vocation_hubs: ["deep-mud-tracks"],
+      benefit: "Clears mud aggressively and maintains forward bite in wet soil, swamp, and loose clay conditions.",
+    };
+  }
+  if (/\bmulti[- ]?bar\b|\bsnow\b|\bwinter\b/.test(tread)) {
+    return {
+      family: "Multi-Bar",
+      terrain: ["Snow", "Ice", "Slush", "Hard-Pack"],
+      industry: ["Snow Removal", "Agriculture", "Municipal Work"],
+      climate: ["Winter", "Sub-Zero"],
+      vocation_hubs: ["skid-steer-snow-tracks"],
+      benefit: "Adds linear biting edges for snow, ice, and slush traction where standard block patterns can skate.",
+    };
+  }
+  if (/\bstagger\b|\bturf\b|\bblock\b/.test(tread)) {
+    return {
+      family: "Staggered Block",
+      terrain: ["Turf", "Finished Lawns", "Dry Soil", "Moderate Ground"],
+      industry: ["Landscaping", "Golf Courses", "Property Maintenance"],
+      climate: ["Dry", "Moderate"],
+      vocation_hubs: ["landscaping-tracks"],
+      benefit: "Spreads ground pressure to reduce turf disturbance while keeping enough bite for mixed landscaping work.",
+    };
+  }
+  if (/\ball[- ]?terrain\b|\bgeneral\b|\bmixed\b/.test(tread)) {
+    return {
+      family: "All-Terrain",
+      terrain: ["Dirt", "Clay", "Gravel", "Mixed Subdivisions"],
+      industry: ["Excavation", "Site Prep", "General Construction"],
+      climate: ["All-Weather"],
+      vocation_hubs: ["general-construction-tracks"],
+      benefit: "Balances ride quality, self-cleaning, and traction across everyday dirt, clay, gravel, and mixed construction surfaces.",
+    };
+  }
+  return null;
+}
+
 function shopifyGql(query, variables = {}) {
   const cmd = ["store", "execute", "--store", store, "--query", query, "--json"];
   if (Object.keys(variables).length) cmd.push("--variables", JSON.stringify(variables));
@@ -94,6 +149,7 @@ function compactItem(item, liveMaps) {
           pitch_type: clean(item.track.pitch_type),
           links: item.track.links || null,
           tread_pattern: clean(item.track.tread_pattern),
+          application: applicationForTread(item.track.tread_pattern),
           guaranteed_drop_in_fit: item.track.boolean_claims?.guaranteed_drop_in_fit !== false,
         }
       : null,

@@ -46,9 +46,77 @@ function deliveryDays(zipCode) {
   return { min: 2, max: 3 };
 }
 
+function applicationMatrix() {
+  return {
+    generated_at: GENERATED_AT,
+    brand: BRAND,
+    source_of_truth: "Supabase product/model/fitment tables synced into Shopify product metafields and this public agentic catalog",
+    entries: [
+      {
+        tread_family: "C-Block",
+        collection_handle: "demolition-tracks",
+        collection_url: `${STORE_ORIGIN}/collections/demolition-tracks`,
+        terrain: ["Concrete", "Jagged Rock", "Asphalt", "Sharp Gravel"],
+        industry: ["Demolition", "Paving", "Concrete Removal"],
+        climate: ["All-Weather"],
+        buyer_intent: "Best skid steer tracks for concrete, demolition, asphalt, sharp gravel, and hard-surface jobs.",
+        engineering_benefit: "Stabilizes hard-surface work, reduces vibration on pavement, and helps resist chunking from concrete and sharp aggregate.",
+      },
+      {
+        tread_family: "Z-Max",
+        collection_handle: "deep-mud-tracks",
+        collection_url: `${STORE_ORIGIN}/collections/deep-mud-tracks`,
+        terrain: ["Deep Mud", "Swamp", "Loose Clay", "Wet Slop"],
+        industry: ["Forestry", "Excavation", "Site Prep"],
+        climate: ["High-Precipitation"],
+        buyer_intent: "Best rubber tracks for mud, wet clay, swampy jobsites, forestry, and high-precipitation regions.",
+        engineering_benefit: "Clears mud aggressively and maintains forward bite in wet soil, swamp, and loose clay conditions.",
+      },
+      {
+        tread_family: "Staggered Block",
+        collection_handle: "landscaping-tracks",
+        collection_url: `${STORE_ORIGIN}/collections/landscaping-tracks`,
+        terrain: ["Turf", "Finished Lawns", "Dry Soil", "Moderate Ground"],
+        industry: ["Landscaping", "Golf Courses", "Property Maintenance"],
+        climate: ["Dry", "Moderate"],
+        buyer_intent: "Best skid steer tracks for landscaping, turf protection, golf courses, lawns, and property maintenance.",
+        engineering_benefit: "Spreads ground pressure to reduce turf disturbance while keeping enough bite for mixed landscaping work.",
+      },
+      {
+        tread_family: "Multi-Bar",
+        collection_handle: "skid-steer-snow-tracks",
+        collection_url: `${STORE_ORIGIN}/collections/skid-steer-snow-tracks`,
+        terrain: ["Snow", "Ice", "Slush", "Hard-Pack"],
+        industry: ["Snow Removal", "Agriculture", "Municipal Work"],
+        climate: ["Winter", "Sub-Zero"],
+        buyer_intent: "Best skid steer tracks for snow removal, ice, slush, winter lots, and municipal winter operations.",
+        engineering_benefit: "Adds linear biting edges for snow, ice, and slush traction where standard block patterns can skate.",
+      },
+    ],
+  };
+}
+
 function checkoutUrl(item, qty) {
   if (item.variant_id) return `${STORE_ORIGIN}/cart/${item.variant_id}:${qty}`;
   return `${STORE_ORIGIN}${item.url_path}`;
+}
+
+function applicationScore(application, params) {
+  if (!application) return 0;
+  const haystack = [
+    application.family,
+    ...(application.terrain || []),
+    ...(application.industry || []),
+    ...(application.climate || []),
+    ...(application.vocation_hubs || []),
+    application.benefit,
+  ].join(" ");
+  return (
+    tokenScore(haystack, params.terrain || "") * 4 +
+    tokenScore(haystack, params.industry || "") * 4 +
+    tokenScore(haystack, params.climate || "") * 3 +
+    tokenScore(haystack, params.application || params.vocation || "") * 5
+  );
 }
 
 function findCandidates({ machine_model, sku, track_size }) {
@@ -93,6 +161,7 @@ function fitmentMatrix() {
         pitch_type: item.track.pitch_type || null,
         links: item.track.links,
         tread_pattern: item.track.tread_pattern || null,
+        application: item.track.application || null,
         stock: item.stock,
         in_stock: item.in_stock,
         confidence_score: item.track.guaranteed_drop_in_fit ? 0.97 : 0.85,
@@ -160,6 +229,38 @@ function openapiSpec(url) {
             },
           },
           responses: { "200": { description: "Fitment and stock result" } },
+        },
+      },
+      "/application-matrix.json": {
+        get: {
+          operationId: "get_application_matrix",
+          summary: "Return tread pattern, terrain, contractor vocation, and climate mapping.",
+          responses: { "200": { description: "Application matrix" } },
+        },
+      },
+      "/api/agentic/recommend-tread": {
+        post: {
+          operationId: "recommend_tread",
+          summary: "Recommend a tread family and matching products for a machine, terrain, industry, climate, or region.",
+          requestBody: {
+            required: true,
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    machine_model: { type: "string", examples: ["Case TR340"] },
+                    track_size: { type: "string", examples: ["450x86Bx55"] },
+                    terrain: { type: "string", examples: ["concrete demolition", "deep mud", "snow"] },
+                    industry: { type: "string", examples: ["demolition", "landscaping", "snow removal"] },
+                    climate: { type: "string", examples: ["winter", "high precipitation"] },
+                    zip_code: { type: "string", examples: ["55401"] },
+                  },
+                },
+              },
+            },
+          },
+          responses: { "200": { description: "Tread recommendation result" } },
         },
       },
       "/api/agentic/decode-serial-pin": {
@@ -233,6 +334,44 @@ function openapiSpec(url) {
       },
     },
   };
+}
+
+async function recommendTread(request) {
+  const params = await readParams(request);
+  const fitmentCandidates = findCandidates(params);
+  const pool = fitmentCandidates.length ? fitmentCandidates.map(({ item }) => item) : CATALOG_ITEMS;
+  const scored = pool
+    .filter((item) => item.track?.application)
+    .map((item) => ({
+      item,
+      score: applicationScore(item.track.application, params) + (item.in_stock ? 1 : 0),
+    }))
+    .filter((row) => row.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 8);
+  const best = scored[0]?.item || null;
+  return json({
+    found: Boolean(best),
+    recommended_tread_family: best?.track?.application?.family || null,
+    application: best?.track?.application || null,
+    machine_query: params.machine_model || null,
+    track_size_query: params.track_size || null,
+    delivery_window: deliveryDays(params.zip_code),
+    lower_48_free_freight: lower48(params.zip_code),
+    recommended_products: scored.slice(0, 5).map(({ item, score }) => ({
+      sku: item.sku,
+      title: item.title,
+      score,
+      price: item.price,
+      stock: item.stock,
+      in_stock: item.in_stock,
+      track: item.track,
+      url: `${STORE_ORIGIN}${item.url_path}`,
+      checkout_url: checkoutUrl(item, 1),
+    })),
+    safety_note: "Tread recommendation does not replace fitment. Match width, pitch, pitch type, and link count before purchase.",
+    generated_at: GENERATED_AT,
+  });
 }
 
 async function checkFitmentAndStock(request) {
@@ -337,8 +476,10 @@ export default {
       return text(LLMS_TXT, "text/markdown; charset=utf-8");
     }
     if (url.pathname === "/fitment-matrix.json") return json(fitmentMatrix(), { headers: { "cache-control": "public, max-age=900" } });
+    if (url.pathname === "/application-matrix.json") return json(applicationMatrix(), { headers: { "cache-control": "public, max-age=900" } });
     if (url.pathname === "/openapi.json") return json(openapiSpec(url), { headers: { "cache-control": "public, max-age=900" } });
     if (url.pathname === "/api/agentic/check-fitment-and-stock") return checkFitmentAndStock(request);
+    if (url.pathname === "/api/agentic/recommend-tread") return recommendTread(request);
     if (url.pathname === "/api/agentic/decode-serial-pin") return decodeSerialPin(request);
     if (url.pathname === "/api/agentic/calculate-ltl-freight") return calculateLtlFreight(request);
     if (url.pathname === "/api/agentic/generate-checkout-link") return generateCheckoutLink(request);

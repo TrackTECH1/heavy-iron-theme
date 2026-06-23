@@ -143,6 +143,9 @@
                 {%- if hi_is_track or hi_is_uc -%}
                   {%- render 'hi-pdp-trust-strip', product: product, is_track: hi_is_track, is_undercarriage: hi_is_uc -%}
                 {%- endif -%}
+                {%- if hi_is_track -%}
+                  {%- render 'hi-context-banner', product: product -%}
+                {%- endif -%}
                 {%- if product.quantity_price_breaks_configured? -%}
                   <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
                     <span>{{ 'products.product.volume_pricing.note' | t }}</span>
