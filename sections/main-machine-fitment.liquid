@@ -36,6 +36,7 @@
   assign quote_label = model.field_button_label_1.value | default: 'Request a Quote'
   assign secondary_url = model.field_button_url_2.value | default: '/pages/reviews'
   assign secondary_label = model.field_button_label_2.value | default: 'Explore Upgrades'
+  assign primary_track_size = model.primary_track_size.value | default: ''
 -%}
 
 {%- style -%}
@@ -627,6 +628,13 @@
       </div>
 
       <div class="hi-oem-spec-strip">
+        {%- if primary_track_size != blank -%}
+          <div class="hi-oem-spec">
+            <span class="hi-oem-spec-label">Track Size</span>
+            <span class="hi-oem-spec-value">{{ primary_track_size }}</span>
+          </div>
+        {%- endif -%}
+
         {%- if model.horsepower.value != blank -%}
           <div class="hi-oem-spec">
             <span class="hi-oem-spec-label">Horsepower</span>
@@ -749,6 +757,55 @@
 
               <span class="hi-oem-ghost-btn">View Tracks</span>
             </a>
+          {%- elsif model.track_products.value != blank -%}
+            {%- for product in model.track_products.value -%}
+              {%- assign tread = product.metafields.custom.tread.value | default: product.metafields.custom.tread -%}
+              {%- assign tsize = product.metafields.custom.track_size | default: primary_track_size -%}
+              {%- for variant in product.variants -%}
+                {%- assign variant_url = product.url | append: '?variant=' | append: variant.id -%}
+                {%- assign variant_image = variant.featured_image | default: product.featured_image -%}
+                {%- liquid
+                  assign track_type_label = tread
+                  if track_type_label == blank and variant.title != blank and variant.title != 'Default Title'
+                    assign track_type_label = variant.title
+                  endif
+                  if track_type_label == blank
+                    assign track_type_label = 'Rubber Tracks'
+                  endif
+                -%}
+
+                <a class="hi-oem-product-card" href="{{ variant_url }}">
+                  <div class="hi-oem-product-img-wrap">
+                    {%- if variant_image -%}
+                      <img
+                        class="hi-oem-product-img"
+                        src="{{ variant_image | image_url: width: 520 }}"
+                        alt="{{ track_card_title | escape }}"
+                        loading="lazy"
+                        width="520"
+                        height="390"
+                      >
+                    {%- else -%}
+                      <div class="hi-oem-product-placeholder">No Image</div>
+                    {%- endif -%}
+                  </div>
+
+                  <p class="hi-oem-product-type">{{ track_type_label }}{% if tsize != blank %} · {{ tsize }}{% endif %}</p>
+                  <h3 class="hi-oem-product-title">{{ track_card_title }}</h3>
+
+                  {%- if variant.price > 0 -%}
+                    <p class="hi-oem-product-price">
+                      {%- if variant.compare_at_price > variant.price -%}
+                        <span class="hi-oem-product-compare">{{ variant.compare_at_price | money }}</span>
+                      {%- endif -%}
+                      {{ variant.price | money }}
+                    </p>
+                  {%- endif -%}
+
+                  <span class="hi-oem-ghost-btn">View Tracks</span>
+                </a>
+              {%- endfor -%}
+            {%- endfor -%}
           {%- endif -%}
         </div>
       </section>

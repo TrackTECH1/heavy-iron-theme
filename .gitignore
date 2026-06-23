@@ -1,0 +1,5 @@
+.env.fitment.local
+.cursor/mcp.json
+.backfill-test.log
+scripts/__pycache__/
+supabase/.temp/

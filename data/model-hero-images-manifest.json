@@ -1,0 +1,3807 @@
+[
+  {
+    "handle": "bobcat-mt85",
+    "model_key": "bobcat-mt85",
+    "filename": "bobcat-mt85-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-mt85-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-stand-on-track-loader.webp?v=1774293849",
+    "alt": "Bobcat MT85 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "MT85"
+  },
+  {
+    "handle": "bobcat-t830",
+    "model_key": "bobcat-t830",
+    "filename": "bobcat-t830-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-t830-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451",
+    "alt": "Bobcat T830 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "T830"
+  },
+  {
+    "handle": "takeuchi-tb240",
+    "model_key": "takeuchi-tb240",
+    "filename": "takeuchi-tb240-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tb240-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535",
+    "alt": "Takeuchi TB240 rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TB240"
+  },
+  {
+    "handle": "bobcat-t750",
+    "model_key": "bobcat-t750",
+    "filename": "bobcat-t750-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-t750-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451",
+    "alt": "Bobcat T750 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "T750"
+  },
+  {
+    "handle": "asv-rt-75",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ASV-multi-terrain-loader-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "case-tr320",
+    "model_key": "case-tr320",
+    "filename": "case-tr320-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/case-tr320-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-skid-steer-hero.webp?v=1773971451",
+    "alt": "Case TR320 rubber tracks and parts",
+    "make": "Case",
+    "model": "TR320"
+  },
+  {
+    "handle": "bobcat-t630",
+    "model_key": "bobcat-t630",
+    "filename": "bobcat-t630-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-t630-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451",
+    "alt": "Bobcat T630 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "T630"
+  },
+  {
+    "handle": "takeuchi-tl12r2",
+    "model_key": "takeuchi-tl12r2",
+    "filename": "takeuchi-tl12r2-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tl12r2-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-skid-steer-hero.webp?v=1773971452",
+    "alt": "Takeuchi TL12R2 rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TL12R2"
+  },
+  {
+    "handle": "kubota-svl95-2",
+    "model_key": "kubota-svl95-2",
+    "filename": "kubota-svl95-2-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/kubota-svl95-2-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452",
+    "alt": "Kubota SVL95-2 rubber tracks and parts",
+    "make": "Kubota",
+    "model": "SVL95-2"
+  },
+  {
+    "handle": "bobcat-mt52",
+    "model_key": "bobcat-mt52",
+    "filename": "bobcat-mt52-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-mt52-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-stand-on-track-loader.webp?v=1774293849",
+    "alt": "Bobcat MT52 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "MT52"
+  },
+  {
+    "handle": "bobcat-t180",
+    "model_key": "bobcat-t180",
+    "filename": "bobcat-t180-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-t180-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451",
+    "alt": "Bobcat T180 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "T180"
+  },
+  {
+    "handle": "kubota-svl65-2",
+    "model_key": "kubota-svl65-2",
+    "filename": "kubota-svl65-2-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/kubota-svl65-2-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452",
+    "alt": "Kubota SVL65-2 rubber tracks and parts",
+    "make": "Kubota",
+    "model": "SVL65-2"
+  },
+  {
+    "handle": "bobcat-t7x",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "kubota-svl97-2",
+    "model_key": "kubota-svl97-2",
+    "filename": "kubota-svl97-2-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/kubota-svl97-2-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452",
+    "alt": "Kubota SVL97-2 rubber tracks and parts",
+    "make": "Kubota",
+    "model": "SVL97-2"
+  },
+  {
+    "handle": "bobcat-mt50",
+    "model_key": "bobcat-mt50",
+    "filename": "bobcat-mt50-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-mt50-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-stand-on-track-loader.webp?v=1774293849",
+    "alt": "Bobcat MT50 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "MT50"
+  },
+  {
+    "handle": "cat-304",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "bobcat-t320",
+    "model_key": "bobcat-t320",
+    "filename": "bobcat-t320-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-t320-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451",
+    "alt": "Bobcat T320 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "T320"
+  },
+  {
+    "handle": "john-deere-333e",
+    "model_key": "john-deere-333e",
+    "filename": "john-deere-333e-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/john-deere-333e-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-skid-steer-hero.webp?v=1773971451",
+    "alt": "John Deere 333E rubber tracks and parts",
+    "make": "John Deere",
+    "model": "333E"
+  },
+  {
+    "handle": "wacker-st50",
+    "model_key": "wacker-st50",
+    "filename": "wacker-st50-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/wacker-st50-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/wacker-skid-steer-hero.webp?v=1773971452",
+    "alt": "Wacker Neuson ST50 rubber tracks and parts",
+    "make": "Wacker",
+    "model": "ST50"
+  },
+  {
+    "handle": "john-deere-329e",
+    "model_key": "john-deere-329e",
+    "filename": "john-deere-329e-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/john-deere-329e-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-skid-steer-hero.webp?v=1773971451",
+    "alt": "John Deere 329E rubber tracks and parts",
+    "make": "John Deere",
+    "model": "329E"
+  },
+  {
+    "handle": "bobcat-t770",
+    "model_key": "bobcat-t770",
+    "filename": "bobcat-t770-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-t770-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451",
+    "alt": "Bobcat T770 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "T770"
+  },
+  {
+    "handle": "bobcat-t140",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "bobcat-mt55",
+    "model_key": "bobcat-mt55",
+    "filename": "bobcat-mt55-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-mt55-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-stand-on-track-loader.webp?v=1774293849",
+    "alt": "Bobcat MT55 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "MT55"
+  },
+  {
+    "handle": "kubota-svl90",
+    "model_key": "kubota-svl90",
+    "filename": "kubota-svl90-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/kubota-svl90-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452",
+    "alt": "Kubota SVL90 rubber tracks and parts",
+    "make": "Kubota",
+    "model": "SVL90"
+  },
+  {
+    "handle": "cat-289d3",
+    "model_key": "cat-289d3",
+    "filename": "cat-289d3-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-289d3-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 289D3 rubber tracks and parts",
+    "make": "CAT",
+    "model": "289D3"
+  },
+  {
+    "handle": "bobcat-mt100",
+    "model_key": "bobcat-mt100",
+    "filename": "bobcat-mt100-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-mt100-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-stand-on-track-loader.webp?v=1774293849",
+    "alt": "Bobcat MT100 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "MT100"
+  },
+  {
+    "handle": "bobcat-t86",
+    "model_key": "bobcat-t86",
+    "filename": "bobcat-t86-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-t86-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451",
+    "alt": "Bobcat T86 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "T86"
+  },
+  {
+    "handle": "bobcat-t590",
+    "model_key": "bobcat-t590",
+    "filename": "bobcat-t590-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-t590-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451",
+    "alt": "Bobcat T590 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "T590"
+  },
+  {
+    "handle": "takeuchi-tl8r2",
+    "model_key": "takeuchi-tl8r2",
+    "filename": "takeuchi-tl8r2-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tl8r2-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-skid-steer-hero.webp?v=1773971452",
+    "alt": "Takeuchi TL8R2 rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TL8R2"
+  },
+  {
+    "handle": "yanmar-vio55-6a",
+    "model_key": "yanmar-vio-55-6a",
+    "filename": "yanmar-vio55-6a-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/yanmar-vio55-6a-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452",
+    "alt": "Yanmar ViO55-6A rubber tracks and parts",
+    "make": "Yanmar",
+    "model": "VIO 55-6A"
+  },
+  {
+    "handle": "takeuchi-tl10v2",
+    "model_key": "takeuchi-tl10v2",
+    "filename": "takeuchi-tl10v2-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tl10v2-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-skid-steer-hero.webp?v=1773971452",
+    "alt": "Takeuchi TL10V2 rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TL10V2"
+  },
+  {
+    "handle": "cat-279d3",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "bobcat-t650",
+    "model_key": "bobcat-t650",
+    "filename": "bobcat-t650-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-t650-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451",
+    "alt": "Bobcat T650 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "T650"
+  },
+  {
+    "handle": "john-deere-335p",
+    "model_key": "john-deere-335p",
+    "filename": "john-deere-335p-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/john-deere-335p-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-skid-steer-hero.webp?v=1773971451",
+    "alt": "John Deere 335P rubber tracks and parts",
+    "make": "John Deere",
+    "model": "335P"
+  },
+  {
+    "handle": "cat-302-7-cr",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "john-deere-325g",
+    "model_key": "john-deere-325g",
+    "filename": "john-deere-325g-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/john-deere-325g-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-skid-steer-hero.webp?v=1773971451",
+    "alt": "John Deere 325G rubber tracks and parts",
+    "make": "John Deere",
+    "model": "325G"
+  },
+  {
+    "handle": "bobcat-t110",
+    "model_key": "bobcat-t110",
+    "filename": "bobcat-t110-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-t110-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451",
+    "alt": "Bobcat T110 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "T110"
+  },
+  {
+    "handle": "gehl-vt320",
+    "model_key": "gehl-vt320",
+    "filename": "gehl-vt320-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/gehl-vt320-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/gehl-skid-steer-hero.webp?v=1773971452",
+    "alt": "Gehl VT320 rubber tracks and parts",
+    "make": "Gehl",
+    "model": "VT320"
+  },
+  {
+    "handle": "bobcat-t870",
+    "model_key": "bobcat-t870",
+    "filename": "bobcat-t870-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-t870-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451",
+    "alt": "Bobcat T870 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "T870"
+  },
+  {
+    "handle": "bobcat-t550",
+    "model_key": "bobcat-t550",
+    "filename": "bobcat-t550-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-t550-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451",
+    "alt": "Bobcat T550 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "T550"
+  },
+  {
+    "handle": "kubota-svl75-2",
+    "model_key": "kubota-svl75-2",
+    "filename": "kubota-svl75-2-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/kubota-svl75-2-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452",
+    "alt": "Kubota SVL75-2 rubber tracks and parts",
+    "make": "Kubota",
+    "model": "SVL75-2"
+  },
+  {
+    "handle": "bobcat-t740",
+    "model_key": "bobcat-t740",
+    "filename": "bobcat-t740-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-t740-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451",
+    "alt": "Bobcat T740 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "T740"
+  },
+  {
+    "handle": "cat-279d",
+    "model_key": "cat-279d",
+    "filename": "cat-279d-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-279d-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 279D rubber tracks and parts",
+    "make": "CAT",
+    "model": "279D"
+  },
+  {
+    "handle": "cat-259d3",
+    "model_key": "cat-259d3",
+    "filename": "cat-259d3-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-259d3-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 259D3 rubber tracks and parts",
+    "make": "CAT",
+    "model": "259D3"
+  },
+  {
+    "handle": "bobcat-e08",
+    "model_key": "bobcat-e08",
+    "filename": "bobcat-e08-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-e08-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926",
+    "alt": "Bobcat E08 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "E08"
+  },
+  {
+    "handle": "case-tr340",
+    "model_key": "case-tr340",
+    "filename": "case-tr340-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/case-tr340-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-skid-steer-hero.webp?v=1773971451",
+    "alt": "Case TR340 rubber tracks and parts",
+    "make": "Case",
+    "model": "TR340"
+  },
+  {
+    "handle": "cat-289d",
+    "model_key": "cat-289d",
+    "filename": "cat-289d-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-289d-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 289D rubber tracks and parts",
+    "make": "CAT",
+    "model": "289D"
+  },
+  {
+    "handle": "bobcat-e45",
+    "model_key": "bobcat-e45",
+    "filename": "bobcat-e45-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-e45-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926",
+    "alt": "Bobcat E45 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "E45"
+  },
+  {
+    "handle": "cat-299d3",
+    "model_key": "cat-299d3",
+    "filename": "cat-299d3-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-299d3-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 299D3 rubber tracks and parts",
+    "make": "CAT",
+    "model": "299D3"
+  },
+  {
+    "handle": "bobcat-864",
+    "model_key": "bobcat-864",
+    "filename": "bobcat-864-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-864-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451",
+    "alt": "Bobcat 864 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "864"
+  },
+  {
+    "handle": "cat-305-5e2",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "kubota-u55-5",
+    "model_key": "kubota-u55-5",
+    "filename": "kubota-u55-5-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/kubota-u55-5-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452",
+    "alt": "Kubota U55-5 rubber tracks and parts",
+    "make": "Kubota",
+    "model": "U55-5"
+  },
+  {
+    "handle": "cat-306-cr",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "bobcat-e14",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926"
+  },
+  {
+    "handle": "bobcat-t760",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "cat-304e2",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "kubota-k008-5",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "john-deere-331g",
+    "model_key": "john-deere-331g",
+    "filename": "john-deere-331g-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/john-deere-331g-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-skid-steer-hero.webp?v=1773971451",
+    "alt": "John Deere 331G rubber tracks and parts",
+    "make": "John Deere",
+    "model": "331G"
+  },
+  {
+    "handle": "john-deere-30g",
+    "model_key": "john-deere-30g",
+    "filename": "john-deere-30g-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/john-deere-30g-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-excavator-hero.webp?v=1773971529",
+    "alt": "John Deere 30G rubber tracks and parts",
+    "make": "John Deere",
+    "model": "30G"
+  },
+  {
+    "handle": "cat-303-5",
+    "model_key": "cat-303-5",
+    "filename": "cat-303-5-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-303-5-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 303.5 rubber tracks and parts",
+    "make": "CAT",
+    "model": "303.5"
+  },
+  {
+    "handle": "john-deere-50g",
+    "model_key": "john-deere-50g",
+    "filename": "john-deere-50g-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/john-deere-50g-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-excavator-hero.webp?v=1773971529",
+    "alt": "John Deere 50G rubber tracks and parts",
+    "make": "John Deere",
+    "model": "50G"
+  },
+  {
+    "handle": "kubota-u48-5",
+    "model_key": "kubota-u48-5",
+    "filename": "kubota-u48-5-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/kubota-u48-5-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452",
+    "alt": "Kubota U48-5 rubber tracks and parts",
+    "make": "Kubota",
+    "model": "U48-5"
+  },
+  {
+    "handle": "bobcat-t76",
+    "model_key": "bobcat-t76",
+    "filename": "bobcat-t76-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-t76-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451",
+    "alt": "Bobcat T76 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "T76"
+  },
+  {
+    "handle": "kubota-kx121-3",
+    "model_key": "kubota-kx121-3",
+    "filename": "kubota-kx121-3-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/kubota-kx121-3-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452",
+    "alt": "Kubota KX121-3 rubber tracks and parts",
+    "make": "Kubota",
+    "model": "KX121-3"
+  },
+  {
+    "handle": "kubota-kx030-4",
+    "model_key": "kubota-kx030-4",
+    "filename": "kubota-kx030-4-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/kubota-kx030-4-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452",
+    "alt": "Kubota KX030-4 rubber tracks and parts",
+    "make": "Kubota",
+    "model": "KX030-4"
+  },
+  {
+    "handle": "bobcat-t570",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "kubota-kx057-5",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "case-tv370",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "kubota-u10-5",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "kubota-kx71-3",
+    "model_key": "kubota-kx71-3",
+    "filename": "kubota-kx71-3-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/kubota-kx71-3-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452",
+    "alt": "Kubota KX71-3 rubber tracks and parts",
+    "make": "Kubota",
+    "model": "KX71-3"
+  },
+  {
+    "handle": "cat-305e2",
+    "model_key": "cat-305e2",
+    "filename": "cat-305e2-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-305e2-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 305E2 CR rubber tracks and parts",
+    "make": "CAT",
+    "model": "305E2"
+  },
+  {
+    "handle": "kubota-kx033-4",
+    "model_key": "kubota-kx033-4",
+    "filename": "kubota-kx033-4-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/kubota-kx033-4-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452",
+    "alt": "Kubota KX033-4 rubber tracks and parts",
+    "make": "Kubota",
+    "model": "KX033-4"
+  },
+  {
+    "handle": "john-deere-60g",
+    "model_key": "john-deere-60g",
+    "filename": "john-deere-60g-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/john-deere-60g-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-excavator-hero.webp?v=1773971529",
+    "alt": "John Deere 60G rubber tracks and parts",
+    "make": "John Deere",
+    "model": "60G"
+  },
+  {
+    "handle": "bobcat-e19",
+    "model_key": "bobcat-e19",
+    "filename": "bobcat-e19-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-e19-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926",
+    "alt": "Bobcat E19 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "E19"
+  },
+  {
+    "handle": "bobcat-t64",
+    "model_key": "bobcat-t64",
+    "filename": "bobcat-t64-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-t64-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451",
+    "alt": "Bobcat T64 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "T64"
+  },
+  {
+    "handle": "kubota-kx161-3",
+    "model_key": "kubota-kx161-3",
+    "filename": "kubota-kx161-3-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/kubota-kx161-3-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452",
+    "alt": "Kubota KX161-3 rubber tracks and parts",
+    "make": "Kubota",
+    "model": "KX161-3"
+  },
+  {
+    "handle": "john-deere-35g",
+    "model_key": "john-deere-35g",
+    "filename": "john-deere-35g-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/john-deere-35g-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-excavator-hero.webp?v=1773971529",
+    "alt": "John Deere 35G rubber tracks and parts",
+    "make": "John Deere",
+    "model": "35G"
+  },
+  {
+    "handle": "john-deere-35p",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-excavator-hero.webp?v=1773971529"
+  },
+  {
+    "handle": "cat-299d",
+    "model_key": "cat-299d",
+    "filename": "cat-299d-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-299d-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 299D rubber tracks and parts",
+    "make": "CAT",
+    "model": "299D"
+  },
+  {
+    "handle": "asv-rt-120",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ASV-multi-terrain-loader-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "takeuchi-tb370",
+    "model_key": "takeuchi-tb370",
+    "filename": "takeuchi-tb370-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tb370-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535",
+    "alt": "Takeuchi TB370 rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TB370"
+  },
+  {
+    "handle": "john-deere-333g",
+    "model_key": "john-deere-333g",
+    "filename": "john-deere-333g-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/john-deere-333g-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-skid-steer-hero.webp?v=1773971451",
+    "alt": "John Deere 333G rubber tracks and parts",
+    "make": "John Deere",
+    "model": "333G"
+  },
+  {
+    "handle": "yanmar-vio27-6",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "takeuchi-tb250",
+    "model_key": "takeuchi-tb250",
+    "filename": "takeuchi-tb250-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tb250-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535",
+    "alt": "Takeuchi TB250 rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TB250"
+  },
+  {
+    "handle": "yanmar-sv08",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "takeuchi-tb228",
+    "model_key": "takeuchi-tb228",
+    "filename": "takeuchi-tb228-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tb228-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535",
+    "alt": "Takeuchi TB228 rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TB228"
+  },
+  {
+    "handle": "yanmar-vio45-5",
+    "model_key": "yanmar-vio-45-5-offset-type",
+    "filename": "yanmar-vio45-5-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/yanmar-vio45-5-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452",
+    "alt": "Yanmar ViO45-5 rubber tracks and parts",
+    "make": "Yanmar",
+    "model": "VIO 45-5 (Offset type)"
+  },
+  {
+    "handle": "takeuchi-tl240",
+    "model_key": "takeuchi-tl240",
+    "filename": "takeuchi-tl240-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tl240-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-skid-steer-hero.webp?v=1773971452",
+    "alt": "Takeuchi TL240 rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TL240"
+  },
+  {
+    "handle": "bobcat-428",
+    "model_key": "bobcat-428",
+    "filename": "bobcat-428-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-428-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926",
+    "alt": "Bobcat 428 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "428"
+  },
+  {
+    "handle": "yanmar-sv40",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "takeuchi-tl150",
+    "model_key": "takeuchi-tl150",
+    "filename": "takeuchi-tl150-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tl150-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-skid-steer-hero.webp?v=1773971452",
+    "alt": "Takeuchi TL150 rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TL150"
+  },
+  {
+    "handle": "takeuchi-tl130",
+    "model_key": "takeuchi-tl130",
+    "filename": "takeuchi-tl130-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tl130-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-skid-steer-hero.webp?v=1773971452",
+    "alt": "Takeuchi TL130 rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TL130"
+  },
+  {
+    "handle": "takeuchi-tb335",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535"
+  },
+  {
+    "handle": "takeuchi-tb320",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535"
+  },
+  {
+    "handle": "takeuchi-tl140",
+    "model_key": "takeuchi-tl140",
+    "filename": "takeuchi-tl140-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tl140-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-skid-steer-hero.webp?v=1773971452",
+    "alt": "Takeuchi TL140 rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TL140"
+  },
+  {
+    "handle": "bobcat-425",
+    "model_key": "bobcat-425",
+    "filename": "bobcat-425-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-425-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926",
+    "alt": "Bobcat 425 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "425"
+  },
+  {
+    "handle": "takeuchi-tl220",
+    "model_key": "takeuchi-tl220",
+    "filename": "takeuchi-tl220-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tl220-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-skid-steer-hero.webp?v=1773971452",
+    "alt": "Takeuchi TL220 rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TL220"
+  },
+  {
+    "handle": "bobcat-e38",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926"
+  },
+  {
+    "handle": "bobcat-e34",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926"
+  },
+  {
+    "handle": "takeuchi-tb280fr",
+    "model_key": "takeuchi-tb280fr",
+    "filename": "takeuchi-tb280fr-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tb280fr-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535",
+    "alt": "Takeuchi TB280FR rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TB280FR"
+  },
+  {
+    "handle": "takeuchi-tb257fr",
+    "model_key": "takeuchi-tb257fr",
+    "filename": "takeuchi-tb257fr-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tb257fr-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535",
+    "alt": "Takeuchi TB257FR rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TB257FR"
+  },
+  {
+    "handle": "takeuchi-tb210r",
+    "model_key": "takeuchi-tb210r",
+    "filename": "takeuchi-tb210r-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tb210r-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535",
+    "alt": "Takeuchi TB210R rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TB210R"
+  },
+  {
+    "handle": "takeuchi-tl230-legacy",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "bobcat-e85",
+    "model_key": "bobcat-e85",
+    "filename": "bobcat-e85-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-e85-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926",
+    "alt": "Bobcat E85 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "E85"
+  },
+  {
+    "handle": "takeuchi-tb135",
+    "model_key": "takeuchi-tb135",
+    "filename": "takeuchi-tb135-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tb135-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535",
+    "alt": "Takeuchi TB135 rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TB135"
+  },
+  {
+    "handle": "takeuchi-tb177",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535"
+  },
+  {
+    "handle": "cat-301-8",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "cat-305-5-cr",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "kubota-svl90-2",
+    "model_key": "kubota-svl90-2",
+    "filename": "kubota-svl90-2-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/kubota-svl90-2-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452",
+    "alt": "Kubota SVL90-2 rubber tracks and parts",
+    "make": "Kubota",
+    "model": "SVL90-2"
+  },
+  {
+    "handle": "kubota-kx91-3",
+    "model_key": "kubota-kx91-3",
+    "filename": "kubota-kx91-3-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/kubota-kx91-3-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452",
+    "alt": "Kubota KX91-3 rubber tracks and parts",
+    "make": "Kubota",
+    "model": "KX91-3"
+  },
+  {
+    "handle": "case-tr270",
+    "model_key": "case-tr270",
+    "filename": "case-tr270-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/case-tr270-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-skid-steer-hero.webp?v=1773971451",
+    "alt": "Case TR270 rubber tracks and parts",
+    "make": "Case",
+    "model": "TR270"
+  },
+  {
+    "handle": "bobcat-e37",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926"
+  },
+  {
+    "handle": "takeuchi-tb45",
+    "model_key": "takeuchi-tb45",
+    "filename": "takeuchi-tb45-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tb45-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535",
+    "alt": "Takeuchi TB45 rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TB45"
+  },
+  {
+    "handle": "takeuchi-tb53fr",
+    "model_key": "takeuchi-tb53fr",
+    "filename": "takeuchi-tb53fr-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tb53fr-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535",
+    "alt": "Takeuchi TB53FR rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TB53FR"
+  },
+  {
+    "handle": "case-tr310b",
+    "model_key": "case-tr310b",
+    "filename": "case-tr310b-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/case-tr310b-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-skid-steer-hero.webp?v=1773971451",
+    "alt": "Case TR310B rubber tracks and parts",
+    "make": "Case",
+    "model": "TR310B"
+  },
+  {
+    "handle": "case-cx80c",
+    "model_key": "case-cx80c",
+    "filename": "case-cx80c-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/case-cx80c-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-excavator-hero.webp?v=1773973926",
+    "alt": "Case CX80C rubber tracks and parts",
+    "make": "Case",
+    "model": "CX80C"
+  },
+  {
+    "handle": "kubota-kx071-3",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "case-tr340b",
+    "model_key": "case-tr340b",
+    "filename": "case-tr340b-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/case-tr340b-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-skid-steer-hero.webp?v=1773971451",
+    "alt": "Case TR340B rubber tracks and parts",
+    "make": "Case",
+    "model": "TR340B"
+  },
+  {
+    "handle": "cat-303-5e2",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "john-deere-17p",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-excavator-hero.webp?v=1773971529"
+  },
+  {
+    "handle": "case-tr370b",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "cat-310",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "bobcat-e88",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926"
+  },
+  {
+    "handle": "case-cx57c",
+    "model_key": "case-cx57c",
+    "filename": "case-cx57c-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/case-cx57c-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-excavator-hero.webp?v=1773973926",
+    "alt": "Case CX57C rubber tracks and parts",
+    "make": "Case",
+    "model": "CX57C"
+  },
+  {
+    "handle": "case-cx60c",
+    "model_key": "case-cx60c",
+    "filename": "case-cx60c-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/case-cx60c-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-excavator-hero.webp?v=1773973926",
+    "alt": "Case CX60C rubber tracks and parts",
+    "make": "Case",
+    "model": "CX60C"
+  },
+  {
+    "handle": "case-cx55c",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-excavator-hero.webp?v=1773973926"
+  },
+  {
+    "handle": "case-cx50c",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-excavator-hero.webp?v=1773973926"
+  },
+  {
+    "handle": "case-cx75c",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-excavator-hero.webp?v=1773973926"
+  },
+  {
+    "handle": "cat-309-cr",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "hitachi-zx35u",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "hitachi-zx75",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "cat-277",
+    "model_key": "cat-277",
+    "filename": "cat-277-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-277-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 277 rubber tracks and parts",
+    "make": "CAT",
+    "model": "277"
+  },
+  {
+    "handle": "cat-307-5",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "bobcat-e60",
+    "model_key": "bobcat-e60",
+    "filename": "bobcat-e60-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-e60-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926",
+    "alt": "Bobcat E60 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "E60"
+  },
+  {
+    "handle": "case-cx17c",
+    "model_key": "case-cx17c",
+    "filename": "case-cx17c-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/case-cx17c-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-excavator-hero.webp?v=1773973926",
+    "alt": "Case CX17C rubber tracks and parts",
+    "make": "Case",
+    "model": "CX17C"
+  },
+  {
+    "handle": "cat-287",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "kubota-kx080-5",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "hitachi-zx17u",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "john-deere-26p",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-excavator-hero.webp?v=1773971529"
+  },
+  {
+    "handle": "cat-307e",
+    "model_key": "cat-307e",
+    "filename": "cat-307e-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-307e-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 307E rubber tracks and parts",
+    "make": "CAT",
+    "model": "307E"
+  },
+  {
+    "handle": "kubota-u17",
+    "model_key": "kubota-u-17",
+    "filename": "kubota-u17-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/kubota-u17-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452",
+    "alt": "Kubota U17 rubber tracks and parts",
+    "make": "Kubota",
+    "model": "U-17"
+  },
+  {
+    "handle": "case-cx18c",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-excavator-hero.webp?v=1773973926"
+  },
+  {
+    "handle": "case-cx37c",
+    "model_key": "case-cx37c",
+    "filename": "case-cx37c-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/case-cx37c-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-excavator-hero.webp?v=1773973926",
+    "alt": "Case CX37C rubber tracks and parts",
+    "make": "Case",
+    "model": "CX37C"
+  },
+  {
+    "handle": "john-deere-75g",
+    "model_key": "john-deere-75g",
+    "filename": "john-deere-75g-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/john-deere-75g-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-excavator-hero.webp?v=1773971529",
+    "alt": "John Deere 75G rubber tracks and parts",
+    "make": "John Deere",
+    "model": "75G"
+  },
+  {
+    "handle": "cat-304cr",
+    "model_key": "cat-304cr",
+    "filename": "cat-304cr-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-304cr-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 304CR rubber tracks and parts",
+    "make": "CAT",
+    "model": "304CR"
+  },
+  {
+    "handle": "case-cx21c",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-excavator-hero.webp?v=1773973926"
+  },
+  {
+    "handle": "hitachi-zx60",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "cat-306cr",
+    "model_key": "cat-306cr",
+    "filename": "cat-306cr-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-306cr-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 306CR rubber tracks and parts",
+    "make": "CAT",
+    "model": "306CR"
+  },
+  {
+    "handle": "kubota-kx41-3",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "cat-303-5ccr",
+    "model_key": "cat-303-5c-cr",
+    "filename": "cat-303-5ccr-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-303-5ccr-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 303.5C CR rubber tracks and parts",
+    "make": "CAT",
+    "model": "303.5C CR"
+  },
+  {
+    "handle": "kubota-kx080-3",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "cat-308-cr",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "john-deere-17g",
+    "model_key": "john-deere-17g",
+    "filename": "john-deere-17g-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/john-deere-17g-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-excavator-hero.webp?v=1773971529",
+    "alt": "John Deere 17G rubber tracks and parts",
+    "make": "John Deere",
+    "model": "17G"
+  },
+  {
+    "handle": "cat-301-7",
+    "model_key": "cat-301-7",
+    "filename": "cat-301-7-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-301-7-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 301.7 rubber tracks and parts",
+    "make": "CAT",
+    "model": "301.7"
+  },
+  {
+    "handle": "hitachi-zx26u",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "case-cx36c",
+    "model_key": "case-cx36c",
+    "filename": "case-cx36c-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/case-cx36c-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-excavator-hero.webp?v=1773973926",
+    "alt": "Case CX36C rubber tracks and parts",
+    "make": "Case",
+    "model": "CX36C"
+  },
+  {
+    "handle": "john-deere-26g",
+    "model_key": "john-deere-26g",
+    "filename": "john-deere-26g-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/john-deere-26g-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-excavator-hero.webp?v=1773971529",
+    "alt": "John Deere 26G rubber tracks and parts",
+    "make": "John Deere",
+    "model": "26G"
+  },
+  {
+    "handle": "cat-308e2",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "hitachi-zx85",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "kubota-kx018-4",
+    "model_key": "kubota-kx018-4",
+    "filename": "kubota-kx018-4-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/kubota-kx018-4-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452",
+    "alt": "Kubota KX018-4 rubber tracks and parts",
+    "make": "Kubota",
+    "model": "KX018-4"
+  },
+  {
+    "handle": "john-deere-85g",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-excavator-hero.webp?v=1773971529"
+  },
+  {
+    "handle": "john-deere-85p",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-excavator-hero.webp?v=1773971529"
+  },
+  {
+    "handle": "case-cx15c",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-excavator-hero.webp?v=1773973926"
+  },
+  {
+    "handle": "john-deere-323d",
+    "model_key": "john-deere-323d",
+    "filename": "john-deere-323d-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/john-deere-323d-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-skid-steer-hero.webp?v=1773971451",
+    "alt": "John Deere 323D rubber tracks and parts",
+    "make": "John Deere",
+    "model": "323D"
+  },
+  {
+    "handle": "takeuchi-tb290",
+    "model_key": "takeuchi-tb290",
+    "filename": "takeuchi-tb290-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tb290-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535",
+    "alt": "Takeuchi TB290 rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TB290"
+  },
+  {
+    "handle": "takeuchi-tb225",
+    "model_key": "takeuchi-tb225",
+    "filename": "takeuchi-tb225-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tb225-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535",
+    "alt": "Takeuchi TB225 rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TB225"
+  },
+  {
+    "handle": "takeuchi-tb285",
+    "model_key": "takeuchi-tb285",
+    "filename": "takeuchi-tb285-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tb285-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535",
+    "alt": "Takeuchi TB285 rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TB285"
+  },
+  {
+    "handle": "john-deere-35d",
+    "model_key": "john-deere-35d",
+    "filename": "john-deere-35d-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/john-deere-35d-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-excavator-hero.webp?v=1773971529",
+    "alt": "John Deere 35D rubber tracks and parts",
+    "make": "John Deere",
+    "model": "35D"
+  },
+  {
+    "handle": "kubota-kx080-4",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "hitachi-zx50u",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "bobcat-328",
+    "model_key": "bobcat-328",
+    "filename": "bobcat-328-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-328-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926",
+    "alt": "Bobcat 328 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "328"
+  },
+  {
+    "handle": "yanmar-vio20-3",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "john-deere-ct332",
+    "model_key": "john-deere-ct332",
+    "filename": "john-deere-ct332-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/john-deere-ct332-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-skid-steer-hero.webp?v=1773971451",
+    "alt": "John Deere CT332 rubber tracks and parts",
+    "make": "John Deere",
+    "model": "CT332"
+  },
+  {
+    "handle": "john-deere-ct322",
+    "model_key": "john-deere-ct322",
+    "filename": "john-deere-ct322-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/john-deere-ct322-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-skid-steer-hero.webp?v=1773971451",
+    "alt": "John Deere CT322 rubber tracks and parts",
+    "make": "John Deere",
+    "model": "CT322"
+  },
+  {
+    "handle": "gehl-ctl85",
+    "model_key": "gehl-ctl85",
+    "filename": "gehl-ctl85-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/gehl-ctl85-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/gehl-skid-steer-hero.webp?v=1773971452",
+    "alt": "Gehl CTL85 rubber tracks and parts",
+    "make": "Gehl",
+    "model": "CTL85"
+  },
+  {
+    "handle": "john-deere-319d",
+    "model_key": "john-deere-319d",
+    "filename": "john-deere-319d-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/john-deere-319d-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-skid-steer-hero.webp?v=1773971451",
+    "alt": "John Deere 319D rubber tracks and parts",
+    "make": "John Deere",
+    "model": "319D"
+  },
+  {
+    "handle": "yanmar-vio35",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "john-deere-75p",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-excavator-hero.webp?v=1773971529"
+  },
+  {
+    "handle": "gehl-rt105",
+    "model_key": "gehl-rt105",
+    "filename": "gehl-rt105-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/gehl-rt105-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/gehl-skid-steer-hero.webp?v=1773971452",
+    "alt": "Gehl RT105 rubber tracks and parts",
+    "make": "Gehl",
+    "model": "RT105"
+  },
+  {
+    "handle": "gehl-rt215",
+    "model_key": "gehl-rt215",
+    "filename": "gehl-rt215-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/gehl-rt215-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/gehl-skid-steer-hero.webp?v=1773971452",
+    "alt": "Gehl RT215 rubber tracks and parts",
+    "make": "Gehl",
+    "model": "RT215"
+  },
+  {
+    "handle": "gehl-rt165",
+    "model_key": "gehl-rt165",
+    "filename": "gehl-rt165-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/gehl-rt165-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/gehl-skid-steer-hero.webp?v=1773971452",
+    "alt": "Gehl RT165 rubber tracks and parts",
+    "make": "Gehl",
+    "model": "RT165"
+  },
+  {
+    "handle": "gehl-rt175",
+    "model_key": "gehl-rt175",
+    "filename": "gehl-rt175-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/gehl-rt175-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/gehl-skid-steer-hero.webp?v=1773971452",
+    "alt": "Gehl RT175 rubber tracks and parts",
+    "make": "Gehl",
+    "model": "RT175"
+  },
+  {
+    "handle": "gehl-rt135",
+    "model_key": "gehl-rt135",
+    "filename": "gehl-rt135-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/gehl-rt135-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/gehl-skid-steer-hero.webp?v=1773971452",
+    "alt": "Gehl RT135 rubber tracks and parts",
+    "make": "Gehl",
+    "model": "RT135"
+  },
+  {
+    "handle": "gehl-ctl80",
+    "model_key": "gehl-ctl80",
+    "filename": "gehl-ctl80-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/gehl-ctl80-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/gehl-skid-steer-hero.webp?v=1773971452",
+    "alt": "Gehl CTL80 rubber tracks and parts",
+    "make": "Gehl",
+    "model": "CTL80"
+  },
+  {
+    "handle": "kubota-u25",
+    "model_key": "kubota-u25",
+    "filename": "kubota-u25-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/kubota-u25-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452",
+    "alt": "Kubota U25 rubber tracks and parts",
+    "make": "Kubota",
+    "model": "U25"
+  },
+  {
+    "handle": "gehl-ctl75",
+    "model_key": "gehl-ctl75",
+    "filename": "gehl-ctl75-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/gehl-ctl75-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/gehl-skid-steer-hero.webp?v=1773971452",
+    "alt": "Gehl CTL75 rubber tracks and parts",
+    "make": "Gehl",
+    "model": "CTL75"
+  },
+  {
+    "handle": "bobcat-e80",
+    "model_key": "bobcat-e80",
+    "filename": "bobcat-e80-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-e80-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926",
+    "alt": "Bobcat E80 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "E80"
+  },
+  {
+    "handle": "takeuchi-tb217r",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535"
+  },
+  {
+    "handle": "yanmar-sv26",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "takeuchi-tb219",
+    "model_key": "takeuchi-tb219",
+    "filename": "takeuchi-tb219-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tb219-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535",
+    "alt": "Takeuchi TB219 rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TB219"
+  },
+  {
+    "handle": "takeuchi-tb180fr",
+    "model_key": "takeuchi-tb180fr",
+    "filename": "takeuchi-tb180fr-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tb180fr-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535",
+    "alt": "Takeuchi TB180FR rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TB180FR"
+  },
+  {
+    "handle": "gehl-ctl65",
+    "model_key": "gehl-ctl65",
+    "filename": "gehl-ctl65-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/gehl-ctl65-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/gehl-skid-steer-hero.webp?v=1773971452",
+    "alt": "Gehl CTL65 rubber tracks and parts",
+    "make": "Gehl",
+    "model": "CTL65"
+  },
+  {
+    "handle": "takeuchi-tb215r",
+    "model_key": "takeuchi-tb215r",
+    "filename": "takeuchi-tb215r-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tb215r-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535",
+    "alt": "Takeuchi TB215R rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TB215R"
+  },
+  {
+    "handle": "gehl-ctl70",
+    "model_key": "gehl-ctl70",
+    "filename": "gehl-ctl70-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/gehl-ctl70-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/gehl-skid-steer-hero.webp?v=1773971452",
+    "alt": "Gehl CTL70 rubber tracks and parts",
+    "make": "Gehl",
+    "model": "CTL70"
+  },
+  {
+    "handle": "takeuchi-tb20e",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535"
+  },
+  {
+    "handle": "kubota-scl1000",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "bobcat-325",
+    "model_key": "bobcat-325",
+    "filename": "bobcat-325-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-325-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926",
+    "alt": "Bobcat 325 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "325"
+  },
+  {
+    "handle": "case-cx31c",
+    "model_key": "case-cx31c",
+    "filename": "case-cx31c-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/case-cx31c-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-excavator-hero.webp?v=1773973926",
+    "alt": "Case CX31C rubber tracks and parts",
+    "make": "Case",
+    "model": "CX31C"
+  },
+  {
+    "handle": "jcb-802-7",
+    "model_key": "jcb-802-7",
+    "filename": "jcb-802-7-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/jcb-802-7-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/jcb-excavator-hero.webp?v=1773971530",
+    "alt": "JCB 802.7 rubber tracks and parts",
+    "make": "JCB",
+    "model": "802.7"
+  },
+  {
+    "handle": "jcb-8030zts",
+    "model_key": "jcb-8030zts",
+    "filename": "jcb-8030zts-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/jcb-8030zts-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/jcb-excavator-hero.webp?v=1773971530",
+    "alt": "JCB 8030 ZTS rubber tracks and parts",
+    "make": "JCB",
+    "model": "8030ZTS"
+  },
+  {
+    "handle": "jcb-8018",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/jcb-excavator-hero.webp?v=1773971530"
+  },
+  {
+    "handle": "case-cx26c",
+    "model_key": "case-cx26c",
+    "filename": "case-cx26c-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/case-cx26c-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-excavator-hero.webp?v=1773973926",
+    "alt": "Case CX26C rubber tracks and parts",
+    "make": "Case",
+    "model": "CX26C"
+  },
+  {
+    "handle": "case-cx30c",
+    "model_key": "case-cx30c",
+    "filename": "case-cx30c-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/case-cx30c-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-excavator-hero.webp?v=1773973926",
+    "alt": "Case CX30C rubber tracks and parts",
+    "make": "Case",
+    "model": "CX30C"
+  },
+  {
+    "handle": "jcb-8040zts",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/jcb-excavator-hero.webp?v=1773971530"
+  },
+  {
+    "handle": "cat-247",
+    "model_key": "cat-247",
+    "filename": "cat-247-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-247-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 247 rubber tracks and parts",
+    "make": "CAT",
+    "model": "247"
+  },
+  {
+    "handle": "jcb-2ts-7t",
+    "model_key": "jcb-2ts7t",
+    "filename": "jcb-2ts-7t-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/jcb-2ts-7t-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/jcb-skid-steer-hero.webp?v=1773971451",
+    "alt": "JCB 2TS-7T rubber tracks and parts",
+    "make": "JCB",
+    "model": "2TS7T"
+  },
+  {
+    "handle": "new-holland-e55c",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/new-holland-excavator-hero.webp?v=1773971532"
+  },
+  {
+    "handle": "new-holland-e18c",
+    "model_key": "new-holland-e18c",
+    "filename": "new-holland-e18c-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/new-holland-e18c-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/new-holland-excavator-hero.webp?v=1773971532",
+    "alt": "New Holland E18C rubber tracks and parts",
+    "make": "New Holland",
+    "model": "E18C"
+  },
+  {
+    "handle": "jcb-801-6",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/jcb-excavator-hero.webp?v=1773971530"
+  },
+  {
+    "handle": "jcb-801-4",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/jcb-excavator-hero.webp?v=1773971530"
+  },
+  {
+    "handle": "new-holland-e30c",
+    "model_key": "new-holland-e30c",
+    "filename": "new-holland-e30c-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/new-holland-e30c-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/new-holland-excavator-hero.webp?v=1773971532",
+    "alt": "New Holland E30C rubber tracks and parts",
+    "make": "New Holland",
+    "model": "E30C"
+  },
+  {
+    "handle": "new-holland-c245",
+    "model_key": "new-holland-c245",
+    "filename": "new-holland-c245-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/new-holland-c245-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/new-holland-skid-steer-hero.webp?v=1773971452",
+    "alt": "New Holland C245 rubber tracks and parts",
+    "make": "New Holland",
+    "model": "C245"
+  },
+  {
+    "handle": "new-holland-c175",
+    "model_key": "new-holland-c175",
+    "filename": "new-holland-c175-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/new-holland-c175-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/new-holland-skid-steer-hero.webp?v=1773971452",
+    "alt": "New Holland C175 rubber tracks and parts",
+    "make": "New Holland",
+    "model": "C175"
+  },
+  {
+    "handle": "new-holland-c237",
+    "model_key": "new-holland-c237",
+    "filename": "new-holland-c237-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/new-holland-c237-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/new-holland-skid-steer-hero.webp?v=1773971452",
+    "alt": "New Holland C237 rubber tracks and parts",
+    "make": "New Holland",
+    "model": "C237"
+  },
+  {
+    "handle": "jcb-8026cts",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/jcb-excavator-hero.webp?v=1773971530"
+  },
+  {
+    "handle": "new-holland-c185",
+    "model_key": "new-holland-c185",
+    "filename": "new-holland-c185-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/new-holland-c185-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/new-holland-skid-steer-hero.webp?v=1773971452",
+    "alt": "New Holland C185 rubber tracks and parts",
+    "make": "New Holland",
+    "model": "C185"
+  },
+  {
+    "handle": "new-holland-c234",
+    "model_key": "new-holland-c234",
+    "filename": "new-holland-c234-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/new-holland-c234-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/new-holland-skid-steer-hero.webp?v=1773971452",
+    "alt": "New Holland C234 rubber tracks and parts",
+    "make": "New Holland",
+    "model": "C234"
+  },
+  {
+    "handle": "new-holland-e35c",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/new-holland-excavator-hero.webp?v=1773971532"
+  },
+  {
+    "handle": "jcb-8050zts",
+    "model_key": "jcb-8050zts",
+    "filename": "jcb-8050zts-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/jcb-8050zts-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/jcb-excavator-hero.webp?v=1773971530",
+    "alt": "JCB 8050 ZTS rubber tracks and parts",
+    "make": "JCB",
+    "model": "8050ZTS"
+  },
+  {
+    "handle": "new-holland-c314",
+    "model_key": "new-holland-c314",
+    "filename": "new-holland-c314-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/new-holland-c314-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/new-holland-skid-steer-hero.webp?v=1773971452",
+    "alt": "New Holland C314 rubber tracks and parts",
+    "make": "New Holland",
+    "model": "C314"
+  },
+  {
+    "handle": "jcb-803super",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/jcb-excavator-hero.webp?v=1773971530"
+  },
+  {
+    "handle": "new-holland-c190",
+    "model_key": "new-holland-c190",
+    "filename": "new-holland-c190-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/new-holland-c190-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/new-holland-skid-steer-hero.webp?v=1773971452",
+    "alt": "New Holland C190 rubber tracks and parts",
+    "make": "New Holland",
+    "model": "C190"
+  },
+  {
+    "handle": "jcb-8018super",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/jcb-excavator-hero.webp?v=1773971530"
+  },
+  {
+    "handle": "wacker-neuson-st31",
+    "model_key": "wacker-neuson-st31",
+    "filename": "wacker-neuson-st31-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/wacker-neuson-st31-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/wacker-skid-steer-hero.webp?v=1773971452",
+    "alt": "Wacker Neuson ST31 rubber tracks and parts",
+    "make": "Wacker",
+    "model": "ST31"
+  },
+  {
+    "handle": "new-holland-e60c",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/new-holland-excavator-hero.webp?v=1773971532"
+  },
+  {
+    "handle": "hitachi-zx30u-5",
+    "model_key": "hitachi-zx30u-5",
+    "filename": "hitachi-zx30u-5-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/hitachi-zx30u-5-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452",
+    "alt": "Hitachi ZX30U-5 rubber tracks and parts",
+    "make": "Hitachi",
+    "model": "ZX30U-5"
+  },
+  {
+    "handle": "wacker-neuson-ez19",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/wacker-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "wacker-neuson-st60",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/wacker-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "wacker-neuson-ez26",
+    "model_key": "wacker-ez26",
+    "filename": "wacker-neuson-ez26-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/wacker-neuson-ez26-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/wacker-skid-steer-hero.webp?v=1773971452",
+    "alt": "Wacker Neuson EZ26 rubber tracks and parts",
+    "make": "Wacker",
+    "model": "EZ26"
+  },
+  {
+    "handle": "wacker-neuson-ez17",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/wacker-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "wacker-neuson-st50",
+    "model_key": "wacker-neuson-st50",
+    "filename": "wacker-neuson-st50-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/wacker-neuson-st50-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/wacker-skid-steer-hero.webp?v=1773971452",
+    "alt": "Wacker Neuson ST50 rubber tracks and parts",
+    "make": "Wacker",
+    "model": "ST50"
+  },
+  {
+    "handle": "wacker-neuson-50z3",
+    "model_key": "wacker-50z3",
+    "filename": "wacker-neuson-50z3-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/wacker-neuson-50z3-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/wacker-skid-steer-hero.webp?v=1773971452",
+    "alt": "Wacker Neuson 50Z3 rubber tracks and parts",
+    "make": "Wacker",
+    "model": "50Z3"
+  },
+  {
+    "handle": "jcb-8035zts",
+    "model_key": "jcb-8035zts",
+    "filename": "jcb-8035zts-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/jcb-8035zts-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/jcb-excavator-hero.webp?v=1773971530",
+    "alt": "JCB 8035 ZTS rubber tracks and parts",
+    "make": "JCB",
+    "model": "8035ZTS"
+  },
+  {
+    "handle": "jcb-8060zts",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/jcb-excavator-hero.webp?v=1773971530"
+  },
+  {
+    "handle": "wacker-neuson-60z3",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/wacker-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "new-holland-e50c",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/new-holland-excavator-hero.webp?v=1773971532"
+  },
+  {
+    "handle": "wacker-neuson-ez30",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/wacker-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "jcb-801-6n",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/jcb-excavator-hero.webp?v=1773971530"
+  },
+  {
+    "handle": "komatsu-pc27mr",
+    "model_key": "komatsu-pc27mr",
+    "filename": "komatsu-pc27mr-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/komatsu-pc27mr-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/komatsu-excavator-hero.webp?v=1773971530",
+    "alt": "Komatsu PC27MR rubber tracks and parts",
+    "make": "Komatsu",
+    "model": "PC27MR"
+  },
+  {
+    "handle": "wacker-neuson-ez36",
+    "model_key": "wacker-ez36",
+    "filename": "wacker-neuson-ez36-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/wacker-neuson-ez36-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/wacker-skid-steer-hero.webp?v=1773971452",
+    "alt": "Wacker Neuson EZ36 rubber tracks and parts",
+    "make": "Wacker",
+    "model": "EZ36"
+  },
+  {
+    "handle": "komatsu-pc60mr",
+    "model_key": "komatsu-pc60mr",
+    "filename": "komatsu-pc60mr-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/komatsu-pc60mr-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/komatsu-excavator-hero.webp?v=1773971530",
+    "alt": "Komatsu PC60MR rubber tracks and parts",
+    "make": "Komatsu",
+    "model": "PC60MR"
+  },
+  {
+    "handle": "hitachi-zx17u-5",
+    "model_key": "hitachi-zx17u-5",
+    "filename": "hitachi-zx17u-5-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/hitachi-zx17u-5-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452",
+    "alt": "Hitachi ZX17U-5 rubber tracks and parts",
+    "make": "Hitachi",
+    "model": "ZX17U-5"
+  },
+  {
+    "handle": "jcb-8080ts",
+    "model_key": "jcb-8080ts",
+    "filename": "jcb-8080ts-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/jcb-8080ts-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/jcb-excavator-hero.webp?v=1773971530",
+    "alt": "JCB 8080 ZTS rubber tracks and parts",
+    "make": "JCB",
+    "model": "8080TS"
+  },
+  {
+    "handle": "jcb-801-5",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/jcb-excavator-hero.webp?v=1773971530"
+  },
+  {
+    "handle": "hitachi-zx35u-5",
+    "model_key": "hitachi-zx35u-5",
+    "filename": "hitachi-zx35u-5-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/hitachi-zx35u-5-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452",
+    "alt": "Hitachi ZX35U-5 rubber tracks and parts",
+    "make": "Hitachi",
+    "model": "ZX35U-5"
+  },
+  {
+    "handle": "gehl-ctl60",
+    "model_key": "gehl-ctl60",
+    "filename": "gehl-ctl60-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/gehl-ctl60-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/gehl-skid-steer-hero.webp?v=1773971452",
+    "alt": "Gehl CTL60 rubber tracks and parts",
+    "make": "Gehl",
+    "model": "CTL60"
+  },
+  {
+    "handle": "new-holland-e26c",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/new-holland-excavator-hero.webp?v=1773971532"
+  },
+  {
+    "handle": "hitachi-zx19u-5",
+    "model_key": "hitachi-zx19u-5",
+    "filename": "hitachi-zx19u-5-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/hitachi-zx19u-5-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452",
+    "alt": "Hitachi ZX19U-5 rubber tracks and parts",
+    "make": "Hitachi",
+    "model": "ZX19U-5"
+  },
+  {
+    "handle": "new-holland-c233",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/new-holland-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "hitachi-zx50u-5",
+    "model_key": "hitachi-zx50u-5",
+    "filename": "hitachi-zx50u-5-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/hitachi-zx50u-5-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452",
+    "alt": "Hitachi ZX50U-5 rubber tracks and parts",
+    "make": "Hitachi",
+    "model": "ZX50U-5"
+  },
+  {
+    "handle": "new-holland-e75c",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/new-holland-excavator-hero.webp?v=1773971532"
+  },
+  {
+    "handle": "komatsu-pc30mr",
+    "model_key": "komatsu-pc30mr",
+    "filename": "komatsu-pc30mr-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/komatsu-pc30mr-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/komatsu-excavator-hero.webp?v=1773971530",
+    "alt": "Komatsu PC30MR rubber tracks and parts",
+    "make": "Komatsu",
+    "model": "PC30MR"
+  },
+  {
+    "handle": "komatsu-pc20mr",
+    "model_key": "komatsu-pc20mr",
+    "filename": "komatsu-pc20mr-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/komatsu-pc20mr-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/komatsu-excavator-hero.webp?v=1773971530",
+    "alt": "Komatsu PC20MR rubber tracks and parts",
+    "make": "Komatsu",
+    "model": "PC20MR"
+  },
+  {
+    "handle": "komatsu-pc50mr",
+    "model_key": "komatsu-pc50mr",
+    "filename": "komatsu-pc50mr-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/komatsu-pc50mr-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/komatsu-excavator-hero.webp?v=1773971530",
+    "alt": "Komatsu PC50MR rubber tracks and parts",
+    "make": "Komatsu",
+    "model": "PC50MR"
+  },
+  {
+    "handle": "yanmar-vio26",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "wacker-neuson-st45",
+    "model_key": "wacker-neuson-st45",
+    "filename": "wacker-neuson-st45-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/wacker-neuson-st45-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/wacker-skid-steer-hero.webp?v=1773971452",
+    "alt": "Wacker Neuson ST45 rubber tracks and parts",
+    "make": "Wacker",
+    "model": "ST45"
+  },
+  {
+    "handle": "komatsu-pc45mr",
+    "model_key": "komatsu-pc45mr",
+    "filename": "komatsu-pc45mr-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/komatsu-pc45mr-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/komatsu-excavator-hero.webp?v=1773971530",
+    "alt": "Komatsu PC45MR rubber tracks and parts",
+    "make": "Komatsu",
+    "model": "PC45MR"
+  },
+  {
+    "handle": "vermeer-ctx100",
+    "model_key": "vermeer-ctx100",
+    "filename": "vermeer-ctx100-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/vermeer-ctx100-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/vermeer-stand-on-track-loader.webp?v=1774293795",
+    "alt": "Vermeer CTX100 rubber tracks and parts",
+    "make": "Vermeer",
+    "model": "CTX100"
+  },
+  {
+    "handle": "yanmar-vio50",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "volvo-ecr88d",
+    "model_key": "volvo-ecr88d",
+    "filename": "volvo-ecr88d-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/volvo-ecr88d-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/volvo-skid-steer-hero.webp?v=1773971452",
+    "alt": "Volvo ECR88D rubber tracks and parts",
+    "make": "Volvo",
+    "model": "ECR88D"
+  },
+  {
+    "handle": "volvo-ec35d",
+    "model_key": "volvo-ec35d",
+    "filename": "volvo-ec35d-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/volvo-ec35d-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/volvo-skid-steer-hero.webp?v=1773971452",
+    "alt": "Volvo EC35D rubber tracks and parts",
+    "make": "Volvo",
+    "model": "EC35D"
+  },
+  {
+    "handle": "volvo-ec60c",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/volvo-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "vermeer-ctx160",
+    "model_key": "vermeer-ctx160",
+    "filename": "vermeer-ctx160-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/vermeer-ctx160-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/vermeer-stand-on-track-loader.webp?v=1774293795",
+    "alt": "Vermeer CTX160 rubber tracks and parts",
+    "make": "Vermeer",
+    "model": "CTX160"
+  },
+  {
+    "handle": "volvo-ec55c",
+    "model_key": "volvo-ec55c",
+    "filename": "volvo-ec55c-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/volvo-ec55c-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/volvo-skid-steer-hero.webp?v=1773971452",
+    "alt": "Volvo EC55C rubber tracks and parts",
+    "make": "Volvo",
+    "model": "EC55C"
+  },
+  {
+    "handle": "volvo-ec27d",
+    "model_key": "volvo-ec27d",
+    "filename": "volvo-ec27d-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/volvo-ec27d-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/volvo-skid-steer-hero.webp?v=1773971452",
+    "alt": "Volvo EC27D rubber tracks and parts",
+    "make": "Volvo",
+    "model": "EC27D"
+  },
+  {
+    "handle": "volvo-ec20d",
+    "model_key": "volvo-ec20d",
+    "filename": "volvo-ec20d-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/volvo-ec20d-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/volvo-skid-steer-hero.webp?v=1773971452",
+    "alt": "Volvo EC20D rubber tracks and parts",
+    "make": "Volvo",
+    "model": "EC20D"
+  },
+  {
+    "handle": "asv-rt65",
+    "model_key": "asv-rt65",
+    "filename": "asv-rt65-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/asv-rt65-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ASV-multi-terrain-loader-hero.webp?v=1773971451",
+    "alt": "ASV RT-65 rubber tracks and parts",
+    "make": "ASV",
+    "model": "RT65"
+  },
+  {
+    "handle": "ihi-40j",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "volvo-ec18c",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/volvo-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "volvo-ec75c",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/volvo-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "asv-vt70",
+    "model_key": "asv-vt70",
+    "filename": "asv-vt70-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/asv-vt70-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ASV-multi-terrain-loader-hero.webp?v=1773971451",
+    "alt": "ASV VT-70 rubber tracks and parts",
+    "make": "ASV",
+    "model": "VT70"
+  },
+  {
+    "handle": "vermeer-s600tx",
+    "model_key": "vermeer-s600tx",
+    "filename": "vermeer-s600tx-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/vermeer-s600tx-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/vermeer-stand-on-track-loader.webp?v=1774293795",
+    "alt": "Vermeer S600TX rubber tracks and parts",
+    "make": "Vermeer",
+    "model": "S600TX"
+  },
+  {
+    "handle": "ihi-35j",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "ihi-85j",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "ditch-witch-sk600",
+    "model_key": "ditch-witch-sk-600",
+    "filename": "ditch-witch-sk600-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/ditch-witch-sk600-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ditchwitch-stand-on-track-loader.webp?v=1774293676",
+    "alt": "Ditch Witch SK600 rubber tracks and parts",
+    "make": "Ditch Witch",
+    "model": "SK 600"
+  },
+  {
+    "handle": "ihi-75j",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "ditch-witch-sk3000",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ditchwitch-stand-on-track-loader.webp?v=1774293676"
+  },
+  {
+    "handle": "cat-255",
+    "model_key": "cat-255",
+    "filename": "cat-255-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-255-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 255 rubber tracks and parts",
+    "make": "CAT",
+    "model": "255"
+  },
+  {
+    "handle": "ditch-witch-sk650",
+    "model_key": "ditch-witch-sk-650",
+    "filename": "ditch-witch-sk650-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/ditch-witch-sk650-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ditchwitch-stand-on-track-loader.webp?v=1774293676",
+    "alt": "Ditch Witch SK650 rubber tracks and parts",
+    "make": "Ditch Witch",
+    "model": "SK 650"
+  },
+  {
+    "handle": "hyundai-hx17az",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "ditch-witch-sk2500",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ditchwitch-stand-on-track-loader.webp?v=1774293676"
+  },
+  {
+    "handle": "develon-dx42",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "develon-dx27z",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "vermeer-s450tx",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/vermeer-stand-on-track-loader.webp?v=1774293795"
+  },
+  {
+    "handle": "develon-dx62r",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "cat-265",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "kobelco-sk30sr",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kobelco-excavator-hero.webp?v=1774293477"
+  },
+  {
+    "handle": "cat-275",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "hyundai-r35z-9a",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "asv-vt75",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ASV-multi-terrain-loader-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "develon-dx55r",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "vermeer-s925tx",
+    "model_key": "vermeer-s925tx",
+    "filename": "vermeer-s925tx-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/vermeer-s925tx-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/vermeer-stand-on-track-loader.webp?v=1774293795",
+    "alt": "Vermeer S925TX rubber tracks and parts",
+    "make": "Vermeer",
+    "model": "S925TX"
+  },
+  {
+    "handle": "ihi-60j",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "ihi-55j",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "hyundai-hx30az",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "develon-dtl35",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "develon-dx63",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "cat-285-xe",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "ditch-witch-sk1750",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ditchwitch-stand-on-track-loader.webp?v=1774293676"
+  },
+  {
+    "handle": "hyundai-hx48az",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "develon-dx85r",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "hyundai-r55-9a",
+    "model_key": "hyundai-r55-9a",
+    "filename": "hyundai-r55-9a-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/hyundai-r55-9a-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452",
+    "alt": "Hyundai R55-9A rubber tracks and parts",
+    "make": "Hyundai",
+    "model": "R55-9a"
+  },
+  {
+    "handle": "cat-285",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "asv-vt100",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ASV-multi-terrain-loader-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "cat-275-xe",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "kobelco-sk45srx",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kobelco-excavator-hero.webp?v=1774293477"
+  },
+  {
+    "handle": "kubota-svl97-3",
+    "model_key": "kubota-svl97-3",
+    "filename": "kubota-svl97-3-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/kubota-svl97-3-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452",
+    "alt": "Kubota SVL97-3 rubber tracks and parts",
+    "make": "Kubota",
+    "model": "SVL97-3"
+  },
+  {
+    "handle": "kobelco-sk25sr",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kobelco-excavator-hero.webp?v=1774293477"
+  },
+  {
+    "handle": "bobcat-t595",
+    "model_key": "bobcat-t595",
+    "filename": "bobcat-t595-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-t595-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451",
+    "alt": "Bobcat T595 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "T595"
+  },
+  {
+    "handle": "bobcat-t200",
+    "model_key": "bobcat-t200",
+    "filename": "bobcat-t200-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-t200-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451",
+    "alt": "Bobcat T200 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "T200"
+  },
+  {
+    "handle": "case-tv620b",
+    "model_key": "case-tv620b",
+    "filename": "case-tv620b-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/case-tv620b-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-skid-steer-hero.webp?v=1773971451",
+    "alt": "Case TV620B rubber tracks and parts",
+    "make": "Case",
+    "model": "TV620B"
+  },
+  {
+    "handle": "bobcat-t66",
+    "model_key": "bobcat-t66",
+    "filename": "bobcat-t66-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-t66-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451",
+    "alt": "Bobcat T66 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "T66"
+  },
+  {
+    "handle": "bobcat-t300",
+    "model_key": "bobcat-t300",
+    "filename": "bobcat-t300-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-t300-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451",
+    "alt": "Bobcat T300 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "T300"
+  },
+  {
+    "handle": "cat-299d2-xhp",
+    "model_key": "cat-299d2-xhp",
+    "filename": "cat-299d2-xhp-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-299d2-xhp-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 299D2 XHP rubber tracks and parts",
+    "make": "CAT",
+    "model": "299D2 XHP"
+  },
+  {
+    "handle": "asv-rt30",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ASV-multi-terrain-loader-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "bobcat-t62",
+    "model_key": "bobcat-t62",
+    "filename": "bobcat-t62-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-t62-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451",
+    "alt": "Bobcat T62 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "T62"
+  },
+  {
+    "handle": "bobcat-t190",
+    "model_key": "bobcat-t190",
+    "filename": "bobcat-t190-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-t190-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451",
+    "alt": "Bobcat T190 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "T190"
+  },
+  {
+    "handle": "kobelco-sk85cs",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kobelco-excavator-hero.webp?v=1774293477"
+  },
+  {
+    "handle": "cat-299c",
+    "model_key": "cat-299c",
+    "filename": "cat-299c-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-299c-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 299C rubber tracks and parts",
+    "make": "CAT",
+    "model": "299C"
+  },
+  {
+    "handle": "cat-289c2",
+    "model_key": "cat-289c2",
+    "filename": "cat-289c2-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-289c2-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 289C2 rubber tracks and parts",
+    "make": "CAT",
+    "model": "289C2"
+  },
+  {
+    "handle": "cat-279c2",
+    "model_key": "cat-279c2",
+    "filename": "cat-279c2-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-279c2-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 279C2 rubber tracks and parts",
+    "make": "CAT",
+    "model": "279C2"
+  },
+  {
+    "handle": "kubota-svl75-3",
+    "model_key": "kubota-svl75-3",
+    "filename": "kubota-svl75-3-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/kubota-svl75-3-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452",
+    "alt": "Kubota SVL75-3 rubber tracks and parts",
+    "make": "Kubota",
+    "model": "SVL75-3"
+  },
+  {
+    "handle": "cat-259d",
+    "model_key": "cat-259d",
+    "filename": "cat-259d-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-259d-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 259D rubber tracks and parts",
+    "make": "CAT",
+    "model": "259D"
+  },
+  {
+    "handle": "john-deere-319e",
+    "model_key": "john-deere-319e",
+    "filename": "john-deere-319e-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/john-deere-319e-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-skid-steer-hero.webp?v=1773971451",
+    "alt": "John Deere 319E rubber tracks and parts",
+    "make": "John Deere",
+    "model": "319E"
+  },
+  {
+    "handle": "john-deere-333p",
+    "model_key": "john-deere-333p",
+    "filename": "john-deere-333p-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/john-deere-333p-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-skid-steer-hero.webp?v=1773971451",
+    "alt": "John Deere 333P rubber tracks and parts",
+    "make": "John Deere",
+    "model": "333P"
+  },
+  {
+    "handle": "cat-279c",
+    "model_key": "cat-279c",
+    "filename": "cat-279c-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-279c-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 279C rubber tracks and parts",
+    "make": "CAT",
+    "model": "279C"
+  },
+  {
+    "handle": "cat-289c",
+    "model_key": "cat-289c",
+    "filename": "cat-289c-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-289c-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 289C rubber tracks and parts",
+    "make": "CAT",
+    "model": "289C"
+  },
+  {
+    "handle": "bobcat-t250",
+    "model_key": "bobcat-t250",
+    "filename": "bobcat-t250-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-t250-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451",
+    "alt": "Bobcat T250 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "T250"
+  },
+  {
+    "handle": "john-deere-323e",
+    "model_key": "john-deere-323e",
+    "filename": "john-deere-323e-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/john-deere-323e-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-skid-steer-hero.webp?v=1773971451",
+    "alt": "John Deere 323E rubber tracks and parts",
+    "make": "John Deere",
+    "model": "323E"
+  },
+  {
+    "handle": "john-deere-333d",
+    "model_key": "john-deere-333d",
+    "filename": "john-deere-333d-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/john-deere-333d-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-skid-steer-hero.webp?v=1773971451",
+    "alt": "John Deere 333D rubber tracks and parts",
+    "make": "John Deere",
+    "model": "333D"
+  },
+  {
+    "handle": "komatsu-ck30-1",
+    "model_key": "komatsu-ck30-1",
+    "filename": "komatsu-ck30-1-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/komatsu-ck30-1-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/komatsu-excavator-hero.webp?v=1773971530",
+    "alt": "Komatsu CK30-1 rubber tracks and parts",
+    "make": "Komatsu",
+    "model": "CK30-1"
+  },
+  {
+    "handle": "jcb-320t",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/jcb-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "case-tv450b",
+    "model_key": "case-tv450b",
+    "filename": "case-tv450b-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/case-tv450b-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-skid-steer-hero.webp?v=1773971451",
+    "alt": "Case TV450B rubber tracks and parts",
+    "make": "Case",
+    "model": "TV450B"
+  },
+  {
+    "handle": "terex-pt30",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "jcb-3ts-8t",
+    "model_key": "jcb-3ts-8t",
+    "filename": "jcb-3ts-8t-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/jcb-3ts-8t-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/jcb-skid-steer-hero.webp?v=1773971451",
+    "alt": "JCB 3TS-8T Teleskid rubber tracks and parts",
+    "make": "JCB",
+    "model": "3TS-8T"
+  },
+  {
+    "handle": "komatsu-ck35-1",
+    "model_key": "komatsu-ck35-1",
+    "filename": "komatsu-ck35-1-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/komatsu-ck35-1-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/komatsu-excavator-hero.webp?v=1773971530",
+    "alt": "Komatsu CK35-1 rubber tracks and parts",
+    "make": "Komatsu",
+    "model": "CK35-1"
+  },
+  {
+    "handle": "john-deere-317g",
+    "model_key": "john-deere-317g",
+    "filename": "john-deere-317g-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/john-deere-317g-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-skid-steer-hero.webp?v=1773971451",
+    "alt": "John Deere 317G rubber tracks and parts",
+    "make": "John Deere",
+    "model": "317G"
+  },
+  {
+    "handle": "volvo-mct145c",
+    "model_key": "volvo-mct145c",
+    "filename": "volvo-mct145c-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/volvo-mct145c-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/volvo-skid-steer-hero.webp?v=1773971452",
+    "alt": "Volvo MCT145C rubber tracks and parts",
+    "make": "Volvo",
+    "model": "MCT145C"
+  },
+  {
+    "handle": "john-deere-331p",
+    "model_key": "john-deere-331p",
+    "filename": "john-deere-331p-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/john-deere-331p-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-333g-rubber-tracks-installed.webp?v=1773784404",
+    "alt": "John Deere 331P rubber tracks and parts",
+    "make": "John Deere",
+    "model": "331P"
+  },
+  {
+    "handle": "new-holland-c334",
+    "model_key": "new-holland-c334",
+    "filename": "new-holland-c334-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/new-holland-c334-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/new-holland-skid-steer-hero.webp?v=1773971452",
+    "alt": "New Holland C334 rubber tracks and parts",
+    "make": "New Holland",
+    "model": "C334"
+  },
+  {
+    "handle": "wacker-st45",
+    "model_key": "wacker-st45",
+    "filename": "wacker-st45-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/wacker-st45-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/wacker-skid-steer-hero.webp?v=1773971452",
+    "alt": "Wacker Neuson ST45 rubber tracks and parts",
+    "make": "Wacker",
+    "model": "ST45"
+  },
+  {
+    "handle": "jcb-300t",
+    "model_key": "jcb-300t",
+    "filename": "jcb-300t-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/jcb-300t-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/jcb-skid-steer-hero.webp?v=1773971451",
+    "alt": "JCB 300T rubber tracks and parts",
+    "make": "JCB",
+    "model": "300T"
+  },
+  {
+    "handle": "jcb-225t",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/jcb-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "new-holland-c345",
+    "model_key": "new-holland-c345",
+    "filename": "new-holland-c345-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/new-holland-c345-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/new-holland-skid-steer-hero.webp?v=1773971452",
+    "alt": "New Holland C345 rubber tracks and parts",
+    "make": "New Holland",
+    "model": "C345"
+  },
+  {
+    "handle": "volvo-mct125c",
+    "model_key": "volvo-mct125c",
+    "filename": "volvo-mct125c-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/volvo-mct125c-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/volvo-skid-steer-hero.webp?v=1773971452",
+    "alt": "Volvo MCT125C rubber tracks and parts",
+    "make": "Volvo",
+    "model": "MCT125C"
+  },
+  {
+    "handle": "wacker-st35",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/wacker-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "takeuchi-tl11r3",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "new-holland-c332",
+    "model_key": "new-holland-c332",
+    "filename": "new-holland-c332-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/new-holland-c332-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/new-holland-skid-steer-hero.webp?v=1773971452",
+    "alt": "New Holland C332 rubber tracks and parts",
+    "make": "New Holland",
+    "model": "C332"
+  },
+  {
+    "handle": "new-holland-c330",
+    "model_key": "new-holland-c330",
+    "filename": "new-holland-c330-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/new-holland-c330-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/new-holland-skid-steer-hero.webp?v=1773971452",
+    "alt": "New Holland C330 rubber tracks and parts",
+    "make": "New Holland",
+    "model": "C330"
+  },
+  {
+    "handle": "new-holland-c337",
+    "model_key": "new-holland-c337",
+    "filename": "new-holland-c337-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/new-holland-c337-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/new-holland-skid-steer-hero.webp?v=1773971452",
+    "alt": "New Holland C337 rubber tracks and parts",
+    "make": "New Holland",
+    "model": "C337"
+  },
+  {
+    "handle": "new-holland-c238",
+    "model_key": "new-holland-c238",
+    "filename": "new-holland-c238-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/new-holland-c238-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/new-holland-skid-steer-hero.webp?v=1773971452",
+    "alt": "New Holland C238 rubber tracks and parts",
+    "make": "New Holland",
+    "model": "C238"
+  },
+  {
+    "handle": "john-deere-329d",
+    "model_key": "john-deere-329d",
+    "filename": "john-deere-329d-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/john-deere-329d-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-skid-steer-hero.webp?v=1773971451",
+    "alt": "John Deere 329D rubber tracks and parts",
+    "make": "John Deere",
+    "model": "329D"
+  },
+  {
+    "handle": "new-holland-c327",
+    "model_key": "new-holland-c327",
+    "filename": "new-holland-c327-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/new-holland-c327-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/new-holland-skid-steer-hero.webp?v=1773971452",
+    "alt": "New Holland C327 rubber tracks and parts",
+    "make": "New Holland",
+    "model": "C327"
+  },
+  {
+    "handle": "asv-rt50",
+    "model_key": "asv-rt50",
+    "filename": "asv-rt50-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/asv-rt50-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ASV-multi-terrain-loader-hero.webp?v=1773971451",
+    "alt": "ASV RT-50 rubber tracks and parts",
+    "make": "ASV",
+    "model": "RT50"
+  },
+  {
+    "handle": "gehl-rt210",
+    "model_key": "gehl-rt210",
+    "filename": "gehl-rt210-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/gehl-rt210-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/gehl-skid-steer-hero.webp?v=1773971452",
+    "alt": "Gehl RT210 rubber tracks and parts",
+    "make": "Gehl",
+    "model": "RT210"
+  },
+  {
+    "handle": "wacker-st31",
+    "model_key": "wacker-st31",
+    "filename": "wacker-st31-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/wacker-st31-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/wacker-skid-steer-hero.webp?v=1773971452",
+    "alt": "Wacker Neuson ST31 rubber tracks and parts",
+    "make": "Wacker",
+    "model": "ST31"
+  },
+  {
+    "handle": "gehl-rt255",
+    "model_key": "gehl-rt255",
+    "filename": "gehl-rt255-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/gehl-rt255-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/gehl-skid-steer-hero.webp?v=1773971452",
+    "alt": "Gehl RT255 rubber tracks and parts",
+    "make": "Gehl",
+    "model": "RT255"
+  },
+  {
+    "handle": "gehl-rt250",
+    "model_key": "gehl-rt250",
+    "filename": "gehl-rt250-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/gehl-rt250-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/gehl-skid-steer-hero.webp?v=1773971452",
+    "alt": "Gehl RT250 rubber tracks and parts",
+    "make": "Gehl",
+    "model": "RT250"
+  },
+  {
+    "handle": "ditch-witch-sk1550",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ditchwitch-stand-on-track-loader.webp?v=1774293676"
+  },
+  {
+    "handle": "jcb-260t",
+    "model_key": "jcb-260t",
+    "filename": "jcb-260t-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/jcb-260t-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/jcb-skid-steer-hero.webp?v=1773971451",
+    "alt": "JCB 260T rubber tracks and parts",
+    "make": "JCB",
+    "model": "260T"
+  },
+  {
+    "handle": "new-holland-c232",
+    "model_key": "new-holland-c232",
+    "filename": "new-holland-c232-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/new-holland-c232-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/new-holland-skid-steer-hero.webp?v=1773971452",
+    "alt": "New Holland C232 rubber tracks and parts",
+    "make": "New Holland",
+    "model": "C232"
+  },
+  {
+    "handle": "asv-rt-50",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ASV-multi-terrain-loader-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "terex-pt60",
+    "model_key": "terex-pt60",
+    "filename": "terex-pt60-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/terex-pt60-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452",
+    "alt": "Terex PT-60 rubber tracks and parts",
+    "make": "Terex",
+    "model": "PT60"
+  },
+  {
+    "handle": "terex-pt50",
+    "model_key": "terex-pt50",
+    "filename": "terex-pt50-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/terex-pt50-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452",
+    "alt": "Terex PT-50 rubber tracks and parts",
+    "make": "Terex",
+    "model": "PT50"
+  },
+  {
+    "handle": "case-tr310",
+    "model_key": "case-tr310",
+    "filename": "case-tr310-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/case-tr310-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-skid-steer-hero.webp?v=1773971451",
+    "alt": "Case TR310 rubber tracks and parts",
+    "make": "Case",
+    "model": "TR310"
+  },
+  {
+    "handle": "ditch-witch-sk900",
+    "model_key": "ditch-witch-sk900",
+    "filename": "ditch-witch-sk900-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/ditch-witch-sk900-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ditchwitch-stand-on-track-loader.webp?v=1774293676",
+    "alt": "Ditch Witch SK900 rubber tracks and parts",
+    "make": "Ditch Witch",
+    "model": "SK900"
+  },
+  {
+    "handle": "bobcat-t870-suspension",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "wacker-st27",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/wacker-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "asv-rt-135",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ASV-multi-terrain-loader-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "yanmar-tl100vs",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "volvo-mct135c",
+    "model_key": "volvo-mct135c",
+    "filename": "volvo-mct135c-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/volvo-mct135c-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/volvo-skid-steer-hero.webp?v=1773971452",
+    "alt": "Volvo MCT135C rubber tracks and parts",
+    "make": "Volvo",
+    "model": "MCT135C"
+  },
+  {
+    "handle": "ihi-cl45",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "cat-299d3-xe",
+    "model_key": "cat-299d3-xe",
+    "filename": "cat-299d3-xe-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-299d3-xe-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 299D3 XE rubber tracks and parts",
+    "make": "CAT",
+    "model": "299D3 XE"
+  },
+  {
+    "handle": "ditch-witch-sk850",
+    "model_key": "ditch-witch-sk850",
+    "filename": "ditch-witch-sk850-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/ditch-witch-sk850-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ditchwitch-stand-on-track-loader.webp?v=1774293676",
+    "alt": "Ditch Witch SK850 rubber tracks and parts",
+    "make": "Ditch Witch",
+    "model": "SK850"
+  },
+  {
+    "handle": "new-holland-c362",
+    "model_key": "new-holland-c362",
+    "filename": "new-holland-c362-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/new-holland-c362-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/new-holland-skid-steer-hero.webp?v=1773971452",
+    "alt": "New Holland C362 rubber tracks and parts",
+    "make": "New Holland",
+    "model": "C362"
+  },
+  {
+    "handle": "jcb-325t",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/jcb-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "takeuchi-tl12v2",
+    "model_key": "takeuchi-tl12v2",
+    "filename": "takeuchi-tl12v2-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tl12v2-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-skid-steer-hero.webp?v=1773971452",
+    "alt": "Takeuchi TL12V2 rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TL12V2"
+  },
+  {
+    "handle": "terex-r265t",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "ditch-witch-sk500",
+    "model_key": "ditch-witch-sk-500",
+    "filename": "ditch-witch-sk500-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/ditch-witch-sk500-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ditchwitch-stand-on-track-loader.webp?v=1774293676",
+    "alt": "Ditch Witch SK500 rubber tracks and parts",
+    "make": "Ditch Witch",
+    "model": "SK 500"
+  },
+  {
+    "handle": "asv-rt-65",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ASV-multi-terrain-loader-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "ditch-witch-sk1050",
+    "model_key": "ditch-witch-sk-1050",
+    "filename": "ditch-witch-sk1050-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/ditch-witch-sk1050-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ditchwitch-stand-on-track-loader.webp?v=1774293676",
+    "alt": "Ditch Witch SK1050 rubber tracks and parts",
+    "make": "Ditch Witch",
+    "model": "SK 1050"
+  },
+  {
+    "handle": "cat-239d3",
+    "model_key": "cat-239d3",
+    "filename": "cat-239d3-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-239d3-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 239D3 rubber tracks and parts",
+    "make": "CAT",
+    "model": "239D3"
+  },
+  {
+    "handle": "jcb-270t",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/jcb-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "case-tv380",
+    "model_key": "case-tv380",
+    "filename": "case-tv380-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/case-tv380-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-skid-steer-hero.webp?v=1773971451",
+    "alt": "Case TV380 rubber tracks and parts",
+    "make": "Case",
+    "model": "TV380"
+  },
+  {
+    "handle": "takeuchi-tl250",
+    "model_key": "takeuchi-tl250",
+    "filename": "takeuchi-tl250-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tl250-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-skid-steer-hero.webp?v=1773971452",
+    "alt": "Takeuchi TL250 rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TL250"
+  },
+  {
+    "handle": "ihi-cl35",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "yanmar-t210",
+    "model_key": "yanmar-t210",
+    "filename": "yanmar-t210-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/yanmar-t210-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452",
+    "alt": "Yanmar T-210 rubber tracks and parts",
+    "make": "Yanmar",
+    "model": "T210"
+  },
+  {
+    "handle": "gehl-rt185",
+    "model_key": "gehl-rt185",
+    "filename": "gehl-rt185-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/gehl-rt185-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/gehl-skid-steer-hero.webp?v=1773971452",
+    "alt": "Gehl RT185 rubber tracks and parts",
+    "make": "Gehl",
+    "model": "RT185"
+  },
+  {
+    "handle": "terex-r190t",
+    "model_key": "terex-r190t",
+    "filename": "terex-r190t-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/terex-r190t-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452",
+    "alt": "Terex R190T rubber tracks and parts",
+    "make": "Terex",
+    "model": "R190T"
+  },
+  {
+    "handle": "case-tv450",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/case-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "asv-vt-80",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ASV-multi-terrain-loader-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "asv-rt50t",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ASV-multi-terrain-loader-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "volvo-ec15c",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/volvo-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "ditch-witch-sk800",
+    "model_key": "ditch-witch-sk800",
+    "filename": "ditch-witch-sk800-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/ditch-witch-sk800-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ditchwitch-stand-on-track-loader.webp?v=1774293676",
+    "alt": "Ditch Witch SK800 rubber tracks and parts",
+    "make": "Ditch Witch",
+    "model": "SK800"
+  },
+  {
+    "handle": "asv-rt75hd",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ASV-multi-terrain-loader-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "vermeer-s800tx",
+    "model_key": "vermeer-s800tx",
+    "filename": "vermeer-s800tx-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/vermeer-s800tx-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/vermeer-stand-on-track-loader.webp?v=1774293795",
+    "alt": "Vermeer S800TX rubber tracks and parts",
+    "make": "Vermeer",
+    "model": "S800TX"
+  },
+  {
+    "handle": "bobcat-e8",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926"
+  },
+  {
+    "handle": "toro-tx425",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "terex-pt80",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "bobcat-e7",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926"
+  },
+  {
+    "handle": "toro-tx427",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "ditch-witch-sk750",
+    "model_key": "ditch-witch-sk-750",
+    "filename": "ditch-witch-sk750-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/ditch-witch-sk750-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ditchwitch-stand-on-track-loader.webp?v=1774293676",
+    "alt": "Ditch Witch SK750 rubber tracks and parts",
+    "make": "Ditch Witch",
+    "model": "SK 750"
+  },
+  {
+    "handle": "toro-tx420",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "asv-vt80",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ASV-multi-terrain-loader-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "mustang-2500rt",
+    "model_key": "mustang-2500rt",
+    "filename": "mustang-2500rt-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/mustang-2500rt-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/gehl-skid-steer-hero.webp?v=1773971452",
+    "alt": "Mustang 2500RT rubber tracks and parts",
+    "make": "Mustang",
+    "model": "2500RT"
+  },
+  {
+    "handle": "mustang-2100rt",
+    "model_key": "mustang-2100rt",
+    "filename": "mustang-2100rt-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/mustang-2100rt-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/gehl-skid-steer-hero.webp?v=1773971452",
+    "alt": "Mustang 2100RT rubber tracks and parts",
+    "make": "Mustang",
+    "model": "2100RT"
+  },
+  {
+    "handle": "manitou-1650rt",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "cat-257d",
+    "model_key": "cat-257d",
+    "filename": "cat-257d-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-257d-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 257D rubber tracks and parts",
+    "make": "CAT",
+    "model": "257D"
+  },
+  {
+    "handle": "ditch-witch-sk755",
+    "model_key": "ditch-witch-sk-755",
+    "filename": "ditch-witch-sk755-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/ditch-witch-sk755-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ditchwitch-stand-on-track-loader.webp?v=1774293676",
+    "alt": "Ditch Witch SK755 rubber tracks and parts",
+    "make": "Ditch Witch",
+    "model": "SK 755"
+  },
+  {
+    "handle": "manitou-2150rt",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "manitou-1050rt",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "vermeer-s725tx",
+    "model_key": "vermeer-s725tx",
+    "filename": "vermeer-s725tx-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/vermeer-s725tx-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/vermeer-stand-on-track-loader.webp?v=1774293795",
+    "alt": "Vermeer S725TX rubber tracks and parts",
+    "make": "Vermeer",
+    "model": "S725TX"
+  },
+  {
+    "handle": "kioti-tl1000",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "manitou-3200vt",
+    "model_key": "manitou-3200vt",
+    "filename": "manitou-3200vt-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/manitou-3200vt-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452",
+    "alt": "Manitou 3200VT rubber tracks and parts",
+    "make": "Manitou",
+    "model": "3200VT"
+  },
+  {
+    "handle": "kioti-tl750",
+    "model_key": "kioti-tl750",
+    "filename": "kioti-tl750-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/kioti-tl750-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452",
+    "alt": "Kioti TL750 rubber tracks and parts",
+    "make": "KIOTI",
+    "model": "TL750"
+  },
+  {
+    "handle": "manitou-2600rt",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "cat-249d3",
+    "model_key": "cat-249d3",
+    "filename": "cat-249d3-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-249d3-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 249D3 rubber tracks and parts",
+    "make": "CAT",
+    "model": "249D3"
+  },
+  {
+    "handle": "terex-pt100",
+    "model_key": "terex-pt100",
+    "filename": "terex-pt100-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/terex-pt100-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-skid-steer-hero.webp?v=1773971452",
+    "alt": "Terex PT-100 rubber tracks and parts",
+    "make": "Terex",
+    "model": "PT100"
+  },
+  {
+    "handle": "asv-vt-100",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ASV-multi-terrain-loader-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "kubota-u35-4",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452"
+  },
+  {
+    "handle": "cat-305-5",
+    "model_key": "cat-305-5",
+    "filename": "cat-305-5-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-305-5-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 305.5 rubber tracks and parts",
+    "make": "CAT",
+    "model": "305.5"
+  },
+  {
+    "handle": "bobcat-e10",
+    "model_key": "bobcat-e10",
+    "filename": "bobcat-e10-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-e10-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926",
+    "alt": "Bobcat E10 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "E10"
+  },
+  {
+    "handle": "bobcat-e50",
+    "model_key": "bobcat-e50",
+    "filename": "bobcat-e50-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-e50-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926",
+    "alt": "Bobcat E50 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "E50"
+  },
+  {
+    "handle": "bobcat-e20",
+    "model_key": "bobcat-e20",
+    "filename": "bobcat-e20-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-e20-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926",
+    "alt": "Bobcat E20 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "E20"
+  },
+  {
+    "handle": "bobcat-e17",
+    "model_key": "bobcat-e17",
+    "filename": "bobcat-e17-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-e17-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926",
+    "alt": "Bobcat E17 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "E17"
+  },
+  {
+    "handle": "bobcat-e32",
+    "model_key": "bobcat-e32",
+    "filename": "bobcat-e32-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-e32-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926",
+    "alt": "Bobcat E32 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "E32"
+  },
+  {
+    "handle": "bobcat-e26",
+    "model_key": "bobcat-e26",
+    "filename": "bobcat-e26-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-e26-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926",
+    "alt": "Bobcat E26 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "E26"
+  },
+  {
+    "handle": "bobcat-e35",
+    "model_key": "bobcat-e35",
+    "filename": "bobcat-e35-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-e35-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926",
+    "alt": "Bobcat E35 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "E35"
+  },
+  {
+    "handle": "kubota-kx040-4",
+    "model_key": "kubota-kx040-4",
+    "filename": "kubota-kx040-4-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/kubota-kx040-4-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452",
+    "alt": "Kubota KX040-4 rubber tracks and parts",
+    "make": "Kubota",
+    "model": "KX040-4"
+  },
+  {
+    "handle": "bobcat-e63",
+    "model_key": "bobcat-e63",
+    "filename": "bobcat-e63-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-e63-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926",
+    "alt": "Bobcat E63 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "E63"
+  },
+  {
+    "handle": "cat-301-5",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "cat-305-cr",
+    "model_key": "cat-305cr",
+    "filename": "cat-305-cr-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-305-cr-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 305 CR rubber tracks and parts",
+    "make": "CAT",
+    "model": "305CR"
+  },
+  {
+    "handle": "bobcat-e42",
+    "model_key": "bobcat-e42",
+    "filename": "bobcat-e42-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-e42-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926",
+    "alt": "Bobcat E42 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "E42"
+  },
+  {
+    "handle": "cat-300-9d",
+    "model_key": "cat-300-9d",
+    "filename": "cat-300-9d-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-300-9d-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 300.9D rubber tracks and parts",
+    "make": "CAT",
+    "model": "300.9D"
+  },
+  {
+    "handle": "bobcat-e55",
+    "model_key": "bobcat-e55",
+    "filename": "bobcat-e55-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/bobcat-e55-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-excavator-hero.webp?v=1773973926",
+    "alt": "Bobcat E55 rubber tracks and parts",
+    "make": "Bobcat",
+    "model": "E55"
+  },
+  {
+    "handle": "kubota-u27-4",
+    "model_key": "kubota-u-27-4",
+    "filename": "kubota-u27-4-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/kubota-u27-4-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452",
+    "alt": "Kubota U27-4 rubber tracks and parts",
+    "make": "Kubota",
+    "model": "U-27-4"
+  },
+  {
+    "handle": "cat-301-7-cr",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "cat-304-cr",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "cat-302-cr",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "cat-303-cr",
+    "model_key": "cat-303cr",
+    "filename": "cat-303-cr-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-303-cr-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 303 CR rubber tracks and parts",
+    "make": "CAT",
+    "model": "303CR"
+  },
+  {
+    "handle": "takeuchi-tb230",
+    "model_key": "takeuchi-tb230",
+    "filename": "takeuchi-tb230-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tb230-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535",
+    "alt": "Takeuchi TB230 rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TB230"
+  },
+  {
+    "handle": "cat-303-5-cr",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "kubota-kx057-4",
+    "model_key": "kubota-kx057-4",
+    "filename": "kubota-kx057-4-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/kubota-kx057-4-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452",
+    "alt": "Kubota KX057-4 rubber tracks and parts",
+    "make": "Kubota",
+    "model": "KX057-4"
+  },
+  {
+    "handle": "takeuchi-tb250-2",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535"
+  },
+  {
+    "handle": "takeuchi-tb235",
+    "model_key": "takeuchi-tb235",
+    "filename": "takeuchi-tb235-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tb235-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535",
+    "alt": "Takeuchi TB235 rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TB235"
+  },
+  {
+    "handle": "takeuchi-tb260",
+    "model_key": "takeuchi-tb260",
+    "filename": "takeuchi-tb260-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tb260-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535",
+    "alt": "Takeuchi TB260 rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TB260"
+  },
+  {
+    "handle": "takeuchi-tb216",
+    "model_key": "takeuchi-tb216",
+    "filename": "takeuchi-tb216-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tb216-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-excavator-hero.webp?v=1773971535",
+    "alt": "Takeuchi TB216 rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TB216"
+  },
+  {
+    "handle": "kubota-u17-3",
+    "model_key": "kubota-u-17-3",
+    "filename": "kubota-u17-3-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/kubota-u17-3-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452",
+    "alt": "Kubota U17-3 rubber tracks and parts",
+    "make": "Kubota",
+    "model": "U-17-3"
+  },
+  {
+    "handle": "kubota-kx008",
+    "model_key": "kubota-kx008",
+    "filename": "kubota-kx008-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/kubota-kx008-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-excavator-hero.webp?v=1773971452",
+    "alt": "Kubota KX008 rubber tracks and parts",
+    "make": "Kubota",
+    "model": "KX008"
+  },
+  {
+    "handle": "komatsu-pc18mr",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/komatsu-excavator-hero.webp?v=1773971530"
+  },
+  {
+    "handle": "volvo-ecr58d",
+    "model_key": "volvo-ecr58d",
+    "filename": "volvo-ecr58d-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/volvo-ecr58d-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/volvo-skid-steer-hero.webp?v=1773971452",
+    "alt": "Volvo ECR58D rubber tracks and parts",
+    "make": "Volvo",
+    "model": "ECR58D"
+  },
+  {
+    "handle": "komatsu-pc55mr",
+    "model_key": "komatsu-pc55mr",
+    "filename": "komatsu-pc55mr-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/komatsu-pc55mr-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/komatsu-excavator-hero.webp?v=1773971530",
+    "alt": "Komatsu PC55MR rubber tracks and parts",
+    "make": "Komatsu",
+    "model": "PC55MR"
+  },
+  {
+    "handle": "komatsu-pc78",
+    "model_key": "komatsu-pc78",
+    "filename": "komatsu-pc78-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/komatsu-pc78-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/komatsu-excavator-hero.webp?v=1773971530",
+    "alt": "Komatsu PC78 rubber tracks and parts",
+    "make": "Komatsu",
+    "model": "PC78"
+  },
+  {
+    "handle": "volvo-ecr40d",
+    "model_key": "volvo-ecr40d",
+    "filename": "volvo-ecr40d-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/volvo-ecr40d-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/volvo-skid-steer-hero.webp?v=1773971452",
+    "alt": "Volvo ECR40D rubber tracks and parts",
+    "make": "Volvo",
+    "model": "ECR40D"
+  },
+  {
+    "handle": "sany-sy16c",
+    "model_key": "sany-sy16c",
+    "filename": "sany-sy16c-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/sany-sy16c-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/sany-excavator-hero.webp?v=1773971535",
+    "alt": "Sany SY16C rubber tracks and parts",
+    "make": "SANY",
+    "model": "SY16C"
+  },
+  {
+    "handle": "komatsu-pc35mr",
+    "model_key": "komatsu-pc35mr",
+    "filename": "komatsu-pc35mr-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/komatsu-pc35mr-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/komatsu-excavator-hero.webp?v=1773971530",
+    "alt": "Komatsu PC35MR rubber tracks and parts",
+    "make": "Komatsu",
+    "model": "PC35MR"
+  },
+  {
+    "handle": "volvo-ecr25d",
+    "model_key": "volvo-ecr25d",
+    "filename": "volvo-ecr25d-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/volvo-ecr25d-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/volvo-skid-steer-hero.webp?v=1773971452",
+    "alt": "Volvo ECR25D rubber tracks and parts",
+    "make": "Volvo",
+    "model": "ECR25D"
+  },
+  {
+    "handle": "sany-sy50u",
+    "model_key": "sany-sy50u",
+    "filename": "sany-sy50u-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/sany-sy50u-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/sany-excavator-hero.webp?v=1773971535",
+    "alt": "Sany SY50U rubber tracks and parts",
+    "make": "SANY",
+    "model": "SY50U"
+  },
+  {
+    "handle": "sany-sy26u",
+    "model_key": "sany-sy26u",
+    "filename": "sany-sy26u-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/sany-sy26u-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/sany-excavator-hero.webp?v=1773971535",
+    "alt": "Sany SY26U rubber tracks and parts",
+    "make": "SANY",
+    "model": "SY26U"
+  },
+  {
+    "handle": "sany-sy75c",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/sany-excavator-hero.webp?v=1773971535"
+  },
+  {
+    "handle": "asv-rt40",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ASV-multi-terrain-loader-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "sany-sy35u",
+    "model_key": "sany-sy35u",
+    "filename": "sany-sy35u-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/sany-sy35u-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/sany-excavator-hero.webp?v=1773971535",
+    "alt": "Sany SY35U rubber tracks and parts",
+    "make": "SANY",
+    "model": "SY35U"
+  },
+  {
+    "handle": "asv-rt25",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ASV-multi-terrain-loader-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "sany-sy55u",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/sany-excavator-hero.webp?v=1773971535"
+  },
+  {
+    "handle": "bobcat-t450",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/bobcat-skid-steer-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "takeuchi-tl6r",
+    "model_key": "takeuchi-tl6r",
+    "filename": "takeuchi-tl6r-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/takeuchi-tl6r-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/takeuchi-skid-steer-hero.webp?v=1773971452",
+    "alt": "Takeuchi TL6R rubber tracks and parts",
+    "make": "Takeuchi",
+    "model": "TL6R"
+  },
+  {
+    "handle": "asv-rt-40",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/ASV-multi-terrain-loader-hero.webp?v=1773971451"
+  },
+  {
+    "handle": "cat-257",
+    "model_key": "cat-257",
+    "filename": "cat-257-hero.webp",
+    "public_url": "https://tcykyktvdlsbscrsbjyt.supabase.co/storage/v1/object/public/machine-images/cat-257-hero.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/cat-skid-steer-hero.webp?v=1773971451",
+    "alt": "CAT 257 rubber tracks and parts",
+    "make": "CAT",
+    "model": "257"
+  },
+  {
+    "handle": "kubota-svl75c",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/kubota-svl75-2-c-block-tracks-installed.jpg?v=1778364196"
+  },
+  {
+    "handle": "john-deere-60-p-tracks",
+    "status": "skip_no_supabase_row",
+    "source_url": "https://cdn.shopify.com/s/files/1/0952/1977/7823/files/john-deere-excavator-hero.webp?v=1773971529"
+  }
+]

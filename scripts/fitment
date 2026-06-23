@@ -1,0 +1,181 @@
+#!/usr/bin/env bash
+# Heavy Iron fitment pipeline — one entry point.
+#
+#   ./scripts/fitment setup      # once: Shopify token → Supabase + .env.fitment.local
+#   ./scripts/fitment bootstrap  # service role → .env.fitment.local (no Shopify OAuth)
+#   ./scripts/fitment doctor     # check credentials before sync
+#   ./scripts/fitment sync       # backfill GIDs → sync custom.fitments → clear legacy
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+# shellcheck source=scripts/lib/fitment-env.sh
+source "$ROOT/scripts/lib/fitment-env.sh"
+
+load_fitment_env
+
+cmd="${1:-sync}"
+shift || true
+
+doctor() {
+  local ok=0
+  local warn=0
+  echo "=== Fitment doctor ==="
+
+  if [[ -f "$FITMENT_ENV_FILE" ]]; then
+    echo "  OK  .env.fitment.local exists"
+  else
+    echo "  WARN  missing .env.fitment.local (optional if Supabase CLI + shopify CLI work)"
+    warn=1
+  fi
+
+  if [[ -n "${SHOPIFY_ADMIN_TOKEN:-}" ]]; then
+    echo "  OK  SHOPIFY_ADMIN_TOKEN set (direct Admin API — no Shopify CLI needed for backfill)"
+  else
+    echo "  WARN  SHOPIFY_ADMIN_TOKEN unset — backfill falls back to shopify store execute"
+    if command -v shopify >/dev/null 2>&1; then
+      echo "  OK  shopify CLI available for backfill fallback"
+    else
+      echo "  FAIL  shopify CLI not found"
+      echo "        Fix: ./scripts/fitment setup  OR  npm install -g @shopify/cli"
+      ok=1
+    fi
+  fi
+
+  if [[ -n "${SUPABASE_SERVICE_ROLE_KEY:-}" ]]; then
+    if validate_service_role_key "$SUPABASE_SERVICE_ROLE_KEY"; then
+      echo "  OK  SUPABASE_SERVICE_ROLE_KEY set and valid (service_role)"
+    else
+      echo "  FAIL  SUPABASE_SERVICE_ROLE_KEY in .env.fitment.local is invalid"
+      echo "        Fix: remove the bad line and run: ./scripts/fitment bootstrap"
+      ok=1
+    fi
+  elif load_service_role_key; then
+    echo "  OK  Supabase CLI fetched and parsed service_role key (npx supabase login)"
+  else
+    echo "  FAIL  could not load service_role key"
+    echo "        Fix: npx supabase login"
+    echo "        Then: ./scripts/fitment bootstrap  OR  ./scripts/fitment setup"
+    ok=1
+  fi
+
+  echo ""
+  if [[ "$ok" -eq 0 ]]; then
+    if [[ "$warn" -eq 1 ]]; then
+      echo "Ready (without .env.fitment.local). Run: ./scripts/fitment sync"
+      echo "Optional: ./scripts/fitment setup  for faster backfill via SHOPIFY_ADMIN_TOKEN"
+    else
+      echo "Ready. Run: ./scripts/fitment sync"
+    fi
+  else
+    echo "Fix the FAIL items above, then run: ./scripts/fitment doctor"
+    exit 1
+  fi
+}
+
+bootstrap() {
+  echo "=== Fitment bootstrap (no Shopify OAuth) ==="
+  if load_service_role_key; then
+    echo "OK  loaded SUPABASE_SERVICE_ROLE_KEY from Supabase CLI"
+  else
+    echo "FAIL  could not load service role key" >&2
+    echo "  Fix: npx supabase login" >&2
+    exit 1
+  fi
+
+  local token="${SHOPIFY_ADMIN_TOKEN:-}"
+  if [[ -n "$token" ]]; then
+    echo "OK  keeping existing SHOPIFY_ADMIN_TOKEN from environment or .env.fitment.local"
+  else
+    echo "WARN  SHOPIFY_ADMIN_TOKEN not set — sync will use shopify store execute for backfill"
+    echo "      Run ./scripts/fitment setup when you have the Client Secret"
+  fi
+
+  write_fitment_env_file "$token" "$SUPABASE_SERVICE_ROLE_KEY"
+  echo "Wrote .env.fitment.local (gitignored)"
+  echo ""
+  echo "Next: ./scripts/fitment doctor && ./scripts/fitment sync"
+}
+
+case "$cmd" in
+  setup)
+    exec "$ROOT/scripts/setup-supabase-shopify-secrets.sh" "$@"
+    ;;
+  bootstrap)
+    bootstrap
+    ;;
+  doctor)
+    doctor
+    ;;
+  sync)
+    exec "$ROOT/scripts/consolidate-fitment.sh"
+    ;;
+  sync-heroes)
+    exec python3 "$ROOT/scripts/sync-model-hero-images.py" "$@"
+    ;;
+  sync-variants)
+    exec python3 "$ROOT/scripts/sync-store-variants.py" "$@"
+    ;;
+  sync-models)
+    exec python3 "$ROOT/scripts/sync-model-product-refs.py" "$@"
+    ;;
+  export-models)
+    exec python3 "$ROOT/scripts/export-model-publish-bundle.py" "$@"
+    ;;
+  export-matrixify)
+    exec python3 "$ROOT/scripts/export-model-matrixify.py" "$@"
+    ;;
+  apply-models)
+    exec python3 "$ROOT/scripts/apply-model-publish-bundle.py" "$@"
+    ;;
+  clean)
+    exec python3 "$ROOT/scripts/reconcile-catalog-clean.py" clean "$@"
+    ;;
+  validate)
+    exec python3 "$ROOT/scripts/validate-catalog-ssot.py" "$@"
+    ;;
+  launch-gate)
+    exec python3 "$ROOT/scripts/launch-gate.py" "$@"
+    ;;
+  backfill-csv)
+    exec python3 "$ROOT/scripts/generate-matrixify-from-products-csv.py" "$@"
+    ;;
+  backfill-apply)
+    exec python3 "$ROOT/scripts/apply-metafield-backfill.py" --apply "$@"
+    ;;
+  backfill-metafields)
+    python3 "$ROOT/scripts/generate-matrixify-from-products-csv.py" "$@" || exit 1
+    exec python3 "$ROOT/scripts/apply-metafield-backfill.py" --apply "$@"
+    ;;
+  -h|--help|help)
+    cat <<EOF
+Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants|sync-models|export-models|export-matrixify|apply-models|clean|validate|launch-gate|backfill-csv|backfill-apply|backfill-metafields}
+
+  setup [--from-env]   Shopify OAuth → Supabase secrets + .env.fitment.local
+  bootstrap            Service role via Supabase CLI → .env.fitment.local (no OAuth)
+  doctor               Validate credentials (parses service_role key, not just CLI exit code)
+  sync                 Backfill GIDs → sync custom.fitments → clear legacy
+  sync-heroes          Duplicate Shopify model hero images → Supabase machine-images/
+  sync-variants        Pull Shopify variant SKUs → store_variant_map (Quote → Buy bridge)
+                       (--apply --shop tracktech-530.myshopify.com for dev)
+  sync-models          Supabase fitment → Model metaobject track_products / uc_products
+  export-models        Dev fleet_* views → Matrixify CSV + API manifest (v2 spine)
+  export-matrixify     Dev fleet_* views → Matrixify XLSX publish contract (3 workbooks)
+  apply-models         Apply shopify-api-manifest.json → Model metaobjects (API)
+                       (--apply --handle case-tv450b for one model)
+  clean                Reconcile SSOT: audit | align-handles | purge-legacy-fitments
+                       (./scripts/fitment clean --apply)
+  validate             Cross-reference catalog by track size (--track-size 450x86x58)
+  launch-gate          Pass/fail gates for curated launch sizes (--tier dev|launch|prod)
+  backfill-csv         Products.csv → data/heavy-iron-metafield-backfill.csv (Matrixify MERGE)
+  backfill-apply       Apply backfill CSV via Admin API (--apply; pass --limit N to test)
+  backfill-metafields  backfill-csv then backfill-apply (no Matrixify when MCP 403)
+
+Non-interactive setup:
+  SHOPIFY_CLIENT_SECRET='shpss_...' ./scripts/fitment setup --from-env
+EOF
+    ;;
+  *)
+    echo "Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants|sync-models|export-models|export-matrixify|apply-models|clean|validate|launch-gate|backfill-csv|backfill-apply|backfill-metafields}"
+    exit 1
+    ;;
+esac
