@@ -1,13 +1,19 @@
 {%- comment -%}
   Smart search — machine lookup (store-agent) + semantic product search (catalog-search).
 {%- endcomment -%}
-{{ 'hi-smart-search.css' | asset_url | stylesheet_tag }}
-<script>
-  window.HISmartSearch = window.HISmartSearch || {
-    endpoint: 'https://tcykyktvdlsbscrsbjyt.supabase.co/functions/v1/store-agent',
-    searchEndpoint: 'https://tcykyktvdlsbscrsbjyt.supabase.co/functions/v1/catalog-search',
-    minChars: 3,
-    debounceMs: 380
-  };
-</script>
-<script src="{{ 'hi-smart-search.js' | asset_url }}" defer></script>
+{%- liquid
+  assign hi_store_agent_endpoint = settings.hi_store_agent_endpoint | strip
+  assign hi_catalog_search_endpoint = settings.hi_catalog_search_endpoint | strip
+-%}
+{%- if hi_store_agent_endpoint != blank or hi_catalog_search_endpoint != blank -%}
+  {{ 'hi-smart-search.css' | asset_url | stylesheet_tag }}
+  <script>
+    window.HISmartSearch = window.HISmartSearch || {
+      endpoint: {{ hi_store_agent_endpoint | json }},
+      searchEndpoint: {{ hi_catalog_search_endpoint | json }},
+      minChars: 3,
+      debounceMs: 380
+    };
+  </script>
+  <script src="{{ 'hi-smart-search.js' | asset_url }}" defer></script>
+{%- endif -%}

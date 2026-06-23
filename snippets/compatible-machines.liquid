@@ -1,11 +1,11 @@
 {%- comment -%}
   Compatible Machines tab — lists machines that fit this track product.
-  Primary: product.metafields.custom.fitments (same source as checkout).
+  Primary: product.metafields.custom.fits_equipment_models (restored source of truth).
   Fallback: track-fitment-map.json keyed by track_size (legacy).
 {%- endcomment -%}
 {%- liquid
   assign track_size = product.metafields.custom.track_size.value | default: product.metafields.custom.track_size | default: ''
-  assign fitment_refs = product.metafields.custom.fitments.value
+  assign fitment_refs = product.metafields.custom.fits_equipment_models.value
   assign has_fitments = false
   if fitment_refs != blank and fitment_refs.size > 0
     assign has_fitments = true
@@ -51,7 +51,7 @@
               {%- assign fmake = fmake_mo.name.value | default: fmake_mo.display_name.value | default: fmake_mo.name | default: '' -%}
               {%- if fmake != make -%}{%- continue -%}{%- endif -%}
               {%- if shown >= 6 -%}{%- continue -%}{%- endif -%}
-              {%- assign model_mo = fitment.model.value -%}
+              {%- assign model_mo = fitment -%}
               {%- assign model_display = model_mo.display_name.value | default: model_mo.display_name | default: model_mo.system.handle -%}
               {%- assign model_label = model_display | remove_first: make | remove_first: ' ' | strip -%}
               {%- if model_label == blank -%}{%- assign model_label = model_display -%}{%- endif -%}

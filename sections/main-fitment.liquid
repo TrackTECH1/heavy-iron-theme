@@ -2,7 +2,7 @@
   Heavy Iron Supply Co — Machine Fitment Landing (production)
   Renders directly from the Model metaobject (scales to all models, no per-page setup).
   Styles: assets/hi-machine.css  ·  Cards: snippets/hi-product-card  ·  Schema: snippets/hi-machine-jsonld
-  NOTE: expects metaobject field `primary_track_size` (added during the definition cleanup).
+  Reads metaobject fields `primary_track_size` + `track_variants`.
 {%- endcomment -%}
 
 {{ 'hi-machine.css' | asset_url | stylesheet_tag }}
@@ -23,7 +23,7 @@
   assign phone_display = section.settings.phone_display | default: '(850) 816-7898'
   assign quote_url = section.settings.quote_url | default: '/pages/quote'
 
-  assign track_product_count = model.track_products.value.size | default: 0
+  assign track_variant_count = model.track_variants.value.size | default: 0
   assign seo_h1_suffix = ' Rubber Tracks, Parts & Attachments'
   assign page_seo_title = model.seo_title.value | default: model_name | append: seo_h1_suffix | append: ' | ' | append: shop.name
   assign page_seo_desc = model.seo_description.value
@@ -60,7 +60,7 @@
         <h1 class="hi-mf__title">{{ model_name }}</h1>
         {%- if track_size != blank -%}<span class="hi-mf__size">Fits track size: {{ track_size }}</span>{%- endif -%}
         <p class="hi-mf__intro">
-          Shop {{ track_product_count }}+ in-stock rubber track{% if track_product_count != 1 %}s{% endif %},
+          Shop {{ track_variant_count }}+ in-stock rubber track{% if track_variant_count != 1 %}s{% endif %},
           steel undercarriage, and attachments built for the {{ make_name }} {{ model_name }}.
           {%- if track_size != blank -%}
             Primary track size: <strong>{{ track_size }}</strong>.
@@ -72,10 +72,9 @@
         {%- if section.settings.show_trust_bar -%}
           <div class="hi-mf__trust">
             <span><b>✓</b> 24-Month Warranty</span>
-            <span><b>✓</b> Free Freight</span>
-            <span><b>✓</b> Same-Day Shipping</span>
-            <span><b>✓</b> Technicians by Trade</span>
-          </div>
+            <span><b>✓</b> Free Shipping</span>
+            <span><b>✓</b> Precision Fitment</span>
+                    </div>
         {%- endif -%}
       </div>
 
@@ -125,7 +124,7 @@
     {%- endif -%}
 
     {%- comment -%} RUBBER TRACKS {%- endcomment -%}
-    {%- if model.track_products.value != blank -%}
+    {%- if model.track_variants.value != blank -%}
       <section class="hi-mf__sec" id="tracks">
         <h2 class="hi-mf__sec-h">Rubber Tracks</h2>
         <p class="hi-mf__sec-sub">Choose your tread pattern. OEM-spec, continuous steel cord, free freight.</p>
@@ -138,25 +137,24 @@
             endif
             assign track_card_title = track_machine_label | append: ' Tracks'
           -%}
-          {%- for product in model.track_products.value -%}
+          {%- for variant in model.track_variants.value -%}
+            {%- assign product = variant.product -%}
             {%- assign tsize = product.metafields.custom.track_size | default: track_size -%}
-            {%- assign tread = product.metafields.custom.tread.value | default: product.metafields.custom.tread -%}
-            {%- for variant in product.variants -%}
-              {%- assign vurl = product.url | append: '?variant=' | append: variant.id -%}
-              {%- assign vimg = variant.featured_image | default: product.featured_image -%}
-              {%- liquid
-                assign track_type_label = tread
-                if track_type_label == blank and variant.title != blank and variant.title != 'Default Title'
-                  assign track_type_label = variant.title
-                endif
-                if track_type_label == blank
-                  assign track_type_label = 'Rubber Track'
-                endif
-              -%}
-              {%- capture sub -%}{% if tsize != blank %}Size: {{ tsize }}{% endif %}{%- endcapture -%}
-              {%- render 'hi-product-card', url: vurl, title: track_card_title, type_label: track_type_label,
-                  image: vimg, sub: sub, price: variant.price, compare_at: variant.compare_at_price, button: 'View Track' -%}
-            {%- endfor -%}
+            {%- assign tread = variant.metafields.custom.tread_pattern | default: product.metafields.custom.tread.value | default: product.metafields.custom.tread -%}
+            {%- assign vurl = product.url | append: '?variant=' | append: variant.id -%}
+            {%- assign vimg = variant.image | default: product.featured_image -%}
+            {%- liquid
+              assign track_type_label = tread
+              if track_type_label == blank and variant.title != blank and variant.title != 'Default Title'
+                assign track_type_label = variant.title
+              endif
+              if track_type_label == blank
+                assign track_type_label = 'Rubber Track'
+              endif
+            -%}
+            {%- capture sub -%}{% if tsize != blank %}Size: {{ tsize }}{% endif %}{%- endcapture -%}
+            {%- render 'hi-product-card', url: vurl, title: track_card_title, type_label: track_type_label,
+                image: vimg, sub: sub, price: variant.price, compare_at: variant.compare_at_price, button: 'View Track' -%}
           {%- endfor -%}
         </div>
 
@@ -198,7 +196,7 @@
 
       {%- if model.featured_attachments.value != blank -%}
         <div class="hi-mf__cards">
-          {%- for product in model.featured_attachments.value limit: 4 -%}
+          {%- for product in model.featured_attachments.value limit: 8 -%}
             {%- render 'hi-product-card', url: product.url, title: product.title, type_label: 'Attachment',
                 image: product.featured_image, price: product.price, button: 'View Attachment' -%}
           {%- endfor -%}
@@ -264,7 +262,7 @@
         </div>
       </section>
     {%- else -%}
-      {%- render 'hi-model-faq-fallback', model_name: model_name, make_name: make_name, track_size: track_size, track_count: track_product_count -%}
+      {%- render 'hi-model-faq-fallback', model_name: model_name, make_name: make_name, track_size: track_size, track_count: track_variant_count -%}
     {%- endif -%}
 
     {%- comment -%} BOTTOM CTA {%- endcomment -%}

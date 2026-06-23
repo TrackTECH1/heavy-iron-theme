@@ -1,12 +1,13 @@
 {%- comment -%}
   fitment-data.liquid — Single Shopify fitment source for PDP widgets.
-  Reads custom.fitments (fitment MO refs from Supabase sync), then compatible_with text.
+  Reads custom.fits_equipment_models (model MO refs — the restored source of truth),
+  then custom.compatible_with text as fallback.
   Params:
     - product (required)
     - output: 'rows' (default) | 'grouped' — JSON shape for consumers
 {%- endcomment -%}
 {%- liquid
-  assign fitment_refs = product.metafields.custom.fitments.value
+  assign fitment_refs = product.metafields.custom.fits_equipment_models.value
   assign compatible_raw = product.metafields.custom.compatible_with.value
   assign has_fitments = false
   if fitment_refs != blank and fitment_refs.size > 0
@@ -37,12 +38,12 @@
         {%- assign fmake_mo = fitment.make.value -%}
         {%- assign fmake = fmake_mo.name.value | default: fmake_mo.display_name.value | default: fmake_mo.name | default: '' -%}
         {%- if fmake == make -%}
-          {%- assign model_mo = fitment.model.value -%}
+          {%- assign model_mo = fitment -%}
           {%- assign model_display = model_mo.display_name.value | default: model_mo.display_name | default: model_mo.system.handle -%}
           {%- assign model_label = model_display | remove_first: make | remove_first: ' ' | strip -%}
           {%- if model_label == blank -%}{%- assign model_label = model_display -%}{%- endif -%}
           {%- assign model_url = model_mo.system.url | default: '' -%}
-          {%- assign model_handle = fitment.handle | default: model_mo.system.handle | default: '' -%}
+          {%- assign model_handle = model_mo.system.handle | default: '' -%}
           {%- unless first_model -%},{%- endunless -%}
           {"m":{{ model_label | json }},"h":{{ model_handle | json }},"u":{{ model_url | json }}}
           {%- assign first_model = false -%}
@@ -115,7 +116,7 @@
       {%- assign mk_raw = make_mo.name.value | default: make_mo.display_name.value | default: make_mo.name | default: '' -%}
       {%- assign mk = mk_raw -%}
       {%- if mk == 'CAT' or mk == 'cat' -%}{%- assign mk = 'Cat' -%}{%- endif -%}
-      {%- assign model_mo = fitment.model.value -%}
+      {%- assign model_mo = fitment -%}
       {%- assign md_full = model_mo.display_name.value | default: model_mo.display_name | default: model_mo.system.handle -%}
       {%- assign md = md_full | remove_first: mk | remove_first: ' ' | strip -%}
       {%- if md == blank -%}{%- assign md = md_full -%}{%- endif -%}

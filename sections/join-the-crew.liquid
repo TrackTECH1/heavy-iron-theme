@@ -13,7 +13,7 @@
   <section class="jtc-hero">
     <div class="jtc-hero__bg">
       {%- if section.settings.hero_bg_image -%}
-        <img src="{{ section.settings.hero_bg_image | image_url: width: 1920 }}" alt="" loading="eager">
+        <img src="{{ section.settings.hero_bg_image | image_url: width: 1920 }}" alt="" width="1920" height="1080" loading="eager">
       {%- endif -%}
       <div class="jtc-hero__overlay"></div>
     </div>

@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "image_banner": {
@@ -332,7 +323,7 @@
         "description": "",
         "show_description": true,
         "description_style": "body",
-        "columns_desktop": 5,
+        "columns_desktop": 4,
         "enable_desktop_slider": true,
         "full_width": true,
         "show_view_all": true,
@@ -426,7 +417,7 @@
             "image": "shopify://shop_images/CAT_289D3_1_1_q70.webp",
             "machine": "CAT 289D",
             "track_size": "450x86x56",
-            "caption": "Contractor fleet — 6 machines upgraded",
+            "caption": "Contractor fleet \u2014 6 machines upgraded",
             "badge": "18\" Zig-Zag",
             "product": "450x86x56-rubber-track-multi-bar",
             "custom_url": "shopify://metaobjects/model/cat-289d"
@@ -438,9 +429,9 @@
             "image": "shopify://shop_images/Kubota-kx040-4-tracks-installed.webp",
             "machine": "Kubota KX040-4",
             "track_size": "350x54-5x86",
-            "caption": "Rental yard re-track — Directional",
+            "caption": "Rental yard re-track \u2014 Directional",
             "badge": "",
-            "product": "350x54-5x86-rubber-track-directional",
+            "product": "kubota-kx040-4-rubber-track",
             "custom_url": ""
           }
         },
@@ -450,9 +441,9 @@
             "image": "shopify://shop_images/john-deere-333g-rubber-tracks-installed.webp",
             "machine": "John Deere 333G",
             "track_size": "450x86x58",
-            "caption": "Municipal fleet — 4 units",
-            "badge": "X-terrain",
-            "product": "450x86x58-rubber-track-x-terrain",
+            "caption": "Municipal fleet \u2014 4 units",
+            "badge": "",
+            "product": "john-deere-333g-rubber-track",
             "custom_url": ""
           }
         },
@@ -462,9 +453,9 @@
             "image": "shopify://shop_images/X-terrain-installed.webp",
             "machine": "Kubota SVL97-2",
             "track_size": "450x86x58",
-            "caption": "Land Management — max traction",
+            "caption": "Land Management \u2014 max traction",
             "badge": "",
-            "product": "450x86x58-rubber-track-x-terrain",
+            "product": "bobcat-450x86x58-x-terrain-rubber-tracks-450x86x58",
             "custom_url": ""
           }
         },
@@ -474,9 +465,9 @@
             "image": "shopify://shop_images/john-deere-35g-compact-excavator-rubber-tracks-installed.webp",
             "machine": "John Deere 35G",
             "track_size": "300x52.5x86",
-            "caption": "Utility contractor — heavy duty application",
+            "caption": "Utility contractor \u2014 heavy duty application",
             "badge": "",
-            "product": "300x52-5x86-rubber-track-mx",
+            "product": "john-deere-35g",
             "custom_url": ""
           }
         },
@@ -486,9 +477,9 @@
             "image": "shopify://shop_images/Bobcat_T650_517908b6-c3f9-4866-bcca-5a0c6951d8fb.webp",
             "machine": "Bobcat T650",
             "track_size": "400x86x52",
-            "caption": "Dirt work — grading contractor",
-            "badge": "16\" Zig-Zag",
-            "product": "400x86x49-rubber-track-zig-zag",
+            "caption": "Dirt work \u2014 grading contractor",
+            "badge": "",
+            "product": "bobcat-400x86x52-zig-zag-rubber-tracks-320x86x52",
             "custom_url": ""
           }
         }
@@ -508,7 +499,7 @@
         "subtitle": "See what our customers are running. Click any upgrade to shop the same track.",
         "columns": "3",
         "cta_text": "Shop All Tracks",
-        "cta_url": "shopify://collections",
+        "cta_url": "",
         "color_scheme": "",
         "padding_top": 52,
         "padding_bottom": 52
@@ -677,7 +668,7 @@
             "name": "Carlos M.",
             "company": "CM Contractors, AZ",
             "verified": true,
-            "product": "450x86x56-rubber-track-zig-zag"
+            "product": ""
           }
         },
         "testimonial_3tcHKt": {
@@ -685,7 +676,7 @@
           "settings": {
             "rating": 5,
             "title": "Best wholesale pricing around",
-            "quote": "We switched from our old supplier after getting a fleet quote. The pricing blew them away and the tracks are the same quality — continuous steel cord, heavy duty rubber.",
+            "quote": "We switched from our old supplier after getting a fleet quote. The pricing blew them away and the tracks are the same quality \u2014 continuous steel cord, heavy duty rubber.",
             "name": "James T.",
             "company": "T&J Landscaping, FL",
             "verified": true,
@@ -809,7 +800,7 @@
             "menu": "",
             "max_links": 8,
             "link_1_text": "Track Finder",
-            "link_1_url": "shopify://pages/track-finder",
+            "link_1_url": "/pages/track-finder",
             "link_2_text": "Warranty Info",
             "link_2_url": "shopify://pages/warranty",
             "link_3_text": "Shipping & Delivery",
@@ -843,10 +834,20 @@
         "padding_top": 48,
         "padding_bottom": 48
       }
+    },
+    "hi_fitment_search": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'hi-grouped-search' %}",
+        "color_scheme": "scheme-1",
+        "padding_top": 28,
+        "padding_bottom": 8
+      }
     }
   },
   "order": [
     "image_banner",
+    "hi_fitment_search",
     "trust_bar_Va3keR",
     "multicolumn",
     "rich_text",

@@ -1,0 +1,85 @@
+{%- comment -%}
+  Heavy Iron — Grouped Predictive Fitment Search.
+  Renders only when the theme setting `hi_fitment_search_endpoint` is configured.
+{%- endcomment -%}
+{%- assign hi_fitment_search_endpoint = settings.hi_fitment_search_endpoint | strip -%}
+{%- if hi_fitment_search_endpoint != blank -%}
+
+<style>
+  .higs{--y:#FFB607;--ink:#1A1A1A;--mut:#64748b;--bd:#e5e7eb;--soft:#f4f4f5;max-width:640px;margin:0 auto;width:100%;font-family:inherit;position:relative;}
+  .higs__bar{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--y);border-radius:10px;padding:8px 10px;}
+  .higs__in{flex:1;border:none;outline:none;padding:9px 8px;font-size:16px;background:none;color:var(--ink);}
+  .higs__x{background:var(--ink);color:#fff;border:none;border-radius:50%;width:32px;height:32px;font-size:13px;cursor:pointer;flex:0 0 auto;line-height:1;}
+  .higs__drop{position:absolute;left:0;right:0;top:calc(100% + 8px);z-index:60;background:#fff;border:1px solid var(--bd);border-radius:10px;box-shadow:0 18px 50px rgba(0,0,0,.18);overflow:hidden;max-height:74vh;overflow-y:auto;display:none;}
+  .higs__drop.open{display:block;}
+  .higs__status{color:var(--mut);font-size:13.5px;padding:16px;}
+  .higs__g{border-bottom:1px solid var(--bd);}
+  .higs__gh{display:flex;align-items:center;gap:10px;padding:12px 14px 8px;text-decoration:none;color:inherit;}
+  .higs__gh:hover{background:var(--soft);}
+  .higs__thumb{width:46px;height:46px;border:1px solid var(--bd);border-radius:4px;background:var(--soft);display:flex;align-items:center;justify-content:center;flex:0 0 auto;color:#aeb6bf;font-size:17px;}
+  .higs__gt{font-weight:800;font-size:14px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-transform:uppercase;letter-spacing:.01em;}
+  .higs__pill{flex:0 0 auto;font-size:10.5px;font-weight:600;color:var(--mut);border:1px solid var(--bd);border-radius:999px;padding:4px 9px;}
+  .higs__w{font-weight:800;text-transform:uppercase;letter-spacing:.03em;border:none;}
+  .higs__w.wide{background:var(--ink);color:#fff;}.higs__w.narrow{background:var(--y);color:var(--ink);}
+  .higs__v{display:flex;align-items:center;gap:12px;padding:9px 14px 9px 28px;text-decoration:none;color:inherit;}
+  .higs__v:hover{background:var(--soft);}
+  .higs__dot{width:7px;height:7px;border-radius:50%;background:#cbd5e1;flex:0 0 auto;margin-left:12px;}
+  .higs__vm{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1;}
+  .higs__vl{font-size:15px;font-weight:600;}
+  .higs__vs{font-size:11.5px;color:var(--mut);font-family:ui-monospace,Menlo,monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .higs__price{margin-left:auto;font-weight:800;font-size:15px;white-space:nowrap;flex:0 0 auto;}
+  .higs__price.q{font-size:12px;font-weight:700;color:var(--mut);}
+  .higs__p{display:flex;align-items:center;gap:12px;padding:11px 14px;border-bottom:1px solid var(--bd);text-decoration:none;color:inherit;}
+  .higs__p:hover{background:var(--soft);}
+  .higs__p .higs__vl{font-weight:700;font-size:14px;text-transform:uppercase;}
+  .higs__call{display:block;text-align:center;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--ink);padding:13px;background:var(--soft);text-decoration:none;}
+  .higs__call:hover{background:var(--y);}
+  @media(max-width:600px){.higs__drop{max-height:80vh;}}
+</style>
+
+<div class="higs" id="higs">
+  <div class="higs__bar">
+    <input class="higs__in" id="higsIn" placeholder="Search your machine, size, or part #…" autocomplete="off" aria-label="Fitment search">
+    <button class="higs__x" id="higsX" type="button" aria-label="Clear">✕</button>
+  </div>
+  <div class="higs__drop" id="higsDrop"></div>
+</div>
+
+<script>
+(function(){
+  var FN={{ hi_fitment_search_endpoint | json }};
+  if (!FN) return;
+  var box=document.getElementById('higs'),inp=document.getElementById('higsIn'),drop=document.getElementById('higsDrop'),timer;
+  if (!box || !inp || !drop) return;
+  function money(n){return n==null?'<span class="higs__price q">Quote</span>':'<span class="higs__price">$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})+'</span>';}
+  function esc(s){return (s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function render(d){
+    var g=d.groups||[];
+    if(!g.length){drop.innerHTML='<p class="higs__status">No match — confirm fitment by make, model &amp; serial.</p><a class="higs__call" href="tel:+18508167898">'+esc(d.callout||'Call (850) 816-7898')+'</a>';drop.classList.add('open');return;}
+    var h='';
+    g.forEach(function(x){
+      if(x.kind==='tracks'){
+        var w=x.widthLabel?'<span class="higs__pill higs__w '+x.widthLabel.toLowerCase()+'">'+esc(x.widthLabel)+'</span>':'';
+        h+='<div class="higs__g"><a class="higs__gh" href="'+esc(x.href)+'"><span class="higs__thumb">▦</span><span class="higs__gt">'+esc(x.title)+'</span>'+w+'<span class="higs__pill">'+x.variantCount+' variants</span></a>';
+        (x.variants||[]).forEach(function(v){h+='<a class="higs__v" href="'+esc(v.href)+'"><span class="higs__dot"></span><span class="higs__vm"><span class="higs__vl">'+esc(v.label)+'</span><span class="higs__vs">SKU '+esc(v.sku)+'</span></span>'+money(v.price)+'</a>';});
+        h+='</div>';
+      } else {
+        h+='<a class="higs__p" href="'+esc(x.href)+'"><span class="higs__thumb">⚙</span><span class="higs__vm"><span class="higs__vl">'+esc(x.title)+'</span><span class="higs__vs">SKU '+esc(x.sku)+'</span></span>'+money(x.price)+'</a>';
+      }
+    });
+    h+='<a class="higs__call" href="tel:+18508167898">'+esc(d.callout||'Call (850) 816-7898')+'</a>';
+    drop.innerHTML=h;drop.classList.add('open');
+  }
+  function run(v){
+    clearTimeout(timer);
+    if(v.trim().length<2){drop.classList.remove('open');return;}
+    timer=setTimeout(function(){
+      fetch(FN+'?q='+encodeURIComponent(v)).then(function(r){return r.json();}).then(render).catch(function(){drop.classList.remove('open');});
+    },200);
+  }
+  inp.addEventListener('input',function(){run(this.value);});
+  document.getElementById('higsX').addEventListener('click',function(){inp.value='';drop.classList.remove('open');inp.focus();});
+  document.addEventListener('click',function(e){if(!box.contains(e.target))drop.classList.remove('open');});
+})();
+</script>
+{%- endif -%}
