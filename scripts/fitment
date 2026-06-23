@@ -158,9 +158,15 @@ case "$cmd" in
     python3 "$ROOT/scripts/generate-matrixify-from-products-csv.py" "$@" || exit 1
     exec python3 "$ROOT/scripts/apply-metafield-backfill.py" --apply "$@"
     ;;
+  industry-research)
+    exec python3 "$ROOT/scripts/run-industry-research-enrichment.py" "$@"
+    ;;
+  apply-enrichment)
+    exec python3 "$ROOT/scripts/apply-enrichment-approvals.py" "$@"
+    ;;
   -h|--help|help)
     cat <<EOF
-Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants|sync-models|export-models|export-matrixify|apply-models|clean|validate|launch-gate|backfill-csv|backfill-apply|backfill-metafields}
+Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants|sync-models|export-models|export-matrixify|apply-models|clean|validate|launch-gate|backfill-csv|backfill-apply|backfill-metafields|industry-research|apply-enrichment|audit-store|export-store-v1}
 
   setup [--from-env]   Shopify OAuth → Supabase secrets + .env.fitment.local
   bootstrap            Service role via Supabase CLI → .env.fitment.local (no OAuth)
@@ -181,13 +187,17 @@ Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants|
   backfill-csv         Products.csv → data/heavy-iron-metafield-backfill.csv (Matrixify MERGE)
   backfill-apply       Apply backfill CSV via Admin API (--apply; pass --limit N to test)
   backfill-metafields  backfill-csv then backfill-apply (no Matrixify when MCP 403)
+  industry-research    Machine type / spec enrichment candidates (trusted sources only)
+  apply-enrichment     Promote approved enrichment_candidates → core.model (--apply)
+  audit-store          Full store DoD audit → FULL_STORE_AUDIT_REPORT.md
+  export-store-v1      Matrixify bundle for dev import
 
 Non-interactive setup:
   SHOPIFY_CLIENT_SECRET='shpss_...' ./scripts/fitment setup --from-env
 EOF
     ;;
   *)
-    echo "Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants|sync-models|export-models|export-matrixify|apply-models|clean|validate|launch-gate|backfill-csv|backfill-apply|backfill-metafields}"
+    echo "Usage: ./scripts/fitment {setup|bootstrap|doctor|sync|sync-heroes|sync-variants|sync-models|export-models|export-matrixify|apply-models|clean|validate|launch-gate|backfill-csv|backfill-apply|backfill-metafields|industry-research|apply-enrichment|audit-store|export-store-v1}"
     exit 1
     ;;
 esac

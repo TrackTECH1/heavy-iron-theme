@@ -1,0 +1,2 @@
+candidate_id,machine_id,shopify_handle,brand,model,field_name,current_value,proposed_value,source_type,source_url,source_priority,confidence,evidence_text,status,conflict_reason
+enr_d97a59120aef42d758be66a0,mdl_kubota_svl75_2,kubota-svl75-2,Kubota,SVL75-2,operating_weight_lbs,8600,9026,oem,https://www.kubotausa.com/products/svl75-2,1,0.950,OEM spec sheet operating weight 9026 lb,conflict,Protected operating_weight_lbs from navigation_source=track_finder_v1

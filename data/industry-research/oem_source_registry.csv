@@ -1,0 +1,3 @@
+machine_id,brand,model,field_name,proposed_value,source_type,source_url,confidence,evidence_text,notes
+mdl_john_deere_323e,John Deere,323E,machine_type,Compact Track Loader,oem,https://www.deere.com/en/loaders/compact-track-loaders/323e/,0.98,OEM product page lists 323E as Compact Track Loader,Example row — replace with verified citations
+mdl_kubota_svl75_2,Kubota,SVL75-2,operating_weight_lbs,9026,oem,https://www.kubotausa.com/products/svl75-2,0.95,OEM spec sheet operating weight 9026 lb,Example row — verify before import

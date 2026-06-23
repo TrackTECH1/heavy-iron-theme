@@ -1,6 +1,6 @@
 # Store V1 Go-Live Checklist
 
-**Audit result:** FAIL
+**Audit result:** FAIL — re-run `./scripts/fitment audit-store` until overall PASS
 
 ## Pre-launch (dev sign-off)
 

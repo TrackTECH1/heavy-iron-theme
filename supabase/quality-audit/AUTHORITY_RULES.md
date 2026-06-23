@@ -19,6 +19,7 @@
 | Track-size images | `core.track_size_media` (imported galleries) | `fleet_track_size_media` | `product_url`, random CDN guess |
 | Product images | `core.product_media` → fallback track-size | Resolved in app media layer | MWE dealer page URL |
 | Machine hero | `core.model_media` | `fleet_model_hero` | Shopify URL on model row alone |
+| Machine type / specs enrichment | OEM/dealer/brochure registry → `core.enrichment_candidates` (approve first) | `fleet_enrichment_candidates` | Auto-overwrite of `track_finder_v1` values, weight-based type guessing |
 | Publish to Shopify | Approved publish queue (future) | N/A in read-only My Fleet | Direct write from viewer |
 
 ---

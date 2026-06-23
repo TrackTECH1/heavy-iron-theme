@@ -1,0 +1,2 @@
+machine_id,brand,model,field_name,proposed_value,source_type,source_url,confidence,evidence_text,notes
+# Dealer spec pages — priority 2. Only add rows with explicit published specs.
