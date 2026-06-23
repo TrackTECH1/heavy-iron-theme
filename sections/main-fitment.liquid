@@ -14,12 +14,18 @@
   assign make = model.make.value
   assign machine = model.machine.value
 
-  assign model_name = model.display_name.value | default: model.system.handle
-  assign make_name = make.name.value | default: make.display_name.value | default: ''
+  assign make_name = make.name.value | default: make.display_name.value | default: model.make.value | default: ''
   assign track_collection_url = routes.collections_url | append: '/rubber-tracks'
   assign attachments_collection_url = routes.collections_url | append: '/attachments'
   assign make_url = make.system.url | default: track_collection_url
-  assign machine_name = machine.name.value | default: machine.display_name.value | default: 'Heavy Equipment'
+  assign machine_name = machine.name.value | default: machine.display_name.value | default: model.machine.value | default: 'Heavy Equipment'
+  assign model_name = model.display_name.value
+  if model_name == blank
+    assign model_name = make_name | append: ' ' | append: machine_name | strip
+  endif
+  if model_name == blank
+    assign model_name = model.system.handle
+  endif
   assign hero_img = model.hero_image.value
   assign track_size = model.primary_track_size.value | default: ''
 
