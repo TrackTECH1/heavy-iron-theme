@@ -92,11 +92,8 @@
 }
 
 .hi-smart-search__product {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.35rem 0.75rem;
-  padding: 0.45rem 0;
+  display: block;
+  padding: 0.5rem 0;
   border-bottom: 1px solid #eee;
   font-size: 0.84rem;
 }
@@ -104,6 +101,10 @@
 .hi-smart-search__product:last-child { border-bottom: 0; }
 
 .hi-smart-search__product-link {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  align-items: center;
+  gap: 0.75rem;
   font-weight: 700;
   color: #111;
   text-decoration: none;
@@ -111,9 +112,46 @@
 
 .hi-smart-search__product-link:hover { color: #f5a623; }
 
+.hi-smart-search__product-thumb {
+  display: block;
+  width: 56px;
+  height: 56px;
+  overflow: hidden;
+  border: 1px solid #e2e2e2;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.hi-smart-search__product-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.hi-smart-search__product-thumb--empty {
+  background:
+    linear-gradient(135deg, transparent 46%, #e5e5e5 47%, #e5e5e5 53%, transparent 54%),
+    #fff;
+}
+
+.hi-smart-search__product-copy {
+  display: grid;
+  min-width: 0;
+  gap: 0.12rem;
+}
+
+.hi-smart-search__product-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .hi-smart-search__product-meta {
+  display: block;
   font-size: 0.72rem;
   color: #666;
+  font-weight: 500;
 }
 
 .hi-smart-search--loading .hi-smart-search__inner {

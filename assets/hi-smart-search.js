@@ -19,6 +19,10 @@
     });
   }
 
+  function attr(s) {
+    return esc(s).replace(/'/g, '&#39;');
+  }
+
   function normalizeModelUrl(url) {
     if (!url) return '';
     return url.replace(/^https?:\/\/heavyironsupply\.com\/model\//i, '/pages/model/');
@@ -78,15 +82,26 @@
 
     var items = results.slice(0, 6).map(function (r) {
       var href = r.url || (r.shopify_handle ? '/products/' + r.shopify_handle : searchFallbackUrl(r));
+      var imageUrl = r.image_url || r.image || r.thumbnail_url || r.featured_image || '';
+      var imageAlt = r.image_alt || r.label || r.track_size || 'Product image';
       var price = formatPrice(r.price);
       var score = r.similarity != null ? Math.round(r.similarity * 100) + '% match' : '';
       var meta = [price, score].filter(Boolean).join(' · ');
-      var inner = esc(r.label || r.track_size || 'Track');
-      inner = '<a class="hi-smart-search__product-link" href="' + esc(href) + '">' + inner + '</a>';
+      var title = esc(r.label || r.track_size || 'Track');
+      var image = imageUrl
+        ? '<span class="hi-smart-search__product-thumb"><img src="' + attr(imageUrl) + '" alt="' + attr(imageAlt) + '" width="56" height="56" loading="lazy"></span>'
+        : '<span class="hi-smart-search__product-thumb hi-smart-search__product-thumb--empty" aria-hidden="true"></span>';
+      var inner =
+        '<a class="hi-smart-search__product-link" href="' + esc(href) + '">' +
+          image +
+          '<span class="hi-smart-search__product-copy">' +
+            '<span class="hi-smart-search__product-title">' + title + '</span>' +
+            (meta ? '<span class="hi-smart-search__product-meta">' + esc(meta) + '</span>' : '') +
+          '</span>' +
+        '</a>';
       return (
         '<li class="hi-smart-search__product">' +
           inner +
-          (meta ? '<span class="hi-smart-search__product-meta">' + esc(meta) + '</span>' : '') +
         '</li>'
       );
     }).join('');
