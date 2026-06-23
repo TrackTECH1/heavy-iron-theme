@@ -74,6 +74,9 @@
               {%- assign model_label = model_display | remove_first: make | remove_first: ' ' | strip -%}
               {%- if model_label == blank -%}{%- assign model_label = model_display -%}{%- endif -%}
               {%- assign model_url = model_mo.system.url | default: '' -%}
+              {%- if model_url == blank and model_mo.system.handle != blank -%}
+                {%- assign model_url = '/pages/model/' | append: model_mo.system.handle -%}
+              {%- endif -%}
               {%- if make_mo_url == blank -%}{%- assign make_mo_url = fmake_mo.system.url | default: '' -%}{%- endif -%}
               {%- if shown > 0 -%}<span class="hi-compat__sep">,</span>{%- endif -%}
               {%- if model_url != blank -%}

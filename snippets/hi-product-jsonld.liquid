@@ -190,11 +190,22 @@
       {%- assign make_mo = fitment.make.value -%}
       {%- assign mk = make_mo.name.value | default: make_mo.display_name.value | default: '' -%}
       {%- assign md = model_mo.display_name.value | default: model_mo.system.handle | default: '' -%}
+      {%- assign model_url = model_mo.system.url | default: '' -%}
+      {%- if model_url == blank and model_mo.system.handle != blank -%}
+        {%- assign model_url = '/pages/model/' | append: model_mo.system.handle -%}
+      {%- endif -%}
       {%- if mk != blank and md != blank -%}
         {%- if hi_fi > 0 -%},{%- endif -%}
         {
           "@type": "Product",
           "name": {{ mk | append: ' ' | append: md | json }},
+          {%- if model_url != blank -%}
+            {%- if model_url contains '://' -%}
+          "url": {{ model_url | json }},
+            {%- else -%}
+          "url": {{ model_url | prepend: shop.url | json }},
+            {%- endif -%}
+          {%- endif -%}
           "manufacturer": {
             "@type": "Organization",
             "name": {{ mk | json }},

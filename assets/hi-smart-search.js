@@ -23,7 +23,10 @@
 
   function normalizeModelUrl(url) {
     if (!url) return '';
-    return url.replace(/^https?:\/\/heavyironsupply\.com\/model\//i, '/pages/model/');
+    return url
+      .replace(/^https?:\/\/heavyironsupply\.com\/model\//i, '/pages/model/')
+      .replace(/^https?:\/\/heavyironsupply\.com\/pages\/machines\//i, '/pages/model/')
+      .replace(/^\/pages\/machines\//i, '/pages/model/');
   }
 
   function panelForInput(input) {
