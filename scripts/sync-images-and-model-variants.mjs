@@ -542,7 +542,7 @@ function updateModelTrackVariants(modelGid, variantIds) {
   return { status: "updated" };
 }
 
-function updateModelTrackVariantsBatch(updates) {
+function updateModelFieldsBatch(updates) {
   if (!updates.length) return;
   for (const batch of chunk(updates, 20)) {
     const variableDefs = [];
@@ -556,9 +556,7 @@ function updateModelTrackVariantsBatch(updates) {
           userErrors { field message code }
         }`);
       variables[`id${index}`] = item.modelGid;
-      variables[`fields${index}`] = [
-        { key: "track_variants", value: JSON.stringify([...new Set(item.variantIds)]) },
-      ];
+      variables[`fields${index}`] = item.fields;
     });
     const mutation = `mutation UpdateModelTrackVariantBatch(${variableDefs.join(", ")}) { ${mutationFields.join("\n")} }`;
     const data = shopifyGql(mutation, variables, true);
@@ -599,7 +597,7 @@ async function main() {
     String(product.type || "").toLowerCase().includes("track") ||
     !blank(product.track_size)
   );
-  prefetchShopifyProducts(trackProducts);
+  prefetchShopifyProducts(products);
   const modelById = new Map(models.map((model) => [model.id, model]));
   const productById = new Map(products.map((product) => [product.id, product]));
 
@@ -647,38 +645,55 @@ async function main() {
     mediaRows.push(row);
   }
 
-  const trackFitments = fitments.filter((fitment) => fitment.fit_type === "track");
   const modelGroups = new Map();
-  for (const fitment of trackFitments) {
+  for (const fitment of fitments.filter((item) => item.fit_type === "track" || item.fit_type === "uc_part")) {
     const model = modelById.get(fitment.model_id);
     const product = productById.get(fitment.product_id);
     if (!model?.shopify_metaobject_gid || !product) continue;
-    if (!modelGroups.has(model.id)) modelGroups.set(model.id, { model, products: [] });
-    modelGroups.get(model.id).products.push(product);
+    if (!modelGroups.has(model.id)) modelGroups.set(model.id, { model, trackProducts: [], ucProducts: [] });
+    if (fitment.fit_type === "track") {
+      modelGroups.get(model.id).trackProducts.push(product);
+    } else if (fitment.fit_type === "uc_part") {
+      modelGroups.get(model.id).ucProducts.push(product);
+    }
   }
 
   const modelRows = [];
   const modelUpdateQueue = [];
-  for (const { model, products: modelProducts } of [...modelGroups.values()].slice(0, LIMIT)) {
+  for (const { model, trackProducts: modelProducts, ucProducts } of [...modelGroups.values()].slice(0, LIMIT)) {
     const variantIds = [];
+    const ucProductIds = [];
     const unresolved = [];
     for (const product of modelProducts) {
       const shopifyProduct = resolveShopifyProduct(product);
       if (shopifyProduct?.variant_id) variantIds.push(shopifyProduct.variant_id);
       else unresolved.push(product.sku || product.product_code || product.id);
     }
+    for (const product of ucProducts) {
+      const shopifyProduct = resolveShopifyProduct(product);
+      if (shopifyProduct?.product_id) ucProductIds.push(shopifyProduct.product_id);
+    }
     const uniqueVariantIds = [...new Set(variantIds)];
+    const uniqueUcProductIds = [...new Set(ucProductIds)];
     let result = "dry-run";
     let action = APPLY_MODEL_METAOBJECTS ? "update_track_variants" : "would_update_track_variants";
-    if (unresolved.length && !ALLOW_PARTIAL_MODELS) {
+    if (uniqueUcProductIds.length) action = APPLY_MODEL_METAOBJECTS ? "update_model_products" : "would_update_model_products";
+    if (unresolved.length && !ALLOW_PARTIAL_MODELS && modelProducts.length) {
       action = "review_partial_model_unresolved_products";
       result = "skipped";
-    } else if (uniqueVariantIds.length) {
+    } else if (uniqueVariantIds.length || uniqueUcProductIds.length) {
       if (APPLY_MODEL_METAOBJECTS) {
         result = "queued";
       } else {
-        result = updateModelTrackVariants(model.shopify_metaobject_gid, uniqueVariantIds).status;
+        result = "dry-run";
       }
+    }
+    const fields = [];
+    if (uniqueVariantIds.length) {
+      fields.push({ key: "track_variants", value: JSON.stringify(uniqueVariantIds) });
+    }
+    if (uniqueUcProductIds.length) {
+      fields.push({ key: "uc_products", value: JSON.stringify(uniqueUcProductIds) });
     }
     const row = {
       model_key: model.model_key,
@@ -686,18 +701,19 @@ async function main() {
       model: model.model,
       shopify_metaobject_gid: model.shopify_metaobject_gid,
       variant_count: uniqueVariantIds.length,
+      uc_product_count: uniqueUcProductIds.length,
       unresolved_count: unresolved.length,
       unresolved: unresolved.slice(0, 12).join(" | "),
       action,
       result,
     };
-    if (APPLY_MODEL_METAOBJECTS && uniqueVariantIds.length && action === "update_track_variants") {
-      modelUpdateQueue.push({ modelGid: model.shopify_metaobject_gid, variantIds: uniqueVariantIds, row });
+    if (APPLY_MODEL_METAOBJECTS && fields.length && action !== "review_partial_model_unresolved_products") {
+      modelUpdateQueue.push({ modelGid: model.shopify_metaobject_gid, fields, row });
     }
     modelRows.push(row);
   }
 
-  if (APPLY_MODEL_METAOBJECTS) updateModelTrackVariantsBatch(modelUpdateQueue);
+  if (APPLY_MODEL_METAOBJECTS) updateModelFieldsBatch(modelUpdateQueue);
 
   writeCsv(path.join(OUT_DIR, "HEAVY_IRON_SHOPIFY_MEDIA_SYNC_PLAN.csv"), mediaRows);
   writeCsv(path.join(OUT_DIR, "HEAVY_IRON_MODEL_TRACK_VARIANTS_SYNC_PLAN.csv"), modelRows);
