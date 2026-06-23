@@ -192,7 +192,15 @@
       {%- assign md = model_mo.display_name.value | default: model_mo.system.handle | default: '' -%}
       {%- if mk != blank and md != blank -%}
         {%- if hi_fi > 0 -%},{%- endif -%}
-        { "@type": "Product", "name": {{ mk | append: ' ' | append: md | json }} }
+        {
+          "@type": "Product",
+          "name": {{ mk | append: ' ' | append: md | json }},
+          "manufacturer": {
+            "@type": "Organization",
+            "name": {{ mk | json }},
+            "sameAs": {% render 'hi-manufacturer-sameas', make: mk %}
+          }
+        }
         {%- assign hi_fi = hi_fi | plus: 1 -%}
       {%- endif -%}
     {%- endfor -%}

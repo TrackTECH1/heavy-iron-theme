@@ -1,0 +1,92 @@
+.hi-tax-upload {
+  margin: 1.4rem 0;
+  padding: 1.2rem;
+  border: 1px solid rgba(26, 26, 26, 0.14);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.hi-tax-upload__header {
+  display: grid;
+  gap: 0.2rem;
+  margin-bottom: 1rem;
+}
+
+.hi-tax-upload__header strong {
+  color: #1a1a1a;
+  font-size: 1.35rem;
+}
+
+.hi-tax-upload__header span,
+.hi-tax-upload__drop small,
+.hi-tax-upload__status {
+  color: #555b62;
+  font-size: 1.15rem;
+  line-height: 1.35;
+}
+
+.hi-tax-upload__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-bottom: 0.9rem;
+}
+
+.hi-tax-upload__field {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.hi-tax-upload__field span {
+  color: #1a1a1a;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.hi-tax-upload__field input {
+  min-height: 4rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid #c9cdd2;
+  border-radius: 6px;
+}
+
+.hi-tax-upload__drop {
+  display: grid;
+  gap: 0.25rem;
+  padding: 1rem;
+  border: 1px dashed #9aa0a8;
+  border-radius: 8px;
+  background: #fafafa;
+  cursor: pointer;
+}
+
+.hi-tax-upload__drop input {
+  max-width: 100%;
+}
+
+.hi-tax-upload__drop span {
+  color: #1a1a1a;
+  font-size: 1.22rem;
+  font-weight: 800;
+}
+
+.hi-tax-upload__status {
+  min-height: 1.5rem;
+  margin: 0.7rem 0 0;
+}
+
+.hi-tax-upload__status[data-state="success"] {
+  color: #0f6f2f;
+  font-weight: 700;
+}
+
+.hi-tax-upload__status[data-state="error"] {
+  color: #b3261e;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 520px) {
+  .hi-tax-upload__grid {
+    grid-template-columns: 1fr;
+  }
+}

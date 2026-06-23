@@ -104,6 +104,7 @@
                 </small>
               </div>
             {%- else -%}
+              {%- render 'hi-tax-exemption-upload', form_id: 'cart' -%}
               <div class="cart__ctas" {{ block.shopify_attributes }}>
                 <button
                   type="submit"

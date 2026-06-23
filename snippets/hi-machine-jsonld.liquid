@@ -45,7 +45,15 @@
               "category": "Rubber Tracks",
               {%- if product.featured_image -%}"image": {{ product.featured_image | image_url: width: 800 | prepend: 'https:' | json }},{%- endif -%}
               "brand": { "@type": "Brand", "name": "Heavy Iron Supply Co." },
-              "isAccessoryOrSparePartFor": { "@type": "Product", "name": {{ model_name | json }} },
+              "isAccessoryOrSparePartFor": {
+                "@type": "Product",
+                "name": {{ model_name | json }},
+                "manufacturer": {
+                  "@type": "Organization",
+                  "name": {{ make_name | json }},
+                  "sameAs": {% render 'hi-manufacturer-sameas', make: make_name %}
+                }
+              },
               "offers": {
                 "@type": "AggregateOffer",
                 "priceCurrency": {{ shop.currency | json }},
@@ -70,7 +78,15 @@
               "url": {{ product.url | prepend: shop.url | json }},
               "category": "Undercarriage",
               "brand": { "@type": "Brand", "name": "Heavy Iron Supply Co." },
-              "isAccessoryOrSparePartFor": { "@type": "Product", "name": {{ model_name | json }} }
+              "isAccessoryOrSparePartFor": {
+                "@type": "Product",
+                "name": {{ model_name | json }},
+                "manufacturer": {
+                  "@type": "Organization",
+                  "name": {{ make_name | json }},
+                  "sameAs": {% render 'hi-manufacturer-sameas', make: make_name %}
+                }
+              }
               {%- if product.price > 0 -%},
               "offers": { "@type": "Offer", "price": {{ product.price | divided_by: 100.0 | json }}, "priceCurrency": {{ shop.currency | json }}, "availability": "https://schema.org/InStock" }
               {%- endif -%}

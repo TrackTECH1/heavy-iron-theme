@@ -59,7 +59,9 @@
         </span>
       </label>
       <input type="hidden" name="properties[Freight Region]" value="Lower 48 Only">
+      <input type="hidden" name="properties[Freight Service Level]" value="Free Fast LTL Freight - 1-3 Business Days">
       <input type="hidden" name="properties[Same-Day Cutoff]" value="2:00 PM EST">
+      <input type="hidden" name="properties[_freight_payload]" value='{"service":"ltl","free_lower_48":true,"transit_days_min":1,"transit_days_max":3,"liftgate_fee":125}'>
     </fieldset>
   </div>
 {%- endif -%}

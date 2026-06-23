@@ -1425,6 +1425,11 @@
         "type": "text",
         "id": "hi_fitment_search_endpoint",
         "label": "Grouped fitment search endpoint"
+      },
+      {
+        "type": "text",
+        "id": "hi_tax_certificate_upload_endpoint",
+        "label": "Tax certificate upload endpoint"
       }
     ]
   },
