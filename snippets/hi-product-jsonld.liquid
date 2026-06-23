@@ -117,17 +117,35 @@
 }
 </script>
 {%- endif -%}
-{%- if variant.available and hi_ts != blank -%}
+{%- if hi_ts != blank and variant.price > 0 -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "OfferShippingDetails",
-  "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "US" },
-  "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": {{ shop.currency | json }} },
-  "deliveryTime": {
-    "@type": "ShippingDeliveryTime",
-    "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "DAY" },
-    "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 5, "unitCode": "DAY" }
+  "@type": "Product",
+  "@id": {{ product.url | prepend: shop.url | append: '#free-ltl-offer' | json }},
+  "name": {{ product.title | json }},
+  "url": {{ product.url | prepend: shop.url | json }},
+  "sku": {{ variant.sku | default: product.selected_or_first_available_variant.sku | json }},
+  "brand": { "@type": "Brand", "name": "Heavy Iron Supply Co." },
+  "category": "Vehicles & Parts > Vehicle Parts & Accessories > Heavy Machinery Parts",
+  "offers": {
+    "@type": "Offer",
+    "url": {{ product.url | prepend: shop.url | json }},
+    "priceCurrency": {{ shop.currency | json }},
+    "price": {{ variant.price | divided_by: 100.0 | json }},
+    "priceValidUntil": "2027-12-31",
+    "itemCondition": "https://schema.org/NewCondition",
+    "availability": {% if variant.available %}"https://schema.org/InStock"{% else %}"https://schema.org/PreOrder"{% endif %},
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingRate": { "@type": "MonetaryAmount", "value": "0.00", "currency": {{ shop.currency | json }} },
+      "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "US" },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "DAY" },
+        "transitTime": { "@type": "QuantitativeValue", "minValue": 2, "maxValue": 5, "unitCode": "DAY" }
+      }
+    }
   }
 }
 </script>
