@@ -133,6 +133,9 @@ case "$cmd" in
   validate-theme)
     exec python3 "$ROOT/scripts/validate-theme-store-v1.py" "$@"
     ;;
+  audit-store)
+    exec python3 "$ROOT/scripts/run-full-store-audit.py" "$@"
+    ;;
   apply-models)
     exec python3 "$ROOT/scripts/apply-model-publish-bundle.py" "$@"
     ;;

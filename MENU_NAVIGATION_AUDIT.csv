@@ -1,0 +1,7 @@
+menu,title,url,type,status,notes
+main-menu,Rubber Tracks,/collections/rubber-tracks,COLLECTION,pass,
+main-menu,Undercarriage,/collections/undercarriage,COLLECTION,review,collection_not_found_on_dev
+main-menu,Attachments,/collections/attachments,COLLECTION,pass,
+main-menu,Track Finder,/pages/track-finder,PAGE,pass,
+main-menu,About,/pages/about,PAGE,pass,
+main-menu,Contact,/pages/contact,PAGE,pass,
