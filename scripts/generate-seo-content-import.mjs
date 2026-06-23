@@ -216,6 +216,8 @@ function bodyHtml(product, models) {
     "<h3>Why Operators Switch</h3>",
     "<ul><li><strong>Continuous-wound steel cord:</strong> helps eliminate the weak overlapping splice found in cheap tracks.</li><li><strong>Virgin rubber compound:</strong> resists chunking, slicing, dry rot, and jobsite abuse.</li><li><strong>Drop-forged iron cores:</strong> lock into drive sprockets to reduce de-tracking on grades and turns.</li></ul>",
     "<p><strong>Sold individually.</strong> Most machines require quantity 2 for left and right track replacement. Check the stamped numbers on the inside wall of your old track before checkout.</p>",
+    "<h3>The Heavy Iron Supply Co. Promise</h3>",
+    "<ul><li><strong>No-Nonsense US Warranty:</strong> Backed by a full <strong>24-Month / 1,000-Hour</strong> defect warranty against cord delamination and link snapping.</li><li><strong>Lightning-Fast Free Shipping:</strong> If the site lets you buy it, it is physically sitting in one of our US regional warehouses. Orders placed before <strong>2:00 PM EST</strong> ship out the exact same business day. Expect delivery to your commercial address or local freight terminal in <strong>1-3 business days</strong>.</li></ul>",
   ].join("");
 }
 

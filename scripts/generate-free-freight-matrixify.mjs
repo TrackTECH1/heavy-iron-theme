@@ -155,17 +155,17 @@ function parseSize(trackSize) {
 function freeFreightFallback(product) {
   const parsed = parseSize(product.track_size);
   return {
-    text: `Premium ${parsed.width_in ? `${Math.round(parsed.width_in)}-inch ` : ""}(${product.track_size}) heavy-duty rubber track replacement. Free standard LTL freight to the contiguous Lower 48 states.`,
+    text: `Premium ${parsed.width_in ? `${Math.round(parsed.width_in)}-inch ` : ""}(${product.track_size}) heavy-duty rubber track replacement. Free Fast LTL Freight to the Lower 48, with 1-3 business day delivery.`,
     disclosure:
-      "Free standard LTL freight applies to commercial addresses in the contiguous Lower 48 states. Residential delivery, lift-gate service, Alaska, Hawaii, Puerto Rico, and remote accessorial services may require additional charges.",
+      "Free Fast LTL Freight applies to commercial addresses in the contiguous Lower 48 states. Orders placed before 2:00 PM EST ship out the exact same business day when inventory is available. Residential delivery, lift-gate service, Alaska, Hawaii, Puerto Rico, and remote accessorial services may require additional charges.",
     shipping: {
       free_ltl_freight: true,
       region: "contiguous_us_lower_48",
       handling_days_min: 0,
       handling_days_max: 1,
-      transit_days_min: 2,
-      transit_days_max: 5,
-      same_day_cutoff_local: "14:00",
+      transit_days_min: 1,
+      transit_days_max: 3,
+      same_day_cutoff_local: "14:00 EST",
       residential_or_liftgate_fee_usd: 125,
     },
     specs: {
@@ -218,8 +218,8 @@ async function main() {
     rows.push({
       Handle: shopifyProduct.handle,
       Command: "MERGE",
-      Tags: "Free LTL Freight, Lower 48 Shipping, Heavy Iron Verified",
-      "Metafield: custom.shipping_type [single_line_text_field]": "Free LTL Freight (Lower 48 States Only)",
+      Tags: "Free Fast LTL Freight, Lower 48 Shipping, 1-3 Day Delivery, Heavy Iron Verified",
+      "Metafield: custom.shipping_type [single_line_text_field]": "Free Fast LTL Freight (Lower 48 Only)",
       "Metafield: custom.tracktech_data_fallback [json]": JSON.stringify(fallback),
       "Metafield: custom.tracktech_data_api [json]": JSON.stringify({
         source: "supabase",
