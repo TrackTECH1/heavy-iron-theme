@@ -54,7 +54,7 @@
     }
   {%- elsif compatible_raw != blank -%}
     {%- assign machines = compatible_raw | newline_to_br | split: '<br />' -%}
-    {%- assign MULTI = 'John Deere||New Holland||Ditch Witch||Wacker Neuson' -%}
+    {%- assign multi_word_makes = 'John Deere||New Holland||Ditch Witch||Wacker Neuson' -%}
     {%- assign make_list = '' -%}
     {%- for machine in machines -%}
       {%- assign trimmed = machine | strip | strip_html -%}
@@ -63,7 +63,7 @@
       {%- if words.size < 2 -%}{%- continue -%}{%- endif -%}
       {%- assign first = words[0] -%}
       {%- assign second = words[1] -%}
-      {%- if MULTI contains first -%}
+      {%- if multi_word_makes contains first -%}
         {%- assign mk = first | append: ' ' | append: second -%}
       {%- else -%}
         {%- assign mk = first -%}
@@ -88,7 +88,7 @@
         {%- if words.size < 2 -%}{%- continue -%}{%- endif -%}
         {%- assign first = words[0] -%}
         {%- assign second = words[1] -%}
-        {%- if MULTI contains first -%}
+        {%- if multi_word_makes contains first -%}
           {%- assign mk = first | append: ' ' | append: second -%}
           {%- assign md = trimmed | remove_first: mk | remove_first: ' ' | strip -%}
         {%- else -%}
@@ -129,7 +129,7 @@
     {%- endfor -%}
   {%- elsif compatible_raw != blank -%}
     {%- assign machines = compatible_raw | newline_to_br | split: '<br />' -%}
-    {%- assign MULTI = 'John Deere||New Holland||Ditch Witch||Wacker Neuson' -%}
+    {%- assign multi_word_makes = 'John Deere||New Holland||Ditch Witch||Wacker Neuson' -%}
     {%- assign first_row = true -%}
     {%- for machine in machines -%}
       {%- assign trimmed = machine | strip | strip_html -%}
@@ -138,7 +138,7 @@
       {%- if words.size < 2 -%}{%- continue -%}{%- endif -%}
       {%- assign first = words[0] -%}
       {%- assign second = words[1] -%}
-      {%- if MULTI contains first -%}
+      {%- if multi_word_makes contains first -%}
         {%- assign mk = first | append: ' ' | append: second -%}
         {%- assign md = trimmed | remove_first: mk | remove_first: ' ' | strip -%}
       {%- else -%}

@@ -14,7 +14,9 @@
 
   assign model_name = model.display_name.value | default: model.system.handle
   assign make_name = make.name.value | default: make.display_name.value | default: ''
-  assign make_url = make.system.url | default: '/collections/rubber-tracks'
+  assign track_collection_url = routes.collections_url | append: '/rubber-tracks'
+  assign attachments_collection_url = routes.collections_url | append: '/attachments'
+  assign make_url = make.system.url | default: track_collection_url
   assign machine_name = machine.name.value | default: machine.display_name.value | default: 'Heavy Equipment'
   assign hero_img = model.hero_image.value
   assign track_size = model.primary_track_size.value | default: ''
@@ -24,8 +26,6 @@
   assign quote_url = section.settings.quote_url | default: '/pages/quote'
 
   assign track_variant_count = model.track_variants.value.size | default: 0
-  assign seo_h1_suffix = ' Rubber Tracks, Parts & Attachments'
-  assign page_seo_title = model.seo_title.value | default: model_name | append: seo_h1_suffix | append: ' | ' | append: shop.name
   assign page_seo_desc = model.seo_description.value
   if page_seo_desc == blank
     assign page_seo_desc = 'Shop OEM-spec rubber tracks'
@@ -44,7 +44,7 @@
       <ol class="hi-mf__crumbs">
         <li><a href="{{ routes.root_url }}">Home</a></li>
         <li class="hi-mf__crumb-sep">/</li>
-        <li><a href="/collections/rubber-tracks">Tracks</a></li>
+        <li><a href="{{ track_collection_url }}">Tracks</a></li>
         {%- if make_name != blank -%}
           <li class="hi-mf__crumb-sep">/</li>
           <li><a href="{{ make_url }}">{{ make_name }}</a></li>
@@ -158,7 +158,7 @@
           {%- endfor -%}
         </div>
 
-        <a class="hi-mf__shopall" href="/collections/rubber-tracks">Shop all rubber tracks &rarr;</a>
+        <a class="hi-mf__shopall" href="{{ track_collection_url }}">Shop all rubber tracks &rarr;</a>
       </section>
     {%- endif -%}
 
@@ -223,7 +223,7 @@
                 <span class="hi-mf__fit-name">{{ att.attachment | capitalize }}</span>
                 <span class="hi-mf__fit-badge {{ bclass }}">{{ badge }}</span>
                 {%- if att.recommended.product != blank -%}
-                  <a class="hi-mf__fit-pick" href="/search?q={{ att.recommended.sku | url_encode }}">{{ att.recommended.product }}{% if att.recommended.retail %} — ${{ att.recommended.retail | round }}{% endif %}</a>
+                  <a class="hi-mf__fit-pick" href="{{ routes.search_url }}?q={{ att.recommended.sku | url_encode }}">{{ att.recommended.product }}{% if att.recommended.retail %} — ${{ att.recommended.retail | round }}{% endif %}</a>
                 {%- else -%}
                   <a class="hi-mf__fit-pick" href="{{ quote_url }}?machine={{ model_name | url_encode }}&amp;part={{ att.attachment | url_encode }}">Request a quote &rarr;</a>
                 {%- endif -%}
@@ -234,7 +234,7 @@
         </div>
       {%- endif -%}
 
-      <a class="hi-mf__shopall" href="{{ section.settings.attachments_url | default: '/collections/attachments' }}">Shop all attachments &rarr;</a>
+      <a class="hi-mf__shopall" href="{{ section.settings.attachments_url | default: attachments_collection_url }}">Shop all attachments &rarr;</a>
     </section>
 
     {%- comment -%} RELATED MACHINES {%- endcomment -%}
