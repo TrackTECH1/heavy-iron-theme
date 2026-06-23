@@ -8,7 +8,10 @@
   assign seo_name = model.seo_title.value | default: model_name
   assign seo_desc = model.seo_description.value | default: model_name | append: ' rubber tracks, undercarriage parts & attachments.'
   assign faqs = model.faqs_json.value
-  assign track_count = model.track_products.value.size | default: 0
+  assign track_count = model.track_variants.value.size | default: 0
+  if track_count == 0
+    assign track_count = model.track_products.value.size | default: 0
+  endif
   assign faq_fallback = false
   if faqs == blank
     assign faq_fallback = true
@@ -32,6 +35,34 @@
       "description": {{ seo_desc | json }},
       "itemListElement": [
         {%- assign i = 0 -%}
+        {%- if model.track_variants.value != blank -%}
+          {%- for variant in model.track_variants.value -%}
+            {%- assign product = variant.product -%}
+            {%- assign i = i | plus: 1 -%}
+            {%- if i > 1 -%},{%- endif -%}
+            {
+              "@type": "ListItem",
+              "position": {{ i }},
+              "item": {
+                "@type": "Product",
+                "name": {% if product != blank %}{{ product.title | append: ' - ' | append: variant.title | json }}{% else %}{{ variant.title | default: variant.sku | json }}{% endif %},
+                "sku": {{ variant.sku | json }},
+                "url": {% if product != blank %}{{ product.url | append: '?variant=' | append: variant.id | prepend: shop.url | json }}{% else %}{{ routes.search_url | append: '?q=' | append: variant.sku | prepend: shop.url | json }}{% endif %},
+                "category": "Rubber Tracks",
+                {%- if variant.featured_image -%}"image": {{ variant.featured_image | image_url: width: 800 | prepend: 'https:' | json }},{%- elsif product.featured_image -%}"image": {{ product.featured_image | image_url: width: 800 | prepend: 'https:' | json }},{%- endif -%}
+                "brand": { "@type": "Brand", "name": "Heavy Iron Supply Co." },
+                "isAccessoryOrSparePartFor": { "@type": "Product", "name": {{ model_name | json }} },
+                "offers": {
+                  "@type": "Offer",
+                  "priceCurrency": {{ shop.currency | json }},
+                  "price": {{ variant.price | divided_by: 100.0 | json }},
+                  "availability": {% if variant.available %}"https://schema.org/InStock"{% else %}"https://schema.org/OutOfStock"{% endif %},
+                  "url": {% if product != blank %}{{ product.url | append: '?variant=' | append: variant.id | prepend: shop.url | json }}{% else %}{{ routes.search_url | append: '?q=' | append: variant.sku | prepend: shop.url | json }}{% endif %}
+                }
+              }
+            }
+          {%- endfor -%}
+        {%- else -%}
         {%- for product in model.track_products.value -%}
           {%- assign i = i | plus: 1 -%}
           {%- if i > 1 -%},{%- endif -%}
@@ -58,6 +89,7 @@
             }
           }
         {%- endfor -%}
+        {%- endif -%}
         {%- for product in model.uc_products.value -%}
           {%- assign i = i | plus: 1 -%}
           {%- if i > 1 -%},{%- endif -%}

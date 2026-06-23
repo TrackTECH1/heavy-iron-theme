@@ -24,7 +24,11 @@
   assign phone_display = section.settings.phone_display | default: '(850) 816-7898'
   assign quote_url = section.settings.quote_url | default: '/pages/quote'
 
+  assign track_variant_count = model.track_variants.value.size | default: 0
   assign track_product_count = model.track_products.value.size | default: 0
+  if track_variant_count > 0
+    assign track_product_count = track_variant_count
+  endif
   assign seo_h1_suffix = ' Rubber Tracks, Parts & Attachments'
   assign page_seo_title = model.seo_title.value | default: model_name | append: seo_h1_suffix | append: ' | ' | append: shop.name
   assign page_seo_desc = model.seo_description.value
@@ -135,7 +139,41 @@
       <h2 class="hi-mf__sec-h">Rubber Tracks</h2>
       <p class="hi-mf__sec-sub">Choose your tread pattern. OEM-spec, continuous steel cord, free freight.</p>
 
-      {%- if model.track_products.value != blank -%}
+      {%- if model.track_variants.value != blank -%}
+        <div class="hi-mf__cards" data-hi-static-row="tracks">
+          {%- liquid
+            assign track_machine_label = model_name | split: ' Rubber Track' | first | split: ' Tracks' | first | strip
+            if track_machine_label == blank
+              assign track_machine_label = make_name
+            endif
+          -%}
+          {%- for variant in model.track_variants.value -%}
+            {%- liquid
+              assign variant_product = variant.product
+              assign track_type_label = variant.title
+              if track_type_label == blank or track_type_label == 'Default Title'
+                assign track_type_label = 'Rubber Track'
+              endif
+              assign vurl = routes.search_url | append: '?q=' | append: variant.sku | url_encode
+              if variant_product != blank
+                assign vurl = variant_product.url | append: '?variant=' | append: variant.id
+              endif
+              assign vimg = variant.featured_image | default: variant.image
+              if vimg == blank and variant.featured_media != blank
+                assign vimg = variant.featured_media.preview_image
+              endif
+              if vimg == blank and variant_product != blank
+                assign vimg = variant_product.featured_image
+              endif
+              assign tsize = variant_product.metafields.custom.track_size | default: track_size
+              assign track_card_title = track_machine_label | append: ' Tracks'
+            -%}
+            {%- capture sub -%}{% if tsize != blank %}Size: {{ tsize }}{% endif %}{% if variant.sku != blank %}{% if tsize != blank %} · {% endif %}SKU: {{ variant.sku }}{% endif %}{%- endcapture -%}
+            {%- render 'hi-product-card', url: vurl, title: track_card_title, type_label: track_type_label,
+                image: vimg, sub: sub, price: variant.price, compare_at: variant.compare_at_price, button: 'View Track' -%}
+          {%- endfor -%}
+        </div>
+      {%- elsif model.track_products.value != blank -%}
         <div class="hi-mf__cards" data-hi-static-row="tracks">
           {%- liquid
             assign track_machine_label = model_name | split: ' Rubber Track' | first | split: ' Tracks' | first | strip
