@@ -1,39 +1,80 @@
 {%- comment -%}
-  Enhanced Product JSON-LD: Shopify base + fitment + shipping on Offer.
+  Dynamic Product JSON-LD engine.
+  Source of truth is Shopify product data + synced Supabase metafields.
   Params: product
 {%- endcomment -%}
 {%- liquid
   assign variant = product.selected_or_first_available_variant
   assign fitment_refs = product.metafields.custom.fitments.value
-  assign hi_ts = product.metafields.custom.track_size.value | default: product.metafields.custom.track_size
-  assign hi_width_mm = product.metafields.custom.width_mm.value
-  assign hi_width_in = product.metafields.custom.width_in.value
-  assign hi_pitch_mm = product.metafields.custom.pitch_mm.value
-  assign hi_pitch_type = product.metafields.custom.pitch_type.value
-  assign hi_links = product.metafields.custom.links.value
-  assign hi_guide = product.metafields.custom.guide.value
-  assign hi_warranty_months = product.metafields.custom.warranty_months.value
-  assign hi_category = product.type | default: 'Heavy Equipment Parts'
-  if hi_ts != blank
-    assign hi_category = 'Rubber Tracks'
-  endif
-  assign hi_has_specs = false
-  if hi_ts != blank or hi_width_mm != blank or hi_width_in != blank or hi_pitch_mm != blank or hi_pitch_type != blank or hi_links != blank or hi_guide != blank or hi_warranty_months != blank
-    assign hi_has_specs = true
-  endif
+  assign fallback = product.metafields.custom.tracktech_data_fallback.value
+  assign fallback_specs = fallback.specs
+  assign hi_ts = product.metafields.custom.track_size.value | default: product.metafields.custom.track_size | default: fallback_specs.track_size
+  assign hi_width_mm = product.metafields.custom.width_mm.value | default: fallback_specs.width_mm
+  assign hi_width_in = product.metafields.custom.width_in.value | default: fallback_specs.width_in
+  assign hi_pitch_mm = product.metafields.custom.pitch_mm.value | default: fallback_specs.pitch_mm
+  assign hi_pitch_type = product.metafields.custom.pitch_type.value | default: fallback_specs.pitch_type
+  assign hi_links = product.metafields.custom.links.value | default: fallback_specs.links
+  assign hi_guide = product.metafields.custom.guide.value | default: fallback_specs.guide_type
+  assign hi_tread = product.metafields.custom.tread_pattern.value | default: fallback_specs.tread_pattern
+  assign hi_warranty_months = product.metafields.custom.warranty_months.value | default: 24
+  assign hi_description = fallback.text | default: product.description | strip_html | truncate: 250
+  assign hi_price_valid_until = 'now' | date: '%s' | plus: 31536000 | date: '%Y-%m-%d'
+  assign hi_category = 'Vehicles & Parts > Vehicle Parts & Accessories > Heavy Machinery Parts'
 -%}
-<script type="application/ld+json">
-  {{ product | structured_data }}
-</script>
-{%- if hi_has_specs -%}
+{%- if template.name == 'product' and variant != blank -%}
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@context": "https://schema.org/",
   "@type": "Product",
-  "@id": {{ product.url | prepend: shop.url | append: '#specifications' | json }},
+  "@id": {{ product.url | prepend: shop.url | append: '#product' | json }},
   "name": {{ product.title | json }},
   "url": {{ product.url | prepend: shop.url | json }},
+  "image": [
+    {%- for image in product.images limit: 12 -%}
+      {{ image | image_url: width: 1200 | prepend: 'https:' | json }}{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  ],
+  "description": {{ hi_description | json }},
+  "brand": { "@type": "Brand", "name": "Heavy Iron Supply Co." },
+  "sku": {{ variant.sku | default: product.id | json }},
+  "mpn": {{ variant.sku | default: product.id | json }},
   "category": {{ hi_category | json }},
+  "offers": {
+    "@type": "Offer",
+    "url": {{ product.url | prepend: shop.url | json }},
+    "priceCurrency": {{ cart.currency.iso_code | default: shop.currency | json }},
+    "price": {{ variant.price | divided_by: 100.0 | json }},
+    "priceValidUntil": {{ hi_price_valid_until | json }},
+    "itemCondition": "https://schema.org/NewCondition",
+    "availability": {% if variant.available %}"https://schema.org/InStock"{% else %}"https://schema.org/OutOfStock"{% endif %},
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": "0.00",
+        "currency": {{ cart.currency.iso_code | default: shop.currency | json }}
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "US"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 1,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 1,
+          "maxValue": 3,
+          "unitCode": "DAY"
+        }
+      }
+    }
+  },
   "additionalProperty": [
     {%- assign hi_prop_i = 0 -%}
     {%- if hi_ts != blank -%}
@@ -43,17 +84,17 @@
     {%- endif -%}
     {%- if hi_width_mm != blank -%}
       {%- if hi_prop_i > 0 -%},{%- endif -%}
-      { "@type": "PropertyValue", "name": "Width", "value": {{ hi_width_mm | json }}, "unitCode": "MMT" }
+      { "@type": "PropertyValue", "name": "Track Width", "value": {{ hi_width_mm | append: 'mm' | json }}, "unitCode": "MMT" }
       {%- assign hi_prop_i = hi_prop_i | plus: 1 -%}
     {%- endif -%}
     {%- if hi_width_in != blank -%}
       {%- if hi_prop_i > 0 -%},{%- endif -%}
-      { "@type": "PropertyValue", "name": "Width", "value": {{ hi_width_in | json }}, "unitText": "in" }
+      { "@type": "PropertyValue", "name": "Track Width (Inches)", "value": {{ hi_width_in | json }}, "unitCode": "INH" }
       {%- assign hi_prop_i = hi_prop_i | plus: 1 -%}
     {%- endif -%}
     {%- if hi_pitch_mm != blank -%}
       {%- if hi_prop_i > 0 -%},{%- endif -%}
-      { "@type": "PropertyValue", "name": "Pitch", "value": {{ hi_pitch_mm | json }}, "unitCode": "MMT" }
+      { "@type": "PropertyValue", "name": "Pitch", "value": {{ hi_pitch_mm | append: 'mm' | json }}, "unitCode": "MMT" }
       {%- assign hi_prop_i = hi_prop_i | plus: 1 -%}
     {%- endif -%}
     {%- if hi_pitch_type != blank -%}
@@ -63,7 +104,7 @@
     {%- endif -%}
     {%- if hi_links != blank -%}
       {%- if hi_prop_i > 0 -%},{%- endif -%}
-      { "@type": "PropertyValue", "name": "Links", "value": {{ hi_links | json }} }
+      { "@type": "PropertyValue", "name": "Link Count", "value": {{ hi_links | json }} }
       {%- assign hi_prop_i = hi_prop_i | plus: 1 -%}
     {%- endif -%}
     {%- if hi_guide != blank -%}
@@ -71,9 +112,14 @@
       { "@type": "PropertyValue", "name": "Guide Type", "value": {{ hi_guide | json }} }
       {%- assign hi_prop_i = hi_prop_i | plus: 1 -%}
     {%- endif -%}
+    {%- if hi_tread != blank -%}
+      {%- if hi_prop_i > 0 -%},{%- endif -%}
+      { "@type": "PropertyValue", "name": "Tread Pattern", "value": {{ hi_tread | json }} }
+      {%- assign hi_prop_i = hi_prop_i | plus: 1 -%}
+    {%- endif -%}
     {%- if hi_warranty_months != blank -%}
       {%- if hi_prop_i > 0 -%},{%- endif -%}
-      { "@type": "PropertyValue", "name": "Warranty", "value": {{ hi_warranty_months | append: ' months' | json }} }
+      { "@type": "PropertyValue", "name": "Warranty", "value": {{ hi_warranty_months | append: '-Month / 1,000-Hour' | json }} }
       {%- assign hi_prop_i = hi_prop_i | plus: 1 -%}
     {%- endif -%}
     {%- if hi_ts != blank -%}
@@ -82,27 +128,34 @@
       { "@type": "PropertyValue", "name": "Susceptible to Cable Crimp Snapping", "value": "False" },
       { "@type": "PropertyValue", "name": "Utilizes Recycled Rubber Fillers", "value": "False" },
       { "@type": "PropertyValue", "name": "Guaranteed Drop-In Fit", "value": "True" }
-      {%- if hi_pitch_type != blank or hi_guide != blank -%},
-        { "@type": "PropertyValue", "name": "Dedicated Pitch Alignment", "value": {{ hi_pitch_type | default: hi_guide | append: ' pitch' | json }} }
-      {%- endif -%}
+      {%- assign hi_prop_i = hi_prop_i | plus: 4 -%}
+    {%- endif -%}
+    {%- if fitment_refs != blank -%}
+      {%- if hi_prop_i > 0 -%},{%- endif -%}
+      {
+        "@type": "PropertyValue",
+        "name": "Compatible Models",
+        "value": [
+          {%- assign hi_ci = 0 -%}
+          {%- for fitment in fitment_refs limit: 25 -%}
+            {%- assign model_mo = fitment.model.value -%}
+            {%- assign make_mo = fitment.make.value -%}
+            {%- assign mk = make_mo.name.value | default: make_mo.display_name.value | default: '' -%}
+            {%- assign md = model_mo.display_name.value | default: model_mo.system.handle | default: '' -%}
+            {%- if mk != blank and md != blank -%}
+              {%- if hi_ci > 0 -%},{%- endif -%}
+              {{ mk | append: ' ' | append: md | json }}
+              {%- assign hi_ci = hi_ci | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+        ]
+      }
     {%- endif -%}
   ]
-}
-</script>
-{%- endif -%}
-{%- if fitment_refs != blank -%}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "@id": {{ product.url | prepend: shop.url | append: '#fitment' | json }},
-  "name": {{ product.title | json }},
-  "url": {{ product.url | prepend: shop.url | json }},
-  "category": {{ hi_category | json }},
-  "brand": { "@type": "Brand", "name": "Heavy Iron Supply Co." },
+  {%- if fitment_refs != blank -%},
   "isAccessoryOrSparePartFor": [
     {%- assign hi_fi = 0 -%}
-    {%- for fitment in fitment_refs limit: 15 -%}
+    {%- for fitment in fitment_refs limit: 25 -%}
       {%- assign model_mo = fitment.model.value -%}
       {%- assign make_mo = fitment.make.value -%}
       {%- assign mk = make_mo.name.value | default: make_mo.display_name.value | default: '' -%}
@@ -114,39 +167,7 @@
       {%- endif -%}
     {%- endfor -%}
   ]
-}
-</script>
-{%- endif -%}
-{%- if hi_ts != blank and variant.price > 0 -%}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "@id": {{ product.url | prepend: shop.url | append: '#free-ltl-offer' | json }},
-  "name": {{ product.title | json }},
-  "url": {{ product.url | prepend: shop.url | json }},
-  "sku": {{ variant.sku | default: product.selected_or_first_available_variant.sku | json }},
-  "brand": { "@type": "Brand", "name": "Heavy Iron Supply Co." },
-  "category": "Vehicles & Parts > Vehicle Parts & Accessories > Heavy Machinery Parts",
-  "offers": {
-    "@type": "Offer",
-    "url": {{ product.url | prepend: shop.url | json }},
-    "priceCurrency": {{ shop.currency | json }},
-    "price": {{ variant.price | divided_by: 100.0 | json }},
-    "priceValidUntil": "2027-12-31",
-    "itemCondition": "https://schema.org/NewCondition",
-    "availability": {% if variant.available %}"https://schema.org/InStock"{% else %}"https://schema.org/PreOrder"{% endif %},
-    "shippingDetails": {
-      "@type": "OfferShippingDetails",
-      "shippingRate": { "@type": "MonetaryAmount", "value": "0.00", "currency": {{ shop.currency | json }} },
-      "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "US" },
-      "deliveryTime": {
-        "@type": "ShippingDeliveryTime",
-        "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "DAY" },
-        "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 3, "unitCode": "DAY" }
-      }
-    }
-  }
+  {%- endif -%}
 }
 </script>
 {%- endif -%}
