@@ -257,6 +257,12 @@ h1, h2, h3, h4, h5, h6,
   opacity: 0.75;
 }
 
+.track-specs__muted {
+  color: rgba(var(--color-foreground), 0.58);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
 .track-specs__tread-note {
   font-size: 1.15rem;
   color: rgba(var(--color-foreground), 0.5);

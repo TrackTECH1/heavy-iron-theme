@@ -6,14 +6,79 @@
   assign variant = product.selected_or_first_available_variant
   assign fitment_refs = product.metafields.custom.fitments.value
   assign hi_ts = product.metafields.custom.track_size.value | default: product.metafields.custom.track_size
+  assign hi_width_mm = product.metafields.custom.width_mm.value
+  assign hi_width_in = product.metafields.custom.width_in.value
+  assign hi_pitch_mm = product.metafields.custom.pitch_mm.value
+  assign hi_pitch_type = product.metafields.custom.pitch_type.value
+  assign hi_links = product.metafields.custom.links.value
+  assign hi_guide = product.metafields.custom.guide.value
+  assign hi_warranty_months = product.metafields.custom.warranty_months.value
   assign hi_category = product.type | default: 'Heavy Equipment Parts'
   if hi_ts != blank
     assign hi_category = 'Rubber Tracks'
+  endif
+  assign hi_has_specs = false
+  if hi_ts != blank or hi_width_mm != blank or hi_width_in != blank or hi_pitch_mm != blank or hi_pitch_type != blank or hi_links != blank or hi_guide != blank or hi_warranty_months != blank
+    assign hi_has_specs = true
   endif
 -%}
 <script type="application/ld+json">
   {{ product | structured_data }}
 </script>
+{%- if hi_has_specs -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "@id": {{ product.url | prepend: shop.url | append: '#specifications' | json }},
+  "name": {{ product.title | json }},
+  "url": {{ product.url | prepend: shop.url | json }},
+  "category": {{ hi_category | json }},
+  "additionalProperty": [
+    {%- assign hi_prop_i = 0 -%}
+    {%- if hi_ts != blank -%}
+      {%- if hi_prop_i > 0 -%},{%- endif -%}
+      { "@type": "PropertyValue", "name": "Track Size", "value": {{ hi_ts | json }} }
+      {%- assign hi_prop_i = hi_prop_i | plus: 1 -%}
+    {%- endif -%}
+    {%- if hi_width_mm != blank -%}
+      {%- if hi_prop_i > 0 -%},{%- endif -%}
+      { "@type": "PropertyValue", "name": "Width", "value": {{ hi_width_mm | json }}, "unitCode": "MMT" }
+      {%- assign hi_prop_i = hi_prop_i | plus: 1 -%}
+    {%- endif -%}
+    {%- if hi_width_in != blank -%}
+      {%- if hi_prop_i > 0 -%},{%- endif -%}
+      { "@type": "PropertyValue", "name": "Width", "value": {{ hi_width_in | json }}, "unitText": "in" }
+      {%- assign hi_prop_i = hi_prop_i | plus: 1 -%}
+    {%- endif -%}
+    {%- if hi_pitch_mm != blank -%}
+      {%- if hi_prop_i > 0 -%},{%- endif -%}
+      { "@type": "PropertyValue", "name": "Pitch", "value": {{ hi_pitch_mm | json }}, "unitCode": "MMT" }
+      {%- assign hi_prop_i = hi_prop_i | plus: 1 -%}
+    {%- endif -%}
+    {%- if hi_pitch_type != blank -%}
+      {%- if hi_prop_i > 0 -%},{%- endif -%}
+      { "@type": "PropertyValue", "name": "Pitch Type", "value": {{ hi_pitch_type | json }} }
+      {%- assign hi_prop_i = hi_prop_i | plus: 1 -%}
+    {%- endif -%}
+    {%- if hi_links != blank -%}
+      {%- if hi_prop_i > 0 -%},{%- endif -%}
+      { "@type": "PropertyValue", "name": "Links", "value": {{ hi_links | json }} }
+      {%- assign hi_prop_i = hi_prop_i | plus: 1 -%}
+    {%- endif -%}
+    {%- if hi_guide != blank -%}
+      {%- if hi_prop_i > 0 -%},{%- endif -%}
+      { "@type": "PropertyValue", "name": "Guide Type", "value": {{ hi_guide | json }} }
+      {%- assign hi_prop_i = hi_prop_i | plus: 1 -%}
+    {%- endif -%}
+    {%- if hi_warranty_months != blank -%}
+      {%- if hi_prop_i > 0 -%},{%- endif -%}
+      { "@type": "PropertyValue", "name": "Warranty", "value": {{ hi_warranty_months | append: ' months' | json }} }
+    {%- endif -%}
+  ]
+}
+</script>
+{%- endif -%}
 {%- if fitment_refs != blank -%}
 <script type="application/ld+json">
 {

@@ -5,8 +5,12 @@
 
 {%- assign track_size = product.metafields.custom.track_size.value -%}
 {%- assign width_mm = product.metafields.custom.width_mm.value -%}
+{%- assign width_in = product.metafields.custom.width_in.value -%}
 {%- assign pitch_mm = product.metafields.custom.pitch_mm.value -%}
+{%- assign pitch_type = product.metafields.custom.pitch_type.value -%}
 {%- assign links = product.metafields.custom.links.value -%}
+{%- assign guide_type = product.metafields.custom.guide.value -%}
+{%- assign warranty_months = product.metafields.custom.warranty_months.value -%}
 {%- assign track_rating = product.metafields.custom.track_rating.value
   | default: product.metafields.custom.rating.value
   | default: product.metafields.custom.duty_rating.value -%}
@@ -53,19 +57,41 @@
       {%- if width_mm != blank -%}
         <tr>
           <td class="track-specs__label">Width</td>
-          <td class="track-specs__value">{{ width_mm }} (mm)</td>
+          <td class="track-specs__value">
+            {{ width_mm }} mm
+            {%- if width_in != blank -%}
+              <span class="track-specs__muted">/ {{ width_in }} in</span>
+            {%- endif -%}
+          </td>
         </tr>
       {%- endif -%}
       {%- if pitch_mm != blank -%}
         <tr>
           <td class="track-specs__label">Pitch</td>
-          <td class="track-specs__value">{{ pitch_mm }}</td>
+          <td class="track-specs__value">
+            {{ pitch_mm }} mm
+            {%- if pitch_type != blank -%}
+              <span class="track-specs__muted">/ Type {{ pitch_type }}</span>
+            {%- endif -%}
+          </td>
         </tr>
       {%- endif -%}
       {%- if links != blank -%}
         <tr>
           <td class="track-specs__label">Links</td>
           <td class="track-specs__value">{{ links }}</td>
+        </tr>
+      {%- endif -%}
+      {%- if guide_type != blank -%}
+        <tr>
+          <td class="track-specs__label">Guide</td>
+          <td class="track-specs__value">{{ guide_type }}</td>
+        </tr>
+      {%- endif -%}
+      {%- if warranty_months != blank -%}
+        <tr>
+          <td class="track-specs__label">Warranty</td>
+          <td class="track-specs__value">{{ warranty_months }} months</td>
         </tr>
       {%- endif -%}
       {%- if track_weight != blank -%}
