@@ -89,6 +89,23 @@
 }
 .hi-mf__cards.hi-mf__carousel::-webkit-scrollbar { display:none; }
 .hi-mf__carousel .hi-card { flex:0 0 min(280px,78vw); scroll-snap-align:start; }
+.hi-mf__loader {
+  flex:0 0 min(280px,78vw);
+  min-height:220px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:22px 18px;
+  border:1px dashed var(--hi-border);
+  border-radius:var(--hi-r);
+  color:var(--hi-muted);
+  font-size:.78rem;
+  font-weight:800;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  scroll-snap-align:start;
+}
+.hi-card--empty { border-style:dashed; }
 .hi-mf__carousel-controls { display:flex; justify-content:flex-end; gap:8px; margin:-12px 0 14px; }
 .hi-mf__carousel-btn {
   width:38px;
