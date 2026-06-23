@@ -106,6 +106,12 @@
             {{ form | payment_button }}
           {%- endif -%}
         </div>
+        {%- if product.metafields.custom.track_size.value != blank -%}
+          <div class="track-purchase-note" role="note">
+            <strong>Sold individually.</strong>
+            Most machines require quantity 2 for left and right track replacement. Verify link count and pitch before checkout.
+          </div>
+        {%- endif -%}
       {%- endform -%}
     </product-form>
   {%- else -%}
