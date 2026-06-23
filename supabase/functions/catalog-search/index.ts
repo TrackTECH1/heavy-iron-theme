@@ -35,8 +35,15 @@ const TREAD_TO_SHOPIFY: Record<string, string> = {
 
 type SearchHit = {
   id: string;
+  source_type?: string | null;
+  label?: string | null;
   track_size?: string | null;
   tread_pattern?: string | null;
+  make?: string | null;
+  model?: string | null;
+  snippet?: string | null;
+  shopify_handle?: string | null;
+  url?: string | null;
   image_url?: string | null;
   image_alt?: string | null;
   price?: number | null;
@@ -212,48 +219,56 @@ Deno.serve(async (req) => {
 
     const results = await Promise.all(hits.map(async (hit) => {
       const product = productById.get(hit.id);
-      let shopifyHandle = resolveShopifyHandle(product, variantByKey, trackByHandle, gidToHandle);
+      let shopifyHandle = hit.shopify_handle || resolveShopifyHandle(product, variantByKey, trackByHandle, gidToHandle);
       const trackSize = hit.track_size || product?.track_size || "";
       const tread = hit.tread_pattern || product?.tread_pattern || "";
-      const label = [trackSize, tread].filter(Boolean).join(" · ");
+      const label = hit.label || [trackSize, tread].filter(Boolean).join(" · ") || [hit.make, hit.model].filter(Boolean).join(" ");
       const imageUrl = hit.image_url || product?.image_url || null;
       const imageAlt = hit.image_alt || product?.image_alt || label || null;
       const shop = Deno.env.get("SHOPIFY_STORE_DOMAIN");
       const token = Deno.env.get("SHOPIFY_ADMIN_TOKEN");
       const apiVersion = Deno.env.get("SHOPIFY_API_VERSION") || "2025-10";
 
-      if (!shopifyHandle && shop && token) {
-        if (product?.shopify_product_id) {
-          shopifyHandle = await shopifyHandleFromProductGid(
-            product.shopify_product_id,
-            shop,
-            token,
-            apiVersion,
-          );
-        }
-        if (!shopifyHandle) {
-          shopifyHandle = await shopifySearchHandle(
-            sizeDigitsFromTrackSize(trackSize),
-            tread,
-            shop,
-            token,
-            apiVersion,
-          );
+      if (!shopifyHandle && product && shop && token) {
+        try {
+          if (product.shopify_product_id) {
+            shopifyHandle = await shopifyHandleFromProductGid(
+              product.shopify_product_id,
+              shop,
+              token,
+              apiVersion,
+            );
+          }
+          if (!shopifyHandle) {
+            shopifyHandle = await shopifySearchHandle(
+              sizeDigitsFromTrackSize(trackSize),
+              tread,
+              shop,
+              token,
+              apiVersion,
+            );
+          }
+        } catch (_e) {
+          shopifyHandle = null;
         }
       }
 
       return {
         id: hit.id,
+        source_type: hit.source_type || (product ? "product" : null),
         label,
         track_size: trackSize,
         tread_pattern: tread,
+        make: hit.make || null,
+        model: hit.model || null,
+        snippet: hit.snippet || null,
         image_url: imageUrl,
         image_alt: imageAlt,
         media_role: product?.media_role || null,
         price: hit.price ?? null,
         similarity: hit.similarity ?? null,
         shopify_handle: shopifyHandle,
-        url: shopifyHandle ? `/products/${shopifyHandle}` : null,
+        url: hit.url || (shopifyHandle ? `/products/${shopifyHandle}` : null),
       };
     }));
 
