@@ -6,6 +6,7 @@
 {%- endcomment -%}
 
 {{ 'hi-machine.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'hi-machine-bento.js' | asset_url }}" defer></script>
 
 {%- liquid
   assign model = metaobject
@@ -36,7 +37,12 @@
   endif
 -%}
 
-<div class="hi-mf">
+<div
+  class="hi-mf"
+  data-hi-machine-bento
+  data-machine-slug="{{ model.system.handle | escape }}"
+  data-bento-endpoint="{{ section.settings.bento_endpoint | default: '/apps/iron-api/bento' | escape }}"
+>
   <div class="hi-mf__wrap">
 
     {%- comment -%} HEADER + HERO {%- endcomment -%}
@@ -125,12 +131,12 @@
     {%- endif -%}
 
     {%- comment -%} RUBBER TRACKS {%- endcomment -%}
-    {%- if model.track_products.value != blank -%}
-      <section class="hi-mf__sec" id="tracks">
-        <h2 class="hi-mf__sec-h">Rubber Tracks</h2>
-        <p class="hi-mf__sec-sub">Choose your tread pattern. OEM-spec, continuous steel cord, free freight.</p>
+    <section class="hi-mf__sec" id="tracks">
+      <h2 class="hi-mf__sec-h">Rubber Tracks</h2>
+      <p class="hi-mf__sec-sub">Choose your tread pattern. OEM-spec, continuous steel cord, free freight.</p>
 
-        <div class="hi-mf__cards">
+      {%- if model.track_products.value != blank -%}
+        <div class="hi-mf__cards" data-hi-static-row="tracks">
           {%- liquid
             assign track_machine_label = model_name | split: ' Rubber Track' | first | split: ' Tracks' | first | strip
             if track_machine_label == blank
@@ -159,17 +165,21 @@
             {%- endfor -%}
           {%- endfor -%}
         </div>
+      {%- else -%}
+        <div class="hi-mf__cards hi-mf__cards--loading" data-hi-bento-row="tracks" aria-live="polite">
+          <div class="hi-mf__loading">Loading verified rubber tracks...</div>
+        </div>
+      {%- endif -%}
 
-        <a class="hi-mf__shopall" href="/collections/rubber-tracks">Shop all rubber tracks &rarr;</a>
-      </section>
-    {%- endif -%}
+      <a class="hi-mf__shopall" href="/collections/rubber-tracks">Shop all rubber tracks &rarr;</a>
+    </section>
 
     {%- comment -%} UNDERCARRIAGE {%- endcomment -%}
-    {%- if model.uc_products.value != blank or model.uc_parts.value != blank -%}
-      <section class="hi-mf__sec" id="undercarriage">
-        <h2 class="hi-mf__sec-h">Steel Undercarriage</h2>
-        <p class="hi-mf__sec-sub">OEM-cross-referenced sprockets, idlers &amp; rollers. Drop-in fit.</p>
-        <div class="hi-mf__cards">
+    <section class="hi-mf__sec" id="undercarriage">
+      <h2 class="hi-mf__sec-h">Steel Undercarriage</h2>
+      <p class="hi-mf__sec-sub">OEM-cross-referenced sprockets, idlers &amp; rollers. Drop-in fit.</p>
+      {%- if model.uc_products.value != blank or model.uc_parts.value != blank -%}
+        <div class="hi-mf__cards" data-hi-static-row="undercarriage">
           {%- if model.uc_products.value != blank -%}
             {%- for product in model.uc_products.value -%}
               {%- assign pn = product.metafields.custom.oem_part_number -%}
@@ -187,8 +197,12 @@
             {%- endfor -%}
           {%- endif -%}
         </div>
-      </section>
-    {%- endif -%}
+      {%- else -%}
+        <div class="hi-mf__cards hi-mf__cards--loading" data-hi-bento-row="undercarriage" aria-live="polite">
+          <div class="hi-mf__loading">Loading verified undercarriage parts...</div>
+        </div>
+      {%- endif -%}
+    </section>
 
     {%- comment -%} ATTACHMENTS — shoppable grid + per-machine fitment intelligence (CID matrix) {%- endcomment -%}
     {%- assign fit = model.attachment_fitment.value -%}
@@ -197,11 +211,15 @@
       <p class="hi-mf__sec-sub">{% if model.mount_type.value != blank %}{{ model.mount_type.value }} mount. {% endif %}Buckets, grapples, forks, brush cutters &amp; more — matched to your machine.</p>
 
       {%- if model.featured_attachments.value != blank -%}
-        <div class="hi-mf__cards">
-          {%- for product in model.featured_attachments.value limit: 4 -%}
+        <div class="hi-mf__cards" data-hi-static-row="attachments">
+          {%- for product in model.featured_attachments.value -%}
             {%- render 'hi-product-card', url: product.url, title: product.title, type_label: 'Attachment',
                 image: product.featured_image, price: product.price, button: 'View Attachment' -%}
           {%- endfor -%}
+        </div>
+      {%- else -%}
+        <div class="hi-mf__cards hi-mf__cards--loading" data-hi-bento-row="attachments" aria-live="polite">
+          <div class="hi-mf__loading">Loading verified attachments...</div>
         </div>
       {%- endif -%}
 
@@ -289,7 +307,8 @@
     { "type": "text", "id": "phone_number", "label": "Phone (digits only, for tel: link)", "default": "8508167898" },
     { "type": "text", "id": "phone_display", "label": "Phone (display)", "default": "(850) 816-7898" },
     { "type": "url", "id": "quote_url", "label": "Quote page URL" },
-    { "type": "url", "id": "attachments_url", "label": "Shop-all Attachments collection URL" }
+    { "type": "url", "id": "attachments_url", "label": "Shop-all Attachments collection URL" },
+    { "type": "text", "id": "bento_endpoint", "label": "Bento app proxy endpoint", "default": "/apps/iron-api/bento" }
   ],
   "presets": [{ "name": "Machine Fitment Page" }]
 }

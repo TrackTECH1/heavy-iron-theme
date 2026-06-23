@@ -134,6 +134,21 @@
 
 /* Card */
 .hi-mf__cards .hi-card { min-height:100%; }
+.hi-mf__loading,
+.hi-mf__empty {
+  flex:1 0 100%;
+  min-height:150px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px dashed var(--hi-border);
+  background:#fafafa;
+  color:var(--hi-muted);
+  font-size:.82rem;
+  font-weight:800;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
 .hi-card { display:flex; flex-direction:column; align-items:center; background:#fff; border:1px solid var(--hi-border);
   border-radius:var(--hi-r); padding:22px 18px; text-decoration:none; color:inherit;
   transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
