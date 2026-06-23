@@ -6,17 +6,18 @@
 {%- liquid
   assign variant = product.selected_or_first_available_variant
   assign fitment_refs = product.metafields.custom.fitments.value
+  assign specs = product.metafields.custom.specs.value
   assign fallback = product.metafields.custom.tracktech_data_fallback.value
   assign fallback_specs = fallback.specs
-  assign hi_ts = product.metafields.custom.track_size.value | default: product.metafields.custom.track_size | default: fallback_specs.track_size
-  assign hi_width_mm = product.metafields.custom.width_mm.value | default: fallback_specs.width_mm
-  assign hi_width_in = product.metafields.custom.width_in.value | default: fallback_specs.width_in
-  assign hi_pitch_mm = product.metafields.custom.pitch_mm.value | default: fallback_specs.pitch_mm
-  assign hi_pitch_type = product.metafields.custom.pitch_type.value | default: fallback_specs.pitch_type
-  assign hi_links = product.metafields.custom.links.value | default: fallback_specs.links
-  assign hi_guide = product.metafields.custom.guide.value | default: fallback_specs.guide_type
-  assign hi_tread = product.metafields.custom.tread_pattern.value | default: fallback_specs.tread_pattern
-  assign hi_warranty_months = product.metafields.custom.warranty_months.value | default: 24
+  assign hi_ts = product.metafields.custom.track_size.value | default: product.metafields.custom.track_size | default: specs.track_size | default: fallback_specs.track_size
+  assign hi_width_mm = product.metafields.custom.width_mm.value | default: specs.width_mm | default: fallback_specs.width_mm
+  assign hi_width_in = product.metafields.custom.width_in.value | default: specs.width_in | default: fallback_specs.width_in
+  assign hi_pitch_mm = product.metafields.custom.pitch_mm.value | default: specs.pitch_mm | default: fallback_specs.pitch_mm
+  assign hi_pitch_type = product.metafields.custom.pitch_type.value | default: specs.pitch_type | default: fallback_specs.pitch_type
+  assign hi_links = product.metafields.custom.links.value | default: specs.links | default: fallback_specs.links
+  assign hi_guide = product.metafields.custom.guide.value | default: specs.guide_type | default: fallback_specs.guide_type
+  assign hi_tread = product.metafields.custom.tread_pattern.value | default: specs.tread_pattern | default: fallback_specs.tread_pattern
+  assign hi_warranty_months = product.metafields.custom.warranty_months.value | default: specs.warranty_months | default: 24
   assign hi_description = fallback.text | default: product.description | strip_html | truncate: 250
   assign hi_price_valid_until = 'now' | date: '%s' | plus: 31536000 | date: '%Y-%m-%d'
   assign hi_category = 'Vehicles & Parts > Vehicle Parts & Accessories > Heavy Machinery Parts'
