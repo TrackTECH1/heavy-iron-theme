@@ -5,10 +5,12 @@
   var CFG = window.HISmartSearch || {};
   var AGENT_EP = CFG.endpoint || '';
   var SEARCH_EP = CFG.searchEndpoint || '';
+  var FITMENT_EP = CFG.fitmentSearchEndpoint || '';
   var MIN = CFG.minChars || 3;
   var DEBOUNCE = CFG.debounceMs || 380;
   var machineCache = {};
   var semanticCache = {};
+  var fitmentCache = {};
   var timers = new WeakMap();
   var aborts = new WeakMap();
   var session = CFG.session || ('hi-search-' + Math.random().toString(36).slice(2));
@@ -99,7 +101,34 @@
     );
   }
 
-  function renderPanel(panel, state, machineData, semanticResults) {
+  function renderFitmentBlock(payload) {
+    var groups = payload && payload.groups ? payload.groups : [];
+    if (!groups.length) return '';
+
+    var items = groups.slice(0, 6).map(function (group) {
+      var variants = (group.variants || []).slice(0, 3).map(function (v) {
+        return esc(v.label || v.sku || '');
+      }).filter(Boolean).join(', ');
+      var price = formatPrice(group.price || (group.variants && group.variants[0] && group.variants[0].price));
+      var meta = [group.size || group.sku || '', variants, price].filter(Boolean).join(' · ');
+      var href = group.href || '/search?q=' + encodeURIComponent(group.title || '');
+      return (
+        '<li class="hi-smart-search__product">' +
+          '<a class="hi-smart-search__product-link" href="' + esc(href) + '">' + esc(group.title || group.label || 'Fitment match') + '</a>' +
+          (meta ? '<span class="hi-smart-search__product-meta">' + esc(meta) + '</span>' : '') +
+        '</li>'
+      );
+    }).join('');
+
+    return (
+      '<div class="hi-smart-search__block hi-smart-search__block--fitment">' +
+        '<p class="hi-smart-search__eyebrow">Fitment matches</p>' +
+        '<ul class="hi-smart-search__products">' + items + '</ul>' +
+      '</div>'
+    );
+  }
+
+  function renderPanel(panel, state, machineData, semanticResults, fitmentResults) {
     if (!panel) return;
     if (state === 'hide') {
       panel.hidden = true;
@@ -116,7 +145,8 @@
 
     var machineHtml = renderMachineBlock(machineData);
     var semanticHtml = renderSemanticBlock(semanticResults);
-    if (!machineHtml && !semanticHtml) {
+    var fitmentHtml = renderFitmentBlock(fitmentResults);
+    if (!machineHtml && !semanticHtml && !fitmentHtml) {
       renderPanel(panel, 'hide');
       return;
     }
@@ -126,6 +156,7 @@
     panel.innerHTML =
       '<div class="hi-smart-search__inner">' +
         machineHtml +
+        fitmentHtml +
         semanticHtml +
         '<p class="hi-smart-search__hint">Standard Shopify results appear below.</p>' +
       '</div>';
@@ -140,15 +171,24 @@
     }).then(function (r) { return r.json(); });
   }
 
+  function fetchFitment(url, q, signal) {
+    var separator = url.indexOf('?') === -1 ? '?' : '&';
+    return fetch(url + separator + 'q=' + encodeURIComponent(q), {
+      method: 'GET',
+      headers: { 'accept': 'application/json' },
+      signal: signal,
+    }).then(function (r) { return r.ok ? r.json() : null; });
+  }
+
   function lookup(q, panel) {
-    if ((!AGENT_EP && !SEARCH_EP) || q.length < MIN) {
+    if ((!AGENT_EP && !SEARCH_EP && !FITMENT_EP) || q.length < MIN) {
       renderPanel(panel, 'hide');
       return;
     }
 
     var cacheKey = q.toLowerCase();
-    if (machineCache[cacheKey] !== undefined && semanticCache[cacheKey] !== undefined) {
-      renderPanel(panel, 'done', machineCache[cacheKey], semanticCache[cacheKey]);
+    if (machineCache[cacheKey] !== undefined && semanticCache[cacheKey] !== undefined && fitmentCache[cacheKey] !== undefined) {
+      renderPanel(panel, 'done', machineCache[cacheKey], semanticCache[cacheKey], fitmentCache[cacheKey]);
       return;
     }
 
@@ -170,12 +210,18 @@
           .catch(function () { return []; })
       : Promise.resolve([]);
 
-    Promise.all([machineP, semanticP]).then(function (pair) {
+    var fitmentP = FITMENT_EP
+      ? fetchFitment(FITMENT_EP, q, ac.signal).catch(function () { return null; })
+      : Promise.resolve(null);
+
+    Promise.all([machineP, semanticP, fitmentP]).then(function (pair) {
       var machineData = pair[0];
       var semanticResults = pair[1];
+      var fitmentResults = pair[2];
       machineCache[cacheKey] = machineData;
       semanticCache[cacheKey] = semanticResults;
-      renderPanel(panel, 'done', machineData, semanticResults);
+      fitmentCache[cacheKey] = fitmentResults;
+      renderPanel(panel, 'done', machineData, semanticResults, fitmentResults);
     }).catch(function (e) {
       if (e && e.name === 'AbortError') return;
       renderPanel(panel, 'hide');

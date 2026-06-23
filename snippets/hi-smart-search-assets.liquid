@@ -4,13 +4,15 @@
 {%- liquid
   assign hi_store_agent_endpoint = settings.hi_store_agent_endpoint | strip
   assign hi_catalog_search_endpoint = settings.hi_catalog_search_endpoint | strip
+  assign hi_fitment_search_endpoint = settings.hi_fitment_search_endpoint | strip
 -%}
-{%- if hi_store_agent_endpoint != blank or hi_catalog_search_endpoint != blank -%}
+{%- if hi_store_agent_endpoint != blank or hi_catalog_search_endpoint != blank or hi_fitment_search_endpoint != blank -%}
   {{ 'hi-smart-search.css' | asset_url | stylesheet_tag }}
   <script>
     window.HISmartSearch = window.HISmartSearch || {
       endpoint: {{ hi_store_agent_endpoint | json }},
       searchEndpoint: {{ hi_catalog_search_endpoint | json }},
+      fitmentSearchEndpoint: {{ hi_fitment_search_endpoint | json }},
       minChars: 3,
       debounceMs: 380
     };
