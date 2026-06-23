@@ -28,6 +28,7 @@ const APPLY_SUPABASE = args.has("--apply-supabase");
 const APPLY_SHOPIFY_MEDIA = args.has("--apply-shopify-media");
 const APPLY_MODEL_METAOBJECTS = args.has("--apply-model-metaobjects");
 const ALLOW_PARTIAL_MODELS = args.has("--allow-partial-models");
+const RESOLVE_MISSING_SHOPIFY = args.has("--resolve-missing-shopify");
 const OVERWRITE_STORAGE = args.has("--overwrite-storage");
 const LIMIT = Number(argValue("--limit", "50"));
 const STORE = argValue("--store", "tracktech-530.myshopify.com");
@@ -317,9 +318,82 @@ function handleCandidates(product) {
 
 const productLookupCache = new Map();
 
+function chunk(items, size) {
+  const out = [];
+  for (let i = 0; i < items.length; i += size) out.push(items.slice(i, i + size));
+  return out;
+}
+
+function cacheShopifyProductHit(product, hit) {
+  for (const key of [product.sku, product.product_code, product.id, product.shopify_product_id].filter(Boolean)) {
+    productLookupCache.set(key, hit);
+  }
+}
+
+function selectVariant(product, variants) {
+  const list = variants || [];
+  return (
+    list.find((node) => product.shopify_variant_id && node.id === product.shopify_variant_id) ||
+    list.find((node) => product.sku && node.sku === product.sku) ||
+    list[0] ||
+    null
+  );
+}
+
+function prefetchShopifyProducts(products) {
+  const byGid = products.filter((product) => product.shopify_product_id);
+  if (!byGid.length) return;
+
+  const productsByGid = new Map();
+  for (const product of byGid) {
+    if (!productsByGid.has(product.shopify_product_id)) productsByGid.set(product.shopify_product_id, []);
+    productsByGid.get(product.shopify_product_id).push(product);
+  }
+  const query = `
+    query ProductNodes($ids: [ID!]!) {
+      nodes(ids: $ids) {
+        ... on Product {
+          id
+          handle
+          title
+          media(first: 20) {
+            nodes { id alt mediaContentType preview { image { url } } }
+          }
+          variants(first: 20) {
+            nodes { id sku title }
+          }
+        }
+      }
+    }`;
+
+  for (const ids of chunk([...productsByGid.keys()], 100)) {
+    const data = shopifyGql(query, { ids });
+    for (const node of data.nodes || []) {
+      if (!node?.id) continue;
+      for (const product of productsByGid.get(node.id) || []) {
+        const variant = selectVariant(product, node.variants?.nodes || []);
+        cacheShopifyProductHit(product, {
+          product_id: node.id,
+          product_handle: node.handle,
+          product_title: node.title,
+          variant_id: variant?.id || null,
+          variant_title: variant?.title || "",
+          media: node.media?.nodes || [],
+          resolution: product.shopify_variant_id ? "supabase_variant_id" : "supabase_product_id",
+        });
+      }
+    }
+  }
+}
+
 function resolveShopifyProduct(product) {
-  const cacheKey = product.sku || product.product_code || product.id;
+  const cacheKey = product.sku || product.product_code || product.id || product.shopify_product_id;
   if (productLookupCache.has(cacheKey)) return productLookupCache.get(cacheKey);
+  if (!RESOLVE_MISSING_SHOPIFY) {
+    const miss = null;
+    productLookupCache.set(cacheKey, miss);
+    return miss;
+  }
 
   const query = `
     query ResolveProduct($skuQuery: String!, $handle: String!) {
@@ -349,7 +423,7 @@ function resolveShopifyProduct(product) {
         media: skuNode.product.media?.nodes || [],
         resolution: "sku",
       };
-      productLookupCache.set(cacheKey, hit);
+      cacheShopifyProductHit(product, hit);
       return hit;
     }
     if (data.byHandle) {
@@ -364,7 +438,7 @@ function resolveShopifyProduct(product) {
         media: data.byHandle.media?.nodes || [],
         resolution: "handle",
       };
-      productLookupCache.set(cacheKey, hit);
+      cacheShopifyProductHit(product, hit);
       return hit;
     }
   }
@@ -468,6 +542,39 @@ function updateModelTrackVariants(modelGid, variantIds) {
   return { status: "updated" };
 }
 
+function updateModelTrackVariantsBatch(updates) {
+  if (!updates.length) return;
+  for (const batch of chunk(updates, 20)) {
+    const variableDefs = [];
+    const mutationFields = [];
+    const variables = {};
+    batch.forEach((item, index) => {
+      variableDefs.push(`$id${index}: ID!`, `$fields${index}: [MetaobjectFieldInput!]!`);
+      mutationFields.push(`
+        u${index}: metaobjectUpdate(id: $id${index}, metaobject: { fields: $fields${index} }) {
+          metaobject { id handle }
+          userErrors { field message code }
+        }`);
+      variables[`id${index}`] = item.modelGid;
+      variables[`fields${index}`] = [
+        { key: "track_variants", value: JSON.stringify([...new Set(item.variantIds)]) },
+      ];
+    });
+    const mutation = `mutation UpdateModelTrackVariantBatch(${variableDefs.join(", ")}) { ${mutationFields.join("\n")} }`;
+    const data = shopifyGql(mutation, variables, true);
+    batch.forEach((item, index) => {
+      const payload = data[`u${index}`];
+      const errors = payload?.userErrors || [];
+      if (errors.length) {
+        item.row.result = "error";
+        item.row.error = JSON.stringify(errors);
+      } else {
+        item.row.result = "updated";
+      }
+    });
+  }
+}
+
 async function main() {
   fs.mkdirSync(OUT_DIR, { recursive: true });
 
@@ -492,6 +599,7 @@ async function main() {
     String(product.type || "").toLowerCase().includes("track") ||
     !blank(product.track_size)
   );
+  prefetchShopifyProducts(trackProducts);
   const modelById = new Map(models.map((model) => [model.id, model]));
   const productById = new Map(products.map((product) => [product.id, product]));
 
@@ -550,6 +658,7 @@ async function main() {
   }
 
   const modelRows = [];
+  const modelUpdateQueue = [];
   for (const { model, products: modelProducts } of [...modelGroups.values()].slice(0, LIMIT)) {
     const variantIds = [];
     const unresolved = [];
@@ -565,9 +674,13 @@ async function main() {
       action = "review_partial_model_unresolved_products";
       result = "skipped";
     } else if (uniqueVariantIds.length) {
-      result = updateModelTrackVariants(model.shopify_metaobject_gid, uniqueVariantIds).status;
+      if (APPLY_MODEL_METAOBJECTS) {
+        result = "queued";
+      } else {
+        result = updateModelTrackVariants(model.shopify_metaobject_gid, uniqueVariantIds).status;
+      }
     }
-    modelRows.push({
+    const row = {
       model_key: model.model_key,
       make: model.make,
       model: model.model,
@@ -577,8 +690,14 @@ async function main() {
       unresolved: unresolved.slice(0, 12).join(" | "),
       action,
       result,
-    });
+    };
+    if (APPLY_MODEL_METAOBJECTS && uniqueVariantIds.length && action === "update_track_variants") {
+      modelUpdateQueue.push({ modelGid: model.shopify_metaobject_gid, variantIds: uniqueVariantIds, row });
+    }
+    modelRows.push(row);
   }
+
+  if (APPLY_MODEL_METAOBJECTS) updateModelTrackVariantsBatch(modelUpdateQueue);
 
   writeCsv(path.join(OUT_DIR, "HEAVY_IRON_SHOPIFY_MEDIA_SYNC_PLAN.csv"), mediaRows);
   writeCsv(path.join(OUT_DIR, "HEAVY_IRON_MODEL_TRACK_VARIANTS_SYNC_PLAN.csv"), modelRows);
@@ -590,6 +709,7 @@ async function main() {
       apply_shopify_media: APPLY_SHOPIFY_MEDIA,
       apply_model_metaobjects: APPLY_MODEL_METAOBJECTS,
       allow_partial_models: ALLOW_PARTIAL_MODELS,
+      resolve_missing_shopify: RESOLVE_MISSING_SHOPIFY,
       limit: LIMIT,
       store: STORE,
     },
