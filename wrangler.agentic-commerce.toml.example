@@ -1,0 +1,12 @@
+name = "heavy-iron-agentic-commerce"
+main = "workers/agentic-commerce.js"
+compatibility_date = "2026-06-22"
+
+# These routes expose the machine-readable agent layer at the storefront root.
+routes = [
+  { pattern = "heavyironsupply.com/llms.txt", zone_name = "heavyironsupply.com" },
+  { pattern = "heavyironsupply.com/llm.txt", zone_name = "heavyironsupply.com" },
+  { pattern = "heavyironsupply.com/catalog.md", zone_name = "heavyironsupply.com" },
+  { pattern = "heavyironsupply.com/openapi.json", zone_name = "heavyironsupply.com" },
+  { pattern = "heavyironsupply.com/api/agentic/*", zone_name = "heavyironsupply.com" }
+]
