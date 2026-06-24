@@ -390,31 +390,27 @@ def export_matrixify_workbooks(
     meta_headers = [
         "Handle",
         "Command",
+        "Definition: Handle",
         "Field: display_name",
         "Field: primary_track_size",
         "Field: hero_image",
         "Field: track_products [list.product_reference]",
         "Field: uc_products [list.product_reference]",
-        "machine_id",
-        "publish_status",
-        "Field: approved_track_sizes [single_line_text_field]",
     ]
     meta_rows = []
     for m in publishable:
-        if not m.track_product_handles and not m.hero_url and not m.primary_track_size:
+        if not m.track_product_handles and not m.uc_product_handles:
             continue
         meta_rows.append(
             [
                 m.shopify_handle,
                 "MERGE",
+                "model",
                 f"{m.brand} {m.model}".strip(),
                 m.primary_track_size,
                 m.hero_url or "",
                 ", ".join(m.track_product_handles),
                 ", ".join(m.uc_product_handles),
-                m.machine_id,
-                m.publish_status,
-                ", ".join(m.approved_track_sizes),
             ]
         )
 

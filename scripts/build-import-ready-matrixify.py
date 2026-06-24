@@ -30,11 +30,14 @@ from lib.catalog_ssot import (  # noqa: E402
     is_catalog_itemid,
     load_dotenv_fitment,
     normalize_itemid,
+    parse_fitment_csv,
     resolve_track_gallery_urls,
     shopify_product_type,
     shopify_vendor,
     retail_pricing_from_cost,
     product_is_quote_only,
+    slugify_make,
+    slugify_model,
     supplier_by_itemid,
     normalize_warehouse_availability_json,
     RUBBER_TRACK_WARRANTY_MONTHS,
@@ -47,6 +50,9 @@ OUTPUT_SPROCKETS = ROOT / "data/sprocket-images-matrixify.csv"
 OUTPUT_TRACK_GALLERIES = ROOT / "data/track-gallery-matrixify.csv"
 OUTPUT_FITMENT_JSON = ROOT / "data/fitment-json-matrixify.csv"
 OUTPUT_FITS_EQUIPMENT_MODELS = ROOT / "data/fits-equipment-models-matrixify.csv"
+OUTPUT_UC_FITMENT_JSON = ROOT / "data/uc-fitment-json-matrixify.csv"
+OUTPUT_UC_FITS_EQUIPMENT_MODELS = ROOT / "data/uc-fits-equipment-models-matrixify.csv"
+OUTPUT_GAP_REPORT = ROOT / "data/fitment-gap-report.csv"
 MANIFEST = ROOT / "data/uc-images-manifest.json"
 LEGACY_MANIFEST = ROOT / "data/sprocket-images-manifest.json"
 
@@ -206,12 +212,42 @@ def humanize_machine_type(code: str | None) -> str:
     return raw.replace("_", " ").title()
 
 
-def load_fitments_by_itemid() -> dict[str, list[dict]]:
-    """Supabase track fitments grouped by catalog itemid."""
+def load_store_skus(export_path: Path) -> set[str]:
+    """Variant SKUs from a Matrixify Products export (live store catalog)."""
+    suffix = export_path.suffix.lower()
+    skus: set[str] = set()
+    if suffix == ".xlsx":
+        import openpyxl
+
+        wb = openpyxl.load_workbook(export_path, read_only=True, data_only=True)
+        ws = wb["Products"]
+        headers = [cell.value for cell in next(ws.iter_rows(min_row=1, max_row=1))]
+        idx = {name: i for i, name in enumerate(headers) if name}
+        sku_i = idx.get("Variant SKU")
+        if sku_i is None:
+            wb.close()
+            raise ValueError(f"No Variant SKU column in {export_path}")
+        for row in ws.iter_rows(min_row=2, values_only=True):
+            sku = normalize_itemid(row[sku_i] if sku_i < len(row) else None)
+            if sku:
+                skus.add(sku)
+        wb.close()
+        return skus
+
+    with export_path.open(newline="", encoding="utf-8-sig") as f:
+        for row in csv.DictReader(f):
+            sku = normalize_itemid(row.get("Variant SKU") or row.get("Handle"))
+            if sku:
+                skus.add(sku)
+    return skus
+
+
+def load_fitments_by_itemid(*, fit_type: str = "track") -> dict[str, list[dict]]:
+    """Supabase fitments grouped by catalog itemid."""
     rows = supabase_get_all(
         "fitment?select=source,product:product_id(itemid),"
-        "model:model_id(make,model,machine_type_code,model_key)"
-        "&fit_type=eq.track"
+        f"model:model_id(make,model,machine_type_code,model_key)"
+        f"&fit_type=eq.{fit_type}"
     )
     by_itemid: dict[str, list[dict]] = {}
     seen: dict[str, set[str]] = {}
@@ -265,7 +301,29 @@ def build_fitment_display_text(fits: list[dict], track_size: str, machine_type: 
     return f"Fits select {make_part} and other {type_label}{size_bit}."
 
 
-def build_fitment_json(product: dict, fits: list[dict]) -> str:
+def build_fitment_json_from_supplier(product: dict, supplier_row: dict | None) -> str:
+    raw = str((supplier_row or {}).get("fitment_models") or "").strip()
+    if not raw:
+        return ""
+    track_size = (product.get("track_size") or "").strip()
+    fits: list[dict] = []
+    for make, model_name in parse_fitment_csv(raw):
+        fits.append(
+            {
+                "make": make.strip(),
+                "model": model_name.strip(),
+                "machine_type": "",
+                "machine_type_code": "",
+                "model_key": f"{slugify_make(make)}-{slugify_model(model_name)}",
+                "source": "supplier_fitment",
+            }
+        )
+    if not fits:
+        return ""
+    return build_fitment_json(product, fits, verified=False)
+
+
+def build_fitment_json(product: dict, fits: list[dict], *, verified: bool | None = None) -> str:
     if not fits:
         return ""
     track_size = (product.get("track_size") or "").strip()
@@ -279,7 +337,8 @@ def build_fitment_json(product: dict, fits: list[dict]) -> str:
         "supplier_row_model",
         "supplier_fitment",
     }
-    verified = any((f.get("source") or "") in verified_sources for f in fits) or len(fits) > 0
+    if verified is None:
+        verified = any((f.get("source") or "") in verified_sources for f in fits) or len(fits) > 0
     payload = {
         "verified": verified,
         "machine_type": dominant_type,
@@ -299,12 +358,12 @@ def build_fitment_json(product: dict, fits: list[dict]) -> str:
     return json.dumps(payload, separators=(",", ":"))
 
 
-def load_model_handles_by_itemid() -> dict[str, list[str]]:
-    """Published model metaobject handles per track SKU (requires shopify_metaobject_gid)."""
+def load_model_handles_by_itemid(*, fit_type: str = "track") -> dict[str, list[str]]:
+    """Published model metaobject handles per SKU (requires shopify_metaobject_gid)."""
     rows = supabase_get_all(
         "fitment?select=product:product_id(itemid),"
-        "model:model_id(model_key,model_handle,shopify_metaobject_gid)"
-        "&fit_type=eq.track"
+        f"model:model_id(model_key,model_handle,shopify_metaobject_gid)"
+        f"&fit_type=eq.{fit_type}"
     )
     by_itemid: dict[str, list[str]] = {}
     seen: dict[str, set[str]] = {}
@@ -505,6 +564,30 @@ def fits_equipment_models_row(product: dict, refs: str) -> dict[str, str]:
     return row
 
 
+def _gap_reason(
+    fits: list[dict],
+    fitment_json: str,
+    refs: str,
+    supplier_row: dict | None,
+) -> str:
+    if fitment_json and refs:
+        return ""
+    reasons: list[str] = []
+    if not fitment_json:
+        if not fits and not str((supplier_row or {}).get("fitment_models") or "").strip():
+            reasons.append("no_supplier_fitment")
+        elif not fits:
+            reasons.append("supplier_unparsed")
+        else:
+            reasons.append("no_fitment_json")
+    if not refs:
+        if not fits:
+            reasons.append("no_fitment_rows")
+        else:
+            reasons.append("models_missing_shopify_gid")
+    return ";".join(reasons)
+
+
 def write_csv(path: Path, rows: list[dict[str, str]], *, columns: list[str] | None = None) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     fieldnames = columns or MATRIXIFY_COLUMNS
@@ -522,12 +605,32 @@ def main() -> int:
     parser.add_argument("--track-gallery-out", type=Path, default=OUTPUT_TRACK_GALLERIES)
     parser.add_argument("--fitment-json-out", type=Path, default=OUTPUT_FITMENT_JSON)
     parser.add_argument("--fits-equipment-models-out", type=Path, default=OUTPUT_FITS_EQUIPMENT_MODELS)
+    parser.add_argument("--uc-fitment-json-out", type=Path, default=OUTPUT_UC_FITMENT_JSON)
+    parser.add_argument("--uc-fits-equipment-models-out", type=Path, default=OUTPUT_UC_FITS_EQUIPMENT_MODELS)
+    parser.add_argument("--gap-report-out", type=Path, default=OUTPUT_GAP_REPORT)
+    parser.add_argument(
+        "--store-export",
+        type=Path,
+        default=None,
+        help="Limit fitment Matrixify rows to Variant SKUs present in a live store export",
+    )
     args = parser.parse_args()
 
     load_dotenv_fitment()
     products = load_products()
-    fitments_by_itemid = load_fitments_by_itemid()
-    model_handles_by_itemid = load_model_handles_by_itemid()
+    store_skus: set[str] | None = None
+    if args.store_export:
+        if not args.store_export.is_file():
+            print(f"Store export not found: {args.store_export}", file=sys.stderr)
+            return 1
+        store_skus = load_store_skus(args.store_export)
+        products = [p for p in products if p["itemid"] in store_skus]
+        print(f"Store export filter: {len(products)} catalog SKUs in {args.store_export.name}")
+
+    track_fitments_by_itemid = load_fitments_by_itemid(fit_type="track")
+    uc_fitments_by_itemid = load_fitments_by_itemid(fit_type="uc_part")
+    track_model_handles_by_itemid = load_model_handles_by_itemid(fit_type="track")
+    uc_model_handles_by_itemid = load_model_handles_by_itemid(fit_type="uc_part")
     supplier = supplier_by_itemid()
     for p in products:
         sup = supplier.get(p["itemid"]) or {}
@@ -541,23 +644,64 @@ def main() -> int:
     track_gallery_rows: list[dict[str, str]] = []
     fitment_json_rows: list[dict[str, str]] = []
     fits_equipment_models_rows: list[dict[str, str]] = []
+    uc_fitment_json_rows: list[dict[str, str]] = []
+    uc_fits_equipment_models_rows: list[dict[str, str]] = []
+    gap_report_rows: list[dict[str, str]] = []
     model_ref_counts: list[int] = []
+    uc_model_ref_counts: list[int] = []
 
     for p in sorted(products, key=lambda x: x["itemid"]):
         itemid = p["itemid"]
         urls = product_image_urls(p, uc_images)
+        family = p["family"]
         fitment_json = ""
-        if p["family"] == "track":
-            fits = fitments_by_itemid.get(itemid, [])
-            fitment_json = build_fitment_json(p, fits)
+        fits = []
+        model_handles: list[str] = []
+
+        if family == "track":
+            fits = track_fitments_by_itemid.get(itemid, [])
+            fitment_json = build_fitment_json(p, fits) if fits else build_fitment_json_from_supplier(p, supplier.get(itemid))
             if fitment_json:
                 fitment_json_rows.append(fitment_json_row(p, fitment_json))
-            model_handles = model_handles_by_itemid.get(itemid, [])
+            model_handles = track_model_handles_by_itemid.get(itemid, [])
             refs = format_metaobject_reference_list(model_handles)
             if refs:
                 fits_equipment_models_rows.append(fits_equipment_models_row(p, refs))
                 model_ref_counts.append(len(model_handles))
-        catalog_rows.extend(rows_for_product(p, urls, fitment_json=fitment_json))
+            gap_report_rows.append(
+                {
+                    "itemid": itemid,
+                    "family": family,
+                    "fitment_rows": str(len(fits)),
+                    "fitment_json": "yes" if fitment_json else "no",
+                    "fits_equipment_models": "yes" if refs else "no",
+                    "model_ref_count": str(len(model_handles)),
+                    "gap_reason": _gap_reason(fits, fitment_json, refs, supplier.get(itemid)),
+                }
+            )
+        elif family in {"sprocket", "idler", "roller"}:
+            fits = uc_fitments_by_itemid.get(itemid, [])
+            fitment_json = build_fitment_json(p, fits) if fits else build_fitment_json_from_supplier(p, supplier.get(itemid))
+            if fitment_json:
+                uc_fitment_json_rows.append(fitment_json_row(p, fitment_json))
+            model_handles = uc_model_handles_by_itemid.get(itemid, [])
+            refs = format_metaobject_reference_list(model_handles)
+            if refs:
+                uc_fits_equipment_models_rows.append(fits_equipment_models_row(p, refs))
+                uc_model_ref_counts.append(len(model_handles))
+            gap_report_rows.append(
+                {
+                    "itemid": itemid,
+                    "family": family,
+                    "fitment_rows": str(len(fits)),
+                    "fitment_json": "yes" if fitment_json else "no",
+                    "fits_equipment_models": "yes" if refs else "no",
+                    "model_ref_count": str(len(model_handles)),
+                    "gap_reason": _gap_reason(fits, fitment_json, refs, supplier.get(itemid)),
+                }
+            )
+
+        catalog_rows.extend(rows_for_product(p, urls, fitment_json=fitment_json if family == "track" else ""))
 
         if p["family"] in {"sprocket", "idler", "roller"} and urls:
             sprocket_only_rows.extend(rows_for_product(p, urls))
@@ -569,6 +713,21 @@ def main() -> int:
     write_csv(args.track_gallery_out, track_gallery_rows)
     write_csv(args.fitment_json_out, fitment_json_rows, columns=FITMENT_JSON_COLUMNS)
     write_csv(args.fits_equipment_models_out, fits_equipment_models_rows, columns=FITS_EQUIPMENT_MODELS_COLUMNS)
+    write_csv(args.uc_fitment_json_out, uc_fitment_json_rows, columns=FITMENT_JSON_COLUMNS)
+    write_csv(args.uc_fits_equipment_models_out, uc_fits_equipment_models_rows, columns=FITS_EQUIPMENT_MODELS_COLUMNS)
+    write_csv(
+        args.gap_report_out,
+        gap_report_rows,
+        columns=[
+            "itemid",
+            "family",
+            "fitment_rows",
+            "fitment_json",
+            "fits_equipment_models",
+            "model_ref_count",
+            "gap_reason",
+        ],
+    )
 
     from collections import Counter
 
@@ -588,6 +747,20 @@ def main() -> int:
         )
     else:
         print(f"Wrote {args.fits_equipment_models_out} (0 rows)")
+    uc_count = sum(1 for p in products if p["family"] in {"sprocket", "idler", "roller"})
+    print(
+        f"Wrote {args.uc_fitment_json_out} ({len(uc_fitment_json_rows)} rows, "
+        f"{len(uc_fitment_json_rows)}/{uc_count} UC with fitment_json)"
+    )
+    if uc_model_ref_counts:
+        print(
+            f"Wrote {args.uc_fits_equipment_models_out} ({len(uc_fits_equipment_models_rows)} rows, "
+            f"{sum(uc_model_ref_counts)} total refs)"
+        )
+    else:
+        print(f"Wrote {args.uc_fits_equipment_models_out} (0 rows)")
+    gaps = [row for row in gap_report_rows if row["gap_reason"]]
+    print(f"Wrote {args.gap_report_out} ({len(gap_report_rows)} rows, {len(gaps)} with remaining gaps)")
     print(f"  families: {dict(families)}")
     print(f"  prior import OK SKUs: {len(ok_skus)}")
     print("Matrixify: MERGE, identify by Variant SKU, enable Products/Variants/Images/Metafields")

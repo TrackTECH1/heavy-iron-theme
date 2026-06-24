@@ -120,6 +120,8 @@ EXCLUDED_CATALOG_ITEMID_PATTERNS: tuple[re.Pattern[str], ...] = (
     re.compile(r"^TNT14\.00-24", re.I),
     re.compile(r"^TNT30X", re.I),  # 10-16.5 solid tires
     re.compile(r"^TNT33X", re.I),  # 12-16.5 / 12-18 solid tires
+    re.compile(r"^TNT36X13", re.I),  # 14-17.5 solid rubber tires (skid steer)
+    re.compile(r"^TNTPR", re.I),  # skid steer preset rubber / tires on rims
     re.compile(r"^TNT650-10TND", re.I),
     re.compile(r"^\d+X\d+LM$", re.I),  # OTT link tracks as UC SKUs (10X28LM …)
 )

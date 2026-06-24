@@ -1,36 +1,36 @@
 shopify_handle,machine_id,brand,model,publish_status,hero,primary_track_size,track_products,uc_products,approved_track_sizes,blockers
-airman-ax12,mdl_airman_ax12,Airman,AX12,ready,no,230x96x31,1,0,1,
-airman-ax12-2,mdl_airman_ax12_2,Airman,AX12-2,ready,no,230x96x31,1,0,1,
-airman-ax15-2,mdl_airman_ax15_2,Airman,AX15-2,ready,no,230x96x31,1,0,1,
-airman-ax15u,mdl_airman_ax15u,Airman,AX15U,ready,no,230x96x31,1,0,1,
-airman-ax17u,mdl_airman_ax17u,Airman,AX17U,ready,no,230x48x70,2,0,1,
-airman-ax30u-4,mdl_airman_ax30u_4,Airman,AX30U-4,ready,no,300x52.5x86,2,0,1,
-airman-ax35-1,mdl_airman_ax351,Airman,AX351,ready,no,300x52.5Nx84,1,0,2,
-airman-ax35-2,mdl_airman_ax352,Airman,AX352,ready,no,300x52.5Nx84,1,0,2,
-airman-ax35u,mdl_airman_ax35u,Airman,AX35U,ready,no,300x52.5x86,2,0,1,
-airman-ax35u-4,mdl_airman_ax35u_4,Airman,AX35U-4,ready,no,300x52.5x86,2,0,1,
-airman-ax36u,mdl_airman_ax36u,Airman,AX36U,ready,no,300x52.5x86,2,0,1,
-airman-ax36ucgl,mdl_airman_ax36ucgl,Airman,AX36UCGL,ready,no,300x52.5x86,2,0,1,
-airman-axc12,mdl_airman_axc12,Airman,AXC12,ready,no,230x96x31,1,0,1,
-airman-axc15,mdl_airman_axc15,Airman,AXC15,ready,no,230x96x31,1,0,1,
-asv-posi-trachd4520,mdl_asv_posi_trac_hd4520,ASV,POSI-TRAC HD4520,blocked,no,,0,0,3,missing_primary_track_size_v2;no_products
-asv-posi-trac2800,mdl_asv_posi_trac2800,ASV,POSI-TRAC2800,ready,no,457x101.6x56,1,0,1,
-asv-posi-trac2810,mdl_asv_posi_trac2810,ASV,POSI-TRAC2810,ready,no,457x101.6x56,1,0,1,
-asv-posi-trac4800,mdl_asv_posi_trac4800,ASV,POSI-TRAC4800,ready,no,457x101.6x56,1,1,1,
-asv-posi-trac4810,mdl_asv_posi_trac4810,ASV,POSI-TRAC4810,ready,no,457x101.6x56,1,1,1,
-asv-posi-trachd4500,mdl_asv_posi_trachd4500,ASV,POSI-TRACHD4500,ready,no,457x101.6x56,1,1,1,
+airman-ax12,mdl_airman_ax12,Airman,AX12,ready,yes,230x96x31,1,0,1,
+airman-ax12-2,mdl_airman_ax12_2,Airman,AX12-2,ready,yes,230x96x31,1,0,1,
+airman-ax15-2,mdl_airman_ax15_2,Airman,AX15-2,ready,yes,230x96x31,1,0,1,
+airman-ax15u,mdl_airman_ax15u,Airman,AX15U,ready,yes,230x96x31,1,0,1,
+airman-ax17u,mdl_airman_ax17u,Airman,AX17U,ready,yes,230x48x70,2,0,1,
+airman-ax30u-4,mdl_airman_ax30u_4,Airman,AX30U-4,ready,yes,300x52.5x86,2,0,1,
+airman-ax35-1,mdl_airman_ax351,Airman,AX351,ready,yes,300x52.5Nx84,1,0,2,
+airman-ax35-2,mdl_airman_ax352,Airman,AX352,ready,yes,300x52.5Nx84,1,0,2,
+airman-ax35u,mdl_airman_ax35u,Airman,AX35U,ready,yes,300x52.5x86,2,0,1,
+airman-ax35u-4,mdl_airman_ax35u_4,Airman,AX35U-4,ready,yes,300x52.5x86,2,0,1,
+airman-ax36u,mdl_airman_ax36u,Airman,AX36U,ready,yes,300x52.5x86,2,0,1,
+airman-ax36ucgl,mdl_airman_ax36ucgl,Airman,AX36UCGL,ready,yes,300x52.5x86,2,0,1,
+airman-axc12,mdl_airman_axc12,Airman,AXC12,ready,yes,230x96x31,1,0,1,
+airman-axc15,mdl_airman_axc15,Airman,AXC15,ready,yes,230x96x31,1,0,1,
+asv-posi-trachd4520,mdl_asv_posi_trac_hd4520,ASV,POSI-TRAC HD4520,blocked,yes,,0,0,3,missing_primary_track_size_v2;no_products
+asv-posi-trac2800,mdl_asv_posi_trac2800,ASV,POSI-TRAC2800,ready,yes,457x101.6x56,1,0,1,
+asv-posi-trac2810,mdl_asv_posi_trac2810,ASV,POSI-TRAC2810,ready,yes,457x101.6x56,1,0,1,
+asv-posi-trac4800,mdl_asv_posi_trac4800,ASV,POSI-TRAC4800,ready,yes,457x101.6x56,1,1,1,
+asv-posi-trac4810,mdl_asv_posi_trac4810,ASV,POSI-TRAC4810,ready,yes,457x101.6x56,1,1,1,
+asv-posi-trachd4500,mdl_asv_posi_trachd4500,ASV,POSI-TRACHD4500,ready,yes,457x101.6x56,1,1,1,
 asv-pt-50,mdl_asv_pt_50,ASV,PT-50,ready,no,381x100.5x42,1,2,1,
 asv-pt-60,mdl_asv_pt_60,ASV,PT-60,ready,no,381x100.5x42,1,2,1,
-asv-pt-80,mdl_asv_pt_80,ASV,PT-80,ready,no,457x101.6x51,2,3,1,
-asv-pt-100,mdl_asv_pt100,ASV,PT100,ready,no,457x101.6x51,2,0,1,
+asv-pt-80,mdl_asv_pt_80,ASV,PT-80,ready,yes,457x101.6x51,2,3,1,
+asv-pt-100,mdl_asv_pt100,ASV,PT100,ready,yes,457x101.6x51,2,0,1,
 asv-rc-50,mdl_asv_rc_50,ASV,RC-50,ready,no,381x100.5x42,1,2,1,
 asv-rc-60,mdl_asv_rc_60,ASV,RC-60,ready,no,381x100.5x42,1,2,1,
-asv-rc100,mdl_asv_rc100,ASV,RC100,ready,no,457x101.6x51,2,0,1,
-asv-rc85,mdl_asv_rc85,ASV,RC85,ready,no,457x101.6x51,2,0,1,
-asv-rcv,mdl_asv_rcv,ASV,RCV,ready,no,457x101.6x51,2,0,1,
-asv-rcv-85,mdl_asv_rcv85,ASV,RCV85,ready,no,457x101.6x51,2,0,1,
-asv-rt-120f,mdl_asv_rt_120f,ASV,RT-120F,ready,no,457x101.6x51,2,0,1,
-asv-rt-135f,mdl_asv_rt_135f,ASV,RT-135F,ready,no,457x101.6x51,2,0,1,
+asv-rc100,mdl_asv_rc100,ASV,RC100,ready,yes,457x101.6x51,2,0,1,
+asv-rc85,mdl_asv_rc85,ASV,RC85,ready,yes,457x101.6x51,2,0,1,
+asv-rcv,mdl_asv_rcv,ASV,RCV,ready,yes,457x101.6x51,2,0,1,
+asv-rcv-85,mdl_asv_rcv85,ASV,RCV85,ready,yes,457x101.6x51,2,0,1,
+asv-rt-120f,mdl_asv_rt_120f,ASV,RT-120F,ready,yes,457x101.6x51,2,0,1,
+asv-rt-135f,mdl_asv_rt_135f,ASV,RT-135F,ready,yes,457x101.6x51,2,0,1,
 asv-rt25,mdl_asv_rt_25,ASV,RT-25,blocked,yes,,0,0,3,missing_primary_track_size_v2;no_products
 asv-rt30,mdl_asv_rt_30,ASV,RT-30,blocked,yes,,0,0,3,missing_primary_track_size_v2;no_products
 asv-rt40,mdl_asv_rt_40,ASV,RT-40,blocked,yes,,0,0,3,missing_primary_track_size_v2;no_products
@@ -38,57 +38,57 @@ asv-rt-50,mdl_asv_rt_50,ASV,RT-50,partial,yes,,1,0,1,missing_primary_track_size_
 asv-rt-60,mdl_asv_rt_60,ASV,RT-60,ready,no,381x100.5x42,1,0,1,
 asv-rt-65,mdl_asv_rt_65,ASV,RT-65,partial,yes,,1,0,1,missing_primary_track_size_v2
 asv-rt-75,mdl_asv_rt_75,ASV,RT-75,partial,yes,,1,0,1,missing_primary_track_size_v2
-asv-rt-75hd,mdl_asv_rt_75_hd,ASV,RT-75 HD,ready,no,457x101.6x51,2,0,1,
+asv-rt-75hd,mdl_asv_rt_75_hd,ASV,RT-75 HD,ready,yes,457x101.6x51,2,0,1,
 asv-sc-50,mdl_asv_sc_50,ASV,SC-50,ready,no,381x100.5x42,1,2,1,
-asv-sr-80,mdl_asv_sr80,ASV,SR80,ready,no,457x101.6x51,2,0,1,
+asv-sr-80,mdl_asv_sr80,ASV,SR80,ready,yes,457x101.6x51,2,0,1,
 asv-vt-70,mdl_asv_vt_70,ASV,VT-70,partial,no,,1,0,1,missing_primary_track_size_v2
 bobcat-220,mdl_bobcat_220,Bobcat,220,blocked,no,230x72Kx45,0,0,1,no_products
-bobcat-225,mdl_bobcat_225,Bobcat,225,ready,no,300x52.5Nx74,1,0,1,
-bobcat-231,mdl_bobcat_231,Bobcat,231,ready,no,300x52.5Nx80,3,0,1,
+bobcat-225,mdl_bobcat_225,Bobcat,225,ready,yes,300x52.5Nx74,1,0,1,
+bobcat-231,mdl_bobcat_231,Bobcat,231,ready,yes,300x52.5Nx80,3,0,1,
 bobcat-320,mdl_bobcat_320,Bobcat,320,ready,no,230x72Kx45,0,1,1,
-bobcat-320d,mdl_bobcat_320d,Bobcat,320D,blocked,no,,0,0,17,missing_primary_track_size_v2;no_products
-bobcat-320e,mdl_bobcat_320e,Bobcat,320E,blocked,no,,0,0,17,missing_primary_track_size_v2;no_products
-bobcat-321,mdl_bobcat_321,Bobcat,321,partial,no,,0,2,17,missing_primary_track_size_v2
-bobcat-322,mdl_bobcat_322,Bobcat,322,blocked,no,,0,0,17,missing_primary_track_size_v2;no_products
-bobcat-323,mdl_bobcat_323,Bobcat,323,partial,no,,0,2,17,missing_primary_track_size_v2
-bobcat-324,mdl_bobcat_324,Bobcat,324,blocked,no,,0,0,17,missing_primary_track_size_v2;no_products
+bobcat-320d,mdl_bobcat_320d,Bobcat,320D,blocked,yes,,0,0,17,missing_primary_track_size_v2;no_products
+bobcat-320e,mdl_bobcat_320e,Bobcat,320E,blocked,yes,,0,0,17,missing_primary_track_size_v2;no_products
+bobcat-321,mdl_bobcat_321,Bobcat,321,partial,yes,,0,2,17,missing_primary_track_size_v2
+bobcat-322,mdl_bobcat_322,Bobcat,322,blocked,yes,,0,0,17,missing_primary_track_size_v2;no_products
+bobcat-323,mdl_bobcat_323,Bobcat,323,partial,yes,,0,2,17,missing_primary_track_size_v2
+bobcat-324,mdl_bobcat_324,Bobcat,324,blocked,yes,,0,0,17,missing_primary_track_size_v2;no_products
 bobcat-325,mdl_bobcat_325,Bobcat,325,ready,yes,300x52.5Nx74,4,6,1,
 bobcat-328,mdl_bobcat_328,Bobcat,328,ready,yes,300x52.5Nx74,1,0,1,
-bobcat-329,mdl_bobcat_329,Bobcat,329,ready,no,300x52.5Nx80,5,5,1,
-bobcat-331,mdl_bobcat_331,Bobcat,331,ready,no,300x52.5Nx80,3,6,1,
-bobcat-331e,mdl_bobcat_331e,Bobcat,331E,ready,no,300x52.5Nx80,2,5,1,
-bobcat-334,mdl_bobcat_334,Bobcat,334,ready,no,300x52.5Nx80,3,6,1,
-bobcat-337,mdl_bobcat_337,Bobcat,337,ready,no,400x72.5Kx74,4,7,3,
-bobcat-341,mdl_bobcat_341,Bobcat,341,ready,no,400x72.5Kx74,7,7,3,
-bobcat-418,mdl_bobcat_418,Bobcat,418,ready,no,180x72x39,3,0,1,
+bobcat-329,mdl_bobcat_329,Bobcat,329,ready,yes,300x52.5Nx80,5,5,1,
+bobcat-331,mdl_bobcat_331,Bobcat,331,ready,yes,300x52.5Nx80,3,6,1,
+bobcat-331e,mdl_bobcat_331e,Bobcat,331E,ready,yes,300x52.5Nx80,2,5,1,
+bobcat-334,mdl_bobcat_334,Bobcat,334,ready,yes,300x52.5Nx80,3,6,1,
+bobcat-337,mdl_bobcat_337,Bobcat,337,ready,yes,400x72.5Kx74,4,7,3,
+bobcat-341,mdl_bobcat_341,Bobcat,341,ready,yes,400x72.5Kx74,7,7,3,
+bobcat-418,mdl_bobcat_418,Bobcat,418,ready,yes,180x72x39,3,0,1,
 bobcat-425,mdl_bobcat_425,Bobcat,425,ready,yes,300x52.5Nx80,3,4,1,
 bobcat-428,mdl_bobcat_428,Bobcat,428,ready,yes,300x52.5Nx80,2,3,1,
-bobcat-430,mdl_bobcat_430,Bobcat,430,blocked,no,,0,0,17,missing_primary_track_size_v2;no_products
-bobcat-435,mdl_bobcat_435,Bobcat,435,ready,no,400x72.5Kx74,4,5,3,
-bobcat-442,mdl_bobcat_442,Bobcat,442,ready,no,400x72.5Kx74,1,2,3,
+bobcat-430,mdl_bobcat_430,Bobcat,430,blocked,yes,,0,0,17,missing_primary_track_size_v2;no_products
+bobcat-435,mdl_bobcat_435,Bobcat,435,ready,yes,400x72.5Kx74,4,5,3,
+bobcat-442,mdl_bobcat_442,Bobcat,442,ready,yes,400x72.5Kx74,1,2,3,
 bobcat-864,mdl_bobcat_864,Bobcat,864,ready,yes,320x86x52,24,6,2,
-bobcat-cx27b,mdl_bobcat_cx27b,Bobcat,CX27B,blocked,no,300x52.5Nx80,0,0,1,no_products
+bobcat-cx27b,mdl_bobcat_cx27b,Bobcat,CX27B,blocked,yes,300x52.5Nx80,0,0,1,no_products
 bobcat-e08,mdl_bobcat_e08,Bobcat,E08,ready,yes,180x72x39,5,1,1,
 bobcat-e10,mdl_bobcat_e10,Bobcat,E10,ready,yes,180x72x39,5,1,1,
 bobcat-e20,mdl_bobcat_e20,Bobcat,E20,ready,yes,230x48x72,2,0,1,
-bobcat-e25,mdl_bobcat_e25,Bobcat,E25,ready,no,300x52.5Nx76,1,0,2,
+bobcat-e25,mdl_bobcat_e25,Bobcat,E25,ready,yes,300x52.5Nx76,1,0,2,
 bobcat-e26,mdl_bobcat_e26,Bobcat,E26,ready,yes,300x52.5Nx80,3,8,1,
-bobcat-e27,mdl_bobcat_e27,Bobcat,E27,blocked,no,300x52.5Nx80,0,0,1,no_products
-bobcat-e27z,mdl_bobcat_e27z,Bobcat,E27Z,blocked,no,300x52.5Nx80,0,0,1,no_products
+bobcat-e27,mdl_bobcat_e27,Bobcat,E27,blocked,yes,300x52.5Nx80,0,0,1,no_products
+bobcat-e27z,mdl_bobcat_e27z,Bobcat,E27Z,blocked,yes,300x52.5Nx80,0,0,1,no_products
 bobcat-e32,mdl_bobcat_e32,Bobcat,E32,ready,yes,300x52.5Nx80,3,5,1,
-bobcat-e32i,mdl_bobcat_e32i,Bobcat,E32I,ready,no,300x52.5Nx80,2,4,1,
+bobcat-e32i,mdl_bobcat_e32i,Bobcat,E32I,ready,yes,300x52.5Nx80,2,4,1,
 bobcat-e34,mdl_bobcat_e34,Bobcat,E34,blocked,yes,300x52.5Nx84,0,0,2,no_products
 bobcat-e35,mdl_bobcat_e35,Bobcat,E35,ready,yes,300x52.5Nx84,6,6,2,
-bobcat-e35i,mdl_bobcat_e35i,Bobcat,E35I,ready,no,300x52.5Nx84,2,5,2,
-bobcat-e35z,mdl_bobcat_e35z,Bobcat,E35Z,ready,no,300x52.5Nx84,2,4,2,
+bobcat-e35i,mdl_bobcat_e35i,Bobcat,E35I,ready,yes,300x52.5Nx84,2,5,2,
+bobcat-e35z,mdl_bobcat_e35z,Bobcat,E35Z,ready,yes,300x52.5Nx84,2,4,2,
 bobcat-e37,mdl_bobcat_e37,Bobcat,E37,blocked,yes,300x52.5Nx84,0,0,2,no_products
 bobcat-e42,mdl_bobcat_e42,Bobcat,E42,partial,yes,,2,5,1,missing_primary_track_size_v2
 bobcat-e45,mdl_bobcat_e45,Bobcat,E45,ready,yes,400x72.5Kx74,4,6,3,
 bobcat-e50,mdl_bobcat_e50,Bobcat,E50,ready,yes,400x72.5Kx74,4,6,3,
 bobcat-e55,mdl_bobcat_e55,Bobcat,E55,ready,yes,400x72.5Kx74,4,6,3,
-bobcat-e55z,mdl_bobcat_e55z,Bobcat,E55Z,ready,no,400x72.5Kx74,2,1,3,
+bobcat-e55z,mdl_bobcat_e55z,Bobcat,E55Z,ready,yes,400x72.5Kx74,2,1,3,
 bobcat-e60,mdl_bobcat_e60,Bobcat,E60,ready,yes,400x72.5Wx76,3,2,1,
-bobcat-e62,mdl_bobcat_e62,Bobcat,E62,blocked,no,400x72.5Wx76,0,0,1,no_products
+bobcat-e62,mdl_bobcat_e62,Bobcat,E62,blocked,yes,400x72.5Wx76,0,0,1,no_products
 bobcat-e63,mdl_bobcat_e63,Bobcat,E63,ready,yes,400x72.5Wx76,3,2,1,
 bobcat-e80,mdl_bobcat_e80,Bobcat,E80,ready,yes,450x81Nx76,9,4,2,
 bobcat-e85,mdl_bobcat_e85,Bobcat,E85,ready,yes,450x81Nx76,8,3,2,
@@ -121,176 +121,176 @@ bobcat-t76,mdl_bobcat_t76,Bobcat,T76,ready,yes,320x86Bx53,48,2,3,
 bobcat-t770,mdl_bobcat_t770,Bobcat,T770,ready,yes,450x86Bx55,16,13,1,
 bobcat-t830,mdl_bobcat_t830,Bobcat,T830,ready,yes,450x86Bx58,15,0,1,
 bobcat-t86,mdl_bobcat_t86,Bobcat,T86,ready,yes,450x86Bx58,13,1,1,
-bobcat-t864,mdl_bobcat_t864,Bobcat,T864,ready,no,320x86x52,4,0,2,
+bobcat-t864,mdl_bobcat_t864,Bobcat,T864,ready,yes,320x86x52,4,0,2,
 bobcat-t870,mdl_bobcat_t870,Bobcat,T870,ready,yes,450x86Bx58,54,11,2,
 boxer-118,mdl_boxer_118,Boxer,118,ready,no,180x72x36,1,0,1,
 boxer-320,mdl_boxer_320,Boxer,320,ready,no,180x72x36,1,0,1,
 boxer-322d,mdl_boxer_322d,Boxer,322D,ready,no,180x72x36,1,0,1,
-boxer-400,mdl_boxer_400,Boxer,400,ready,no,230x72x39,1,0,1,
-boxer-427,mdl_boxer_427,Boxer,427,ready,no,230x72x39,1,0,1,
-boxer-526dx,mdl_boxer_526dx,Boxer,526DX,ready,no,230x72x39,1,0,1,
-boxer-530dx,mdl_boxer_530dx,Boxer,530DX,ready,no,230x72x39,4,0,1,
-boxer-532dx,mdl_boxer_532dx,Boxer,532DX,ready,no,230x72x39,1,0,1,
-boxer-brute-trx,mdl_boxer_brute_trx,Boxer,BRUTE TRX,ready,no,230x72x39,1,0,1,
-case-15,mdl_case_15,Case,15,ready,no,230x96x31,2,0,1,
-case-15maxi,mdl_case_15maxi,Case,15MAXI,ready,no,230x96x31,2,0,1,
-case-16,mdl_case_16,Case,16,ready,no,230x96x31,2,0,1,
-case-16maxi,mdl_case_16maxi,Case,16MAXI,ready,no,230x96x31,2,0,1,
-case-16rtn,mdl_case_16rtn,Case,16RTN,ready,no,230x96x31,2,0,1,
-case-420ct,mdl_case_420ct,Case,420CT,ready,no,320x86Bx50,19,4,1,
-case-440ct,mdl_case_440ct,Case,440CT,ready,no,400x86Bx50,19,4,1,
-case-445ct,mdl_case_445ct,Case,445CT,ready,no,450x86Bx55,16,4,1,
-case-450ct,mdl_case_450ct,Case,450CT,ready,no,450x86Bx55,16,4,1,
-case-6030,mdl_case_6030,Case,6030,blocked,no,400x72.5Kx74,0,0,3,no_products
-case-ck16,mdl_case_ck16,Case,CK16,ready,no,320x86x48,2,0,2,
-case-ck28,mdl_case_ck28,Case,CK28,ready,no,300x52.5Nx78,2,2,2,
+boxer-400,mdl_boxer_400,Boxer,400,ready,yes,230x72x39,1,0,1,
+boxer-427,mdl_boxer_427,Boxer,427,ready,yes,230x72x39,1,0,1,
+boxer-526dx,mdl_boxer_526dx,Boxer,526DX,ready,yes,230x72x39,1,0,1,
+boxer-530dx,mdl_boxer_530dx,Boxer,530DX,ready,yes,230x72x39,4,0,1,
+boxer-532dx,mdl_boxer_532dx,Boxer,532DX,ready,yes,230x72x39,1,0,1,
+boxer-brute-trx,mdl_boxer_brute_trx,Boxer,BRUTE TRX,ready,yes,230x72x39,1,0,1,
+case-15,mdl_case_15,Case,15,ready,yes,230x96x31,2,0,1,
+case-15maxi,mdl_case_15maxi,Case,15MAXI,ready,yes,230x96x31,2,0,1,
+case-16,mdl_case_16,Case,16,ready,yes,230x96x31,2,0,1,
+case-16maxi,mdl_case_16maxi,Case,16MAXI,ready,yes,230x96x31,2,0,1,
+case-16rtn,mdl_case_16rtn,Case,16RTN,ready,yes,230x96x31,2,0,1,
+case-420ct,mdl_case_420ct,Case,420CT,ready,yes,320x86Bx50,19,4,1,
+case-440ct,mdl_case_440ct,Case,440CT,ready,yes,400x86Bx50,19,4,1,
+case-445ct,mdl_case_445ct,Case,445CT,ready,yes,450x86Bx55,16,4,1,
+case-450ct,mdl_case_450ct,Case,450CT,ready,yes,450x86Bx55,16,4,1,
+case-6030,mdl_case_6030,Case,6030,blocked,yes,400x72.5Kx74,0,0,3,no_products
+case-ck16,mdl_case_ck16,Case,CK16,ready,yes,320x86x48,2,0,2,
+case-ck28,mdl_case_ck28,Case,CK28,ready,yes,300x52.5Nx78,2,2,2,
 case-ck32,mdl_case_ck32,Case,CK32,ready,no,320x86x52,7,1,1,
-case-ck50,mdl_case_ck50,Case,CK50,ready,no,400x72.5Kx74,4,2,3,
-case-ck52,mdl_case_ck52,Case,CK52,ready,no,400x72.5Kx74,4,2,3,
-case-ck62,mdl_case_ck62,Case,CK62,ready,no,400x72.5Wx76,1,2,1,
-case-cx14,mdl_case_cx14,Case,CX14,ready,no,230x48x70,2,0,1,
-case-cx14-zts,mdl_case_cx14_zts,Case,CX14-ZTS,ready,no,230x48x70,2,0,1,
-case-cx15,mdl_case_cx15,Case,CX15,ready,no,230x96x31,2,0,1,
-case-cx15stc,mdl_case_cx15stc,Case,CX15STC,ready,no,230x48x70,2,0,1,
-case-cx15str,mdl_case_cx15str,Case,CX15STR,ready,no,230x48x70,2,0,1,
-case-cx16,mdl_case_cx16,Case,CX16,ready,no,230x48x70,2,0,2,
-case-cx16-2001,mdl_case_cx16_2001,Case,CX16-2001,ready,no,230x48x70,2,0,1,
-case-cx16b,mdl_case_cx16b,Case,CX16B,ready,no,230x48x70,2,0,1,
-case-cx17b,mdl_case_cx17b,Case,CX17B,ready,no,230x48x70,2,0,1,
+case-ck50,mdl_case_ck50,Case,CK50,ready,yes,400x72.5Kx74,4,2,3,
+case-ck52,mdl_case_ck52,Case,CK52,ready,yes,400x72.5Kx74,4,2,3,
+case-ck62,mdl_case_ck62,Case,CK62,ready,yes,400x72.5Wx76,1,2,1,
+case-cx14,mdl_case_cx14,Case,CX14,ready,yes,230x48x70,2,0,1,
+case-cx14-zts,mdl_case_cx14_zts,Case,CX14-ZTS,ready,yes,230x48x70,2,0,1,
+case-cx15,mdl_case_cx15,Case,CX15,ready,yes,230x96x31,2,0,1,
+case-cx15stc,mdl_case_cx15stc,Case,CX15STC,ready,yes,230x48x70,2,0,1,
+case-cx15str,mdl_case_cx15str,Case,CX15STR,ready,yes,230x48x70,2,0,1,
+case-cx16,mdl_case_cx16,Case,CX16,ready,yes,230x48x70,2,0,2,
+case-cx16-2001,mdl_case_cx16_2001,Case,CX16-2001,ready,yes,230x48x70,2,0,1,
+case-cx16b,mdl_case_cx16b,Case,CX16B,ready,yes,230x48x70,2,0,1,
+case-cx17b,mdl_case_cx17b,Case,CX17B,ready,yes,230x48x70,2,0,1,
 case-cx17c,mdl_case_cx17c,Case,CX17C,ready,yes,230x48x70,2,0,1,
-case-cx18b,mdl_case_cx18b,Case,CX18B,ready,no,230x48x70,2,0,1,
-case-cx20b,mdl_case_cx20b,Case,CX20B,ready,no,300x52.5Nx76,1,2,2,
-case-cx22b,mdl_case_cx22b,Case,CX22B,ready,no,300x52.5Nx76,1,2,2,
-case-cx25,mdl_case_cx25,Case,CX25,ready,no,300x52.5Nx76,1,1,2,
-case-cx26,mdl_case_cx26,Case,CX26,ready,no,300x52.5Nx76,1,0,2,
+case-cx18b,mdl_case_cx18b,Case,CX18B,ready,yes,230x48x70,2,0,1,
+case-cx20b,mdl_case_cx20b,Case,CX20B,ready,yes,300x52.5Nx76,1,2,2,
+case-cx22b,mdl_case_cx22b,Case,CX22B,ready,yes,300x52.5Nx76,1,2,2,
+case-cx25,mdl_case_cx25,Case,CX25,ready,yes,300x52.5Nx76,1,1,2,
+case-cx26,mdl_case_cx26,Case,CX26,ready,yes,300x52.5Nx76,1,0,2,
 case-cx26c,mdl_case_cx26c,Case,CX26C,ready,yes,300x52.5Nx78,1,0,2,
-case-cx27b,mdl_case_cx27b,Case,CX27B,ready,no,300x52.5Nx80,3,3,1,
-case-cx28,mdl_case_cx28,Case,CX28,ready,no,300x52.5Nx78,2,2,2,
-case-cx30,mdl_case_cx30,Case,CX30,ready,no,300x52.5Nx80,3,0,1,
+case-cx27b,mdl_case_cx27b,Case,CX27B,ready,yes,300x52.5Nx80,3,3,1,
+case-cx28,mdl_case_cx28,Case,CX28,ready,yes,300x52.5Nx78,2,2,2,
+case-cx30,mdl_case_cx30,Case,CX30,ready,yes,300x52.5Nx80,3,0,1,
 case-cx30c,mdl_case_cx30c,Case,CX30C,blocked,yes,300x52.5Nx80,0,0,1,no_products
-case-cx33c,mdl_case_cx33c,Case,CX33C,ready,no,300x52.5x86,3,1,1,
-case-cx35,mdl_case_cx35,Case,CX35,ready,no,300x52.5x86,6,3,1,
-case-cx36,mdl_case_cx36,Case,CX36,ready,no,300x52.5Kx88,1,3,2,
-case-cx36b,mdl_case_cx36b,Case,CX36B,ready,no,300x52.5Kx88,1,6,2,
+case-cx33c,mdl_case_cx33c,Case,CX33C,ready,yes,300x52.5x86,3,1,1,
+case-cx35,mdl_case_cx35,Case,CX35,ready,yes,300x52.5x86,6,3,1,
+case-cx36,mdl_case_cx36,Case,CX36,ready,yes,300x52.5Kx88,1,3,2,
+case-cx36b,mdl_case_cx36b,Case,CX36B,ready,yes,300x52.5Kx88,1,6,2,
 case-cx37c,mdl_case_cx37c,Case,CX37C,ready,yes,300x52.5x86,1,2,1,
-case-cx39b,mdl_case_cx39b,Case,CX39B,blocked,no,300x52.5Kx88,0,0,2,no_products
-case-cx47,mdl_case_cx47,Case,CX47,ready,no,400x72.5Kx74,5,1,3,
-case-cx50,mdl_case_cx50,Case,CX50,ready,no,400x72.5Kx74,3,0,3,
-case-cx50b,mdl_case_cx50b,Case,CX50B,ready,no,400x72.5Kx74,5,3,3,
-case-cx55b,mdl_case_cx55b,Case,CX55B,ready,no,400x72.5Kx74,6,4,3,
-case-cx55b-msr,mdl_case_cx55bmsr,Case,CX55BMSR,blocked,no,400x72.5Kx74,0,0,3,no_products
-case-cx57,mdl_case_cx57,Case,CX57,blocked,no,400x72.5Wx76,0,0,1,no_products
+case-cx39b,mdl_case_cx39b,Case,CX39B,blocked,yes,300x52.5Kx88,0,0,2,no_products
+case-cx47,mdl_case_cx47,Case,CX47,ready,yes,400x72.5Kx74,5,1,3,
+case-cx50,mdl_case_cx50,Case,CX50,ready,yes,400x72.5Kx74,3,0,3,
+case-cx50b,mdl_case_cx50b,Case,CX50B,ready,yes,400x72.5Kx74,5,3,3,
+case-cx55b,mdl_case_cx55b,Case,CX55B,ready,yes,400x72.5Kx74,6,4,3,
+case-cx55b-msr,mdl_case_cx55bmsr,Case,CX55BMSR,blocked,yes,400x72.5Kx74,0,0,3,no_products
+case-cx57,mdl_case_cx57,Case,CX57,blocked,yes,400x72.5Wx76,0,0,1,no_products
 case-cx57c,mdl_case_cx57c,Case,CX57C,ready,yes,400x72.5Wx76,2,0,1,
 case-cx60c,mdl_case_cx60c,Case,CX60C,ready,yes,400x72.5Wx76,2,2,1,
-case-cx65b,mdl_case_cx65b,Case,CX65B,blocked,no,400x72.5Kx74,0,0,3,no_products
+case-cx65b,mdl_case_cx65b,Case,CX65B,blocked,yes,400x72.5Kx74,0,0,3,no_products
 case-cx75sr,mdl_case_cx75sr,Case,CX75SR,ready,no,450x81Nx76,3,3,2,
 case-cx80c,mdl_case_cx80c,Case,CX80C,ready,yes,450x81Nx76,4,3,2,
 case-tr270,mdl_case_tr270,Case,TR270,ready,yes,320x86Bx50,11,5,1,
-case-tr270b,mdl_case_tr270b,Case,TR270B,ready,no,320x86Bx50,11,5,1,
+case-tr270b,mdl_case_tr270b,Case,TR270B,ready,yes,320x86Bx50,11,5,1,
 case-tr310,mdl_case_tr310,Case,TR310,ready,yes,400x86Bx50,19,5,1,
 case-tr310b,mdl_case_tr310b,Case,TR310B,ready,yes,320x86Bx50,19,4,2,
 case-tr320,mdl_case_tr320,Case,TR320,ready,yes,450x86Bx55,16,5,1,
-case-tr320b,mdl_case_tr320b,Case,TR320B,blocked,no,450x86Bx55,0,0,1,no_products
+case-tr320b,mdl_case_tr320b,Case,TR320B,blocked,yes,450x86Bx55,0,0,1,no_products
 case-tr340,mdl_case_tr340,Case,TR340,ready,yes,450x86Bx55,16,5,1,
 case-tr340b,mdl_case_tr340b,Case,TR340B,ready,yes,450x86Bx55,16,5,1,
 case-tv370,mdl_case_tv370,Case,TV370,ready,yes,450x86Bx55,16,4,1,
-case-tv370b,mdl_case_tv370b,Case,TV370B,ready,no,450x86Bx55,12,5,1,
+case-tv370b,mdl_case_tv370b,Case,TV370B,ready,yes,450x86Bx55,12,5,1,
 case-tv380,mdl_case_tv380,Case,TV380,ready,yes,450x86Bx55,16,5,1,
 case-tv450,mdl_case_tv450,Case,TV450,ready,yes,450x86Bx55,16,5,1,
 case-tv450b,mdl_case_tv450b,Case,TV450B,ready,yes,450x86Bx55,16,5,1,
 case-tv620b,mdl_case_tv620b,Case,TV620B,ready,yes,450x86Bx63,5,2,1,
-caterpillar-239d,mdl_cat_239d,CAT,239D,ready,no,320x86Bx49,17,3,2,
-caterpillar-239d3,mdl_cat_239d3,CAT,239D3,ready,no,320x86Bx49,17,3,1,
+caterpillar-239d,mdl_cat_239d,CAT,239D,ready,yes,320x86Bx49,17,3,2,
+caterpillar-239d3,mdl_cat_239d3,CAT,239D3,ready,yes,320x86Bx49,17,3,1,
 caterpillar-247,mdl_cat_247,CAT,247,partial,no,,1,2,1,missing_primary_track_size_v2
 caterpillar-247b,mdl_cat_247b,CAT,247B,ready,no,381x100.5x42,2,2,1,
 caterpillar-247b2,mdl_cat_247b2,CAT,247B2,ready,no,381x100.5x42,1,1,1,
 caterpillar-247b3,mdl_cat_247b3,CAT,247B3,ready,no,381x100.5x42,1,1,1,
-caterpillar-2493,mdl_cat_2493,CAT,2493,blocked,no,400x86Bx49,0,0,1,no_products
-caterpillar-249d,mdl_cat_249d,CAT,249D,ready,no,320x86Bx49,17,3,2,
-caterpillar-249d3,mdl_cat_249d3,CAT,249D3,ready,no,320x86Bx49,34,3,2,
-caterpillar-255,mdl_cat_255,CAT,255,ready,no,320x86x52,58,3,3,
+caterpillar-2493,mdl_cat_2493,CAT,2493,blocked,yes,400x86Bx49,0,0,1,no_products
+caterpillar-249d,mdl_cat_249d,CAT,249D,ready,yes,320x86Bx49,17,3,2,
+caterpillar-249d3,mdl_cat_249d3,CAT,249D3,ready,yes,320x86Bx49,34,3,2,
+caterpillar-255,mdl_cat_255,CAT,255,ready,yes,320x86x52,58,3,3,
 caterpillar-257,mdl_cat_257,CAT,257,partial,no,,1,2,1,missing_primary_track_size_v2
 caterpillar-257b,mdl_cat_257b,CAT,257B,ready,no,381x100.5x42,1,2,1,
 caterpillar-257b2,mdl_cat_257b2,CAT,257B2,ready,no,381x100.5x42,1,1,1,
 caterpillar-257b3,mdl_cat_257b3,CAT,257B3,ready,no,381x100.5x42,1,1,1,
 caterpillar-257d,mdl_cat_257d,CAT,257D,partial,no,,1,1,1,missing_primary_track_size_v2
-caterpillar-259b,mdl_cat_259b,CAT,259B,blocked,no,320x86Bx53,0,0,2,no_products
-caterpillar-259b3,mdl_cat_259b3,CAT,259B3,ready,no,320x86Bx53,17,5,2,
-caterpillar-259d,mdl_cat_259d,CAT,259D,ready,no,320x86Bx53,17,5,2,
-caterpillar-259d3,mdl_cat_259d3,CAT,259D3,ready,no,320x86Bx53,17,5,2,
-caterpillar-265,mdl_cat_265,CAT,265,blocked,no,450x86Bx55,0,0,1,no_products
-caterpillar-267b,mdl_cat_267b,CAT,267B,partial,no,,1,2,1,missing_primary_track_size_v2
+caterpillar-259b,mdl_cat_259b,CAT,259B,blocked,yes,320x86Bx53,0,0,2,no_products
+caterpillar-259b3,mdl_cat_259b3,CAT,259B3,ready,yes,320x86Bx53,17,5,2,
+caterpillar-259d,mdl_cat_259d,CAT,259D,ready,yes,320x86Bx53,17,5,2,
+caterpillar-259d3,mdl_cat_259d3,CAT,259D3,ready,yes,320x86Bx53,17,5,2,
+caterpillar-265,mdl_cat_265,CAT,265,blocked,yes,450x86Bx55,0,0,1,no_products
+caterpillar-267b,mdl_cat_267b,CAT,267B,partial,yes,,1,2,1,missing_primary_track_size_v2
 caterpillar-277,mdl_cat_277,CAT,277,ready,no,320x86x52,5,2,1,
-caterpillar-277b,mdl_cat_277b,CAT,277B,ready,no,457x101.6x56,2,2,1,
-caterpillar-277c,mdl_cat_277c,CAT,277C,ready,no,457x101.6x51,2,4,1,
-caterpillar-279c,mdl_cat_279c,CAT,279C,ready,no,450x86Bx60,15,4,1,
-caterpillar-279c2,mdl_cat_279c2,CAT,279C2,ready,no,450x86Bx56,13,4,1,
-caterpillar-279d,mdl_cat_279d,CAT,279D,ready,no,450x86Bx56,13,5,1,
-caterpillar-279d3,mdl_cat_279d3,CAT,279D3,blocked,no,450x86Bx56,0,0,1,no_products
-caterpillar-287,mdl_cat_287,CAT,287,partial,no,,4,2,2,missing_primary_track_size_v2
+caterpillar-277b,mdl_cat_277b,CAT,277B,ready,yes,457x101.6x56,2,2,1,
+caterpillar-277c,mdl_cat_277c,CAT,277C,ready,yes,457x101.6x51,2,4,1,
+caterpillar-279c,mdl_cat_279c,CAT,279C,ready,yes,450x86Bx60,15,4,1,
+caterpillar-279c2,mdl_cat_279c2,CAT,279C2,ready,yes,450x86Bx56,13,4,1,
+caterpillar-279d,mdl_cat_279d,CAT,279D,ready,yes,450x86Bx56,13,5,1,
+caterpillar-279d3,mdl_cat_279d3,CAT,279D3,blocked,yes,450x86Bx56,0,0,1,no_products
+caterpillar-287,mdl_cat_287,CAT,287,partial,yes,,4,2,2,missing_primary_track_size_v2
 caterpillar-287b,mdl_cat_287b,CAT,287B,partial,no,,1,2,1,missing_primary_track_size_v2
-caterpillar-287c,mdl_cat_287c,CAT,287C,ready,no,457x101.6x51,2,4,1,
-caterpillar-287c2,mdl_cat_287c2,CAT,287C2,partial,no,,2,3,1,missing_primary_track_size_v2
-caterpillar-287d,mdl_cat_287d,CAT,287D,partial,no,,2,3,1,missing_primary_track_size_v2
-caterpillar-289c,mdl_cat_289c,CAT,289C,ready,no,450x86Bx60,28,5,1,
-caterpillar-289c2,mdl_cat_289c2,CAT,289C2,ready,no,450x86Bx56,13,4,1,
-caterpillar-289d,mdl_cat_289d,CAT,289D,ready,no,450x86Bx56,17,5,1,
-caterpillar-289d2,mdl_cat_289d2,CAT,289D2,blocked,no,450x86Bx56,0,0,1,no_products
-caterpillar-289d3,mdl_cat_289d3,CAT,289D3,ready,no,450x86Bx56,26,5,1,
-caterpillar-297c,mdl_cat_297c,CAT,297C,partial,no,,4,4,1,missing_primary_track_size_v2
-caterpillar-297d2,mdl_cat_297d2,CAT,297D2,partial,no,,2,2,1,missing_primary_track_size_v2
-caterpillar-297d2-xhp,mdl_cat_297d2_xhp,CAT,297D2-XHP,partial,no,,2,2,1,missing_primary_track_size_v2
-caterpillar-299c,mdl_cat_299c,CAT,299C,ready,no,450x86Bx60,14,5,1,
-caterpillar-299d,mdl_cat_299d,CAT,299D,ready,no,450x86Bx60,15,5,1,
-caterpillar-299d-xhp,mdl_cat_299d_xhp,CAT,299D XHP,ready,no,450x86Bx60,15,5,1,
-caterpillar-299d2,mdl_cat_299d2,CAT,299D2,ready,no,450x86Bx60,15,5,1,
-caterpillar-299d3,mdl_cat_299d3,CAT,299D3,ready,no,450x86Bx60,16,5,1,
+caterpillar-287c,mdl_cat_287c,CAT,287C,ready,yes,457x101.6x51,2,4,1,
+caterpillar-287c2,mdl_cat_287c2,CAT,287C2,partial,yes,,2,3,1,missing_primary_track_size_v2
+caterpillar-287d,mdl_cat_287d,CAT,287D,partial,yes,,2,3,1,missing_primary_track_size_v2
+caterpillar-289c,mdl_cat_289c,CAT,289C,ready,yes,450x86Bx60,28,5,1,
+caterpillar-289c2,mdl_cat_289c2,CAT,289C2,ready,yes,450x86Bx56,13,4,1,
+caterpillar-289d,mdl_cat_289d,CAT,289D,ready,yes,450x86Bx56,17,5,1,
+caterpillar-289d2,mdl_cat_289d2,CAT,289D2,blocked,yes,450x86Bx56,0,0,1,no_products
+caterpillar-289d3,mdl_cat_289d3,CAT,289D3,ready,yes,450x86Bx56,26,5,1,
+caterpillar-297c,mdl_cat_297c,CAT,297C,partial,yes,,4,4,1,missing_primary_track_size_v2
+caterpillar-297d2,mdl_cat_297d2,CAT,297D2,partial,yes,,2,2,1,missing_primary_track_size_v2
+caterpillar-297d2-xhp,mdl_cat_297d2_xhp,CAT,297D2-XHP,partial,yes,,2,2,1,missing_primary_track_size_v2
+caterpillar-299c,mdl_cat_299c,CAT,299C,ready,yes,450x86Bx60,14,5,1,
+caterpillar-299d,mdl_cat_299d,CAT,299D,ready,yes,450x86Bx60,15,5,1,
+caterpillar-299d-xhp,mdl_cat_299d_xhp,CAT,299D XHP,ready,yes,450x86Bx60,15,5,1,
+caterpillar-299d2,mdl_cat_299d2,CAT,299D2,ready,yes,450x86Bx60,15,5,1,
+caterpillar-299d3,mdl_cat_299d3,CAT,299D3,ready,yes,450x86Bx60,16,5,1,
 caterpillar-300-9d,mdl_cat_300_9d,CAT,300.9D,ready,no,180x72x37,1,0,1,
-caterpillar-301-5,mdl_cat_301_5,CAT,301.5,ready,no,230x96x31,5,2,1,
-caterpillar-301-7d,mdl_cat_301_7d,CAT,301.7D,ready,no,230x48x72,1,0,1,
-caterpillar-301-6,mdl_cat_3016,CAT,3016,blocked,no,230x48x70,0,0,1,no_products
-caterpillar-301-6c,mdl_cat_3016c,CAT,3016C,ready,no,230x48x70,2,0,1,
-caterpillar-301-8c,mdl_cat_3018c,CAT,3018C,ready,no,230x48x70,2,0,1,
-caterpillar-302-5,mdl_cat_302_5,CAT,302.5,ready,no,300x52.5Nx78,4,4,2,
-caterpillar-302-5c,mdl_cat_302_5c,CAT,302.5C,ready,no,300x52.5Nx78,2,4,2,
-caterpillar-303cr,mdl_cat_303_cr,CAT,303 CR,blocked,no,300x52.5Nx84,0,0,2,no_products
-caterpillar-303-5,mdl_cat_303_5,CAT,303.5,ready,no,300x52.5Nx84,2,5,2,
-caterpillar-303-5cr,mdl_cat_303_5_cr,CAT,303.5 CR,blocked,no,300x52.5Wx90,0,0,1,no_products
-caterpillar-303-5c-cr,mdl_cat_303_5c_cr,CAT,303.5C CR,blocked,no,300x52.5Wx90,0,0,1,no_products
-caterpillar-303-5d,mdl_cat_303_5d,CAT,303.5D,ready,no,300x52.5Wx90,3,0,1,
-caterpillar-303-5d-cr,mdl_cat_303_5d_cr,CAT,303.5D CR,ready,no,300x52.5Wx90,3,0,1,
-caterpillar-303-5e-cr,mdl_cat_303_5e_cr,CAT,303.5E CR,ready,no,300x52.5Wx90,3,0,1,
-caterpillar-303ccr,mdl_cat_303c_cr,CAT,303C CR,ready,no,300x52.5Wx90,3,0,1,
-caterpillar-303e,mdl_cat_303e,CAT,303E,blocked,no,300x52.5Nx84,0,0,2,no_products
-caterpillar-303ecr,mdl_cat_303ecr,CAT,303ECR,ready,no,300x52.5Nx84,2,2,2,
-caterpillar-304,mdl_cat_304,CAT,304,ready,no,300x52.5Wx90,4,4,1,
-caterpillar-304-5,mdl_cat_304_5,CAT,304.5,ready,no,400x72.5Kx72,4,6,3,
-caterpillar-304-5e2,mdl_cat_304_5e2,CAT,304.5E2,ready,no,300x52.5Wx90,3,0,1,
-caterpillar-304c,mdl_cat_304c,CAT,304C,ready,no,400x72.5Kx72,4,2,3,
-caterpillar-304ccr,mdl_cat_304c_cr,CAT,304C CR,ready,no,400x72.5Wx76,2,0,1,
-caterpillar-304cr,mdl_cat_304cr,CAT,304CR,ready,no,400x72.5Kx72,8,6,3,
-caterpillar-304d,mdl_cat_304d,CAT,304D,ready,no,300x52.5Wx90,1,0,1,
-caterpillar-304d-cr,mdl_cat_304d_cr,CAT,304D CR,ready,no,350x52.5x90,1,0,1,
-caterpillar-304e,mdl_cat_304e,CAT,304E,ready,no,300x52.5Wx90,3,0,1,
-caterpillar-304e-cr,mdl_cat_304e_cr,CAT,304E CR,ready,no,350x52.5x90,3,0,1,
-caterpillar-304e2,mdl_cat_304e2,CAT,304E2,ready,no,300x52.5Wx90,3,0,1,
-caterpillar-305cr,mdl_cat_305_cr,CAT,305 CR,blocked,no,400x72.5Kx72,0,0,3,no_products
-caterpillar-305-5,mdl_cat_305_5,CAT,305.5,ready,no,400x72.5Kx72,4,5,3,
-caterpillar-305-5d-cr,mdl_cat_305_5d_cr,CAT,305.5D CR,ready,no,400x72.5Wx76,2,0,1,
-caterpillar-305-5e,mdl_cat_305_5e,CAT,305.5E,ready,no,400x72.5Wx76,2,3,1,
-caterpillar-305-5e-cr,mdl_cat_305_5e_cr,CAT,305.5E CR,ready,no,400x72.5Wx76,2,0,1,
-caterpillar-305-5e2,mdl_cat_305_5e2,CAT,305.5E2,ready,no,400x72.5Kx72,5,3,3,
-caterpillar-305-5e2-cr,mdl_cat_305_5e2_cr,CAT,305.5E2 CR,blocked,no,400x72.5Wx76,0,0,1,no_products
-caterpillar-305c,mdl_cat_305c,CAT,305C,blocked,no,400x72.5Kx72,0,0,3,no_products
-caterpillar-305c-cr,mdl_cat_305c_cr,CAT,305C CR,ready,no,400x72.5Wx76,2,0,1,
-caterpillar-305d,mdl_cat_305d,CAT,305D,ready,no,400x72.5Wx76,2,0,1,
-caterpillar-305dcr,mdl_cat_305dcr,CAT,305DCR,ready,no,400x72.5Wx76,2,5,1,
-caterpillar-305e,mdl_cat_305e,CAT,305E,blocked,no,400x72.5Wx76,0,0,1,no_products
-caterpillar-305e-cr,mdl_cat_305e_cr,CAT,305E CR,ready,no,400x72.5Wx76,2,0,1,
-caterpillar-305e2,mdl_cat_305e2,CAT,305E2,ready,no,400x72.5Wx76,2,0,1,
-caterpillar-305e2-cr,mdl_cat_305e2_cr,CAT,305E2 CR,blocked,no,400x72.5Wx76,0,0,1,no_products
-caterpillar-306,mdl_cat_306,CAT,306,blocked,no,400x72.5Wx76,0,0,1,no_products
-caterpillar-306-cr,mdl_cat_306_cr,CAT,306 CR,blocked,no,400x72.5Wx76,0,0,1,no_products
+caterpillar-301-5,mdl_cat_301_5,CAT,301.5,ready,yes,230x96x31,5,2,1,
+caterpillar-301-7d,mdl_cat_301_7d,CAT,301.7D,ready,yes,230x48x72,1,0,1,
+caterpillar-301-6,mdl_cat_3016,CAT,3016,blocked,yes,230x48x70,0,0,1,no_products
+caterpillar-301-6c,mdl_cat_3016c,CAT,3016C,ready,yes,230x48x70,2,0,1,
+caterpillar-301-8c,mdl_cat_3018c,CAT,3018C,ready,yes,230x48x70,2,0,1,
+caterpillar-302-5,mdl_cat_302_5,CAT,302.5,ready,yes,300x52.5Nx78,4,4,2,
+caterpillar-302-5c,mdl_cat_302_5c,CAT,302.5C,ready,yes,300x52.5Nx78,2,4,2,
+caterpillar-303cr,mdl_cat_303_cr,CAT,303 CR,blocked,yes,300x52.5Nx84,0,0,2,no_products
+caterpillar-303-5,mdl_cat_303_5,CAT,303.5,ready,yes,300x52.5Nx84,2,5,2,
+caterpillar-303-5cr,mdl_cat_303_5_cr,CAT,303.5 CR,blocked,yes,300x52.5Wx90,0,0,1,no_products
+caterpillar-303-5c-cr,mdl_cat_303_5c_cr,CAT,303.5C CR,blocked,yes,300x52.5Wx90,0,0,1,no_products
+caterpillar-303-5d,mdl_cat_303_5d,CAT,303.5D,ready,yes,300x52.5Wx90,3,0,1,
+caterpillar-303-5d-cr,mdl_cat_303_5d_cr,CAT,303.5D CR,ready,yes,300x52.5Wx90,3,0,1,
+caterpillar-303-5e-cr,mdl_cat_303_5e_cr,CAT,303.5E CR,ready,yes,300x52.5Wx90,3,0,1,
+caterpillar-303ccr,mdl_cat_303c_cr,CAT,303C CR,ready,yes,300x52.5Wx90,3,0,1,
+caterpillar-303e,mdl_cat_303e,CAT,303E,blocked,yes,300x52.5Nx84,0,0,2,no_products
+caterpillar-303ecr,mdl_cat_303ecr,CAT,303ECR,ready,yes,300x52.5Nx84,2,2,2,
+caterpillar-304,mdl_cat_304,CAT,304,ready,yes,300x52.5Wx90,4,4,1,
+caterpillar-304-5,mdl_cat_304_5,CAT,304.5,ready,yes,400x72.5Kx72,4,6,3,
+caterpillar-304-5e2,mdl_cat_304_5e2,CAT,304.5E2,ready,yes,300x52.5Wx90,3,0,1,
+caterpillar-304c,mdl_cat_304c,CAT,304C,ready,yes,400x72.5Kx72,4,2,3,
+caterpillar-304ccr,mdl_cat_304c_cr,CAT,304C CR,ready,yes,400x72.5Wx76,2,0,1,
+caterpillar-304cr,mdl_cat_304cr,CAT,304CR,ready,yes,400x72.5Kx72,8,6,3,
+caterpillar-304d,mdl_cat_304d,CAT,304D,ready,yes,300x52.5Wx90,1,0,1,
+caterpillar-304d-cr,mdl_cat_304d_cr,CAT,304D CR,ready,yes,350x52.5x90,1,0,1,
+caterpillar-304e,mdl_cat_304e,CAT,304E,ready,yes,300x52.5Wx90,3,0,1,
+caterpillar-304e-cr,mdl_cat_304e_cr,CAT,304E CR,ready,yes,350x52.5x90,3,0,1,
+caterpillar-304e2,mdl_cat_304e2,CAT,304E2,ready,yes,300x52.5Wx90,3,0,1,
+caterpillar-305cr,mdl_cat_305_cr,CAT,305 CR,blocked,yes,400x72.5Kx72,0,0,3,no_products
+caterpillar-305-5,mdl_cat_305_5,CAT,305.5,ready,yes,400x72.5Kx72,4,5,3,
+caterpillar-305-5d-cr,mdl_cat_305_5d_cr,CAT,305.5D CR,ready,yes,400x72.5Wx76,2,0,1,
+caterpillar-305-5e,mdl_cat_305_5e,CAT,305.5E,ready,yes,400x72.5Wx76,2,3,1,
+caterpillar-305-5e-cr,mdl_cat_305_5e_cr,CAT,305.5E CR,ready,yes,400x72.5Wx76,2,0,1,
+caterpillar-305-5e2,mdl_cat_305_5e2,CAT,305.5E2,ready,yes,400x72.5Kx72,5,3,3,
+caterpillar-305-5e2-cr,mdl_cat_305_5e2_cr,CAT,305.5E2 CR,blocked,yes,400x72.5Wx76,0,0,1,no_products
+caterpillar-305c,mdl_cat_305c,CAT,305C,blocked,yes,400x72.5Kx72,0,0,3,no_products
+caterpillar-305c-cr,mdl_cat_305c_cr,CAT,305C CR,ready,yes,400x72.5Wx76,2,0,1,
+caterpillar-305d,mdl_cat_305d,CAT,305D,ready,yes,400x72.5Wx76,2,0,1,
+caterpillar-305dcr,mdl_cat_305dcr,CAT,305DCR,ready,yes,400x72.5Wx76,2,5,1,
+caterpillar-305e,mdl_cat_305e,CAT,305E,blocked,yes,400x72.5Wx76,0,0,1,no_products
+caterpillar-305e-cr,mdl_cat_305e_cr,CAT,305E CR,ready,yes,400x72.5Wx76,2,0,1,
+caterpillar-305e2,mdl_cat_305e2,CAT,305E2,ready,yes,400x72.5Wx76,2,0,1,
+caterpillar-305e2-cr,mdl_cat_305e2_cr,CAT,305E2 CR,blocked,yes,400x72.5Wx76,0,0,1,no_products
+caterpillar-306,mdl_cat_306,CAT,306,blocked,yes,400x72.5Wx76,0,0,1,no_products
+caterpillar-306-cr,mdl_cat_306_cr,CAT,306 CR,blocked,yes,400x72.5Wx76,0,0,1,no_products
 caterpillar-308cr,mdl_cat_308_cr,CAT,308 CR,ready,no,450x81Nx78,1,0,2,
 caterpillar-308b,mdl_cat_308b,CAT,308B,blocked,no,450x81Nx78,0,0,2,no_products
 caterpillar-308ccr,mdl_cat_308c_cr,CAT,308C CR,ready,no,450x81Nx78,2,0,2,
@@ -299,45 +299,45 @@ caterpillar-308d-cr,mdl_cat_308dcr,CAT,308DCR,ready,no,450x81Nx78,2,0,2,
 caterpillar-308e,mdl_cat_308e,CAT,308E,blocked,no,450x81Nx78,0,0,2,no_products
 caterpillar-308e-cr,mdl_cat_308e_cr,CAT,308E CR,ready,no,450x81Nx78,2,0,2,
 caterpillar-308e2-cr,mdl_cat_308e2_cr,CAT,308E2 CR,ready,no,450x81Nx78,1,0,2,
-caterpillar-mm15t,mdl_cat_mm15t,CAT,MM15T,ready,no,230x96x31,2,0,1,
+caterpillar-mm15t,mdl_cat_mm15t,CAT,MM15T,ready,yes,230x96x31,2,0,1,
 cormidi-c85,mdl_cormidi_c85,Cormidi,C85,ready,no,180x72x36,1,0,1,
-daewoo-ah-30,mdl_daewoo_ah30,Daewoo,AH30,ready,no,300x52.5Nx80,3,1,1,
-daewoo-sl-035,mdl_daewoo_sl035,Daewoo,SL035,ready,no,300x52.5Nx84,1,0,2,
-daewoo-solar-018vt,mdl_daewoo_solar_018vt,Daewoo,SOLAR-018VT,ready,no,230x48x70,2,0,1,
+daewoo-ah-30,mdl_daewoo_ah30,Daewoo,AH30,ready,yes,300x52.5Nx80,3,1,1,
+daewoo-sl-035,mdl_daewoo_sl035,Daewoo,SL035,ready,yes,300x52.5Nx84,1,0,2,
+daewoo-solar-018vt,mdl_daewoo_solar_018vt,Daewoo,SOLAR-018VT,ready,yes,230x48x70,2,0,1,
 daewoo-solar-007,mdl_daewoo_solar007,Daewoo,SOLAR007,ready,no,180x72x37,1,0,1,
 daewoo-solar-010,mdl_daewoo_solar010,Daewoo,SOLAR010,ready,no,180x72x37,1,0,1,
-daewoo-solar-030,mdl_daewoo_solar030,Daewoo,SOLAR030,ready,no,300x52.5Nx76,1,0,2,
-daewoo-solar-035,mdl_daewoo_solar035,Daewoo,SOLAR035,ready,no,300x52.5Nx84,1,0,2,
+daewoo-solar-030,mdl_daewoo_solar030,Daewoo,SOLAR030,ready,yes,300x52.5Nx76,1,0,2,
+daewoo-solar-035,mdl_daewoo_solar035,Daewoo,SOLAR035,ready,yes,300x52.5Nx84,1,0,2,
 daewoo-solar-10,mdl_daewoo_solar10,Daewoo,SOLAR10,ready,no,180x72x37,1,0,1,
-daewoo-solar-25,mdl_daewoo_solar25,Daewoo,SOLAR25,ready,no,300x52.5Nx74,1,0,1,
-daewoo-solar-35,mdl_daewoo_solar35,Daewoo,SOLAR35,ready,no,300x52.5Nx80,3,1,1,
-daewoo-solar-55,mdl_daewoo_solar55,Daewoo,SOLAR55,ready,no,400x72.5Kx74,4,0,3,
-daewoo-solar-55-3,mdl_daewoo_solar553,Daewoo,SOLAR553,ready,no,400x72.5Wx76,2,0,1,
-daewoo-solar-55-5,mdl_daewoo_solar555,Daewoo,SOLAR555,ready,no,400x72.5Kx74,4,0,3,
-daewoo-solar-55-v,mdl_daewoo_solar55v,Daewoo,SOLAR55V,ready,no,400x72.5Kx74,4,0,3,
-ditch-witch-ht-25-trencher,mdl_ditch_witch_ht_25,Ditch Witch,HT 25,ready,no,230x72x39,1,0,1,
-ditch-witch-ht-25k-saw-machine,mdl_ditch_witch_ht_25k,Ditch Witch,HT 25K,ready,no,230x72x39,1,0,1,
-ditch-witch-jt-1200-drilling-machine,mdl_ditch_witch_jt_1200,Ditch Witch,JT 1200,ready,no,230x72x39,1,0,1,
-ditch-witch-jt-1220-mach-1-drilling-machine,mdl_ditch_witch_jt_1220,Ditch Witch,JT 1220,blocked,no,,0,0,17,missing_primary_track_size_v2;no_products
-ditch-witch-jt-1720-drilling-machine,mdl_ditch_witch_jt_1720,Ditch Witch,JT 1720,blocked,no,,0,0,17,missing_primary_track_size_v2;no_products
-ditch-witch-jt-20-drilling-machine,mdl_ditch_witch_jt_20,Ditch Witch,JT 20,blocked,no,,0,0,17,missing_primary_track_size_v2;no_products
-ditch-witch-jt-2020-mach-1,mdl_ditch_witch_jt_2020,Ditch Witch,JT 2020,blocked,no,,0,0,17,missing_primary_track_size_v2;no_products
-ditch-witch-jt-2320-drilling-machine,mdl_ditch_witch_jt_2320,Ditch Witch,JT 2320,ready,no,300x52.5Nx78,1,0,2,
-ditch-witch-jt-2321-drilling-machine,mdl_ditch_witch_jt_2321,Ditch Witch,JT 2321,blocked,no,300x52.5Nx78,0,0,2,no_products
-ditch-witch-jt-2511-drilling-machine,mdl_ditch_witch_jt_2511,Ditch Witch,JT 2511,ready,no,230x72x39,1,0,1,
-ditch-witch-jt-30-drilling-machine,mdl_ditch_witch_jt_30,Ditch Witch,JT 30,blocked,no,,0,0,15,missing_primary_track_size_v2;no_products
-ditch-witch-jt-40-drilling-machine,mdl_ditch_witch_jt_40,Ditch Witch,JT 40,ready,no,400x72.5Kx74,4,0,3,
-ditch-witch-jt-5,mdl_ditch_witch_jt_5,Ditch Witch,JT 5,ready,no,180x72x39,3,0,1,
-ditch-witch-jt-520,mdl_ditch_witch_jt_520,Ditch Witch,JT 520,ready,no,180x72x39,3,0,1,
-ditch-witch-jt-2520-drilling-machine,mdl_ditch_witch_jt2520,Ditch Witch,JT2520,partial,no,,2,0,2,missing_primary_track_size_v2
-ditch-witch-jt-2720-mach-1-drilling-machine,mdl_ditch_witch_jt2720,Ditch Witch,JT2720,partial,no,,2,0,2,missing_primary_track_size_v2
-ditch-witch-jt-860-drilling-machine,mdl_ditch_witch_jt860,Ditch Witch,JT860,partial,no,,2,0,2,missing_primary_track_size_v2
-ditch-witch-jt-922,mdl_ditch_witch_jt922,Ditch Witch,JT922,blocked,no,,0,0,15,missing_primary_track_size_v2;no_products
-ditch-witch-mx27,mdl_ditch_witch_mx_27,Ditch Witch,MX 27,blocked,no,300x52.5Nx78,0,0,2,no_products
-ditch-witch-mx272,mdl_ditch_witch_mx_272,Ditch Witch,MX 272,blocked,no,300x52.5Nx78,0,0,2,no_products
-ditch-witch-mx35,mdl_ditch_witch_mx_35,Ditch Witch,MX 35,blocked,no,300x52.5Nx84,0,0,2,no_products
-ditch-witch-mx352,mdl_ditch_witch_mx_352,Ditch Witch,MX-352,ready,no,300x52.5x86,1,0,1,
-ditch-witch-mx182,mdl_ditch_witch_mx182,Ditch Witch,MX182,ready,no,230x48x70,2,0,1,
+daewoo-solar-25,mdl_daewoo_solar25,Daewoo,SOLAR25,ready,yes,300x52.5Nx74,1,0,1,
+daewoo-solar-35,mdl_daewoo_solar35,Daewoo,SOLAR35,ready,yes,300x52.5Nx80,3,1,1,
+daewoo-solar-55,mdl_daewoo_solar55,Daewoo,SOLAR55,ready,yes,400x72.5Kx74,4,0,3,
+daewoo-solar-55-3,mdl_daewoo_solar553,Daewoo,SOLAR553,ready,yes,400x72.5Wx76,2,0,1,
+daewoo-solar-55-5,mdl_daewoo_solar555,Daewoo,SOLAR555,ready,yes,400x72.5Kx74,4,0,3,
+daewoo-solar-55-v,mdl_daewoo_solar55v,Daewoo,SOLAR55V,ready,yes,400x72.5Kx74,4,0,3,
+ditch-witch-ht-25-trencher,mdl_ditch_witch_ht_25,Ditch Witch,HT 25,ready,yes,230x72x39,1,0,1,
+ditch-witch-ht-25k-saw-machine,mdl_ditch_witch_ht_25k,Ditch Witch,HT 25K,ready,yes,230x72x39,1,0,1,
+ditch-witch-jt-1200-drilling-machine,mdl_ditch_witch_jt_1200,Ditch Witch,JT 1200,ready,yes,230x72x39,1,0,1,
+ditch-witch-jt-1220-mach-1-drilling-machine,mdl_ditch_witch_jt_1220,Ditch Witch,JT 1220,blocked,yes,,0,0,17,missing_primary_track_size_v2;no_products
+ditch-witch-jt-1720-drilling-machine,mdl_ditch_witch_jt_1720,Ditch Witch,JT 1720,blocked,yes,,0,0,17,missing_primary_track_size_v2;no_products
+ditch-witch-jt-20-drilling-machine,mdl_ditch_witch_jt_20,Ditch Witch,JT 20,blocked,yes,,0,0,17,missing_primary_track_size_v2;no_products
+ditch-witch-jt-2020-mach-1,mdl_ditch_witch_jt_2020,Ditch Witch,JT 2020,blocked,yes,,0,0,17,missing_primary_track_size_v2;no_products
+ditch-witch-jt-2320-drilling-machine,mdl_ditch_witch_jt_2320,Ditch Witch,JT 2320,ready,yes,300x52.5Nx78,1,0,2,
+ditch-witch-jt-2321-drilling-machine,mdl_ditch_witch_jt_2321,Ditch Witch,JT 2321,blocked,yes,300x52.5Nx78,0,0,2,no_products
+ditch-witch-jt-2511-drilling-machine,mdl_ditch_witch_jt_2511,Ditch Witch,JT 2511,ready,yes,230x72x39,1,0,1,
+ditch-witch-jt-30-drilling-machine,mdl_ditch_witch_jt_30,Ditch Witch,JT 30,blocked,yes,,0,0,15,missing_primary_track_size_v2;no_products
+ditch-witch-jt-40-drilling-machine,mdl_ditch_witch_jt_40,Ditch Witch,JT 40,ready,yes,400x72.5Kx74,4,0,3,
+ditch-witch-jt-5,mdl_ditch_witch_jt_5,Ditch Witch,JT 5,ready,yes,180x72x39,3,0,1,
+ditch-witch-jt-520,mdl_ditch_witch_jt_520,Ditch Witch,JT 520,ready,yes,180x72x39,3,0,1,
+ditch-witch-jt-2520-drilling-machine,mdl_ditch_witch_jt2520,Ditch Witch,JT2520,partial,yes,,2,0,2,missing_primary_track_size_v2
+ditch-witch-jt-2720-mach-1-drilling-machine,mdl_ditch_witch_jt2720,Ditch Witch,JT2720,partial,yes,,2,0,2,missing_primary_track_size_v2
+ditch-witch-jt-860-drilling-machine,mdl_ditch_witch_jt860,Ditch Witch,JT860,partial,yes,,2,0,2,missing_primary_track_size_v2
+ditch-witch-jt-922,mdl_ditch_witch_jt922,Ditch Witch,JT922,blocked,yes,,0,0,15,missing_primary_track_size_v2;no_products
+ditch-witch-mx27,mdl_ditch_witch_mx_27,Ditch Witch,MX 27,blocked,yes,300x52.5Nx78,0,0,2,no_products
+ditch-witch-mx272,mdl_ditch_witch_mx_272,Ditch Witch,MX 272,blocked,yes,300x52.5Nx78,0,0,2,no_products
+ditch-witch-mx35,mdl_ditch_witch_mx_35,Ditch Witch,MX 35,blocked,yes,300x52.5Nx84,0,0,2,no_products
+ditch-witch-mx352,mdl_ditch_witch_mx_352,Ditch Witch,MX-352,ready,yes,300x52.5x86,1,0,1,
+ditch-witch-mx182,mdl_ditch_witch_mx182,Ditch Witch,MX182,ready,yes,230x48x70,2,0,1,
 ditch-witch-sk1050,mdl_ditch_witch_sk1050,Ditch Witch,SK1050,ready,yes,230x72Kx44,3,0,1,
 ditch-witch-sk-1550,mdl_ditch_witch_sk1550,Ditch Witch,SK1550,ready,no,250x72x52,3,0,1,
 ditch-witch-sk500,mdl_ditch_witch_sk500,Ditch Witch,SK500,ready,yes,180x72x39,4,0,1,
@@ -349,28 +349,28 @@ ditch-witch-sk755,mdl_ditch_witch_sk755,Ditch Witch,SK755,ready,yes,230x72Kx44,3
 ditch-witch-sk800,mdl_ditch_witch_sk800,Ditch Witch,SK800,ready,yes,230x72Kx44,2,0,1,
 ditch-witch-sk850,mdl_ditch_witch_sk850,Ditch Witch,SK850,ready,yes,230x72Kx44,2,0,1,
 ditch-witch-sk900,mdl_ditch_witch_sk900,Ditch Witch,SK900,ready,yes,230x72Kx44,3,0,1,
-doosan-dx27z,mdl_doosan_dx27z,Doosan,DX27Z,ready,no,300x52.5Nx80,3,0,1,
-doosan-dx30z,mdl_doosan_dx30z,Doosan,DX30Z,ready,no,300x52.5Nx84,1,0,2,
-doosan-dx35,mdl_doosan_dx35,Doosan,DX35,ready,no,300x52.5x86,2,2,1,
-doosan-dx35-z7,mdl_doosan_dx35_z7,Doosan,DX35-Z7,ready,no,300x52.5x86,2,1,1,
-doosan-dx35-5,mdl_doosan_dx355,Doosan,DX355,ready,no,300x52.5Nx84,1,0,3,
-doosan-dx35z,mdl_doosan_dx35z,Doosan,DX35Z,ready,no,300x52.5x86,2,1,1,
-doosan-dx50k-5,mdl_doosan_dx50k5,Doosan,DX50K5,ready,no,400x72.5Kx74,4,0,3,
-doosan-dx55,mdl_doosan_dx55,Doosan,DX55,ready,no,400x72.5Kx74,4,2,3,
-doosan-dx-55z,mdl_doosan_dx55z,Doosan,DX55Z,ready,no,400x72.5Kx74,4,0,3,
-doosan-dx60r,mdl_doosan_dx60r,Doosan,DX60R,ready,no,400x72.5Wx76,2,2,1,
-doosan-dx62r-3,mdl_doosan_dx62r3,Doosan,DX62R3,ready,no,400x72.5Wx76,2,0,1,
-doosan-dx63-3,mdl_doosan_dx633,Doosan,DX633,ready,no,400x72.5Wx76,2,0,1,
+doosan-dx27z,mdl_doosan_dx27z,Doosan,DX27Z,ready,yes,300x52.5Nx80,3,0,1,
+doosan-dx30z,mdl_doosan_dx30z,Doosan,DX30Z,ready,yes,300x52.5Nx84,1,0,2,
+doosan-dx35,mdl_doosan_dx35,Doosan,DX35,ready,yes,300x52.5x86,2,2,1,
+doosan-dx35-z7,mdl_doosan_dx35_z7,Doosan,DX35-Z7,ready,yes,300x52.5x86,2,1,1,
+doosan-dx35-5,mdl_doosan_dx355,Doosan,DX355,ready,yes,300x52.5Nx84,1,0,3,
+doosan-dx35z,mdl_doosan_dx35z,Doosan,DX35Z,ready,yes,300x52.5x86,2,1,1,
+doosan-dx50k-5,mdl_doosan_dx50k5,Doosan,DX50K5,ready,yes,400x72.5Kx74,4,0,3,
+doosan-dx55,mdl_doosan_dx55,Doosan,DX55,ready,yes,400x72.5Kx74,4,2,3,
+doosan-dx-55z,mdl_doosan_dx55z,Doosan,DX55Z,ready,yes,400x72.5Kx74,4,0,3,
+doosan-dx60r,mdl_doosan_dx60r,Doosan,DX60R,ready,yes,400x72.5Wx76,2,2,1,
+doosan-dx62r-3,mdl_doosan_dx62r3,Doosan,DX62R3,ready,yes,400x72.5Wx76,2,0,1,
+doosan-dx63-3,mdl_doosan_dx633,Doosan,DX633,ready,yes,400x72.5Wx76,2,0,1,
 doosan-dx80r,mdl_doosan_dx80r,Doosan,DX80R,ready,no,450x81Nx76,4,0,2,
 doosan-dx85r,mdl_doosan_dx85r,Doosan,DX85R,ready,no,450x81Nx76,4,0,2,
 doosan-dx85r-3,mdl_doosan_dx85r3,Doosan,DX85R3,ready,no,450x81Nx76,4,0,2,
-doosan-s55,mdl_doosan_s55,Doosan,S55,ready,no,400x72.5Kx74,4,0,3,
-gehl-303,mdl_gehl_303,Gehl,303,ready,no,300x52.5Nx78,4,2,2,
-gehl-502,mdl_gehl_502,Gehl,502,ready,no,400x72.5Kx74,3,2,3,
-gehl-503z,mdl_gehl_503z,Gehl,503Z,ready,no,400x72.5Kx74,3,2,3,
-gehl-603,mdl_gehl_603,Gehl,603,ready,no,400x72.5Kx74,6,2,3,
+doosan-s55,mdl_doosan_s55,Doosan,S55,ready,yes,400x72.5Kx74,4,0,3,
+gehl-303,mdl_gehl_303,Gehl,303,ready,yes,300x52.5Nx78,4,2,2,
+gehl-502,mdl_gehl_502,Gehl,502,ready,yes,400x72.5Kx74,3,2,3,
+gehl-503z,mdl_gehl_503z,Gehl,503Z,ready,yes,400x72.5Kx74,3,2,3,
+gehl-603,mdl_gehl_603,Gehl,603,ready,yes,400x72.5Kx74,6,2,3,
 gehl-ctl135,mdl_gehl_ctl135,Gehl,CTL135,ready,no,320x86x52,4,0,1,
-gehl-ctl165,mdl_gehl_ctl165,Gehl,CTL165,blocked,no,320x86Bx49,0,0,2,no_products
+gehl-ctl165,mdl_gehl_ctl165,Gehl,CTL165,blocked,yes,320x86Bx49,0,0,2,no_products
 gehl-ctl55,mdl_gehl_ctl55,Gehl,CTL55,ready,no,320x86x52,10,0,1,
 gehl-ctl60,mdl_gehl_ctl60,Gehl,CTL60,ready,yes,320x86x52,8,4,2,
 gehl-ctl65,mdl_gehl_ctl65,Gehl,CTL65,ready,yes,320x86x52,4,4,2,
@@ -378,13 +378,13 @@ gehl-ctl70,mdl_gehl_ctl70,Gehl,CTL70,ready,yes,450x100x48,12,5,1,
 gehl-ctl75,mdl_gehl_ctl75,Gehl,CTL75,ready,yes,450x100x48,6,4,1,
 gehl-ctl80,mdl_gehl_ctl80,Gehl,CTL80,ready,yes,450x100x50,12,4,1,
 gehl-ctl85,mdl_gehl_ctl85,Gehl,CTL85,ready,yes,450x100x50,6,4,1,
-gehl-ge303,mdl_gehl_ge303,Gehl,GE303,blocked,no,300x52.5Nx78,0,0,2,no_products
-gehl-ge342,mdl_gehl_ge342,Gehl,GE342,ready,no,300x52.5Nx80,6,1,1,
-gehl-ge362,mdl_gehl_ge362,Gehl,GE362,ready,no,300x52.5Nx84,3,1,2,
-gehl-ge502,mdl_gehl_ge502,Gehl,GE502,ready,no,400x72.5Kx74,3,2,3,
-gehl-ge503,mdl_gehl_ge503,Gehl,GE503,blocked,no,400x72.5Kx74,0,0,3,no_products
-gehl-ge602,mdl_gehl_ge602,Gehl,GE602,ready,no,400x72.5Kx74,3,2,3,
-gehl-mb28,mdl_gehl_mb28,Gehl,MB28,blocked,no,300x52.5Nx78,0,0,2,no_products
+gehl-ge303,mdl_gehl_ge303,Gehl,GE303,blocked,yes,300x52.5Nx78,0,0,2,no_products
+gehl-ge342,mdl_gehl_ge342,Gehl,GE342,ready,yes,300x52.5Nx80,6,1,1,
+gehl-ge362,mdl_gehl_ge362,Gehl,GE362,ready,yes,300x52.5Nx84,3,1,2,
+gehl-ge502,mdl_gehl_ge502,Gehl,GE502,ready,yes,400x72.5Kx74,3,2,3,
+gehl-ge503,mdl_gehl_ge503,Gehl,GE503,blocked,yes,400x72.5Kx74,0,0,3,no_products
+gehl-ge602,mdl_gehl_ge602,Gehl,GE602,ready,yes,400x72.5Kx74,3,2,3,
+gehl-mb28,mdl_gehl_mb28,Gehl,MB28,blocked,yes,300x52.5Nx78,0,0,2,no_products
 equipment-model-6awxkbkh,mdl_gehl_rt105,Gehl,RT105,ready,no,250x72x52,5,0,1,
 gehl-rt135,mdl_gehl_rt135,Gehl,RT135,ready,yes,320x84Bx46,5,0,1,
 gehl-rt165,mdl_gehl_rt165,Gehl,RT165,ready,yes,320x86Bx49,34,3,2,
@@ -392,233 +392,233 @@ gehl-rt210,mdl_gehl_rt210,Gehl,RT210,ready,yes,450x86Bx56,13,4,1,
 gehl-rt215,mdl_gehl_rt215,Gehl,RT215,ready,yes,450x86Bx56,30,4,1,
 gehl-rt250,mdl_gehl_rt250,Gehl,RT250,ready,yes,450x86Bx58,26,5,1,
 gehl-rt255,mdl_gehl_rt255,Gehl,RT255,ready,yes,450x86Bx58,13,5,1,
-gehl-vt210,mdl_gehl_vt210,Gehl,VT210,blocked,no,400x86Bx50,0,0,1,no_products
+gehl-vt210,mdl_gehl_vt210,Gehl,VT210,blocked,yes,400x86Bx50,0,0,1,no_products
 gehl-vt320,mdl_gehl_vt320,Gehl,VT320,ready,yes,450x86Bx58,13,4,1,
-hanix-h36b,mdl_hanix_h36b,Hanix,H36B,ready,no,300x52.5Nx84,1,0,2,
-hanix-h36c,mdl_hanix_h36c,Hanix,H36C,ready,no,300x52.5Nx84,1,0,2,
-hanix-h36cr,mdl_hanix_h36cr,Hanix,H36CR,ready,no,300x52.5Nx84,1,0,2,
-hanix-h36r,mdl_hanix_h36r,Hanix,H36R,ready,no,300x52.5Nx84,1,0,2,
-hitachi-30u,mdl_hitachi_30u,Hitachi,30U,ready,no,300x52.5x86,2,1,1,
-hitachi-35u,mdl_hitachi_35u,Hitachi,35U,ready,no,300x52.5x86,2,1,1,
-hitachi-ex35u,mdl_hitachi_ex_35_u,Hitachi,EX-35-U,ready,no,300x52.5x86,1,0,1,
-hitachi-ex12,mdl_hitachi_ex12,Hitachi,EX12,ready,no,230x96x31,2,1,1,
-hitachi-ex12-1,mdl_hitachi_ex12_1,Hitachi,EX12-1,ready,no,230x96x31,2,0,1,
-hitachi-ex12-2,mdl_hitachi_ex12_2,Hitachi,EX12-2,ready,no,230x96x31,2,0,1,
-hitachi-ex15,mdl_hitachi_ex15,Hitachi,EX15,ready,no,230x96x31,2,0,1,
-hitachi-ex15-1,mdl_hitachi_ex15_1,Hitachi,EX15-1,ready,no,230x96x31,2,0,1,
-hitachi-ex15-2,mdl_hitachi_ex15_2,Hitachi,EX15-2,ready,no,230x96x31,2,0,1,
-hitachi-ex15u,mdl_hitachi_ex15u,Hitachi,EX15U,ready,no,230x96x31,2,0,1,
-hitachi-ex16,mdl_hitachi_ex16,Hitachi,EX16,ready,no,230x96x31,2,0,1,
-hitachi-ex17,mdl_hitachi_ex17,Hitachi,EX17,ready,no,230x48x70,0,1,1,
-hitachi-ex35,mdl_hitachi_ex35,Hitachi,EX35,ready,no,300x52.5Nx84,1,1,2,
-hitachi-ex35-1,mdl_hitachi_ex351,Hitachi,EX351,blocked,no,300x52.5Nx84,0,0,2,no_products
-hitachi-ex36u,mdl_hitachi_ex36u,Hitachi,EX36U,ready,no,300x52.5x86,2,1,1,
-hitachi-ex40ur,mdl_hitachi_ex40ur,Hitachi,EX40UR,ready,no,300x52.5Nx84,1,1,2,
-hitachi-ex40ur-3,mdl_hitachi_ex40ur_3,Hitachi,EX40UR-3,ready,no,300x52.5x86,3,2,1,
-hitachi-ex50u,mdl_hitachi_ex50u,Hitachi,EX50U,ready,no,400x72.5Kx74,4,4,3,
-hitachi-ex58mu,mdl_hitachi_ex58mu,Hitachi,EX58MU,ready,no,400x72.5Kx74,3,3,3,
-hitachi-sh15-2,mdl_hitachi_sh15_2,Hitachi,SH15-2,ready,no,230x96x31,2,0,1,
-hitachi-ue35,mdl_hitachi_ue35,Hitachi,UE35,ready,no,300x52.5x86,3,1,1,
-hitachi-zx14-3,mdl_hitachi_zx14_3,Hitachi,ZX14-3,ready,no,230x96x31,2,0,1,
+hanix-h36b,mdl_hanix_h36b,Hanix,H36B,ready,yes,300x52.5Nx84,1,0,2,
+hanix-h36c,mdl_hanix_h36c,Hanix,H36C,ready,yes,300x52.5Nx84,1,0,2,
+hanix-h36cr,mdl_hanix_h36cr,Hanix,H36CR,ready,yes,300x52.5Nx84,1,0,2,
+hanix-h36r,mdl_hanix_h36r,Hanix,H36R,ready,yes,300x52.5Nx84,1,0,2,
+hitachi-30u,mdl_hitachi_30u,Hitachi,30U,ready,yes,300x52.5x86,2,1,1,
+hitachi-35u,mdl_hitachi_35u,Hitachi,35U,ready,yes,300x52.5x86,2,1,1,
+hitachi-ex35u,mdl_hitachi_ex_35_u,Hitachi,EX-35-U,ready,yes,300x52.5x86,1,0,1,
+hitachi-ex12,mdl_hitachi_ex12,Hitachi,EX12,ready,yes,230x96x31,2,1,1,
+hitachi-ex12-1,mdl_hitachi_ex12_1,Hitachi,EX12-1,ready,yes,230x96x31,2,0,1,
+hitachi-ex12-2,mdl_hitachi_ex12_2,Hitachi,EX12-2,ready,yes,230x96x31,2,0,1,
+hitachi-ex15,mdl_hitachi_ex15,Hitachi,EX15,ready,yes,230x96x31,2,0,1,
+hitachi-ex15-1,mdl_hitachi_ex15_1,Hitachi,EX15-1,ready,yes,230x96x31,2,0,1,
+hitachi-ex15-2,mdl_hitachi_ex15_2,Hitachi,EX15-2,ready,yes,230x96x31,2,0,1,
+hitachi-ex15u,mdl_hitachi_ex15u,Hitachi,EX15U,ready,yes,230x96x31,2,0,1,
+hitachi-ex16,mdl_hitachi_ex16,Hitachi,EX16,ready,yes,230x96x31,2,0,1,
+hitachi-ex17,mdl_hitachi_ex17,Hitachi,EX17,ready,yes,230x48x70,0,1,1,
+hitachi-ex35,mdl_hitachi_ex35,Hitachi,EX35,ready,yes,300x52.5Nx84,1,1,2,
+hitachi-ex35-1,mdl_hitachi_ex351,Hitachi,EX351,blocked,yes,300x52.5Nx84,0,0,2,no_products
+hitachi-ex36u,mdl_hitachi_ex36u,Hitachi,EX36U,ready,yes,300x52.5x86,2,1,1,
+hitachi-ex40ur,mdl_hitachi_ex40ur,Hitachi,EX40UR,ready,yes,300x52.5Nx84,1,1,2,
+hitachi-ex40ur-3,mdl_hitachi_ex40ur_3,Hitachi,EX40UR-3,ready,yes,300x52.5x86,3,2,1,
+hitachi-ex50u,mdl_hitachi_ex50u,Hitachi,EX50U,ready,yes,400x72.5Kx74,4,4,3,
+hitachi-ex58mu,mdl_hitachi_ex58mu,Hitachi,EX58MU,ready,yes,400x72.5Kx74,3,3,3,
+hitachi-sh15-2,mdl_hitachi_sh15_2,Hitachi,SH15-2,ready,yes,230x96x31,2,0,1,
+hitachi-ue35,mdl_hitachi_ue35,Hitachi,UE35,ready,yes,300x52.5x86,3,1,1,
+hitachi-zx14-3,mdl_hitachi_zx14_3,Hitachi,ZX14-3,ready,yes,230x96x31,2,0,1,
 hitachi-zx17u,mdl_hitachi_zx17u,Hitachi,ZX17U,ready,yes,230x48x70,1,0,1,
-hitachi-zx17u-2,mdl_hitachi_zx17u_2,Hitachi,ZX17U-2,ready,no,230x48x70,2,1,1,
-hitachi-zx27u-3,mdl_hitachi_zx27u3,Hitachi,ZX27U3,blocked,no,300x52.5Nx80,0,0,1,no_products
-hitachi-zx30u,mdl_hitachi_zx30u,Hitachi,ZX30U,ready,no,300x52.5x86,3,4,1,
-hitachi-zx30u-2,mdl_hitachi_zx30u_2,Hitachi,ZX30U-2,ready,no,300x52.5x86,3,2,1,
-hitachi-zx30-u5,mdl_hitachi_zx30u_5,Hitachi,ZX30U-5,blocked,no,300x52.5x86,0,0,1,no_products
-hitachi-zx33u,mdl_hitachi_zx33u,Hitachi,ZX33U,ready,no,300x52.5x86,3,2,1,
-hitachi-zx35-u5n,mdl_hitachi_zx35_u5n,Hitachi,ZX35-U5N,ready,no,300x52.5x86,2,5,1,
+hitachi-zx17u-2,mdl_hitachi_zx17u_2,Hitachi,ZX17U-2,ready,yes,230x48x70,2,1,1,
+hitachi-zx27u-3,mdl_hitachi_zx27u3,Hitachi,ZX27U3,blocked,yes,300x52.5Nx80,0,0,1,no_products
+hitachi-zx30u,mdl_hitachi_zx30u,Hitachi,ZX30U,ready,yes,300x52.5x86,3,4,1,
+hitachi-zx30u-2,mdl_hitachi_zx30u_2,Hitachi,ZX30U-2,ready,yes,300x52.5x86,3,2,1,
+hitachi-zx30-u5,mdl_hitachi_zx30u_5,Hitachi,ZX30U-5,blocked,yes,300x52.5x86,0,0,1,no_products
+hitachi-zx33u,mdl_hitachi_zx33u,Hitachi,ZX33U,ready,yes,300x52.5x86,3,2,1,
+hitachi-zx35-u5n,mdl_hitachi_zx35_u5n,Hitachi,ZX35-U5N,ready,yes,300x52.5x86,2,5,1,
 hitachi-zx35u,mdl_hitachi_zx35u,Hitachi,ZX35U,ready,yes,300x52.5x86,3,4,1,
-hitachi-zx35u-2,mdl_hitachi_zx35u_2,Hitachi,ZX35U-2,ready,no,300x52.5x86,3,4,1,
-hitachi-zx35u-3,mdl_hitachi_zx35u_3,Hitachi,ZX35U-3,ready,no,300x52.5x86,3,4,1,
-hitachi-zx40u-2,mdl_hitachi_zx40u2,Hitachi,ZX40U2,blocked,no,400x72.5Kx74,0,0,3,no_products
+hitachi-zx35u-2,mdl_hitachi_zx35u_2,Hitachi,ZX35U-2,ready,yes,300x52.5x86,3,4,1,
+hitachi-zx35u-3,mdl_hitachi_zx35u_3,Hitachi,ZX35U-3,ready,yes,300x52.5x86,3,4,1,
+hitachi-zx40u-2,mdl_hitachi_zx40u2,Hitachi,ZX40U2,blocked,yes,400x72.5Kx74,0,0,3,no_products
 hitachi-zx50u-5,mdl_hitachi_zx50u_5,Hitachi,ZX50U-5,ready,yes,400x72.5Kx74,4,6,3,
-hitachi-zx50u-2,mdl_hitachi_zx50u2,Hitachi,ZX50U2,blocked,no,400x72.5Kx74,0,0,3,no_products
-hitachi-zx50u-3,mdl_hitachi_zx50u3,Hitachi,ZX50U3,blocked,no,400x72.5Kx74,0,0,3,no_products
-hitachi-zx60usb-3,mdl_hitachi_zx60usb3,Hitachi,ZX60USB3,blocked,no,400x72.5Kx74,0,0,3,no_products
-hitachi-zx60usb-5,mdl_hitachi_zx60usb5,Hitachi,ZX60USB5,blocked,no,400x72.5Kx74,0,0,3,no_products
-hyundai-r17z-9a,mdl_hyundai_r17z_9a,Hyundai,R17Z-9A,ready,no,230x48x70,2,0,1,
-hyundai-r27z-9,mdl_hyundai_r27z_9,Hyundai,R27Z-9,blocked,no,300x52.5Nx80,0,0,1,no_products
-hyundai-r35z-7,mdl_hyundai_r35z_7,Hyundai,R35Z-7,blocked,no,300x52.5Nx84,0,0,2,no_products
-hyundai-r-35-z-9,mdl_hyundai_r35z9,Hyundai,R35Z9,ready,no,300x52.5x86,2,0,1,
+hitachi-zx50u-2,mdl_hitachi_zx50u2,Hitachi,ZX50U2,blocked,yes,400x72.5Kx74,0,0,3,no_products
+hitachi-zx50u-3,mdl_hitachi_zx50u3,Hitachi,ZX50U3,blocked,yes,400x72.5Kx74,0,0,3,no_products
+hitachi-zx60usb-3,mdl_hitachi_zx60usb3,Hitachi,ZX60USB3,blocked,yes,400x72.5Kx74,0,0,3,no_products
+hitachi-zx60usb-5,mdl_hitachi_zx60usb5,Hitachi,ZX60USB5,blocked,yes,400x72.5Kx74,0,0,3,no_products
+hyundai-r17z-9a,mdl_hyundai_r17z_9a,Hyundai,R17Z-9A,ready,yes,230x48x70,2,0,1,
+hyundai-r27z-9,mdl_hyundai_r27z_9,Hyundai,R27Z-9,blocked,yes,300x52.5Nx80,0,0,1,no_products
+hyundai-r35z-7,mdl_hyundai_r35z_7,Hyundai,R35Z-7,blocked,yes,300x52.5Nx84,0,0,2,no_products
+hyundai-r-35-z-9,mdl_hyundai_r35z9,Hyundai,R35Z9,ready,yes,300x52.5x86,2,0,1,
 hyundai-r55-9a,mdl_hyundai_r55_9a,Hyundai,R55-9A,blocked,yes,400x72.5Wx76,0,0,1,no_products
-hyundai-r55-3,mdl_hyundai_r553,Hyundai,R553,ready,no,400x72.5Wx76,2,0,1,
-hyundai-r55-7,mdl_hyundai_r557,Hyundai,R557,ready,no,400x72.5Wx76,2,0,1,
-hyundai-r55-9,mdl_hyundai_r559,Hyundai,R559,ready,no,400x72.5Wx76,2,0,1,
-hyundai-r60cr-9,mdl_hyundai_r60cr9,Hyundai,R60CR9,ready,no,400x72.5Wx76,2,0,1,
-hyundai-r60cr-9a,mdl_hyundai_r60cr9a,Hyundai,R60CR9A,ready,no,400x72.5Wx76,2,0,1,
-hyundai-robex-27z-9,mdl_hyundai_robex_27z_9,Hyundai,ROBEX 27Z-9,ready,no,300x52.5Nx80,3,0,1,
-hyundai-robex-30,mdl_hyundai_robex_30,Hyundai,ROBEX 30,ready,no,300x52.5Nx80,3,1,1,
-hyundai-robex-35-5,mdl_hyundai_robex_35_5,Hyundai,ROBEX 35-5,ready,no,300x52.5Nx84,1,0,2,
-hyundai-robex-35-7,mdl_hyundai_robex_35_7,Hyundai,ROBEX 35-7,ready,no,300x52.5Nx84,1,0,2,
-hyundai-robex-36-7,mdl_hyundai_robex_36_7,Hyundai,ROBEX 36-7,ready,no,300x52.5Nx84,1,0,2,
-hyundai-robex-17z-9a,mdl_hyundai_robex_17z_9a,Hyundai,ROBEX-17Z-9A,ready,no,230x48x70,2,0,1,
-hyundai-robex-28-5,mdl_hyundai_robex285,Hyundai,ROBEX285,ready,no,300x52.5Nx74,1,0,1,
-hyundai-robex-30z-9ak,mdl_hyundai_robex30z9ak,Hyundai,ROBEX30Z9AK,ready,no,300x52.5x86,2,0,1,
-hyundai-robex-35-9,mdl_hyundai_robex359,Hyundai,ROBEX359,ready,no,300x52.5x86,2,0,1,
-hyundai-robex-35z-7a,mdl_hyundai_robex35z7a,Hyundai,ROBEX35Z7A,ready,no,300x52.5x86,2,0,1,
-hyundai-robex35z9a,mdl_hyundai_robex35z9a,Hyundai,ROBEX35Z9A,ready,no,300x52.5x86,2,2,1,
-hyundai-robex-35z-9ak,mdl_hyundai_robex35z9ak,Hyundai,ROBEX35Z9AK,ready,no,300x52.5x86,2,0,1,
-hyundai-robex-55-3,mdl_hyundai_robex553,Hyundai,ROBEX553,ready,no,400x72.5Wx76,2,0,1,
-hyundai-robex-55-7,mdl_hyundai_robex557,Hyundai,ROBEX557,ready,no,400x72.5Wx76,2,0,1,
-hyundai-robex-55-9,mdl_hyundai_robex559,Hyundai,ROBEX559,ready,no,400x72.5Wx76,2,0,1,
-hyundai-robex-55-9a,mdl_hyundai_robex559a,Hyundai,ROBEX559A,ready,no,400x72.5Wx76,2,0,1,
-hyundai-robex-60cr-9a,mdl_hyundai_robex60cr9a,Hyundai,ROBEX60CR9A,ready,no,400x72.5Wx76,2,0,1,
+hyundai-r55-3,mdl_hyundai_r553,Hyundai,R553,ready,yes,400x72.5Wx76,2,0,1,
+hyundai-r55-7,mdl_hyundai_r557,Hyundai,R557,ready,yes,400x72.5Wx76,2,0,1,
+hyundai-r55-9,mdl_hyundai_r559,Hyundai,R559,ready,yes,400x72.5Wx76,2,0,1,
+hyundai-r60cr-9,mdl_hyundai_r60cr9,Hyundai,R60CR9,ready,yes,400x72.5Wx76,2,0,1,
+hyundai-r60cr-9a,mdl_hyundai_r60cr9a,Hyundai,R60CR9A,ready,yes,400x72.5Wx76,2,0,1,
+hyundai-robex-27z-9,mdl_hyundai_robex_27z_9,Hyundai,ROBEX 27Z-9,ready,yes,300x52.5Nx80,3,0,1,
+hyundai-robex-30,mdl_hyundai_robex_30,Hyundai,ROBEX 30,ready,yes,300x52.5Nx80,3,1,1,
+hyundai-robex-35-5,mdl_hyundai_robex_35_5,Hyundai,ROBEX 35-5,ready,yes,300x52.5Nx84,1,0,2,
+hyundai-robex-35-7,mdl_hyundai_robex_35_7,Hyundai,ROBEX 35-7,ready,yes,300x52.5Nx84,1,0,2,
+hyundai-robex-36-7,mdl_hyundai_robex_36_7,Hyundai,ROBEX 36-7,ready,yes,300x52.5Nx84,1,0,2,
+hyundai-robex-17z-9a,mdl_hyundai_robex_17z_9a,Hyundai,ROBEX-17Z-9A,ready,yes,230x48x70,2,0,1,
+hyundai-robex-28-5,mdl_hyundai_robex285,Hyundai,ROBEX285,ready,yes,300x52.5Nx74,1,0,1,
+hyundai-robex-30z-9ak,mdl_hyundai_robex30z9ak,Hyundai,ROBEX30Z9AK,ready,yes,300x52.5x86,2,0,1,
+hyundai-robex-35-9,mdl_hyundai_robex359,Hyundai,ROBEX359,ready,yes,300x52.5x86,2,0,1,
+hyundai-robex-35z-7a,mdl_hyundai_robex35z7a,Hyundai,ROBEX35Z7A,ready,yes,300x52.5x86,2,0,1,
+hyundai-robex35z9a,mdl_hyundai_robex35z9a,Hyundai,ROBEX35Z9A,ready,yes,300x52.5x86,2,2,1,
+hyundai-robex-35z-9ak,mdl_hyundai_robex35z9ak,Hyundai,ROBEX35Z9AK,ready,yes,300x52.5x86,2,0,1,
+hyundai-robex-55-3,mdl_hyundai_robex553,Hyundai,ROBEX553,ready,yes,400x72.5Wx76,2,0,1,
+hyundai-robex-55-7,mdl_hyundai_robex557,Hyundai,ROBEX557,ready,yes,400x72.5Wx76,2,0,1,
+hyundai-robex-55-9,mdl_hyundai_robex559,Hyundai,ROBEX559,ready,yes,400x72.5Wx76,2,0,1,
+hyundai-robex-55-9a,mdl_hyundai_robex559a,Hyundai,ROBEX559A,ready,yes,400x72.5Wx76,2,0,1,
+hyundai-robex-60cr-9a,mdl_hyundai_robex60cr9a,Hyundai,ROBEX60CR9A,ready,yes,400x72.5Wx76,2,0,1,
 hyundai-robex-75-7,mdl_hyundai_robex75_7,Hyundai,ROBEX75-7,ready,no,450x81Nx76,1,0,2,
 hyundai-robex-80-7,mdl_hyundai_robex807,Hyundai,ROBEX807,blocked,no,450x81Wx74,0,0,1,no_products
 hyundai-robex-80cr-9,mdl_hyundai_robex80cr9,Hyundai,ROBEX80CR9,blocked,no,450x81Nx76,0,0,2,no_products
-hyundai-robex-r60-cr-9,mdl_hyundai_robexr60cr9,Hyundai,ROBEXR60CR9,ready,no,400x72.5Wx76,2,0,1,
-ihi-17vx,mdl_ihi_17vx,IHI,17VX,ready,no,230x48x70,2,0,1,
-ihi-18-j,mdl_ihi_18_j,IHI,18-J,ready,no,230x48x70,2,0,1,
-ihi-18n,mdl_ihi_18n,IHI,18N,ready,no,230x48x70,2,0,1,
-ihi-18nxt,mdl_ihi_18nxt,IHI,18NXT,ready,no,230x48x70,2,0,1,
-ihi-25-nx,mdl_ihi_25nx,IHI,25NX,ready,no,300x52.5Nx78,2,2,2,
-ihi-28-n,mdl_ihi_28n,IHI,28N,ready,no,300x52.5Nx78,2,2,2,
-ihi-28-n-2,mdl_ihi_28n2,IHI,28N2,blocked,no,300x52.5Nx78,0,0,2,no_products
-ihi-35n,mdl_ihi_35n,IHI,35N,ready,no,300x52.5Nx84,2,2,2,
-ihi-45v-4,mdl_ihi_45v4,IHI,45V4,blocked,no,400x72.5Kx74,0,0,3,no_products
-ihi-50g,mdl_ihi_50g,IHI,50G,ready,no,400x72.5Kx74,5,2,3,
-ihi-50g-3,mdl_ihi_50g3,IHI,50G3,blocked,no,400x72.5Kx74,0,0,3,no_products
-ihi-50gx,mdl_ihi_50gx,IHI,50GX,ready,no,400x72.5Kx74,3,2,3,
-ihi-50j,mdl_ihi_50j,IHI,50J,ready,no,400x72.5Kx74,3,2,3,
-ihi-50jx,mdl_ihi_50jx,IHI,50JX,blocked,no,400x72.5Kx74,0,0,3,no_products
-ihi-50ux,mdl_ihi_50ux,IHI,50UX,ready,no,400x72.5Kx74,5,2,3,
-ihi-50z,mdl_ihi_50z,IHI,50Z,ready,no,400x72.5Kx74,4,2,3,
-ihi-65nx,mdl_ihi_65nx,IHI,65NX,ready,no,400x72.5Wx76,2,0,1,
+hyundai-robex-r60-cr-9,mdl_hyundai_robexr60cr9,Hyundai,ROBEXR60CR9,ready,yes,400x72.5Wx76,2,0,1,
+ihi-17vx,mdl_ihi_17vx,IHI,17VX,ready,yes,230x48x70,2,0,1,
+ihi-18-j,mdl_ihi_18_j,IHI,18-J,ready,yes,230x48x70,2,0,1,
+ihi-18n,mdl_ihi_18n,IHI,18N,ready,yes,230x48x70,2,0,1,
+ihi-18nxt,mdl_ihi_18nxt,IHI,18NXT,ready,yes,230x48x70,2,0,1,
+ihi-25-nx,mdl_ihi_25nx,IHI,25NX,ready,yes,300x52.5Nx78,2,2,2,
+ihi-28-n,mdl_ihi_28n,IHI,28N,ready,yes,300x52.5Nx78,2,2,2,
+ihi-28-n-2,mdl_ihi_28n2,IHI,28N2,blocked,yes,300x52.5Nx78,0,0,2,no_products
+ihi-35n,mdl_ihi_35n,IHI,35N,ready,yes,300x52.5Nx84,2,2,2,
+ihi-45v-4,mdl_ihi_45v4,IHI,45V4,blocked,yes,400x72.5Kx74,0,0,3,no_products
+ihi-50g,mdl_ihi_50g,IHI,50G,ready,yes,400x72.5Kx74,5,2,3,
+ihi-50g-3,mdl_ihi_50g3,IHI,50G3,blocked,yes,400x72.5Kx74,0,0,3,no_products
+ihi-50gx,mdl_ihi_50gx,IHI,50GX,ready,yes,400x72.5Kx74,3,2,3,
+ihi-50j,mdl_ihi_50j,IHI,50J,ready,yes,400x72.5Kx74,3,2,3,
+ihi-50jx,mdl_ihi_50jx,IHI,50JX,blocked,yes,400x72.5Kx74,0,0,3,no_products
+ihi-50ux,mdl_ihi_50ux,IHI,50UX,ready,yes,400x72.5Kx74,5,2,3,
+ihi-50z,mdl_ihi_50z,IHI,50Z,ready,yes,400x72.5Kx74,4,2,3,
+ihi-65nx,mdl_ihi_65nx,IHI,65NX,ready,yes,400x72.5Wx76,2,0,1,
 ihi-cl35,mdl_ihi_cl35,IHI,CL35,ready,yes,320x86x52,14,0,2,
 ihi-cl45,mdl_ihi_cl45,IHI,CL45,ready,yes,450x86Bx56,13,0,1,
-ihi-is-27,mdl_ihi_is27,IHI,IS27,ready,no,300x52.5Nx76,1,1,2,
-ihi-is-27g,mdl_ihi_is27g,IHI,IS27G,ready,no,300x52.5Nx76,1,2,2,
-ihi-is-27gx,mdl_ihi_is27gx,IHI,IS27GX,ready,no,300x52.5Nx76,1,1,2,
-ihi-is-28g,mdl_ihi_is28g,IHI,IS28G,ready,no,300x52.5Nx76,1,2,2,
-ihi-is-28g3,mdl_ihi_is28g3,IHI,IS28G3,ready,no,300x52.5Nx76,1,1,2,
-ihi-is-28gx,mdl_ihi_is28gx,IHI,IS28GX,ready,no,300x52.5Nx76,1,1,2,
-ihi-is-28j,mdl_ihi_is28j,IHI,IS28J,ready,no,300x52.5Nx76,1,2,2,
-ihi-is-28lx,mdl_ihi_is28lx,IHI,IS28LX,ready,no,300x52.5Nx76,1,1,2,
-ihi-is-28px,mdl_ihi_is28px,IHI,IS28PX,ready,no,300x52.5Nx76,1,1,2,
-ihi-is-28ux,mdl_ihi_is28ux,IHI,IS28UX,ready,no,300x52.5Nx76,1,1,2,
-ihi-is-30g,mdl_ihi_is30g,IHI,IS30G,ready,no,300x52.5Nx76,1,2,2,
-ihi-is-30gx,mdl_ihi_is30gx,IHI,IS30GX,ready,no,300x52.5Nx76,1,1,2,
-ihi-is-30j,mdl_ihi_is30j,IHI,IS30J,ready,no,300x52.5Nx76,1,1,2,
-ihi-is-30jx,mdl_ihi_is30jx,IHI,IS30JX,ready,no,300x52.5Nx84,2,1,2,
-ihi-is-30nx,mdl_ihi_is30nx,IHI,IS30NX,ready,no,300x52.5Nx84,2,1,2,
-ihi-is-30uj,mdl_ihi_is30uj,IHI,IS30UJ,ready,no,300x52.5Nx84,2,1,2,
-ihi-is-32j,mdl_ihi_is32j,IHI,IS32J,ready,no,300x52.5Nx84,2,1,2,
-ihi-is-35g,mdl_ihi_is35g,IHI,IS35G,ready,no,300x52.5Nx84,2,2,2,
-ihi-is-35gx,mdl_ihi_is35gx,IHI,IS35GX,ready,no,300x52.5Nx84,2,1,2,
-ihi-is-35j,mdl_ihi_is35j,IHI,IS35J,ready,no,300x52.5Nx84,2,1,2,
-ihi-is-35nx,mdl_ihi_is35nx,IHI,IS35NX,ready,no,300x52.5Nx84,4,1,2,
-ihi-is-35uj,mdl_ihi_is35uj,IHI,IS35UJ,ready,no,300x52.5Nx84,4,1,2,
-ihi-is-38uj,mdl_ihi_is38uj,IHI,IS38UJ,ready,no,300x52.5Nx84,4,0,2,
-ihi-is-38ux,mdl_ihi_is38ux,IHI,IS38UX,ready,no,300x52.5Nx84,2,1,2,
-ihi-is-40g,mdl_ihi_is40g,IHI,IS40G,ready,no,400x72.5Kx72,3,3,3,
-ihi-is-40gx,mdl_ihi_is40gx,IHI,IS40GX,ready,no,400x72.5Kx72,3,2,3,
-ihi-is-40gx-2,mdl_ihi_is40gx2,IHI,IS40GX2,ready,no,400x72.5Kx72,2,0,3,
-ihi-is-40gx-3,mdl_ihi_is40gx3,IHI,IS40GX3,ready,no,400x72.5Kx72,2,0,3,
-ihi-is-40j,mdl_ihi_is40j,IHI,IS40J,ready,no,400x72.5Kx72,3,2,3,
-ihi-is-40jx,mdl_ihi_is40jx,IHI,IS40JX,ready,no,400x72.5Kx72,3,2,3,
-ihi-is-40nx,mdl_ihi_is40nx,IHI,IS40NX,ready,no,400x72.5Kx72,2,0,3,
-ihi-is-45j,mdl_ihi_is45j,IHI,IS45J,ready,no,400x72.5Kx72,3,2,3,
-ihi-is-45nx,mdl_ihi_is45nx,IHI,IS45NX,ready,no,400x72.5Kx72,3,2,3,
-ihi-is-45uj,mdl_ihi_is45uj,IHI,IS45UJ,ready,no,400x72.5Kx72,3,2,3,
-ihi-is-50g,mdl_ihi_is50g,IHI,IS50G,ready,no,400x72.5Kx74,4,3,3,
-ihi-is-50g3,mdl_ihi_is50g3,IHI,IS50G3,ready,no,400x72.5Kx74,4,2,3,
-ihi-is-50gx,mdl_ihi_is50gx,IHI,IS50GX,ready,no,400x72.5Kx74,4,2,3,
-ihi-is-50uj,mdl_ihi_is50uj,IHI,IS50UJ,ready,no,400x72.5Kx74,4,2,3,
-ihi-is-50ux,mdl_ihi_is50ux,IHI,IS50UX,ready,no,400x72.5Kx74,4,3,3,
-ihi-is-50z,mdl_ihi_is50z,IHI,IS50Z,ready,no,400x72.5Kx74,4,2,3,
-ihi-is-55,mdl_ihi_is55,IHI,IS55,ready,no,400x72.5Kx74,4,2,3,
-ihi-is-55g,mdl_ihi_is55g,IHI,IS55G,ready,no,400x72.5Kx74,4,2,3,
-ihi-is-55g-3,mdl_ihi_is55g3,IHI,IS55G3,ready,no,400x72.5Kx74,4,0,3,
-ihi-is-55j,mdl_ihi_is55j,IHI,IS55J,ready,no,400x72.5Kx74,4,2,3,
-ihi-is-55lx,mdl_ihi_is55lx,IHI,IS55LX,ready,no,400x72.5Kx74,4,2,3,
-ihi-is-55n,mdl_ihi_is55n,IHI,IS55N,ready,no,400x72.5Kx74,7,2,3,
-ihi-is-55u-1,mdl_ihi_is55u1,IHI,IS55U1,ready,no,400x72.5Kx74,4,0,3,
-ihi-is-55u-2,mdl_ihi_is55u2,IHI,IS55U2,ready,no,400x72.5Kx74,4,0,3,
-ihi-is-55uj,mdl_ihi_is55uj,IHI,IS55UJ,ready,no,400x72.5Kx74,4,2,3,
-ihi-is-55ux,mdl_ihi_is55ux,IHI,IS55UX,ready,no,400x72.5Kx74,4,2,3,
-jcb-150t,mdl_jcb_150t,JCB,150T,ready,no,320x86x48,0,2,1,
-jcb-16c-1,mdl_jcb_16c_1,JCB,16C-1,ready,no,230x48x70,2,0,1,
-jcb-180t,mdl_jcb_180t,JCB,180T,ready,no,320x86Bx50,11,1,1,
-jcb-18z-1,mdl_jcb_18z_1,JCB,18Z-1,ready,no,230x48x70,2,0,1,
-jcb-190t,mdl_jcb_190t,JCB,190T,ready,no,320x86Bx50,33,1,3,
-jcb-190t-eco,mdl_jcb_190t_eco,JCB,190T-ECO,ready,no,320x86Bx50,11,1,1,
-jcb-19c-1,mdl_jcb_19c_1,JCB,19C-1,ready,no,230x48x70,2,0,1,
+ihi-is-27,mdl_ihi_is27,IHI,IS27,ready,yes,300x52.5Nx76,1,1,2,
+ihi-is-27g,mdl_ihi_is27g,IHI,IS27G,ready,yes,300x52.5Nx76,1,2,2,
+ihi-is-27gx,mdl_ihi_is27gx,IHI,IS27GX,ready,yes,300x52.5Nx76,1,1,2,
+ihi-is-28g,mdl_ihi_is28g,IHI,IS28G,ready,yes,300x52.5Nx76,1,2,2,
+ihi-is-28g3,mdl_ihi_is28g3,IHI,IS28G3,ready,yes,300x52.5Nx76,1,1,2,
+ihi-is-28gx,mdl_ihi_is28gx,IHI,IS28GX,ready,yes,300x52.5Nx76,1,1,2,
+ihi-is-28j,mdl_ihi_is28j,IHI,IS28J,ready,yes,300x52.5Nx76,1,2,2,
+ihi-is-28lx,mdl_ihi_is28lx,IHI,IS28LX,ready,yes,300x52.5Nx76,1,1,2,
+ihi-is-28px,mdl_ihi_is28px,IHI,IS28PX,ready,yes,300x52.5Nx76,1,1,2,
+ihi-is-28ux,mdl_ihi_is28ux,IHI,IS28UX,ready,yes,300x52.5Nx76,1,1,2,
+ihi-is-30g,mdl_ihi_is30g,IHI,IS30G,ready,yes,300x52.5Nx76,1,2,2,
+ihi-is-30gx,mdl_ihi_is30gx,IHI,IS30GX,ready,yes,300x52.5Nx76,1,1,2,
+ihi-is-30j,mdl_ihi_is30j,IHI,IS30J,ready,yes,300x52.5Nx76,1,1,2,
+ihi-is-30jx,mdl_ihi_is30jx,IHI,IS30JX,ready,yes,300x52.5Nx84,2,1,2,
+ihi-is-30nx,mdl_ihi_is30nx,IHI,IS30NX,ready,yes,300x52.5Nx84,2,1,2,
+ihi-is-30uj,mdl_ihi_is30uj,IHI,IS30UJ,ready,yes,300x52.5Nx84,2,1,2,
+ihi-is-32j,mdl_ihi_is32j,IHI,IS32J,ready,yes,300x52.5Nx84,2,1,2,
+ihi-is-35g,mdl_ihi_is35g,IHI,IS35G,ready,yes,300x52.5Nx84,2,2,2,
+ihi-is-35gx,mdl_ihi_is35gx,IHI,IS35GX,ready,yes,300x52.5Nx84,2,1,2,
+ihi-is-35j,mdl_ihi_is35j,IHI,IS35J,ready,yes,300x52.5Nx84,2,1,2,
+ihi-is-35nx,mdl_ihi_is35nx,IHI,IS35NX,ready,yes,300x52.5Nx84,4,1,2,
+ihi-is-35uj,mdl_ihi_is35uj,IHI,IS35UJ,ready,yes,300x52.5Nx84,4,1,2,
+ihi-is-38uj,mdl_ihi_is38uj,IHI,IS38UJ,ready,yes,300x52.5Nx84,4,0,2,
+ihi-is-38ux,mdl_ihi_is38ux,IHI,IS38UX,ready,yes,300x52.5Nx84,2,1,2,
+ihi-is-40g,mdl_ihi_is40g,IHI,IS40G,ready,yes,400x72.5Kx72,3,3,3,
+ihi-is-40gx,mdl_ihi_is40gx,IHI,IS40GX,ready,yes,400x72.5Kx72,3,2,3,
+ihi-is-40gx-2,mdl_ihi_is40gx2,IHI,IS40GX2,ready,yes,400x72.5Kx72,2,0,3,
+ihi-is-40gx-3,mdl_ihi_is40gx3,IHI,IS40GX3,ready,yes,400x72.5Kx72,2,0,3,
+ihi-is-40j,mdl_ihi_is40j,IHI,IS40J,ready,yes,400x72.5Kx72,3,2,3,
+ihi-is-40jx,mdl_ihi_is40jx,IHI,IS40JX,ready,yes,400x72.5Kx72,3,2,3,
+ihi-is-40nx,mdl_ihi_is40nx,IHI,IS40NX,ready,yes,400x72.5Kx72,2,0,3,
+ihi-is-45j,mdl_ihi_is45j,IHI,IS45J,ready,yes,400x72.5Kx72,3,2,3,
+ihi-is-45nx,mdl_ihi_is45nx,IHI,IS45NX,ready,yes,400x72.5Kx72,3,2,3,
+ihi-is-45uj,mdl_ihi_is45uj,IHI,IS45UJ,ready,yes,400x72.5Kx72,3,2,3,
+ihi-is-50g,mdl_ihi_is50g,IHI,IS50G,ready,yes,400x72.5Kx74,4,3,3,
+ihi-is-50g3,mdl_ihi_is50g3,IHI,IS50G3,ready,yes,400x72.5Kx74,4,2,3,
+ihi-is-50gx,mdl_ihi_is50gx,IHI,IS50GX,ready,yes,400x72.5Kx74,4,2,3,
+ihi-is-50uj,mdl_ihi_is50uj,IHI,IS50UJ,ready,yes,400x72.5Kx74,4,2,3,
+ihi-is-50ux,mdl_ihi_is50ux,IHI,IS50UX,ready,yes,400x72.5Kx74,4,3,3,
+ihi-is-50z,mdl_ihi_is50z,IHI,IS50Z,ready,yes,400x72.5Kx74,4,2,3,
+ihi-is-55,mdl_ihi_is55,IHI,IS55,ready,yes,400x72.5Kx74,4,2,3,
+ihi-is-55g,mdl_ihi_is55g,IHI,IS55G,ready,yes,400x72.5Kx74,4,2,3,
+ihi-is-55g-3,mdl_ihi_is55g3,IHI,IS55G3,ready,yes,400x72.5Kx74,4,0,3,
+ihi-is-55j,mdl_ihi_is55j,IHI,IS55J,ready,yes,400x72.5Kx74,4,2,3,
+ihi-is-55lx,mdl_ihi_is55lx,IHI,IS55LX,ready,yes,400x72.5Kx74,4,2,3,
+ihi-is-55n,mdl_ihi_is55n,IHI,IS55N,ready,yes,400x72.5Kx74,7,2,3,
+ihi-is-55u-1,mdl_ihi_is55u1,IHI,IS55U1,ready,yes,400x72.5Kx74,4,0,3,
+ihi-is-55u-2,mdl_ihi_is55u2,IHI,IS55U2,ready,yes,400x72.5Kx74,4,0,3,
+ihi-is-55uj,mdl_ihi_is55uj,IHI,IS55UJ,ready,yes,400x72.5Kx74,4,2,3,
+ihi-is-55ux,mdl_ihi_is55ux,IHI,IS55UX,ready,yes,400x72.5Kx74,4,2,3,
+jcb-150t,mdl_jcb_150t,JCB,150T,ready,yes,320x86x48,0,2,1,
+jcb-16c-1,mdl_jcb_16c_1,JCB,16C-1,ready,yes,230x48x70,2,0,1,
+jcb-180t,mdl_jcb_180t,JCB,180T,ready,yes,320x86Bx50,11,1,1,
+jcb-18z-1,mdl_jcb_18z_1,JCB,18Z-1,ready,yes,230x48x70,2,0,1,
+jcb-190t,mdl_jcb_190t,JCB,190T,ready,yes,320x86Bx50,33,1,3,
+jcb-190t-eco,mdl_jcb_190t_eco,JCB,190T-ECO,ready,yes,320x86Bx50,11,1,1,
+jcb-19c-1,mdl_jcb_19c_1,JCB,19C-1,ready,yes,230x48x70,2,0,1,
 jcb-205t,mdl_jcb_205t,JCB,205T,ready,no,320x86x52,15,2,1,
-jcb-205t-eco,mdl_jcb_205t_eco,JCB,205T-ECO,blocked,no,320x86Bx50,0,0,1,no_products
-jcb-210t,mdl_jcb_210t,JCB,210T,ready,no,320x86Bx50,11,0,1,
-jcb-215t,mdl_jcb_215t,JCB,215T,ready,no,320x86Bx50,11,2,1,
+jcb-205t-eco,mdl_jcb_205t_eco,JCB,205T-ECO,blocked,yes,320x86Bx50,0,0,1,no_products
+jcb-210t,mdl_jcb_210t,JCB,210T,ready,yes,320x86Bx50,11,0,1,
+jcb-215t,mdl_jcb_215t,JCB,215T,ready,yes,320x86Bx50,11,2,1,
 jcb-225t,mdl_jcb_225t,JCB,225T,blocked,yes,450x86Bx56,0,0,1,no_products
-jcb-225t-eco,mdl_jcb_225t_eco,JCB,225T-ECO,ready,no,450x86Bx56,15,2,1,
-jcb-250-t-tracks,mdl_jcb_250t,JCB,250T,ready,no,450x86Bx56,13,0,1,
+jcb-225t-eco,mdl_jcb_225t_eco,JCB,225T-ECO,ready,yes,450x86Bx56,15,2,1,
+jcb-250-t-tracks,mdl_jcb_250t,JCB,250T,ready,yes,450x86Bx56,13,0,1,
 jcb-260t,mdl_jcb_260t,JCB,260T,ready,yes,450x86Bx56,15,2,1,
-jcb-260t-eco,mdl_jcb_260t_eco,JCB,260T-ECO,ready,no,450x86Bx56,15,2,1,
+jcb-260t-eco,mdl_jcb_260t_eco,JCB,260T-ECO,ready,yes,450x86Bx56,15,2,1,
 jcb-270t,mdl_jcb_270t,JCB,270T,blocked,yes,450x86Bx56,0,0,1,no_products
-jcb-2ts,mdl_jcb_2ts,JCB,2TS,blocked,no,320x86Bx50,0,0,1,no_products
-jcb-2-ts-7-t-tracks,mdl_jcb_2ts_7t,JCB,2TS-7T,ready,no,320x86Bx50,11,0,1,
+jcb-2ts,mdl_jcb_2ts,JCB,2TS,blocked,yes,320x86Bx50,0,0,1,no_products
+jcb-2-ts-7-t-tracks,mdl_jcb_2ts_7t,JCB,2TS-7T,ready,yes,320x86Bx50,11,0,1,
 jcb-300t,mdl_jcb_300t,JCB,300T,ready,yes,450x86Bx56,15,2,1,
-jcb-300t-eco,mdl_jcb_300t_eco,JCB,300T-ECO,blocked,no,450x86Bx56,0,0,1,no_products
+jcb-300t-eco,mdl_jcb_300t_eco,JCB,300T-ECO,blocked,yes,450x86Bx56,0,0,1,no_products
 jcb-320t,mdl_jcb_320t,JCB,320T,blocked,yes,450x86Bx56,0,0,1,no_products
-jcb-320t-eco,mdl_jcb_320t_eco,JCB,320T-ECO,ready,no,450x86Bx56,15,2,1,
-jcb-35z-1,mdl_jcb_35z_1,JCB,35Z 1,ready,no,450x81.5x76,2,0,1,
+jcb-320t-eco,mdl_jcb_320t_eco,JCB,320T-ECO,ready,yes,450x86Bx56,15,2,1,
+jcb-35z-1,mdl_jcb_35z_1,JCB,35Z 1,ready,yes,450x81.5x76,2,0,1,
 jcb-3ts-8t,mdl_jcb_3ts_8t,JCB,3TS-8T,ready,yes,450x86Bx56,15,2,1,
-jcb-45z-1,mdl_jcb_45z_1,JCB,45Z 1,ready,no,400x72.5Kx74,4,0,3,
-jcb-48z-1,mdl_jcb_48z_1,JCB,48Z 1,ready,no,400x72.5Kx74,2,2,3,
-jcb-55z-1,mdl_jcb_55z_1,JCB,55Z 1,ready,no,400x72.5Kx74,2,2,3,
-jcb-57c-1,mdl_jcb_57c_1,JCB,57C 1,blocked,no,400x72.5Kx74,0,0,3,no_products
-jcb-57z-1,mdl_jcb_57z_1,JCB,57Z 1,blocked,no,400x72.5Kx74,0,0,3,no_products
-jcb-65r,mdl_jcb_65r,JCB,65R,ready,no,400x72.5Kx74,4,0,3,
-jcb-67c,mdl_jcb_67c,JCB,67C,ready,no,400x72.5Kx74,4,0,3,
-jcb-801,mdl_jcb_801,JCB,801,ready,no,180x72x37,3,0,2,
-jcb-8017,mdl_jcb_8017,JCB,8017,ready,no,230x48x70,2,0,1,
+jcb-45z-1,mdl_jcb_45z_1,JCB,45Z 1,ready,yes,400x72.5Kx74,4,0,3,
+jcb-48z-1,mdl_jcb_48z_1,JCB,48Z 1,ready,yes,400x72.5Kx74,2,2,3,
+jcb-55z-1,mdl_jcb_55z_1,JCB,55Z 1,ready,yes,400x72.5Kx74,2,2,3,
+jcb-57c-1,mdl_jcb_57c_1,JCB,57C 1,blocked,yes,400x72.5Kx74,0,0,3,no_products
+jcb-57z-1,mdl_jcb_57z_1,JCB,57Z 1,blocked,yes,400x72.5Kx74,0,0,3,no_products
+jcb-65r,mdl_jcb_65r,JCB,65R,ready,yes,400x72.5Kx74,4,0,3,
+jcb-67c,mdl_jcb_67c,JCB,67C,ready,yes,400x72.5Kx74,4,0,3,
+jcb-801,mdl_jcb_801,JCB,801,ready,yes,180x72x37,3,0,2,
+jcb-8017,mdl_jcb_8017,JCB,8017,ready,yes,230x48x70,2,0,1,
 jcb-8018,mdl_jcb_8018,JCB,8018,ready,yes,230x48x62,1,0,1,
-jcb-801r,mdl_jcb_801r,JCB,801R,ready,no,230x96x31,2,0,1,
-jcb-802-plus,mdl_jcb_802_plus,JCB,802 PLUS,blocked,no,300x52.5Nx74,0,0,1,no_products
-jcb-802-super,mdl_jcb_802_super,JCB,802 SUPER,blocked,no,300x52.5Nx74,0,0,1,no_products
+jcb-801r,mdl_jcb_801r,JCB,801R,ready,yes,230x96x31,2,0,1,
+jcb-802-plus,mdl_jcb_802_plus,JCB,802 PLUS,blocked,yes,300x52.5Nx74,0,0,1,no_products
+jcb-802-super,mdl_jcb_802_super,JCB,802 SUPER,blocked,yes,300x52.5Nx74,0,0,1,no_products
 jcb-802-7,mdl_jcb_802_7,JCB,802.7,ready,yes,300x52.5Nx84,1,0,2,
-jcb-802-7-zts,mdl_jcb_802_7_zts,JCB,802.7 ZTS,ready,no,300x52.5Nx74,2,0,1,
-jcb-8025,mdl_jcb_8025,JCB,8025,blocked,no,300x52.5Nx78,0,0,2,no_products
-jcb-8025zts,mdl_jcb_8025zts,JCB,8025ZTS,ready,no,300x52.5Nx78,2,1,2,
-jcb-8026,mdl_jcb_8026,JCB,8026,ready,no,300x52.5Nx78,2,0,2,
-jcb-803,mdl_jcb_803,JCB,803,ready,no,300x52.5Nx84,2,3,2,
-jcb-803-magnum,mdl_jcb_803_magnum,JCB,803 MAGNUM,ready,no,300x52.5Nx84,2,0,2,
-jcb-803-plus,mdl_jcb_803_plus,JCB,803 PLUS,ready,no,300x52.5Nx84,2,0,2,
-jcb-803-super,mdl_jcb_803_super,JCB,803 SUPER,ready,no,300x52.5Nx84,2,0,2,
+jcb-802-7-zts,mdl_jcb_802_7_zts,JCB,802.7 ZTS,ready,yes,300x52.5Nx74,2,0,1,
+jcb-8025,mdl_jcb_8025,JCB,8025,blocked,yes,300x52.5Nx78,0,0,2,no_products
+jcb-8025zts,mdl_jcb_8025zts,JCB,8025ZTS,ready,yes,300x52.5Nx78,2,1,2,
+jcb-8026,mdl_jcb_8026,JCB,8026,ready,yes,300x52.5Nx78,2,0,2,
+jcb-803,mdl_jcb_803,JCB,803,ready,yes,300x52.5Nx84,2,3,2,
+jcb-803-magnum,mdl_jcb_803_magnum,JCB,803 MAGNUM,ready,yes,300x52.5Nx84,2,0,2,
+jcb-803-plus,mdl_jcb_803_plus,JCB,803 PLUS,ready,yes,300x52.5Nx84,2,0,2,
+jcb-803-super,mdl_jcb_803_super,JCB,803 SUPER,ready,yes,300x52.5Nx84,2,0,2,
 jcb-8030zts,mdl_jcb_8030_zts,JCB,8030 ZTS,ready,yes,300x52.5Nx84,2,0,2,
-jcb-8032,mdl_jcb_8032,JCB,8032,blocked,no,300x52.5Nx84,0,0,2,no_products
-jcb-803-2-zts,mdl_jcb_8032zts,JCB,8032ZTS,ready,no,300x52.5Nx84,2,1,2,
-jcb-8035,mdl_jcb_8035,JCB,8035,blocked,no,300x52.5Nx84,0,0,2,no_products
+jcb-8032,mdl_jcb_8032,JCB,8032,blocked,yes,300x52.5Nx84,0,0,2,no_products
+jcb-803-2-zts,mdl_jcb_8032zts,JCB,8032ZTS,ready,yes,300x52.5Nx84,2,1,2,
+jcb-8035,mdl_jcb_8035,JCB,8035,blocked,yes,300x52.5Nx84,0,0,2,no_products
 jcb-8035zts,mdl_jcb_8035_zts,JCB,8035 ZTS,ready,yes,300x52.5Nx84,2,0,2,
-jcb-8035z,mdl_jcb_8035z,JCB,8035Z,ready,no,300x52.5Nx84,4,1,2,
-jcb-803e,mdl_jcb_803e,JCB,803E,ready,no,300x52.5Nx84,2,1,2,
-jcb-804,mdl_jcb_804,JCB,804,ready,no,300x52.5Nx84,4,1,2,
-jcb-8045,mdl_jcb_8045,JCB,8045,blocked,no,400x72.5Kx74,0,0,3,no_products
-jcb-8045zts,mdl_jcb_8045zts,JCB,8045ZTS,ready,no,400x72.5Kx74,4,3,3,
-jcb-805,mdl_jcb_805,JCB,805,ready,no,400x72.5Kx74,4,3,3,
+jcb-8035z,mdl_jcb_8035z,JCB,8035Z,ready,yes,300x52.5Nx84,4,1,2,
+jcb-803e,mdl_jcb_803e,JCB,803E,ready,yes,300x52.5Nx84,2,1,2,
+jcb-804,mdl_jcb_804,JCB,804,ready,yes,300x52.5Nx84,4,1,2,
+jcb-8045,mdl_jcb_8045,JCB,8045,blocked,yes,400x72.5Kx74,0,0,3,no_products
+jcb-8045zts,mdl_jcb_8045zts,JCB,8045ZTS,ready,yes,400x72.5Kx74,4,3,3,
+jcb-805,mdl_jcb_805,JCB,805,ready,yes,400x72.5Kx74,4,3,3,
 jcb-8050zts,mdl_jcb_8050_zts,JCB,8050 ZTS,ready,yes,400x72.5Kx74,4,0,3,
-jcb-805-2,mdl_jcb_8052,JCB,8052,ready,no,400x72.5Kx74,4,3,3,
-jcb-8055,mdl_jcb_8055,JCB,8055,blocked,no,400x72.5Kx74,0,0,3,no_products
-jcb-8055rts,mdl_jcb_8055rts,JCB,8055RTS,ready,no,400x72.5Kx74,4,0,3,
-jcb-8055z,mdl_jcb_8055z,JCB,8055Z,ready,no,400x72.5Kx74,7,2,3,
-jcb-8055zts,mdl_jcb_8055zts,JCB,8055ZTS,ready,no,400x72.5Kx74,4,0,3,
-jcb-806,mdl_jcb_806,JCB,806,ready,no,400x72.5Kx74,4,2,3,
-jcb-8060,mdl_jcb_8060,JCB,8060,ready,no,400x72.5Kx74,4,4,3,
-jcb-8065,mdl_jcb_8065,JCB,8065,blocked,no,400x72.5Kx74,0,0,3,no_products
-jcb-8065rts,mdl_jcb_8065rts,JCB,8065RTS,ready,no,400x72.5Kx74,7,2,3,
+jcb-805-2,mdl_jcb_8052,JCB,8052,ready,yes,400x72.5Kx74,4,3,3,
+jcb-8055,mdl_jcb_8055,JCB,8055,blocked,yes,400x72.5Kx74,0,0,3,no_products
+jcb-8055rts,mdl_jcb_8055rts,JCB,8055RTS,ready,yes,400x72.5Kx74,4,0,3,
+jcb-8055z,mdl_jcb_8055z,JCB,8055Z,ready,yes,400x72.5Kx74,7,2,3,
+jcb-8055zts,mdl_jcb_8055zts,JCB,8055ZTS,ready,yes,400x72.5Kx74,4,0,3,
+jcb-806,mdl_jcb_806,JCB,806,ready,yes,400x72.5Kx74,4,2,3,
+jcb-8060,mdl_jcb_8060,JCB,8060,ready,yes,400x72.5Kx74,4,4,3,
+jcb-8065,mdl_jcb_8065,JCB,8065,blocked,yes,400x72.5Kx74,0,0,3,no_products
+jcb-8065rts,mdl_jcb_8065rts,JCB,8065RTS,ready,yes,400x72.5Kx74,7,2,3,
 jcb-8080,mdl_jcb_8080,JCB,8080,ready,no,450x81Nx76,4,3,2,
-jcb-8080zts,mdl_jcb_8080_zts,JCB,8080 ZTS,ready,no,450x81.5x76,1,0,1,
-jcb-8085zts,mdl_jcb_8085zts,JCB,8085ZTS,ready,no,450x81.5x76,3,3,1,
+jcb-8080zts,mdl_jcb_8080_zts,JCB,8080 ZTS,ready,yes,450x81.5x76,1,0,1,
+jcb-8085zts,mdl_jcb_8085zts,JCB,8085ZTS,ready,yes,450x81.5x76,3,3,1,
 jcb-85z-1,mdl_jcb_85z_1,JCB,85Z-1,ready,no,450x81Nx78,3,3,2,
 jcb-86c-1,mdl_jcb_86c_1,JCB,86C-1,ready,no,450x81Nx78,2,1,2,
 jcb-90z-1,mdl_jcb_90z_1,JCB,90Z 1,blocked,no,450x81Nx78,0,0,2,no_products
-jcb-jz-70,mdl_jcb_jz_70,JCB,JZ 70,ready,no,450x81.5x76,2,0,3,
-john-deere-17d,mdl_john_deere_17d,John Deere,17D,ready,no,230x48x70,2,3,1,
+jcb-jz-70,mdl_jcb_jz_70,JCB,JZ 70,ready,yes,450x81.5x76,2,0,3,
+john-deere-17d,mdl_john_deere_17d,John Deere,17D,ready,yes,230x48x70,2,3,1,
 john-deere-17g,mdl_john_deere_17g,John Deere,17G,ready,yes,230x48x70,2,3,1,
 john-deere-17p,mdl_john_deere_17p,John Deere,17P,ready,yes,230x48x70,2,0,1,
-john-deere-17zts,mdl_john_deere_17zts,John Deere,17ZTS,ready,no,230x48x70,4,3,1,
+john-deere-17zts,mdl_john_deere_17zts,John Deere,17ZTS,ready,yes,230x48x70,4,3,1,
 john-deere-26g,mdl_john_deere_26g,John Deere,26G,ready,yes,300x52.5Nx80,3,5,1,
-john-deere-27d,mdl_john_deere_27d,John Deere,27D,ready,no,300x52.5Nx80,4,6,1,
-john-deere-27zts,mdl_john_deere_27zts,John Deere,27ZTS,ready,no,300x52.5Nx78,1,2,2,
+john-deere-27d,mdl_john_deere_27d,John Deere,27D,ready,yes,300x52.5Nx80,4,6,1,
+john-deere-27zts,mdl_john_deere_27zts,John Deere,27ZTS,ready,yes,300x52.5Nx78,1,2,2,
 john-deere-30g,mdl_john_deere_30g,John Deere,30G,ready,yes,300x52.5x86,2,5,1,
 john-deere-317g,mdl_john_deere_317g,John Deere,317G,ready,yes,320x86Bx50,38,4,2,
 john-deere-319d,mdl_john_deere_319d,John Deere,319D,ready,yes,320x86x52,14,4,2,
@@ -635,16 +635,16 @@ john-deere-333e,mdl_john_deere_333e,John Deere,333E,ready,yes,450x86Bx56,13,3,1,
 john-deere-333g,mdl_john_deere_333g,John Deere,333G,ready,yes,450x86Bx58,14,2,1,
 john-deere-333p,mdl_john_deere_333p,John Deere,333P,ready,yes,450x86Bx58,15,0,1,
 john-deere-335p,mdl_john_deere_335p,John Deere,335P,ready,yes,450x86Bx58,13,0,1,
-john-deere-35czts,mdl_john_deere_35czts,John Deere,35CZTS,ready,no,300x52.5x86,4,3,1,
+john-deere-35czts,mdl_john_deere_35czts,John Deere,35CZTS,ready,yes,300x52.5x86,4,3,1,
 john-deere-35d,mdl_john_deere_35d,John Deere,35D,ready,yes,300x52.5x86,3,7,1,
 john-deere-35g,mdl_john_deere_35g,John Deere,35G,ready,yes,300x52.5x86,2,5,1,
 john-deere-35p,mdl_john_deere_35p,John Deere,35P,ready,yes,300x52.5x86,2,1,1,
-john-deere-35zts,mdl_john_deere_35zts,John Deere,35ZTS,ready,no,300x52.5x86,4,5,1,
-john-deere-50d,mdl_john_deere_50d,John Deere,50D,ready,no,400x72.5Kx74,7,9,3,
+john-deere-35zts,mdl_john_deere_35zts,John Deere,35ZTS,ready,yes,300x52.5x86,4,5,1,
+john-deere-50d,mdl_john_deere_50d,John Deere,50D,ready,yes,400x72.5Kx74,7,9,3,
 john-deere-50g,mdl_john_deere_50g,John Deere,50G,ready,yes,400x72.5Kx74,8,6,3,
-john-deere-50p,mdl_john_deere_50p,John Deere,50P,ready,no,400x72.5Kx74,8,4,3,
-john-deere-50zts,mdl_john_deere_50zts,John Deere,50ZTS,ready,no,400x72.5Kx72,5,6,3,
-john-deere-60d,mdl_john_deere_60d,John Deere,60D,ready,no,400x72.5Kx74,5,5,3,
+john-deere-50p,mdl_john_deere_50p,John Deere,50P,ready,yes,400x72.5Kx74,8,4,3,
+john-deere-50zts,mdl_john_deere_50zts,John Deere,50ZTS,ready,yes,400x72.5Kx72,5,6,3,
+john-deere-60d,mdl_john_deere_60d,John Deere,60D,ready,yes,400x72.5Kx74,5,5,3,
 john-deere-60g,mdl_john_deere_60g,John Deere,60G,ready,yes,400x72.5Kx74,4,7,3,
 john-deere-75c,mdl_john_deere_75c,John Deere,75C,blocked,no,450x81Nx78,0,0,2,no_products
 john-deere-75d,mdl_john_deere_75d,John Deere,75D,ready,no,450x81Nx78,4,7,2,
@@ -653,22 +653,22 @@ john-deere-85g,mdl_john_deere_85g,John Deere,85G,ready,yes,450x81Nx78,4,6,2,
 john-deere-ct322,mdl_john_deere_ct322,John Deere,CT322,ready,yes,320x86x52,46,4,2,
 john-deere-ct332,mdl_john_deere_ct332,John Deere,CT332,ready,yes,450x86Bx56,30,4,1,
 kioti-tl750,mdl_kioti_tl750,Kioti,TL750,ready,yes,400x86x52,3,0,1,
-kobelco-115,mdl_kobelco_115,Kobelco,115,ready,no,230x96x31,2,0,1,
-kobelco-sk024,mdl_kobelco_sk_024,Kobelco,SK 024,blocked,no,300x52.5Nx78,0,0,2,no_products
-kobelco-sk025,mdl_kobelco_sk_025,Kobelco,SK 025,blocked,no,300x52.5Nx78,0,0,2,no_products
-kobelco-sk025-2,mdl_kobelco_sk_0252,Kobelco,SK 0252,blocked,no,300x52.5Nx78,0,0,2,no_products
-kobelco-sk025sr,mdl_kobelco_sk_025sr,Kobelco,SK 025SR,blocked,no,300x52.5Nx78,0,0,2,no_products
-kobelco-sk20sr,mdl_kobelco_sk_20sr,Kobelco,SK 20SR,blocked,no,300x52.5Nx76,0,0,2,no_products
-kobelco-sk013,mdl_kobelco_sk013,Kobelco,SK013,ready,no,230x96x31,2,0,1,
-kobelco-sk013-1,mdl_kobelco_sk013_1,Kobelco,SK013-1,ready,no,230x96x31,2,0,1,
-kobelco-sk014-1,mdl_kobelco_sk014_1,Kobelco,SK014-1,ready,no,230x96x31,2,0,1,
-kobelco-sk015,mdl_kobelco_sk015,Kobelco,SK015,ready,no,230x96x31,2,0,1,
-kobelco-sk015-1,mdl_kobelco_sk015_1,Kobelco,SK015-1,ready,no,230x96x31,2,0,1,
-kobelco-sk035,mdl_kobelco_sk035,Kobelco,SK035,ready,no,350x52.5x86,6,3,1,
-kobelco-sk45sr-2,mdl_kobelco_sk45sr2,Kobelco,SK45SR2,blocked,no,400x72.5Kx74,0,0,3,no_products
-kobelco-sk55sr-5,mdl_kobelco_sk55sr5,Kobelco,SK55SR5,blocked,no,400x72.5Kx74,0,0,3,no_products
-kobelco-sk55srx-6e,mdl_kobelco_sk55srx6e,Kobelco,SK55SRX6E,blocked,no,400x72.5Kx74,0,0,3,no_products
-kobelco-sk55srx-7,mdl_kobelco_sk55srx7,Kobelco,SK55SRX7,blocked,no,400x72.5Kx74,0,0,3,no_products
+kobelco-115,mdl_kobelco_115,Kobelco,115,ready,yes,230x96x31,2,0,1,
+kobelco-sk024,mdl_kobelco_sk_024,Kobelco,SK 024,blocked,yes,300x52.5Nx78,0,0,2,no_products
+kobelco-sk025,mdl_kobelco_sk_025,Kobelco,SK 025,blocked,yes,300x52.5Nx78,0,0,2,no_products
+kobelco-sk025-2,mdl_kobelco_sk_0252,Kobelco,SK 0252,blocked,yes,300x52.5Nx78,0,0,2,no_products
+kobelco-sk025sr,mdl_kobelco_sk_025sr,Kobelco,SK 025SR,blocked,yes,300x52.5Nx78,0,0,2,no_products
+kobelco-sk20sr,mdl_kobelco_sk_20sr,Kobelco,SK 20SR,blocked,yes,300x52.5Nx76,0,0,2,no_products
+kobelco-sk013,mdl_kobelco_sk013,Kobelco,SK013,ready,yes,230x96x31,2,0,1,
+kobelco-sk013-1,mdl_kobelco_sk013_1,Kobelco,SK013-1,ready,yes,230x96x31,2,0,1,
+kobelco-sk014-1,mdl_kobelco_sk014_1,Kobelco,SK014-1,ready,yes,230x96x31,2,0,1,
+kobelco-sk015,mdl_kobelco_sk015,Kobelco,SK015,ready,yes,230x96x31,2,0,1,
+kobelco-sk015-1,mdl_kobelco_sk015_1,Kobelco,SK015-1,ready,yes,230x96x31,2,0,1,
+kobelco-sk035,mdl_kobelco_sk035,Kobelco,SK035,ready,yes,350x52.5x86,6,3,1,
+kobelco-sk45sr-2,mdl_kobelco_sk45sr2,Kobelco,SK45SR2,blocked,yes,400x72.5Kx74,0,0,3,no_products
+kobelco-sk55sr-5,mdl_kobelco_sk55sr5,Kobelco,SK55SR5,blocked,yes,400x72.5Kx74,0,0,3,no_products
+kobelco-sk55srx-6e,mdl_kobelco_sk55srx6e,Kobelco,SK55SRX6E,blocked,yes,400x72.5Kx74,0,0,3,no_products
+kobelco-sk55srx-7,mdl_kobelco_sk55srx7,Kobelco,SK55SRX7,blocked,yes,400x72.5Kx74,0,0,3,no_products
 kobelco-sk70sr-2,mdl_kobelco_sk70sr_2,Kobelco,SK70SR-2,ready,no,450x81Nx76,4,4,2,
 kobelco-sk80cs,mdl_kobelco_sk80cs,Kobelco,SK80CS,ready,no,450x81Nx78,4,5,2,
 kobelco-sk80msr,mdl_kobelco_sk80msr,Kobelco,SK80MSR,ready,no,450x81Nx78,4,4,2,
@@ -678,84 +678,84 @@ komatsu-ck-20-1,mdl_komatsu_ck201,Komatsu,CK201,ready,no,320x86x52,4,0,2,
 komatsu-ck25,mdl_komatsu_ck25,Komatsu,CK25,ready,no,320x86x52,24,0,2,
 komatsu-ck-25-1,mdl_komatsu_ck251,Komatsu,CK251,ready,no,320x86x52,4,0,2,
 komatsu-ck30-1,mdl_komatsu_ck30_1,Komatsu,CK30-1,ready,yes,450x86Bx56,17,1,1,
-komatsu-ck35,mdl_komatsu_ck35,Komatsu,CK35,ready,no,450x86Bx56,13,1,1,
+komatsu-ck35,mdl_komatsu_ck35,Komatsu,CK35,ready,yes,450x86Bx56,13,1,1,
 komatsu-ck35-1,mdl_komatsu_ck35_1,Komatsu,CK35-1,ready,yes,450x86Bx56,26,2,1,
-komatsu-pc30mr-5,mdl_komatsu_pc_30_mr_5,Komatsu,PC-30-MR-5,ready,no,300x52.5x86,1,0,1,
-komatsu-pc35mr-5,mdl_komatsu_pc_35_mr_5,Komatsu,PC-35-MR-5,ready,no,300x52.5x86,1,0,1,
+komatsu-pc30mr-5,mdl_komatsu_pc_30_mr_5,Komatsu,PC-30-MR-5,ready,yes,300x52.5x86,1,0,1,
+komatsu-pc35mr-5,mdl_komatsu_pc_35_mr_5,Komatsu,PC-35-MR-5,ready,yes,300x52.5x86,1,0,1,
 komatsu-pc05,mdl_komatsu_pc05,Komatsu,PC05,ready,no,180x72x37,5,1,1,
-komatsu-pc05-7,mdl_komatsu_pc05_7,Komatsu,PC05-7,ready,no,230x96x31,2,1,1,
-komatsu-pc05avancer,mdl_komatsu_pc05avancer,Komatsu,PC05AVANCER,ready,no,230x96x31,2,0,1,
-komatsu-pc07,mdl_komatsu_pc07,Komatsu,PC07,ready,no,180x72x37,3,1,2,
-komatsu-pc07-1,mdl_komatsu_pc07_1,Komatsu,PC07-1,ready,no,230x96x31,2,0,1,
-komatsu-pc07-2,mdl_komatsu_pc07_2,Komatsu,PC07-2,ready,no,230x96x31,2,0,1,
-komatsu-pc07-6,mdl_komatsu_pc07_6,Komatsu,PC07-6,ready,no,230x96x31,2,0,1,
-komatsu-pc07-7,mdl_komatsu_pc07_7,Komatsu,PC07-7,ready,no,230x96x31,2,0,1,
-komatsu-pc07avancer,mdl_komatsu_pc07avancer,Komatsu,PC07AVANCER,ready,no,230x96x31,2,0,1,
-komatsu-pc07r,mdl_komatsu_pc07r,Komatsu,PC07R,ready,no,230x96x31,2,0,1,
-komatsu-pc12r-8,mdl_komatsu_pc12r_8,Komatsu,PC12R-8,ready,no,230x96x31,2,0,1,
-komatsu-pc12rutility,mdl_komatsu_pc12rutility,Komatsu,PC12RUTILITY,ready,no,230x96x31,2,0,1,
-komatsu-pc14r-2,mdl_komatsu_pc14r_2,Komatsu,PC14R-2,ready,no,230x96x31,2,0,1,
-komatsu-pc15r,mdl_komatsu_pc15r,Komatsu,PC15R,ready,no,230x96x31,7,1,1,
-komatsu-pc15r-8,mdl_komatsu_pc15r_8,Komatsu,PC15R-8,ready,no,230x96x31,2,0,1,
-komatsu-pc15rhs,mdl_komatsu_pc15rhs,Komatsu,PC15RHS,ready,no,230x96x31,2,0,1,
-komatsu-pc16r-2,mdl_komatsu_pc16r_2,Komatsu,PC16R-2,ready,no,230x96x31,2,0,1,
-komatsu-pc18mr-2,mdl_komatsu_pc18mr_2,Komatsu,PC18MR-2,ready,no,230x48x70,2,0,1,
-komatsu-pc18mr-3,mdl_komatsu_pc18mr_3,Komatsu,PC18MR-3,ready,no,230x48x70,2,0,1,
-komatsu-pc20,mdl_komatsu_pc20,Komatsu,PC20,ready,no,300x52.5Nx84,4,2,2,
-komatsu-pc20-2,mdl_komatsu_pc202,Komatsu,PC202,blocked,no,300x52.5Nx84,0,0,2,no_products
-komatsu-pc20-6,mdl_komatsu_pc206,Komatsu,PC206,blocked,no,300x52.5Nx84,0,0,2,no_products
-komatsu-pc20-7,mdl_komatsu_pc207,Komatsu,PC207,blocked,no,300x52.5Nx76,0,0,2,no_products
-komatsu-pc20-mr-2,mdl_komatsu_pc20mr2,Komatsu,PC20MR2,ready,no,300x52.5Nx78,1,0,3,
-komatsu-pc22mr-3,mdl_komatsu_pc22mr3,Komatsu,PC22MR3,ready,no,300x52.5Nx78,1,0,2,
-komatsu-pc25,mdl_komatsu_pc25,Komatsu,PC25,ready,no,300x52.5Nx84,2,0,2,
-komatsu-pc25-1,mdl_komatsu_pc251,Komatsu,PC251,blocked,no,300x52.5Nx84,0,0,2,no_products
-komatsu-pc25-7,mdl_komatsu_pc257,Komatsu,PC257,ready,no,300x52.5Nx80,3,0,1,
-komatsu-pc25r-8,mdl_komatsu_pc25r8,Komatsu,PC25R8,ready,no,300x52.5Nx80,3,0,1,
-komatsu-pc26mr,mdl_komatsu_pc26mr,Komatsu,PC26MR,ready,no,300x52.5Nx80,3,1,1,
-komatsu-pc26mr-3,mdl_komatsu_pc26mr3,Komatsu,PC26MR3,blocked,no,300x52.5Nx80,0,0,1,no_products
+komatsu-pc05-7,mdl_komatsu_pc05_7,Komatsu,PC05-7,ready,yes,230x96x31,2,1,1,
+komatsu-pc05avancer,mdl_komatsu_pc05avancer,Komatsu,PC05AVANCER,ready,yes,230x96x31,2,0,1,
+komatsu-pc07,mdl_komatsu_pc07,Komatsu,PC07,ready,yes,180x72x37,3,1,2,
+komatsu-pc07-1,mdl_komatsu_pc07_1,Komatsu,PC07-1,ready,yes,230x96x31,2,0,1,
+komatsu-pc07-2,mdl_komatsu_pc07_2,Komatsu,PC07-2,ready,yes,230x96x31,2,0,1,
+komatsu-pc07-6,mdl_komatsu_pc07_6,Komatsu,PC07-6,ready,yes,230x96x31,2,0,1,
+komatsu-pc07-7,mdl_komatsu_pc07_7,Komatsu,PC07-7,ready,yes,230x96x31,2,0,1,
+komatsu-pc07avancer,mdl_komatsu_pc07avancer,Komatsu,PC07AVANCER,ready,yes,230x96x31,2,0,1,
+komatsu-pc07r,mdl_komatsu_pc07r,Komatsu,PC07R,ready,yes,230x96x31,2,0,1,
+komatsu-pc12r-8,mdl_komatsu_pc12r_8,Komatsu,PC12R-8,ready,yes,230x96x31,2,0,1,
+komatsu-pc12rutility,mdl_komatsu_pc12rutility,Komatsu,PC12RUTILITY,ready,yes,230x96x31,2,0,1,
+komatsu-pc14r-2,mdl_komatsu_pc14r_2,Komatsu,PC14R-2,ready,yes,230x96x31,2,0,1,
+komatsu-pc15r,mdl_komatsu_pc15r,Komatsu,PC15R,ready,yes,230x96x31,7,1,1,
+komatsu-pc15r-8,mdl_komatsu_pc15r_8,Komatsu,PC15R-8,ready,yes,230x96x31,2,0,1,
+komatsu-pc15rhs,mdl_komatsu_pc15rhs,Komatsu,PC15RHS,ready,yes,230x96x31,2,0,1,
+komatsu-pc16r-2,mdl_komatsu_pc16r_2,Komatsu,PC16R-2,ready,yes,230x96x31,2,0,1,
+komatsu-pc18mr-2,mdl_komatsu_pc18mr_2,Komatsu,PC18MR-2,ready,yes,230x48x70,2,0,1,
+komatsu-pc18mr-3,mdl_komatsu_pc18mr_3,Komatsu,PC18MR-3,ready,yes,230x48x70,2,0,1,
+komatsu-pc20,mdl_komatsu_pc20,Komatsu,PC20,ready,yes,300x52.5Nx84,4,2,2,
+komatsu-pc20-2,mdl_komatsu_pc202,Komatsu,PC202,blocked,yes,300x52.5Nx84,0,0,2,no_products
+komatsu-pc20-6,mdl_komatsu_pc206,Komatsu,PC206,blocked,yes,300x52.5Nx84,0,0,2,no_products
+komatsu-pc20-7,mdl_komatsu_pc207,Komatsu,PC207,blocked,yes,300x52.5Nx76,0,0,2,no_products
+komatsu-pc20-mr-2,mdl_komatsu_pc20mr2,Komatsu,PC20MR2,ready,yes,300x52.5Nx78,1,0,3,
+komatsu-pc22mr-3,mdl_komatsu_pc22mr3,Komatsu,PC22MR3,ready,yes,300x52.5Nx78,1,0,2,
+komatsu-pc25,mdl_komatsu_pc25,Komatsu,PC25,ready,yes,300x52.5Nx84,2,0,2,
+komatsu-pc25-1,mdl_komatsu_pc251,Komatsu,PC251,blocked,yes,300x52.5Nx84,0,0,2,no_products
+komatsu-pc25-7,mdl_komatsu_pc257,Komatsu,PC257,ready,yes,300x52.5Nx80,3,0,1,
+komatsu-pc25r-8,mdl_komatsu_pc25r8,Komatsu,PC25R8,ready,yes,300x52.5Nx80,3,0,1,
+komatsu-pc26mr,mdl_komatsu_pc26mr,Komatsu,PC26MR,ready,yes,300x52.5Nx80,3,1,1,
+komatsu-pc26mr-3,mdl_komatsu_pc26mr3,Komatsu,PC26MR3,blocked,yes,300x52.5Nx80,0,0,1,no_products
 komatsu-pc27mr,mdl_komatsu_pc27mr,Komatsu,PC27MR,ready,yes,300x52.5Nx80,3,2,1,
-komatsu-pc27mr-1,mdl_komatsu_pc27mr1,Komatsu,PC27MR1,blocked,no,300x52.5Nx80,0,0,1,no_products
-komatsu-pc27mr-2,mdl_komatsu_pc27mr2,Komatsu,PC27MR2,blocked,no,300x52.5Nx80,0,0,1,no_products
-komatsu-pc27mr-3,mdl_komatsu_pc27mr3,Komatsu,PC27MR3,ready,no,300x52.5Nx80,3,0,1,
-komatsu-pc27r-8,mdl_komatsu_pc27r8,Komatsu,PC27R8,blocked,no,300x52.5Nx80,0,0,1,no_products
-komatsu-pc28,mdl_komatsu_pc28,Komatsu,PC28,ready,no,300x52.5Nx80,2,1,1,
-komatsu-pc28uu,mdl_komatsu_pc28uu,Komatsu,PC28UU,ready,no,300x52.5Nx80,2,1,1,
-komatsu-pc28uu-1,mdl_komatsu_pc28uu1,Komatsu,PC28UU1,blocked,no,300x52.5Nx80,0,0,1,no_products
-komatsu-pc28uu-2,mdl_komatsu_pc28uu2,Komatsu,PC28UU2,blocked,no,300x52.5Nx80,0,0,1,no_products
-komatsu-pc28uu-3,mdl_komatsu_pc28uu3,Komatsu,PC28UU3,ready,no,300x52.5Nx80,3,0,1,
-komatsu-pc30,mdl_komatsu_pc30,Komatsu,PC30,ready,no,300x52.5Nx84,1,1,2,
-komatsu-pc30-6,mdl_komatsu_pc306,Komatsu,PC306,blocked,no,300x52.5Nx84,0,0,2,no_products
-komatsu-pc30-7,mdl_komatsu_pc307,Komatsu,PC307,blocked,no,300x52.5Nx84,0,0,2,no_products
+komatsu-pc27mr-1,mdl_komatsu_pc27mr1,Komatsu,PC27MR1,blocked,yes,300x52.5Nx80,0,0,1,no_products
+komatsu-pc27mr-2,mdl_komatsu_pc27mr2,Komatsu,PC27MR2,blocked,yes,300x52.5Nx80,0,0,1,no_products
+komatsu-pc27mr-3,mdl_komatsu_pc27mr3,Komatsu,PC27MR3,ready,yes,300x52.5Nx80,3,0,1,
+komatsu-pc27r-8,mdl_komatsu_pc27r8,Komatsu,PC27R8,blocked,yes,300x52.5Nx80,0,0,1,no_products
+komatsu-pc28,mdl_komatsu_pc28,Komatsu,PC28,ready,yes,300x52.5Nx80,2,1,1,
+komatsu-pc28uu,mdl_komatsu_pc28uu,Komatsu,PC28UU,ready,yes,300x52.5Nx80,2,1,1,
+komatsu-pc28uu-1,mdl_komatsu_pc28uu1,Komatsu,PC28UU1,blocked,yes,300x52.5Nx80,0,0,1,no_products
+komatsu-pc28uu-2,mdl_komatsu_pc28uu2,Komatsu,PC28UU2,blocked,yes,300x52.5Nx80,0,0,1,no_products
+komatsu-pc28uu-3,mdl_komatsu_pc28uu3,Komatsu,PC28UU3,ready,yes,300x52.5Nx80,3,0,1,
+komatsu-pc30,mdl_komatsu_pc30,Komatsu,PC30,ready,yes,300x52.5Nx84,1,1,2,
+komatsu-pc30-6,mdl_komatsu_pc306,Komatsu,PC306,blocked,yes,300x52.5Nx84,0,0,2,no_products
+komatsu-pc30-7,mdl_komatsu_pc307,Komatsu,PC307,blocked,yes,300x52.5Nx84,0,0,2,no_products
 komatsu-pc30mr,mdl_komatsu_pc30mr,Komatsu,PC30MR,ready,yes,300x52.5Nx84,2,1,2,
-komatsu-pc30mr-1,mdl_komatsu_pc30mr_1,Komatsu,PC30MR-1,ready,no,300x52.5x86,3,1,1,
-komatsu-pc30mr-2,mdl_komatsu_pc30mr2,Komatsu,PC30MR2,ready,no,300x52.5x86,2,0,1,
-komatsu-pc30mr-3,mdl_komatsu_pc30mr3,Komatsu,PC30MR3,ready,no,300x52.5x86,2,0,1,
-komatsu-pc30r-8,mdl_komatsu_pc30r8,Komatsu,PC30R8,blocked,no,300x52.5Nx84,0,0,2,no_products
-komatsu-pc-35mr,mdl_komatsu_pc35mr,Komatsu,PC35MR,ready,no,300x52.5Nx84,3,2,3,
-komatsu-pc35mr-1,mdl_komatsu_pc35mr1,Komatsu,PC35MR1,blocked,no,300x52.5Nx84,0,0,2,no_products
-komatsu-pc35mr-2,mdl_komatsu_pc35mr2,Komatsu,PC35MR2,ready,no,300x52.5x86,1,0,1,
-komatsu-pc35mr-3,mdl_komatsu_pc35mr3,Komatsu,PC35MR3,ready,no,300x52.5x86,2,0,1,
-komatsu-pc35r,mdl_komatsu_pc35r,Komatsu,PC35R,ready,no,300x52.5Nx84,2,1,2,
-komatsu-pc35r-8,mdl_komatsu_pc35r8,Komatsu,PC35R8,blocked,no,300x52.5Nx84,0,0,2,no_products
-komatsu-pc40mr-3,mdl_komatsu_pc40mr3,Komatsu,PC40MR3,blocked,no,400x72.5Kx74,0,0,3,no_products
-komatsu-pc-45mr,mdl_komatsu_pc45mr,Komatsu,PC45MR,ready,no,400x72.5Kx72,2,0,6,
-komatsu-pc-45mr-1,mdl_komatsu_pc45mr1,Komatsu,PC45MR1,ready,no,400x72.5Kx72,2,0,3,
-komatsu-pc-45mr-2,mdl_komatsu_pc45mr2,Komatsu,PC45MR2,ready,no,400x72.5Kx74,4,0,3,
-komatsu-pc45mr-3,mdl_komatsu_pc45mr3,Komatsu,PC45MR3,blocked,no,400x72.5Kx74,0,0,3,no_products
-komatsu-pc45mr-5,mdl_komatsu_pc45mr5,Komatsu,PC45MR5,blocked,no,400x72.5Kx74,0,0,3,no_products
-komatsu-pc50fr-2,mdl_komatsu_pc50fr2,Komatsu,PC50FR2,blocked,no,400x72.5Kx74,0,0,3,no_products
-komatsu-pc-50m-2,mdl_komatsu_pc50m2,Komatsu,PC50M2,ready,no,400x72.5Kx72,2,0,3,
-komatsu-pc-50mr,mdl_komatsu_pc50mr,Komatsu,PC50MR,ready,no,400x72.5Kx72,6,2,3,
-komatsu-pc50mr-2,mdl_komatsu_pc50mr2,Komatsu,PC50MR2,blocked,no,400x72.5Kx74,0,0,3,no_products
-komatsu-pc-50uu-1,mdl_komatsu_pc50uu1,Komatsu,PC50UU1,blocked,no,400x72.5Kx72,0,0,3,no_products
-komatsu-pc55mr-2,mdl_komatsu_pc55mr2,Komatsu,PC55MR2,blocked,no,400x72.5Kx74,0,0,3,no_products
-komatsu-pc55mr-3,mdl_komatsu_pc55mr3,Komatsu,PC55MR3,blocked,no,400x72.5Kx74,0,0,3,no_products
-komatsu-pc55mr-4,mdl_komatsu_pc55mr4,Komatsu,PC55MR4,blocked,no,400x72.5Kx74,0,0,3,no_products
-komatsu-pc55mr-5,mdl_komatsu_pc55mr5,Komatsu,PC55MR5,blocked,no,400x72.5Kx74,0,0,3,no_products
-komatsu-pc-58uu-3,mdl_komatsu_pc58uu3,Komatsu,PC58UU3,ready,no,400x72.5Kx72,2,0,4,
-komatsu-pc-58uu-x,mdl_komatsu_pc58uux,Komatsu,PC58UUX,ready,no,400x72.5Kx72,2,0,3,
-komatsu-pc-60,mdl_komatsu_pc60,Komatsu,PC60,ready,no,400x72.5Kx74,4,0,3,
-komatsu-pc-60-5,mdl_komatsu_pc605,Komatsu,PC605,ready,no,400x72.5Kx74,4,0,3,
+komatsu-pc30mr-1,mdl_komatsu_pc30mr_1,Komatsu,PC30MR-1,ready,yes,300x52.5x86,3,1,1,
+komatsu-pc30mr-2,mdl_komatsu_pc30mr2,Komatsu,PC30MR2,ready,yes,300x52.5x86,2,0,1,
+komatsu-pc30mr-3,mdl_komatsu_pc30mr3,Komatsu,PC30MR3,ready,yes,300x52.5x86,2,0,1,
+komatsu-pc30r-8,mdl_komatsu_pc30r8,Komatsu,PC30R8,blocked,yes,300x52.5Nx84,0,0,2,no_products
+komatsu-pc-35mr,mdl_komatsu_pc35mr,Komatsu,PC35MR,ready,yes,300x52.5Nx84,3,2,3,
+komatsu-pc35mr-1,mdl_komatsu_pc35mr1,Komatsu,PC35MR1,blocked,yes,300x52.5Nx84,0,0,2,no_products
+komatsu-pc35mr-2,mdl_komatsu_pc35mr2,Komatsu,PC35MR2,ready,yes,300x52.5x86,1,0,1,
+komatsu-pc35mr-3,mdl_komatsu_pc35mr3,Komatsu,PC35MR3,ready,yes,300x52.5x86,2,0,1,
+komatsu-pc35r,mdl_komatsu_pc35r,Komatsu,PC35R,ready,yes,300x52.5Nx84,2,1,2,
+komatsu-pc35r-8,mdl_komatsu_pc35r8,Komatsu,PC35R8,blocked,yes,300x52.5Nx84,0,0,2,no_products
+komatsu-pc40mr-3,mdl_komatsu_pc40mr3,Komatsu,PC40MR3,blocked,yes,400x72.5Kx74,0,0,3,no_products
+komatsu-pc-45mr,mdl_komatsu_pc45mr,Komatsu,PC45MR,ready,yes,400x72.5Kx72,2,0,6,
+komatsu-pc-45mr-1,mdl_komatsu_pc45mr1,Komatsu,PC45MR1,ready,yes,400x72.5Kx72,2,0,3,
+komatsu-pc-45mr-2,mdl_komatsu_pc45mr2,Komatsu,PC45MR2,ready,yes,400x72.5Kx74,4,0,3,
+komatsu-pc45mr-3,mdl_komatsu_pc45mr3,Komatsu,PC45MR3,blocked,yes,400x72.5Kx74,0,0,3,no_products
+komatsu-pc45mr-5,mdl_komatsu_pc45mr5,Komatsu,PC45MR5,blocked,yes,400x72.5Kx74,0,0,3,no_products
+komatsu-pc50fr-2,mdl_komatsu_pc50fr2,Komatsu,PC50FR2,blocked,yes,400x72.5Kx74,0,0,3,no_products
+komatsu-pc-50m-2,mdl_komatsu_pc50m2,Komatsu,PC50M2,ready,yes,400x72.5Kx72,2,0,3,
+komatsu-pc-50mr,mdl_komatsu_pc50mr,Komatsu,PC50MR,ready,yes,400x72.5Kx72,6,2,3,
+komatsu-pc50mr-2,mdl_komatsu_pc50mr2,Komatsu,PC50MR2,blocked,yes,400x72.5Kx74,0,0,3,no_products
+komatsu-pc-50uu-1,mdl_komatsu_pc50uu1,Komatsu,PC50UU1,blocked,yes,400x72.5Kx72,0,0,3,no_products
+komatsu-pc55mr-2,mdl_komatsu_pc55mr2,Komatsu,PC55MR2,blocked,yes,400x72.5Kx74,0,0,3,no_products
+komatsu-pc55mr-3,mdl_komatsu_pc55mr3,Komatsu,PC55MR3,blocked,yes,400x72.5Kx74,0,0,3,no_products
+komatsu-pc55mr-4,mdl_komatsu_pc55mr4,Komatsu,PC55MR4,blocked,yes,400x72.5Kx74,0,0,3,no_products
+komatsu-pc55mr-5,mdl_komatsu_pc55mr5,Komatsu,PC55MR5,blocked,yes,400x72.5Kx74,0,0,3,no_products
+komatsu-pc-58uu-3,mdl_komatsu_pc58uu3,Komatsu,PC58UU3,ready,yes,400x72.5Kx72,2,0,4,
+komatsu-pc-58uu-x,mdl_komatsu_pc58uux,Komatsu,PC58UUX,ready,yes,400x72.5Kx72,2,0,3,
+komatsu-pc-60,mdl_komatsu_pc60,Komatsu,PC60,ready,yes,400x72.5Kx74,4,0,3,
+komatsu-pc-60-5,mdl_komatsu_pc605,Komatsu,PC605,ready,yes,400x72.5Kx74,4,0,3,
 komatsu-pc-78mr-6,mdl_komatsu_pc78mr6,Komatsu,PC78MR6,ready,no,450x83.5Kx74,2,0,2,
 komatsu-pc-78n,mdl_komatsu_pc78n,Komatsu,PC78N,ready,no,450x83.5Kx74,2,0,2,
 komatsu-pc-80mr,mdl_komatsu_pc80mr,Komatsu,PC80MR,ready,no,450x83.5Kx74,4,4,2,
@@ -767,56 +767,56 @@ kubota-k-008,mdl_kubota_k008,Kubota,K008,ready,no,180x72x37,1,1,1,
 kubota-k-008-2,mdl_kubota_k008_2,Kubota,K008-2,ready,no,180x72x37,2,0,1,
 kubota-k-008-3,mdl_kubota_k008_3,Kubota,K008-3,ready,no,180x72x37,1,1,1,
 kubota-k-008dh,mdl_kubota_k008dh,Kubota,K008DH,ready,no,180x72x37,1,0,1,
-kubota-k-028,mdl_kubota_k028,Kubota,K028,ready,no,300x52.5Nx80,6,1,1,
-kubota-k-030,mdl_kubota_k030,Kubota,K030,ready,no,300x52.5Nx80,3,1,1,
-kubota-k-030-3,mdl_kubota_k030_3,Kubota,K030-3,ready,no,300x52.5Nx80,7,3,1,
-kubota-k-035,mdl_kubota_k035,Kubota,K035,ready,no,300x52.5Nx84,4,2,2,
-kubota-k-035-3,mdl_kubota_k035_3,Kubota,K035-3,ready,no,300x52.5Nx84,4,3,2,
-kubota-k-038,mdl_kubota_k038,Kubota,K038,ready,no,300x52.5Nx84,2,0,2,
-kubota-k-040,mdl_kubota_k040,Kubota,K040,ready,no,400x72.5Kx72,8,2,3,
-kubota-k-045,mdl_kubota_k045,Kubota,K045,ready,no,400x72.5Kx72,4,2,3,
-kubota-kh040,mdl_kubota_kh040,Kubota,KH040,ready,no,400x72.5Wx76,6,2,1,
-kubota-kh055,mdl_kubota_kh055,Kubota,KH055,ready,no,400x72.5Wx76,2,2,1,
-kubota-kh-90,mdl_kubota_kh90,Kubota,KH90,ready,no,300x52.5Nx84,2,2,2,
-kubota-kh-91,mdl_kubota_kh91,Kubota,KH91,ready,no,300x52.5Nx80,3,1,1,
-kubota-kx040-5,mdl_kubota_kx_040_5,Kubota,KX-040-5,ready,no,350x54.5x86,1,0,1,
+kubota-k-028,mdl_kubota_k028,Kubota,K028,ready,yes,300x52.5Nx80,6,1,1,
+kubota-k-030,mdl_kubota_k030,Kubota,K030,ready,yes,300x52.5Nx80,3,1,1,
+kubota-k-030-3,mdl_kubota_k030_3,Kubota,K030-3,ready,yes,300x52.5Nx80,7,3,1,
+kubota-k-035,mdl_kubota_k035,Kubota,K035,ready,yes,300x52.5Nx84,4,2,2,
+kubota-k-035-3,mdl_kubota_k035_3,Kubota,K035-3,ready,yes,300x52.5Nx84,4,3,2,
+kubota-k-038,mdl_kubota_k038,Kubota,K038,ready,yes,300x52.5Nx84,2,0,2,
+kubota-k-040,mdl_kubota_k040,Kubota,K040,ready,yes,400x72.5Kx72,8,2,3,
+kubota-k-045,mdl_kubota_k045,Kubota,K045,ready,yes,400x72.5Kx72,4,2,3,
+kubota-kh040,mdl_kubota_kh040,Kubota,KH040,ready,yes,400x72.5Wx76,6,2,1,
+kubota-kh055,mdl_kubota_kh055,Kubota,KH055,ready,yes,400x72.5Wx76,2,2,1,
+kubota-kh-90,mdl_kubota_kh90,Kubota,KH90,ready,yes,300x52.5Nx84,2,2,2,
+kubota-kh-91,mdl_kubota_kh91,Kubota,KH91,ready,yes,300x52.5Nx80,3,1,1,
+kubota-kx040-5,mdl_kubota_kx_040_5,Kubota,KX-040-5,ready,yes,350x54.5x86,1,0,1,
 kubota-kx018-4,mdl_kubota_kx018_4,Kubota,KX018-4,ready,yes,230x48x70,3,3,1,
-kubota-kx-027,mdl_kubota_kx027,Kubota,KX027,ready,no,300x52.5Nx76,1,1,2,
+kubota-kx-027,mdl_kubota_kx027,Kubota,KX027,ready,yes,300x52.5Nx76,1,1,2,
 kubota-kx030-4,mdl_kubota_kx030_4,Kubota,KX030-4,ready,yes,300x52.5Nx80,2,1,1,
 kubota-kx033-4,mdl_kubota_kx033_4,Kubota,KX033-4,ready,yes,300x52.5Nx84,3,4,2,
-kubota-kx035,mdl_kubota_kx035,Kubota,KX035,ready,no,300x52.5Nx84,2,1,2,
-kubota-kx040,mdl_kubota_kx040,Kubota,KX040,ready,no,350x54.5x86,4,2,1,
+kubota-kx035,mdl_kubota_kx035,Kubota,KX035,ready,yes,300x52.5Nx84,2,1,2,
+kubota-kx040,mdl_kubota_kx040,Kubota,KX040,ready,yes,350x54.5x86,4,2,1,
 kubota-kx040-4,mdl_kubota_kx040_4,Kubota,KX040-4,ready,yes,350x54.5x86,5,6,1,
-kubota-kx041,mdl_kubota_kx041,Kubota,KX041,ready,no,300x52.5Nx78,1,0,2,
-kubota-kx-045,mdl_kubota_kx045,Kubota,KX045,ready,no,400x72.5Kx72,4,2,3,
+kubota-kx041,mdl_kubota_kx041,Kubota,KX041,ready,yes,300x52.5Nx78,1,0,2,
+kubota-kx-045,mdl_kubota_kx045,Kubota,KX045,ready,yes,400x72.5Kx72,4,2,3,
 kubota-kx057-4,mdl_kubota_kx057_4,Kubota,KX057-4,ready,yes,400x72.5Kx74,8,8,3,
 kubota-kx057-5,mdl_kubota_kx057_5,Kubota,KX057-5,ready,yes,400x72.5Kx74,4,4,3,
 kubota-kx080,mdl_kubota_kx080,Kubota,KX080,ready,no,450x81Nx76,4,7,2,
 kubota-kx080-3,mdl_kubota_kx080_3,Kubota,KX080-3,ready,yes,450x81Nx76,4,7,2,
 kubota-kx080-4,mdl_kubota_kx080_4,Kubota,KX080-4,ready,yes,450x81Nx76,7,6,2,
 kubota-kx080-4s,mdl_kubota_kx080_4s,Kubota,KX080-4S,ready,no,450x81Nx76,5,6,2,
-kubota-kx-101,mdl_kubota_kx101,Kubota,KX101,ready,no,300x52.5Nx84,2,3,2,
-kubota-kx-101-3,mdl_kubota_kx101_3,Kubota,KX101-3,ready,no,300x52.5Nx84,3,5,2,
-kubota-kx121-2,mdl_kubota_kx121_2,Kubota,KX121-2,ready,no,350x54.5x86,2,3,1,
-kubota-kx-121-2s,mdl_kubota_kx121_2s,Kubota,KX121-2S,ready,no,350x54.5x86,4,3,1,
+kubota-kx-101,mdl_kubota_kx101,Kubota,KX101,ready,yes,300x52.5Nx84,2,3,2,
+kubota-kx-101-3,mdl_kubota_kx101_3,Kubota,KX101-3,ready,yes,300x52.5Nx84,3,5,2,
+kubota-kx121-2,mdl_kubota_kx121_2,Kubota,KX121-2,ready,yes,350x54.5x86,2,3,1,
+kubota-kx-121-2s,mdl_kubota_kx121_2s,Kubota,KX121-2S,ready,yes,350x54.5x86,4,3,1,
 kubota-kx121-3,mdl_kubota_kx121_3,Kubota,KX121-3,ready,yes,350x54.5x86,2,6,1,
-kubota-kx161-2,mdl_kubota_kx161_2,Kubota,KX161-2,ready,no,400x72.5Kx72,4,3,3,
-kubota-kx-161-2s,mdl_kubota_kx161_2s,Kubota,KX161-2S,ready,no,400x72.5Kx72,4,2,3,
+kubota-kx161-2,mdl_kubota_kx161_2,Kubota,KX161-2,ready,yes,400x72.5Kx72,4,3,3,
+kubota-kx-161-2s,mdl_kubota_kx161_2s,Kubota,KX161-2S,ready,yes,400x72.5Kx72,4,2,3,
 kubota-kx161-3,mdl_kubota_kx161_3,Kubota,KX161-3,ready,yes,400x72.5Kx74,2,8,3,
 kubota-kx41-3,mdl_kubota_kx41_3,Kubota,KX41-3,ready,yes,230x48x70,3,2,1,
-kubota-kx41-3v,mdl_kubota_kx41_3v,Kubota,KX41-3V,ready,no,230x48x70,2,3,1,
-kubota-kx-61-2,mdl_kubota_kx61_2,Kubota,KX61-2,ready,no,300x52.5Nx76,1,2,2,
-kubota-kx-61-2s,mdl_kubota_kx61_2s,Kubota,KX61-2S,ready,no,300x52.5Nx76,1,0,2,
-kubota-kx-61-3,mdl_kubota_kx61_3,Kubota,KX61-3,ready,no,300x52.5Nx76,3,5,2,
-kubota-kx71,mdl_kubota_kx71,Kubota,KX71,ready,no,300x52.5Nx80,0,1,1,
-kubota-kx-71-2,mdl_kubota_kx71_2,Kubota,KX71-2,ready,no,300x52.5Nx80,3,2,1,
+kubota-kx41-3v,mdl_kubota_kx41_3v,Kubota,KX41-3V,ready,yes,230x48x70,2,3,1,
+kubota-kx-61-2,mdl_kubota_kx61_2,Kubota,KX61-2,ready,yes,300x52.5Nx76,1,2,2,
+kubota-kx-61-2s,mdl_kubota_kx61_2s,Kubota,KX61-2S,ready,yes,300x52.5Nx76,1,0,2,
+kubota-kx-61-3,mdl_kubota_kx61_3,Kubota,KX61-3,ready,yes,300x52.5Nx76,3,5,2,
+kubota-kx71,mdl_kubota_kx71,Kubota,KX71,ready,yes,300x52.5Nx80,0,1,1,
+kubota-kx-71-2,mdl_kubota_kx71_2,Kubota,KX71-2,ready,yes,300x52.5Nx80,3,2,1,
 kubota-kx71-3,mdl_kubota_kx71_3,Kubota,KX71-3,ready,yes,300x52.5Nx80,2,6,1,
-kubota-kx71-3s,mdl_kubota_kx71_3s,Kubota,KX71-3S,ready,no,300x52.5Nx80,3,5,1,
-kubota-kx91,mdl_kubota_kx91,Kubota,KX91,blocked,no,300x52.5Nx80,0,0,1,no_products
-kubota-kx91-2,mdl_kubota_kx91_2,Kubota,KX91-2,ready,no,300x52.5Nx80,3,3,1,
-kubota-kx-91-2s,mdl_kubota_kx91_2s,Kubota,KX91-2S,ready,no,300x52.5Nx80,3,1,1,
+kubota-kx71-3s,mdl_kubota_kx71_3s,Kubota,KX71-3S,ready,yes,300x52.5Nx80,3,5,1,
+kubota-kx91,mdl_kubota_kx91,Kubota,KX91,blocked,yes,300x52.5Nx80,0,0,1,no_products
+kubota-kx91-2,mdl_kubota_kx91_2,Kubota,KX91-2,ready,yes,300x52.5Nx80,3,3,1,
+kubota-kx-91-2s,mdl_kubota_kx91_2s,Kubota,KX91-2S,ready,yes,300x52.5Nx80,3,1,1,
 kubota-kx91-3,mdl_kubota_kx91_3,Kubota,KX91-3,ready,yes,300x52.5Nx80,2,6,1,
-kubota-rx141,mdl_kubota_rx141,Kubota,RX141,ready,no,230x48x70,2,0,1,
+kubota-rx141,mdl_kubota_rx141,Kubota,RX141,ready,yes,230x48x70,2,0,1,
 kubota-scl1000,mdl_kubota_scl1000,Kubota,SCL1000,ready,yes,230x72x43,1,0,1,
 kubota-svl65,mdl_kubota_svl65,Kubota,SVL65,ready,no,400x86x52,3,0,1,
 kubota-svl65-2,mdl_kubota_svl65_2,Kubota,SVL65-2,ready,yes,320x86x52,24,4,2,
@@ -826,57 +826,57 @@ kubota-svl75-3,mdl_kubota_svl75_3,Kubota,SVL75-3,ready,yes,320x86x52,45,4,2,
 kubota-svl75c,mdl_kubota_svl75c,Kubota,SVL75C,ready,yes,320x86x52,4,0,2,
 kubota-svl90-2,mdl_kubota_svl90_2,Kubota,SVL90-2,ready,yes,450x86Bx58,26,4,1,
 kubota-svl95-2,mdl_kubota_svl95_2,Kubota,SVL95-2,ready,yes,450x86Bx58,13,4,1,
-kubota-svl95-2s,mdl_kubota_svl95_2s,Kubota,SVL95-2S,ready,no,450x86Bx58,13,4,1,
+kubota-svl95-2s,mdl_kubota_svl95_2s,Kubota,SVL95-2S,ready,yes,450x86Bx58,13,4,1,
 kubota-svl97-2,mdl_kubota_svl97_2,Kubota,SVL97-2,ready,yes,450x86Bx58,13,4,1,
 kubota-svl97-3,mdl_kubota_svl97_3,Kubota,SVL97-3,blocked,yes,450x86Bx58,0,0,1,no_products
-kubota-u-15-3,mdl_kubota_u_15_3,Kubota,U-15-3,ready,no,230x48x70,2,0,1,
-kubota-u15,mdl_kubota_u15,Kubota,U15,ready,no,230x48x70,2,2,1,
+kubota-u-15-3,mdl_kubota_u_15_3,Kubota,U-15-3,ready,yes,230x48x70,2,0,1,
+kubota-u15,mdl_kubota_u15,Kubota,U15,ready,yes,230x48x70,2,2,1,
 kubota-u17,mdl_kubota_u17,Kubota,U17,ready,yes,230x48x70,3,3,1,
-kubota-u-17-3,mdl_kubota_u17_3,Kubota,U17-3,ready,no,230x48x70,3,0,1,
+kubota-u-17-3,mdl_kubota_u17_3,Kubota,U17-3,ready,yes,230x48x70,3,0,1,
 kubota-u25,mdl_kubota_u25,Kubota,U25,ready,yes,300x52.5Nx80,3,6,1,
-kubota-u-25-3,mdl_kubota_u25_3,Kubota,U25-3,ready,no,300x52.5Nx80,5,7,1,
+kubota-u-25-3,mdl_kubota_u25_3,Kubota,U25-3,ready,yes,300x52.5Nx80,5,7,1,
 kubota-u27-4,mdl_kubota_u27_4,Kubota,U27-4,ready,yes,300x52.5Nx80,2,6,1,
-kubota-u-30,mdl_kubota_u30,Kubota,U30,ready,no,300x52.5Nx84,2,2,2,
-kubota-u-30-1,mdl_kubota_u30_1,Kubota,U30-1,ready,no,300x52.5Nx84,2,2,2,
-kubota-u-30-2,mdl_kubota_u30_2,Kubota,U30-2,ready,no,300x52.5Nx84,2,2,2,
-kubota-u-30-3,mdl_kubota_u30_3,Kubota,U30-3,ready,no,300x52.5Nx84,2,6,2,
-kubota-u35,mdl_kubota_u35,Kubota,U35,ready,no,300x52.5Nx84,2,6,2,
-kubota-u-35-3,mdl_kubota_u35_3,Kubota,U35-3,ready,no,300x52.5Nx84,3,5,2,
-kubota-u-35-4,mdl_kubota_u35_4,Kubota,U35-4,ready,no,300x52.5Nx84,3,6,2,
-kubota-u-35s,mdl_kubota_u35s,Kubota,U35S,ready,no,300x52.5Nx84,2,0,2,
-kubota-u-45,mdl_kubota_u45,Kubota,U45,ready,no,400x72.5Kx72,4,3,3,
-kubota-u-45-3,mdl_kubota_u45_3,Kubota,U45-3,ready,no,400x72.5Kx74,5,7,3,
-kubota-u45s,mdl_kubota_u45s,Kubota,U45S,ready,no,400x72.5Kx74,2,6,3,
-kubota-u45st,mdl_kubota_u45st,Kubota,U45ST,blocked,no,400x72.5Kx74,0,0,3,no_products
-kubota-u-48-4,mdl_kubota_u48_4,Kubota,U48-4,ready,no,400x72.5Kx74,5,3,3,
+kubota-u-30,mdl_kubota_u30,Kubota,U30,ready,yes,300x52.5Nx84,2,2,2,
+kubota-u-30-1,mdl_kubota_u30_1,Kubota,U30-1,ready,yes,300x52.5Nx84,2,2,2,
+kubota-u-30-2,mdl_kubota_u30_2,Kubota,U30-2,ready,yes,300x52.5Nx84,2,2,2,
+kubota-u-30-3,mdl_kubota_u30_3,Kubota,U30-3,ready,yes,300x52.5Nx84,2,6,2,
+kubota-u35,mdl_kubota_u35,Kubota,U35,ready,yes,300x52.5Nx84,2,6,2,
+kubota-u-35-3,mdl_kubota_u35_3,Kubota,U35-3,ready,yes,300x52.5Nx84,3,5,2,
+kubota-u-35-4,mdl_kubota_u35_4,Kubota,U35-4,ready,yes,300x52.5Nx84,3,6,2,
+kubota-u-35s,mdl_kubota_u35s,Kubota,U35S,ready,yes,300x52.5Nx84,2,0,2,
+kubota-u-45,mdl_kubota_u45,Kubota,U45,ready,yes,400x72.5Kx72,4,3,3,
+kubota-u-45-3,mdl_kubota_u45_3,Kubota,U45-3,ready,yes,400x72.5Kx74,5,7,3,
+kubota-u45s,mdl_kubota_u45s,Kubota,U45S,ready,yes,400x72.5Kx74,2,6,3,
+kubota-u45st,mdl_kubota_u45st,Kubota,U45ST,blocked,yes,400x72.5Kx74,0,0,3,no_products
+kubota-u-48-4,mdl_kubota_u48_4,Kubota,U48-4,ready,yes,400x72.5Kx74,5,3,3,
 kubota-u48-5,mdl_kubota_u48_5,Kubota,U48-5,ready,yes,400x72.5Kx74,3,5,3,
-kubota-u55,mdl_kubota_u55,Kubota,U55,ready,no,400x72.5Kx74,4,4,3,
-kubota-u55-4,mdl_kubota_u55_4,Kubota,U55-4,ready,no,400x72.5Kx74,2,6,3,
+kubota-u55,mdl_kubota_u55,Kubota,U55,ready,yes,400x72.5Kx74,4,4,3,
+kubota-u55-4,mdl_kubota_u55_4,Kubota,U55-4,ready,yes,400x72.5Kx74,2,6,3,
 manitou-3200vt,mdl_manitou_3200vt,Manitou,3200VT,ready,yes,450x86Bx58,13,4,1,
-manitou-mx65,mdl_manitou_mx65,Manitou,MX65,blocked,no,320x86Bx50,0,0,1,no_products
+manitou-mx65,mdl_manitou_mx65,Manitou,MX65,blocked,yes,320x86Bx50,0,0,1,no_products
 mustang-1350r,mdl_mustang_1350r,Mustang,1350R,ready,no,320x84Bx46,27,12,1,
-mustang-1650-rt,mdl_mustang_1650rt,Mustang,1650RT,ready,no,320x86Bx49,17,3,2,
-mustang-1750-rt,mdl_mustang_1750_rt,Mustang,1750 RT,blocked,no,320x86Bx54,0,0,1,no_products
+mustang-1650-rt,mdl_mustang_1650rt,Mustang,1650RT,ready,yes,320x86Bx49,17,3,2,
+mustang-1750-rt,mdl_mustang_1750_rt,Mustang,1750 RT,blocked,yes,320x86Bx54,0,0,1,no_products
 mustang-2100rt,mdl_mustang_2100rt,Mustang,2100RT,ready,yes,450x86Bx56,13,5,1,
-mustang-2150rt,mdl_mustang_2150rt,Mustang,2150RT,ready,no,450x86Bx56,13,3,1,
+mustang-2150rt,mdl_mustang_2150rt,Mustang,2150RT,ready,yes,450x86Bx56,13,3,1,
 mustang-2500rt,mdl_mustang_2500rt,Mustang,2500RT,ready,yes,450x86Bx58,13,4,1,
-mustang-me5002,mdl_mustang_me5002,Mustang,ME5002,ready,no,400x72.5Kx74,3,2,3,
-mustang-me6002,mdl_mustang_me6002,Mustang,ME6002,ready,no,400x72.5Kx74,3,2,3,
-mustang-me6003,mdl_mustang_me6003,Mustang,ME6003,ready,no,400x72.5Kx74,3,2,3,
-mustang-me6502,mdl_mustang_me6502,Mustang,ME6502,ready,no,400x72.5Kx74,3,2,3,
+mustang-me5002,mdl_mustang_me5002,Mustang,ME5002,ready,yes,400x72.5Kx74,3,2,3,
+mustang-me6002,mdl_mustang_me6002,Mustang,ME6002,ready,yes,400x72.5Kx74,3,2,3,
+mustang-me6003,mdl_mustang_me6003,Mustang,ME6003,ready,yes,400x72.5Kx74,3,2,3,
+mustang-me6502,mdl_mustang_me6502,Mustang,ME6502,ready,yes,400x72.5Kx74,3,2,3,
 mustang-mtl16,mdl_mustang_mtl16,Mustang,MTL16,ready,no,320x86x52,4,4,2,
-mustang-mtl20,mdl_mustang_mtl20,Mustang,MTL20,ready,no,450x100x48,6,5,1,
-mustang-mtl25,mdl_mustang_mtl25,Mustang,MTL25,ready,no,450x100x50,6,4,1,
+mustang-mtl20,mdl_mustang_mtl20,Mustang,MTL20,ready,yes,450x100x48,6,5,1,
+mustang-mtl25,mdl_mustang_mtl25,Mustang,MTL25,ready,yes,450x100x50,6,4,1,
 mustang-mtl316,mdl_mustang_mtl316,Mustang,MTL316,ready,no,320x86x52,4,4,2,
-mustang-mtl320,mdl_mustang_mtl320,Mustang,MTL320,ready,no,450x100x48,6,4,1,
-mustang-mtl325,mdl_mustang_mtl325,Mustang,MTL325,ready,no,450x100x50,6,4,1,
-mustang-rt2100,mdl_mustang_rt2100,Mustang,RT2100,blocked,no,450x86Bx56,0,0,1,no_products
-mustang-rt2500,mdl_mustang_rt2500,Mustang,RT2500,blocked,no,450x86Bx58,0,0,1,no_products
+mustang-mtl320,mdl_mustang_mtl320,Mustang,MTL320,ready,yes,450x100x48,6,4,1,
+mustang-mtl325,mdl_mustang_mtl325,Mustang,MTL325,ready,yes,450x100x50,6,4,1,
+mustang-rt2100,mdl_mustang_rt2100,Mustang,RT2100,blocked,yes,450x86Bx56,0,0,1,no_products
+mustang-rt2500,mdl_mustang_rt2500,Mustang,RT2500,blocked,yes,450x86Bx58,0,0,1,no_products
 new-holland-c175,mdl_new_holland_c175,New Holland,C175,ready,yes,320x86Bx50,38,4,2,
 new-holland-c180,mdl_new_holland_c180,New Holland,C180,ready,no,320x86x52,8,4,2,
 new-holland-c185,mdl_new_holland_c185,New Holland,C185,ready,yes,450x86Bx55,20,5,1,
 new-holland-c190,mdl_new_holland_c190,New Holland,C190,ready,yes,450x86Bx55,16,4,1,
-new-holland-c227,mdl_new_holland_c227,New Holland,C227,ready,no,320x86Bx50,19,5,2,
+new-holland-c227,mdl_new_holland_c227,New Holland,C227,ready,yes,320x86Bx50,19,5,2,
 new-holland-c232,mdl_new_holland_c232,New Holland,C232,ready,yes,450x86Bx55,16,5,1,
 new-holland-c234,mdl_new_holland_c234,New Holland,C234,ready,yes,450x86Bx55,12,5,1,
 new-holland-c237,mdl_new_holland_c237,New Holland,C237,ready,yes,450x86Bx55,12,5,1,
@@ -890,117 +890,117 @@ new-holland-c334,mdl_new_holland_c334,New Holland,C334,ready,yes,450x86Bx55,12,5
 new-holland-c337,mdl_new_holland_c337,New Holland,C337,ready,yes,450x86Bx55,12,5,1,
 new-holland-c345,mdl_new_holland_c345,New Holland,C345,ready,yes,450x86Bx55,12,5,1,
 new-holland-c362,mdl_new_holland_c362,New Holland,C362,ready,yes,450x86Bx63,10,2,1,
-new-holland-e-35-2sr,mdl_new_holland_e_35_2sr,New Holland,E 35.2SR,ready,no,300x52.5Kx88,1,0,2,
-new-holland-e35sr,mdl_new_holland_e_35sr,New Holland,E 35SR,ready,no,300x52.5Kx88,1,0,2,
-new-holland-e-70bsr,mdl_new_holland_e_70bsr,New Holland,E-70BSR,ready,no,450x81.5x76,2,0,1,
-new-holland-e-70sr,mdl_new_holland_e_70sr,New Holland,E-70SR,ready,no,450x81.5x76,2,0,1,
-new-holland-e-80,mdl_new_holland_e_80,New Holland,E-80,ready,no,450x81.5x76,2,0,3,
-new-holland-e-80bmsr,mdl_new_holland_e_80bmsr,New Holland,E-80BMSR,ready,no,450x81.5x76,2,0,1,
-new-holland-e-80cs,mdl_new_holland_e_80cs,New Holland,E-80CS,ready,no,450x81.5x76,2,0,1,
-new-holland-e-80msr,mdl_new_holland_e_80msr,New Holland,E-80MSR,ready,no,450x81.5x76,2,0,1,
-new-holland-e16,mdl_new_holland_e16,New Holland,E16,ready,no,230x48x70,4,0,1,
-new-holland-e17,mdl_new_holland_e17,New Holland,E17,ready,no,230x48x70,2,0,1,
-new-holland-e17c,mdl_new_holland_e17c,New Holland,E17C,ready,no,230x48x70,2,0,1,
-new-holland-e18,mdl_new_holland_e18,New Holland,E18,ready,no,230x48x70,2,0,1,
+new-holland-e-35-2sr,mdl_new_holland_e_35_2sr,New Holland,E 35.2SR,ready,yes,300x52.5Kx88,1,0,2,
+new-holland-e35sr,mdl_new_holland_e_35sr,New Holland,E 35SR,ready,yes,300x52.5Kx88,1,0,2,
+new-holland-e-70bsr,mdl_new_holland_e_70bsr,New Holland,E-70BSR,ready,yes,450x81.5x76,2,0,1,
+new-holland-e-70sr,mdl_new_holland_e_70sr,New Holland,E-70SR,ready,yes,450x81.5x76,2,0,1,
+new-holland-e-80,mdl_new_holland_e_80,New Holland,E-80,ready,yes,450x81.5x76,2,0,3,
+new-holland-e-80bmsr,mdl_new_holland_e_80bmsr,New Holland,E-80BMSR,ready,yes,450x81.5x76,2,0,1,
+new-holland-e-80cs,mdl_new_holland_e_80cs,New Holland,E-80CS,ready,yes,450x81.5x76,2,0,1,
+new-holland-e-80msr,mdl_new_holland_e_80msr,New Holland,E-80MSR,ready,yes,450x81.5x76,2,0,1,
+new-holland-e16,mdl_new_holland_e16,New Holland,E16,ready,yes,230x48x70,4,0,1,
+new-holland-e17,mdl_new_holland_e17,New Holland,E17,ready,yes,230x48x70,2,0,1,
+new-holland-e17c,mdl_new_holland_e17c,New Holland,E17C,ready,yes,230x48x70,2,0,1,
+new-holland-e18,mdl_new_holland_e18,New Holland,E18,ready,yes,230x48x70,2,0,1,
 new-holland-e18c,mdl_new_holland_e18c,New Holland,E18C,ready,yes,230x48x70,2,0,1,
-new-holland-e18sr,mdl_new_holland_e18sr,New Holland,E18SR,ready,no,230x48x70,2,0,1,
-new-holland-e20-2sr,mdl_new_holland_e20_2sr,New Holland,E20 2SR,ready,no,300x52.5Nx76,1,1,2,
-new-holland-e20sr,mdl_new_holland_e20sr,New Holland,E20SR,ready,no,300x52.5Nx76,2,1,2,
-new-holland-e22-2sr,mdl_new_holland_e22_2sr,New Holland,E22 2SR,ready,no,300x52.5Nx76,1,1,2,
-new-holland-e25sr,mdl_new_holland_e25sr,New Holland,E25SR,ready,no,300x52.5Nx76,1,2,2,
-new-holland-e26bsr,mdl_new_holland_e26bsr,New Holland,E26BSR,ready,no,300x52.5Nx76,1,0,2,
+new-holland-e18sr,mdl_new_holland_e18sr,New Holland,E18SR,ready,yes,230x48x70,2,0,1,
+new-holland-e20-2sr,mdl_new_holland_e20_2sr,New Holland,E20 2SR,ready,yes,300x52.5Nx76,1,1,2,
+new-holland-e20sr,mdl_new_holland_e20sr,New Holland,E20SR,ready,yes,300x52.5Nx76,2,1,2,
+new-holland-e22-2sr,mdl_new_holland_e22_2sr,New Holland,E22 2SR,ready,yes,300x52.5Nx76,1,1,2,
+new-holland-e25sr,mdl_new_holland_e25sr,New Holland,E25SR,ready,yes,300x52.5Nx76,1,2,2,
+new-holland-e26bsr,mdl_new_holland_e26bsr,New Holland,E26BSR,ready,yes,300x52.5Nx76,1,0,2,
 new-holland-e26c,mdl_new_holland_e26c,New Holland,E26C,ready,yes,300x52.5Nx74,1,0,1,
-new-holland-e27,mdl_new_holland_e27,New Holland,E27,blocked,no,300x52.5Nx80,0,0,1,no_products
-new-holland-e27-2sr,mdl_new_holland_e27_2sr,New Holland,E27 2SR,ready,no,300x52.5Nx80,3,1,1,
-new-holland-e-29-b-sr,mdl_new_holland_e29bsr,New Holland,E29BSR,blocked,no,300x52.5Nx80,0,0,1,no_products
+new-holland-e27,mdl_new_holland_e27,New Holland,E27,blocked,yes,300x52.5Nx80,0,0,1,no_products
+new-holland-e27-2sr,mdl_new_holland_e27_2sr,New Holland,E27 2SR,ready,yes,300x52.5Nx80,3,1,1,
+new-holland-e-29-b-sr,mdl_new_holland_e29bsr,New Holland,E29BSR,blocked,yes,300x52.5Nx80,0,0,1,no_products
 new-holland-e30c,mdl_new_holland_e30c,New Holland,E30C,ready,yes,300x52.5Nx80,2,2,1,
-new-holland-e33c,mdl_new_holland_e33c,New Holland,E33C,ready,no,300x52.5x86,6,1,1,
-new-holland-e35,mdl_new_holland_e35,New Holland,E35,blocked,no,300x52.5Kx88,0,0,2,no_products
-new-holland-e-35-2c,mdl_new_holland_e352c,New Holland,E352C,blocked,no,300x52.5Kx88,0,0,2,no_products
-new-holland-e37c,mdl_new_holland_e37c,New Holland,E37C,ready,no,300x52.5x86,4,1,1,
-new-holland-e-40-2sr,mdl_new_holland_e40_2sr,New Holland,E40 2SR,ready,no,400x72.5Kx72,3,2,3,
-new-holland-e-40sr,mdl_new_holland_e40sr,New Holland,E40SR,ready,no,400x72.5Kx72,5,3,3,
-new-holland-e-45-2sr,mdl_new_holland_e45_2sr,New Holland,E45 2SR,ready,no,400x72.5Kx72,3,0,3,
-new-holland-e455r,mdl_new_holland_e455r,New Holland,E455R,blocked,no,400x72.5Kx74,0,0,3,no_products
-new-holland-e-45sr,mdl_new_holland_e45sr,New Holland,E45SR,ready,no,400x72.5Kx72,1,0,6,
-new-holland-e50,mdl_new_holland_e50,New Holland,E50,blocked,no,400x72.5Kx74,0,0,3,no_products
-new-holland-e-50-2sr,mdl_new_holland_e50_2sr,New Holland,E50 2SR,ready,no,400x72.5Kx72,3,0,3,
-new-holland-e-50b,mdl_new_holland_e50b,New Holland,E50B,ready,no,400x72.5Kx72,3,2,3,
-new-holland-e50sr,mdl_new_holland_e50sr,New Holland,E50SR,ready,no,400x72.5Kx74,1,1,3,
-new-holland-e55bx,mdl_new_holland_e55bx,New Holland,E55BX,ready,no,400x72.5Kx74,1,1,3,
-new-holland-e57c,mdl_new_holland_e57c,New Holland,E57C,ready,no,400x72.5Kx74,1,2,3,
-new-holland-ec25,mdl_new_holland_ec25,New Holland,EC25,ready,no,300x52.5Nx74,1,0,1,
-new-holland-ec-25sr,mdl_new_holland_ec25sr,New Holland,EC25SR,ready,no,300x52.5Nx74,2,1,1,
-new-holland-ec35,mdl_new_holland_ec35,New Holland,EC35,ready,no,300x52.5Nx80,3,0,1,
-new-holland-ec-35sr,mdl_new_holland_ec35sr,New Holland,EC35SR,ready,no,300x52.5Nx80,3,1,1,
-new-holland-ec45,mdl_new_holland_ec45,New Holland,EC45,ready,no,400x72.5Kx72,4,3,3,
-new-holland-ec-45sr,mdl_new_holland_ec45sr,New Holland,EC45SR,ready,no,400x72.5Kx72,8,2,3,
-new-holland-ec60,mdl_new_holland_ec60,New Holland,EC60,ready,no,400x72.5Wx76,4,2,1,
-new-holland-eh-35b,mdl_new_holland_eh_35b,New Holland,EH 35B,ready,no,300x52.5Kx88,1,0,2,
-new-holland-eh-15b,mdl_new_holland_eh15b,New Holland,EH15B,ready,no,230x48x70,2,0,1,
-new-holland-eh16,mdl_new_holland_eh16,New Holland,EH16,ready,no,230x48x70,2,0,1,
-new-holland-eh18,mdl_new_holland_eh18,New Holland,EH18,ready,no,230x48x70,2,0,1,
-new-holland-eh25,mdl_new_holland_eh25,New Holland,EH25,ready,no,300x52.5Nx74,2,1,1,
-new-holland-eh-27b,mdl_new_holland_eh27b,New Holland,EH27B,ready,no,300x52.5Nx80,6,2,1,
-new-holland-eh-30b,mdl_new_holland_eh30_b,New Holland,EH30.B,ready,no,300x52.5Wx82,0,2,1,
-new-holland-eh35,mdl_new_holland_eh35,New Holland,EH35,ready,no,300x52.5Kx88,7,1,2,
-new-holland-eh45,mdl_new_holland_eh45,New Holland,EH45,ready,no,400x72.5Kx74,8,1,3,
-new-holland-eh-50b,mdl_new_holland_eh50b,New Holland,EH50B,ready,no,400x72.5Kx72,3,1,3,
-new-holland-lt175b,mdl_new_holland_lt175b,New Holland,LT175B,ready,no,320x86Bx50,19,4,1,
-new-holland-lt185,mdl_new_holland_lt185,New Holland,LT185,blocked,no,450x86Bx55,0,0,1,no_products
-new-holland-lt185b,mdl_new_holland_lt185b,New Holland,LT185B,ready,no,450x86Bx55,16,4,1,
-new-holland-lt190,mdl_new_holland_lt190,New Holland,LT190,blocked,no,450x86Bx55,0,0,1,no_products
-new-holland-lt190b,mdl_new_holland_lt190b,New Holland,LT190B,ready,no,450x86Bx55,16,4,1,
-sany-sy18c,mdl_sany_sy18c,Sany,SY18C,ready,no,230x48x70,2,0,1,
-sany-sy26c,mdl_sany_sy26c,Sany,SY26C,blocked,no,300x52.5Nx80,0,0,1,no_products
+new-holland-e33c,mdl_new_holland_e33c,New Holland,E33C,ready,yes,300x52.5x86,6,1,1,
+new-holland-e35,mdl_new_holland_e35,New Holland,E35,blocked,yes,300x52.5Kx88,0,0,2,no_products
+new-holland-e-35-2c,mdl_new_holland_e352c,New Holland,E352C,blocked,yes,300x52.5Kx88,0,0,2,no_products
+new-holland-e37c,mdl_new_holland_e37c,New Holland,E37C,ready,yes,300x52.5x86,4,1,1,
+new-holland-e-40-2sr,mdl_new_holland_e40_2sr,New Holland,E40 2SR,ready,yes,400x72.5Kx72,3,2,3,
+new-holland-e-40sr,mdl_new_holland_e40sr,New Holland,E40SR,ready,yes,400x72.5Kx72,5,3,3,
+new-holland-e-45-2sr,mdl_new_holland_e45_2sr,New Holland,E45 2SR,ready,yes,400x72.5Kx72,3,0,3,
+new-holland-e455r,mdl_new_holland_e455r,New Holland,E455R,blocked,yes,400x72.5Kx74,0,0,3,no_products
+new-holland-e-45sr,mdl_new_holland_e45sr,New Holland,E45SR,ready,yes,400x72.5Kx72,1,0,6,
+new-holland-e50,mdl_new_holland_e50,New Holland,E50,blocked,yes,400x72.5Kx74,0,0,3,no_products
+new-holland-e-50-2sr,mdl_new_holland_e50_2sr,New Holland,E50 2SR,ready,yes,400x72.5Kx72,3,0,3,
+new-holland-e-50b,mdl_new_holland_e50b,New Holland,E50B,ready,yes,400x72.5Kx72,3,2,3,
+new-holland-e50sr,mdl_new_holland_e50sr,New Holland,E50SR,ready,yes,400x72.5Kx74,1,1,3,
+new-holland-e55bx,mdl_new_holland_e55bx,New Holland,E55BX,ready,yes,400x72.5Kx74,1,1,3,
+new-holland-e57c,mdl_new_holland_e57c,New Holland,E57C,ready,yes,400x72.5Kx74,1,2,3,
+new-holland-ec25,mdl_new_holland_ec25,New Holland,EC25,ready,yes,300x52.5Nx74,1,0,1,
+new-holland-ec-25sr,mdl_new_holland_ec25sr,New Holland,EC25SR,ready,yes,300x52.5Nx74,2,1,1,
+new-holland-ec35,mdl_new_holland_ec35,New Holland,EC35,ready,yes,300x52.5Nx80,3,0,1,
+new-holland-ec-35sr,mdl_new_holland_ec35sr,New Holland,EC35SR,ready,yes,300x52.5Nx80,3,1,1,
+new-holland-ec45,mdl_new_holland_ec45,New Holland,EC45,ready,yes,400x72.5Kx72,4,3,3,
+new-holland-ec-45sr,mdl_new_holland_ec45sr,New Holland,EC45SR,ready,yes,400x72.5Kx72,8,2,3,
+new-holland-ec60,mdl_new_holland_ec60,New Holland,EC60,ready,yes,400x72.5Wx76,4,2,1,
+new-holland-eh-35b,mdl_new_holland_eh_35b,New Holland,EH 35B,ready,yes,300x52.5Kx88,1,0,2,
+new-holland-eh-15b,mdl_new_holland_eh15b,New Holland,EH15B,ready,yes,230x48x70,2,0,1,
+new-holland-eh16,mdl_new_holland_eh16,New Holland,EH16,ready,yes,230x48x70,2,0,1,
+new-holland-eh18,mdl_new_holland_eh18,New Holland,EH18,ready,yes,230x48x70,2,0,1,
+new-holland-eh25,mdl_new_holland_eh25,New Holland,EH25,ready,yes,300x52.5Nx74,2,1,1,
+new-holland-eh-27b,mdl_new_holland_eh27b,New Holland,EH27B,ready,yes,300x52.5Nx80,6,2,1,
+new-holland-eh-30b,mdl_new_holland_eh30_b,New Holland,EH30.B,ready,yes,300x52.5Wx82,0,2,1,
+new-holland-eh35,mdl_new_holland_eh35,New Holland,EH35,ready,yes,300x52.5Kx88,7,1,2,
+new-holland-eh45,mdl_new_holland_eh45,New Holland,EH45,ready,yes,400x72.5Kx74,8,1,3,
+new-holland-eh-50b,mdl_new_holland_eh50b,New Holland,EH50B,ready,yes,400x72.5Kx72,3,1,3,
+new-holland-lt175b,mdl_new_holland_lt175b,New Holland,LT175B,ready,yes,320x86Bx50,19,4,1,
+new-holland-lt185,mdl_new_holland_lt185,New Holland,LT185,blocked,yes,450x86Bx55,0,0,1,no_products
+new-holland-lt185b,mdl_new_holland_lt185b,New Holland,LT185B,ready,yes,450x86Bx55,16,4,1,
+new-holland-lt190,mdl_new_holland_lt190,New Holland,LT190,blocked,yes,450x86Bx55,0,0,1,no_products
+new-holland-lt190b,mdl_new_holland_lt190b,New Holland,LT190B,ready,yes,450x86Bx55,16,4,1,
+sany-sy18c,mdl_sany_sy18c,Sany,SY18C,ready,yes,230x48x70,2,0,1,
+sany-sy26c,mdl_sany_sy26c,Sany,SY26C,blocked,yes,300x52.5Nx80,0,0,1,no_products
 sany-sy26u,mdl_sany_sy26u,Sany,SY26U,ready,yes,300x52.5Nx80,2,0,1,
-sany-sy35c,mdl_sany_sy35c,Sany,SY35C,blocked,no,300x52.5Kx88,0,0,2,no_products
+sany-sy35c,mdl_sany_sy35c,Sany,SY35C,blocked,yes,300x52.5Kx88,0,0,2,no_products
 sany-sy35u,mdl_sany_sy35u,Sany,SY35U,ready,yes,300x52.5Kx88,2,2,2,
 sany-sy50u,mdl_sany_sy50u,Sany,SY50U,ready,yes,400x72.5Kx74,4,1,3,
-sany-sy60c,mdl_sany_sy60c,Sany,SY60C,ready,no,400x72.5Wx76,2,1,1,
+sany-sy60c,mdl_sany_sy60c,Sany,SY60C,ready,yes,400x72.5Wx76,2,1,1,
 sany-sy75c,mdl_sany_sy75c,Sany,SY75C,ready,yes,450x81.5x76,4,3,1,
 sany-sy80u,mdl_sany_sy80u,Sany,SY80U,ready,no,450x81Nx78,3,4,2,
-takeuchi-tb020,mdl_takeuchi_tb020,Takeuchi,TB020,blocked,no,300x52.5Nx76,0,0,2,no_products
-takeuchi-tb025,mdl_takeuchi_tb025,Takeuchi,TB025,ready,no,300x52.5Nx78,2,5,2,
-takeuchi-tb035,mdl_takeuchi_tb035,Takeuchi,TB035,ready,no,350x52.5x86,6,6,1,
-takeuchi-tb045,mdl_takeuchi_tb045,Takeuchi,TB045,ready,no,400x72.5Kx74,8,6,3,
-takeuchi-tb053fr,mdl_takeuchi_tb053fr,Takeuchi,TB053FR,blocked,no,400x72.5Kx74,0,0,3,no_products
+takeuchi-tb020,mdl_takeuchi_tb020,Takeuchi,TB020,blocked,yes,300x52.5Nx76,0,0,2,no_products
+takeuchi-tb025,mdl_takeuchi_tb025,Takeuchi,TB025,ready,yes,300x52.5Nx78,2,5,2,
+takeuchi-tb035,mdl_takeuchi_tb035,Takeuchi,TB035,ready,yes,350x52.5x86,6,6,1,
+takeuchi-tb045,mdl_takeuchi_tb045,Takeuchi,TB045,ready,yes,400x72.5Kx74,8,6,3,
+takeuchi-tb053fr,mdl_takeuchi_tb053fr,Takeuchi,TB053FR,blocked,yes,400x72.5Kx74,0,0,3,no_products
 takeuchi-tb07,mdl_takeuchi_tb07,Takeuchi,TB07,ready,no,180x72x37,2,0,1,
 takeuchi-tb-070,mdl_takeuchi_tb070,Takeuchi,TB070,ready,no,450x81Nx76,6,4,2,
 takeuchi-tb-108,mdl_takeuchi_tb108,Takeuchi,TB108,ready,no,180x72x37,1,0,1,
-takeuchi-tb125,mdl_takeuchi_tb125,Takeuchi,TB125,ready,no,300x52.5Nx78,2,6,2,
+takeuchi-tb125,mdl_takeuchi_tb125,Takeuchi,TB125,ready,yes,300x52.5Nx78,2,6,2,
 takeuchi-tb135,mdl_takeuchi_tb135,Takeuchi,TB135,ready,yes,350x52.5x86,6,7,1,
-takeuchi-tb138,mdl_takeuchi_tb138,Takeuchi,TB138,ready,no,350x52.5x86,3,0,1,
-takeuchi-tb138fr,mdl_takeuchi_tb138fr,Takeuchi,TB138FR,ready,no,350x52.5x86,6,6,1,
-takeuchi-tb145,mdl_takeuchi_tb145,Takeuchi,TB145,ready,no,400x72.5Kx74,4,7,3,
-takeuchi-tb153fr,mdl_takeuchi_tb153fr,Takeuchi,TB153FR,ready,no,400x72.5Kx74,4,6,3,
-takeuchi-tb-15f,mdl_takeuchi_tb15f,Takeuchi,TB15F,ready,no,230x48x70,4,0,1,
-takeuchi-tb15fr,mdl_takeuchi_tb15fr,Takeuchi,TB15FR,ready,no,230x48x70,2,0,1,
+takeuchi-tb138,mdl_takeuchi_tb138,Takeuchi,TB138,ready,yes,350x52.5x86,3,0,1,
+takeuchi-tb138fr,mdl_takeuchi_tb138fr,Takeuchi,TB138FR,ready,yes,350x52.5x86,6,6,1,
+takeuchi-tb145,mdl_takeuchi_tb145,Takeuchi,TB145,ready,yes,400x72.5Kx74,4,7,3,
+takeuchi-tb153fr,mdl_takeuchi_tb153fr,Takeuchi,TB153FR,ready,yes,400x72.5Kx74,4,6,3,
+takeuchi-tb-15f,mdl_takeuchi_tb15f,Takeuchi,TB15F,ready,yes,230x48x70,4,0,1,
+takeuchi-tb15fr,mdl_takeuchi_tb15fr,Takeuchi,TB15FR,ready,yes,230x48x70,2,0,1,
 takeuchi-tb175,mdl_takeuchi_tb175,Takeuchi,TB175,ready,no,450x81Nx76,4,7,2,
 takeuchi-tb180fr,mdl_takeuchi_tb180fr,Takeuchi,TB180FR,ready,yes,450x81Nx76,4,7,2,
 takeuchi-tb225,mdl_takeuchi_tb225,Takeuchi,TB225,ready,yes,300x52.5Nx78,2,1,2,
 takeuchi-tb228,mdl_takeuchi_tb228,Takeuchi,TB228,ready,yes,300x52.5Nx78,2,6,2,
 takeuchi-tb230,mdl_takeuchi_tb230,Takeuchi,TB230,ready,yes,300x52.5Nx78,2,7,2,
 takeuchi-tb235,mdl_takeuchi_tb235,Takeuchi,TB235,ready,yes,350x52.5x86,6,6,1,
-takeuchi-tb235-2,mdl_takeuchi_tb235_2,Takeuchi,TB235-2,ready,no,350x52.5x86,2,4,1,
+takeuchi-tb235-2,mdl_takeuchi_tb235_2,Takeuchi,TB235-2,ready,yes,350x52.5x86,2,4,1,
 takeuchi-tb240,mdl_takeuchi_tb240,Takeuchi,TB240,ready,yes,350x52.5x86,5,6,1,
-takeuchi-tb245,mdl_takeuchi_tb245,Takeuchi,TB245,blocked,no,400x72.5Kx74,0,0,3,no_products
-takeuchi-tb-249,mdl_takeuchi_tb249,Takeuchi,TB249,ready,no,400x72.5Kx74,4,0,3,
+takeuchi-tb245,mdl_takeuchi_tb245,Takeuchi,TB245,blocked,yes,400x72.5Kx74,0,0,3,no_products
+takeuchi-tb-249,mdl_takeuchi_tb249,Takeuchi,TB249,ready,yes,400x72.5Kx74,4,0,3,
 takeuchi-tb250,mdl_takeuchi_tb250,Takeuchi,TB250,ready,yes,400x72.5Kx74,4,6,3,
 takeuchi-tb250-2,mdl_takeuchi_tb250_2,Takeuchi,TB250-2,ready,yes,400x72.5Kx74,2,2,3,
 takeuchi-tb257fr,mdl_takeuchi_tb257fr,Takeuchi,TB257FR,ready,yes,400x72.5Kx74,8,0,3,
 takeuchi-tb260,mdl_takeuchi_tb260,Takeuchi,TB260,ready,yes,400x72.5Wx76,3,2,1,
-takeuchi-tb260r,mdl_takeuchi_tb260r,Takeuchi,TB260R,blocked,no,400x72.5Kx74,0,0,3,no_products
+takeuchi-tb260r,mdl_takeuchi_tb260r,Takeuchi,TB260R,blocked,yes,400x72.5Kx74,0,0,3,no_products
 takeuchi-tb280fr,mdl_takeuchi_tb280fr,Takeuchi,TB280FR,ready,yes,450x81Nx76,4,3,2,
 takeuchi-tb285,mdl_takeuchi_tb285,Takeuchi,TB285,ready,yes,450x81Nx76,4,5,2,
 takeuchi-tb290,mdl_takeuchi_tb290,Takeuchi,TB290,ready,yes,450x81Nx76,4,6,2,
 takeuchi-tb370,mdl_takeuchi_tb370,Takeuchi,TB370,ready,yes,400x72.5Kx74,2,1,3,
-takeuchi-tb38fr,mdl_takeuchi_tb38fr,Takeuchi,TB38FR,ready,no,350x52.5x86,12,2,1,
-takeuchi-tb-53fr,mdl_takeuchi_tb53fr,Takeuchi,TB53FR,ready,no,400x72.5Kx74,4,6,3,
+takeuchi-tb38fr,mdl_takeuchi_tb38fr,Takeuchi,TB38FR,ready,yes,350x52.5x86,12,2,1,
+takeuchi-tb-53fr,mdl_takeuchi_tb53fr,Takeuchi,TB53FR,ready,yes,400x72.5Kx74,4,6,3,
 takeuchi-tb80fr,mdl_takeuchi_tb80fr,Takeuchi,TB80FR,ready,no,450x81Nx76,7,4,2,
-takeuchi-tl10,mdl_takeuchi_tl10,Takeuchi,TL10,ready,no,450x100x48,12,4,1,
+takeuchi-tl10,mdl_takeuchi_tl10,Takeuchi,TL10,ready,yes,450x100x48,12,4,1,
 takeuchi-tl10v2,mdl_takeuchi_tl10v2,Takeuchi,TL10V2,ready,yes,320x86x52,25,4,2,
-takeuchi-tl12,mdl_takeuchi_tl12,Takeuchi,TL12,ready,no,450x100x50,6,4,1,
+takeuchi-tl12,mdl_takeuchi_tl12,Takeuchi,TL12,ready,yes,450x100x50,6,4,1,
 takeuchi-tl12r2,mdl_takeuchi_tl12r2,Takeuchi,TL12R2,ready,yes,450x86Bx60,14,5,1,
 takeuchi-tl12v2,mdl_takeuchi_tl12v2,Takeuchi,TL12V2,ready,yes,450x100x50,34,6,2,
 takeuchi-tl130,mdl_takeuchi_tl130,Takeuchi,TL130,ready,yes,320x86x52,12,4,2,
@@ -1010,139 +1010,139 @@ takeuchi-tl230,mdl_takeuchi_tl230,Takeuchi,TL230,ready,no,320x86x52,5,4,2,
 takeuchi-tl230-2,mdl_takeuchi_tl230_2,Takeuchi,TL230-2,ready,no,320x86x52,4,4,1,
 takeuchi-tl240,mdl_takeuchi_tl240,Takeuchi,TL240,ready,yes,450x100x48,6,4,1,
 takeuchi-tl250,mdl_takeuchi_tl250,Takeuchi,TL250,ready,yes,450x100x50,6,4,1,
-takeuchi-tl26,mdl_takeuchi_tl26,Takeuchi,TL26,ready,no,320x86x48,2,0,1,
+takeuchi-tl26,mdl_takeuchi_tl26,Takeuchi,TL26,ready,yes,320x86x48,2,0,1,
 takeuchi-tl6r,mdl_takeuchi_tl6r,Takeuchi,TL6R,ready,yes,320x86Bx50,22,3,1,
 takeuchi-tl8,mdl_takeuchi_tl8,Takeuchi,TL8,ready,no,320x86x52,8,4,2,
 takeuchi-tl8r2,mdl_takeuchi_tl8r2,Takeuchi,TL8R2,ready,yes,320x86x52,32,4,2,
-terex-am37r,mdl_terex_am37r,Terex,AM37R,ready,no,300x52.5x86,3,1,1,
-terex-hr18,mdl_terex_hr18,Terex,HR18,blocked,no,400x72.5Kx72,0,0,3,no_products
-terex-pt-100,mdl_terex_pt_100,Terex,PT-100,ready,no,457x101.6x51,2,1,1,
-terex-pt-110f,mdl_terex_pt_110f,Terex,PT-110F,partial,no,,2,0,1,missing_primary_track_size_v2
+terex-am37r,mdl_terex_am37r,Terex,AM37R,ready,yes,300x52.5x86,3,1,1,
+terex-hr18,mdl_terex_hr18,Terex,HR18,blocked,yes,400x72.5Kx72,0,0,3,no_products
+terex-pt-100,mdl_terex_pt_100,Terex,PT-100,ready,yes,457x101.6x51,2,1,1,
+terex-pt-110f,mdl_terex_pt_110f,Terex,PT-110F,partial,yes,,2,0,1,missing_primary_track_size_v2
 terex-pt30,mdl_terex_pt_30,Terex,PT-30,blocked,yes,,0,0,2,missing_primary_track_size_v2;no_products
 terex-pt-50,mdl_terex_pt_50,Terex,PT-50,partial,no,,1,2,1,missing_primary_track_size_v2
 terex-pt-60,mdl_terex_pt_60,Terex,PT-60,partial,no,,1,2,1,missing_primary_track_size_v2
-terex-pt100f,mdl_terex_pt100f,Terex,PT100F,blocked,no,,0,0,2,missing_primary_track_size_v2;no_products
-terex-pt100g,mdl_terex_pt100g,Terex,PT100G,blocked,no,,0,0,2,missing_primary_track_size_v2;no_products
-terex-pt110,mdl_terex_pt110,Terex,PT110,ready,no,457x101.6x51,2,0,1,
-terex-pt-110-forestry,mdl_terex_pt110forestry,Terex,PT110FORESTRY,blocked,no,,0,0,2,missing_primary_track_size_v2;no_products
-terex-pt-75,mdl_terex_pt75,Terex,PT75,blocked,no,,0,0,2,missing_primary_track_size_v2;no_products
+terex-pt100f,mdl_terex_pt100f,Terex,PT100F,blocked,yes,,0,0,2,missing_primary_track_size_v2;no_products
+terex-pt100g,mdl_terex_pt100g,Terex,PT100G,blocked,yes,,0,0,2,missing_primary_track_size_v2;no_products
+terex-pt110,mdl_terex_pt110,Terex,PT110,ready,yes,457x101.6x51,2,0,1,
+terex-pt-110-forestry,mdl_terex_pt110forestry,Terex,PT110FORESTRY,blocked,yes,,0,0,2,missing_primary_track_size_v2;no_products
+terex-pt-75,mdl_terex_pt75,Terex,PT75,blocked,yes,,0,0,2,missing_primary_track_size_v2;no_products
 terex-r190t,mdl_terex_r190t,Terex,R190T,partial,yes,,1,0,1,missing_primary_track_size_v2
 terex-r265t,mdl_terex_r265t,Terex,R265T,ready,yes,457x101.6x51,2,0,1,
-terex-r350t,mdl_terex_r350t,Terex,R350T,partial,no,,2,0,1,missing_primary_track_size_v2
-terex-sr-80,mdl_terex_sr_80,Terex,SR-80,partial,no,,2,3,1,missing_primary_track_size_v2
-terex-st50,mdl_terex_st50,Terex,ST50,blocked,no,450x86Bx56,0,0,1,no_products
-terex-tc37,mdl_terex_tc_37,Terex,TC-37,ready,no,300x52.5x86,1,0,1,
-terex-tc20,mdl_terex_tc20,Terex,TC20,blocked,no,300x52.5Nx76,0,0,2,no_products
-terex-tc35-2,mdl_terex_tc35_2,Terex,TC35-2,ready,no,300x52.5x86,2,0,1,
-terex-tc60,mdl_terex_tc60,Terex,TC60,ready,no,400x72.5Wx76,2,2,1,
-vermeer-20x22,mdl_vermeer_20x22,Vermeer,20X22,ready,no,230x72x39,1,0,1,
+terex-r350t,mdl_terex_r350t,Terex,R350T,partial,yes,,2,0,1,missing_primary_track_size_v2
+terex-sr-80,mdl_terex_sr_80,Terex,SR-80,partial,yes,,2,3,1,missing_primary_track_size_v2
+terex-st50,mdl_terex_st50,Terex,ST50,blocked,yes,450x86Bx56,0,0,1,no_products
+terex-tc37,mdl_terex_tc_37,Terex,TC-37,ready,yes,300x52.5x86,1,0,1,
+terex-tc20,mdl_terex_tc20,Terex,TC20,blocked,yes,300x52.5Nx76,0,0,2,no_products
+terex-tc35-2,mdl_terex_tc35_2,Terex,TC35-2,ready,yes,300x52.5x86,2,0,1,
+terex-tc60,mdl_terex_tc60,Terex,TC60,ready,yes,400x72.5Wx76,2,2,1,
+vermeer-20x22,mdl_vermeer_20x22,Vermeer,20X22,ready,yes,230x72x39,1,0,1,
 vermeer-ctx100,mdl_vermeer_ctx100,Vermeer,CTX100,ready,yes,230x72Kx45,3,0,1,
 vermeer-ctx160,mdl_vermeer_ctx160,Vermeer,CTX160,ready,yes,230x72Kx45,3,0,1,
-vermeer-d20x22,mdl_vermeer_d20x22,Vermeer,D20X22,blocked,no,300x52.5Nx84,0,0,2,no_products
+vermeer-d20x22,mdl_vermeer_d20x22,Vermeer,D20X22,blocked,yes,300x52.5Nx84,0,0,2,no_products
 vermeer-rtx450,mdl_vermeer_rtx450,Vermeer,RTX450,ready,no,381x100.5x42,1,0,1,
-vermeer-s400tx,mdl_vermeer_s400tx,Vermeer,S400TX,ready,no,180x72x39,4,0,1,
+vermeer-s400tx,mdl_vermeer_s400tx,Vermeer,S400TX,ready,yes,180x72x39,4,0,1,
 vermeer-s600tx,mdl_vermeer_s600tx,Vermeer,S600TX,ready,yes,180x72x39,4,0,1,
 vermeer-s725tx,mdl_vermeer_s725tx,Vermeer,S725TX,ready,yes,180x72Kx45,3,0,1,
 vermeer-s800tx,mdl_vermeer_s800tx,Vermeer,S800TX,ready,yes,230x72Kx45,3,0,1,
 vermeer-s925tx,mdl_vermeer_s925tx,Vermeer,S925TX,ready,yes,230x72Kx45,3,0,1,
-volvo-ec-20b-xtv,mdl_volvo_ec_20b_xtv,Volvo,EC 20B XTV,ready,no,230x48x72,1,0,1,
-volvo-ec-20c,mdl_volvo_ec_20c,Volvo,EC-20C,ready,no,230x48x72,1,0,1,
-volvo-ec15,mdl_volvo_ec15,Volvo,EC15,blocked,no,,0,0,16,missing_primary_track_size_v2;no_products
-volvo-ec15b,mdl_volvo_ec15b,Volvo,EC15B,blocked,no,,0,0,16,missing_primary_track_size_v2;no_products
-volvo-ec15xr,mdl_volvo_ec15xr,Volvo,EC15XR,blocked,no,,0,0,16,missing_primary_track_size_v2;no_products
-volvo-ec20,mdl_volvo_ec20,Volvo,EC20,ready,no,230x48x72,1,0,1,
-volvo-ec20b,mdl_volvo_ec20b,Volvo,EC20B,ready,no,300x52.5Nx76,1,0,2,
-volvo-ec-20d,mdl_volvo_ec20d,Volvo,EC20D,blocked,no,230x48x72,0,0,1,no_products
-volvo-ec20e,mdl_volvo_ec20e,Volvo,EC20E,blocked,no,300x52.5Nx76,0,0,2,no_products
-volvo-ec-20t,mdl_volvo_ec20t,Volvo,EC20T,ready,no,230x48x72,1,0,1,
-volvo-ec-20tb,mdl_volvo_ec20tb,Volvo,EC20TB,ready,no,230x48x72,1,0,1,
-volvo-ec-20v,mdl_volvo_ec20v,Volvo,EC20V,ready,no,230x48x72,1,0,1,
-volvo-ec-20vb,mdl_volvo_ec20vb,Volvo,EC20VB,ready,no,230x48x72,1,0,1,
-volvo-ec-20xt,mdl_volvo_ec20xt,Volvo,EC20XT,ready,no,230x48x72,1,0,1,
-volvo-ec-20xtv,mdl_volvo_ec20xtv,Volvo,EC20XTV,ready,no,230x48x72,1,0,1,
-volvo-ec25,mdl_volvo_ec25,Volvo,EC25,ready,no,300x52.5Nx78,2,4,2,
-volvo-ec-25x,mdl_volvo_ec25x,Volvo,EC25X,ready,no,300x52.5Nx78,2,2,2,
-volvo-ec-25xt,mdl_volvo_ec25xt,Volvo,EC25XT,ready,no,300x52.5Nx78,2,2,2,
-volvo-ec27c,mdl_volvo_ec27c,Volvo,EC27C,ready,no,300x52.5Nx78,2,4,2,
+volvo-ec-20b-xtv,mdl_volvo_ec_20b_xtv,Volvo,EC 20B XTV,ready,yes,230x48x72,1,0,1,
+volvo-ec-20c,mdl_volvo_ec_20c,Volvo,EC-20C,ready,yes,230x48x72,1,0,1,
+volvo-ec15,mdl_volvo_ec15,Volvo,EC15,blocked,yes,,0,0,16,missing_primary_track_size_v2;no_products
+volvo-ec15b,mdl_volvo_ec15b,Volvo,EC15B,blocked,yes,,0,0,16,missing_primary_track_size_v2;no_products
+volvo-ec15xr,mdl_volvo_ec15xr,Volvo,EC15XR,blocked,yes,,0,0,16,missing_primary_track_size_v2;no_products
+volvo-ec20,mdl_volvo_ec20,Volvo,EC20,ready,yes,230x48x72,1,0,1,
+volvo-ec20b,mdl_volvo_ec20b,Volvo,EC20B,ready,yes,300x52.5Nx76,1,0,2,
+volvo-ec-20d,mdl_volvo_ec20d,Volvo,EC20D,blocked,yes,230x48x72,0,0,1,no_products
+volvo-ec20e,mdl_volvo_ec20e,Volvo,EC20E,blocked,yes,300x52.5Nx76,0,0,2,no_products
+volvo-ec-20t,mdl_volvo_ec20t,Volvo,EC20T,ready,yes,230x48x72,1,0,1,
+volvo-ec-20tb,mdl_volvo_ec20tb,Volvo,EC20TB,ready,yes,230x48x72,1,0,1,
+volvo-ec-20v,mdl_volvo_ec20v,Volvo,EC20V,ready,yes,230x48x72,1,0,1,
+volvo-ec-20vb,mdl_volvo_ec20vb,Volvo,EC20VB,ready,yes,230x48x72,1,0,1,
+volvo-ec-20xt,mdl_volvo_ec20xt,Volvo,EC20XT,ready,yes,230x48x72,1,0,1,
+volvo-ec-20xtv,mdl_volvo_ec20xtv,Volvo,EC20XTV,ready,yes,230x48x72,1,0,1,
+volvo-ec25,mdl_volvo_ec25,Volvo,EC25,ready,yes,300x52.5Nx78,2,4,2,
+volvo-ec-25x,mdl_volvo_ec25x,Volvo,EC25X,ready,yes,300x52.5Nx78,2,2,2,
+volvo-ec-25xt,mdl_volvo_ec25xt,Volvo,EC25XT,ready,yes,300x52.5Nx78,2,2,2,
+volvo-ec27c,mdl_volvo_ec27c,Volvo,EC27C,ready,yes,300x52.5Nx78,2,4,2,
 volvo-ec27d,mdl_volvo_ec27d,Volvo,EC27D,ready,yes,300x52.5Nx78,2,3,2,
-volvo-ec30,mdl_volvo_ec30,Volvo,EC30,ready,no,300x52.5Nx78,2,4,2,
-volvo-ec-30b,mdl_volvo_ec30b,Volvo,EC30B,ready,no,300x52.5Nx78,2,2,2,
-volvo-ec-30x,mdl_volvo_ec30x,Volvo,EC30X,ready,no,300x52.5Nx78,2,2,2,
-volvo-ec-35,mdl_volvo_ec35,Volvo,EC35,ready,no,300x52.5Nx84,2,4,2,
-volvo-ec35c,mdl_volvo_ec35c,Volvo,EC35C,ready,no,300x52.5Nx84,2,3,2,
+volvo-ec30,mdl_volvo_ec30,Volvo,EC30,ready,yes,300x52.5Nx78,2,4,2,
+volvo-ec-30b,mdl_volvo_ec30b,Volvo,EC30B,ready,yes,300x52.5Nx78,2,2,2,
+volvo-ec-30x,mdl_volvo_ec30x,Volvo,EC30X,ready,yes,300x52.5Nx78,2,2,2,
+volvo-ec-35,mdl_volvo_ec35,Volvo,EC35,ready,yes,300x52.5Nx84,2,4,2,
+volvo-ec35c,mdl_volvo_ec35c,Volvo,EC35C,ready,yes,300x52.5Nx84,2,3,2,
 volvo-ec35d,mdl_volvo_ec35d,Volvo,EC35D,ready,yes,300x52.5Nx84,2,3,2,
-volvo-ec55,mdl_volvo_ec55,Volvo,EC55,ready,no,400x72.5Kx74,4,1,3,
-volvo-ec55b,mdl_volvo_ec55b,Volvo,EC55B,ready,no,400x72.5Kx74,3,3,3,
+volvo-ec55,mdl_volvo_ec55,Volvo,EC55,ready,yes,400x72.5Kx74,4,1,3,
+volvo-ec55b,mdl_volvo_ec55b,Volvo,EC55B,ready,yes,400x72.5Kx74,3,3,3,
 volvo-ec55c,mdl_volvo_ec55c,Volvo,EC55C,ready,yes,400x72.5Kx74,4,0,3,
-volvo-ec55d,mdl_volvo_ec55d,Volvo,EC55D,blocked,no,400x72.5Kx74,0,0,3,no_products
+volvo-ec55d,mdl_volvo_ec55d,Volvo,EC55D,blocked,yes,400x72.5Kx74,0,0,3,no_products
 volvo-ecr25d,mdl_volvo_ecr25d,Volvo,ECR25D,blocked,yes,300x52.5Nx78,0,0,2,no_products
-volvo-ecr28,mdl_volvo_ecr28,Volvo,ECR28,ready,no,300x52.5Nx78,2,3,2,
-volvo-ecr38,mdl_volvo_ecr38,Volvo,ECR38,ready,no,300x52.5Nx84,2,2,2,
-volvo-ecr40,mdl_volvo_ecr40,Volvo,ECR40,blocked,no,300x52.5Nx84,0,0,2,no_products
-volvo-ecr48,mdl_volvo_ecr48,Volvo,ECR48,blocked,no,400x72.5Kx72,0,0,3,no_products
-volvo-ecr48c,mdl_volvo_ecr48c,Volvo,ECR48C,ready,no,400x72.5Kx72,4,0,3,
-volvo-ecr50,mdl_volvo_ecr50,Volvo,ECR50,blocked,no,400x72.5Kx74,0,0,3,no_products
-volvo-ecr-50d,mdl_volvo_ecr50d,Volvo,ECR50D,ready,no,400x72.5Kx74,4,0,3,
-volvo-ecr55d,mdl_volvo_ecr55d,Volvo,ECR55D,ready,no,400x72.5Wx76,2,0,1,
-volvo-ecr58,mdl_volvo_ecr58,Volvo,ECR58,ready,no,400x72.5Kx74,3,3,3,
+volvo-ecr28,mdl_volvo_ecr28,Volvo,ECR28,ready,yes,300x52.5Nx78,2,3,2,
+volvo-ecr38,mdl_volvo_ecr38,Volvo,ECR38,ready,yes,300x52.5Nx84,2,2,2,
+volvo-ecr40,mdl_volvo_ecr40,Volvo,ECR40,blocked,yes,300x52.5Nx84,0,0,2,no_products
+volvo-ecr48,mdl_volvo_ecr48,Volvo,ECR48,blocked,yes,400x72.5Kx72,0,0,3,no_products
+volvo-ecr48c,mdl_volvo_ecr48c,Volvo,ECR48C,ready,yes,400x72.5Kx72,4,0,3,
+volvo-ecr50,mdl_volvo_ecr50,Volvo,ECR50,blocked,yes,400x72.5Kx74,0,0,3,no_products
+volvo-ecr-50d,mdl_volvo_ecr50d,Volvo,ECR50D,ready,yes,400x72.5Kx74,4,0,3,
+volvo-ecr55d,mdl_volvo_ecr55d,Volvo,ECR55D,ready,yes,400x72.5Wx76,2,0,1,
+volvo-ecr58,mdl_volvo_ecr58,Volvo,ECR58,ready,yes,400x72.5Kx74,3,3,3,
 volvo-ecr58d,mdl_volvo_ecr58d,Volvo,ECR58D,ready,yes,400x72.5Kx74,4,1,3,
 volvo-ecr88,mdl_volvo_ecr88,Volvo,ECR88,ready,no,450x81Nx76,4,3,2,
 volvo-ecr88d,mdl_volvo_ecr88d,Volvo,ECR88D,ready,yes,450x81Nx76,1,0,2,
-volvo-mct110c,mdl_volvo_mct110c,Volvo,MCT110C,ready,no,450x86Bx56,15,2,1,
+volvo-mct110c,mdl_volvo_mct110c,Volvo,MCT110C,ready,yes,450x86Bx56,15,2,1,
 volvo-mct125c,mdl_volvo_mct125c,Volvo,MCT125C,ready,yes,450x86Bx56,13,2,1,
 volvo-mct135c,mdl_volvo_mct135c,Volvo,MCT135C,ready,yes,450x86Bx56,13,2,1,
-volvo-mct145,mdl_volvo_mct145,Volvo,MCT145,blocked,no,450x86Bx56,0,0,1,no_products
+volvo-mct145,mdl_volvo_mct145,Volvo,MCT145,blocked,yes,450x86Bx56,0,0,1,no_products
 volvo-mct145c,mdl_volvo_mct145c,Volvo,MCT145C,ready,yes,450x86Bx56,13,2,1,
-volvo-mct85c,mdl_volvo_mct85c,Volvo,MCT85C,ready,no,320x86Bx50,11,2,2,
-wacker-neuson-1101cp,mdl_wacker_neuson_1101cp,Wacker Neuson,1101CP,blocked,no,450x86Bx56,0,0,1,no_products
-wacker-neuson-3503,mdl_wacker_neuson_3503,Wacker Neuson,3503,ready,no,300x52.5Nx84,2,1,2,
-wacker-neuson-5002,mdl_wacker_neuson_5002,Wacker Neuson,5002,ready,no,400x72.5Kx74,3,2,3,
-wacker-neuson-50z-3,mdl_wacker_neuson_50z3,Wacker Neuson,50Z3,ready,no,400x72.5Kx74,2,2,3,
-wacker-neuson-6003,mdl_wacker_neuson_6003,Wacker Neuson,6003,ready,no,400x72.5Kx74,3,2,3,
+volvo-mct85c,mdl_volvo_mct85c,Volvo,MCT85C,ready,yes,320x86Bx50,11,2,2,
+wacker-neuson-1101cp,mdl_wacker_neuson_1101cp,Wacker Neuson,1101CP,blocked,yes,450x86Bx56,0,0,1,no_products
+wacker-neuson-3503,mdl_wacker_neuson_3503,Wacker Neuson,3503,ready,yes,300x52.5Nx84,2,1,2,
+wacker-neuson-5002,mdl_wacker_neuson_5002,Wacker Neuson,5002,ready,yes,400x72.5Kx74,3,2,3,
+wacker-neuson-50z-3,mdl_wacker_neuson_50z3,Wacker Neuson,50Z3,ready,yes,400x72.5Kx74,2,2,3,
+wacker-neuson-6003,mdl_wacker_neuson_6003,Wacker Neuson,6003,ready,yes,400x72.5Kx74,3,2,3,
 wacker-neuson-ez17,mdl_wacker_neuson_ez17,Wacker Neuson,EZ17,ready,yes,230x48x72,2,0,1,
-wacker-neuson-ez38,mdl_wacker_neuson_ez38,Wacker Neuson,EZ38,ready,no,300x52.5Nx84,2,0,2,
-wacker-neuson-ez50,mdl_wacker_neuson_ez50,Wacker Neuson,EZ50,ready,no,400x72.5Kx74,4,0,3,
-wacker-neuson-ez53,mdl_wacker_neuson_ez53,Wacker Neuson,EZ53,ready,no,400x72.5Kx74,4,0,3,
+wacker-neuson-ez38,mdl_wacker_neuson_ez38,Wacker Neuson,EZ38,ready,yes,300x52.5Nx84,2,0,2,
+wacker-neuson-ez50,mdl_wacker_neuson_ez50,Wacker Neuson,EZ50,ready,yes,400x72.5Kx74,4,0,3,
+wacker-neuson-ez53,mdl_wacker_neuson_ez53,Wacker Neuson,EZ53,ready,yes,400x72.5Kx74,4,0,3,
 wacker-neuson-st28,mdl_wacker_neuson_st28,Wacker Neuson,ST28,ready,no,320x86x52,23,1,2,
 wacker-neuson-st31,mdl_wacker_neuson_st31,Wacker Neuson,ST31,ready,yes,320x86x52,23,1,2,
-wacker-neuson-st35,mdl_wacker_neuson_st35,Wacker Neuson,ST35,ready,no,450x86Bx56,13,2,1,
-wacker-neuson-st40,mdl_wacker_neuson_st40,Wacker Neuson,ST40,blocked,no,450x86Bx58,0,0,1,no_products
+wacker-neuson-st35,mdl_wacker_neuson_st35,Wacker Neuson,ST35,ready,yes,450x86Bx56,13,2,1,
+wacker-neuson-st40,mdl_wacker_neuson_st40,Wacker Neuson,ST40,blocked,yes,450x86Bx58,0,0,1,no_products
 wacker-neuson-st45,mdl_wacker_neuson_st45,Wacker Neuson,ST45,ready,yes,450x86Bx56,13,2,2,
 wacker-neuson-st50,mdl_wacker_neuson_st50,Wacker Neuson,ST50,ready,yes,450x86Bx58,13,2,1,
-yanmar-b3-u,mdl_yanmar_b3u,Yanmar,B3U,blocked,no,300x52.5Nx84,0,0,2,no_products
+yanmar-b3-u,mdl_yanmar_b3u,Yanmar,B3U,blocked,yes,300x52.5Nx84,0,0,2,no_products
 yanmar-t210,mdl_yanmar_t_210,Yanmar,T-210,blocked,yes,450x86Bx56,0,0,1,no_products
-yanmar-t175,mdl_yanmar_t175,Yanmar,T175,ready,no,320x86Bx54,2,3,1,
-yanmar-vio-30-1-offset-type,mdl_yanmar_vio_30_1,Yanmar,VIO 30-1,blocked,no,300x55.5x82,0,0,1,no_products
-yanmar-vio-30-2-offset-type,mdl_yanmar_vio_30_2,Yanmar,VIO 30-2,blocked,no,300x55.5x82,0,0,1,no_products
-yanmar-vio-30-3s-offset-type,mdl_yanmar_vio_30_3s,Yanmar,VIO 30-3S,blocked,no,300x55.5x82,0,0,1,no_products
-yanmar-vio-30v-offset-type,mdl_yanmar_vio_30v,Yanmar,VIO 30V,blocked,no,300x55.5x82,0,0,1,no_products
-yanmar-vio-33-offset-type,mdl_yanmar_vio_33,Yanmar,VIO 33,blocked,no,300x55.5x82,0,0,1,no_products
-yanmar-vio-35-offset-type,mdl_yanmar_vio_35,Yanmar,VIO 35,blocked,no,300x55.5x82,0,0,1,no_products
-yanmar-vio-35-1-offset-type,mdl_yanmar_vio_35_1,Yanmar,VIO 35-1,blocked,no,300x55.5x82,0,0,1,no_products
-yanmar-vio-35-2-offset-type,mdl_yanmar_vio_35_2,Yanmar,VIO 35-2,blocked,no,300x55.5x82,0,0,1,no_products
-yanmar-vio-35-3-offset-type,mdl_yanmar_vio_35_3,Yanmar,VIO 35-3,blocked,no,300x55.5x82,0,0,1,no_products
-yanmar-vio-35-5-offset-type,mdl_yanmar_vio_35_5,Yanmar,VIO 35-5,blocked,no,300x55.5x82,0,0,1,no_products
-yanmar-vio-35cr-offset-type,mdl_yanmar_vio_35cr,Yanmar,VIO 35CR,blocked,no,300x55.5x82,0,0,1,no_products
-yanmar-vio-38-offset-type,mdl_yanmar_vio_38,Yanmar,VIO 38,blocked,no,300x55.5x82,0,0,1,no_products
-yanmar-vio-40-offset-type,mdl_yanmar_vio_40,Yanmar,VIO 40,blocked,no,400x75.5x74,0,0,1,no_products
-yanmar-vio-50-3-offset-type,mdl_yanmar_vio_50_3,Yanmar,VIO 50-3,ready,no,400x75.5x74,1,0,1,
-yanmar-vio-55-cr-offset-type,mdl_yanmar_vio_55_cr,Yanmar,VIO 55 CR,ready,no,400x75.5x74,1,0,1,
-yanmar-vio-57u-offset-type,mdl_yanmar_vio_57u,Yanmar,VIO 57U,blocked,no,400x75.5x74,0,0,1,no_products
-yanmar-vio-45v-offset-type,mdl_yanmar_vio_45_v,Yanmar,VIO-45-V,ready,no,400x75.5x74,1,0,1,
-yanmar-vio-50v-offset-type,mdl_yanmar_vio_50_v,Yanmar,VIO-50-V,ready,no,400x75.5x74,1,0,1,
-yanmar-vio-27-2-offset-type,mdl_yanmar_vio27_2,Yanmar,VIO27-2,partial,no,,0,2,6,missing_primary_track_size_v2
-yanmar-vio-27-3-offset-type,mdl_yanmar_vio27_3,Yanmar,VIO27-3,partial,no,,0,2,6,missing_primary_track_size_v2
-yanmar-vio-27-5-offset-type,mdl_yanmar_vio27_5,Yanmar,VIO27-5,partial,no,,0,1,6,missing_primary_track_size_v2
-yanmar-vio-35-6a,mdl_yanmar_vio35_6a,Yanmar,VIO35 6A,ready,no,300x52.5Kx88,2,2,1,
-yanmar-vio-40-1-offset-type,mdl_yanmar_vio40_1,Yanmar,VIO40-1,ready,no,400x75.5x74,1,0,1,
-yanmar-vio-40-2-offset-type,mdl_yanmar_vio40_2,Yanmar,VIO40-2,ready,no,400x75.5x74,1,0,1,
-yanmar-vio-40v-offset-type,mdl_yanmar_vio40v,Yanmar,VIO40V,ready,no,400x75.5x74,1,0,1,
-yanmar-vio-45-offset-type,mdl_yanmar_vio45,Yanmar,VIO45,ready,no,400x75.5x74,2,0,1,
-yanmar-vio-45-5-offset-type,mdl_yanmar_vio45_5,Yanmar,VIO45-5,ready,no,400x75.5x74,2,0,1,
-yanmar-vio45-6a,mdl_yanmar_vio456a,Yanmar,VIO456A,ready,no,400x72.5Wx76,2,0,1,
-yanmar-vio-45-cr-offset-type,mdl_yanmar_vio45cr,Yanmar,VIO45CR,ready,no,400x75.5x74,2,0,1,
-yanmar-vio-50-1-offset-type,mdl_yanmar_vio50_1,Yanmar,VIO50-1,ready,no,400x75.5x74,2,2,1,
-yanmar-vio-50-2-offset-type,mdl_yanmar_vio50_2,Yanmar,VIO50-2,ready,no,400x75.5x74,2,2,1,
-yanmar-vio-55-offset-type,mdl_yanmar_vio55,Yanmar,VIO55,ready,no,400x75.5x74,1,2,1,
-yanmar-vio-55-5-offset-type,mdl_yanmar_vio55_5,Yanmar,VIO55 5,ready,no,400x75.5x74,1,2,1,
-yanmar-vio-55-6a,mdl_yanmar_vio55_6a,Yanmar,VIO55-6A,blocked,no,400x72.5Wx76,0,0,1,no_products
+yanmar-t175,mdl_yanmar_t175,Yanmar,T175,ready,yes,320x86Bx54,2,3,1,
+yanmar-vio-30-1-offset-type,mdl_yanmar_vio_30_1,Yanmar,VIO 30-1,blocked,yes,300x55.5x82,0,0,1,no_products
+yanmar-vio-30-2-offset-type,mdl_yanmar_vio_30_2,Yanmar,VIO 30-2,blocked,yes,300x55.5x82,0,0,1,no_products
+yanmar-vio-30-3s-offset-type,mdl_yanmar_vio_30_3s,Yanmar,VIO 30-3S,blocked,yes,300x55.5x82,0,0,1,no_products
+yanmar-vio-30v-offset-type,mdl_yanmar_vio_30v,Yanmar,VIO 30V,blocked,yes,300x55.5x82,0,0,1,no_products
+yanmar-vio-33-offset-type,mdl_yanmar_vio_33,Yanmar,VIO 33,blocked,yes,300x55.5x82,0,0,1,no_products
+yanmar-vio-35-offset-type,mdl_yanmar_vio_35,Yanmar,VIO 35,blocked,yes,300x55.5x82,0,0,1,no_products
+yanmar-vio-35-1-offset-type,mdl_yanmar_vio_35_1,Yanmar,VIO 35-1,blocked,yes,300x55.5x82,0,0,1,no_products
+yanmar-vio-35-2-offset-type,mdl_yanmar_vio_35_2,Yanmar,VIO 35-2,blocked,yes,300x55.5x82,0,0,1,no_products
+yanmar-vio-35-3-offset-type,mdl_yanmar_vio_35_3,Yanmar,VIO 35-3,blocked,yes,300x55.5x82,0,0,1,no_products
+yanmar-vio-35-5-offset-type,mdl_yanmar_vio_35_5,Yanmar,VIO 35-5,blocked,yes,300x55.5x82,0,0,1,no_products
+yanmar-vio-35cr-offset-type,mdl_yanmar_vio_35cr,Yanmar,VIO 35CR,blocked,yes,300x55.5x82,0,0,1,no_products
+yanmar-vio-38-offset-type,mdl_yanmar_vio_38,Yanmar,VIO 38,blocked,yes,300x55.5x82,0,0,1,no_products
+yanmar-vio-40-offset-type,mdl_yanmar_vio_40,Yanmar,VIO 40,blocked,yes,400x75.5x74,0,0,1,no_products
+yanmar-vio-50-3-offset-type,mdl_yanmar_vio_50_3,Yanmar,VIO 50-3,ready,yes,400x75.5x74,1,0,1,
+yanmar-vio-55-cr-offset-type,mdl_yanmar_vio_55_cr,Yanmar,VIO 55 CR,ready,yes,400x75.5x74,1,0,1,
+yanmar-vio-57u-offset-type,mdl_yanmar_vio_57u,Yanmar,VIO 57U,blocked,yes,400x75.5x74,0,0,1,no_products
+yanmar-vio-45v-offset-type,mdl_yanmar_vio_45_v,Yanmar,VIO-45-V,ready,yes,400x75.5x74,1,0,1,
+yanmar-vio-50v-offset-type,mdl_yanmar_vio_50_v,Yanmar,VIO-50-V,ready,yes,400x75.5x74,1,0,1,
+yanmar-vio-27-2-offset-type,mdl_yanmar_vio27_2,Yanmar,VIO27-2,partial,yes,,0,2,6,missing_primary_track_size_v2
+yanmar-vio-27-3-offset-type,mdl_yanmar_vio27_3,Yanmar,VIO27-3,partial,yes,,0,2,6,missing_primary_track_size_v2
+yanmar-vio-27-5-offset-type,mdl_yanmar_vio27_5,Yanmar,VIO27-5,partial,yes,,0,1,6,missing_primary_track_size_v2
+yanmar-vio-35-6a,mdl_yanmar_vio35_6a,Yanmar,VIO35 6A,ready,yes,300x52.5Kx88,2,2,1,
+yanmar-vio-40-1-offset-type,mdl_yanmar_vio40_1,Yanmar,VIO40-1,ready,yes,400x75.5x74,1,0,1,
+yanmar-vio-40-2-offset-type,mdl_yanmar_vio40_2,Yanmar,VIO40-2,ready,yes,400x75.5x74,1,0,1,
+yanmar-vio-40v-offset-type,mdl_yanmar_vio40v,Yanmar,VIO40V,ready,yes,400x75.5x74,1,0,1,
+yanmar-vio-45-offset-type,mdl_yanmar_vio45,Yanmar,VIO45,ready,yes,400x75.5x74,2,0,1,
+yanmar-vio-45-5-offset-type,mdl_yanmar_vio45_5,Yanmar,VIO45-5,ready,yes,400x75.5x74,2,0,1,
+yanmar-vio45-6a,mdl_yanmar_vio456a,Yanmar,VIO456A,ready,yes,400x72.5Wx76,2,0,1,
+yanmar-vio-45-cr-offset-type,mdl_yanmar_vio45cr,Yanmar,VIO45CR,ready,yes,400x75.5x74,2,0,1,
+yanmar-vio-50-1-offset-type,mdl_yanmar_vio50_1,Yanmar,VIO50-1,ready,yes,400x75.5x74,2,2,1,
+yanmar-vio-50-2-offset-type,mdl_yanmar_vio50_2,Yanmar,VIO50-2,ready,yes,400x75.5x74,2,2,1,
+yanmar-vio-55-offset-type,mdl_yanmar_vio55,Yanmar,VIO55,ready,yes,400x75.5x74,1,2,1,
+yanmar-vio-55-5-offset-type,mdl_yanmar_vio55_5,Yanmar,VIO55 5,ready,yes,400x75.5x74,1,2,1,
+yanmar-vio-55-6a,mdl_yanmar_vio55_6a,Yanmar,VIO55-6A,blocked,yes,400x72.5Wx76,0,0,1,no_products

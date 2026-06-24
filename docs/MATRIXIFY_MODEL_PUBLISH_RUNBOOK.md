@@ -55,7 +55,7 @@ Legacy CSV + API manifest (optional, for programmatic apply):
 1. Shopify Admin → **Apps → Matrixify**
 2. **Import → Metaobjects**
 3. Upload **`model_metaobjects_matrixify.xlsx`** (or export sheet to CSV if preferred)
-4. Type: **model**, Command: **MERGE**, match on **Handle**
+4. Command: **MERGE**, match on **Handle** (Matrixify requires **`Definition: Handle`** = `model` on every row — included in export)
 5. Map columns:
    - `Field: hero_image` → file/URL field (confirm Matrixify accepts Supabase public URLs)
    - `Field: track_products [list.product_reference]` → comma-separated product handles

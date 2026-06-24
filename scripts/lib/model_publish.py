@@ -156,6 +156,7 @@ def write_matrixify_csv(path: Path, rows: list[ModelPublishRow]) -> int:
     headers = [
         "Handle",
         "Command",
+        "Definition: Handle",
         "Field: primary_track_size",
         "Field: hero_image",
         "Field: track_products [list.product_reference]",
@@ -172,6 +173,7 @@ def write_matrixify_csv(path: Path, rows: list[ModelPublishRow]) -> int:
                 [
                     row.shopify_handle,
                     "MERGE",
+                    "model",
                     row.primary_track_size,
                     row.hero_url or "",
                     ", ".join(row.track_product_handles),
