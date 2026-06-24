@@ -1,0 +1,22 @@
+{
+  "handle": "cid-hd-grapple-bucket",
+  "title": "Heavy Duty Grapple Bucket for Skid Steers",
+  "body_html": "<p>The Skid Steer Heavy Duty Grapple Bucket is built for tough cleanup and material handling jobs where durability matters. Designed for skid steers up to 65&nbsp;HP, this bucket features 1/2&quot; thick tines, dual 2&quot; x 10&quot; cylinders, and a 6&quot; x 3/4&quot; cutting edge for dependable clamping and long wear life. The open-tine bottom allows dirt and small debris to fall through, making it ideal for clearing brush, logs, rocks, and construction debris.</p><p><strong>Key features</strong></p><ul><li>Available in widths from 60&quot; to 84&quot;</li><li>Designed for machines up to 65&nbsp;HP</li><li>Optional weld-on teeth and bolt-on edge</li><li>1/2&quot; thick tines with dual 2&quot; x 10&quot; cylinders</li><li>6&quot; x 3/4&quot; cutting edge</li><li>Bolt-on sides included</li></ul>",
+  "family_spec_defaults": {
+    "rated_hp": "Up to 65 HP",
+    "cylinder_size": "2\" x 10\"",
+    "bolt_on_sides": "Included",
+    "tine_thickness_in": 0.5,
+    "cutting_edge": "6\" x 3/4\"",
+    "bolt_on_edge": "Optional",
+    "cylinder_rod_protector": "Optional",
+    "machine_type": "Skid Steer"
+  },
+  "variant_specs": {
+    "HDGB60": {
+      "open_tine_height_in": 40,
+      "length_in": 34,
+      "weight_lbs": 709
+    }
+  }
+}

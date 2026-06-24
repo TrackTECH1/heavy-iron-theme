@@ -163,6 +163,102 @@ def is_catalog_itemid(itemid: str | None) -> bool:
     return any(upper.startswith(p) for p in UC_ITEMID_PREFIXES)
 
 
+def normalize_itemid(itemid: str | None) -> str:
+    """Uppercase OEM / supplier itemid — canonical identity key."""
+    return (itemid or "").strip().upper()
+
+
+def canonical_product_handle(itemid: str | None) -> str:
+    """Shopify handle and public product URL slug: lowercase itemid."""
+    return normalize_itemid(itemid).lower()
+
+
+def build_tracktech_data_api_json(itemid: str | None, extra: dict | None = None) -> str:
+    """Shopify custom.tracktech_data_api metafield value (json type)."""
+    payload: dict = {"itemid": normalize_itemid(itemid)}
+    if extra:
+        for key, val in extra.items():
+            if val is not None and str(val).strip() != "":
+                payload[key] = val
+    payload["itemid"] = normalize_itemid(itemid)
+    return json.dumps(payload, separators=(",", ":"))
+
+
+def catalog_part_family(itemid: str | None, part_type: str | None = None) -> str:
+    """track | sprocket | idler | roller | uc_part | other."""
+    pt = (part_type or "").lower()
+    if "sprocket" in pt:
+        return "sprocket"
+    if "idler" in pt:
+        return "idler"
+    if "roller" in pt:
+        return "roller"
+    if "track" in pt and "roller" not in pt and "idler" not in pt:
+        return "track"
+    iid = normalize_itemid(itemid)
+    if iid.startswith("TNT") or iid.startswith(("BS", "SD", "ST", "HT")):
+        return "track"
+    if iid.startswith("SP"):
+        return "sprocket"
+    if iid.startswith(("FI", "RR")):
+        return "idler"
+    if iid.startswith(("TR", "CR")):
+        return "roller"
+    if is_catalog_itemid(iid):
+        return "uc_part"
+    return "other"
+
+
+COST_MARKUP_PRICE = 1.15
+COST_MARKUP_COMPARE = 1.30
+RUBBER_TRACK_WARRANTY_MONTHS = 24
+
+
+def effective_product_cost(cost: float | str | None) -> float | None:
+    """Dealer cost from Supabase cost field only."""
+    if cost is None or cost == "":
+        return None
+    try:
+        value = float(cost)
+    except (TypeError, ValueError):
+        return None
+    return value if value > 0 else None
+
+
+def product_is_quote_only(cost: float | str | None) -> bool:
+    return effective_product_cost(cost) is None
+
+
+def retail_pricing_from_cost(cost: float | str | None) -> tuple[str, str, str] | None:
+    """Return (variant_cost, variant_price, variant_compare_at) from dealer cost."""
+    dealer = effective_product_cost(cost)
+    if dealer is None:
+        return None
+    sell = round(dealer * COST_MARKUP_PRICE, 2)
+    compare = round(dealer * COST_MARKUP_COMPARE, 2)
+    return f"{dealer:.2f}", f"{sell:.2f}", f"{compare:.2f}"
+
+
+def shopify_product_type(family: str) -> str:
+    """Shopify Type values must match smart-collection rules."""
+    return "Rubber Tracks" if family == "track" else "Undercarriage Components"
+
+
+def shopify_vendor(itemid: str | None, family: str) -> str:
+    """Consumer product-line brand on the box — not retailer (HI) or distributor (MWE)."""
+    iid = normalize_itemid(itemid)
+    if family == "track":
+        if iid.startswith("TNT"):
+            return "TNT"
+        if iid.startswith("BS"):
+            return "Bridgestone"
+        if iid.startswith("SD"):
+            return "Camso"
+    if family in {"sprocket", "idler", "roller", "uc_part"}:
+        return "TNT"
+    return ""
+
+
 def is_shopify_attachment(product: dict) -> bool:
     """Shopify-side attachment product (CID catalog — do not wipe/sync/overwrite)."""
     ptype = (product.get("productType") or "").lower()
@@ -898,6 +994,22 @@ def load_canonical_items() -> list[dict]:
     return json.loads(CANONICAL_JSON.read_text(encoding="utf-8"))
 
 
+def normalize_warehouse_availability_json(raw: object) -> str | None:
+    """MWE per-warehouse buckets, e.g. {\"Columbus OH\":\"4+\"}."""
+    if raw is None or raw == "" or raw == '""':
+        return None
+    if isinstance(raw, dict):
+        data = {str(k).strip(): str(v).strip() for k, v in raw.items() if str(k).strip() and str(v).strip()}
+        return json.dumps(data, separators=(",", ":")) if data else None
+    if isinstance(raw, str):
+        try:
+            parsed = json.loads(raw)
+        except json.JSONDecodeError:
+            return None
+        return normalize_warehouse_availability_json(parsed)
+    return None
+
+
 def supplier_by_itemid() -> dict[str, dict]:
     rows = supabase_get_all(
         "supplier_master?select=itemid,shopify_sku,product_name,cost,track_size,track_pattern,"
@@ -917,6 +1029,10 @@ def supplier_by_itemid() -> dict[str, dict]:
         # prefer row with fitment text
         if row.get("fitment_models") and len(str(row["fitment_models"])) > len(str(grouped[itemid].get("fitment_models") or "")):
             grouped[itemid]["fitment_models"] = row["fitment_models"]
+        if row.get("warehouse_availability") and not grouped[itemid].get("warehouse_availability"):
+            grouped[itemid]["warehouse_availability"] = row["warehouse_availability"]
+        if row.get("qty_available") is not None and grouped[itemid].get("qty_available") in (None, ""):
+            grouped[itemid]["qty_available"] = row["qty_available"]
         if row.get("product_name") and not grouped[itemid].get("product_name"):
             grouped[itemid]["product_name"] = row["product_name"]
     return grouped

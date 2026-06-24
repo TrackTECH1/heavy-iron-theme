@@ -105,6 +105,15 @@
             elsif hi_product_type contains 'undercarriage' or hi_product_type contains 'sprocket' or hi_product_type contains 'roller' or hi_product_type contains 'idler'
               assign hi_is_undercarriage_product = true
             endif
+
+            assign hi_is_attachment_product = false
+            if product.template_suffix == 'attachment'
+              assign hi_is_attachment_product = true
+            elsif product.tags contains 'cid-attachments'
+              assign hi_is_attachment_product = true
+            elsif hi_part_type contains 'attachment' or hi_product_type contains 'attachment'
+              assign hi_is_attachment_product = true
+            endif
           -%}
 
           {%- for block in section.blocks -%}
@@ -253,8 +262,12 @@
                     unless hi_is_track_product
                       assign show_tab = false
                     endunless
+                  elsif tab_heading == 'Specifications' or tab_heading == 'Attachment Specifications'
+                    unless hi_is_attachment_product
+                      assign show_tab = false
+                    endunless
                   elsif tab_heading_lower contains 'warranty' and tab_heading_lower contains 'shipping'
-                    unless hi_is_track_product
+                    unless hi_is_track_product or hi_is_attachment_product
                       assign show_tab = false
                     endunless
                   endif
@@ -274,6 +287,8 @@
                     <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
                       {%- if tab_heading == 'Track Specifications' -%}
                         {% render 'track-specifications' %}
+                      {%- elsif tab_heading == 'Specifications' or tab_heading == 'Attachment Specifications' -%}
+                        {% render 'attachment-specifications', product: product, section_id: section.id %}
                       {%- elsif tab_heading == 'Design Features' -%}
                         {% render 'track-design-features' %}
                       {%- elsif tab_heading == 'Compatible Machines' -%}

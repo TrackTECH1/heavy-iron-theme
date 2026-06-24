@@ -55,7 +55,7 @@
         "specs_tab": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Track Specifications",
+            "heading": "Specifications",
             "icon": "ruler",
             "content": "",
             "page": ""

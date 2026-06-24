@@ -1,0 +1,49 @@
+{%- comment -%}
+  Table rows for one attachment_specs JSON object (SSR initial paint).
+{%- endcomment -%}
+
+{%- liquid
+  assign spec_order = 'width_in,length_in,open_tine_height_in,weight_lbs,rated_hp,cylinder_size,tine_thickness_in,cutting_edge,bolt_on_edge,bolt_on_sides,cylinder_rod_protector,weld_on_teeth,teeth,has_teeth,machine_type,family,family_title,fits,availability,brand,product_type' | split: ','
+-%}
+
+{%- for key in spec_order -%}
+  {%- assign value = specs[key] -%}
+  {%- if value == blank -%}
+    {%- continue -%}
+  {%- endif -%}
+  <tr>
+    <td class="track-specs__label">
+      {%- case key -%}
+        {%- when 'width_in' -%}Width
+        {%- when 'length_in' -%}Length
+        {%- when 'open_tine_height_in' -%}Open tine height
+        {%- when 'weight_lbs' -%}Weight
+        {%- when 'rated_hp' -%}Rated HP
+        {%- when 'cylinder_size' -%}Cylinder size
+        {%- when 'tine_thickness_in' -%}Tine thickness
+        {%- when 'cutting_edge' -%}Cutting edge
+        {%- when 'bolt_on_edge' -%}Bolt-on edge
+        {%- when 'bolt_on_sides' -%}Bolt-on sides
+        {%- when 'cylinder_rod_protector' -%}Cylinder rod protector
+        {%- when 'weld_on_teeth' -%}Weld-on teeth
+        {%- when 'has_teeth' -%}Has teeth
+        {%- when 'machine_type' -%}Machine type
+        {%- when 'family_title' -%}Family
+        {%- else -%}{{ key | replace: '_', ' ' | capitalize }}
+      {%- endcase -%}
+    </td>
+    <td class="track-specs__value{% if key == 'width_in' %} track-specs__value--highlight{% endif %}">
+      {%- if key == 'weight_lbs' -%}
+        {{ value }} lbs
+      {%- elsif key == 'width_in' or key == 'length_in' or key == 'open_tine_height_in' -%}
+        {{ value }}"
+      {%- elsif key == 'tine_thickness_in' -%}
+        {{ value }}"
+      {%- elsif key == 'has_teeth' -%}
+        {%- if value -%}Yes{%- else -%}No{%- endif -%}
+      {%- else -%}
+        {{ value }}
+      {%- endif -%}
+    </td>
+  </tr>
+{%- endfor -%}

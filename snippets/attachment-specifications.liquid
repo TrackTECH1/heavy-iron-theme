@@ -1,0 +1,48 @@
+{%- comment -%}
+  Attachment specifications — variant metafield custom.attachment_specs (JSON).
+  Updates when the shopper changes size / teeth / flow options.
+{%- endcomment -%}
+
+{%- liquid
+  assign has_any_specs = false
+  for variant in product.variants
+    if variant.metafields.custom.attachment_specs.value != blank
+      assign has_any_specs = true
+      break
+    endif
+  endfor
+-%}
+
+{%- if has_any_specs -%}
+  {%- assign spec_variant = product.selected_or_first_available_variant -%}
+  {%- assign initial_specs = spec_variant.metafields.custom.attachment_specs.value -%}
+
+  <div
+    class="track-specs attachment-specs"
+    id="AttachmentSpecs-{{ section_id }}"
+    data-section-id="{{ section_id }}"
+  >
+    <table class="track-specs__table">
+      <tbody id="AttachmentSpecsBody-{{ section_id }}">
+        {%- if initial_specs != blank -%}
+          {%- render 'attachment-specifications-rows', specs: initial_specs -%}
+        {%- endif -%}
+      </tbody>
+    </table>
+  </div>
+
+  <script type="application/json" id="AttachmentSpecsData-{{ section_id }}">
+    [
+      {%- for variant in product.variants -%}
+        {%- assign variant_specs = variant.metafields.custom.attachment_specs.value -%}
+        {
+          "id": {{ variant.id | json }},
+          "sku": {{ variant.sku | json }},
+          "specs": {{ variant_specs | default: null | json }}
+        }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ]
+  </script>
+
+  <script src="{{ 'attachment-specs.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}

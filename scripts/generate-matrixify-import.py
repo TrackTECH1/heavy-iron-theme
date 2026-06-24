@@ -31,6 +31,8 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from lib.catalog_ssot import (  # noqa: E402
     CANONICAL_JSON,
+    build_tracktech_data_api_json,
+    canonical_product_handle,
     display_tread_pattern,
     is_attachment_itemid,
     is_excluded_catalog_itemid,
@@ -38,6 +40,7 @@ from lib.catalog_ssot import (  # noqa: E402
     resolve_product_title,
     load_dotenv_fitment,
     load_catalog_image_maps,
+    normalize_itemid,
     normalize_supplier_tread,
     parse_supplier_images,
     resolve_track_gallery_urls,
@@ -81,7 +84,7 @@ MATRIXIFY_COLUMNS = [
     "Variant Weight Unit",
     "Variant Inventory Policy",
     "Variant Inventory Tracker",
-    "Metafield: custom.tracktech_data_api [single_line_text_field]",
+    "Metafield: custom.tracktech_data_api [json]",
     "Metafield: custom.track_size [single_line_text_field]",
     "Metafield: custom.tread_pattern [single_line_text_field]",
     "Metafield: custom.mpn [single_line_text_field]",
@@ -245,9 +248,7 @@ def product_title(
 
 
 def product_handle(export: dict, canonical: dict | None) -> str:
-    if canonical and canonical.get("hi_handle"):
-        return canonical["hi_handle"]
-    return export["itemid"].lower()
+    return canonical_product_handle(export["itemid"])
 
 
 def product_tags(export: dict, supplier: dict | None) -> str:
@@ -449,7 +450,7 @@ def matrixify_rows(product: dict) -> list[dict[str, str]]:
             row["Variant Weight Unit"] = product["variant_weight_unit"]
             row["Variant Inventory Policy"] = "continue"
             row["Variant Inventory Tracker"] = ""
-            row["Metafield: custom.tracktech_data_api [single_line_text_field]"] = mf["tracktech_data_api"]
+            row["Metafield: custom.tracktech_data_api [json]"] = build_tracktech_data_api_json(mf["tracktech_data_api"])
             row["Metafield: custom.track_size [single_line_text_field]"] = mf["track_size"]
             row["Metafield: custom.tread_pattern [single_line_text_field]"] = mf["tread_pattern"]
             row["Metafield: custom.mpn [single_line_text_field]"] = mf["mpn"]
