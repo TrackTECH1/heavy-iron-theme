@@ -29,7 +29,7 @@
         "button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "FIND YOUR EXACT PARTS",
+            "button_label_1": "Find Parts",
             "button_link_1": "/search",
             "button_style_secondary_1": false,
             "button_label_2": "",
@@ -386,7 +386,6 @@
         "column10": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/x-terrain-close-up_7a5ebc26-acc6-4c64-b413-51a5cc80ae8f.webp",
             "title": "X-Terrain Tread",
             "text": "",
             "link_label": "Shop now",
