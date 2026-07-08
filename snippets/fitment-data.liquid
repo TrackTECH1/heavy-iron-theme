@@ -32,7 +32,8 @@
     {%- for m in fem_refs -%}
       {%- assign mk = m.make.value.name.value | default: m.make.value.display_name.value | default: '' -%}
       {%- if mk != blank -%}
-        {%- unless make_list contains mk -%}
+        {%- assign seen_makes = make_list | split: '||' -%}
+        {%- unless seen_makes contains mk -%}
           {%- if make_list != '' -%}{%- assign make_list = make_list | append: '||' -%}{%- endif -%}
           {%- assign make_list = make_list | append: mk -%}
         {%- endunless -%}
@@ -44,13 +45,15 @@
       {%- unless forloop.first -%},{%- endunless -%}
       {{ make | json }}:[
       {%- assign first_model = true -%}
+      {%- assign make_space = make | append: ' ' | downcase -%}
       {%- for m in fem_refs -%}
         {%- assign fmk = m.make.value.name.value | default: m.make.value.display_name.value | default: '' -%}
         {%- if fmk == make -%}
           {%- assign disp = m.display_name.value | default: m.system.handle -%}
           {%- assign label = disp -%}
-          {%- assign mk_prefix = disp | slice: 0, make.size -%}
-          {%- if mk_prefix == make -%}{%- assign label = disp | slice: make.size, disp.size | strip -%}{%- endif -%}
+          {%- comment -%} Strip make only as a whole-word, case-insensitive prefix ("CAT 289D"→"289D"; never "Caterpillar"→"erpillar"). {%- endcomment -%}
+          {%- assign disp_head = disp | slice: 0, make_space.size | downcase -%}
+          {%- if disp_head == make_space -%}{%- assign label = disp | slice: make.size, disp.size | strip -%}{%- endif -%}
           {%- if label == blank -%}{%- assign label = disp -%}{%- endif -%}
           {%- assign murl = m.system.url | default: '' -%}
           {%- assign mhandle = m.system.handle | default: '' -%}
@@ -70,7 +73,8 @@
       {%- assign make_mo = fitment.make.value -%}
       {%- assign make_name = make_mo.name.value | default: make_mo.display_name.value | default: make_mo.name | default: '' -%}
       {%- if make_name != blank -%}
-        {%- unless make_list contains make_name -%}
+        {%- assign seen_makes = make_list | split: '||' -%}
+        {%- unless seen_makes contains make_name -%}
           {%- if make_list != '' -%}{%- assign make_list = make_list | append: '||' -%}{%- endif -%}
           {%- assign make_list = make_list | append: make_name -%}
         {%- endunless -%}
@@ -122,7 +126,8 @@
         {%- assign mk = first -%}
       {%- endif -%}
       {%- if mk != blank -%}
-        {%- unless make_list contains mk -%}
+        {%- assign seen_makes = make_list | split: '||' -%}
+        {%- unless seen_makes contains mk -%}
           {%- if make_list != '' -%}{%- assign make_list = make_list | append: '||' -%}{%- endif -%}
           {%- assign make_list = make_list | append: mk -%}
         {%- endunless -%}
@@ -169,8 +174,9 @@
       {%- assign disp = m.display_name.value | default: m.system.handle -%}
       {%- assign md = disp -%}
       {%- if mk != blank -%}
-        {%- assign mk_prefix = disp | slice: 0, mk.size -%}
-        {%- if mk_prefix == mk -%}{%- assign md = disp | slice: mk.size, disp.size | strip -%}{%- endif -%}
+        {%- assign mk_space = mk | append: ' ' | downcase -%}
+        {%- assign disp_head = disp | slice: 0, mk_space.size | downcase -%}
+        {%- if disp_head == mk_space -%}{%- assign md = disp | slice: mk.size, disp.size | strip -%}{%- endif -%}
       {%- endif -%}
       {%- if md == blank -%}{%- assign md = disp -%}{%- endif -%}
       {%- assign mu = m.system.url | default: '' -%}

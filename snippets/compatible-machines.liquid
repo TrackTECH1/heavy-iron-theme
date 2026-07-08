@@ -25,7 +25,8 @@
     {%- for m in fem_refs -%}
       {%- assign make_name = m.make.value.name.value | default: m.make.value.display_name.value | default: '' -%}
       {%- if make_name != blank -%}
-        {%- unless make_list contains make_name -%}
+        {%- assign seen_makes = make_list | split: '||' -%}
+        {%- unless seen_makes contains make_name -%}
           {%- if make_list != '' -%}{%- assign make_list = make_list | append: '||' -%}{%- endif -%}
           {%- assign make_list = make_list | append: make_name -%}
         {%- endunless -%}
@@ -55,8 +56,10 @@
               {%- if shown >= 6 -%}{%- continue -%}{%- endif -%}
               {%- assign model_display = m.display_name.value | default: m.system.handle -%}
               {%- assign model_label = model_display -%}
-              {%- assign mk_prefix = model_display | slice: 0, make.size -%}
-              {%- if mk_prefix == make -%}
+              {%- comment -%} Whole-word, case-insensitive make strip (never mangles "Caterpillar"). {%- endcomment -%}
+              {%- assign cm_make_space = make | append: ' ' | downcase -%}
+              {%- assign cm_disp_head = model_display | slice: 0, cm_make_space.size | downcase -%}
+              {%- if cm_disp_head == cm_make_space -%}
                 {%- assign model_label = model_display | slice: make.size, model_display.size | strip -%}
               {%- endif -%}
               {%- if model_label == blank -%}{%- assign model_label = model_display -%}{%- endif -%}
@@ -91,7 +94,8 @@
       {%- assign make_mo = fitment.make.value -%}
       {%- assign make_name = make_mo.name.value | default: make_mo.display_name.value | default: make_mo.name | default: '' -%}
       {%- if make_name != blank -%}
-        {%- unless make_list contains make_name -%}
+        {%- assign seen_makes = make_list | split: '||' -%}
+        {%- unless seen_makes contains make_name -%}
           {%- if make_list != '' -%}{%- assign make_list = make_list | append: '||' -%}{%- endif -%}
           {%- assign make_list = make_list | append: make_name -%}
         {%- endunless -%}
