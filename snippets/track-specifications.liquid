@@ -43,28 +43,28 @@
   <table class="track-specs__table">
     <tbody>
       <tr>
-        <td class="track-specs__label">Track Size</td>
+        <td class="track-specs__label" role="rowheader">Track Size</td>
         <td class="track-specs__value track-specs__value--highlight">{{ track_size }}</td>
       </tr>
       <tr>
-        <td class="track-specs__label">Rating</td>
+        <td class="track-specs__label" role="rowheader">Rating</td>
         <td class="track-specs__value">{{ track_rating }}</td>
       </tr>
       {%- if width_mm != blank -%}
         <tr>
-          <td class="track-specs__label">Width</td>
+          <td class="track-specs__label" role="rowheader">Width</td>
           <td class="track-specs__value">{{ width_mm }} (mm)</td>
         </tr>
       {%- endif -%}
       {%- if pitch_mm != blank -%}
         <tr>
-          <td class="track-specs__label">Pitch</td>
+          <td class="track-specs__label" role="rowheader">Pitch</td>
           <td class="track-specs__value">{{ pitch_mm }}</td>
         </tr>
       {%- endif -%}
       {%- if links != blank -%}
         <tr>
-          <td class="track-specs__label">Links</td>
+          <td class="track-specs__label" role="rowheader">Links</td>
           <td class="track-specs__value">{{ links }}</td>
         </tr>
       {%- endif -%}
@@ -74,7 +74,7 @@
           {%- assign track_weight_display = track_weight_display | append: 'lbs' -%}
         {%- endunless -%}
         <tr>
-          <td class="track-specs__label">Weight</td>
+          <td class="track-specs__label" role="rowheader">Weight</td>
           <td class="track-specs__value">{{ track_weight_display }}</td>
         </tr>
       {%- endif -%}

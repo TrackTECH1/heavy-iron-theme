@@ -15,7 +15,15 @@
   assign fit_output = output | default: 'rows'
 -%}
 {%- if fit_output == 'grouped' -%}
-  {%- if has_fitments -%}
+  {%- comment -%}
+    Fast path: sync-product-fitments precomputes a render-ready grouped blob into
+    custom.fitments_display so the PDP renders without dereferencing metaobjects.
+    Falls through to the live metaobject build when the blob is absent.
+  {%- endcomment -%}
+  {%- assign display_blob = product.metafields.custom.fitments_display.value -%}
+  {%- if display_blob != blank and display_blob != empty -%}
+    {{ display_blob | json }}
+  {%- elsif has_fitments -%}
     {%- assign make_list = '' -%}
     {%- for fitment in fitment_refs -%}
       {%- assign make_mo = fitment.make.value -%}
@@ -39,7 +47,12 @@
         {%- if fmake == make -%}
           {%- assign model_mo = fitment.model.value -%}
           {%- assign model_display = model_mo.display_name.value | default: model_mo.display_name | default: model_mo.system.handle -%}
-          {%- assign model_label = model_display | remove_first: make | remove_first: ' ' | strip -%}
+          {%- comment -%} Strip the make only when it's a real leading prefix (avoids "Caterpillar"→"erpillar"). {%- endcomment -%}
+          {%- assign model_label = model_display -%}
+          {%- assign mk_prefix = model_display | slice: 0, make.size -%}
+          {%- if mk_prefix == make -%}
+            {%- assign model_label = model_display | slice: make.size, model_display.size | strip -%}
+          {%- endif -%}
           {%- if model_label == blank -%}{%- assign model_label = model_display -%}{%- endif -%}
           {%- assign model_url = model_mo.system.url | default: '' -%}
           {%- assign model_handle = fitment.handle | default: model_mo.system.handle | default: '' -%}
@@ -117,7 +130,12 @@
       {%- if mk == 'CAT' or mk == 'cat' -%}{%- assign mk = 'Cat' -%}{%- endif -%}
       {%- assign model_mo = fitment.model.value -%}
       {%- assign md_full = model_mo.display_name.value | default: model_mo.display_name | default: model_mo.system.handle -%}
-      {%- assign md = md_full | remove_first: mk | remove_first: ' ' | strip -%}
+      {%- comment -%} Prefix-safe make strip (see grouped branch). {%- endcomment -%}
+      {%- assign md = md_full -%}
+      {%- assign mk_prefix = md_full | slice: 0, mk.size -%}
+      {%- if mk_prefix == mk -%}
+        {%- assign md = md_full | slice: mk.size, md_full.size | strip -%}
+      {%- endif -%}
       {%- if md == blank -%}{%- assign md = md_full -%}{%- endif -%}
       {%- assign mu = model_mo.system.url | default: '' -%}
       {%- if mk != blank and md != blank -%}

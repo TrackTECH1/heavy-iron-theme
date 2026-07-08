@@ -4,17 +4,34 @@ import { createClient } from "jsr:@supabase/supabase-js@2";
 /**
  * sync-product-fitments — Publish Supabase fitment rows → Shopify product custom.fitments
  *
- * POST { dry_run?: boolean (default true), limit?: number (max 50), offset?: number, handle?: string }
- * Headers: x-sync-key (optional, matches SYNC_API_KEY secret)
+ * POST {
+ *   dry_run?: boolean (default true),
+ *   limit?: number (max 50),
+ *   offset?: number,
+ *   handle?: string,
+ *   allow_partial?: boolean (default false — see "all-or-nothing" below)
+ * }
+ * Headers: x-sync-key (required for live writes, matches SYNC_API_KEY secret)
  *
- * Requires Supabase secrets: SHOPIFY_STORE_DOMAIN, SHOPIFY_ADMIN_TOKEN
- * Optional: SHOPIFY_API_VERSION (default 2025-10), SYNC_API_KEY
+ * Requires Supabase secrets: SHOPIFY_STORE_DOMAIN, SHOPIFY_ADMIN_TOKEN, SYNC_API_KEY
+ * Optional: SHOPIFY_API_VERSION (default 2025-10)
  *
  * Deploy: supabase functions deploy sync-product-fitments --no-verify-jwt
  * Run dry:  curl -X POST .../sync-product-fitments -d '{"dry_run":true,"limit":5}'
  * Run live: curl -X POST .../sync-product-fitments -H 'x-sync-key: ...' -d '{"dry_run":false,"limit":25}'
  * On-demand only (nightly cron removed). After Supabase fitment edits:
  *   ./scripts/consolidate-fitment.sh
+ *
+ * Safety model (see docs/architecture/fitment-data-pipeline.md):
+ *  - Auth FAILS CLOSED for live writes: no SYNC_API_KEY configured => live sync refused.
+ *  - Shopify throttling (HTTP 200 + top-level `errors` / THROTTLED) is detected and retried
+ *    with exponential backoff instead of being silently treated as success.
+ *  - ALL-OR-NOTHING per product: metafieldsSet REPLACES the whole custom.fitments list, so a
+ *    partially-resolved product would drop fitments. When allow_partial=false (default) a
+ *    product with any unresolved model is DEFERRED (left untouched on Shopify) and reported,
+ *    rather than overwritten with an incomplete list.
+ *  - Reads are ordered + paginated so the offset/limit window is deterministic and not capped
+ *    by PostgREST's default db-max-rows.
  */
 
 const cors = {
@@ -24,6 +41,9 @@ const cors = {
 };
 
 const FITMENT_MO_TYPE = "fitment";
+const SHOPIFY_MAX_RETRIES = 5;
+const SHOPIFY_BASE_DELAY_MS = 500;
+const FITMENT_PAGE_SIZE = 1000;
 
 type MakeRow = { handle: string; gid: string; name: string };
 
@@ -33,6 +53,8 @@ type FitRow = {
   model_key: string;
   model_gid: string;
   make_raw: string;
+  model_name: string;
+  model_handle: string;
 };
 
 type TrackMapRow = { handle: string; product_id: string };
@@ -52,6 +74,8 @@ const TREAD_TO_SHOPIFY: Record<string, string> = {
   Block: "offset-block",
   "L-Tread": "directional",
 };
+
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function sizeDigitsFromTrackSize(trackSize: string): string {
   return (trackSize || "").replace(/[^0-9]/g, "");
@@ -87,13 +111,29 @@ function json(body: unknown, status = 200) {
   });
 }
 
+function isThrottled(data: unknown): boolean {
+  const errors = (data as { errors?: unknown })?.errors;
+  if (!Array.isArray(errors)) return false;
+  return errors.some((e) => {
+    const code = (e as { extensions?: { code?: string } })?.extensions?.code;
+    const msg = (e as { message?: string })?.message || "";
+    return code === "THROTTLED" || /throttl/i.test(msg);
+  });
+}
+
+/**
+ * Shopify GraphQL Admin call with throttle/5xx-aware retry.
+ * Shopify returns HTTP 200 with a top-level `errors` array on throttling, so a naive
+ * `r.ok`-only check treats a throttled write as success and silently drops data.
+ */
 async function shopifyGql(
   shop: string,
   token: string,
   apiVersion: string,
   query: string,
   variables: Record<string, unknown> = {},
-) {
+  attempt = 0,
+): Promise<{ data?: Record<string, unknown>; errors?: unknown }> {
   const r = await fetch(`https://${shop}/admin/api/${apiVersion}/graphql.json`, {
     method: "POST",
     headers: {
@@ -102,8 +142,24 @@ async function shopifyGql(
     },
     body: JSON.stringify({ query, variables }),
   });
-  const data = await r.json();
+  let data: { data?: Record<string, unknown>; errors?: unknown };
+  try {
+    data = await r.json();
+  } catch {
+    data = {};
+  }
+
+  const retryable = r.status === 429 || r.status >= 500 || isThrottled(data);
+  if (retryable && attempt < SHOPIFY_MAX_RETRIES) {
+    const wait = SHOPIFY_BASE_DELAY_MS * 2 ** attempt;
+    await sleep(wait);
+    return shopifyGql(shop, token, apiVersion, query, variables, attempt + 1);
+  }
+
   if (!r.ok) throw new Error(`Shopify HTTP ${r.status}: ${JSON.stringify(data)}`);
+  if (Array.isArray(data?.errors) && data.errors.length) {
+    throw new Error(`Shopify GraphQL errors: ${JSON.stringify(data.errors)}`);
+  }
   return data;
 }
 
@@ -150,11 +206,15 @@ async function upsertFitmentMo(
       ],
     },
   });
-  const payload = data?.data?.metaobjectUpsert;
+  const payload = data?.data?.metaobjectUpsert as
+    | { metaobject?: { id?: string }; userErrors?: { message: string }[] }
+    | undefined;
   const errs = payload?.userErrors || [];
-  if (errs.length) throw new Error(errs.map((e: { message: string }) => e.message).join("; "));
+  if (errs.length) throw new Error(errs.map((e) => e.message).join("; "));
   return payload?.metaobject?.id ?? null;
 }
+
+type DisplayMap = Record<string, { m: string; h: string; u: string }[]>;
 
 async function setProductFitments(
   shop: string,
@@ -162,9 +222,28 @@ async function setProductFitments(
   apiVersion: string,
   productGid: string,
   fitmentGids: string[],
+  display: DisplayMap | null,
   dryRun: boolean,
 ) {
   if (dryRun) return { ok: true, count: fitmentGids.length };
+  const metafields: Record<string, unknown>[] = [{
+    ownerId: productGid,
+    namespace: "custom",
+    key: "fitments",
+    type: "list.metaobject_reference",
+    value: JSON.stringify(fitmentGids),
+  }];
+  // Denormalized, render-ready blob so the PDP renders fitments without dereferencing
+  // metaobjects at request time (see docs/architecture/fitment-data-pipeline.md, roadmap #2).
+  if (display && Object.keys(display).length) {
+    metafields.push({
+      ownerId: productGid,
+      namespace: "custom",
+      key: "fitments_display",
+      type: "json",
+      value: JSON.stringify(display),
+    });
+  }
   const q = `
     mutation SetFitments($metafields: [MetafieldsSetInput!]!) {
       metafieldsSet(metafields: $metafields) {
@@ -172,34 +251,86 @@ async function setProductFitments(
         userErrors { field message }
       }
     }`;
-  const data = await shopifyGql(shop, token, apiVersion, q, {
-    metafields: [{
-      ownerId: productGid,
-      namespace: "custom",
-      key: "fitments",
-      type: "list.metaobject_reference",
-      value: JSON.stringify(fitmentGids),
-    }],
-  });
-  const errs = data?.data?.metafieldsSet?.userErrors || [];
-  if (errs.length) throw new Error(errs.map((e: { message: string }) => e.message).join("; "));
+  const data = await shopifyGql(shop, token, apiVersion, q, { metafields });
+  const payload = data?.data?.metafieldsSet as
+    | { userErrors?: { message: string }[] }
+    | undefined;
+  const errs = payload?.userErrors || [];
+  if (errs.length) throw new Error(errs.map((e) => e.message).join("; "));
   return { ok: true, count: fitmentGids.length };
+}
+
+function stripMakePrefix(modelName: string, makeName: string): string {
+  const m = (modelName || "").trim();
+  const mk = (makeName || "").trim();
+  if (mk && m.toLowerCase().startsWith(mk.toLowerCase() + " ")) {
+    return m.slice(mk.length).trim() || m;
+  }
+  return m;
+}
+
+type FitmentJoinRow = {
+  product: {
+    shopify_product_id?: string;
+    handle?: string;
+    track_size?: string;
+    tread_pattern?: string;
+  } | null;
+  model:
+    | { model_key?: string; shopify_metaobject_gid?: string; make?: string; model?: string; model_handle?: string }
+    | null;
+};
+
+/**
+ * Fetch every eligible fitment row, ordered for deterministic offset/limit windows and
+ * paginated past PostgREST's default row cap so no product is silently dropped.
+ */
+async function fetchAllFitmentRows(
+  sb: ReturnType<typeof createClient>,
+): Promise<FitmentJoinRow[]> {
+  const all: FitmentJoinRow[] = [];
+  let from = 0;
+  while (true) {
+    const { data, error } = await sb
+      .from("fitment")
+      .select(
+        "product:product_id(shopify_product_id, handle, track_size, tread_pattern), model:model_id(model_key, shopify_metaobject_gid, make, model, model_handle)",
+      )
+      .eq("fit_type", "track")
+      .order("product_id", { ascending: true })
+      .order("model_id", { ascending: true })
+      .range(from, from + FITMENT_PAGE_SIZE - 1);
+    if (error) throw new Error(error.message);
+    const batch = (data || []) as unknown as FitmentJoinRow[];
+    all.push(...batch);
+    if (batch.length < FITMENT_PAGE_SIZE) break;
+    from += FITMENT_PAGE_SIZE;
+  }
+  return all;
 }
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: cors });
   try {
-    const syncKey = Deno.env.get("SYNC_API_KEY");
-    if (syncKey) {
-      const got = req.headers.get("x-sync-key") || new URL(req.url).searchParams.get("key");
-      if (got !== syncKey) return json({ error: "unauthorized" }, 401);
-    }
-
     const body = await req.json().catch(() => ({}));
     const dryRun = body.dry_run !== false;
-    const limit = Math.min(Number(body.limit || 10), 50);
-    const offset = Math.max(Number(body.offset || 0), 0);
+    const limit = Math.min(Math.max(Number(body.limit) || 10, 1), 50);
+    const offset = Math.max(Number(body.offset) || 0, 0);
     const handleFilter = body.handle ? String(body.handle) : null;
+    const allowPartial = body.allow_partial === true;
+
+    // Fail-closed auth: live writes require a configured, matching key. Dry runs (read-only)
+    // are permitted without a key, but a supplied-but-wrong key is always rejected.
+    const syncKey = Deno.env.get("SYNC_API_KEY");
+    const got = req.headers.get("x-sync-key") || new URL(req.url).searchParams.get("key");
+    if (!dryRun) {
+      if (!syncKey) {
+        return json({ error: "SYNC_API_KEY not configured; refusing live sync (fail-closed)" }, 403);
+      }
+      if (got !== syncKey) return json({ error: "unauthorized" }, 401);
+    } else if (syncKey && got && got !== syncKey) {
+      return json({ error: "unauthorized" }, 401);
+    }
 
     const shop = Deno.env.get("SHOPIFY_STORE_DOMAIN");
     const token = Deno.env.get("SHOPIFY_ADMIN_TOKEN");
@@ -216,6 +347,7 @@ Deno.serve(async (req) => {
     const { data: makeRows, error: makeErr } = await sb.from("make_map").select("handle,gid,name");
     if (makeErr) return json({ error: makeErr.message }, 500);
     const makes = (makeRows || []) as MakeRow[];
+    const makeNameByGid = new Map(makes.map((m) => [m.gid, m.name]));
 
     const [{ data: trackRows }, { data: variantRows }] = await Promise.all([
       sb.from("shopify_track_map").select("handle,product_id"),
@@ -228,22 +360,18 @@ Deno.serve(async (req) => {
       ((variantRows || []) as VariantMapRow[]).map((r) => [`${r.size_digits}::${r.tread}`, r.handle]),
     );
 
-    const { data, error } = await sb
-      .from("fitment")
-      .select("product:product_id(shopify_product_id, handle, track_size, tread_pattern), model:model_id(model_key, shopify_metaobject_gid, make)")
-      .eq("fit_type", "track");
-    if (error) return json({ error: error.message }, 500);
+    let fitmentRows: FitmentJoinRow[];
+    try {
+      fitmentRows = await fetchAllFitmentRows(sb);
+    } catch (e) {
+      return json({ error: String(e) }, 500);
+    }
 
     const rows: FitRow[] = [];
     const seen = new Set<string>();
-    for (const r of data || []) {
-      const product = r.product as {
-        shopify_product_id?: string;
-        handle?: string;
-        track_size?: string;
-        tread_pattern?: string;
-      } | null;
-      const model = r.model as { model_key?: string; shopify_metaobject_gid?: string; make?: string } | null;
+    for (const r of fitmentRows) {
+      const product = r.product;
+      const model = r.model;
       if (!model?.shopify_metaobject_gid || !model.model_key) continue;
       const resolved = resolveProductGid(product, variantByKey, trackByHandle);
       if (!resolved.gid) continue;
@@ -257,6 +385,8 @@ Deno.serve(async (req) => {
         model_key: model.model_key,
         model_gid: model.shopify_metaobject_gid,
         make_raw: model.make || "",
+        model_name: model.model || "",
+        model_handle: model.model_handle || "",
       });
     }
 
@@ -269,12 +399,14 @@ Deno.serve(async (req) => {
     const allProductIds = [...byProduct.keys()];
     const productIds = allProductIds.slice(offset, offset + limit);
     const results: Record<string, unknown>[] = [];
+    let productsWritten = 0;
 
     for (const productGid of productIds) {
       const items = byProduct.get(productGid) || [];
       const handle = items[0]?.product_handle || productGid;
       const fitmentGids: string[] = [];
       const skipped: string[] = [];
+      const display: DisplayMap = {};
 
       for (const item of items) {
         const makeGid = resolveMakeGid(item.make_raw, makes);
@@ -287,39 +419,75 @@ Deno.serve(async (req) => {
           const fid = await upsertFitmentMo(
             shop, token, apiVersion, moHandle, makeGid, item.model_gid, dryRun,
           );
-          if (fid) fitmentGids.push(fid);
+          if (fid) {
+            fitmentGids.push(fid);
+            // Accumulate the render-ready display blob from clean DB text (resolve-once).
+            const makeName = makeNameByGid.get(makeGid) || item.make_raw;
+            const label = stripMakePrefix(item.model_name || item.model_key, makeName);
+            if (!display[makeName]) display[makeName] = [];
+            if (!display[makeName].some((e) => e.m === label)) {
+              display[makeName].push({ m: label, h: item.model_handle || "", u: "" });
+            }
+          } else {
+            skipped.push(`${item.model_key}:null_metaobject_id`);
+          }
         } catch (e) {
           skipped.push(`${item.model_key}:${String(e)}`);
         }
       }
 
       const uniqueGids = [...new Set(fitmentGids)];
+      const complete = skipped.length === 0;
+
+      // All-or-nothing: never overwrite a product's fitments with a partial list. A product
+      // with any unresolved model is deferred (its existing Shopify data is left intact) unless
+      // the caller explicitly opts into partial writes.
+      if (!complete && !allowPartial) {
+        results.push({
+          handle,
+          product_gid: productGid,
+          deferred: true,
+          reason: "incomplete_resolution",
+          fitments_ready: uniqueGids.length,
+          models_total: items.length,
+          skipped: skipped.slice(0, 8),
+          dry_run: dryRun,
+        });
+        continue;
+      }
+
       try {
         if (uniqueGids.length) {
-          await setProductFitments(shop, token, apiVersion, productGid, uniqueGids, dryRun);
+          await setProductFitments(shop, token, apiVersion, productGid, uniqueGids, display, dryRun);
+          if (!dryRun) productsWritten += 1;
         }
         results.push({
           handle,
           product_gid: productGid,
           fitments_set: uniqueGids.length,
           models_total: items.length,
+          partial: !complete,
           skipped: skipped.slice(0, 8),
           dry_run: dryRun,
         });
       } catch (e) {
-        results.push({ handle, error: String(e), skipped: skipped.slice(0, 8) });
+        results.push({ handle, product_gid: productGid, error: String(e), skipped: skipped.slice(0, 8) });
       }
     }
 
-    if (!dryRun && results.length) {
+    const deferred = results.filter((r) => r.deferred).length;
+    const errored = results.filter((r) => r.error).length;
+
+    if (!dryRun && productsWritten) {
       await sb.from("tracktech_audit_log").insert({
         event_type: "shopify_sync",
         event_title: "Product fitments synced",
-        event_summary: `Synced custom.fitments on ${results.length} products`,
+        event_summary:
+          `Wrote custom.fitments on ${productsWritten} products (${deferred} deferred, ${errored} errored)`,
         related_table: "product",
         actor: "sync-product-fitments",
         confidence: "verified",
-        new_value: { products: results.length, limit },
+        new_value: { products_written: productsWritten, deferred, errored, limit, offset },
       });
     }
 
@@ -330,6 +498,9 @@ Deno.serve(async (req) => {
       limit,
       remaining: Math.max(allProductIds.length - offset - results.length, 0),
       processed: results.length,
+      products_written: productsWritten,
+      deferred,
+      errored,
       results,
     });
   } catch (e) {

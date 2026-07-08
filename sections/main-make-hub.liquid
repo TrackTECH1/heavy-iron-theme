@@ -1,6 +1,11 @@
 {%- liquid
   assign make = metaobject
-  assign make_name = make.name.value | default: make.system.handle | replace: '-', ' ' | capitalize
+  # Use the metaobject's real name verbatim (preserves casing: "New Holland", "JCB", "ASV").
+  # Only title-case the handle fallback, never a curated name.
+  assign make_name = make.name.value
+  if make_name == blank
+    assign make_name = make.system.handle | replace: '-', ' ' | capitalize
+  endif
   assign models = make.models.value
 -%}
 <style>

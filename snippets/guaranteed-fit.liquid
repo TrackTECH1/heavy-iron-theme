@@ -18,7 +18,13 @@
 {%- if has_fitments == false and has_compat_text == false -%}
 {%- else -%}
 
-<div class="gfit" id="guaranteed-fit-{{ section.id }}" data-fitment='{%- render 'fitment-data', product: product, output: 'grouped' -%}'>
+<div class="gfit" id="guaranteed-fit-{{ section.id }}">
+  {%- comment -%}
+    Fitment JSON lives in a script tag, not a single-quoted attribute: the `json`
+    filter does not escape apostrophes, so a make/model label with an apostrophe
+    would otherwise terminate the attribute early and break JSON.parse.
+  {%- endcomment -%}
+  <script type="application/json" data-gfit-data>{%- render 'fitment-data', product: product, output: 'grouped' -%}</script>
 
   <div class="gfit__selectors">
     <div class="gfit__row">
@@ -124,7 +130,9 @@
   const widget = document.getElementById('guaranteed-fit-{{ section.id }}');
   if (!widget) return;
 
-  const fitmentData  = JSON.parse(widget.dataset.fitment || '{}');
+  const dataEl = widget.querySelector('[data-gfit-data]');
+  let fitmentData = {};
+  try { fitmentData = JSON.parse((dataEl && dataEl.textContent) || '{}'); } catch (e) { fitmentData = {}; }
   const makeSelect   = widget.querySelector('.gfit__select--make');
   const modelSelect  = widget.querySelector('.gfit__select--model');
   const modelField   = widget.querySelector('.gfit__field--model');

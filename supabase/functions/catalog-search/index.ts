@@ -53,6 +53,7 @@ type SearchHit = {
 type ProductRow = {
   id: string;
   handle?: string | null;
+  shopify_handle?: string | null;
   shopify_product_id?: string | null;
   track_size?: string | null;
   tread_pattern?: string | null;
@@ -79,6 +80,9 @@ function resolveShopifyHandle(
   gidToHandle: Map<string, string>,
 ): string | null {
   if (!product) return null;
+  // Prefer the handle precomputed by the backfill (product.shopify_handle) — a pure DB read
+  // that removes the need for any Shopify Admin API lookup on the search path.
+  if (product.shopify_handle) return product.shopify_handle;
   if (product.shopify_product_id) {
     const fromGid = gidToHandle.get(product.shopify_product_id);
     if (fromGid) return fromGid;
@@ -91,12 +95,28 @@ function resolveShopifyHandle(
   return shopifyHandle;
 }
 
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+function isThrottled(data: unknown): boolean {
+  const errors = (data as { errors?: unknown })?.errors;
+  if (!Array.isArray(errors)) return false;
+  return errors.some((e) => {
+    const code = (e as { extensions?: { code?: string } })?.extensions?.code;
+    const msg = (e as { message?: string })?.message || "";
+    return code === "THROTTLED" || /throttl/i.test(msg);
+  });
+}
+
+// Shopify returns HTTP 200 + top-level `errors` (e.g. THROTTLED) rather than a non-2xx
+// status, so retry on that as well as 429/5xx. Kept to 2 retries since this is on the
+// user-facing search path.
 async function shopifyGql(
   shop: string,
   token: string,
   apiVersion: string,
   query: string,
   variables: Record<string, unknown> = {},
+  attempt = 0,
 ) {
   const r = await fetch(`https://${shop}/admin/api/${apiVersion}/graphql.json`, {
     method: "POST",
@@ -106,7 +126,16 @@ async function shopifyGql(
     },
     body: JSON.stringify({ query, variables }),
   });
-  const data = await r.json();
+  let data: { data?: Record<string, unknown>; errors?: unknown };
+  try {
+    data = await r.json();
+  } catch {
+    data = {};
+  }
+  if ((r.status === 429 || r.status >= 500 || isThrottled(data)) && attempt < 2) {
+    await sleep(400 * 2 ** attempt);
+    return shopifyGql(shop, token, apiVersion, query, variables, attempt + 1);
+  }
   if (!r.ok) throw new Error(`Shopify HTTP ${r.status}`);
   return data;
 }
@@ -156,14 +185,14 @@ async function shopifySearchHandle(
 async function selectProductsWithImageFallback(supabase: ReturnType<typeof createClient>, ids: string[]) {
   const withImages = await supabase
     .from("product")
-    .select("id, handle, shopify_product_id, track_size, tread_pattern, image_url, image_alt, media_role")
+    .select("id, handle, shopify_handle, shopify_product_id, track_size, tread_pattern, image_url, image_alt, media_role")
     .in("id", ids);
 
   if (!withImages.error) return withImages.data || [];
 
   const fallback = await supabase
     .from("product")
-    .select("id, handle, shopify_product_id, track_size, tread_pattern")
+    .select("id, handle, shopify_handle, shopify_product_id, track_size, tread_pattern")
     .in("id", ids);
 
   if (fallback.error) throw fallback.error;
@@ -191,8 +220,9 @@ Deno.serve(async (req) => {
       body: JSON.stringify({ q, limit }),
     });
     if (!searchRes.ok) {
-      const errText = await searchRes.text();
-      return json({ error: "search_failed", detail: errText }, 502);
+      // Log the upstream detail server-side; don't leak internals to the public caller.
+      console.error("catalog-search upstream failure", searchRes.status, await searchRes.text());
+      return json({ error: "search_failed" }, 502);
     }
     const searchPayload = await searchRes.json();
     const hits: SearchHit[] = searchPayload.results || [];
@@ -274,6 +304,7 @@ Deno.serve(async (req) => {
 
     return json({ query: q, results });
   } catch (e) {
-    return json({ error: String(e) }, 500);
+    console.error("catalog-search error", e);
+    return json({ error: "internal_error" }, 500);
   }
 });

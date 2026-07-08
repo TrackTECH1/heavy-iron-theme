@@ -17,12 +17,25 @@ function json(body: unknown, status = 200) {
   });
 }
 
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+function isThrottled(data: unknown): boolean {
+  const errors = (data as { errors?: unknown })?.errors;
+  if (!Array.isArray(errors)) return false;
+  return errors.some((e) => {
+    const code = (e as { extensions?: { code?: string } })?.extensions?.code;
+    const msg = (e as { message?: string })?.message || "";
+    return code === "THROTTLED" || /throttl/i.test(msg);
+  });
+}
+
 async function shopifyGql(
   shop: string,
   token: string,
   apiVersion: string,
   query: string,
   variables: Record<string, unknown> = {},
+  attempt = 0,
 ) {
   const r = await fetch(`https://${shop}/admin/api/${apiVersion}/graphql.json`, {
     method: "POST",
@@ -32,7 +45,16 @@ async function shopifyGql(
     },
     body: JSON.stringify({ query, variables }),
   });
-  const data = await r.json();
+  let data: { data?: Record<string, unknown>; errors?: unknown };
+  try {
+    data = await r.json();
+  } catch {
+    data = {};
+  }
+  if ((r.status === 429 || r.status >= 500 || isThrottled(data)) && attempt < 3) {
+    await sleep(500 * 2 ** attempt);
+    return shopifyGql(shop, token, apiVersion, query, variables, attempt + 1);
+  }
   if (!r.ok) throw new Error(`Shopify HTTP ${r.status}: ${JSON.stringify(data)}`);
   return data;
 }
@@ -40,6 +62,14 @@ async function shopifyGql(
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: cors });
   try {
+    // If a SYNC_API_KEY is configured, require it — this endpoint mutates the Shopify
+    // schema (metaobject/metafield definitions). Idempotent, but not public by default.
+    const syncKey = Deno.env.get("SYNC_API_KEY");
+    if (syncKey) {
+      const got = req.headers.get("x-sync-key") || new URL(req.url).searchParams.get("key");
+      if (got !== syncKey) return json({ error: "unauthorized" }, 401);
+    }
+
     const shop = Deno.env.get("SHOPIFY_STORE_DOMAIN");
     const token = Deno.env.get("SHOPIFY_ADMIN_TOKEN");
     const apiVersion = Deno.env.get("SHOPIFY_API_VERSION") || "2025-10";
@@ -171,12 +201,62 @@ Deno.serve(async (req) => {
       fitmentsMfResult = payload?.createdDefinition;
     }
 
+    // Render-ready grouped fitment JSON (make -> models), written by sync-product-fitments so
+    // the storefront can render fitments without dereferencing metaobjects per request.
+    const displayExisting = await shopifyGql(
+      shop,
+      token,
+      apiVersion,
+      `query {
+        metafieldDefinitions(first: 1, ownerType: PRODUCT, namespace: "custom", key: "fitments_display") {
+          nodes { id key name }
+        }
+      }`,
+    );
+    const fitmentsDisplayMf = displayExisting?.data?.metafieldDefinitions?.nodes?.[0];
+    let fitmentsDisplayResult = fitmentsDisplayMf;
+    if (!fitmentsDisplayMf) {
+      const createDisplayMf = await shopifyGql(
+        shop,
+        token,
+        apiVersion,
+        `mutation CreateFitmentsDisplayMetafield($definition: MetafieldDefinitionInput!) {
+          metafieldDefinitionCreate(definition: $definition) {
+            createdDefinition { id name namespace key }
+            userErrors { field message code }
+          }
+        }`,
+        {
+          definition: {
+            name: "Fitments Display",
+            namespace: "custom",
+            key: "fitments_display",
+            description: "Render-ready grouped fitment JSON (make → models) for the storefront.",
+            type: "json",
+            ownerType: "PRODUCT",
+          },
+        },
+      );
+      const displayPayload = createDisplayMf?.data?.metafieldDefinitionCreate;
+      const displayErrs = displayPayload?.userErrors || [];
+      if (displayErrs.length) {
+        return json({
+          step: "metafieldDefinitionCreate:fitments_display",
+          userErrors: displayErrs,
+          raw: createDisplayMf,
+        }, 422);
+      }
+      fitmentsDisplayResult = displayPayload?.createdDefinition;
+    }
+
     return json({
       ok: true,
       fitment_definition: fitmentDefResult,
       fitments_metafield_definition: fitmentsMfResult,
+      fitments_display_metafield_definition: fitmentsDisplayResult,
       created_fitment_def: !fitmentDef,
       created_fitments_mf: !fitmentsMf,
+      created_fitments_display_mf: !fitmentsDisplayMf,
     });
   } catch (e) {
     return json({ error: String(e) }, 500);

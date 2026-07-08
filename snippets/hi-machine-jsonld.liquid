@@ -36,7 +36,7 @@
       "itemListElement": [
         {%- assign i = 0 -%}
         {%- if model.track_variants.value != blank -%}
-          {%- for variant in model.track_variants.value -%}
+          {%- for variant in model.track_variants.value limit: 30 -%}
             {%- assign product = variant.product -%}
             {%- assign i = i | plus: 1 -%}
             {%- if i > 1 -%},{%- endif -%}
@@ -45,7 +45,7 @@
               "position": {{ i }},
               "item": {
                 "@type": "Product",
-                "name": {% if product != blank %}{{ product.title | append: ' - ' | append: variant.title | json }}{% else %}{{ variant.title | default: variant.sku | json }}{% endif %},
+                "name": {% if product != blank %}{{ product.title | append: ' - ' | append: variant.title | json }}{% else %}{{ variant.title | default: variant.sku | default: 'Rubber Track' | json }}{% endif %},
                 "sku": {{ variant.sku | json }},
                 "url": {% if product != blank %}{{ product.url | append: '?variant=' | append: variant.id | prepend: shop.url | json }}{% else %}{{ routes.search_url | append: '?q=' | append: variant.sku | prepend: shop.url | json }}{% endif %},
                 "category": "Rubber Tracks",
@@ -63,7 +63,7 @@
             }
           {%- endfor -%}
         {%- else -%}
-        {%- for product in model.track_products.value -%}
+        {%- for product in model.track_products.value limit: 30 -%}
           {%- assign i = i | plus: 1 -%}
           {%- if i > 1 -%},{%- endif -%}
           {
@@ -90,7 +90,7 @@
           }
         {%- endfor -%}
         {%- endif -%}
-        {%- for product in model.uc_products.value -%}
+        {%- for product in model.uc_products.value limit: 30 -%}
           {%- assign i = i | plus: 1 -%}
           {%- if i > 1 -%},{%- endif -%}
           {
@@ -125,25 +125,41 @@
             }
           {%- endfor -%}
         {%- else -%}
+          {%- comment -%} Must mirror the visible fallback in hi-model-faq-fallback.liquid (5 Q&As, same wording) or Google may flag the FAQ markup. {%- endcomment -%}
+          {%- if track_size != blank -%}
+            {%- capture faq_a1 -%}The {{ make_name }} {{ model_name }} commonly uses track size {{ track_size }}. Verify against your machine's existing track sidewall marking or OEM manual before ordering.{%- endcapture -%}
+          {%- else -%}
+            {%- capture faq_a1 -%}Track size varies by {{ model_name }} configuration. Measure your existing track (width × pitch × links) or call us with your serial number — we'll confirm the correct size before shipping.{%- endcapture -%}
+          {%- endif -%}
+          {%- if track_count != blank and track_count > 0 -%}
+            {%- capture faq_a4 -%}We stock {{ track_count }}+ tread option{% if track_count != 1 %}s{% endif %} for the {{ model_name }} — including C-Block, multi-bar, zig-zag, and directional patterns. See the Rubber Tracks section above for live pricing.{%- endcapture -%}
+          {%- else -%}
+            {%- capture faq_a4 -%}Common treads include C-Block (general purpose), multi-bar (mixed terrain), and directional (soft ground). Browse the Rubber Tracks section above for options in stock today.{%- endcapture -%}
+          {%- endif -%}
           {
             "@type": "Question",
             "name": {{ 'What size rubber tracks fit the ' | append: make_name | append: ' ' | append: model_name | append: '?' | json }},
-            "acceptedAnswer": { "@type": "Answer", "text": {% if track_size != blank %}{{ 'The ' | append: make_name | append: ' ' | append: model_name | append: ' commonly uses track size ' | append: track_size | append: '.' | json }}{% else %}{{ 'Track size varies by configuration. Measure your existing track or call us with your serial number.' | json }}{% endif %} }
+            "acceptedAnswer": { "@type": "Answer", "text": {{ faq_a1 | strip | json }} }
           },
           {
             "@type": "Question",
             "name": {{ 'Are Heavy Iron tracks guaranteed to fit my ' | append: model_name | append: '?' | json }},
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every rubber track order requires you to confirm make and model at checkout. Wrong-fit claims are covered under our fitment guarantee." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every rubber track order requires you to confirm make and model at checkout. We cross-reference OEM specs and only ship when fitment is verified. Wrong-fit claims are covered under our fitment guarantee." }
           },
           {
             "@type": "Question",
             "name": {{ 'How fast do ' | append: model_name | append: ' tracks ship?' | json }},
-            "acceptedAnswer": { "@type": "Answer", "text": "Orders placed before 12PM CT ship the same business day. Rubber tracks ship free via LTL freight to the contiguous United States." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Orders placed before 12PM CT ship the same business day. Rubber tracks ship free via LTL freight to the contiguous United States (48 states)." }
           },
           {
             "@type": "Question",
             "name": {{ 'What tread patterns are available for the ' | append: model_name | append: '?' | json }},
-            "acceptedAnswer": { "@type": "Answer", "text": {% if track_count > 0 %}{{ 'We stock ' | append: track_count | append: '+ tread options including C-Block, multi-bar, and directional patterns.' | json }}{% else %}"Common treads include C-Block, multi-bar, and directional patterns."{% endif %} }
+            "acceptedAnswer": { "@type": "Answer", "text": {{ faq_a4 | strip | json }} }
+          },
+          {
+            "@type": "Question",
+            "name": {{ 'Do you sell undercarriage parts for the ' | append: make_name | append: ' ' | append: model_name | append: '?' | json }},
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes — sprockets, idlers, rollers, and related steel undercarriage components are listed on this page when in stock. Need an OEM part number matched? Call (850) 816-7898 with your serial number." }
           }
         {%- endif -%}
       ]

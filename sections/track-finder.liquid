@@ -44,7 +44,14 @@
         {%- for h in brand_order limit: 12 -%}
           {%- assign mk = metaobjects.make[h] -%}
           {%- if mk != blank -%}
-            <li><a href="{{ mk.system.url }}">{{ mk.name.value | default: h | replace: '-', ' ' | capitalize }}</a></li>
+            {%- liquid
+              # Preserve the curated make name's casing; only title-case the handle fallback.
+              assign mk_label = mk.name.value
+              if mk_label == blank
+                assign mk_label = h | replace: '-', ' ' | capitalize
+              endif
+            -%}
+            <li><a href="{{ mk.system.url }}">{{ mk_label }}</a></li>
           {%- endif -%}
         {%- endfor -%}
       </ul>
