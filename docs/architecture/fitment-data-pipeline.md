@@ -152,6 +152,30 @@ These complete the target design and are worth follow-ups:
    rich result), and the single-pass refactor of the `compatible-machines`/`fitment-data` loops
    (largely obsoleted by roadmap #2's blob once its fast path covers those consumers).
 
+## Live-state discovery + theme pivot (2026-07)
+
+Auditing the actual production store (via MCP) surfaced that the `custom.fitments` pipeline is
+**not live**, and the products no longer match Supabase:
+
+- The current Shopify catalog was re-imported (new product IDs), so **~97% of Supabase
+  `shopify_product_id` values are stale** — they point at products that no longer exist. The sync
+  therefore cannot write to live products without a full GID re-resolution by handle.
+- On the live products, **`custom.fitments` is empty**. Fitment actually lives in
+  **`custom.fits_equipment_models`** — a list of `model` metaobject references (each with a `make`
+  reference, `display_name`, and `handle`) — plus a `custom.compatible_with` text list.
+- The storefront was already rendering fitment via the `compatible_with` fallback, so it is
+  functional; the richer metaobject experience was simply dormant.
+
+**Decision: pivot the theme to read `fits_equipment_models` directly** rather than resurrect the
+`custom.fitments` write pipeline. That field is already populated with structured `model`
+metaobjects — the same data the sync was meant to produce — so the theme can render grouped,
+model-page-linked fitment with **no Supabase, no sync, no stale-GID remediation, no
+`SYNC_API_KEY`**. Source priority is now: `fits_equipment_models` → `fitments_display` →
+`custom.fitments` → `compatible_with` (each a graceful fallback), applied in `fitment-data.liquid`,
+`compatible-machines.liquid`, `guaranteed-fit.liquid`, and `hi-product-jsonld.liquid`. The
+`custom.fitments` sync path remains as a dormant option but is no longer the storefront's source of
+truth.
+
 ## Acceptance criteria (for the write path)
 
 - A live sync with `SYNC_API_KEY` unset returns `403` and writes nothing.
