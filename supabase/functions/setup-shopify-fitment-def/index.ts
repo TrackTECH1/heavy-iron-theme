@@ -201,12 +201,62 @@ Deno.serve(async (req) => {
       fitmentsMfResult = payload?.createdDefinition;
     }
 
+    // Render-ready grouped fitment JSON (make -> models), written by sync-product-fitments so
+    // the storefront can render fitments without dereferencing metaobjects per request.
+    const displayExisting = await shopifyGql(
+      shop,
+      token,
+      apiVersion,
+      `query {
+        metafieldDefinitions(first: 1, ownerType: PRODUCT, namespace: "custom", key: "fitments_display") {
+          nodes { id key name }
+        }
+      }`,
+    );
+    const fitmentsDisplayMf = displayExisting?.data?.metafieldDefinitions?.nodes?.[0];
+    let fitmentsDisplayResult = fitmentsDisplayMf;
+    if (!fitmentsDisplayMf) {
+      const createDisplayMf = await shopifyGql(
+        shop,
+        token,
+        apiVersion,
+        `mutation CreateFitmentsDisplayMetafield($definition: MetafieldDefinitionInput!) {
+          metafieldDefinitionCreate(definition: $definition) {
+            createdDefinition { id name namespace key }
+            userErrors { field message code }
+          }
+        }`,
+        {
+          definition: {
+            name: "Fitments Display",
+            namespace: "custom",
+            key: "fitments_display",
+            description: "Render-ready grouped fitment JSON (make → models) for the storefront.",
+            type: "json",
+            ownerType: "PRODUCT",
+          },
+        },
+      );
+      const displayPayload = createDisplayMf?.data?.metafieldDefinitionCreate;
+      const displayErrs = displayPayload?.userErrors || [];
+      if (displayErrs.length) {
+        return json({
+          step: "metafieldDefinitionCreate:fitments_display",
+          userErrors: displayErrs,
+          raw: createDisplayMf,
+        }, 422);
+      }
+      fitmentsDisplayResult = displayPayload?.createdDefinition;
+    }
+
     return json({
       ok: true,
       fitment_definition: fitmentDefResult,
       fitments_metafield_definition: fitmentsMfResult,
+      fitments_display_metafield_definition: fitmentsDisplayResult,
       created_fitment_def: !fitmentDef,
       created_fitments_mf: !fitmentsMf,
+      created_fitments_display_mf: !fitmentsDisplayMf,
     });
   } catch (e) {
     return json({ error: String(e) }, 500);

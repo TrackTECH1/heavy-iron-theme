@@ -122,13 +122,16 @@ deterministic, idempotent, throttle-aware, and fail-closed.
 These complete the target design and are worth follow-ups:
 
 1. ~~**Precompute `shopify_handle`**~~ — code landed (see above); needs the rollout steps run.
-2. **Denormalized render-ready fitment blob** (grouped make → models, labels pre-cleaned) written
-   by the sync, so the PDP renders directly with no nested metaobject dereferencing, no
-   `remove_first`, no per-request N+1. **Now unblocked by the real schema**: the `model` table has
-   clean `make` + `model` + `model_handle` text columns, so the sync can build the grouped blob
-   from DB text and write it to a `custom.fitments_display` product metafield (JSON) that the PDP
-   reads verbatim. Requires: a `custom.fitments_display` metafield definition, sync computes+writes
-   it, and a theme fast-path (read `fitments_display` if present, else the current metaobject path).
+2. ~~**Denormalized render-ready fitment blob**~~ — code landed (needs rollout). The sync now
+   builds a grouped, label-cleaned blob from the `model.make`/`model.model`/`model_handle` text
+   columns and writes it to `custom.fitments_display` (JSON) in the same `metafieldsSet` call as
+   `custom.fitments`. `setup-shopify-fitment-def` registers the metafield definition.
+   `fitment-data.liquid` reads the blob verbatim when present (fast path) and falls back to the
+   live metaobject build otherwise — so nothing changes until a sync run populates it.
+   **Rollout**: run `setup-shopify-fitment-def` (creates the definition) → run a live sync →
+   the PDP grouped path (`guaranteed-fit`) renders from the blob with no metaobject dereferencing.
+   *Follow-up*: extend the fast path to the `rows` output (`fitment-selector`) and to
+   `compatible-machines.liquid` for the full PDP win.
 3. **Event-driven sync**: Supabase DB webhook/trigger enqueues per-product jobs (replacing the
    blind offset-window scan that only ever covered products 0–100), with a **dead-letter table**
    for unresolved products surfaced/alerted instead of silently skipped.
@@ -140,9 +143,14 @@ These complete the target design and are worth follow-ups:
    `data/shopify-fitment-definition.json` can't drift from what the code provisions.
 8. **CI**: Deno typecheck/lint for edge functions, a staging Supabase branch + Shopify dev store,
    and a smoke dry-run on deploy.
-9. **Theme polish** carried from the audit: FAQ structured-data/on-page parity, single `Product`
-   JSON-LD node, `aria-hidden` panel fix, spec-table `<th scope>` headers, cap the unbounded
-   `hi-machine-jsonld` ItemList.
+9. **Theme polish** carried from the audit — mostly landed: FAQ structured-data/on-page parity ✓,
+   `aria-hidden` panel + Escape/focus ✓, spec-table row-header semantics ✓, bounded
+   `hi-machine-jsonld` ItemList ✓, prefix-safe make-strip (the `remove_first` bug) ✓.
+   **Still open — needs a Shopify preview + Google Rich Results Test to validate safely:**
+   the dual `Product` JSON-LD node in `hi-product-jsonld.liquid` (a correct merge needs the exact
+   `@id` Shopify's `structured_data` emits; changing it blind risks suppressing the primary product
+   rich result), and the single-pass refactor of the `compatible-machines`/`fitment-data` loops
+   (largely obsoleted by roadmap #2's blob once its fast path covers those consumers).
 
 ## Acceptance criteria (for the write path)
 

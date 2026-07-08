@@ -53,6 +53,8 @@ type FitRow = {
   model_key: string;
   model_gid: string;
   make_raw: string;
+  model_name: string;
+  model_handle: string;
 };
 
 type TrackMapRow = { handle: string; product_id: string };
@@ -212,15 +214,36 @@ async function upsertFitmentMo(
   return payload?.metaobject?.id ?? null;
 }
 
+type DisplayMap = Record<string, { m: string; h: string; u: string }[]>;
+
 async function setProductFitments(
   shop: string,
   token: string,
   apiVersion: string,
   productGid: string,
   fitmentGids: string[],
+  display: DisplayMap | null,
   dryRun: boolean,
 ) {
   if (dryRun) return { ok: true, count: fitmentGids.length };
+  const metafields: Record<string, unknown>[] = [{
+    ownerId: productGid,
+    namespace: "custom",
+    key: "fitments",
+    type: "list.metaobject_reference",
+    value: JSON.stringify(fitmentGids),
+  }];
+  // Denormalized, render-ready blob so the PDP renders fitments without dereferencing
+  // metaobjects at request time (see docs/architecture/fitment-data-pipeline.md, roadmap #2).
+  if (display && Object.keys(display).length) {
+    metafields.push({
+      ownerId: productGid,
+      namespace: "custom",
+      key: "fitments_display",
+      type: "json",
+      value: JSON.stringify(display),
+    });
+  }
   const q = `
     mutation SetFitments($metafields: [MetafieldsSetInput!]!) {
       metafieldsSet(metafields: $metafields) {
@@ -228,21 +251,22 @@ async function setProductFitments(
         userErrors { field message }
       }
     }`;
-  const data = await shopifyGql(shop, token, apiVersion, q, {
-    metafields: [{
-      ownerId: productGid,
-      namespace: "custom",
-      key: "fitments",
-      type: "list.metaobject_reference",
-      value: JSON.stringify(fitmentGids),
-    }],
-  });
+  const data = await shopifyGql(shop, token, apiVersion, q, { metafields });
   const payload = data?.data?.metafieldsSet as
     | { userErrors?: { message: string }[] }
     | undefined;
   const errs = payload?.userErrors || [];
   if (errs.length) throw new Error(errs.map((e) => e.message).join("; "));
   return { ok: true, count: fitmentGids.length };
+}
+
+function stripMakePrefix(modelName: string, makeName: string): string {
+  const m = (modelName || "").trim();
+  const mk = (makeName || "").trim();
+  if (mk && m.toLowerCase().startsWith(mk.toLowerCase() + " ")) {
+    return m.slice(mk.length).trim() || m;
+  }
+  return m;
 }
 
 type FitmentJoinRow = {
@@ -252,7 +276,9 @@ type FitmentJoinRow = {
     track_size?: string;
     tread_pattern?: string;
   } | null;
-  model: { model_key?: string; shopify_metaobject_gid?: string; make?: string } | null;
+  model:
+    | { model_key?: string; shopify_metaobject_gid?: string; make?: string; model?: string; model_handle?: string }
+    | null;
 };
 
 /**
@@ -268,7 +294,7 @@ async function fetchAllFitmentRows(
     const { data, error } = await sb
       .from("fitment")
       .select(
-        "product:product_id(shopify_product_id, handle, track_size, tread_pattern), model:model_id(model_key, shopify_metaobject_gid, make)",
+        "product:product_id(shopify_product_id, handle, track_size, tread_pattern), model:model_id(model_key, shopify_metaobject_gid, make, model, model_handle)",
       )
       .eq("fit_type", "track")
       .order("product_id", { ascending: true })
@@ -321,6 +347,7 @@ Deno.serve(async (req) => {
     const { data: makeRows, error: makeErr } = await sb.from("make_map").select("handle,gid,name");
     if (makeErr) return json({ error: makeErr.message }, 500);
     const makes = (makeRows || []) as MakeRow[];
+    const makeNameByGid = new Map(makes.map((m) => [m.gid, m.name]));
 
     const [{ data: trackRows }, { data: variantRows }] = await Promise.all([
       sb.from("shopify_track_map").select("handle,product_id"),
@@ -358,6 +385,8 @@ Deno.serve(async (req) => {
         model_key: model.model_key,
         model_gid: model.shopify_metaobject_gid,
         make_raw: model.make || "",
+        model_name: model.model || "",
+        model_handle: model.model_handle || "",
       });
     }
 
@@ -377,6 +406,7 @@ Deno.serve(async (req) => {
       const handle = items[0]?.product_handle || productGid;
       const fitmentGids: string[] = [];
       const skipped: string[] = [];
+      const display: DisplayMap = {};
 
       for (const item of items) {
         const makeGid = resolveMakeGid(item.make_raw, makes);
@@ -389,8 +419,18 @@ Deno.serve(async (req) => {
           const fid = await upsertFitmentMo(
             shop, token, apiVersion, moHandle, makeGid, item.model_gid, dryRun,
           );
-          if (fid) fitmentGids.push(fid);
-          else skipped.push(`${item.model_key}:null_metaobject_id`);
+          if (fid) {
+            fitmentGids.push(fid);
+            // Accumulate the render-ready display blob from clean DB text (resolve-once).
+            const makeName = makeNameByGid.get(makeGid) || item.make_raw;
+            const label = stripMakePrefix(item.model_name || item.model_key, makeName);
+            if (!display[makeName]) display[makeName] = [];
+            if (!display[makeName].some((e) => e.m === label)) {
+              display[makeName].push({ m: label, h: item.model_handle || "", u: "" });
+            }
+          } else {
+            skipped.push(`${item.model_key}:null_metaobject_id`);
+          }
         } catch (e) {
           skipped.push(`${item.model_key}:${String(e)}`);
         }
@@ -418,7 +458,7 @@ Deno.serve(async (req) => {
 
       try {
         if (uniqueGids.length) {
-          await setProductFitments(shop, token, apiVersion, productGid, uniqueGids, dryRun);
+          await setProductFitments(shop, token, apiVersion, productGid, uniqueGids, display, dryRun);
           if (!dryRun) productsWritten += 1;
         }
         results.push({
