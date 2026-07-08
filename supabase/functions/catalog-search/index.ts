@@ -53,6 +53,7 @@ type SearchHit = {
 type ProductRow = {
   id: string;
   handle?: string | null;
+  shopify_handle?: string | null;
   shopify_product_id?: string | null;
   track_size?: string | null;
   tread_pattern?: string | null;
@@ -79,6 +80,9 @@ function resolveShopifyHandle(
   gidToHandle: Map<string, string>,
 ): string | null {
   if (!product) return null;
+  // Prefer the handle precomputed by the backfill (product.shopify_handle) — a pure DB read
+  // that removes the need for any Shopify Admin API lookup on the search path.
+  if (product.shopify_handle) return product.shopify_handle;
   if (product.shopify_product_id) {
     const fromGid = gidToHandle.get(product.shopify_product_id);
     if (fromGid) return fromGid;
@@ -181,14 +185,14 @@ async function shopifySearchHandle(
 async function selectProductsWithImageFallback(supabase: ReturnType<typeof createClient>, ids: string[]) {
   const withImages = await supabase
     .from("product")
-    .select("id, handle, shopify_product_id, track_size, tread_pattern, image_url, image_alt, media_role")
+    .select("id, handle, shopify_handle, shopify_product_id, track_size, tread_pattern, image_url, image_alt, media_role")
     .in("id", ids);
 
   if (!withImages.error) return withImages.data || [];
 
   const fallback = await supabase
     .from("product")
-    .select("id, handle, shopify_product_id, track_size, tread_pattern")
+    .select("id, handle, shopify_handle, shopify_product_id, track_size, tread_pattern")
     .in("id", ids);
 
   if (fallback.error) throw fallback.error;

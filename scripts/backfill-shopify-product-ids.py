@@ -71,23 +71,26 @@ def shopify_gql(query: str, variables: dict | None = None) -> dict:
     return json.loads(r.stdout)
 
 
-def shopify_product_by_handle(handle: str) -> str | None:
+def shopify_product_by_handle(handle: str) -> tuple[str, str] | None:
     data = shopify_gql(
         "query ProductByHandle($handle: String!) { productByHandle(handle: $handle) { id handle } }",
         {"handle": handle},
     )
     product = data.get("productByHandle")
-    return product.get("id") if product else None
+    if product and product.get("id"):
+        return product["id"], product.get("handle") or handle
+    return None
 
 
-def shopify_product_by_sku(sku: str) -> str | None:
+def shopify_product_by_sku(sku: str) -> tuple[str, str] | None:
     data = shopify_gql(
         "query ProductBySku($q: String!) { productVariants(first: 1, query: $q) { nodes { product { id handle } } } }",
         {"q": f"sku:{sku}"},
     )
     nodes = (data.get("productVariants") or {}).get("nodes") or []
-    if nodes and nodes[0].get("product"):
-        return nodes[0]["product"]["id"]
+    prod = nodes[0].get("product") if nodes else None
+    if prod and prod.get("id"):
+        return prod["id"], prod.get("handle") or ""
     return None
 
 
@@ -150,7 +153,7 @@ def digits_from_handle(handle: str) -> str:
     return re.sub(r"[^0-9]", "", handle or "")
 
 
-def pick_product_by_size_tread(products: list[dict], digits: str, tread_slug: str | None) -> str | None:
+def pick_product_by_size_tread(products: list[dict], digits: str, tread_slug: str | None) -> dict | None:
     if not products or not digits:
         return None
     tread_bits = [tread_slug] if tread_slug else []
@@ -161,28 +164,29 @@ def pick_product_by_size_tread(products: list[dict], digits: str, tread_slug: st
             continue
         if tread_slug and not any(t in blob for t in tread_bits if t):
             continue
-        return p.get("id")
+        return p
     # No confident match. Returning products[0] here would write a WRONG shopify_product_id
     # (which then drives the fitment sync), so report a miss instead of guessing.
     return None
 
 
-def resolve_shopify_gid(handle: str, sku: str | None) -> tuple[str | None, str]:
-    gid = shopify_product_by_handle(handle)
-    if gid:
-        return gid, "handle"
+def resolve_shopify_gid(handle: str, sku: str | None) -> tuple[str | None, str | None, str]:
+    """Return (shopify_product_gid, shopify_handle, method)."""
+    hit = shopify_product_by_handle(handle)
+    if hit:
+        return hit[0], hit[1], "handle"
 
     if sku:
-        gid = shopify_product_by_sku(sku.strip())
-        if gid:
-            return gid, "sku"
+        hit = shopify_product_by_sku(sku.strip())
+        if hit:
+            return hit[0], hit[1], "sku"
 
     for candidate in normalize_handle_candidates(handle):
         if candidate == handle:
             continue
-        gid = shopify_product_by_handle(candidate)
-        if gid:
-            return gid, "normalized"
+        hit = shopify_product_by_handle(candidate)
+        if hit:
+            return hit[0], hit[1], "normalized"
 
     digits = digits_from_handle(handle)
     tread = None
@@ -192,11 +196,11 @@ def resolve_shopify_gid(handle: str, sku: str | None) -> tuple[str | None, str]:
             break
     if digits:
         nodes = shopify_products_search(f"title:*{digits}*")
-        gid = pick_product_by_size_tread(nodes, digits, tread)
-        if gid:
-            return gid, "search"
+        picked = pick_product_by_size_tread(nodes, digits, tread)
+        if picked:
+            return picked.get("id"), picked.get("handle"), "search"
 
-    return None, "none"
+    return None, None, "none"
 
 
 def supabase_fetch_pending(url: str, key: str) -> list[dict]:
@@ -225,8 +229,13 @@ def supabase_fetch_pending(url: str, key: str) -> list[dict]:
     return out
 
 
-def supabase_update_product(url: str, key: str, product_id: str, shopify_gid: str) -> None:
-    body = json.dumps({"shopify_product_id": shopify_gid}).encode()
+def supabase_update_product(
+    url: str, key: str, product_id: str, shopify_gid: str, shopify_handle: str | None = None
+) -> None:
+    payload = {"shopify_product_id": shopify_gid}
+    if shopify_handle:
+        payload["shopify_handle"] = shopify_handle
+    body = json.dumps(payload).encode()
     req = urllib.request.Request(
         f"{url}/rest/v1/product?id=eq.{product_id}",
         data=body,
@@ -276,7 +285,7 @@ def main() -> int:
         if not handle:
             continue
         try:
-            gid, method = resolve_shopify_gid(handle, sku)
+            gid, shop_handle, method = resolve_shopify_gid(handle, sku)
         except Exception as e:
             errors.append(f"{handle}: {e}")
             continue
@@ -285,11 +294,11 @@ def main() -> int:
             by_method[method] = by_method.get(method, 0) + 1
             if args.apply:
                 try:
-                    supabase_update_product(url, key, pid, gid)
+                    supabase_update_product(url, key, pid, gid, shop_handle)
                 except urllib.error.HTTPError as e:
                     errors.append(f"{handle}: supabase {e.code} {e.read().decode()}")
             else:
-                print(f"[dry-run] {handle} → {gid} ({method})")
+                print(f"[dry-run] {handle} → {gid} ({method}) handle={shop_handle or '?'}")
         else:
             missing += 1
             print(f"[miss] {handle}", file=sys.stderr)

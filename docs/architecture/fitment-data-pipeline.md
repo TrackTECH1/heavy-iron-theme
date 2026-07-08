@@ -104,15 +104,31 @@ deterministic, idempotent, throttle-aware, and fail-closed.
 - `setup-supabase-shopify-secrets.sh`: stop echoing the token / passing it as a CLI arg; use a
   private `--env-file`; optionally seed `SYNC_API_KEY`.
 
+**Precompute `shopify_handle` (roadmap #1 — code landed, needs rollout)**
+- Migration `20260708000100_product_shopify_handle.sql`: nullable `product.shopify_handle` +
+  partial index (additive; rollback documented in the file).
+- `backfill-shopify-product-ids.py`: resolves the Shopify **handle** alongside the GID and writes
+  both to Supabase.
+- `catalog-search`: reads `product.shopify_handle` first (pure DB read); the Admin-API fan-out is
+  now only a fallback for not-yet-backfilled rows and stops firing once the backfill has run.
+
+  **Rollout** (owner runs against live infra — not done by this PR):
+  1. Apply the migration to the `Source-of-truth` Supabase project.
+  2. Dry-run then `SUPABASE_SERVICE_ROLE_KEY=… python3 scripts/backfill-shopify-product-ids.py --apply`.
+  3. Redeploy `catalog-search`.
+
 ## Roadmap (not in this PR)
 
 These complete the target design and are worth follow-ups:
 
-1. **Precompute `shopify_handle`** on the product row during sync and drop the `catalog-search`
-   Admin-API fan-out entirely (removes the unauthenticated N+1 availability/cost exposure).
+1. ~~**Precompute `shopify_handle`**~~ — code landed (see above); needs the rollout steps run.
 2. **Denormalized render-ready fitment blob** (grouped make → models, labels pre-cleaned) written
    by the sync, so the PDP renders directly with no nested metaobject dereferencing, no
-   `remove_first`, no per-request N+1.
+   `remove_first`, no per-request N+1. **Now unblocked by the real schema**: the `model` table has
+   clean `make` + `model` + `model_handle` text columns, so the sync can build the grouped blob
+   from DB text and write it to a `custom.fitments_display` product metafield (JSON) that the PDP
+   reads verbatim. Requires: a `custom.fitments_display` metafield definition, sync computes+writes
+   it, and a theme fast-path (read `fitments_display` if present, else the current metaobject path).
 3. **Event-driven sync**: Supabase DB webhook/trigger enqueues per-product jobs (replacing the
    blind offset-window scan that only ever covered products 0–100), with a **dead-letter table**
    for unresolved products surfaced/alerted instead of silently skipped.
