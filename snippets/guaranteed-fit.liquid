@@ -4,8 +4,13 @@
   Data source: fitment-data.liquid → custom.fitments (+ compatible_with fallback).
 {%- endcomment -%}
 
+{%- assign fem_refs = product.metafields.custom.fits_equipment_models.value -%}
 {%- assign fitment_refs = product.metafields.custom.fitments.value -%}
 {%- assign compatible_raw = product.metafields.custom.compatible_with.value -%}
+{%- assign has_fem = false -%}
+{%- if fem_refs != blank and fem_refs.size > 0 -%}
+  {%- assign has_fem = true -%}
+{%- endif -%}
 {%- assign has_fitments = false -%}
 {%- if fitment_refs != blank and fitment_refs.size > 0 -%}
   {%- assign has_fitments = true -%}
@@ -15,7 +20,7 @@
   {%- assign has_compat_text = true -%}
 {%- endif -%}
 
-{%- if has_fitments == false and has_compat_text == false -%}
+{%- if has_fem == false and has_fitments == false and has_compat_text == false -%}
 {%- else -%}
 
 <div class="gfit" id="guaranteed-fit-{{ section.id }}">

@@ -1,13 +1,23 @@
 {%- comment -%}
   fitment-data.liquid — Single Shopify fitment source for PDP widgets.
-  Reads custom.fitments (fitment MO refs from Supabase sync), then compatible_with text.
+  Source priority (each a graceful fallback):
+    1. custom.fits_equipment_models — structured `model` metaobject refs (make + display + handle),
+       the field the live catalog actually carries. Richest: links every machine to its model page.
+    2. custom.fitments_display — precomputed grouped blob (sync fast path), grouped output only.
+    3. custom.fitments — fitment metaobject refs (make/model pair).
+    4. custom.compatible_with — newline-delimited text.
   Params:
     - product (required)
     - output: 'rows' (default) | 'grouped' — JSON shape for consumers
 {%- endcomment -%}
 {%- liquid
+  assign fem_refs = product.metafields.custom.fits_equipment_models.value
   assign fitment_refs = product.metafields.custom.fitments.value
   assign compatible_raw = product.metafields.custom.compatible_with.value
+  assign has_fem = false
+  if fem_refs != blank and fem_refs.size > 0
+    assign has_fem = true
+  endif
   assign has_fitments = false
   if fitment_refs != blank and fitment_refs.size > 0
     assign has_fitments = true
@@ -15,13 +25,44 @@
   assign fit_output = output | default: 'rows'
 -%}
 {%- if fit_output == 'grouped' -%}
-  {%- comment -%}
-    Fast path: sync-product-fitments precomputes a render-ready grouped blob into
-    custom.fitments_display so the PDP renders without dereferencing metaobjects.
-    Falls through to the live metaobject build when the blob is absent.
-  {%- endcomment -%}
   {%- assign display_blob = product.metafields.custom.fitments_display.value -%}
-  {%- if display_blob != blank and display_blob != empty -%}
+  {%- if has_fem -%}
+    {%- comment -%} Primary: group `model` metaobject refs by their make. {%- endcomment -%}
+    {%- assign make_list = '' -%}
+    {%- for m in fem_refs -%}
+      {%- assign mk = m.make.value.name.value | default: m.make.value.display_name.value | default: '' -%}
+      {%- if mk != blank -%}
+        {%- unless make_list contains mk -%}
+          {%- if make_list != '' -%}{%- assign make_list = make_list | append: '||' -%}{%- endif -%}
+          {%- assign make_list = make_list | append: mk -%}
+        {%- endunless -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- assign makes = make_list | split: '||' -%}
+    {
+    {%- for make in makes -%}
+      {%- unless forloop.first -%},{%- endunless -%}
+      {{ make | json }}:[
+      {%- assign first_model = true -%}
+      {%- for m in fem_refs -%}
+        {%- assign fmk = m.make.value.name.value | default: m.make.value.display_name.value | default: '' -%}
+        {%- if fmk == make -%}
+          {%- assign disp = m.display_name.value | default: m.system.handle -%}
+          {%- assign label = disp -%}
+          {%- assign mk_prefix = disp | slice: 0, make.size -%}
+          {%- if mk_prefix == make -%}{%- assign label = disp | slice: make.size, disp.size | strip -%}{%- endif -%}
+          {%- if label == blank -%}{%- assign label = disp -%}{%- endif -%}
+          {%- assign murl = m.system.url | default: '' -%}
+          {%- assign mhandle = m.system.handle | default: '' -%}
+          {%- unless first_model -%},{%- endunless -%}
+          {"m":{{ label | json }},"h":{{ mhandle | json }},"u":{{ murl | json }}}
+          {%- assign first_model = false -%}
+        {%- endif -%}
+      {%- endfor -%}
+      ]
+    {%- endfor -%}
+    }
+  {%- elsif display_blob != blank and display_blob != empty -%}
     {{ display_blob | json }}
   {%- elsif has_fitments -%}
     {%- assign make_list = '' -%}
@@ -121,7 +162,25 @@
   {%- endif -%}
 {%- else -%}
   [
-  {%- if has_fitments -%}
+  {%- if has_fem -%}
+    {%- assign first_row = true -%}
+    {%- for m in fem_refs -%}
+      {%- assign mk = m.make.value.name.value | default: m.make.value.display_name.value | default: '' -%}
+      {%- assign disp = m.display_name.value | default: m.system.handle -%}
+      {%- assign md = disp -%}
+      {%- if mk != blank -%}
+        {%- assign mk_prefix = disp | slice: 0, mk.size -%}
+        {%- if mk_prefix == mk -%}{%- assign md = disp | slice: mk.size, disp.size | strip -%}{%- endif -%}
+      {%- endif -%}
+      {%- if md == blank -%}{%- assign md = disp -%}{%- endif -%}
+      {%- assign mu = m.system.url | default: '' -%}
+      {%- if mk != blank and md != blank -%}
+        {%- unless first_row -%},{%- endunless -%}
+        {"k":{{ mk | json }},"m":{{ md | json }},"u":{{ mu | json }}}
+        {%- assign first_row = false -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- elsif has_fitments -%}
     {%- assign first_row = true -%}
     {%- for fitment in fitment_refs -%}
       {%- assign make_mo = fitment.make.value -%}
