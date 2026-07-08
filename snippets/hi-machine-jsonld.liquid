@@ -36,7 +36,7 @@
       "itemListElement": [
         {%- assign i = 0 -%}
         {%- if model.track_variants.value != blank -%}
-          {%- for variant in model.track_variants.value -%}
+          {%- for variant in model.track_variants.value limit: 30 -%}
             {%- assign product = variant.product -%}
             {%- assign i = i | plus: 1 -%}
             {%- if i > 1 -%},{%- endif -%}
@@ -45,7 +45,7 @@
               "position": {{ i }},
               "item": {
                 "@type": "Product",
-                "name": {% if product != blank %}{{ product.title | append: ' - ' | append: variant.title | json }}{% else %}{{ variant.title | default: variant.sku | json }}{% endif %},
+                "name": {% if product != blank %}{{ product.title | append: ' - ' | append: variant.title | json }}{% else %}{{ variant.title | default: variant.sku | default: 'Rubber Track' | json }}{% endif %},
                 "sku": {{ variant.sku | json }},
                 "url": {% if product != blank %}{{ product.url | append: '?variant=' | append: variant.id | prepend: shop.url | json }}{% else %}{{ routes.search_url | append: '?q=' | append: variant.sku | prepend: shop.url | json }}{% endif %},
                 "category": "Rubber Tracks",
@@ -63,7 +63,7 @@
             }
           {%- endfor -%}
         {%- else -%}
-        {%- for product in model.track_products.value -%}
+        {%- for product in model.track_products.value limit: 30 -%}
           {%- assign i = i | plus: 1 -%}
           {%- if i > 1 -%},{%- endif -%}
           {
@@ -90,7 +90,7 @@
           }
         {%- endfor -%}
         {%- endif -%}
-        {%- for product in model.uc_products.value -%}
+        {%- for product in model.uc_products.value limit: 30 -%}
           {%- assign i = i | plus: 1 -%}
           {%- if i > 1 -%},{%- endif -%}
           {
