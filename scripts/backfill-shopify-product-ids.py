@@ -162,7 +162,9 @@ def pick_product_by_size_tread(products: list[dict], digits: str, tread_slug: st
         if tread_slug and not any(t in blob for t in tread_bits if t):
             continue
         return p.get("id")
-    return products[0].get("id") if products else None
+    # No confident match. Returning products[0] here would write a WRONG shopify_product_id
+    # (which then drives the fitment sync), so report a miss instead of guessing.
+    return None
 
 
 def resolve_shopify_gid(handle: str, sku: str | None) -> tuple[str | None, str]:
@@ -198,17 +200,29 @@ def resolve_shopify_gid(handle: str, sku: str | None) -> tuple[str | None, str]:
 
 
 def supabase_fetch_pending(url: str, key: str) -> list[dict]:
-    req = urllib.request.Request(
-        f"{url}/rest/v1/product?select=id,handle,sku"
-        "&shopify_product_id=is.null&handle=not.is.null&order=handle",
-        headers={
-            "apikey": key,
-            "Authorization": f"Bearer {key}",
-            "Accept": "application/json",
-        },
-    )
-    with urllib.request.urlopen(req) as resp:
-        return json.loads(resp.read())
+    # PostgREST caps result sets (default db-max-rows, commonly 1000). Page explicitly with
+    # limit/offset so we never silently process only the first page and report success.
+    page_size = 1000
+    offset = 0
+    out: list[dict] = []
+    while True:
+        req = urllib.request.Request(
+            f"{url}/rest/v1/product?select=id,handle,sku"
+            "&shopify_product_id=is.null&handle=not.is.null&order=handle"
+            f"&limit={page_size}&offset={offset}",
+            headers={
+                "apikey": key,
+                "Authorization": f"Bearer {key}",
+                "Accept": "application/json",
+            },
+        )
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            batch = json.loads(resp.read())
+        out.extend(batch)
+        if len(batch) < page_size:
+            break
+        offset += page_size
+    return out
 
 
 def supabase_update_product(url: str, key: str, product_id: str, shopify_gid: str) -> None:
@@ -224,7 +238,7 @@ def supabase_update_product(url: str, key: str, product_id: str, shopify_gid: st
             "Prefer": "return=minimal",
         },
     )
-    with urllib.request.urlopen(req) as resp:
+    with urllib.request.urlopen(req, timeout=30) as resp:
         resp.read()
 
 

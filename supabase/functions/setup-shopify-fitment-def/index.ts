@@ -17,12 +17,25 @@ function json(body: unknown, status = 200) {
   });
 }
 
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+function isThrottled(data: unknown): boolean {
+  const errors = (data as { errors?: unknown })?.errors;
+  if (!Array.isArray(errors)) return false;
+  return errors.some((e) => {
+    const code = (e as { extensions?: { code?: string } })?.extensions?.code;
+    const msg = (e as { message?: string })?.message || "";
+    return code === "THROTTLED" || /throttl/i.test(msg);
+  });
+}
+
 async function shopifyGql(
   shop: string,
   token: string,
   apiVersion: string,
   query: string,
   variables: Record<string, unknown> = {},
+  attempt = 0,
 ) {
   const r = await fetch(`https://${shop}/admin/api/${apiVersion}/graphql.json`, {
     method: "POST",
@@ -32,7 +45,16 @@ async function shopifyGql(
     },
     body: JSON.stringify({ query, variables }),
   });
-  const data = await r.json();
+  let data: { data?: Record<string, unknown>; errors?: unknown };
+  try {
+    data = await r.json();
+  } catch {
+    data = {};
+  }
+  if ((r.status === 429 || r.status >= 500 || isThrottled(data)) && attempt < 3) {
+    await sleep(500 * 2 ** attempt);
+    return shopifyGql(shop, token, apiVersion, query, variables, attempt + 1);
+  }
   if (!r.ok) throw new Error(`Shopify HTTP ${r.status}: ${JSON.stringify(data)}`);
   return data;
 }
@@ -40,6 +62,14 @@ async function shopifyGql(
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: cors });
   try {
+    // If a SYNC_API_KEY is configured, require it — this endpoint mutates the Shopify
+    // schema (metaobject/metafield definitions). Idempotent, but not public by default.
+    const syncKey = Deno.env.get("SYNC_API_KEY");
+    if (syncKey) {
+      const got = req.headers.get("x-sync-key") || new URL(req.url).searchParams.get("key");
+      if (got !== syncKey) return json({ error: "unauthorized" }, 401);
+    }
+
     const shop = Deno.env.get("SHOPIFY_STORE_DOMAIN");
     const token = Deno.env.get("SHOPIFY_ADMIN_TOKEN");
     const apiVersion = Deno.env.get("SHOPIFY_API_VERSION") || "2025-10";

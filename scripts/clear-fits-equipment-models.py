@@ -66,9 +66,17 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--apply", action="store_true")
+    parser.add_argument(
+        "--backup",
+        default="fits-equipment-models-backup.jsonl",
+        help="JSONL file to append each deleted legacy value to before deletion (recovery trail).",
+    )
     args = parser.parse_args()
     if not args.dry_run and not args.apply:
         args.dry_run = True
+
+    # metafieldsDelete is irreversible; keep a recoverable record of every value we remove.
+    backup = open(args.backup, "a", encoding="utf-8") if args.apply else None
 
     cursor = None
     cleared = 0
@@ -89,6 +97,15 @@ def main() -> int:
                 continue
             handle = node["handle"]
             if args.apply:
+                # Persist the legacy value before deleting so the operation is recoverable.
+                if backup is not None:
+                    backup.write(json.dumps({
+                        "handle": handle,
+                        "owner_id": node["id"],
+                        "legacy_metafield_id": legacy.get("id"),
+                        "legacy_value": legacy.get("value"),
+                    }) + "\n")
+                    backup.flush()
                 mut = shopify_gql(MUTATION, {
                     "metafields": [{
                         "ownerId": node["id"],
@@ -110,8 +127,13 @@ def main() -> int:
             break
         cursor = conn["pageInfo"]["endCursor"]
 
+    if backup is not None:
+        backup.close()
+
     mode = "apply" if args.apply else "dry-run"
     print(f"\n=== clear fits_equipment_models ({mode}) ===\n  cleared: {cleared}\n  skipped: {skipped}")
+    if args.apply:
+        print(f"  backup: {args.backup}")
     return 0
 
 

@@ -91,12 +91,28 @@ function resolveShopifyHandle(
   return shopifyHandle;
 }
 
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+function isThrottled(data: unknown): boolean {
+  const errors = (data as { errors?: unknown })?.errors;
+  if (!Array.isArray(errors)) return false;
+  return errors.some((e) => {
+    const code = (e as { extensions?: { code?: string } })?.extensions?.code;
+    const msg = (e as { message?: string })?.message || "";
+    return code === "THROTTLED" || /throttl/i.test(msg);
+  });
+}
+
+// Shopify returns HTTP 200 + top-level `errors` (e.g. THROTTLED) rather than a non-2xx
+// status, so retry on that as well as 429/5xx. Kept to 2 retries since this is on the
+// user-facing search path.
 async function shopifyGql(
   shop: string,
   token: string,
   apiVersion: string,
   query: string,
   variables: Record<string, unknown> = {},
+  attempt = 0,
 ) {
   const r = await fetch(`https://${shop}/admin/api/${apiVersion}/graphql.json`, {
     method: "POST",
@@ -106,7 +122,16 @@ async function shopifyGql(
     },
     body: JSON.stringify({ query, variables }),
   });
-  const data = await r.json();
+  let data: { data?: Record<string, unknown>; errors?: unknown };
+  try {
+    data = await r.json();
+  } catch {
+    data = {};
+  }
+  if ((r.status === 429 || r.status >= 500 || isThrottled(data)) && attempt < 2) {
+    await sleep(400 * 2 ** attempt);
+    return shopifyGql(shop, token, apiVersion, query, variables, attempt + 1);
+  }
   if (!r.ok) throw new Error(`Shopify HTTP ${r.status}`);
   return data;
 }
@@ -191,8 +216,9 @@ Deno.serve(async (req) => {
       body: JSON.stringify({ q, limit }),
     });
     if (!searchRes.ok) {
-      const errText = await searchRes.text();
-      return json({ error: "search_failed", detail: errText }, 502);
+      // Log the upstream detail server-side; don't leak internals to the public caller.
+      console.error("catalog-search upstream failure", searchRes.status, await searchRes.text());
+      return json({ error: "search_failed" }, 502);
     }
     const searchPayload = await searchRes.json();
     const hits: SearchHit[] = searchPayload.results || [];
@@ -274,6 +300,7 @@ Deno.serve(async (req) => {
 
     return json({ query: q, results });
   } catch (e) {
-    return json({ error: String(e) }, 500);
+    console.error("catalog-search error", e);
+    return json({ error: "internal_error" }, 500);
   }
 });

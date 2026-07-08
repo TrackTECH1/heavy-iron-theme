@@ -38,13 +38,35 @@ if [[ -z "${TOKEN}" ]]; then
   exit 1
 fi
 
-echo "Got token (starts with ${TOKEN:0:6}...)"
+echo "Got token (Shopify accepted the credentials)."
 echo ""
 echo "Saving to Supabase (you may need: npx supabase login)..."
-npx supabase secrets set \
-  SHOPIFY_STORE_DOMAIN="${STORE}" \
-  SHOPIFY_ADMIN_TOKEN="${TOKEN}" \
-  --project-ref "${PROJECT_REF}"
+
+# Write secrets to a private temp env file instead of passing them as CLI args.
+# CLI args are visible to any user via `ps`/proc; an --env-file (chmod 600, shredded on
+# exit) keeps the admin token off the process list and out of shell history.
+ENV_FILE="$(mktemp)"
+chmod 600 "$ENV_FILE"
+trap 'rm -f "$ENV_FILE"' EXIT
+{
+  printf 'SHOPIFY_STORE_DOMAIN=%s\n' "${STORE}"
+  printf 'SHOPIFY_ADMIN_TOKEN=%s\n' "${TOKEN}"
+  # Live fitment sync fails closed without SYNC_API_KEY. Set one here if provided.
+  if [[ -n "${SYNC_API_KEY:-}" ]]; then
+    printf 'SYNC_API_KEY=%s\n' "${SYNC_API_KEY}"
+  fi
+} > "$ENV_FILE"
+
+npx supabase secrets set --env-file "$ENV_FILE" --project-ref "${PROJECT_REF}"
+rm -f "$ENV_FILE"
+trap - EXIT
+
+if [[ -z "${SYNC_API_KEY:-}" ]]; then
+  echo ""
+  echo "NOTE: SYNC_API_KEY was not set, so live sync (dry_run=false) will be refused."
+  echo "      Re-run with SYNC_API_KEY=... to enable live writes, e.g.:"
+  echo "        SYNC_API_KEY=\"\$(openssl rand -hex 24)\" $0"
+fi
 
 echo ""
 echo "Testing dry-run sync..."

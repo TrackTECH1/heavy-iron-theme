@@ -84,6 +84,11 @@
     makeSel.appendChild(opt('', 'Select make…'));
     makes.forEach(function (k) { makeSel.appendChild(opt(k)); });
     makeSel.appendChild(opt('Other', 'Other / Not listed'));
+    // Progressive enhancement: only enforce native `required` once JS has populated
+    // real options. The markup omits `required` so a script failure degrades to an
+    // ungated (still purchasable) form instead of an un-submittable one. The submit
+    // handler below is the real gate when JS is present.
+    makeSel.required = true;
 
     if (!makes.length) {
       el.classList.add('hi-fit--empty');
