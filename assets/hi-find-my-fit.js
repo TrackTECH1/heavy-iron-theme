@@ -24,12 +24,15 @@
   function openPanel() {
     btn.style.display = 'none';
     panel.classList.add('is-open');
+    panel.setAttribute('aria-hidden', 'false');
     inp.focus();
   }
 
   function closePanel() {
     panel.classList.remove('is-open');
+    panel.setAttribute('aria-hidden', 'true');
     btn.style.display = 'block';
+    btn.focus();
   }
 
   function ask() {
@@ -82,6 +85,7 @@
   document.getElementById('hi-agent-x').addEventListener('click', closePanel);
   document.getElementById('hi-agent-go').addEventListener('click', ask);
   inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') ask(); });
+  panel.addEventListener('keydown', function (e) { if (e.key === 'Escape') closePanel(); });
   document.querySelectorAll('[data-hi-fit-agent]').forEach(function (el) {
     el.addEventListener('click', function (e) { e.preventDefault(); openPanel(); });
   });
