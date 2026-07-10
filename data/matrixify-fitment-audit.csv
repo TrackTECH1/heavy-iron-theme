@@ -1,0 +1,200 @@
+Handle,track_size,fits_equipment_models,status
+450x76x80-rubber-track-directional,450x76x80,model.gehl-802,OK
+300x86x48-rubber-track-c-block,300x86x48,model.toro-dingo-txl2000,OK
+180x72x41-rubber-track-directional,180x72x41,model.vermeer-s450tx,OK
+230x48x60-rubber-track-directional,230x48x60,"model.kubota-kx041, model.case-17rtnmaxi",OK
+180x72x33-rubber-track-directional,180x72x33,model.hitachi-ex5,OK
+180x72x36-rubber-track-directional,180x72x36,"model.boxer-118-trencher, model.boxer-320, model.boxer-322d",OK
+450x71x84-rubber-track-directional,450x71x84,"model.cat-310, model.cat-309-cr, model.cat-307hd",OK
+457x101-6x56-rubber-tracks,457x101.6x56,"model.asv-rt-120, model.asv-rt-135, model.asv-vt100",OK
+400x72-5kx72-rubber-track-directional,400x72.5Kx72,"model.komatsu-pc-45mr-1, model.komatsu-pc-50m-2, model.komatsu-pc-58uu-x, model.komatsu-pc-58uu-3",OK
+180x72x40-rubber-track-directional,180x72x40,"model.ditch-witch-sk600, model.takeuchi-tb210r",OK
+250x72x52-rubber-track-c-block,250x72x52,"model.bobcat-t110, model.ditch-witch-sk1550, model.gehl-rt105",OK
+250x48x67-rubber-track-directional,250x48x67,"model.toro-tx1000, model.toro-dingo-tx1000, model.toro-dingo-tx1000w",OK
+180x72x42-rubber-track-directional,180x72x42,"model.ditch-witch-sk600, model.ditch-witch-sk650",OK
+250x72x45-rubber-track-directional,250x72x45,"model.bobcat-mt100, model.bobcat-mt85, model.asv-rt25, model.asv-rt30, model.toro-tx1000",OK
+180x72x44-rubber-track-directional,180x72x44,,NEEDS_FITMENT
+230x48x68-rubber-track-directional,230x48x68,"model.takeuchi-tb215r, model.takeuchi-tb216",OK
+240x87-63x37-rubber-track-multi-bar,240x87.63x37,"model.toro-tx1000, model.toro-dingo-tx1000, model.toro-dingo-tx1000w",OK
+450x71x86-rubber-track-directional,450x71x86,"model.cat-308e, model.bobcat-442, model.cat-308, model.cat-308b, model.hyundai-r75-7",OK
+300x52-5nx82-rubber-track-directional,300x52.5Nx82,"model.case-cx31c, model.wacker-neuson-ez26, model.hitachi-zx35u-5, model.new-holland-eh-30b",OK
+350x52-5wx86-rubber-track-directional,350x52.5Wx86,"model.takeuchi-tb240, model.takeuchi-tb135, model.takeuchi-tb235, model.takeuchi-tb035, model.takeuchi-tb138fr",OK
+450x86x53-rubber-track-zig-zag,450x86x53,"model.bobcat-t7x, model.bobcat-t76, model.caterpillar-259b3, model.cat-259d, model.cat-259d3",OK
+400x86x53-rubber-track-c-block,400x86x53,"model.cat-259d3, model.bobcat-t76, model.cat-259d, model.caterpillar-259b, model.caterpillar-259b3, model.bobcat-t72, mo",OK
+180x72x45-rubber-track-directional,180x72x45,"model.bobcat-mt100, model.bobcat-mt85, model.vermeer-s725tx",OK
+350x54-5x86-rubber-track-directional,350x54.5x86,"model.kubota-kx121-3, model.yanmar-sv40, model.takeuchi-tb45, model.kubota-kx040-4, model.kubota-kx040-5, model.kubota-k",OK
+300x52-5x74-rubber-track-mx,300x52.5x74,,NEEDS_FITMENT
+320x86x46-rubber-track-c-block,320x86x46,,NEEDS_FITMENT
+300x52-5nx78-rubber-track-directional,300x52.5Nx78,"model.case-cx26c, model.komatsu-pc20mr, model.ditch-witch-jt-2320-drilling-machine, model.ditch-witch-jt-2321-drilling-m",OK
+230x48x64-rubber-track-directional,230x48x64,"model.cat-301-5, model.cat-301-7-cr, model.caterpillar-mm15",OK
+450x83-5yx74-rubber-track-offset-block,450x83.5Yx74,"model.yanmar-vio80, model.yanmar-vio-70-offset-type, model.yanmar-vio-70a-offset-type-standard, model.yanmar-vio-70cr-of",OK
+320x86x54-rubber-track-c-block,320x86x54,"model.gehl-rt175, model.gehl-rt185, model.yanmar-t175, model.mustang-1750-rt",OK
+230x72x42-rubber-track-directional,230x72x42,"model.ditch-witch-sk650, model.komatsu-pc05, model.hitachi-ue15sr, model.hitachi-ue15, model.brokk-160",OK
+320x86x48-rubber-track-multi-bar,320x86x48,,NEEDS_FITMENT
+230x96x36-rubber-track-mx,230x96x36,,NEEDS_FITMENT
+300x52-5x90-rubber-track-directional,300x52.5x90,"model.cat-304, model.cat-304e2, model.cat-303-5ccr, model.cat-303-5d-cr, model.cat-303-5e-cr, model.cat-303c-cr",OK
+400x86x54-rubber-track-c-block,400x86x54,"model.gehl-rt175, model.gehl-rt185",OK
+160x87-63x28-rubber-track-multi-bar,160x87.63x28,"model.toro-tx425, model.toro-tx427, model.toro-tx420, model.toro-dingo-tx413, model.toro-dingo-tx425, model.toro-dingo-t",OK
+450x86x52-rubber-track-z-max,450x86x52,"model.bobcat-t630, model.bobcat-t650, model.bobcat-864, model.gehl-rt215, model.cat-255, model.bobcat-t200, model.gehl-r",OK
+450x100x48-rubber-track-c-block,450x100x48,"model.takeuchi-tl240, model.takeuchi-tl140, model.gehl-ctl75, model.gehl-ctl70, model.mustang-mtl320, model.mustang-mtl2",OK
+450x81x76-rubber-track-directional,450x81x76,"model.takeuchi-tb280fr, model.bobcat-e85, model.case-cx80c, model.takeuchi-tb290, model.takeuchi-tb285, model.bobcat-e80",OK
+300x52-5x84-rubber-track-mx,300x52.5x84,,NEEDS_FITMENT
+160x87-63x28-rubber-track-directional,160x87.63x28,"model.toro-tx425, model.toro-tx427, model.toro-tx420, model.toro-dingo-tx413, model.toro-dingo-tx425, model.toro-dingo-t",OK
+450x86x63-rubber-track-z-max,450x86x63,"model.case-tv620b, model.new-holland-c362",OK
+230x48x66-rubber-track-directional,230x48x66,"model.bobcat-e19, model.case-cx21c, model.cat-301-7, model.wacker-neuson-ez19, model.hitachi-zx19u-5, model.volvo-ec18c,",OK
+300x52-5x88-rubber-track-mx,300x52.5x88,"model.kobelco-sk35sr, model.yanmar-vio35-6a",OK
+230x48x64-rubber-track-mx,230x48x64,"model.cat-301-5, model.cat-301-7-cr, model.caterpillar-mm15",OK
+240x87-63x28-rubber-track-mx,240x87.63x28,"model.toro-tx425, model.toro-tx427, model.toro-dingo-tx425, model.toro-dingo-tx427, model.toro-dingo-tx520, model.toro-d",OK
+230x48x68-rubber-track-mx,230x48x68,"model.takeuchi-tb215r, model.takeuchi-tb216",OK
+450x100x50-rubber-track-c-block,450x100x50,"model.takeuchi-tl150, model.gehl-ctl85, model.gehl-ctl80, model.takeuchi-tl12v2, model.takeuchi-tl250, model.mustang-mtl",OK
+300x52-5x90-rubber-track-mx,300x52.5x90,"model.cat-304, model.cat-304e2, model.cat-303-5ccr, model.cat-303-5d-cr, model.cat-303-5e-cr, model.cat-303c-cr",OK
+240x87-63x28-rubber-track-directional,240x87.63x28,"model.toro-tx425, model.toro-tx427, model.toro-dingo-tx425, model.toro-dingo-tx427, model.toro-dingo-tx520, model.toro-d",OK
+250x72x39-rubber-track-directional,250x72x39,"model.bobcat-mt55, model.bobcat-e08, model.bobcat-e10",OK
+350x52-5bx90-rubber-track-directional,350x52.5Bx90,"model.cat-304e2, model.cat-304d-cr, model.cat-304e-cr",OK
+300x52-5wx88-rubber-track-block,300x52.5Wx88,model.jcb-8035z,OK
+400x86x50-rubber-track-c-block,400x86x50,"model.bobcat-t64, model.case-tr310b, model.gehl-rt175, model.new-holland-c175, model.bobcat-t66, model.bobcat-t62, model",OK
+230x72x42-rubber-track-mx,230x72x42,"model.ditch-witch-sk650, model.komatsu-pc05, model.hitachi-ue15sr, model.hitachi-ue15, model.brokk-160",OK
+320x86x49-rubber-track-zig-zag,320x86x49,"model.bobcat-t180, model.bobcat-t590, model.bobcat-t550, model.bobcat-t570, model.gehl-rt105, model.gehl-rt165, model.ge",OK
+400x72-5nx70-rubber-track-directional,400x72.5Nx70,"model.ihi-is-40g, model.ihi-is-40gx, model.ihi-is-40gx-2, model.ihi-is-40gx-3, model.ihi-is-40j, model.ihi-is-40jx, mode",OK
+320x86x49-rubber-track-multi-bar,320x86x49,"model.bobcat-t180, model.bobcat-t590, model.bobcat-t550, model.bobcat-t570, model.gehl-rt105, model.gehl-rt165, model.ge",OK
+230x72x44-rubber-track-directional,230x72x44,"model.ditch-witch-sk1050, model.ditch-witch-sk755, model.ditch-witch-sk800, model.ditch-witch-sk850",OK
+300x52-5wx90-rubber-track-block,300x52.5Wx90,"model.cat-304, model.cat-304e2, model.cat-303-5ccr, model.cat-303-5d-cr, model.cat-303-5e-cr, model.cat-303c-cr",OK
+300x52-5wx74-rubber-track-block,300x52.5Wx74,"model.jcb-802-7, model.jcb-802-7-plus, model.jcb-802-7-zts, model.jcb-802-plus, model.jcb-802-super",OK
+320x86x53-rubber-track-multi-bar,320x86x53,"model.cat-259d3, model.bobcat-t76, model.cat-259d, model.caterpillar-259b, model.caterpillar-259b3, model.bobcat-t72, mo",OK
+320x86x53-rubber-track-zig-zag,320x86x53,"model.cat-259d3, model.bobcat-t76, model.cat-259d, model.caterpillar-259b, model.caterpillar-259b3, model.bobcat-t72, mo",OK
+320x86x49-rubber-track-c-block,320x86x49,"model.bobcat-t180, model.bobcat-t590, model.bobcat-t550, model.bobcat-t570, model.gehl-rt105, model.gehl-rt165, model.ge",OK
+320x86x54-rubber-track-multi-bar,320x86x54,"model.gehl-rt175, model.gehl-rt185, model.yanmar-t175, model.mustang-1750-rt",OK
+320x86x49-rubber-track-directional,320x86x49,"model.bobcat-t180, model.bobcat-t590, model.bobcat-t550, model.bobcat-t570, model.gehl-rt105, model.gehl-rt165, model.ge",OK
+400x86x49-rubber-track-zig-zag,400x86x49,"model.bobcat-t180, model.bobcat-t590, model.bobcat-t550, model.gehl-rt165, model.bobcat-t595, model.bobcat-t190, model.c",OK
+300x52-5wx86-rubber-track-block,300x52.5Wx86,"model.cat-305e2, model.cat-305-5",OK
+400x86x49-rubber-track-c-block,400x86x49,"model.bobcat-t180, model.bobcat-t590, model.bobcat-t550, model.gehl-rt165, model.bobcat-t595, model.bobcat-t190, model.c",OK
+400x86x50-rubber-track-multi-bar,400x86x50,"model.bobcat-t64, model.case-tr310b, model.gehl-rt175, model.new-holland-c175, model.bobcat-t66, model.bobcat-t62, model",OK
+320x86x53-rubber-track-c-block,320x86x53,"model.cat-259d3, model.bobcat-t76, model.cat-259d, model.caterpillar-259b, model.caterpillar-259b3, model.bobcat-t72, mo",OK
+320x86x54-rubber-track-zig-zag,320x86x54,"model.gehl-rt175, model.gehl-rt185, model.yanmar-t175, model.mustang-1750-rt",OK
+400x86x49-rubber-track-multi-bar,400x86x49,"model.bobcat-t180, model.bobcat-t590, model.bobcat-t550, model.gehl-rt165, model.bobcat-t595, model.bobcat-t190, model.c",OK
+350x75-5x74-rubber-track-mx,350x75.5x74,,NEEDS_FITMENT
+350x52-5x86-rubber-track-mx,350x52.5x86,"model.takeuchi-tb240, model.takeuchi-tb135, model.takeuchi-tb235, model.takeuchi-tb035, model.takeuchi-tb138fr",OK
+400x86x50-rubber-track-zig-zag,400x86x50,"model.bobcat-t64, model.case-tr310b, model.gehl-rt175, model.new-holland-c175, model.bobcat-t66, model.bobcat-t62, model",OK
+230x48x72-rubber-track-directional,230x48x72,"model.wacker-neuson-ez17, model.volvo-ec20d, model.bobcat-e20, model.cat-301-7d, model.volvo-ec-20b-xtv, model.volvo-ec2",OK
+400x75-5x74-rubber-track-mx,400x75.5x74,model.yanmar-vio55-5,OK
+400x86x54-rubber-track-zig-zag,400x86x54,"model.gehl-rt175, model.gehl-rt185",OK
+230x48x62-rubber-track-directional,230x48x62,"model.john-deere-17p, model.case-cx17c, model.hitachi-zx17u, model.kubota-u17, model.case-cx18c, model.kubota-kx41-3, mo",OK
+400x86x54-rubber-track-multi-bar,400x86x54,"model.gehl-rt175, model.gehl-rt185",OK
+230x48x62-rubber-track-mx,230x48x62,"model.john-deere-17p, model.case-cx17c, model.hitachi-zx17u, model.kubota-u17, model.case-cx18c, model.kubota-kx41-3, mo",OK
+300x52-5nx74-rubber-track-directional,300x52.5Nx74,"model.bobcat-328, model.bobcat-325, model.bobcat-225, model.daewoo-solar-25, model.hyundai-r28-5, model.new-holland-ec-2",OK
+450x83-5kx74-rubber-track-directional,450x83.5Kx74,"model.bobcat-e85, model.case-cx80c, model.kubota-kx080-3, model.kubota-kx080-4, model.komatsu-pc60mr, model.komatsu-pc78",OK
+300x55-5x82-rubber-track-mx,300x55.5x82,"model.yanmar-vio35, model.yanmar-vio-35-5-offset-type, model.yanmar-vio-30-3s-offset-type, model.yanmar-vio-35-2-offset-",OK
+300x55-5x82-rubber-track-offset-block,300x55.5x82,"model.yanmar-vio35, model.yanmar-vio-35-5-offset-type, model.yanmar-vio-30-3s-offset-type, model.yanmar-vio-35-2-offset-",OK
+300x52-5kx88-rubber-track-directional,300x52.5Kx88,"model.case-cx36c, model.yanmar-vio35, model.case-cx31c, model.new-holland-e35c, model.jcb-8035zts, model.kobelco-sk30sr,",OK
+230x72x45-rubber-track-c-block,230x72x45,"model.vermeer-ctx100, model.vermeer-ctx160, model.vermeer-s925tx, model.vermeer-s800tx, model.bobcat-320, model.bobcat-2",OK
+400x72-5wx67-rubber-track-directional,400x72.5Wx67,"model.takeuchi-tb370, model.case-cx57c, model.cat-306cr, model.sany-sy60c",OK
+300x52-5wx82-rubber-track-block,300x52.5Wx82,"model.wacker-neuson-ez28, model.cat-302-7d, model.case-cx31, model.case-cx31b, model.case-cx31bmc, model.case-cx31bmr, m",OK
+230x72x45-rubber-track-directional,230x72x45,"model.vermeer-ctx100, model.vermeer-ctx160, model.vermeer-s925tx, model.vermeer-s800tx, model.bobcat-320, model.bobcat-2",OK
+400x72-5x70-rubber-track-mx,400x72.5x70,,NEEDS_FITMENT
+450x86x52-rubber-track-c-block,450x86x52,"model.bobcat-t630, model.bobcat-t650, model.bobcat-864, model.gehl-rt215, model.cat-255, model.bobcat-t200, model.gehl-r",OK
+300x52-5kx86-rubber-track-directional,300x52.5Kx86,"model.john-deere-30g, model.john-deere-35g, model.john-deere-35p, model.hitachi-zx35u, model.case-cx37c, model.john-deer",OK
+450x81x78-rubber-track-mx,450x81x78,"model.cat-308-cr, model.cat-308e2, model.john-deere-75g",OK
+450x86x53-rubber-track-c-block,450x86x53,"model.bobcat-t7x, model.cat-259d3, model.bobcat-t76, model.cat-259d, model.caterpillar-259b3",OK
+300x55-5yx82-rubber-track-offset-block,300x55.5Yx82,"model.yanmar-vio35, model.yanmar-vio-35-5-offset-type, model.yanmar-vio-30-3s-offset-type, model.yanmar-vio-35-2-offset-",OK
+300x52-5x76-rubber-track-mx,300x52.5x76,"model.hanix-h29a, model.ihi-35j, model.kobelco-sk20sr, model.komatsu-pc20-7, model.kubota-u27-4, model.takeuchi-tb020, m",OK
+450x86x52-rubber-track-multi-bar,450x86x52,"model.bobcat-t630, model.bobcat-t650, model.bobcat-864, model.gehl-rt215, model.cat-255, model.bobcat-t200, model.gehl-r",OK
+450x100x48-rubber-track-zig-zag,450x100x48,"model.gehl-ctl70, model.gehl-ctl75, model.mustang-mtl20, model.mustang-mtl320, model.takeuchi-tl10, model.takeuchi-tl140",OK
+400x86x56-rubber-track-multi-bar,400x86x56,model.takeuchi-tl11r3,OK
+450x86x53-rubber-track-multi-bar,450x86x53,"model.bobcat-t7x, model.cat-259d3, model.bobcat-t76, model.cat-259d, model.caterpillar-259b3",OK
+450x71x84-rubber-track-mx,450x71x84,"model.cat-310, model.cat-309-cr, model.cat-307hd",OK
+450x86x63-rubber-track-multi-bar,450x86x63,"model.case-tv620b, model.new-holland-c362",OK
+450x100x50-rubber-track-zig-zag,450x100x50,"model.takeuchi-tl150, model.gehl-ctl85, model.gehl-ctl80, model.takeuchi-tl12v2, model.takeuchi-tl250, model.mustang-mtl",OK
+300x52-5kmx88-rubber-track-directional,300x52.5KMx88,"model.case-cx36, model.case-cx36b",OK
+300x52-5k-nx78-rubber-track-directional,300x52.5K-Nx78,,NEEDS_FITMENT
+450x81x76-rubber-track-mx,450x81x76,"model.develon-dx85r, model.takeuchi-tb180fr, model.takeuchi-tb280fr, model.takeuchi-tb285, model.takeuchi-tb290, model.v",OK
+450x86x52-rubber-track-zig-zag,450x86x52,"model.bobcat-t630, model.bobcat-t650, model.bobcat-864, model.gehl-rt215, model.cat-255, model.bobcat-t200, model.gehl-r",OK
+300x52-5nx76-rubber-track-directional,300x52.5Nx76,"model.new-holland-e26c, model.case-cx22b, model.case-cx20b, model.case-cx26, model.bobcat-e25, model.case-cx25, model.ku",OK
+300x52-5nx92-rubber-track-directional,300x52.5Nx92,"model.bobcat-e42, model.ditch-witch-jt-2320-drilling-machine, model.ditch-witch-jt-2321-drilling-machine, model.bobcat-4",OK
+300x52-5x86-rubber-track-mx,300x52.5x86,"model.john-deere-30g, model.john-deere-35g, model.john-deere-35p, model.hitachi-zx35u, model.case-cx37c, model.john-deer",OK
+300x52-5kwx86-rubber-track-directional,300x52.5KWx86,model.takeuchi-tb138fr,OK
+320x86x50-rubber-track-c-block,320x86x50,"model.case-tr270, model.case-tr310b, model.new-holland-c175, model.ditch-witch-sk3000, model.john-deere-317g, model.new-",OK
+320x86x50-rubber-track-x-terrain,320x86x50,"model.case-420ct, model.case-tr270, model.case-tr270b, model.ditch-witch-sk3000, model.jcb-180t, model.jcb-190t-eco, mod",OK
+320x86x50-rubber-track-multi-bar,320x86x50,"model.case-420ct, model.case-tr270, model.case-tr270b, model.ditch-witch-sk3000, model.jcb-180t, model.jcb-190t-eco, mod",OK
+400x86x53-rubber-track-zig-zag,400x86x53,"model.cat-259d3, model.bobcat-t76, model.cat-259d, model.caterpillar-259b, model.caterpillar-259b3, model.bobcat-t72, mo",OK
+400x86x53-rubber-track-multi-bar,400x86x53,"model.cat-259d3, model.bobcat-t76, model.cat-259d, model.caterpillar-259b, model.caterpillar-259b3, model.bobcat-t72, mo",OK
+320x86x50-rubber-track-zig-zag,320x86x50,"model.case-420ct, model.case-tr270, model.case-tr270b, model.ditch-witch-sk3000, model.jcb-180t, model.jcb-190t-eco, mod",OK
+180x72x37-rubber-track-c-block,180x72x37,"model.kubota-k008-5, model.kubota-u10-5, model.yanmar-sv08, model.takeuchi-tb210r, model.jcb-801-4, model.jcb-801-6n, mo",OK
+300x52-5kmx86-rubber-track-directional,300x52.5KMx86,model.hyundai-r30z-9ak,OK
+380x86x52-rubber-track-staggered-block,380x86x52,"model.bobcat-t630, model.kubota-svl65-2, model.kubota-svl90, model.takeuchi-tl8r2, model.takeuchi-tl10v2, model.bobcat-t",OK
+400x86x52-rubber-track-z-max,400x86Bx52,,NEEDS_FITMENT
+400x75-5yx74-rubber-track-directional,400x75.5Yx74,"model.yanmar-vio45-5, model.yanmar-vio55-5, model.yanmar-vio-40-1-offset-type, model.yanmar-vio-40-2-offset-type, model.",OK
+320x86x53-rubber-track-x-terrain,320x86x53,"model.cat-259d3, model.bobcat-t76, model.cat-259d, model.caterpillar-259b, model.caterpillar-259b3, model.bobcat-t72, mo",OK
+400x86x53-rubber-track-z-max,400x86x53,"model.cat-259d3, model.bobcat-t76, model.cat-259d, model.caterpillar-259b, model.caterpillar-259b3, model.bobcat-t72, mo",OK
+400x86x52-rubber-track-zig-zag,400x86Bx52,"model.cat-255, model.john-deere-325g, model.kioti-tl750, model.kubota-svl65, model.kubota-svl65-2, model.kubota-svl75, m",OK
+450x81-5x76-rubber-track-mx,450x81.5x76,"model.jcb-8080ts, model.kobelco-sk75sr, model.kobelco-sk85cs, model.kubota-kx080-3, model.kubota-kx080-4",OK
+450x86x53-rubber-track-z-max,450x86x53,"model.bobcat-t7x, model.cat-259d3, model.bobcat-t76, model.cat-259d, model.caterpillar-259b3",OK
+400x86x52-rubber-track-multi-bar,400x86Bx52,"model.cat-255, model.john-deere-325g, model.kioti-tl750, model.kubota-svl65, model.kubota-svl65-2, model.kubota-svl75, m",OK
+400x86x53-rubber-track-staggered-block,400x86x53,"model.cat-259d3, model.bobcat-t76, model.cat-259d, model.caterpillar-259b, model.caterpillar-259b3, model.bobcat-t72, mo",OK
+320x86x53-rubber-track-staggered-block,320x86x53,"model.cat-259d3, model.bobcat-t76, model.cat-259d, model.caterpillar-259b, model.caterpillar-259b3, model.bobcat-t72, mo",OK
+450x86x60-rubber-track-zig-zag,450x86x60,"model.takeuchi-tl12r2, model.bobcat-t870, model.cat-299d3, model.cat-299d, model.wacker-neuson-st60, model.cat-275, mode",OK
+450x86x60-rubber-track-c-block,450x86x60,"model.takeuchi-tl12r2, model.bobcat-t870, model.cat-299d3, model.cat-299d, model.wacker-neuson-st60, model.cat-275, mode",OK
+450x86x60-rubber-track-all-terrain,450x86x60,"model.takeuchi-tl12r2, model.bobcat-t870, model.cat-299d3, model.cat-299d, model.wacker-neuson-st60, model.cat-275, mode",OK
+450x86x60-rubber-track-staggered-block,450x86x60,"model.takeuchi-tl12r2, model.bobcat-t870, model.cat-299d3, model.cat-299d, model.wacker-neuson-st60, model.cat-275, mode",OK
+heavy-duty-16-rubber-track-400x86tx52,400x86Tx52,"model.takeuchi-tl130, model.takeuchi-tl8, model.takeuchi-tl230",OK
+450x86x60-rubber-track-multi-bar,450x86x60,"model.takeuchi-tl12r2, model.bobcat-t870, model.cat-299d3, model.cat-299d, model.wacker-neuson-st60, model.cat-275, mode",OK
+381x100-5x42-rubber-track-multi-bar,381x100.5x42,"model.asv-pt-50, model.asv-pt-60, model.asv-rc-50, model.asv-rc-60, model.asv-rt-50, model.asv-rt-60, model.asv-rt-65, m",OK
+450x86x60-rubber-track-x-terrain,450x86x60,"model.takeuchi-tl12r2, model.bobcat-t870, model.cat-299d3, model.cat-299d, model.wacker-neuson-st60, model.cat-275, mode",OK
+400x86x52-rubber-track-c-block,400x86Bx52,"model.bobcat-t630, model.kubota-svl65-2, model.takeuchi-tl8r2, model.takeuchi-tl10v2, model.bobcat-t650, model.john-deer",OK
+heavy-duty-13-rubber-track-320x86tx52,320x86Tx52,"model.takeuchi-tl130, model.gehl-ctl65, model.gehl-ctl60, model.gehl-ctl55, model.mustang-mtl16, model.takeuchi-tl8, mod",OK
+450x71x82-rubber-track-directional,450x71x82,"model.bobcat-e85, model.takeuchi-tb177, model.case-cx80c, model.bobcat-e88, model.case-cx75c, model.hitachi-zx75, model.",OK
+300x52-5wx76-rubber-track-block,300x52.5Wx76,"model.ihi-is-27, model.ihi-is-27g, model.ihi-is-27gx, model.ihi-is-28g, model.ihi-is-28g3, model.ihi-is-28gx, model.ihi-",OK
+320x86x52-rubber-track-multi-bar,320x86Bx52,"model.bobcat-864, model.bobcat-t630, model.bobcat-t650, model.bobcat-t864, model.gehl-ctl135, model.gehl-ctl55, model.ge",OK
+320x86x52-rubber-tracks,320x86Bx52,"model.bobcat-t630, model.kubota-svl65-2, model.bobcat-t650, model.john-deere-325g, model.kubota-svl75-2, model.bobcat-86",OK
+180x72x39-rubber-track-directional,180x72x39,"model.bobcat-mt52, model.bobcat-mt50, model.bobcat-mt55, model.bobcat-e08, model.vermeer-s600tx, model.ditch-witch-sk900",OK
+180x72x39-rubber-tracks,180x72x39,"model.bobcat-mt52, model.bobcat-mt50, model.bobcat-mt55, model.bobcat-e08, model.vermeer-s600tx, model.ditch-witch-sk900",OK
+300x52-5nx88-rubber-track-directional,300x52.5Nx88,"model.case-cx36c, model.sany-sy35u, model.new-holland-e-35-2c, model.new-holland-e-35-2sr, model.new-holland-e-35sr, mod",OK
+320x86x52-rubber-track-c-block,320x86Bx52,"model.bobcat-864, model.bobcat-t630, model.bobcat-t650, model.bobcat-t864, model.gehl-ctl135, model.gehl-ctl55, model.ge",OK
+300x52-5nx86-rubber-track-directional,300x52.5Nx86,"model.john-deere-30g, model.john-deere-35g, model.case-cx37c, model.john-deere-35d, model.hitachi-zx30u-5, model.doosan-",OK
+320x86x52-rubber-track-zig-zag,320x86Bx52,"model.bobcat-864, model.bobcat-t630, model.bobcat-t650, model.bobcat-t864, model.gehl-ctl135, model.gehl-ctl55, model.ge",OK
+457x101-6x56-rubber-track-multi-bar,457x101.6x56,"model.asv-posi-trac2800, model.asv-posi-trac2810, model.asv-posi-trac4800, model.asv-posi-trac4810, model.asv-posi-trach",OK
+400x86x55-rubber-track-c-block,400x86x55,"model.bobcat-t750, model.case-tr320, model.bobcat-t320, model.bobcat-t770, model.bobcat-t740, model.case-tr340, model.ca",OK
+400x86x55-rubber-track-zig-zag,400x86x55,"model.bobcat-t750, model.case-tr320, model.bobcat-t320, model.bobcat-t770, model.bobcat-t740, model.case-tr340, model.ca",OK
+400x86x55-rubber-track-multi-bar,400x86x55,"model.bobcat-t750, model.case-tr320, model.bobcat-t320, model.bobcat-t770, model.bobcat-t740, model.case-tr340, model.ca",OK
+400x72-5x72-rubber-track-mx,400x72.5x72,"model.case-cx50c, model.case-cx55c, model.cat-304, model.cat-304-cr, model.cat-304e2, model.cat-305-cr, model.cat-305e2,",OK
+300x52-5wx78-rubber-track-block,300x52.5Wx78,"model.takeuchi-tb228, model.takeuchi-tb225, model.jcb-8026cts, model.volvo-ec27d, model.kobelco-sk25sr, model.takeuchi-t",OK
+300x52-5x78-rubber-track-directional,300x52.5x78,"model.takeuchi-tb228, model.takeuchi-tb225, model.case-cx31c, model.new-holland-e30c, model.jcb-8026cts, model.wacker-ne",OK
+400x72-5wx72-rubber-track-directional,400x72.5Wx72,"model.cat-304, model.cat-304cr, model.hitachi-zx50u, model.ihi-40j, model.kubota-kx-161-2s, model.kubota-kx-045, model.n",OK
+300x52-5x78-rubber-track-mx,300x52.5x78,"model.case-ck28, model.case-cx31c, model.caterpillar-302-5, model.caterpillar-302-5c, model.ditch-witch-mx27, model.ditc",OK
+400x72-5x72-rubber-track-directional,400x72.5x72,"model.cat-304, model.cat-305-5e2, model.cat-304e2, model.kubota-u48-5, model.kubota-kx057-5, model.cat-305e2, model.yanm",OK
+450x86x60-rubber-track-z-max,450x86x60,"model.takeuchi-tl12r2, model.bobcat-t870, model.cat-299d3, model.cat-299d, model.wacker-neuson-st60, model.cat-275, mode",OK
+450x86x55-rubber-track-zig-zag,450x86x55,"model.bobcat-t750, model.case-tr320, model.bobcat-t730, model.bobcat-t320, model.bobcat-t770, model.bobcat-t740, model.c",OK
+450x86x55-rubber-track-x-terrain,450x86x55,"model.bobcat-t750, model.case-tr320, model.bobcat-t730, model.bobcat-t320, model.bobcat-t770, model.bobcat-t740, model.c",OK
+450x86x55-rubber-track-multi-bar,450x86x55,"model.bobcat-t750, model.case-tr320, model.bobcat-t730, model.bobcat-t320, model.bobcat-t770, model.bobcat-t740, model.c",OK
+450x86x55-rubber-track-c-block,450x86x55,"model.bobcat-t750, model.case-tr320, model.bobcat-t730, model.bobcat-t320, model.bobcat-t770, model.bobcat-t740, model.c",OK
+381x101-6x42-rubber-track-multi-bar,381x101.6x42,"model.asv-rt-75, model.cat-277, model.cat-247, model.asv-rt65, model.asv-vt70, model.asv-vt75, model.asv-rt50, model.asv",OK
+400x72-5nx72-rubber-track-directional,400x72.5Nx72,"model.komatsu-pc50mr, model.komatsu-pc45mr, model.komatsu-pc55mr, model.ihi-is-45nx, model.ihi-is-40gx-2, model.ihi-is-4",OK
+450x86x58-rubber-track-zig-zag,450x86x58,"model.bobcat-t830, model.kubota-svl95-2, model.kubota-svl97-2, model.wacker-st50, model.kubota-svl90, model.bobcat-t86, ",OK
+230x72x39-rubber-track-c-block,230x72x39,"model.bobcat-mt55, model.vermeer-s600tx, model.ditch-witch-sk900, model.ditch-witch-sk500, model.ditch-witch-sk750, mode",OK
+450x86x58-rubber-track-c-block,450x86x58,"model.bobcat-t830, model.kubota-svl95-2, model.kubota-svl97-2, model.wacker-st50, model.kubota-svl90, model.bobcat-t86, ",OK
+450x86x58-rubber-track-multi-bar,450x86x58,"model.bobcat-t830, model.kubota-svl95-2, model.kubota-svl97-2, model.wacker-st50, model.kubota-svl90, model.bobcat-t86, ",OK
+450x86x58-rubber-track-x-terrain,450x86x58,"model.bobcat-t830, model.kubota-svl95-2, model.kubota-svl97-2, model.wacker-st50, model.kubota-svl90, model.bobcat-t86, ",OK
+400x72-5x76-rubber-track-directional,400x72.5x76,"model.yanmar-vio55-6a, model.cat-305-5e2, model.cat-305e2, model.takeuchi-tb370, model.case-cx57c, model.case-cx60c, mod",OK
+400x72-5wx76-rubber-track-directional,400x72.5Wx76,"model.yanmar-vio55-6a, model.cat-305-5e2, model.cat-305e2, model.takeuchi-tb370, model.case-cx57c, model.case-cx60c, mod",OK
+457x101-6x51-rubber-track-multi-bar,457x101.6x51,"model.asv-pt-100, model.asv-pt-80, model.asv-pt100, model.asv-rc100, model.asv-rc85, model.asv-rcv, model.asv-rcv-85, mo",OK
+300x52-5x84-rubber-track-directional,300x52.5x84,"model.jcb-802-7, model.wacker-neuson-ez36, model.komatsu-pc30mr, model.bobcat-e35, model.komatsu-pc35mr, model.bobcat-e3",OK
+300x52-5nx84-rubber-track-directional,300x52.5Nx84,"model.jcb-802-7, model.wacker-neuson-ez36, model.komatsu-pc30mr, model.bobcat-e35, model.komatsu-pc35mr, model.bobcat-e3",OK
+230x48x70-rubber-track-directional,230x48x70,"model.john-deere-17p, model.case-cx17c, model.hitachi-zx17u, model.kubota-u17, model.case-cx18c, model.kubota-kx41-3, mo",OK
+230x48x70-rubber-track-mx,230x48x70,"model.john-deere-17p, model.case-cx17c, model.hitachi-zx17u, model.kubota-u17, model.case-cx18c, model.kubota-kx41-3, mo",OK
+400x72-5nx74-rubber-track-directional,400x72.5Nx74,"model.john-deere-50g, model.takeuchi-tb250, model.takeuchi-tb45, model.takeuchi-tb53fr, model.jcb-8050zts, model.hitachi",OK
+400x72-5kx74-rubber-track-directional,400x72.5Kx74,"model.kubota-u55-5, model.john-deere-50g, model.kubota-u48-5, model.kubota-kx161-3, model.takeuchi-tb250, model.takeuchi",OK
+300x52-5wx84-rubber-track-block,300x52.5Wx84,"model.cat-303-5, model.kubota-kx033-4, model.jcb-8030zts, model.jcb-8035zts, model.volvo-ec35d, model.ihi-35j, model.kub",OK
+kubota-u55-4-rubber-tracks-400x72-5x74,400x72.5Wx74,"model.bobcat-e45, model.kubota-u55-5, model.kubota-u48-5, model.kubota-kx057-5, model.john-deere-60g, model.kubota-kx161",OK
+450x86x56-rubber-track-x-terrain,450x86x56,"model.john-deere-333e, model.john-deere-329e, model.cat-289d3, model.cat-279d3, model.cat-279d, model.cat-289d, model.ca",OK
+400x72-5wx74-rubber-track-directional,400x72.5Wx74,"model.bobcat-e45, model.kubota-u55-5, model.kubota-u48-5, model.kubota-kx057-5, model.john-deere-60g, model.kubota-kx161",OK
+450x86x56-rubber-track-c-block,450x86x56,"model.john-deere-333e, model.john-deere-329e, model.cat-289d3, model.cat-279d3, model.cat-279d, model.cat-289d, model.ca",OK
+450x86x56-rubber-track-multi-bar,450x86x56,"model.john-deere-333e, model.john-deere-329e, model.cat-289d3, model.cat-279d3, model.cat-279d, model.cat-289d, model.ca",OK
+450x86x56-rubber-track-zig-zag,450x86x56,"model.john-deere-333e, model.john-deere-329e, model.cat-289d3, model.cat-279d3, model.cat-279d, model.cat-289d, model.ca",OK
+400x72-5x74-rubber-track-directional,400x72.5x74,"model.bobcat-e45, model.kubota-u55-5, model.cat-306-cr, model.john-deere-50g, model.kubota-u48-5, model.kubota-kx057-5, ",OK
+400x72-5x74-rubber-track-mx,400x72.5x74,"model.bobcat-e55z, model.case-6030, model.case-ck50, model.case-ck52, model.case-cx50, model.case-cx55b-msr, model.case-",OK
+230x96x31-rubber-track-mx,230x96x31,"model.case-cx15c, model.takeuchi-tb217r, model.takeuchi-tb219, model.takeuchi-tb215r, model.takeuchi-tb20e, model.ditch-",OK
+kubota-u55-4-rubber-tracks-400x72-5x74-1,400x72.5x74,"model.bobcat-e55z, model.case-6030, model.case-ck50, model.case-ck52, model.case-cx50, model.case-cx55b-msr, model.case-",OK
+300x52-5wx84-rubber-track-directional,300x52.5Wx84,"model.cat-303-5, model.kubota-kx033-4, model.jcb-8030zts, model.jcb-8035zts, model.volvo-ec35d, model.ihi-35j, model.kub",OK
+300x52-5nx80-rubber-track-directional,300x52.5Nx80,"model.kubota-kx030-4, model.kubota-kx71-3, model.bobcat-428, model.takeuchi-tb320, model.bobcat-425, model.kubota-kx91-3",OK
+300x52-5x80-rubber-track-directional,300x52.5x80,"model.kubota-kx030-4, model.kubota-kx71-3, model.bobcat-428, model.takeuchi-tb320, model.bobcat-425, model.kubota-kx91-3",OK
+300x52-5x80-rubber-track-mx,300x52.5x80,"model.kubota-kx030-4, model.kubota-kx71-3, model.bobcat-428, model.takeuchi-tb320, model.bobcat-425, model.kubota-kx91-3",OK
+230x72x43-rubber-track-directional,230x72x43,"model.kubota-scl1000, model.ditch-witch-sk2500, model.ditch-witch-sk1750, model.takeuchi-tb120, model.ihi-is10gx, model.",OK
