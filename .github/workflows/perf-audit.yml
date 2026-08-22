@@ -1,5 +1,6 @@
 name: TrackTECH Performance Audit
 
+# Temporary audit runner only. Do not merge this workflow.
 on:
   push:
     branches: [perf-audit-2026-08-22]
