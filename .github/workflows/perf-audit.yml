@@ -3,6 +3,8 @@ name: TrackTECH Performance Audit
 on:
   push:
     branches: [perf-audit-2026-08-22]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -53,7 +55,6 @@ jobs:
           await page.goto(urls.home,{waitUntil:'domcontentloaded',timeout:60000});
           await page.waitForTimeout(800);
           const finderHeading = await page.getByText('Shop by Machine Model',{exact:true}).count();
-          const makeSelect = page.locator('select').filter({has:page.locator('option')});
           const selects = await page.locator('select').count();
           const hamburger = page.locator('menu-drawer summary').first();
           let menuOpen = false;
