@@ -1,0 +1,130 @@
+name: TrackTECH Performance Audit
+
+on:
+  push:
+    branches: [perf-audit-2026-08-22]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install audit tools
+        run: |
+          npm install --no-save lighthouse@12 playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Mobile storefront smoke tests
+        run: |
+          cat > /tmp/smoke.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          const theme = '190076092728';
+          const urls = {
+            home: `https://newrubbertrack.com/?preview_theme_id=${theme}`,
+            collection: `https://newrubbertrack.com/collections/bobcat-t770?preview_theme_id=${theme}`,
+            product: `https://newrubbertrack.com/products/bobcat-t770-rubber-tracks?preview_theme_id=${theme}`,
+            cart: `https://newrubbertrack.com/cart?preview_theme_id=${theme}`,
+            finder: `https://newrubbertrack.com/pages/track-finder?preview_theme_id=${theme}`
+          };
+          const browser = await chromium.launch({headless:true});
+          const context = await browser.newContext({viewport:{width:390,height:844}, deviceScaleFactor:1, isMobile:true, hasTouch:true});
+          const page = await context.newPage();
+          const results = {};
+          for (const [name,url] of Object.entries(urls)) {
+            const response = await page.goto(url,{waitUntil:'domcontentloaded',timeout:60000});
+            await page.waitForTimeout(1500);
+            const status = response?.status() ?? 0;
+            const finalUrl = page.url();
+            const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 2);
+            const bodyText = (await page.locator('body').innerText()).slice(0,10000);
+            results[name] = {status,finalUrl,overflow,hasBody:bodyText.length>100};
+          }
+
+          await page.goto(urls.home,{waitUntil:'domcontentloaded',timeout:60000});
+          await page.waitForTimeout(800);
+          const finderHeading = await page.getByText('Shop by Machine Model',{exact:true}).count();
+          const makeSelect = page.locator('select').filter({has:page.locator('option')});
+          const selects = await page.locator('select').count();
+          const hamburger = page.locator('menu-drawer summary').first();
+          let menuOpen = false;
+          if (await hamburger.count()) {
+            await hamburger.click();
+            await page.waitForTimeout(1500);
+            menuOpen = await page.locator('#Menu-Drawer').isVisible().catch(()=>false);
+          }
+          results.homeInteractions = {finderHeading:finderHeading>0, selectCount:selects, menuOpen};
+
+          await browser.close();
+          console.log(JSON.stringify(results,null,2));
+          const failed = Object.entries(results).some(([k,v]) => k !== 'homeInteractions' && (v.status >= 400 || v.status === 0 || v.overflow || !v.hasBody));
+          if (failed || !results.homeInteractions.finderHeading || !results.homeInteractions.menuOpen) process.exit(2);
+          EOF
+          node /tmp/smoke.mjs | tee mobile-smoke.json
+
+      - name: Lighthouse mobile live baseline
+        continue-on-error: true
+        run: |
+          npx lighthouse 'https://newrubbertrack.com/' --quiet --output=json --output-path=lh-live-mobile.json --only-categories=performance --preset=perf --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage'
+
+      - name: Lighthouse mobile preview
+        continue-on-error: true
+        run: |
+          npx lighthouse 'https://newrubbertrack.com/?preview_theme_id=190076092728' --quiet --output=json --output-path=lh-preview-mobile.json --only-categories=performance --preset=perf --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage'
+
+      - name: Lighthouse desktop live baseline
+        continue-on-error: true
+        run: |
+          npx lighthouse 'https://newrubbertrack.com/' --quiet --output=json --output-path=lh-live-desktop.json --only-categories=performance --preset=desktop --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage'
+
+      - name: Lighthouse desktop preview
+        continue-on-error: true
+        run: |
+          npx lighthouse 'https://newrubbertrack.com/?preview_theme_id=190076092728' --quiet --output=json --output-path=lh-preview-desktop.json --only-categories=performance --preset=desktop --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage'
+
+      - name: Summarize Lighthouse
+        if: always()
+        run: |
+          cat > /tmp/summary.mjs <<'EOF'
+          import fs from 'fs';
+          const files=['lh-live-mobile.json','lh-preview-mobile.json','lh-live-desktop.json','lh-preview-desktop.json'];
+          const out={};
+          for(const f of files){
+            if(!fs.existsSync(f)){out[f]={missing:true};continue;}
+            const j=JSON.parse(fs.readFileSync(f,'utf8'));
+            const a=j.audits;
+            out[f]={
+              score:Math.round((j.categories?.performance?.score||0)*100),
+              fcp:a['first-contentful-paint']?.numericValue,
+              lcp:a['largest-contentful-paint']?.numericValue,
+              tbt:a['total-blocking-time']?.numericValue,
+              cls:a['cumulative-layout-shift']?.numericValue,
+              si:a['speed-index']?.numericValue,
+              ttfb:a['server-response-time']?.numericValue,
+              transfer:a['total-byte-weight']?.numericValue
+            };
+          }
+          fs.writeFileSync('lighthouse-summary.json',JSON.stringify(out,null,2));
+          console.log(JSON.stringify(out,null,2));
+          EOF
+          node /tmp/summary.mjs
+
+      - name: Upload audit artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tracktech-perf-audit
+          path: |
+            mobile-smoke.json
+            lighthouse-summary.json
+            lh-*.json
+          if-no-files-found: warn
