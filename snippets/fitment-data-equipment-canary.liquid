@@ -1,0 +1,17 @@
+{%- comment -%}
+  Equipment-backed fitment canary.
+  Scope is intentionally limited to Bobcat T770 so the existing selector UX,
+  sorting, validation, and line-item properties remain untouched.
+{%- endcomment -%}
+{%- liquid
+  assign equipment = metaobjects.equipment['bobcat-t770']
+  assign make_mo = equipment.make.value
+  assign make_name = make_mo.name.value | default: make_mo.display_name.value | default: 'Bobcat'
+  assign model_name = equipment.model.value | default: 'T770'
+  assign equipment_url = equipment.system.url | default: ''
+-%}
+[
+{%- if product.handle == 'bobcat-t770-rubber-tracks' and equipment != blank and make_name != blank and model_name != blank -%}
+  {"k":{{ make_name | json }},"m":{{ model_name | json }},"u":{{ equipment_url | json }}}
+{%- endif -%}
+]
