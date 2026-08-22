@@ -21,7 +21,13 @@
   {%- assign tsz = product.metafields.custom.track_size -%}
   <fitment-selector class="hi-fit" data-fit data-track-size="{{ hi_track_size | escape }}" data-map-url="{{ 'track-fitment-map.json' | asset_url }}">
     <p class="hi-fit__label">Confirm your machine <span class="hi-fit__req">required</span></p>
-    <script type="application/json" data-fit-data>{%- render 'fitment-data', product: product, output: 'rows' -%}</script>
+    <script type="application/json" data-fit-data>
+      {%- if product.handle == 'bobcat-t770-rubber-tracks' -%}
+        {%- render 'fitment-data-equipment-canary', product: product, output: 'rows' -%}
+      {%- else -%}
+        {%- render 'fitment-data', product: product, output: 'rows' -%}
+      {%- endif -%}
+    </script>
     <div class="hi-fit__row">
       <select name="properties[Machine Make]" class="hi-fit__select" data-fit-make aria-label="Your machine make">
         <option value="">Select make…</option>
