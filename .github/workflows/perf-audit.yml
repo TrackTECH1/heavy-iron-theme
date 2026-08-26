@@ -1,0 +1,64 @@
+name: TrackTECH Performance Audit
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/perf-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Lighthouse
+        run: npm install --no-save lighthouse@12
+      - name: Audit unpublished theme
+        continue-on-error: true
+        run: |
+          mkdir -p lighthouse-results
+          declare -A URLS
+          URLS[homepage]='https://newrubbertrack.com/?preview_theme_id=190164992312&pb=0'
+          URLS[generic-collection]='https://newrubbertrack.com/collections/rubber-tracks?preview_theme_id=190164992312&pb=0'
+          URLS[machine-collection]='https://newrubbertrack.com/collections/bobcat-t190?preview_theme_id=190164992312&pb=0'
+          URLS[product]='https://newrubbertrack.com/products/john-deere-333g-rubber-tracks?preview_theme_id=190164992312&pb=0'
+          for page in homepage generic-collection machine-collection product; do
+            for mode in mobile desktop; do
+              for run in 1 2 3; do
+                out="lighthouse-results/${page}-${mode}-${run}.json"
+                if [ "$mode" = desktop ]; then preset='--preset=desktop'; else preset='--preset=perf'; fi
+                npx lighthouse "${URLS[$page]}" --quiet --output=json --output-path="$out" --only-categories=performance,seo $preset --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage'
+              done
+            done
+          done
+      - name: Summarize
+        if: always()
+        run: |
+          cat > /tmp/summary.mjs <<'EOF'
+          import fs from 'fs'; import path from 'path';
+          const pages=['homepage','generic-collection','machine-collection','product']; const modes=['mobile','desktop'];
+          const med=a=>{a=a.filter(Number.isFinite).sort((x,y)=>x-y);return a.length?a[Math.floor(a.length/2)]:null};
+          const sc=(r,id)=>r.categories?.[id]?.score==null?null:Math.round(r.categories[id].score*100); const n=(r,id)=>r.audits?.[id]?.numericValue??null;
+          const rows=[];
+          for(const page of pages)for(const mode of modes){const rs=[];for(let i=1;i<=3;i++){const f=`lighthouse-results/${page}-${mode}-${i}.json`;if(fs.existsSync(f))rs.push(JSON.parse(fs.readFileSync(f,'utf8')))}if(!rs.length)continue;const v=id=>rs.map(r=>n(r,id));rows.push({page,mode,performance:med(rs.map(r=>sc(r,'performance'))),seo:med(rs.map(r=>sc(r,'seo'))),fcp_ms:Math.round(med(v('first-contentful-paint'))??0),lcp_ms:Math.round(med(v('largest-contentful-paint'))??0),tbt_ms:Math.round(med(v('total-blocking-time'))??0),cls:Number((med(v('cumulative-layout-shift'))??0).toFixed(3)),speed_index_ms:Math.round(med(v('speed-index'))??0),ttfb_ms:Math.round(med(v('server-response-time'))??0),transfer_bytes:Math.round(med(v('total-byte-weight'))??0),dom_nodes:Math.round(med(v('dom-size'))??0)});}
+          const out={theme_id:'190164992312',generated_at:new Date().toISOString(),rows};fs.writeFileSync('lighthouse-summary.json',JSON.stringify(out,null,2));console.log('MEDIAN_LIGHTHOUSE_RESULTS_JSON');console.log(JSON.stringify(out));
+          EOF
+          node /tmp/summary.mjs
+      - name: Upload
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tracktech-perf-audit-2026-08-26
+          path: |
+            lighthouse-summary.json
+            lighthouse-results/*.json
+          if-no-files-found: warn
+          retention-days: 7
