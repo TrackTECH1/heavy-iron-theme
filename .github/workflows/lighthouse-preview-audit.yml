@@ -1,3 +1,4 @@
+# Trigger-only diff for the August 26 unpublished-theme audit.
 name: Lighthouse Unpublished Theme Audit
 
 on:
