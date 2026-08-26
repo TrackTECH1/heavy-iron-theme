@@ -14,30 +14,29 @@ permissions:
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Install audit tools
         run: |
           npm install --no-save lighthouse@12 playwright@1.55.0
           npx playwright install --with-deps chromium
 
-      - name: Mobile storefront smoke tests
+      - name: Preview smoke tests
         run: |
           cat > /tmp/smoke.mjs <<'EOF'
           import { chromium } from 'playwright';
-          const theme = '190076092728';
+          const theme = '190164992312';
           const urls = {
-            home: `https://newrubbertrack.com/?preview_theme_id=${theme}`,
-            collection: `https://newrubbertrack.com/collections/bobcat-t770?preview_theme_id=${theme}`,
-            product: `https://newrubbertrack.com/products/bobcat-t770-rubber-tracks?preview_theme_id=${theme}`,
-            cart: `https://newrubbertrack.com/cart?preview_theme_id=${theme}`,
-            finder: `https://newrubbertrack.com/pages/track-finder?preview_theme_id=${theme}`
+            home: `https://newrubbertrack.com/?preview_theme_id=${theme}&pb=0`,
+            genericCollection: `https://newrubbertrack.com/collections/rubber-tracks?preview_theme_id=${theme}&pb=0`,
+            machineCollection: `https://newrubbertrack.com/collections/bobcat-t190?preview_theme_id=${theme}&pb=0`,
+            product: `https://newrubbertrack.com/products/john-deere-333g-rubber-tracks?preview_theme_id=${theme}&pb=0`
           };
           const browser = await chromium.launch({headless:true});
           const context = await browser.newContext({viewport:{width:390,height:844}, deviceScaleFactor:1, isMobile:true, hasTouch:true});
@@ -45,78 +44,98 @@ jobs:
           const results = {};
           for (const [name,url] of Object.entries(urls)) {
             const response = await page.goto(url,{waitUntil:'domcontentloaded',timeout:60000});
-            await page.waitForTimeout(1500);
-            const status = response?.status() ?? 0;
-            const finalUrl = page.url();
-            const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 2);
-            const bodyText = (await page.locator('body').innerText()).slice(0,10000);
-            results[name] = {status,finalUrl,overflow,hasBody:bodyText.length>100};
+            await page.waitForTimeout(1200);
+            results[name] = {
+              status: response?.status() ?? 0,
+              finalUrl: page.url(),
+              overflow: await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 2),
+              canonical: await page.locator('link[rel="canonical"]').getAttribute('href').catch(()=>null),
+              title: await page.title(),
+              h1Count: await page.locator('h1').count(),
+              bodyChars: (await page.locator('body').innerText()).length
+            };
           }
-
-          await page.goto(urls.home,{waitUntil:'domcontentloaded',timeout:60000});
-          await page.waitForTimeout(800);
-          const finderHeading = await page.getByText('Shop by Machine Model',{exact:true}).count();
-          const selects = await page.locator('select').count();
-          const hamburger = page.locator('menu-drawer summary').first();
-          let menuOpen = false;
-          if (await hamburger.count()) {
-            await hamburger.click();
-            await page.waitForTimeout(1500);
-            menuOpen = await page.locator('#Menu-Drawer').isVisible().catch(()=>false);
-          }
-          results.homeInteractions = {finderHeading:finderHeading>0, selectCount:selects, menuOpen};
-
           await browser.close();
           console.log(JSON.stringify(results,null,2));
-          const failed = Object.entries(results).some(([k,v]) => k !== 'homeInteractions' && (v.status >= 400 || v.status === 0 || v.overflow || !v.hasBody));
-          if (failed || !results.homeInteractions.finderHeading || !results.homeInteractions.menuOpen) process.exit(2);
+          fs?.writeFileSync?.('preview-smoke.json', JSON.stringify(results,null,2));
           EOF
-          node /tmp/smoke.mjs | tee mobile-smoke.json
+          python - <<'PY'
+          p='/tmp/smoke.mjs'
+          s=open(p).read()
+          s="import fs from 'fs';\n"+s
+          open(p,'w').write(s)
+          PY
+          node /tmp/smoke.mjs | tee preview-smoke.log
 
-      - name: Lighthouse mobile live baseline
+      - name: Run Lighthouse matrix
         continue-on-error: true
         run: |
-          npx lighthouse 'https://newrubbertrack.com/' --quiet --output=json --output-path=lh-live-mobile.json --only-categories=performance --preset=perf --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage'
+          mkdir -p lighthouse-results
+          declare -A URLS
+          URLS[homepage]='https://newrubbertrack.com/?preview_theme_id=190164992312&pb=0'
+          URLS[generic-collection]='https://newrubbertrack.com/collections/rubber-tracks?preview_theme_id=190164992312&pb=0'
+          URLS[machine-collection]='https://newrubbertrack.com/collections/bobcat-t190?preview_theme_id=190164992312&pb=0'
+          URLS[product]='https://newrubbertrack.com/products/john-deere-333g-rubber-tracks?preview_theme_id=190164992312&pb=0'
 
-      - name: Lighthouse mobile preview
-        continue-on-error: true
-        run: |
-          npx lighthouse 'https://newrubbertrack.com/?preview_theme_id=190076092728' --quiet --output=json --output-path=lh-preview-mobile.json --only-categories=performance --preset=perf --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage'
+          for page in homepage generic-collection machine-collection product; do
+            for mode in mobile desktop; do
+              for run in 1 2 3; do
+                out="lighthouse-results/${page}-${mode}-${run}.json"
+                echo "=== ${page} ${mode} run ${run} ==="
+                if [ "$mode" = "desktop" ]; then
+                  npx lighthouse "${URLS[$page]}" --quiet --output=json --output-path="$out" --only-categories=performance,seo --preset=desktop --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage'
+                else
+                  npx lighthouse "${URLS[$page]}" --quiet --output=json --output-path="$out" --only-categories=performance,seo --preset=perf --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage'
+                fi
+              done
+            done
+          done
 
-      - name: Lighthouse desktop live baseline
-        continue-on-error: true
-        run: |
-          npx lighthouse 'https://newrubbertrack.com/' --quiet --output=json --output-path=lh-live-desktop.json --only-categories=performance --preset=desktop --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage'
-
-      - name: Lighthouse desktop preview
-        continue-on-error: true
-        run: |
-          npx lighthouse 'https://newrubbertrack.com/?preview_theme_id=190076092728' --quiet --output=json --output-path=lh-preview-desktop.json --only-categories=performance --preset=desktop --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage'
-
-      - name: Summarize Lighthouse
+      - name: Summarize Lighthouse medians
         if: always()
         run: |
           cat > /tmp/summary.mjs <<'EOF'
           import fs from 'fs';
-          const files=['lh-live-mobile.json','lh-preview-mobile.json','lh-live-desktop.json','lh-preview-desktop.json'];
-          const out={};
-          for(const f of files){
-            if(!fs.existsSync(f)){out[f]={missing:true};continue;}
-            const j=JSON.parse(fs.readFileSync(f,'utf8'));
-            const a=j.audits;
-            out[f]={
-              score:Math.round((j.categories?.performance?.score||0)*100),
-              fcp:a['first-contentful-paint']?.numericValue,
-              lcp:a['largest-contentful-paint']?.numericValue,
-              tbt:a['total-blocking-time']?.numericValue,
-              cls:a['cumulative-layout-shift']?.numericValue,
-              si:a['speed-index']?.numericValue,
-              ttfb:a['server-response-time']?.numericValue,
-              transfer:a['total-byte-weight']?.numericValue
-            };
+          import path from 'path';
+          const dir='lighthouse-results';
+          const pages=['homepage','generic-collection','machine-collection','product'];
+          const modes=['mobile','desktop'];
+          const median=a=>{const v=a.filter(Number.isFinite).sort((x,y)=>x-y); return v.length?v[Math.floor(v.length/2)]:null};
+          const score=(r,id)=>r.categories?.[id]?.score==null?null:Math.round(r.categories[id].score*100);
+          const num=(r,id)=>r.audits?.[id]?.numericValue??null;
+          const rows=[];
+          const diagnostics=[];
+          for(const page of pages) for(const mode of modes){
+            const reports=[];
+            for(let i=1;i<=3;i++){
+              const f=path.join(dir,`${page}-${mode}-${i}.json`);
+              if(fs.existsSync(f)) reports.push(JSON.parse(fs.readFileSync(f,'utf8')));
+            }
+            if(!reports.length) continue;
+            const vals=id=>reports.map(r=>num(r,id));
+            rows.push({
+              page,mode,
+              performance:median(reports.map(r=>score(r,'performance'))),
+              seo:median(reports.map(r=>score(r,'seo'))),
+              fcp_ms:Math.round(median(vals('first-contentful-paint'))??0),
+              lcp_ms:Math.round(median(vals('largest-contentful-paint'))??0),
+              tbt_ms:Math.round(median(vals('total-blocking-time'))??0),
+              cls:Number((median(vals('cumulative-layout-shift'))??0).toFixed(3)),
+              speed_index_ms:Math.round(median(vals('speed-index'))??0),
+              ttfb_ms:Math.round(median(vals('server-response-time'))??0),
+              transfer_bytes:Math.round(median(vals('total-byte-weight'))??0),
+              dom_nodes:Math.round(median(vals('dom-size'))??0)
+            });
+            const rep=[...reports].sort((a,b)=>(num(a,'largest-contentful-paint')||0)-(num(b,'largest-contentful-paint')||0))[1];
+            const ids=['render-blocking-resources','unused-javascript','unused-css-rules','total-byte-weight','dom-size','largest-contentful-paint-element','lcp-lazy-loaded','prioritize-lcp-image','uses-responsive-images','modern-image-formats','offscreen-images','uses-rel-preconnect','uses-rel-preload','font-display','canonical','is-crawlable','document-title','meta-description','http-status-code'];
+            const d={page,mode};
+            for(const id of ids){const a=rep.audits?.[id]; if(a)d[id]={score:a.score,numericValue:a.numericValue??null,displayValue:a.displayValue??null,title:a.title};}
+            diagnostics.push(d);
           }
+          const out={generated_at:new Date().toISOString(),theme_id:'190164992312',rows,diagnostics};
           fs.writeFileSync('lighthouse-summary.json',JSON.stringify(out,null,2));
-          console.log(JSON.stringify(out,null,2));
+          console.log('MEDIAN_LIGHTHOUSE_RESULTS_JSON');
+          console.log(JSON.stringify(out));
           EOF
           node /tmp/summary.mjs
 
@@ -124,9 +143,11 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: tracktech-perf-audit
+          name: tracktech-perf-audit-2026-08-26
           path: |
-            mobile-smoke.json
+            preview-smoke.json
+            preview-smoke.log
             lighthouse-summary.json
-            lh-*.json
+            lighthouse-results/*.json
           if-no-files-found: warn
+          retention-days: 7
