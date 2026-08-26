@@ -1,7 +1,7 @@
 name: Lighthouse Unpublished Theme Audit
 
 on:
-  push:
+  pull_request:
     branches:
       - main
     paths:
