@@ -1,0 +1,87 @@
+name: Lighthouse Unpublished Theme Audit
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/lighthouse-preview-audit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  lighthouse:
+    name: Lighthouse preview audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Lighthouse
+        run: npm install --global lighthouse@12.8.2
+
+      - name: Run three mobile and desktop audits per page
+        shell: bash
+        run: |
+          set -u
+          mkdir -p lighthouse-results
+          declare -A URLS
+          URLS[homepage]='https://newrubbertrack.com/?preview_theme_id=190164992312&pb=0'
+          URLS[generic-collection]='https://newrubbertrack.com/collections/rubber-tracks?preview_theme_id=190164992312&pb=0'
+          URLS[machine-collection]='https://newrubbertrack.com/collections/bobcat-t190?preview_theme_id=190164992312&pb=0'
+          URLS[product]='https://newrubbertrack.com/products/john-deere-333g-rubber-tracks?preview_theme_id=190164992312&pb=0'
+
+          for page in homepage generic-collection machine-collection product; do
+            for mode in mobile desktop; do
+              for run in 1 2 3; do
+                out="lighthouse-results/${page}-${mode}-${run}.json"
+                echo "=== ${page} ${mode} run ${run} ==="
+                if [ "$mode" = "desktop" ]; then
+                  lighthouse "${URLS[$page]}" --quiet --preset=desktop --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage' --only-categories=performance,seo --output=json --output-path="$out"
+                else
+                  lighthouse "${URLS[$page]}" --quiet --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage' --only-categories=performance,seo --output=json --output-path="$out"
+                fi
+              done
+            done
+          done
+
+      - name: Build median summary
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+          const dir='lighthouse-results';
+          const pages=['homepage','generic-collection','machine-collection','product'];
+          const modes=['mobile','desktop'];
+          const median=a=>{const v=a.filter(Number.isFinite).sort((x,y)=>x-y); return v.length?v[Math.floor(v.length/2)]:null};
+          const score=(r,id)=>r.categories?.[id]?.score==null?null:Math.round(r.categories[id].score*100);
+          const num=(r,id)=>r.audits?.[id]?.numericValue??null;
+          const rows=[];
+          for(const page of pages) for(const mode of modes){
+            const reports=[];
+            for(let i=1;i<=3;i++){const f=path.join(dir,`${page}-${mode}-${i}.json`); if(fs.existsSync(f)) reports.push(JSON.parse(fs.readFileSync(f,'utf8')))}
+            if(!reports.length) continue;
+            const vals=id=>reports.map(r=>num(r,id));
+            rows.push({page,mode,performance:median(reports.map(r=>score(r,'performance'))),seo:median(reports.map(r=>score(r,'seo'))),fcp_ms:Math.round(median(vals('first-contentful-paint'))??0),lcp_ms:Math.round(median(vals('largest-contentful-paint'))??0),tbt_ms:Math.round(median(vals('total-blocking-time'))??0),cls:Number((median(vals('cumulative-layout-shift'))??0).toFixed(3)),speed_index_ms:Math.round(median(vals('speed-index'))??0),transfer_bytes:Math.round(median(vals('total-byte-weight'))??0),dom_nodes:Math.round(median(vals('dom-size'))??0)});
+          }
+          const summary={generated_at:new Date().toISOString(),theme_id:'190164992312',rows};
+          fs.writeFileSync(path.join(dir,'summary.json'),JSON.stringify(summary,null,2));
+          console.log('MEDIAN_LIGHTHOUSE_RESULTS_JSON');
+          console.log(JSON.stringify(summary));
+          NODE
+
+      - name: Upload reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-unpublished-theme-190164992312
+          path: lighthouse-results
+          retention-days: 7
