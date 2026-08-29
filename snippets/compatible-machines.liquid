@@ -1,7 +1,6 @@
 {%- comment -%}
-  Compatible Machines tab — lists machines that fit this track product.
-  Primary: product.metafields.custom.fitments (same source as checkout).
-  Fallback: track-fitment-map.json keyed by track_size (legacy).
+  Compatible Machines — governed fitment references only.
+  If governed fitments are absent, fail closed rather than falling back to legacy static maps.
 {%- endcomment -%}
 {%- liquid
   assign track_size = product.metafields.custom.track_size.value | default: product.metafields.custom.track_size | default: ''
@@ -11,83 +10,91 @@
     assign has_fitments = true
   endif
 -%}
-{%- if track_size != blank -%}
-  {{ 'compatible-machines.css' | asset_url | stylesheet_tag }}
-  {%- if has_fitments -%}
-    {%- comment -%} Build make → models from fitment MO refs {%- endcomment -%}
-    {%- assign make_list = '' -%}
-    {%- for fitment in fitment_refs -%}
-      {%- assign make_mo = fitment.make.value -%}
-      {%- assign make_name = make_mo.name.value | default: make_mo.display_name.value | default: make_mo.name | default: '' -%}
-      {%- if make_name != blank -%}
-        {%- unless make_list contains make_name -%}
-          {%- if make_list != '' -%}{%- assign make_list = make_list | append: '||' -%}{%- endif -%}
-          {%- assign make_list = make_list | append: make_name -%}
-        {%- endunless -%}
-      {%- endif -%}
-    {%- endfor -%}
-    {%- assign makes = make_list | split: '||' | sort -%}
-    {%- assign model_total = fitment_refs.size -%}
-    <div class="hi-compatible-machines hi-compat--static">
-      <div class="hi-compat__head">
-        <span class="hi-compat__count">{{ model_total }} Compatible Model{% if model_total != 1 %}s{% endif %}</span>
-        <span class="hi-compat__brands">{{ makes.size }} Brand{% if makes.size != 1 %}s{% endif %}</span>
-      </div>
-      {%- for make in makes -%}
-        {%- assign make_mo_url = '' -%}
-        <div class="hi-compat__brand">
-          <span class="hi-compat__brand-name">{{ make }}</span>
-          <span class="hi-compat__models">
-            {%- assign shown = 0 -%}
-            {%- assign brand_total = 0 -%}
-            {%- for fitment in fitment_refs -%}
-              {%- assign fmake = fitment.make.value.name.value | default: fitment.make.value.display_name.value | default: fitment.make.value.name | default: '' -%}
-              {%- if fmake == make -%}
-                {%- assign brand_total = brand_total | plus: 1 -%}
-              {%- endif -%}
-            {%- endfor -%}
-            {%- for fitment in fitment_refs -%}
-              {%- assign fmake_mo = fitment.make.value -%}
-              {%- assign fmake = fmake_mo.name.value | default: fmake_mo.display_name.value | default: fmake_mo.name | default: '' -%}
-              {%- if fmake != make -%}{%- continue -%}{%- endif -%}
-              {%- if shown >= 6 -%}{%- continue -%}{%- endif -%}
-              {%- assign model_mo = fitment.model.value -%}
-              {%- assign model_display = model_mo.display_name.value | default: model_mo.display_name | default: model_mo.system.handle -%}
-              {%- comment -%} Prefix-safe make strip (avoids mangling models where make is a substring). {%- endcomment -%}
-              {%- assign model_label = model_display -%}
-              {%- assign mk_prefix = model_display | slice: 0, make.size -%}
-              {%- if mk_prefix == make -%}
-                {%- assign model_label = model_display | slice: make.size, model_display.size | strip -%}
-              {%- endif -%}
-              {%- if model_label == blank -%}{%- assign model_label = model_display -%}{%- endif -%}
-              {%- assign model_url = model_mo.system.url | default: '' -%}
-              {%- if make_mo_url == blank -%}{%- assign make_mo_url = fmake_mo.system.url | default: '' -%}{%- endif -%}
-              {%- if shown > 0 -%}<span class="hi-compat__sep">,</span>{%- endif -%}
-              {%- if model_url != blank -%}
-                <a class="hi-compat__model" href="{{ model_url }}">{{ model_label }}</a>
-              {%- else -%}
-                <span class="hi-compat__model">{{ model_label }}</span>
-              {%- endif -%}
-              {%- assign shown = shown | plus: 1 -%}
-            {%- endfor -%}
-            {%- assign overflow = brand_total | minus: shown -%}
-            {%- if overflow > 0 -%}
-              <span class="hi-compat__sep">,</span>
-              {%- if make_mo_url != blank -%}
-                <a class="hi-compat__more" href="{{ make_mo_url }}">+{{ overflow }} more</a>
-              {%- else -%}
-                <span class="hi-compat__more">+{{ overflow }} more</span>
-              {%- endif -%}
+
+{{ 'compatible-machines.css' | asset_url | stylesheet_tag }}
+
+{%- if has_fitments -%}
+  {%- assign make_list = '' -%}
+  {%- for fitment in fitment_refs -%}
+    {%- assign make_mo = fitment.make.value -%}
+    {%- assign make_name = make_mo.name.value | default: make_mo.display_name.value | default: make_mo.name | default: '' -%}
+    {%- if make_name != blank -%}
+      {%- unless make_list contains make_name -%}
+        {%- if make_list != '' -%}{%- assign make_list = make_list | append: '||' -%}{%- endif -%}
+        {%- assign make_list = make_list | append: make_name -%}
+      {%- endunless -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- assign makes = make_list | split: '||' | sort -%}
+  {%- assign model_total = fitment_refs.size -%}
+
+  <div class="hi-compatible-machines hi-compat--static">
+    <div class="hi-compat__head">
+      <span class="hi-compat__count">{{ model_total }} Compatible Model{% if model_total != 1 %}s{% endif %}</span>
+      <span class="hi-compat__brands">{{ makes.size }} Brand{% if makes.size != 1 %}s{% endif %}</span>
+    </div>
+
+    {%- for make in makes -%}
+      {%- assign make_mo_url = '' -%}
+      <div class="hi-compat__brand">
+        <span class="hi-compat__brand-name">{{ make }}</span>
+        <span class="hi-compat__models">
+          {%- assign shown = 0 -%}
+          {%- assign brand_total = 0 -%}
+          {%- for fitment in fitment_refs -%}
+            {%- assign fmake = fitment.make.value.name.value | default: fitment.make.value.display_name.value | default: fitment.make.value.name | default: '' -%}
+            {%- if fmake == make -%}
+              {%- assign brand_total = brand_total | plus: 1 -%}
             {%- endif -%}
-          </span>
-        </div>
-      {%- endfor -%}
-      <p class="hi-compat__note">Click any model for tracks, undercarriage parts &amp; attachments.</p>
-    </div>
-  {%- else -%}
-    <div class="hi-compatible-machines" data-hi-compat data-track-size="{{ track_size | escape }}" data-map-url="{{ 'track-fitment-map.json' | asset_url }}" style="min-height:60px">
-      <noscript><p>Call (850) 816-7898 and we&rsquo;ll confirm fitment for size <strong>{{ track_size }}</strong>.</p></noscript>
-    </div>
-    <script src="{{ 'compatible-machines.js' | asset_url }}" defer></script>
-  {%- endif -%}
+          {%- endfor -%}
+
+          {%- for fitment in fitment_refs -%}
+            {%- assign fmake_mo = fitment.make.value -%}
+            {%- assign fmake = fmake_mo.name.value | default: fmake_mo.display_name.value | default: fmake_mo.name | default: '' -%}
+            {%- if fmake != make -%}{%- continue -%}{%- endif -%}
+            {%- if shown >= 6 -%}{%- continue -%}{%- endif -%}
+
+            {%- assign model_mo = fitment.model.value -%}
+            {%- assign model_display = model_mo.display_name.value | default: model_mo.display_name | default: model_mo.system.handle -%}
+            {%- assign model_label = model_display -%}
+            {%- assign mk_prefix = model_display | slice: 0, make.size -%}
+            {%- if mk_prefix == make -%}
+              {%- assign model_label = model_display | slice: make.size, model_display.size | strip -%}
+            {%- endif -%}
+            {%- if model_label == blank -%}{%- assign model_label = model_display -%}{%- endif -%}
+            {%- assign model_url = model_mo.system.url | default: '' -%}
+            {%- if make_mo_url == blank -%}{%- assign make_mo_url = fmake_mo.system.url | default: '' -%}{%- endif -%}
+
+            {%- if shown > 0 -%}<span class="hi-compat__sep">,</span>{%- endif -%}
+            {%- if model_url != blank -%}
+              <a class="hi-compat__model" href="{{ model_url }}">{{ model_label }}</a>
+            {%- else -%}
+              <span class="hi-compat__model">{{ model_label }}</span>
+            {%- endif -%}
+            {%- assign shown = shown | plus: 1 -%}
+          {%- endfor -%}
+
+          {%- assign overflow = brand_total | minus: shown -%}
+          {%- if overflow > 0 -%}
+            <span class="hi-compat__sep">,</span>
+            {%- if make_mo_url != blank -%}
+              <a class="hi-compat__more" href="{{ make_mo_url }}">+{{ overflow }} more</a>
+            {%- else -%}
+              <span class="hi-compat__more">+{{ overflow }} more</span>
+            {%- endif -%}
+          {%- endif -%}
+        </span>
+      </div>
+    {%- endfor -%}
+
+    <p class="hi-compat__note">Compatibility shown here comes from the governed fitment catalog. Click a model for its machine page.</p>
+  </div>
+{%- else -%}
+  <div class="hi-compatible-machines hi-compat--unverified">
+    <p class="hi-compat__note">
+      Published machine compatibility is not available for this product yet.
+      {%- if track_size != blank %} Match the size marking on your existing track ({{ track_size }}) before ordering.{% endif %}
+      Contact fitment support if you need confirmation.
+    </p>
+  </div>
 {%- endif -%}
