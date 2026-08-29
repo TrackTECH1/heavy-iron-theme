@@ -18,7 +18,7 @@
     if (item.url) return item.url;
     if (item.handle) return '/products/' + encodeURIComponent(item.handle);
     if (item.product_handle) return '/products/' + encodeURIComponent(item.product_handle);
-    return '/pages/quote';
+    return '';
   }
 
   function itemImage(item) {
@@ -26,7 +26,7 @@
   }
 
   function itemTitle(item) {
-    return item.title || item.name || item.product_title || item.sku || 'Verified Part';
+    return item.title || item.name || item.product_title || item.sku || 'Catalog Item';
   }
 
   function renderCard(item, typeLabel) {
@@ -34,8 +34,12 @@
     var price = money(item.price || item.base_price || item.variant_price);
     var sub = item.sub || item.track_size || item.oem_part_number || item.sku || '';
     var handle = item.handle || item.product_handle || '';
+    var url = itemUrl(item);
+    var tag = url ? 'a' : 'div';
+    var open = '<' + tag + ' class="hi-card"' + (url ? ' href="' + esc(url) + '"' : '') + (handle ? ' data-hi-product-handle="' + esc(handle) + '"' : '') + '>';
+    var close = '</' + tag + '>';
     return [
-      '<a class="hi-card" href="' + esc(itemUrl(item)) + '"' + (handle ? ' data-hi-product-handle="' + esc(handle) + '"' : '') + '>',
+      open,
       '<div class="hi-card__imgwrap">',
       image
         ? '<img class="hi-card__img" src="' + esc(image) + '" alt="' + esc(itemTitle(item)) + '" width="440" height="340" loading="lazy">'
@@ -45,8 +49,8 @@
       '<h3 class="hi-card__title">' + esc(itemTitle(item)) + '</h3>',
       sub ? '<p class="hi-card__sub">' + esc(sub) + '</p>' : '',
       price ? '<p class="hi-card__price">' + esc(price) + '</p>' : '',
-      '<span class="hi-card__btn">' + esc(item.button || 'View') + '</span>',
-      '</a>'
+      url ? '<span class="hi-card__btn">' + esc(item.button || 'View') + '</span>' : '<span class="hi-card__btn">Catalog reference</span>',
+      close
     ].join('');
   }
 
@@ -92,7 +96,7 @@
               price: variant.price,
               handle: variant.handle,
               url: variant.href,
-              sub: variant.sku,
+              sub: variant.track_size || variant.sku,
               button: 'View Track'
             });
           });
@@ -106,7 +110,7 @@
             price: group.price,
             handle: group.handle,
             url: group.href,
-            sub: group.sku,
+            sub: group.oem_part_number || group.sku,
             button: 'View Part'
           });
         }
@@ -130,7 +134,7 @@
     if (!row) return;
     row.classList.remove('hi-mf__cards--loading');
     if (!Array.isArray(items) || !items.length) {
-      row.innerHTML = '<div class="hi-mf__empty">No verified ' + esc(label.toLowerCase()) + ' are linked yet.</div>';
+      row.innerHTML = '<div class="hi-mf__empty">No linked ' + esc(label.toLowerCase()) + ' products are published for this machine yet.</div>';
       return;
     }
     row.innerHTML = items.map(function (item) { return renderCard(item, label); }).join('');
@@ -140,16 +144,6 @@
   function endpointUrl(endpoint, slug) {
     var joiner = endpoint.indexOf('?') === -1 ? '?' : '&';
     return endpoint + joiner + 'slug=' + encodeURIComponent(slug);
-  }
-
-  function fitmentEndpointFrom(endpoint) {
-    if (endpoint.indexOf('/bento') !== -1) return endpoint.replace('/bento', '/fitment-search');
-    return '/apps/iron-api/fitment-search';
-  }
-
-  function fitmentUrl(endpoint, slug) {
-    var joiner = endpoint.indexOf('?') === -1 ? '?' : '&';
-    return endpoint + joiner + 'q=' + encodeURIComponent(slug);
   }
 
   function fetchJson(url) {
@@ -166,12 +160,6 @@
     if (!slug || !root.querySelector('[data-hi-bento-row]')) return;
 
     fetchJson(endpointUrl(endpoint, slug))
-      .catch(function () {
-        return fetchJson(fitmentUrl(fitmentEndpointFrom(endpoint), slug));
-      })
-      .catch(function () {
-        return fetchJson(fitmentUrl('https://tcykyktvdlsbscrsbjyt.supabase.co/functions/v1/fitment-search', slug));
-      })
       .then(function (data) {
         var payload = normalizePayload(data || {});
         renderRow(root, 'tracks', payload.tracks, 'Rubber Track');
@@ -181,7 +169,7 @@
       .catch(function () {
         root.querySelectorAll('[data-hi-bento-row]').forEach(function (row) {
           row.classList.remove('hi-mf__cards--loading');
-          row.innerHTML = '<div class="hi-mf__empty">Fitment data is being refreshed. Call (850) 816-7898 and we will verify it.</div>';
+          row.innerHTML = '<div class="hi-mf__empty">No linked catalog products are available from this feed right now.</div>';
         });
       });
   }
