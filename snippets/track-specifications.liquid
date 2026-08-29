@@ -108,3 +108,21 @@
     </table>
   {%- endif -%}
 </div>
+
+<script>
+  (() => {
+    if (window.__tracktechTrackSpecVariantSync) return;
+    if (typeof subscribe !== 'function' || !window.PUB_SUB_EVENTS?.variantChange) return;
+    window.__tracktechTrackSpecVariantSync = true;
+    subscribe(PUB_SUB_EVENTS.variantChange, ({ data }) => {
+      const sectionId = data?.sectionId;
+      const html = data?.html;
+      if (!sectionId || !html) return;
+      const source = html.getElementById(`TrackSpecifications-${sectionId}`);
+      const destination = document.getElementById(`TrackSpecifications-${sectionId}`);
+      if (!source || !destination) return;
+      destination.innerHTML = source.innerHTML;
+      destination.classList.toggle('hidden', source.classList.contains('hidden'));
+    });
+  })();
+</script>
