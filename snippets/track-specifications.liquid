@@ -112,7 +112,7 @@
 <script>
   (() => {
     if (window.__tracktechTrackSpecVariantSync) return;
-    if (typeof subscribe !== 'function' || !window.PUB_SUB_EVENTS?.variantChange) return;
+    if (typeof subscribe !== 'function' || typeof PUB_SUB_EVENTS === 'undefined' || !PUB_SUB_EVENTS.variantChange) return;
     window.__tracktechTrackSpecVariantSync = true;
     subscribe(PUB_SUB_EVENTS.variantChange, ({ data }) => {
       const sectionId = data?.sectionId;
