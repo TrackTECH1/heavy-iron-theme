@@ -35,9 +35,9 @@
   if page_seo_desc == blank
     assign page_seo_desc = 'Shop OEM-spec rubber tracks'
     if track_size != blank
-      assign page_seo_desc = page_seo_desc | append: ' (size ' | append: track_size | append: ')'
+      assign page_seo_desc = page_seo_desc | append: ' (primary size ' | append: track_size | append: ')'
     endif
-    assign page_seo_desc = page_seo_desc | append: ', undercarriage parts, and attachments for the ' | append: model_name | append: '. Free freight, 24-month warranty, same-day shipping.'
+    assign page_seo_desc = page_seo_desc | append: ', undercarriage parts, and attachments for the ' | append: model_name | append: '. Free freight, 24-month warranty, same-day shipping on eligible in-stock orders.'
   endif
 -%}
 
@@ -68,15 +68,14 @@
       <div class="hi-mf__head">
         <p class="hi-mf__eyebrow">{{ machine_name }}</p>
         <h1 class="hi-mf__title">{{ model_name }}</h1>
-        {%- if track_size != blank -%}<span class="hi-mf__size">Fits track size: {{ track_size }}</span>{%- endif -%}
+        {%- if track_size != blank -%}<span class="hi-mf__size">Primary track size: {{ track_size }}</span>{%- endif -%}
         <p class="hi-mf__intro">
-          Shop {{ track_product_count }}+ in-stock rubber track{% if track_product_count != 1 %}s{% endif %},
-          steel undercarriage, and attachments built for the {{ make_name }} {{ model_name }}.
+          Shop rubber track options, steel undercarriage, and attachments linked to the {{ make_name }} {{ model_name }}.
           {%- if track_size != blank -%}
             Primary track size: <strong>{{ track_size }}</strong>.
           {%- endif -%}
-          OEM-cross-referenced, continuous steel cord construction, free LTL freight to 48 states.
-          Not sure which tread or part? Call {{ phone_display }} — we confirm fitment by make, model, and serial.
+          Use the configuration shown on your existing track or the confirmed machine configuration before choosing a tread pattern.
+          Call {{ phone_display }} if you need help identifying a serial-number or undercarriage split.
         </p>
 
         {%- if section.settings.show_trust_bar -%}
@@ -110,7 +109,7 @@
             {%- if model.operating_weight.value != blank -%}<li><span class="hi-mf__spec-k">Operating Weight</span><span class="hi-mf__spec-v">{{ model.operating_weight.value }} lbs</span></li>{%- endif -%}
             {%- if model.horsepower.value != blank -%}<li><span class="hi-mf__spec-k">Horsepower</span><span class="hi-mf__spec-v">{{ model.horsepower.value }} HP</span></li>{%- endif -%}
             {%- if model.roc_bucket_force.value != blank -%}<li><span class="hi-mf__spec-k">ROC / Bucket Force</span><span class="hi-mf__spec-v">{{ model.roc_bucket_force.value }} lbs</span></li>{%- endif -%}
-            {%- if track_size != blank -%}<li><span class="hi-mf__spec-k">Track Size</span><span class="hi-mf__spec-v">{{ track_size }}</span></li>{%- endif -%}
+            {%- if track_size != blank -%}<li><span class="hi-mf__spec-k">Primary Track Size</span><span class="hi-mf__spec-v">{{ track_size }}</span></li>{%- endif -%}
           </ul>
         </div>
         <div class="hi-mf__spec">
@@ -137,7 +136,7 @@
     {%- comment -%} RUBBER TRACKS {%- endcomment -%}
     <section class="hi-mf__sec" id="tracks">
       <h2 class="hi-mf__sec-h">Rubber Tracks</h2>
-      <p class="hi-mf__sec-sub">Choose your tread pattern. OEM-spec, continuous steel cord, free freight.</p>
+      <p class="hi-mf__sec-sub">Choose the confirmed track configuration first, then choose the tread pattern that matches your work surface.</p>
 
       {%- if model.track_variants.value != blank -%}
         <div class="hi-mf__cards" data-hi-static-row="tracks">
@@ -171,7 +170,18 @@
               if vimg == blank and variant_product.media.first != blank
                 assign vimg = variant_product.media.first.preview_image
               endif
-              assign tsize = variant_product.metafields.custom.track_size | default: track_size
+
+              assign variant_size_ref = variant.metafields.custom.track_size_reference.value
+              assign tsize = variant.metafields.custom.track_size.value
+              if tsize == blank and variant_size_ref != blank
+                assign tsize = variant_size_ref.display_size.value | default: variant_size_ref.display_size
+              endif
+              if tsize == blank and variant_product != blank
+                assign tsize = variant_product.metafields.custom.track_size.value | default: variant_product.metafields.custom.track_size
+              endif
+              if tsize == blank
+                assign tsize = track_size
+              endif
               assign track_card_title = track_machine_label | append: ' Tracks'
             -%}
             {%- capture sub -%}{% if tsize != blank %}Size: {{ tsize }}{% endif %}{% if variant.sku != blank %}{% if tsize != blank %} · {% endif %}SKU: {{ variant.sku }}{% endif %}{%- endcapture -%}
@@ -189,12 +199,19 @@
             assign track_card_title = track_machine_label | append: ' Tracks'
           -%}
           {%- for product in model.track_products.value -%}
-            {%- assign tsize = product.metafields.custom.track_size | default: track_size -%}
             {%- assign tread = product.metafields.custom.tread.value | default: product.metafields.custom.tread -%}
             {%- for variant in product.variants -%}
-              {%- assign vurl = product.url | append: '?variant=' | append: variant.id -%}
-              {%- assign vimg = variant.featured_image | default: product.featured_image -%}
               {%- liquid
+                assign vurl = product.url | append: '?variant=' | append: variant.id
+                assign vimg = variant.featured_image | default: product.featured_image
+                assign variant_size_ref = variant.metafields.custom.track_size_reference.value
+                assign tsize = variant.metafields.custom.track_size.value
+                if tsize == blank and variant_size_ref != blank
+                  assign tsize = variant_size_ref.display_size.value | default: variant_size_ref.display_size
+                endif
+                if tsize == blank
+                  assign tsize = product.metafields.custom.track_size.value | default: product.metafields.custom.track_size | default: track_size
+                endif
                 assign track_type_label = tread
                 if track_type_label == blank and variant.title != blank and variant.title != 'Default Title'
                   assign track_type_label = variant.title
@@ -221,7 +238,7 @@
     {%- comment -%} UNDERCARRIAGE {%- endcomment -%}
     <section class="hi-mf__sec" id="undercarriage">
       <h2 class="hi-mf__sec-h">Steel Undercarriage</h2>
-      <p class="hi-mf__sec-sub">OEM-cross-referenced sprockets, idlers &amp; rollers. Drop-in fit.</p>
+      <p class="hi-mf__sec-sub">OEM-cross-referenced sprockets, idlers &amp; rollers. Match the referenced part or machine configuration before ordering.</p>
       {%- if model.uc_products.value != blank or model.uc_parts.value != blank -%}
         <div class="hi-mf__cards" data-hi-static-row="undercarriage">
           {%- if model.uc_products.value != blank -%}
@@ -276,12 +293,12 @@
             {%- unless seen contains key -%}
               {%- assign seen = seen | append: key | append: '|' -%}
               {%- case att.fitment_status -%}
-                {%- when 'likely_fit' -%}{%- assign badge = 'Bolt-on fit' -%}{%- assign bclass = 'is-fit' -%}
+                {%- when 'likely_fit' -%}{%- assign badge = 'Likely fit' -%}{%- assign bclass = 'is-check' -%}
                 {%- when 'requires_flow_confirmation' -%}{%- assign badge = 'Confirm flow' -%}{%- assign bclass = 'is-check' -%}
                 {%- when 'requires_flow_and_harness_confirmation' -%}{%- assign badge = 'Confirm flow + harness' -%}{%- assign bclass = 'is-check' -%}
                 {%- when 'requires_width_confirmation' -%}{%- assign badge = 'Confirm width' -%}{%- assign bclass = 'is-check' -%}
                 {%- when 'requires_bit_and_drive_confirmation' -%}{%- assign badge = 'Confirm bit + drive' -%}{%- assign bclass = 'is-check' -%}
-                {%- else -%}{%- assign badge = 'Ask us' -%}{%- assign bclass = 'is-check' -%}
+                {%- else -%}{%- assign badge = 'Check configuration' -%}{%- assign bclass = 'is-check' -%}
               {%- endcase -%}
               <div class="hi-mf__fit-row">
                 <span class="hi-mf__fit-name">{{ att.attachment | capitalize }}</span>
@@ -294,7 +311,7 @@
               </div>
             {%- endunless -%}
           {%- endfor -%}
-          <p class="hi-mf__fit-note">{{ fit.note | default: 'Powered attachments — confirm hydraulic flow before ordering.' }}</p>
+          <p class="hi-mf__fit-note">{{ fit.note | default: 'Powered attachments may require hydraulic-flow, harness, width, or mount confirmation before ordering.' }}</p>
         </div>
       {%- endif -%}
 
@@ -332,7 +349,7 @@
     {%- comment -%} BOTTOM CTA {%- endcomment -%}
     <div class="hi-mf__cta">
       <h3>Ready to outfit your {{ model_name }}?</h3>
-      <p>Need a part not listed? We source OEM-cross undercarriage and attachments for every major brand. Free freight and fleet pricing.</p>
+      <p>Need a part not listed? We source OEM-cross-referenced undercarriage and attachments for major compact-equipment brands. Free freight and fleet pricing may apply.</p>
       <a href="{{ quote_url }}?machine={{ model_name | url_encode }}" class="hi-mf__btn-primary">Request a Free Quote</a>
       <div class="hi-mf__phone"><span>Or call us at: </span><a href="tel:{{ phone }}">{{ phone_display }}</a></div>
     </div>
