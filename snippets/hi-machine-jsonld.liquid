@@ -16,6 +16,7 @@
   if faqs == blank
     assign faq_fallback = true
   endif
+  assign machine_schema_name = make_name | append: ' ' | append: model_name | strip
 -%}
 <script type="application/ld+json">
 {
@@ -38,6 +39,7 @@
         {%- if model.track_variants.value != blank -%}
           {%- for variant in model.track_variants.value limit: 30 -%}
             {%- assign product = variant.product -%}
+            {%- if product == blank -%}{%- continue -%}{%- endif -%}
             {%- assign i = i | plus: 1 -%}
             {%- if i > 1 -%},{%- endif -%}
             {
@@ -45,19 +47,19 @@
               "position": {{ i }},
               "item": {
                 "@type": "Product",
-                "name": {% if product != blank %}{{ product.title | append: ' - ' | append: variant.title | json }}{% else %}{{ variant.title | default: variant.sku | default: 'Rubber Track' | json }}{% endif %},
+                "name": {{ product.title | append: ' - ' | append: variant.title | json }},
                 "sku": {{ variant.sku | json }},
-                "url": {% if product != blank %}{{ product.url | append: '?variant=' | append: variant.id | prepend: shop.url | json }}{% else %}{{ routes.search_url | append: '?q=' | append: variant.sku | prepend: shop.url | json }}{% endif %},
+                "url": {{ product.url | append: '?variant=' | append: variant.id | prepend: shop.url | json }},
                 "category": "Rubber Tracks",
                 {%- if variant.featured_image -%}"image": {{ variant.featured_image | image_url: width: 800 | prepend: 'https:' | json }},{%- elsif product.featured_image -%}"image": {{ product.featured_image | image_url: width: 800 | prepend: 'https:' | json }},{%- endif -%}
                 "brand": { "@type": "Brand", "name": "Heavy Iron Supply Co." },
-                "isAccessoryOrSparePartFor": { "@type": "Product", "name": {{ model_name | json }} },
+                "isAccessoryOrSparePartFor": { "@type": "Product", "name": {{ machine_schema_name | json }} },
                 "offers": {
                   "@type": "Offer",
                   "priceCurrency": {{ shop.currency | json }},
                   "price": {{ variant.price | divided_by: 100.0 | json }},
                   "availability": {% if variant.available %}"https://schema.org/InStock"{% else %}"https://schema.org/OutOfStock"{% endif %},
-                  "url": {% if product != blank %}{{ product.url | append: '?variant=' | append: variant.id | prepend: shop.url | json }}{% else %}{{ routes.search_url | append: '?q=' | append: variant.sku | prepend: shop.url | json }}{% endif %}
+                  "url": {{ product.url | append: '?variant=' | append: variant.id | prepend: shop.url | json }}
                 }
               }
             }
@@ -76,7 +78,7 @@
               "category": "Rubber Tracks",
               {%- if product.featured_image -%}"image": {{ product.featured_image | image_url: width: 800 | prepend: 'https:' | json }},{%- endif -%}
               "brand": { "@type": "Brand", "name": "Heavy Iron Supply Co." },
-              "isAccessoryOrSparePartFor": { "@type": "Product", "name": {{ model_name | json }} },
+              "isAccessoryOrSparePartFor": { "@type": "Product", "name": {{ machine_schema_name | json }} },
               "offers": {
                 "@type": "AggregateOffer",
                 "priceCurrency": {{ shop.currency | json }},
@@ -102,9 +104,15 @@
               "url": {{ product.url | prepend: shop.url | json }},
               "category": "Undercarriage",
               "brand": { "@type": "Brand", "name": "Heavy Iron Supply Co." },
-              "isAccessoryOrSparePartFor": { "@type": "Product", "name": {{ model_name | json }} }
+              "isAccessoryOrSparePartFor": { "@type": "Product", "name": {{ machine_schema_name | json }} }
               {%- if product.price > 0 -%},
-              "offers": { "@type": "Offer", "price": {{ product.price | divided_by: 100.0 | json }}, "priceCurrency": {{ shop.currency | json }}, "availability": "https://schema.org/InStock" }
+              "offers": {
+                "@type": "Offer",
+                "price": {{ product.price | divided_by: 100.0 | json }},
+                "priceCurrency": {{ shop.currency | json }},
+                "availability": {% if product.available %}"https://schema.org/InStock"{% else %}"https://schema.org/OutOfStock"{% endif %},
+                "url": {{ product.url | prepend: shop.url | json }}
+              }
               {%- endif -%}
             }
           }
@@ -125,16 +133,10 @@
             }
           {%- endfor -%}
         {%- else -%}
-          {%- comment -%} Must mirror the visible fallback in hi-model-faq-fallback.liquid (5 Q&As, same wording) or Google may flag the FAQ markup. {%- endcomment -%}
           {%- if track_size != blank -%}
-            {%- capture faq_a1 -%}The {{ make_name }} {{ model_name }} commonly uses track size {{ track_size }}. Verify against your machine's existing track sidewall marking or OEM manual before ordering.{%- endcapture -%}
+            {%- capture faq_a1 -%}The primary governed track configuration for this machine is {{ track_size }}. Some machines have more than one confirmed configuration, so use the track options linked above and match the size marking or undercarriage configuration on your machine before choosing a width or link count.{%- endcapture -%}
           {%- else -%}
-            {%- capture faq_a1 -%}Track size varies by {{ model_name }} configuration. Measure your existing track (width × pitch × links) or call us with your serial number — we'll confirm the correct size before shipping.{%- endcapture -%}
-          {%- endif -%}
-          {%- if track_count != blank and track_count > 0 -%}
-            {%- capture faq_a4 -%}We stock {{ track_count }}+ tread option{% if track_count != 1 %}s{% endif %} for the {{ model_name }} — including C-Block, multi-bar, zig-zag, and directional patterns. See the Rubber Tracks section above for live pricing.{%- endcapture -%}
-          {%- else -%}
-            {%- capture faq_a4 -%}Common treads include C-Block (general purpose), multi-bar (mixed terrain), and directional (soft ground). Browse the Rubber Tracks section above for options in stock today.{%- endcapture -%}
+            {%- capture faq_a1 -%}This machine does not have a single primary track size published on the page. Use the governed track options linked above when available, or identify the existing track size and undercarriage configuration before ordering.{%- endcapture -%}
           {%- endif -%}
           {
             "@type": "Question",
@@ -143,23 +145,23 @@
           },
           {
             "@type": "Question",
-            "name": {{ 'Are Heavy Iron tracks guaranteed to fit my ' | append: model_name | append: '?' | json }},
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every rubber track order requires you to confirm make and model at checkout. We cross-reference OEM specs and only ship when fitment is verified. Wrong-fit claims are covered under our fitment guarantee." }
+            "name": {{ 'How do I know a listed track fits my ' | append: model_name | append: '?' | json }},
+            "acceptedAnswer": { "@type": "Answer", "text": "Track options shown on this machine page are linked from the governed fitment catalog. If the machine has multiple confirmed configurations or a serial-number split, match the selected track size to the existing track or documented undercarriage configuration before ordering." }
           },
           {
             "@type": "Question",
             "name": {{ 'How fast do ' | append: model_name | append: ' tracks ship?' | json }},
-            "acceptedAnswer": { "@type": "Answer", "text": "Orders placed before 12PM CT ship the same business day. Rubber tracks ship free via LTL freight to the contiguous United States (48 states)." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Eligible in-stock orders placed before 12PM CT can ship the same business day. Rubber-track orders may qualify for free LTL freight within the contiguous United States; the product and checkout determine the applicable shipping terms." }
           },
           {
             "@type": "Question",
             "name": {{ 'What tread patterns are available for the ' | append: model_name | append: '?' | json }},
-            "acceptedAnswer": { "@type": "Answer", "text": {{ faq_a4 | strip | json }} }
+            "acceptedAnswer": { "@type": "Answer", "text": "Available tread patterns depend on the confirmed track size and the products currently linked to this machine. Choose the correct size first, then compare the tread options and live pricing shown in the Rubber Tracks section above." }
           },
           {
             "@type": "Question",
             "name": {{ 'Do you sell undercarriage parts for the ' | append: make_name | append: ' ' | append: model_name | append: '?' | json }},
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes — sprockets, idlers, rollers, and related steel undercarriage components are listed on this page when in stock. Need an OEM part number matched? Call (850) 816-7898 with your serial number." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Sprockets, idlers, rollers, and related undercarriage components appear on this page when they are linked to the machine. For a serial-number or OEM part-number split, call (850) 816-7898 with the machine details." }
           }
         {%- endif -%}
       ]
