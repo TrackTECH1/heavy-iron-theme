@@ -31,23 +31,16 @@
     assign links = product.metafields.custom.links.value | default: product.metafields.custom.links
   endif
 
-  assign track_rating = product.metafields.custom.track_rating.value
-    | default: product.metafields.custom.rating.value
-    | default: product.metafields.custom.duty_rating.value
-    | default: 'Heavy Duty'
+  assign track_rating = product.metafields.custom.track_rating.value | default: product.metafields.custom.rating.value | default: product.metafields.custom.duty_rating.value | default: 'Heavy Duty'
 
-  assign track_weight = spec_variant.metafields.custom.track_weight.value
-    | default: spec_variant.metafields.custom.weight_lbs.value
-    | default: spec_variant.metafields.custom.weight.value
+  assign track_weight = spec_variant.metafields.custom.track_weight.value | default: spec_variant.metafields.custom.weight_lbs.value | default: spec_variant.metafields.custom.weight.value
 
   if track_weight == blank and spec_variant.weight > 0
     assign track_weight = spec_variant.weight | divided_by: 453.592 | round
   endif
 
   if track_weight == blank
-    assign track_weight = product.metafields.custom.track_weight.value
-      | default: product.metafields.custom.weight_lbs.value
-      | default: product.metafields.custom.weight.value
+    assign track_weight = product.metafields.custom.track_weight.value | default: product.metafields.custom.weight_lbs.value | default: product.metafields.custom.weight.value
   endif
 -%}
 
