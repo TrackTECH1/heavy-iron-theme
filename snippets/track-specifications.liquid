@@ -1,21 +1,58 @@
 {%- comment -%}
-  Track Specifications Table — size, rating, width, pitch, links, weight.
-  Warranty & shipping live in the separate accordion below.
+  Track Specifications Table — variant-first size, width, pitch, links, weight.
+  The selected variant's Track Size reference is authoritative for multi-size products.
+  Product metafields remain a legacy fallback only.
 {%- endcomment -%}
 
-{%- assign track_size = product.metafields.custom.track_size.value -%}
-{%- assign width_mm = product.metafields.custom.width_mm.value -%}
-{%- assign pitch_mm = product.metafields.custom.pitch_mm.value -%}
-{%- assign links = product.metafields.custom.links.value -%}
-{%- assign track_rating = product.metafields.custom.track_rating.value
-  | default: product.metafields.custom.rating.value
-  | default: product.metafields.custom.duty_rating.value -%}
-{%- assign track_weight = product.metafields.custom.track_weight.value
-  | default: product.metafields.custom.weight_lbs.value
-  | default: product.metafields.custom.weight.value -%}
+{%- liquid
+  assign spec_variant = product.selected_or_first_available_variant
+  assign size_ref = spec_variant.metafields.custom.track_size_reference.value
+
+  assign track_size = spec_variant.metafields.custom.track_size.value
+  if track_size == blank and size_ref != blank
+    assign track_size = size_ref.display_size.value | default: size_ref.display_size
+  endif
+  if track_size == blank
+    assign track_size = product.metafields.custom.track_size.value | default: product.metafields.custom.track_size
+  endif
+
+  assign width_mm = size_ref.width_mm.value | default: size_ref.width_mm
+  if width_mm == blank
+    assign width_mm = product.metafields.custom.width_mm.value | default: product.metafields.custom.width_mm
+  endif
+
+  assign pitch_mm = size_ref.pitch_mm.value | default: size_ref.pitch_mm
+  if pitch_mm == blank
+    assign pitch_mm = product.metafields.custom.pitch_mm.value | default: product.metafields.custom.pitch_mm
+  endif
+
+  assign links = size_ref.links.value | default: size_ref.links
+  if links == blank
+    assign links = product.metafields.custom.links.value | default: product.metafields.custom.links
+  endif
+
+  assign track_rating = product.metafields.custom.track_rating.value
+    | default: product.metafields.custom.rating.value
+    | default: product.metafields.custom.duty_rating.value
+    | default: 'Heavy Duty'
+
+  assign track_weight = spec_variant.metafields.custom.track_weight.value
+    | default: spec_variant.metafields.custom.weight_lbs.value
+    | default: spec_variant.metafields.custom.weight.value
+
+  if track_weight == blank and spec_variant.weight > 0
+    assign track_weight = spec_variant.weight | divided_by: 453.592 | round
+  endif
+
+  if track_weight == blank
+    assign track_weight = product.metafields.custom.track_weight.value
+      | default: product.metafields.custom.weight_lbs.value
+      | default: product.metafields.custom.weight.value
+  endif
+-%}
 
 {%- if track_size != blank -%}
-  {%- assign size_parts = track_size | split: 'x' -%}
+  {%- assign size_parts = track_size | downcase | split: 'x' -%}
   {%- if width_mm == blank and size_parts.size >= 1 -%}
     {%- assign width_mm = size_parts[0] | strip -%}
   {%- endif -%}
@@ -27,58 +64,47 @@
   {%- endif -%}
 {%- endif -%}
 
-{%- if track_rating == blank -%}
-  {%- assign track_rating = 'Heavy Duty' -%}
-{%- endif -%}
-
-{%- if track_weight == blank -%}
-  {%- assign spec_variant = product.selected_or_first_available_variant -%}
-  {%- if spec_variant.weight > 0 -%}
-    {%- assign track_weight = spec_variant.weight | divided_by: 453.592 | round -%}
+<div id="TrackSpecifications-{{ section.id }}" class="track-specs{% if track_size == blank %} hidden{% endif %}">
+  {%- if track_size != blank -%}
+    <table class="track-specs__table">
+      <tbody>
+        <tr>
+          <td class="track-specs__label" role="rowheader">Track Size</td>
+          <td class="track-specs__value track-specs__value--highlight">{{ track_size }}</td>
+        </tr>
+        <tr>
+          <td class="track-specs__label" role="rowheader">Rating</td>
+          <td class="track-specs__value">{{ track_rating }}</td>
+        </tr>
+        {%- if width_mm != blank -%}
+          <tr>
+            <td class="track-specs__label" role="rowheader">Width</td>
+            <td class="track-specs__value">{{ width_mm }} mm</td>
+          </tr>
+        {%- endif -%}
+        {%- if pitch_mm != blank -%}
+          <tr>
+            <td class="track-specs__label" role="rowheader">Pitch</td>
+            <td class="track-specs__value">{{ pitch_mm }} mm</td>
+          </tr>
+        {%- endif -%}
+        {%- if links != blank -%}
+          <tr>
+            <td class="track-specs__label" role="rowheader">Links</td>
+            <td class="track-specs__value">{{ links }}</td>
+          </tr>
+        {%- endif -%}
+        {%- if track_weight != blank -%}
+          {%- assign track_weight_display = track_weight | append: '' | strip -%}
+          {%- unless track_weight_display contains 'lb' -%}
+            {%- assign track_weight_display = track_weight_display | append: ' lbs' -%}
+          {%- endunless -%}
+          <tr>
+            <td class="track-specs__label" role="rowheader">Weight</td>
+            <td class="track-specs__value">{{ track_weight_display }}</td>
+          </tr>
+        {%- endif -%}
+      </tbody>
+    </table>
   {%- endif -%}
-{%- endif -%}
-
-{%- if track_size != blank -%}
-<div class="track-specs">
-  <table class="track-specs__table">
-    <tbody>
-      <tr>
-        <td class="track-specs__label" role="rowheader">Track Size</td>
-        <td class="track-specs__value track-specs__value--highlight">{{ track_size }}</td>
-      </tr>
-      <tr>
-        <td class="track-specs__label" role="rowheader">Rating</td>
-        <td class="track-specs__value">{{ track_rating }}</td>
-      </tr>
-      {%- if width_mm != blank -%}
-        <tr>
-          <td class="track-specs__label" role="rowheader">Width</td>
-          <td class="track-specs__value">{{ width_mm }} (mm)</td>
-        </tr>
-      {%- endif -%}
-      {%- if pitch_mm != blank -%}
-        <tr>
-          <td class="track-specs__label" role="rowheader">Pitch</td>
-          <td class="track-specs__value">{{ pitch_mm }}</td>
-        </tr>
-      {%- endif -%}
-      {%- if links != blank -%}
-        <tr>
-          <td class="track-specs__label" role="rowheader">Links</td>
-          <td class="track-specs__value">{{ links }}</td>
-        </tr>
-      {%- endif -%}
-      {%- if track_weight != blank -%}
-        {%- assign track_weight_display = track_weight | strip -%}
-        {%- unless track_weight_display contains 'lb' -%}
-          {%- assign track_weight_display = track_weight_display | append: 'lbs' -%}
-        {%- endunless -%}
-        <tr>
-          <td class="track-specs__label" role="rowheader">Weight</td>
-          <td class="track-specs__value">{{ track_weight_display }}</td>
-        </tr>
-      {%- endif -%}
-    </tbody>
-  </table>
 </div>
-{%- endif -%}
